@@ -1,0 +1,271 @@
+{
+  "metadata": {
+    "source": "https://destination-tunis.fr/se-deplacer/principe-fonctionnement-louage-tunisie/",
+    "extracted_date": "2026-09-18",
+    "notes": "Prices verified by readers on the blog. Some are old (2015-2017), many are 2023-2026. All in TND (millimes). 1000 millimes = 1 DT.",
+    "reliability": "HIGH — reader-verified with dates",
+    "reference_rate": "~7 DT per hour of travel"
+  },
+  "stations": [
+    {
+      "id": "bab_saadoun",
+      "name_ar": "باب سعدون",
+      "name_fr": "Bab Saadoun",
+      "name_en": "Bab Saadoun",
+      "location": {"lat": 36.8096, "lon": 10.1617},
+      "governorate": "Tunis",
+      "type": "louage_hub",
+      "serves": "North cities (Bizerte, Le Kef, Tabarka, Béja)"
+    },
+    {
+      "id": "bab_alioua",
+      "name_ar": "باب علوية",
+      "name_fr": "Bab Alioua",
+      "name_en": "Bab Alioua",
+      "location": {"lat": 36.796, "lon": 10.177},
+      "governorate": "Tunis",
+      "type": "louage_hub",
+      "serves": "South/Cap Bon (Hammamet, Nabeul, Kelibia, Zaghouan)"
+    },
+    {
+      "id": "moncef_bey",
+      "name_ar": "المنصف باي",
+      "name_fr": "Moncef Bey",
+      "name_en": "Moncef Bey",
+      "location": {"lat": 36.785, "lon": 10.165},
+      "governorate": "Tunis",
+      "type": "louage_hub",
+      "serves": "Center & South (Sousse, Monastir, Kairouan, El Jem, Mahdia, Sfax, Gabès, Sidi Bouzid)"
+    },
+    {
+      "id": "tunis_marine",
+      "name_ar": "تونس البحرية",
+      "name_fr": "Tunis Marine",
+      "name_en": "Tunis Marine",
+      "location": {"lat": 36.8003, "lon": 10.1904},
+      "governorate": "Tunis",
+      "type": "bus_metro_louage",
+      "serves": "TGM terminus, coastal routes"
+    },
+    {
+      "id": "sousse_louage",
+      "name_ar": "محطة النقل بسوسة",
+      "name_fr": "Station Louage Sousse",
+      "name_en": "Sousse Louage Station",
+      "location": {"lat": 35.828, "lon": 10.639},
+      "governorate": "Sousse",
+      "type": "louage_hub"
+    },
+    {
+      "id": "sfax_louage",
+      "name_ar": "محطة النقل بصفاقس",
+      "name_fr": "Station Louage Sfax",
+      "name_en": "Sfax Louage Station",
+      "location": {"lat": 34.740, "lon": 10.760},
+      "governorate": "Sfax",
+      "type": "louage_hub"
+    },
+    {
+      "id": "nabeul_louage",
+      "name_ar": "محطة النقل بنابل",
+      "name_fr": "Station Louage Nabeul",
+      "name_en": "Nabeul Louage Station",
+      "location": {"lat": 36.456, "lon": 10.738},
+      "governorate": "Nabeul",
+      "type": "louage_hub"
+    },
+    {
+      "id": "bizerte_louage",
+      "name_ar": "محطة النقل ببنزرت",
+      "name_fr": "Station Louage Bizerte",
+      "name_en": "Bizerte Louage Station",
+      "location": {"lat": 37.274, "lon": 9.874},
+      "governorate": "Bizerte",
+      "type": "louage_hub"
+    },
+    {
+      "id": "gabes_louage",
+      "name_ar": "محطة النقل بقابس",
+      "name_fr": "Station Louage Gabès",
+      "name_en": "Gabès Louage Station",
+      "location": {"lat": 33.881, "lon": 10.098},
+      "governorate": "Gabès",
+      "type": "louage_hub"
+    },
+    {
+      "id": "kairouan_louage",
+      "name_ar": "محطة النقل بالقيروان",
+      "name_fr": "Station Louage Kairouan",
+      "name_en": "Kairouan Louage Station",
+      "location": {"lat": 35.678, "lon": 10.096},
+      "governorate": "Kairouan",
+      "type": "louage_hub"
+    },
+    {
+      "id": "monastir_louage",
+      "name_ar": "محطة النقل بالمنستير",
+      "name_fr": "Station Louage Monastir",
+      "name_en": "Monastir Louage Station",
+      "location": {"lat": 35.764, "lon": 10.813},
+      "governorate": "Monastir",
+      "type": "louage_hub"
+    },
+    {
+      "id": "mahdia_louage",
+      "name_ar": "محطة النقل بالمهدية",
+      "name_fr": "Station Louage Mahdia",
+      "name_en": "Mahdia Louage Station",
+      "location": {"lat": 35.505, "lon": 11.061},
+      "governorate": "Mahdia",
+      "type": "louage_hub"
+    },
+    {
+      "id": "hammamet_louage",
+      "name_ar": "محطة النقل بالحمامات",
+      "name_fr": "Station Louage Hammamet",
+      "name_en": "Hammamet Louage Station",
+      "location": {"lat": 36.400, "lon": 10.617},
+      "governorate": "Nabeul",
+      "type": "louage_hub"
+    },
+    {
+      "id": "el_jem_louage",
+      "name_ar": "محطة النقل بالجم",
+      "name_fr": "Station Louage El Jem",
+      "name_en": "El Jem Louage Station",
+      "location": {"lat": 35.296, "lon": 10.715},
+      "governorate": "Mahdia",
+      "type": "louage_hub"
+    },
+    {
+      "id": "jendouba_louage",
+      "name_ar": "محطة النقل بجندوبة",
+      "name_fr": "Station Louage Jendouba",
+      "name_en": "Jendouba Louage Station",
+      "location": {"lat": 36.501, "lon": 8.780},
+      "governorate": "Jendouba",
+      "type": "louage_hub"
+    },
+    {
+      "id": "le_kef_louage",
+      "name_ar": "محطة النقل بالكاف",
+      "name_fr": "Station Louage Le Kef",
+      "name_en": "Le Kef Louage Station",
+      "location": {"lat": 36.174, "lon": 8.705},
+      "governorate": "Kef",
+      "type": "louage_hub"
+    },
+    {
+      "id": "medenine_louage",
+      "name_ar": "محطة النقل بمدنين",
+      "name_fr": "Station Louage Médenine",
+      "name_en": "Médenine Louage Station",
+      "location": {"lat": 33.354, "lon": 10.505},
+      "governorate": "Médenine",
+      "type": "louage_hub"
+    },
+    {
+      "id": "tabarka_louage",
+      "name_ar": "محطة النقل بطبرقة",
+      "name_fr": "Station Louage Tabarka",
+      "name_en": "Tabarka Louage Station",
+      "location": {"lat": 36.954, "lon": 8.758},
+      "governorate": "Jendouba",
+      "type": "louage_hub"
+    }
+  ],
+  "routes": [
+    {"from": "bab_saadoun", "to": "bizerte_louage", "fare": 6500, "fare_display": "6.500", "mode": "louage_red", "verified": "2025-02", "source": "Emily", "duration_est_min": 60},
+    {"from": "bab_saadoun", "to": "jendouba_louage", "fare": 14500, "fare_display": "14.500", "mode": "louage_red", "verified": "2025-10", "source": "Krayem", "duration_est_min": 180},
+    {"from": "bab_saadoun", "to": "tabarka_louage", "fare": 15000, "fare_display": "15.000", "mode": "louage_red", "verified": "2023-09", "source": "Spacho", "duration_est_min": 240},
+    {"from": "bab_saadoun", "to": "le_kef_louage", "fare": 15000, "fare_display": "15.000", "mode": "louage_red", "verified": "2024-10", "source": "Yasser", "duration_est_min": 180},
+    {"from": "bab_saadoun", "to": "ras_jebel", "fare": 5700, "fare_display": "5.700", "mode": "louage_blue", "verified": "2025-10", "source": "Krayem", "duration_est_min": 45},
+    {"from": "bab_alioua", "to": "nabeul_louage", "fare": 4700, "fare_display": "4.700", "mode": "louage_blue", "verified": "2015-01", "source": "Kaloun", "duration_est_min": 60},
+    {"from": "bab_alioua", "to": "korba", "fare": 6800, "fare_display": "6.800", "mode": "louage_blue", "verified": "2023-07", "source": "Laurent", "duration_est_min": 90},
+    {"from": "bab_alioua", "to": "kelibia", "fare": 8800, "fare_display": "8.800", "mode": "louage_blue", "verified": "2022-08", "source": "Aziz", "duration_est_min": 120},
+    {"from": "bab_alioua", "to": "hammamet_nord", "fare": 6800, "fare_display": "6.800", "mode": "louage_blue", "verified": "2025-02", "source": "Emily", "duration_est_min": 60},
+    {"from": "bab_alioua", "to": "yasmine_hammamet", "fare": 4750, "fare_display": "4.750", "mode": "louage_blue", "verified": "2022-08", "source": "Wis", "duration_est_min": 45},
+    {"from": "bab_alioua", "to": "zaghouan", "fare": 5350, "fare_display": "5.350", "mode": "louage_blue", "verified": "2025-07", "source": "Mara", "duration_est_min": 60},
+    {"from": "moncef_bey", "to": "sousse_louage", "fare": 13500, "fare_display": "13.500", "mode": "louage_red", "verified": "2024-10", "source": "Mélanie", "duration_est_min": 150},
+    {"from": "moncef_bey", "to": "monastir_louage", "fare": 14850, "fare_display": "14.850", "mode": "louage_red", "verified": "2025-02", "source": "Emily", "duration_est_min": 165},
+    {"from": "moncef_bey", "to": "kairouan_louage", "fare": 14600, "fare_display": "14.600", "mode": "louage_red", "verified": "2024-12", "source": "Claire/Boyang", "duration_est_min": 150},
+    {"from": "moncef_bey", "to": "mahdia_louage", "fare": 17650, "fare_display": "17.650", "mode": "louage_red", "verified": "2023-08", "source": "Syrine/Amira", "duration_est_min": 210},
+    {"from": "moncef_bey", "to": "medenine_louage", "fare": 40000, "fare_display": "40.000", "mode": "louage_red", "verified": "2026-05", "source": "Sara", "duration_est_min": 360},
+    {"from": "tunis_marine", "to": "la_marsa", "fare": 1700, "fare_display": "1.700", "mode": "taxi", "verified": "2023-10", "source": "Aron", "duration_est_min": 15},
+    {"from": "hammamet_louage", "to": "bab_alioua", "fare": 6800, "fare_display": "6.800", "mode": "louage_red", "verified": "2024-04", "source": "Lucie", "duration_est_min": 60},
+    {"from": "yasmine_hammamet", "to": "bab_alioua", "fare": 5500, "fare_display": "5.500", "mode": "louage_red", "verified": "2024-05", "source": "Mélanie", "duration_est_min": 50},
+    {"from": "yasmine_hammamet", "to": "sousse_louage", "fare": 8600, "fare_display": "8.600", "mode": "louage_red", "verified": "2023-02", "source": "Azir", "duration_est_min": 90},
+    {"from": "yasmine_hammamet", "to": "kairouan_louage", "fare": 11000, "fare_display": "11.000", "mode": "louage_red", "verified": "2024-03", "source": "Henri", "duration_est_min": 120},
+    {"from": "yasmine_hammamet", "to": "nabeul_louage", "fare": 2000, "fare_display": "2.000", "mode": "louage_blue", "verified": "2024-10", "source": "Rudy", "duration_est_min": 15},
+    {"from": "medina_hammamet", "to": "yasmine_hammamet", "fare": 700, "fare_display": "0.700", "mode": "bus", "verified": "2024-03", "source": "Henri", "duration_est_min": 10},
+    {"from": "yasmine_hammamet", "to": "hammamet_nord", "fare": 800, "fare_display": "0.800", "mode": "bus", "verified": "2017-11", "source": "Kaldoun", "duration_est_min": 10},
+    {"from": "hammamet_louage", "to": "djerba", "fare": 40000, "fare_display": "~40.000", "mode": "louage_red", "verified": "2022-11", "source": "Raffaela", "duration_est_min": 480, "notes": "Change at Sousse and Gabès"},
+    {"from": "nabeul_louage", "to": "bab_alioua", "fare": 6600, "fare_display": "6.600", "mode": "louage_red", "verified": "2025-10", "source": "Jérôme", "duration_est_min": 60},
+    {"from": "nabeul_louage", "to": "kelibia", "fare": 5350, "fare_display": "5.350", "mode": "louage_blue", "verified": "2025-10", "source": "Jérôme", "duration_est_min": 60},
+    {"from": "nabeul_louage", "to": "sousse_louage", "fare": 8300, "fare_display": "8.300", "mode": "louage_red", "verified": "2022-09", "source": "Hervé", "duration_est_min": 90},
+    {"from": "nabeul_louage", "to": "kairouan_louage", "fare": 10600, "fare_display": "10.600", "mode": "louage_red", "verified": "2025-10", "source": "Jérôme", "duration_est_min": 120},
+    {"from": "nabeul_louage", "to": "monastir_louage", "fare": 10900, "fare_display": "10.900", "mode": "louage_red", "verified": "2025-10", "source": "Jérôme", "duration_est_min": 120},
+    {"from": "nabeul_louage", "to": "zaghouan", "fare": 6500, "fare_display": "6.500", "mode": "louage_blue", "verified": "2025-10", "source": "Jérôme", "duration_est_min": 75},
+    {"from": "sousse_louage", "to": "medenine_louage", "fare": 27000, "fare_display": "27.000", "mode": "louage_red", "verified": "2026-06", "source": "Mouthanna", "duration_est_min": 240},
+    {"from": "sousse_louage", "to": "moncef_bey", "fare": 13500, "fare_display": "13.500", "mode": "louage_red", "verified": "2025-12", "source": "Fafa", "duration_est_min": 150},
+    {"from": "sousse_louage", "to": "le_kef_louage", "fare": 19000, "fare_display": "19.000", "mode": "louage_red", "verified": "2024-10", "source": "Yasser", "duration_est_min": 240},
+    {"from": "sousse_louage", "to": "beja", "fare": 21000, "fare_display": "21.000", "mode": "louage_red", "verified": "2025-07", "source": "Ahmed", "duration_est_min": 180},
+    {"from": "sousse_louage", "to": "jendouba_louage", "fare": 21000, "fare_display": "21.000", "mode": "louage_red", "verified": "2025-07", "source": "Ahmed", "duration_est_min": 240},
+    {"from": "sousse_louage", "to": "yasmine_hammamet", "fare": 7500, "fare_display": "7.500", "mode": "louage_red", "verified": "2022-09", "source": "Hervé", "duration_est_min": 75},
+    {"from": "sousse_louage", "to": "el_jem_louage", "fare": 8600, "fare_display": "8.600", "mode": "louage_red", "verified": "2025-02", "source": "Emilie", "duration_est_min": 60},
+    {"from": "sousse_louage", "to": "monastir_louage", "fare": 2400, "fare_display": "2.400", "mode": "louage_blue", "verified": "2025-12", "source": "Boyang", "duration_est_min": 30},
+    {"from": "sousse_louage", "to": "mahdia_louage", "fare": 5900, "fare_display": "5.900", "mode": "louage_red", "verified": "2024-12", "source": "Claire", "duration_est_min": 60},
+    {"from": "sousse_louage", "to": "kairouan_louage", "fare": 6200, "fare_display": "6.200", "mode": "louage_red", "verified": "2024-12", "source": "Boyang/Claire", "duration_est_min": 60},
+    {"from": "monastir_louage", "to": "kairouan_louage", "fare": 7950, "fare_display": "7.950", "mode": "louage_red", "verified": "2025-02", "source": "Emilie", "duration_est_min": 75},
+    {"from": "sousse_louage", "to": "sfax_louage", "fare": 12400, "fare_display": "12.400", "mode": "louage_red", "verified": "2025-02", "source": "Emilie", "duration_est_min": 150},
+    {"from": "sousse_louage", "to": "gabes_louage", "fare": 22300, "fare_display": "22.300", "mode": "louage_red", "verified": "2025-02", "source": "Emily", "duration_est_min": 210},
+    {"from": "mahdia_louage", "to": "el_jem_louage", "fare": 8000, "fare_display": "8.000", "mode": "louage_red", "verified": "2024-04", "source": "Blaise", "duration_est_min": 45},
+    {"from": "sfax_louage", "to": "moncef_bey", "fare": 22750, "fare_display": "22.750", "mode": "louage_red", "verified": "2023-03", "source": "Achraf", "duration_est_min": 240},
+    {"from": "sfax_louage", "to": "kebili", "fare": 21000, "fare_display": "21.000", "mode": "louage_red", "verified": "2025-01", "source": "Kaïs", "duration_est_min": 240},
+    {"from": "gabes_louage", "to": "sousse_louage", "fare": 22300, "fare_display": "22.300", "mode": "louage_red", "verified": "2025-02", "source": "Emilie", "duration_est_min": 210},
+    {"from": "gabes_louage", "to": "tozeur", "fare": 17600, "fare_display": "17.600", "mode": "louage_red", "verified": "2025-02", "source": "Emily", "duration_est_min": 240},
+    {"from": "gabes_louage", "to": "medenine_louage", "fare": 7050, "fare_display": "7.050", "mode": "louage_red", "verified": "2026-08", "source": "Mouthanna", "duration_est_min": 60},
+    {"from": "gabes_louage", "to": "djerba", "fare": 14550, "fare_display": "14.550", "mode": "louage_red", "verified": "2025-02", "source": "Emily", "duration_est_min": 180},
+    {"from": "bizerte_louage", "to": "beja", "fare": 9250, "fare_display": "9.250", "mode": "louage_blue", "verified": "2025-07", "source": "Jean Jean", "duration_est_min": 90},
+    {"from": "beja", "to": "tabarka_louage", "fare": 6500, "fare_display": "6.500", "mode": "louage_blue", "verified": "2025-07", "source": "Jean Jean", "duration_est_min": 90},
+    {"from": "le_kef_louage", "to": "kasserine", "fare": 11500, "fare_display": "11.500", "mode": "louage_red", "verified": "2023-10", "source": "Jean-Philippe", "duration_est_min": 120},
+    {"from": "jendouba_louage", "to": "bousalem", "fare": 1800, "fare_display": "1.800", "mode": "louage_blue", "verified": "2023-10", "source": "Aron", "duration_est_min": 20},
+    {"from": "bousalem", "to": "beja", "fare": 2400, "fare_display": "2.400", "mode": "louage_blue", "verified": "2023-10", "source": "Aron", "duration_est_min": 30},
+    {"from": "yasmine_hammamet", "to": "bus_line_115", "fare": 1700, "fare_display": "1.700", "mode": "bus", "verified": "2024-03", "source": "Henri", "duration_est_min": 15, "notes": "Yasmine Hammamet (El Lemdina) to Nabeul, bus ligne 115"},
+    {"from": "yasmine_hammamet", "to": "bus_line_115_hammamet", "fare": 800, "fare_display": "0.800", "mode": "bus", "verified": "2024-03", "source": "Henri", "duration_est_min": 10, "notes": "Yasmine Hammamet to Hammamet Centre, bus ligne 115"},
+    {"from": "nabeul_louage", "to": "bus_line_102", "fare": 5300, "fare_display": "5.300", "mode": "bus", "verified": "2022-09", "source": "Hervé", "duration_est_min": 90, "notes": "Nabeul to Tunis, bus ligne 102"}
+  ],
+  "louage_types": [
+    {
+      "type": "louage_red",
+      "name_fr": "Louage blanc à bande rouge",
+      "name_en": "White louage with red stripe",
+      "name_ar": "لاج أبيض مع شريط أحمر",
+      "description": "Inter-governorate routes. Long distance, no intermediate stops. Leaves only when full."
+    },
+    {
+      "type": "louage_blue",
+      "name_fr": "Louage blanc à bande bleue",
+      "name_en": "White louage with blue stripe",
+      "name_ar": "لاج أبيض مع شريط أزرق",
+      "description": "Intra-governorate. Shorter routes, stops at villages. Can leave half-full."
+    },
+    {
+      "type": "louage_yellow",
+      "name_fr": "Louage jaune à bande bleue (Doliprane)",
+      "name_en": "Yellow louage with blue stripe (Doliprane)",
+      "name_ar": "لاج أصفر مع شريط أزرق",
+      "description": "Rural louage serving almost all villages. Very slow, fills up at souks."
+    }
+  ],
+  "operating_hours": {
+    "first_departure": "06:00",
+    "last_reliable": {
+      "summer": "19:00-20:00",
+      "winter": "17:00-18:00"
+    },
+    "ramadan_note": "Afternoon and evening very calm. Travel in the morning.",
+    "summer_note": "Afternoon calm due to heat. Travel in the morning."
+  },
+  "price_rule": "~7 DT per hour of travel (rough estimate)"
+}

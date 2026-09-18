@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+build/
+dist/
+*.log
+
+# Environment
+.env
+.env.local
+
+# Flutter
+.flutter-plugins
+.packages
+.flutter-plugins-dependencies
+pubspec.lock
+.dart_tool/
+*.iml
+android/app/debug
+android/app/profile
+android/app/release
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Don't ignore important config
+!.env.example
