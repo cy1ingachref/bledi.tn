@@ -1,0 +1,72 @@
+# See https://dart.dev/tools/pub-pubspec
+
+name: bledi_tn
+description: Tunisia Transport & Places App — louage, bus, train, metro directory with multi-modal routing
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # Maps & location
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.0
+  geolocator: ^10.1.0
+  permission_handler: ^11.0.1
+
+  # State management
+  flutter_riverpod: ^2.4.9
+
+  # Networking
+  dio: ^5.4.0
+  retrofit: ^4.0.3
+
+  # Storage
+  shared_preferences: ^2.2.2
+  hive_flutter: ^1.1.0
+
+  # UI
+  flutter_svg: ^2.0.9
+  cached_network_image: ^3.3.1
+  shimmer: ^3.0.0
+  lottie: ^2.7.0
+
+  # Utils
+  intl: ^0.18.1
+  logger: ^2.0.2+1
+  json_annotation: ^4.8.1
+  freezed_annotation: ^2.4.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.7
+  json_serializable: ^6.7.1
+  freezed: ^2.4.5
+  retrofit_generator: ^8.0.6
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/images/
+    - assets/animations/
+    - assets/data/
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
+        - asset: assets/fonts/Cairo-Bold.ttf
+          weight: 700
+    - family: Tajawal
+      fonts:
+        - asset: assets/fonts/Tajawal-Regular.ttf
+        - asset: assets/fonts/Tajawal-Bold.ttf
+          weight: 700
