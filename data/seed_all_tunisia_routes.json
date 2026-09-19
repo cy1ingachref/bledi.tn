@@ -3,7 +3,7 @@
     "source": "Tunismapper (tunismapper.com ligne_details.php)",
     "extracted_date": "2026-09-19",
     "total_lines": 228,
-    "total_stations": 1590,
+    "total_stations": 1664,
     "by_mode": {
       "Train": 29,
       "RFR": 3,
@@ -13,7 +13,7 @@
     "coordinate_coverage": 1534,
     "stations_enriched": 1534,
     "enrichment_source": "tunismapper station_details API",
-    "stations_added_from_sweep": 56
+    "stations_added_from_sweep": 74
   },
   "stations": [
     {
@@ -68155,6 +68155,2722 @@
       "lat": 37.0558225,
       "lon": 9.1195977,
       "source_stop_id": "84",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "mannouba_222",
+      "name": "Mannouba",
+      "lat": 36.8161297,
+      "lon": 10.1011079,
+      "source_stop_id": "222",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "D",
+          "route_color": "489224",
+          "direction": "Gobaa Ville"
+        },
+        {
+          "route_short_name": "D",
+          "route_color": "489224",
+          "direction": "Tunis ville"
+        }
+      ]
+    },
+    {
+      "id": "cite_el_intilaka_7024",
+      "name": "Cite El Intilaka ",
+      "lat": 36.7188556,
+      "lon": 9.8782212,
+      "source_stop_id": "7024",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "23",
+          "route_color": "407E15",
+          "direction": "Cite El Intilaka "
+        },
+        {
+          "route_short_name": "23",
+          "route_color": "407E15",
+          "direction": "Rabattement Slimen Kahia"
+        }
+      ]
+    },
+    {
+      "id": "20_mars_7030",
+      "name": "20 Mars",
+      "lat": 36.7572313,
+      "lon": 10.0100388,
+      "source_stop_id": "7030",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "23B",
+          "route_color": "FF0000",
+          "direction": "Lycee 20 Mars"
+        },
+        {
+          "route_short_name": "23B",
+          "route_color": "FF0000",
+          "direction": "Rabattement Slimen Kahia"
+        },
+        {
+          "route_short_name": "23E",
+          "route_color": "0000FF",
+          "direction": "Griaat"
+        },
+        {
+          "route_short_name": "23E",
+          "route_color": "0000FF",
+          "direction": "Rabattement Slimen Kahia"
+        },
+        {
+          "route_short_name": "23F",
+          "route_color": "97793C",
+          "direction": "Frinech"
+        },
+        {
+          "route_short_name": "23F",
+          "route_color": "97793C",
+          "direction": "Rabattement Slimen Kahia"
+        },
+        {
+          "route_short_name": "23H",
+          "route_color": "E49981",
+          "direction": "Rabattement Slimen Kahia"
+        },
+        {
+          "route_short_name": "23H",
+          "route_color": "E49981",
+          "direction": "Sidi Medien"
+        },
+        {
+          "route_short_name": "23T",
+          "route_color": "829EC0",
+          "direction": "Ksar Hdid"
+        },
+        {
+          "route_short_name": "23T",
+          "route_color": "829EC0",
+          "direction": "Rabattement Slimen Kahia"
+        },
+        {
+          "route_short_name": "34A",
+          "route_color": "829ECE",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "34A",
+          "route_color": "829ECE",
+          "direction": "Prison Civile Mornagiaa"
+        },
+        {
+          "route_short_name": "3D",
+          "route_color": "97533A",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "3D",
+          "route_color": "97533A",
+          "direction": "Terminus 3D"
+        },
+        {
+          "route_short_name": "61",
+          "route_color": "4F3E90",
+          "direction": "Prison Civile Mornagiaa"
+        },
+        {
+          "route_short_name": "61",
+          "route_color": "4F3E90",
+          "direction": "Rabattement Slimen Kahia"
+        }
+      ]
+    },
+    {
+      "id": "kochbati_7071",
+      "name": "Kochbati+",
+      "lat": 36.7770562,
+      "lon": 9.9513064,
+      "source_stop_id": "7071",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "23T",
+          "route_color": "829EC0",
+          "direction": "Ksar Hdid"
+        },
+        {
+          "route_short_name": "23T",
+          "route_color": "829EC0",
+          "direction": "Rabattement Slimen Kahia"
+        }
+      ]
+    },
+    {
+      "id": "bab_alioua_7079",
+      "name": "Bab Alioua",
+      "lat": 36.788588,
+      "lon": 10.1803401,
+      "source_stop_id": "7079",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "116",
+          "route_color": "000080",
+          "direction": "Bab Alioua"
+        },
+        {
+          "route_short_name": "116",
+          "route_color": "000080",
+          "direction": "Steg Tebourba"
+        },
+        {
+          "route_short_name": "32A",
+          "route_color": "005FFF",
+          "direction": "Bab Alioua"
+        },
+        {
+          "route_short_name": "32A",
+          "route_color": "005FFF",
+          "direction": "Terminus 33B/32A/533"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Bab Alioua"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Terminus 32C-71-515"
+        }
+      ]
+    },
+    {
+      "id": "ecole_zouhour4_7091",
+      "name": "Ecole Zouhour4",
+      "lat": 36.7910359,
+      "lon": 10.1272053,
+      "source_stop_id": "7091",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "32B",
+          "route_color": "00AD9E",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "32B",
+          "route_color": "00AD9E",
+          "direction": "Terminus Borj Chakir ( L 32 B )"
+        }
+      ]
+    },
+    {
+      "id": "bouchoucha_7103",
+      "name": "Bouchoucha",
+      "lat": 36.8090503,
+      "lon": 10.1470966,
+      "source_stop_id": "7103",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "104",
+          "route_color": "F49581",
+          "direction": "Rabattement Khaireddine Mannouba"
+        },
+        {
+          "route_short_name": "104",
+          "route_color": "F49581",
+          "direction": "Terminus Tunis Marine Bus"
+        },
+        {
+          "route_short_name": "16",
+          "route_color": "333300",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "16",
+          "route_color": "333300",
+          "direction": "Terminus 16"
+        },
+        {
+          "route_short_name": "16/",
+          "route_color": "0000FF",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "16/",
+          "route_color": "0000FF",
+          "direction": "Cité Ennassim"
+        },
+        {
+          "route_short_name": "16C",
+          "route_color": "407E15",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "16C",
+          "route_color": "407E15",
+          "direction": "Cité Elward 16C"
+        },
+        {
+          "route_short_name": "16D",
+          "route_color": "005FFF",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "16D",
+          "route_color": "005FFF",
+          "direction": "Terminus Sidi Othman"
+        },
+        {
+          "route_short_name": "31",
+          "route_color": "FF0000",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "31",
+          "route_color": "FF0000",
+          "direction": "Terminus 31"
+        },
+        {
+          "route_short_name": "31A",
+          "route_color": "0000FF",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "31A",
+          "route_color": "0000FF",
+          "direction": "Terminus Bech Hamba"
+        },
+        {
+          "route_short_name": "31B",
+          "route_color": "407E15",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "31B",
+          "route_color": "407E15",
+          "direction": "Lycée Kalaate Al Andalouss"
+        },
+        {
+          "route_short_name": "31C",
+          "route_color": "000000",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "31C",
+          "route_color": "000000",
+          "direction": "Chorfech 3"
+        },
+        {
+          "route_short_name": "32C",
+          "route_color": "B736A6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "32C",
+          "route_color": "B736A6",
+          "direction": "Terminus 32C-71-515"
+        },
+        {
+          "route_short_name": "3D",
+          "route_color": "97533A",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "3D",
+          "route_color": "97533A",
+          "direction": "Terminus 3D"
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Marché De Gros"
+        },
+        {
+          "route_short_name": "42",
+          "route_color": "000080",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "42",
+          "route_color": "000080",
+          "direction": "Terminus Tebourba"
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Les Abattoirs"
+        },
+        {
+          "route_short_name": "4A",
+          "route_color": "859EC6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "4A",
+          "route_color": "859EC6",
+          "direction": "Terminus L 4A Cité El Amal Mannouba"
+        },
+        {
+          "route_short_name": "4G",
+          "route_color": "C756A6",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "4G",
+          "route_color": "C756A6",
+          "direction": "Kasbah"
+        },
+        {
+          "route_short_name": "55",
+          "route_color": "489224",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "55",
+          "route_color": "489224",
+          "direction": "Terminus Hopital Daouar Hicher"
+        },
+        {
+          "route_short_name": "56",
+          "route_color": "003399",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "56",
+          "route_color": "003399",
+          "direction": "Terminus 56 72"
+        },
+        {
+          "route_short_name": "68",
+          "route_color": "B736A6",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "68",
+          "route_color": "B736A6",
+          "direction": "Terminus 18 Janvier"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Bab Alioua"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Terminus 32C-71-515"
+        },
+        {
+          "route_short_name": "87",
+          "route_color": "E48881",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "87",
+          "route_color": "E48881",
+          "direction": "Terminus Omar Mokhtar"
+        },
+        {
+          "route_short_name": "88",
+          "route_color": "859EC6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "88",
+          "route_color": "859EC6",
+          "direction": "Terminus Elwaha"
+        },
+        {
+          "route_short_name": "88A",
+          "route_color": "F40581",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "88A",
+          "route_color": "F40581",
+          "direction": "Terminus L88A"
+        }
+      ]
+    },
+    {
+      "id": "20_mars_7104",
+      "name": "20 Mars",
+      "lat": 36.8082515,
+      "lon": 10.141421,
+      "source_stop_id": "7104",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "16",
+          "route_color": "333300",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "16",
+          "route_color": "333300",
+          "direction": "Terminus 16"
+        },
+        {
+          "route_short_name": "16/",
+          "route_color": "0000FF",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "16/",
+          "route_color": "0000FF",
+          "direction": "Cité Ennassim"
+        },
+        {
+          "route_short_name": "16C",
+          "route_color": "407E15",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "16C",
+          "route_color": "407E15",
+          "direction": "Cité Elward 16C"
+        },
+        {
+          "route_short_name": "16D",
+          "route_color": "005FFF",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "16D",
+          "route_color": "005FFF",
+          "direction": "Terminus Sidi Othman"
+        },
+        {
+          "route_short_name": "31",
+          "route_color": "FF0000",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "31",
+          "route_color": "FF0000",
+          "direction": "Terminus 31"
+        },
+        {
+          "route_short_name": "31A",
+          "route_color": "0000FF",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "31A",
+          "route_color": "0000FF",
+          "direction": "Terminus Bech Hamba"
+        },
+        {
+          "route_short_name": "31B",
+          "route_color": "407E15",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "31B",
+          "route_color": "407E15",
+          "direction": "Lycée Kalaate Al Andalouss"
+        },
+        {
+          "route_short_name": "31C",
+          "route_color": "000000",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "31C",
+          "route_color": "000000",
+          "direction": "Chorfech 3"
+        },
+        {
+          "route_short_name": "32C",
+          "route_color": "B736A6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "32C",
+          "route_color": "B736A6",
+          "direction": "Terminus 32C-71-515"
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Marché De Gros"
+        },
+        {
+          "route_short_name": "42",
+          "route_color": "000080",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "42",
+          "route_color": "000080",
+          "direction": "Terminus Tebourba"
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Les Abattoirs"
+        },
+        {
+          "route_short_name": "4A",
+          "route_color": "859EC6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "4A",
+          "route_color": "859EC6",
+          "direction": "Terminus L 4A Cité El Amal Mannouba"
+        },
+        {
+          "route_short_name": "4G",
+          "route_color": "C756A6",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "4G",
+          "route_color": "C756A6",
+          "direction": "Kasbah"
+        },
+        {
+          "route_short_name": "55",
+          "route_color": "489224",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "55",
+          "route_color": "489224",
+          "direction": "Terminus Hopital Daouar Hicher"
+        },
+        {
+          "route_short_name": "56",
+          "route_color": "003399",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "56",
+          "route_color": "003399",
+          "direction": "Terminus 56 72"
+        },
+        {
+          "route_short_name": "68",
+          "route_color": "B736A6",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "68",
+          "route_color": "B736A6",
+          "direction": "Terminus 18 Janvier"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Bab Alioua"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Terminus 32C-71-515"
+        },
+        {
+          "route_short_name": "87",
+          "route_color": "E48881",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "87",
+          "route_color": "E48881",
+          "direction": "Terminus Omar Mokhtar"
+        },
+        {
+          "route_short_name": "88",
+          "route_color": "859EC6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "88",
+          "route_color": "859EC6",
+          "direction": "Terminus Elwaha"
+        },
+        {
+          "route_short_name": "88A",
+          "route_color": "F40581",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "88A",
+          "route_color": "F40581",
+          "direction": "Terminus L88A"
+        }
+      ]
+    },
+    {
+      "id": "bardo_7105",
+      "name": "Bardo",
+      "lat": 36.8077723,
+      "lon": 10.1387231,
+      "source_stop_id": "7105",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "32C",
+          "route_color": "B736A6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "32C",
+          "route_color": "B736A6",
+          "direction": "Terminus 32C-71-515"
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Marché De Gros"
+        },
+        {
+          "route_short_name": "42",
+          "route_color": "000080",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "42",
+          "route_color": "000080",
+          "direction": "Terminus Tebourba"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Bab Alioua"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Terminus 32C-71-515"
+        },
+        {
+          "route_short_name": "87",
+          "route_color": "E48881",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "87",
+          "route_color": "E48881",
+          "direction": "Terminus Omar Mokhtar"
+        },
+        {
+          "route_short_name": "88",
+          "route_color": "859EC6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "88",
+          "route_color": "859EC6",
+          "direction": "Terminus Elwaha"
+        },
+        {
+          "route_short_name": "88A",
+          "route_color": "F40581",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "88A",
+          "route_color": "F40581",
+          "direction": "Terminus L88A"
+        }
+      ]
+    },
+    {
+      "id": "khaznadar_7109",
+      "name": "Khaznadar",
+      "lat": 36.8039665,
+      "lon": 10.1209185,
+      "source_stop_id": "7109",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "32C",
+          "route_color": "B736A6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "32C",
+          "route_color": "B736A6",
+          "direction": "Terminus 32C-71-515"
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Marché De Gros"
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Les Abattoirs"
+        },
+        {
+          "route_short_name": "4G",
+          "route_color": "C756A6",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "4G",
+          "route_color": "C756A6",
+          "direction": "Kasbah"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Bab Alioua"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Terminus 32C-71-515"
+        },
+        {
+          "route_short_name": "87",
+          "route_color": "E48881",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "87",
+          "route_color": "E48881",
+          "direction": "Terminus Omar Mokhtar"
+        },
+        {
+          "route_short_name": "88",
+          "route_color": "859EC6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "88",
+          "route_color": "859EC6",
+          "direction": "Terminus Elwaha"
+        },
+        {
+          "route_short_name": "88A",
+          "route_color": "F40581",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "88A",
+          "route_color": "F40581",
+          "direction": "Terminus L88A"
+        }
+      ]
+    },
+    {
+      "id": "artisanat_7110",
+      "name": "Artisanat",
+      "lat": 36.8031118,
+      "lon": 10.1167074,
+      "source_stop_id": "7110",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "32C",
+          "route_color": "B736A6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "32C",
+          "route_color": "B736A6",
+          "direction": "Terminus 32C-71-515"
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Marché De Gros"
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Les Abattoirs"
+        },
+        {
+          "route_short_name": "4G",
+          "route_color": "C756A6",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "4G",
+          "route_color": "C756A6",
+          "direction": "Kasbah"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Bab Alioua"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Terminus 32C-71-515"
+        },
+        {
+          "route_short_name": "87",
+          "route_color": "E48881",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "87",
+          "route_color": "E48881",
+          "direction": "Terminus Omar Mokhtar"
+        },
+        {
+          "route_short_name": "88",
+          "route_color": "859EC6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "88",
+          "route_color": "859EC6",
+          "direction": "Terminus Elwaha"
+        },
+        {
+          "route_short_name": "88A",
+          "route_color": "F40581",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "88A",
+          "route_color": "F40581",
+          "direction": "Terminus L88A"
+        }
+      ]
+    },
+    {
+      "id": "denden_7111",
+      "name": "Denden",
+      "lat": 36.8010998,
+      "lon": 10.1095729,
+      "source_stop_id": "7111",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "32C",
+          "route_color": "B736A6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "32C",
+          "route_color": "B736A6",
+          "direction": "Terminus 32C-71-515"
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Marché De Gros"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Bab Alioua"
+        },
+        {
+          "route_short_name": "71",
+          "route_color": "9A10FF",
+          "direction": "Terminus 32C-71-515"
+        },
+        {
+          "route_short_name": "87",
+          "route_color": "E48881",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "87",
+          "route_color": "E48881",
+          "direction": "Terminus Omar Mokhtar"
+        },
+        {
+          "route_short_name": "88",
+          "route_color": "859EC6",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "88",
+          "route_color": "859EC6",
+          "direction": "Terminus Elwaha"
+        },
+        {
+          "route_short_name": "88A",
+          "route_color": "F40581",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "88A",
+          "route_color": "F40581",
+          "direction": "Terminus L88A"
+        }
+      ]
+    },
+    {
+      "id": "mghira_7142",
+      "name": "Mghira",
+      "lat": 36.7162308,
+      "lon": 10.1631893,
+      "source_stop_id": "7142",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "33",
+          "route_color": "E49581",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "33",
+          "route_color": "E49581",
+          "direction": "Terminus Mghira"
+        }
+      ]
+    },
+    {
+      "id": "les_salines_7312",
+      "name": "Les Salines",
+      "lat": 36.7935098,
+      "lon": 10.2787823,
+      "source_stop_id": "7312",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "17",
+          "route_color": "FF6633",
+          "direction": "Bac Terminus 17"
+        },
+        {
+          "route_short_name": "17",
+          "route_color": "FF6633",
+          "direction": "Station Barcelone"
+        },
+        {
+          "route_short_name": "17A",
+          "route_color": "B736A6",
+          "direction": "Médina Jedida"
+        },
+        {
+          "route_short_name": "17A",
+          "route_color": "B736A6",
+          "direction": "Port La Goulette"
+        },
+        {
+          "route_short_name": "17B",
+          "route_color": "407E15",
+          "direction": "Port De Rades (Terminus)"
+        },
+        {
+          "route_short_name": "17B",
+          "route_color": "407E15",
+          "direction": "Station Barcelone"
+        }
+      ]
+    },
+    {
+      "id": "bab_saadoun_7348",
+      "name": "Bab Saadoun ",
+      "lat": 36.8092749,
+      "lon": 10.1565758,
+      "source_stop_id": "7348",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "14A",
+          "route_color": "489224",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "14A",
+          "route_color": "489224",
+          "direction": "Omrane Supérieur "
+        },
+        {
+          "route_short_name": "14C",
+          "route_color": "003399",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "14C",
+          "route_color": "003399",
+          "direction": "Terminus Cité Elbasatine"
+        },
+        {
+          "route_short_name": "14CG",
+          "route_color": "FFCF06",
+          "direction": "Intilaka"
+        },
+        {
+          "route_short_name": "14CG",
+          "route_color": "FFCF06",
+          "direction": "Kasbah"
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Marché De Gros"
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Les Abattoirs"
+        },
+        {
+          "route_short_name": "4G",
+          "route_color": "C756A6",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "4G",
+          "route_color": "C756A6",
+          "direction": "Kasbah"
+        },
+        {
+          "route_short_name": "64",
+          "route_color": "FF00FF",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "64",
+          "route_color": "FF00FF",
+          "direction": "Terminus 64/30"
+        },
+        {
+          "route_short_name": "72",
+          "route_color": "97253C",
+          "direction": "Gare Routiére Sud"
+        },
+        {
+          "route_short_name": "72",
+          "route_color": "97253C",
+          "direction": "Terminus 56 72"
+        },
+        {
+          "route_short_name": "78",
+          "route_color": "333300",
+          "direction": "Gare Routiére Sud"
+        },
+        {
+          "route_short_name": "78",
+          "route_color": "333300",
+          "direction": "Terminus Omrane Supérieur L 78 + 38 B"
+        }
+      ]
+    },
+    {
+      "id": "moncef_bey_7363",
+      "name": "Moncef Bey ",
+      "lat": 36.7929436,
+      "lon": 10.1856283,
+      "source_stop_id": "7363",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "104",
+          "route_color": "F49581",
+          "direction": "Rabattement Khaireddine Mannouba"
+        },
+        {
+          "route_short_name": "104",
+          "route_color": "F49581",
+          "direction": "Terminus Tunis Marine Bus"
+        },
+        {
+          "route_short_name": "11",
+          "route_color": "829ECE",
+          "direction": "Terminus Jbel Lahmer L 11"
+        },
+        {
+          "route_short_name": "11",
+          "route_color": "829ECE",
+          "direction": "Terminus Tunis Marine Bus"
+        },
+        {
+          "route_short_name": "19E",
+          "route_color": "FF6633",
+          "direction": "Station Barcelone"
+        },
+        {
+          "route_short_name": "19E",
+          "route_color": "FF6633",
+          "direction": "Terminus Cité Chaker"
+        },
+        {
+          "route_short_name": "74",
+          "route_color": "829ECE",
+          "direction": "Mourouj 5"
+        },
+        {
+          "route_short_name": "74",
+          "route_color": "829ECE",
+          "direction": "Terminus Tunis Marine Bus"
+        }
+      ]
+    },
+    {
+      "id": "stil_7364",
+      "name": "STIL",
+      "lat": 36.7925814,
+      "lon": 10.1904254,
+      "source_stop_id": "7364",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "19E",
+          "route_color": "FF6633",
+          "direction": "Station Barcelone"
+        },
+        {
+          "route_short_name": "19E",
+          "route_color": "FF6633",
+          "direction": "Terminus Cité Chaker"
+        }
+      ]
+    },
+    {
+      "id": "mosqu_e_al_hawa_7390",
+      "name": "Mosquée Al Hawa ",
+      "lat": 36.7932602,
+      "lon": 10.1631446,
+      "source_stop_id": "7390",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "60A",
+          "route_color": "829EC0",
+          "direction": "Hopital Des Enfants"
+        },
+        {
+          "route_short_name": "60A",
+          "route_color": "829EC0",
+          "direction": "Ibn Sina"
+        },
+        {
+          "route_short_name": "60G",
+          "route_color": "F49581",
+          "direction": "Hopital Des Enfants"
+        },
+        {
+          "route_short_name": "60G",
+          "route_color": "F49581",
+          "direction": "Ibn Sina"
+        }
+      ]
+    },
+    {
+      "id": "13_aout_7396",
+      "name": "13 Aout",
+      "lat": 36.7751301,
+      "lon": 10.1786652,
+      "source_stop_id": "7396",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "19G",
+          "route_color": "927935",
+          "direction": "Hopital Des Enfants"
+        },
+        {
+          "route_short_name": "19G",
+          "route_color": "927935",
+          "direction": "Lycée Ibn Mandhour"
+        },
+        {
+          "route_short_name": "22G",
+          "route_color": "C759A6",
+          "direction": "Café El Ferdaous"
+        },
+        {
+          "route_short_name": "22G",
+          "route_color": "C759A6",
+          "direction": "Hopital Des Enfants"
+        },
+        {
+          "route_short_name": "60A",
+          "route_color": "829EC0",
+          "direction": "Hopital Des Enfants"
+        },
+        {
+          "route_short_name": "60A",
+          "route_color": "829EC0",
+          "direction": "Ibn Sina"
+        },
+        {
+          "route_short_name": "60G",
+          "route_color": "F49581",
+          "direction": "Hopital Des Enfants"
+        },
+        {
+          "route_short_name": "60G",
+          "route_color": "F49581",
+          "direction": "Ibn Sina"
+        },
+        {
+          "route_short_name": "74B",
+          "route_color": "000080",
+          "direction": "Hopital Des Enfants"
+        },
+        {
+          "route_short_name": "74B",
+          "route_color": "000080",
+          "direction": "Mourouj 5"
+        },
+        {
+          "route_short_name": "74G",
+          "route_color": "280B3C",
+          "direction": "Hopital Des Enfants"
+        },
+        {
+          "route_short_name": "74G",
+          "route_color": "280B3C",
+          "direction": "Mourouj 5"
+        }
+      ]
+    },
+    {
+      "id": "mohamed_v_7415",
+      "name": "Mohamed V",
+      "lat": 36.8154192,
+      "lon": 10.1839425,
+      "source_stop_id": "7415",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "20",
+          "route_color": "A736A8",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "20",
+          "route_color": "A736A8",
+          "direction": "Teminus Cité Riadh"
+        },
+        {
+          "route_short_name": "20A",
+          "route_color": "97533A",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "20A",
+          "route_color": "97533A",
+          "direction": "Terminus 20A"
+        },
+        {
+          "route_short_name": "20B",
+          "route_color": "A736A8",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "20B",
+          "route_color": "A736A8",
+          "direction": "Terminus 20B"
+        },
+        {
+          "route_short_name": "20C",
+          "route_color": "0000FF",
+          "direction": "Carthage Hannibal"
+        },
+        {
+          "route_short_name": "20C",
+          "route_color": "0000FF",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "43B",
+          "route_color": "849EA9",
+          "direction": "Cité Monji Slim Terminus 44B 44D/"
+        },
+        {
+          "route_short_name": "43B",
+          "route_color": "849EA9",
+          "direction": "Terminus Tunis Marine Bus"
+        },
+        {
+          "route_short_name": "527",
+          "route_color": "00AD9E",
+          "direction": "Jeans Jaures"
+        },
+        {
+          "route_short_name": "527",
+          "route_color": "00AD9E",
+          "direction": "Terminus Cité El Ghazela"
+        }
+      ]
+    },
+    {
+      "id": "foyer_bardo_1_7427",
+      "name": "Foyer Bardo 1 ",
+      "lat": 36.813941,
+      "lon": 10.1461985,
+      "source_stop_id": "7427",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "36B",
+          "route_color": "829EC1",
+          "direction": "Terminus Ministére Des Affaires Etrangeres ( L 36 B )"
+        },
+        {
+          "route_short_name": "36B",
+          "route_color": "829EC1",
+          "direction": "Touta Bardo"
+        }
+      ]
+    },
+    {
+      "id": "ettadhamen_7557",
+      "name": "Ettadhamen",
+      "lat": 36.82708,
+      "lon": 10.1145402,
+      "source_stop_id": "7557",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "48",
+          "route_color": "D32F2F",
+          "direction": "Rabattement Slimen Kahia"
+        },
+        {
+          "route_short_name": "48",
+          "route_color": "D32F2F",
+          "direction": "Terminus Cité Elbasatine"
+        }
+      ]
+    },
+    {
+      "id": "bejawa_2_7602",
+      "name": "Bejawa 2",
+      "lat": 36.8434024,
+      "lon": 10.0099928,
+      "source_stop_id": "7602",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "31C",
+          "route_color": "000000",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "31C",
+          "route_color": "000000",
+          "direction": "Chorfech 3"
+        },
+        {
+          "route_short_name": "44D",
+          "route_color": "C759A6",
+          "direction": "Depot Charguia"
+        },
+        {
+          "route_short_name": "44D",
+          "route_color": "C759A6",
+          "direction": "Mosquée Oued Ellil"
+        }
+      ]
+    },
+    {
+      "id": "tahar_sfar_7654",
+      "name": "Tahar Sfar",
+      "lat": 36.7174273,
+      "lon": 10.3595401,
+      "source_stop_id": "7654",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "37",
+          "route_color": "829EC0",
+          "direction": "Station De Bus Mornag"
+        },
+        {
+          "route_short_name": "37",
+          "route_color": "829EC0",
+          "direction": "Terminus Borj Cedria"
+        },
+        {
+          "route_short_name": "3710",
+          "route_color": "D32F2F",
+          "direction": "Marché De Gros"
+        },
+        {
+          "route_short_name": "3710",
+          "route_color": "D32F2F",
+          "direction": "Terminus Borj Cedria"
+        }
+      ]
+    },
+    {
+      "id": "bir_el_bey_7658",
+      "name": "Bir El Bey",
+      "lat": 36.7100794,
+      "lon": 10.378609,
+      "source_stop_id": "7658",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "37",
+          "route_color": "829EC0",
+          "direction": "Station De Bus Mornag"
+        },
+        {
+          "route_short_name": "37",
+          "route_color": "829EC0",
+          "direction": "Terminus Borj Cedria"
+        },
+        {
+          "route_short_name": "3710",
+          "route_color": "D32F2F",
+          "direction": "Marché De Gros"
+        },
+        {
+          "route_short_name": "3710",
+          "route_color": "D32F2F",
+          "direction": "Terminus Borj Cedria"
+        }
+      ]
+    },
+    {
+      "id": "el_mourouj_3_7780",
+      "name": "El Mourouj 3",
+      "lat": 36.7286768,
+      "lon": 10.2104775,
+      "source_stop_id": "7780",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "3710",
+          "route_color": "D32F2F",
+          "direction": "Marché De Gros"
+        },
+        {
+          "route_short_name": "3710",
+          "route_color": "D32F2F",
+          "direction": "Terminus Borj Cedria"
+        },
+        {
+          "route_short_name": "54B",
+          "route_color": "E49581",
+          "direction": "Hopital De Traumatologie Et Des Grands Brulés"
+        },
+        {
+          "route_short_name": "54B",
+          "route_color": "E49581",
+          "direction": "Mourouj 5"
+        },
+        {
+          "route_short_name": "54D",
+          "route_color": "97793C",
+          "direction": "Djebel Jelloud"
+        },
+        {
+          "route_short_name": "54D",
+          "route_color": "97793C",
+          "direction": "Mourouj 5"
+        }
+      ]
+    },
+    {
+      "id": "ibn_sina_7801",
+      "name": "Ibn Sina",
+      "lat": 36.7447028,
+      "lon": 10.1866753,
+      "source_stop_id": "7801",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "60",
+          "route_color": "E5442E",
+          "direction": "Ibn Sina"
+        },
+        {
+          "route_short_name": "60",
+          "route_color": "E5442E",
+          "direction": "Station Barcelone"
+        },
+        {
+          "route_short_name": "60A",
+          "route_color": "829EC0",
+          "direction": "Hopital Des Enfants"
+        },
+        {
+          "route_short_name": "60A",
+          "route_color": "829EC0",
+          "direction": "Ibn Sina"
+        },
+        {
+          "route_short_name": "60G",
+          "route_color": "F49581",
+          "direction": "Hopital Des Enfants"
+        },
+        {
+          "route_short_name": "60G",
+          "route_color": "F49581",
+          "direction": "Ibn Sina"
+        }
+      ]
+    },
+    {
+      "id": "protection_civile_7825",
+      "name": "Protection Civile",
+      "lat": 36.7170091,
+      "lon": 10.1767462,
+      "source_stop_id": "7825",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "24F",
+          "route_color": "00AD9E",
+          "direction": "Cité El Amal"
+        },
+        {
+          "route_short_name": "24F",
+          "route_color": "00AD9E",
+          "direction": "Rabattement Mourouj 2"
+        },
+        {
+          "route_short_name": "85",
+          "route_color": "0000FF",
+          "direction": "Sealatelec Termenus85"
+        },
+        {
+          "route_short_name": "85",
+          "route_color": "0000FF",
+          "direction": "Terminus 75 85"
+        },
+        {
+          "route_short_name": "86",
+          "route_color": "F40581",
+          "direction": "Aerolia Terminus"
+        },
+        {
+          "route_short_name": "86",
+          "route_color": "F40581",
+          "direction": "Rabattement Mourouj 2"
+        }
+      ]
+    },
+    {
+      "id": "saidia_7842",
+      "name": "Saidia",
+      "lat": 36.8051168,
+      "lon": 10.1258642,
+      "source_stop_id": "7842",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Marché De Gros"
+        }
+      ]
+    },
+    {
+      "id": "boudria_7844",
+      "name": "Boudria ",
+      "lat": 36.816171,
+      "lon": 10.0955231,
+      "source_stop_id": "7844",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "410B",
+          "route_color": "A736A8",
+          "direction": "Marché De Gros"
+        }
+      ]
+    },
+    {
+      "id": "kiosque_7859",
+      "name": "Kiosque",
+      "lat": 36.8681445,
+      "lon": 10.1172044,
+      "source_stop_id": "7859",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "44",
+          "route_color": "000B9E",
+          "direction": "Intilaka"
+        },
+        {
+          "route_short_name": "44",
+          "route_color": "000B9E",
+          "direction": "Lycée Kalaate Al Andalouss"
+        },
+        {
+          "route_short_name": "44C",
+          "route_color": "00AD9E",
+          "direction": "Intilaka"
+        },
+        {
+          "route_short_name": "44C",
+          "route_color": "00AD9E",
+          "direction": "Jabbes"
+        },
+        {
+          "route_short_name": "57A",
+          "route_color": "489224",
+          "direction": "Arrét Bricorama"
+        },
+        {
+          "route_short_name": "57A",
+          "route_color": "489224",
+          "direction": "Intilaka"
+        }
+      ]
+    },
+    {
+      "id": "gare_routi_re_nord_7868",
+      "name": "Gare Routiére Nord ",
+      "lat": 36.8107855,
+      "lon": 10.1523984,
+      "source_stop_id": "7868",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "14A",
+          "route_color": "489224",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "14A",
+          "route_color": "489224",
+          "direction": "Omrane Supérieur "
+        },
+        {
+          "route_short_name": "14C",
+          "route_color": "003399",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "14C",
+          "route_color": "003399",
+          "direction": "Terminus Cité Elbasatine"
+        }
+      ]
+    },
+    {
+      "id": "caf_el_haj_7871",
+      "name": "Café El Haj ",
+      "lat": 36.8128353,
+      "lon": 10.145171,
+      "source_stop_id": "7871",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "3A",
+          "route_color": "FF6633",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "3A",
+          "route_color": "FF6633",
+          "direction": "Terminus Ksar Said 2"
+        },
+        {
+          "route_short_name": "3AG",
+          "route_color": "927935",
+          "direction": "Kasbah"
+        },
+        {
+          "route_short_name": "3AG",
+          "route_color": "927935",
+          "direction": "Terminus Ksar Said 2"
+        }
+      ]
+    },
+    {
+      "id": "fatouma_bourguiba_7878",
+      "name": "Fatouma Bourguiba",
+      "lat": 36.8117874,
+      "lon": 10.1327256,
+      "source_stop_id": "7878",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "3D",
+          "route_color": "97533A",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "3D",
+          "route_color": "97533A",
+          "direction": "Terminus 3D"
+        }
+      ]
+    },
+    {
+      "id": "soned_7883",
+      "name": "Soned",
+      "lat": 36.9476408,
+      "lon": 10.0413527,
+      "source_stop_id": "7883",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "31",
+          "route_color": "FF0000",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "31",
+          "route_color": "FF0000",
+          "direction": "Terminus 31"
+        },
+        {
+          "route_short_name": "31A",
+          "route_color": "0000FF",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "31A",
+          "route_color": "0000FF",
+          "direction": "Terminus Bech Hamba"
+        },
+        {
+          "route_short_name": "31B",
+          "route_color": "407E15",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "31B",
+          "route_color": "407E15",
+          "direction": "Lycée Kalaate Al Andalouss"
+        },
+        {
+          "route_short_name": "31C/",
+          "route_color": "FF00FF",
+          "direction": "Chorfech 3"
+        },
+        {
+          "route_short_name": "31C/",
+          "route_color": "FF00FF",
+          "direction": "Depot Charguia"
+        },
+        {
+          "route_short_name": "3D",
+          "route_color": "97533A",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "3D",
+          "route_color": "97533A",
+          "direction": "Terminus 3D"
+        }
+      ]
+    },
+    {
+      "id": "r_sidence_yesmine_7887",
+      "name": "Résidence Yesmine ",
+      "lat": 36.8239959,
+      "lon": 10.1356811,
+      "source_stop_id": "7887",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "14CG",
+          "route_color": "FFCF06",
+          "direction": "Intilaka"
+        },
+        {
+          "route_short_name": "14CG",
+          "route_color": "FFCF06",
+          "direction": "Kasbah"
+        }
+      ]
+    },
+    {
+      "id": "ecole_primaire_7925",
+      "name": "Ecole Primaire",
+      "lat": 37.0581213,
+      "lon": 10.1200763,
+      "source_stop_id": "7925",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "31B",
+          "route_color": "407E15",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "31B",
+          "route_color": "407E15",
+          "direction": "Lycée Kalaate Al Andalouss"
+        },
+        {
+          "route_short_name": "44",
+          "route_color": "000B9E",
+          "direction": "Intilaka"
+        },
+        {
+          "route_short_name": "44",
+          "route_color": "000B9E",
+          "direction": "Lycée Kalaate Al Andalouss"
+        },
+        {
+          "route_short_name": "44A",
+          "route_color": "FF00FF",
+          "direction": "Station Barcelone"
+        },
+        {
+          "route_short_name": "44A",
+          "route_color": "FF00FF",
+          "direction": "Terminus 44/44A/77"
+        },
+        {
+          "route_short_name": "77",
+          "route_color": "FF0000",
+          "direction": "Terminus 44/44A/77"
+        },
+        {
+          "route_short_name": "77",
+          "route_color": "FF0000",
+          "direction": "Terminus Tunis Marine Bus"
+        }
+      ]
+    },
+    {
+      "id": "chaouat_7957",
+      "name": "Chaouat",
+      "lat": 36.8882685,
+      "lon": 9.9443323,
+      "source_stop_id": "7957",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "16D",
+          "route_color": "005FFF",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "16D",
+          "route_color": "005FFF",
+          "direction": "Terminus Sidi Othman"
+        },
+        {
+          "route_short_name": "98",
+          "route_color": "829EC0",
+          "direction": "Café Jallou Terminus"
+        },
+        {
+          "route_short_name": "98",
+          "route_color": "829EC0",
+          "direction": "Rabattement Khaireddine Mannouba"
+        }
+      ]
+    },
+    {
+      "id": "place_pasteur_7984",
+      "name": "Place Pasteur",
+      "lat": 36.8232402,
+      "lon": 10.1785494,
+      "source_stop_id": "7984",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "38C",
+          "route_color": "333300",
+          "direction": "Terminus 38C"
+        },
+        {
+          "route_short_name": "38C",
+          "route_color": "333300",
+          "direction": "Terminus Tunis Marine Bus"
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Les Abattoirs"
+        },
+        {
+          "route_short_name": "51A",
+          "route_color": "005FFF",
+          "direction": "Terminus 5D/ 51A"
+        },
+        {
+          "route_short_name": "51A",
+          "route_color": "005FFF",
+          "direction": "Terminus Tunis Marine Bus"
+        },
+        {
+          "route_short_name": "5C",
+          "route_color": "489224",
+          "direction": "Menzeh 6"
+        },
+        {
+          "route_short_name": "5C",
+          "route_color": "489224",
+          "direction": "Terminus Tunis Marine Bus"
+        },
+        {
+          "route_short_name": "5D",
+          "route_color": "407E15",
+          "direction": "Terminus 5D/ 51A"
+        },
+        {
+          "route_short_name": "5D",
+          "route_color": "407E15",
+          "direction": "Terminus Tunis Marine Bus"
+        },
+        {
+          "route_short_name": "63",
+          "route_color": "000000",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "63",
+          "route_color": "000000",
+          "direction": "Terminus Enkhilette"
+        },
+        {
+          "route_short_name": "6P",
+          "route_color": "D32F2F",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "6P",
+          "route_color": "D32F2F",
+          "direction": "Terminus 6P"
+        },
+        {
+          "route_short_name": "80",
+          "route_color": "927935",
+          "direction": "Cite El Bokri"
+        },
+        {
+          "route_short_name": "80",
+          "route_color": "927935",
+          "direction": "Jardin Thameur"
+        }
+      ]
+    },
+    {
+      "id": "denden_8004",
+      "name": "Denden",
+      "lat": 36.8023678,
+      "lon": 10.1102174,
+      "source_stop_id": "8004",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Les Abattoirs"
+        },
+        {
+          "route_short_name": "4G",
+          "route_color": "C756A6",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "4G",
+          "route_color": "C756A6",
+          "direction": "Kasbah"
+        }
+      ]
+    },
+    {
+      "id": "soned_8022",
+      "name": "Soned",
+      "lat": 36.8251204,
+      "lon": 10.1215727,
+      "source_stop_id": "8022",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "64",
+          "route_color": "FF00FF",
+          "direction": "Ali Balahouan"
+        },
+        {
+          "route_short_name": "64",
+          "route_color": "FF00FF",
+          "direction": "Terminus 64/30"
+        }
+      ]
+    },
+    {
+      "id": "bardo_8075",
+      "name": "Bardo",
+      "lat": 36.8094384,
+      "lon": 10.1327588,
+      "source_stop_id": "8075",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "116",
+          "route_color": "000080",
+          "direction": "Bab Alioua"
+        },
+        {
+          "route_short_name": "116",
+          "route_color": "000080",
+          "direction": "Steg Tebourba"
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Les Abattoirs"
+        }
+      ]
+    },
+    {
+      "id": "cit_essalem_8077",
+      "name": "Cité Essalem",
+      "lat": 36.8552931,
+      "lon": 9.9367685,
+      "source_stop_id": "8077",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "98",
+          "route_color": "829EC0",
+          "direction": "Café Jallou Terminus"
+        },
+        {
+          "route_short_name": "98",
+          "route_color": "829EC0",
+          "direction": "Rabattement Khaireddine Mannouba"
+        }
+      ]
+    },
+    {
+      "id": "carthage_hannibal_8206",
+      "name": "Carthage Hannibal",
+      "lat": 36.8536368,
+      "lon": 10.3274055,
+      "source_stop_id": "8206",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "18C",
+          "route_color": "97253C",
+          "direction": "10 Decembre"
+        },
+        {
+          "route_short_name": "18C",
+          "route_color": "97253C",
+          "direction": "Carthage Hannibal"
+        },
+        {
+          "route_short_name": "20C",
+          "route_color": "0000FF",
+          "direction": "Carthage Hannibal"
+        },
+        {
+          "route_short_name": "20C",
+          "route_color": "0000FF",
+          "direction": "Jardin Thameur"
+        }
+      ]
+    },
+    {
+      "id": "sidi_salah_8217",
+      "name": "Sidi Salah",
+      "lat": 36.884337,
+      "lon": 10.2212754,
+      "source_stop_id": "8217",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "18B",
+          "route_color": "9A10FF",
+          "direction": "10 Decembre"
+        },
+        {
+          "route_short_name": "18B",
+          "route_color": "9A10FF",
+          "direction": "ONAS Sidi Salah"
+        }
+      ]
+    },
+    {
+      "id": "le_kram_8237",
+      "name": "Le Kram",
+      "lat": 36.8364203,
+      "lon": 10.3169122,
+      "source_stop_id": "8237",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "247",
+          "route_color": "280B3C",
+          "direction": "Port La Goulette"
+        },
+        {
+          "route_short_name": "247",
+          "route_color": "280B3C",
+          "direction": "Teminus Cité Riadh"
+        },
+        {
+          "route_short_name": "47",
+          "route_color": "489224",
+          "direction": "Port La Goulette"
+        },
+        {
+          "route_short_name": "47",
+          "route_color": "489224",
+          "direction": "Rabattement 10 Decembre"
+        }
+      ]
+    },
+    {
+      "id": "goulette_neuve_8239",
+      "name": "Goulette Neuve",
+      "lat": 36.8195471,
+      "lon": 10.3066452,
+      "source_stop_id": "8239",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "247",
+          "route_color": "280B3C",
+          "direction": "Port La Goulette"
+        },
+        {
+          "route_short_name": "247",
+          "route_color": "280B3C",
+          "direction": "Teminus Cité Riadh"
+        },
+        {
+          "route_short_name": "47",
+          "route_color": "489224",
+          "direction": "Port La Goulette"
+        },
+        {
+          "route_short_name": "47",
+          "route_color": "489224",
+          "direction": "Rabattement 10 Decembre"
+        }
+      ]
+    },
+    {
+      "id": "bab_laassal_8242",
+      "name": "Bab Laassal",
+      "lat": 36.8129199,
+      "lon": 10.1684282,
+      "source_stop_id": "8242",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "20G",
+          "route_color": "F40581",
+          "direction": "Kasbah"
+        },
+        {
+          "route_short_name": "20G",
+          "route_color": "F40581",
+          "direction": "Teminus Cité Riadh"
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Boudria "
+        },
+        {
+          "route_short_name": "460",
+          "route_color": "000B9E",
+          "direction": "Les Abattoirs"
+        }
+      ]
+    },
+    {
+      "id": "snit_8259",
+      "name": "SNIT",
+      "lat": 36.8425786,
+      "lon": 10.1640482,
+      "source_stop_id": "8259",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "51A",
+          "route_color": "005FFF",
+          "direction": "Terminus 5D/ 51A"
+        },
+        {
+          "route_short_name": "51A",
+          "route_color": "005FFF",
+          "direction": "Terminus Tunis Marine Bus"
+        }
+      ]
+    },
+    {
+      "id": "soned_8274",
+      "name": "Soned",
+      "lat": 36.8360529,
+      "lon": 10.1606257,
+      "source_stop_id": "8274",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "38B",
+          "route_color": "FF0000",
+          "direction": "Terminus Omrane Supérieur L 78 + 38 B"
+        },
+        {
+          "route_short_name": "38B",
+          "route_color": "FF0000",
+          "direction": "Terminus Tunis Marine Bus"
+        },
+        {
+          "route_short_name": "38C",
+          "route_color": "333300",
+          "direction": "Terminus 38C"
+        },
+        {
+          "route_short_name": "38C",
+          "route_color": "333300",
+          "direction": "Terminus Tunis Marine Bus"
+        }
+      ]
+    },
+    {
+      "id": "cit_essalem_8314",
+      "name": "Cité Essalem",
+      "lat": 36.8549468,
+      "lon": 10.2721039,
+      "source_stop_id": "8314",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "20A",
+          "route_color": "97533A",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "20A",
+          "route_color": "97533A",
+          "direction": "Terminus 20A"
+        },
+        {
+          "route_short_name": "20C",
+          "route_color": "0000FF",
+          "direction": "Carthage Hannibal"
+        },
+        {
+          "route_short_name": "20C",
+          "route_color": "0000FF",
+          "direction": "Jardin Thameur"
+        }
+      ]
+    },
+    {
+      "id": "ben_mahmoud_8320",
+      "name": "Ben Mahmoud",
+      "lat": 36.8872753,
+      "lon": 10.3010988,
+      "source_stop_id": "8320",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "52",
+          "route_color": "C756A6",
+          "direction": "Terminus 20B"
+        },
+        {
+          "route_short_name": "52",
+          "route_color": "C756A6",
+          "direction": "Terminus 52/52B"
+        }
+      ]
+    },
+    {
+      "id": "carthage_salambo_8327",
+      "name": "Carthage Salambo",
+      "lat": 36.8407136,
+      "lon": 10.3193584,
+      "source_stop_id": "8327",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "247",
+          "route_color": "280B3C",
+          "direction": "Port La Goulette"
+        },
+        {
+          "route_short_name": "247",
+          "route_color": "280B3C",
+          "direction": "Teminus Cité Riadh"
+        }
+      ]
+    },
+    {
+      "id": "carthage_byrsa_8328",
+      "name": "Carthage Byrsa",
+      "lat": 36.8459271,
+      "lon": 10.3233071,
+      "source_stop_id": "8328",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "247",
+          "route_color": "280B3C",
+          "direction": "Port La Goulette"
+        },
+        {
+          "route_short_name": "247",
+          "route_color": "280B3C",
+          "direction": "Teminus Cité Riadh"
+        }
+      ]
+    },
+    {
+      "id": "carthage_dermech_8329",
+      "name": "Carthage Dermech",
+      "lat": 36.8495019,
+      "lon": 10.3270179,
+      "source_stop_id": "8329",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "247",
+          "route_color": "280B3C",
+          "direction": "Port La Goulette"
+        },
+        {
+          "route_short_name": "247",
+          "route_color": "280B3C",
+          "direction": "Teminus Cité Riadh"
+        }
+      ]
+    },
+    {
+      "id": "carthage_hannibal_8330",
+      "name": "Carthage Hannibal",
+      "lat": 36.8530083,
+      "lon": 10.3298512,
+      "source_stop_id": "8330",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "247",
+          "route_color": "280B3C",
+          "direction": "Port La Goulette"
+        },
+        {
+          "route_short_name": "247",
+          "route_color": "280B3C",
+          "direction": "Teminus Cité Riadh"
+        }
+      ]
+    },
+    {
+      "id": "la_goulette_134",
+      "name": "La Goulette",
+      "lat": 36.8066846,
+      "lon": 10.2909578,
+      "source_stop_id": "134",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "sidi_saad_145",
+      "name": "Sidi Saad",
+      "lat": 35.3912767,
+      "lon": 9.7607252,
+      "source_stop_id": "145",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "le_bardo_198",
+      "name": "Le Bardo",
+      "lat": 36.811173,
+      "lon": 10.1181392,
+      "source_stop_id": "198",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "kalaa_sghira_214",
+      "name": "kalaa Sghira",
+      "lat": 35.8216673,
+      "lon": 10.5708481,
+      "source_stop_id": "214",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "charle_nicole_7193",
+      "name": "Charle Nicole",
+      "lat": 36.8031238,
+      "lon": 10.163855,
+      "source_stop_id": "7193",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "clinique_taoufik_7423",
+      "name": "Clinique Taoufik ",
+      "lat": 36.8316956,
+      "lon": 10.1529333,
+      "source_stop_id": "7423",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "foyer_bardo_2_7426",
+      "name": "Foyer Bardo 2 ",
+      "lat": 36.8183238,
+      "lon": 10.1414588,
+      "source_stop_id": "7426",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "caf_el_haj_7428",
+      "name": "Café El Haj ",
+      "lat": 36.8128098,
+      "lon": 10.1449886,
+      "source_stop_id": "7428",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "gorjani_7430",
+      "name": "Gorjani ",
+      "lat": 36.7880109,
+      "lon": 10.1671166,
+      "source_stop_id": "7430",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "ecole_francaise_omarane_7444",
+      "name": "Ecole Francaise Omarane ",
+      "lat": 36.8180195,
+      "lon": 10.1656605,
+      "source_stop_id": "7444",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "moezeya_7544",
+      "name": "Moezeya",
+      "lat": 36.8300929,
+      "lon": 10.049314,
+      "source_stop_id": "7544",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "cit_errafeha_7561",
+      "name": "Cité Errafeha",
+      "lat": 36.8512041,
+      "lon": 10.1168622,
+      "source_stop_id": "7561",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "centre_de_formation_mghira_7821",
+      "name": "Centre De Formation Mghira",
+      "lat": 36.7131499,
+      "lon": 10.1678679,
+      "source_stop_id": "7821",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "pont_bizerte_glasse_7907",
+      "name": "Pont Bizerte Glasse ",
+      "lat": 36.9923293,
+      "lon": 10.0620634,
+      "source_stop_id": "7907",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "centre_ikram_7937",
+      "name": "Centre Ikram",
+      "lat": 36.8555163,
+      "lon": 10.1614625,
+      "source_stop_id": "7937",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "caserne_mannouba_8005",
+      "name": "Caserne Mannouba - ",
+      "lat": 36.8134495,
+      "lon": 10.0981465,
+      "source_stop_id": "8005",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "frigo_8114",
+      "name": "Frigo",
+      "lat": 36.8607505,
+      "lon": 9.800147,
+      "source_stop_id": "8114",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "foyer_omrane_sup_rieur_8280",
+      "name": "Foyer Omrane Supérieur",
+      "lat": 36.8361903,
+      "lon": 10.1320441,
+      "source_stop_id": "8280",
       "mode": "unknown",
       "operator": "unknown",
       "lines_served": []

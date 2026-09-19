@@ -4,12 +4,15 @@
 Queries station_details.php?id=X for each new ID and merges into
 the existing enriched station details file.
 """
-import urllib.request, json, time
+import json
+import time
+import urllib.request
 from pathlib import Path
 
 BASE = Path("C:/Users/cy1in/Downloads/TunisiaTransport")
 API = "https://www.tunismapper.com/backend/api/station_details.php"
 OUT = BASE / "scripts/tunismapper_station_details.json"
+
 
 def fetch(sid, retries=3):
     for attempt in range(retries):
@@ -20,10 +23,11 @@ def fetch(sid, retries=3):
             )
             with urllib.request.urlopen(req, timeout=15) as resp:
                 return json.loads(resp.read().decode("utf-8", errors="replace"))
-        except Exception:
+        except (urllib.error.URLError, OSError):
             if attempt == retries - 1:
                 return None
             time.sleep(0.3)
+    return None
 
 
 def main():
@@ -36,7 +40,7 @@ def main():
         sweep = json.load(f)
 
     sweep_ids = set(sweep["valid_ids"])
-    enriched_ids = set(int(k) for k in enriched["stations"].keys())
+    enriched_ids = {int(k) for k in enriched["stations"]}
     new_ids = sorted(sweep_ids - enriched_ids)
 
     print(f"Pulling {len(new_ids)} new station IDs...")
@@ -68,7 +72,7 @@ def main():
         json.dump(enriched, f, indent=2, ensure_ascii=False)
 
     elapsed = time.time() - t0
-    print(f"\n=== DONE ===")
+    print("\n=== DONE ===")
     print(f"Pulled: {pulled}/{len(new_ids)}")
     print(f"Failed: {len(failed)}")
     print(f"Total enriched stations: {len(enriched['stations'])}")
