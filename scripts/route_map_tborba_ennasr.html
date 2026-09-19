@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLEDI.TN — Route Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body { margin: 0; padding: 0; font-family: sans-serif; }
+        #map { width: 100%; height: 80vh; }
+        .info-panel {
+            padding: 15px;
+            background: #f5f5f5;
+            border-top: 2px solid #333;
+        }
+        .legend {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+        .legend-item { display: flex; align-items: center; margin: 5px 0; }
+        .legend-color { width: 20px; height: 4px; margin-right: 8px; }
+        .stats {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 1000;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="info-panel">
+        <h2>Route: KHAIREDDINE → Cite Ennasr 1</h2>
+        <div class="legend">
+            <h3>Legs</h3>
+            <div class="legend-item"><div class="legend-color" style="background: #8E8E93;"></div>Walk</div>
+            <div class="legend-item"><div class="legend-color" style="background: #FFCF06;"></div>Metro</div>
+            <div class="legend-item"><div class="legend-color" style="background: #407E15;"></div>Bus</div>
+            <div class="legend-item"><div class="legend-color" style="background: #FF9500;"></div>Train</div>
+        </div>
+        <div class="stats">
+            <strong>Total:</strong> 47.0 min |
+            19.5 km |
+            2 transfer(s)
+        </div>
+    </div>
+    <script>
+        var map = L.map('map').setView([34.5, 9.5], 10);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Draw legs
+        var legs = [{"type": "walk", "from": [36.8151533, 10.0568158], "to": [36.81533, 10.05678], "distance": 0.019904920849878546, "duration": 0.23885905019854253, "station": "KHAIREDDINE"}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "KHAIREDDINE", "to_station": "CAMPUS UNIVERSITAIRE MANOUBA", "distance": 0.30977663232176833, "duration": 0.743463917572244}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "CAMPUS UNIVERSITAIRE MANOUBA", "to_station": "KSAR EL WARDA", "distance": 1.4198907031504826, "duration": 3.4077376875611582}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "KSAR EL WARDA", "to_station": "POLE TECHNOLOGIQUE", "distance": 0.5407978366827348, "duration": 1.2979148080385636}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "POLE TECHNOLOGIQUE", "to_station": "ABOUBAKER ERRAZI", "distance": 0.19036824000026323, "duration": 0.45688377600063174}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "ABOUBAKER ERRAZI", "to_station": "MONCEF BEY", "distance": 0.7651251290971817, "duration": 1.836300309833236}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "MONCEF BEY", "to_station": "SLIMENE KEHIA", "distance": 0.7809273235450307, "duration": 1.8742255765080738}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "SLIMENE KEHIA", "to_station": "MANOUBA", "distance": 0.34930265404311983, "duration": 0.8383263697034876}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "MANOUBA", "to_station": "DENDEN", "distance": 0.7177062672551573, "duration": 1.7224950414123776}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "DENDEN", "to_station": "ARTISANAT", "distance": 0.4751142661299231, "duration": 1.1402742387118154}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "ARTISANAT", "to_station": "KHAZNADAR", "distance": 0.5322152405458906, "duration": 1.2773165773101374}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "KHAZNADAR", "to_station": "ESSAIDIA", "distance": 0.45365175243052264, "duration": 1.0887642058332543}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "ESSAIDIA", "to_station": "BARDO", "distance": 0.7913755922145398, "duration": 1.8993014213148955}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "BARDO", "to_station": "20-mars", "distance": 0.6484073377258691, "duration": 1.556177610542086}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "20-mars", "to_station": "BOUCHOUCHA", "distance": 0.7136966192915571, "duration": 1.7128718862997372}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "BOUCHOUCHA", "to_station": "BAB SAADOUN", "distance": 1.0627138037602408, "duration": 2.550513129024578}, {"type": "transit", "mode": "metro", "line": "4", "from_station": "BAB SAADOUN", "to_station": "BAB LAASSAL", "distance": 0.6561827794312768, "duration": 1.574838670635064}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "BAB LAASSAL", "to_station": "Mechtel", "distance": 0.37267531227832623, "duration": 0.894420749467983}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "Mechtel", "to_station": "Taieb Mhiri", "distance": 0.24896481620383779, "duration": 0.5975155588892107}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "Taieb Mhiri", "to_station": "Le Belvédére", "distance": 0.5293266282043787, "duration": 1.270383907690509}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "Le Belvédére", "to_station": "Bureau De Poste Place Pasteur", "distance": 0.4142613940752762, "duration": 0.9942273457806629}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "Bureau De Poste Place Pasteur", "to_station": "Place Pasteur", "distance": 0.13096632760627824, "duration": 0.3143191862550678}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "Place Pasteur", "to_station": "Patisserie Ben Yeder", "distance": 0.4190117238793993, "duration": 1.0056281373105582}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "Patisserie Ben Yeder", "to_station": "Cite Mahrajene", "distance": 0.26393723787392265, "duration": 0.6334493708974144}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "Cite Mahrajene", "to_station": "Ministére De  Équipement", "distance": 0.3399997172902176, "duration": 0.8159993214965223}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "Ministére De  Équipement", "to_station": "Pharmacie Central", "distance": 0.35414197895511934, "duration": 0.8499407494922865}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "Pharmacie Central", "to_station": "Cité Sportive", "distance": 0.4079666687242064, "duration": 0.9791200049380953}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "Cité Sportive", "to_station": "10 Decembre", "distance": 0.3979261254399544, "duration": 0.9550227010558907}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "10 Decembre", "to_station": "Touta 10 Decembre", "distance": 0.36917341942936555, "duration": 0.8860162066304773}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "Touta 10 Decembre", "to_station": "El Anbaria", "distance": 0.6346491313625808, "duration": 1.5231579152701942}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "El Anbaria", "to_station": "Lycée Kheredinne", "distance": 0.26465285150211176, "duration": 0.6351668436050683}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "Lycée Kheredinne", "to_station": "La Poste", "distance": 0.373406371264826, "duration": 0.8961752910355824}, {"type": "transit", "mode": "bus", "line": "460", "from_station": "La Poste", "to_station": "Place Sala Centre", "distance": 0.4137945446654393, "duration": 0.9931069071970543}, {"type": "transit", "mode": "bus", "line": "514A", "from_station": "Place Sala Centre", "to_station": "Arrét Bab Hadid", "distance": 0.2539289440385024, "duration": 0.6094294656924057}, {"type": "transit", "mode": "bus", "line": "514A", "from_station": "Arrét Bab Hadid", "to_station": "MAGRO", "distance": 0.4340764322950724, "duration": 1.0417834375081738}, {"type": "transit", "mode": "bus", "line": "514A", "from_station": "MAGRO", "to_station": "Hopital Mahmoud Matri", "distance": 0.7142808727647774, "duration": 1.7142740946354655}, {"type": "transit", "mode": "bus", "line": "514A", "from_station": "Hopital Mahmoud Matri", "to_station": "Cite Ennasr 1", "distance": 1.7339756008534666, "duration": 4.16154144204832}];
+        var allCoords = [];
+
+        legs.forEach(function(leg) {
+            if (leg.type === 'walk') {
+                var latlngs = [leg.from, leg.to];
+                L.polyline(latlngs, {
+                    color: '#8E8E93',
+                    weight: 3,
+                    opacity: 0.7,
+                    dashArray: '5, 10'
+                }).addTo(map);
+                allCoords = allCoords.concat(latlngs);
+            } else if (leg.type === 'transit') {
+                var color = '#FFCF06';
+                if (leg.mode === 'bus') color = '#407E15';
+                else if (leg.mode === 'train') color = '#FF9500';
+                else if (leg.mode === 'metro') color = '#FFCF06';
+                var latlngs = [leg.from, leg.to];
+                L.polyline(latlngs, {
+                    color: color,
+                    weight: 4,
+                    opacity: 0.8
+                }).addTo(map);
+                allCoords = allCoords.concat(latlngs);
+            }
+        });
+
+        // Fit bounds
+        if (allCoords.length > 0) {
+            map.fitBounds(allCoords, { padding: [50, 50] });
+        }
+    </script>
+</body>
+</html>
