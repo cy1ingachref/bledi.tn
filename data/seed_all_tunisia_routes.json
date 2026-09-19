@@ -2,7 +2,7 @@
   "metadata": {
     "source": "Tunismapper (tunismapper.com ligne_details.php)",
     "extracted_date": "2026-09-19",
-    "total_lines": 228,
+    "total_lines": 232,
     "total_stations": 1664,
     "by_mode": {
       "Train": 29,
@@ -13,7 +13,9 @@
     "coordinate_coverage": 1534,
     "stations_enriched": 1534,
     "enrichment_source": "tunismapper station_details API",
-    "stations_added_from_sweep": 74
+    "stations_added_from_sweep": 74,
+    "tebourba_lines_added": 4,
+    "last_updated": "2026-09-19"
   },
   "stations": [
     {
@@ -70874,6 +70876,46 @@
       "mode": "unknown",
       "operator": "unknown",
       "lines_served": []
+    },
+    {
+      "id": "el_sherouia",
+      "name": "El Sherouia",
+      "lat": 0,
+      "lon": 0,
+      "mode": "bus",
+      "operator": "Transtu"
+    },
+    {
+      "id": "menzel_belhouane",
+      "name": "Menzel Belhouane",
+      "lat": 0,
+      "lon": 0,
+      "mode": "bus",
+      "operator": "Transtu"
+    },
+    {
+      "id": "mansoura",
+      "name": "Mansoura",
+      "lat": 0,
+      "lon": 0,
+      "mode": "bus",
+      "operator": "Transtu"
+    },
+    {
+      "id": "el_batan",
+      "name": "El Batan",
+      "lat": 0,
+      "lon": 0,
+      "mode": "bus",
+      "operator": "Transtu"
+    },
+    {
+      "id": "zone_industrielle_manouba",
+      "name": "Zone Industrielle Manouba",
+      "lat": 0,
+      "lon": 0,
+      "mode": "bus",
+      "operator": "Transtu"
     }
   ],
   "lines": [
@@ -84433,6 +84475,79 @@
         "14:30"
       ],
       "source": "tunismapper"
+    },
+    {
+      "id": "transtu_tebourba_542",
+      "number": "542",
+      "name": "Tebourba - El Sherouia",
+      "operator": "Transtu",
+      "mode": "bus",
+      "type": "intercity",
+      "description": "Tebourba → El Sherouia",
+      "stations": [
+        "tebourba",
+        "el_sherouia"
+      ],
+      "schedule": {
+        "to": "06:50",
+        "from": "05:20",
+        "last_to": "17:30",
+        "last_from": "16:00"
+      },
+      "source": "transtu.com.tn PDF (Tebourba.pdf)"
+    },
+    {
+      "id": "transtu_tebourba_42a",
+      "number": "42A",
+      "name": "Menzel Belhouane - Mansoura",
+      "operator": "Transtu",
+      "mode": "bus",
+      "type": "intercity",
+      "description": "Menzel Belhouane → Mansoura",
+      "stations": [
+        "menzel_belhouane",
+        "mansoura"
+      ],
+      "schedule": {},
+      "source": "transtu.com.tn PDF (Tebourba.pdf)"
+    },
+    {
+      "id": "transtu_tebourba_49",
+      "number": "49",
+      "name": "Hopital Tebourba - El Batan",
+      "operator": "Transtu",
+      "mode": "bus",
+      "type": "intercity",
+      "description": "Hopital Tebourba → El Batan",
+      "stations": [
+        "hopital_tebourba",
+        "el_batan"
+      ],
+      "schedule": {
+        "to": "06:40",
+        "from": "06:00"
+      },
+      "source": "transtu.com.tn PDF (Tebourba.pdf)"
+    },
+    {
+      "id": "transtu_tebourba_42c",
+      "number": "42C",
+      "name": "Tebourba - Zone Industrielle Manouba",
+      "operator": "Transtu",
+      "mode": "bus",
+      "type": "intercity",
+      "description": "Tebourba → Zone Industrielle Manouba",
+      "stations": [
+        "tebourba",
+        "zone_industrielle_manouba"
+      ],
+      "schedule": {
+        "to": "06:45",
+        "from": "05:45",
+        "last_to": "17:45",
+        "last_from": "16:45"
+      },
+      "source": "transtu.com.tn PDF (Tebourba.pdf)"
     }
   ]
 }

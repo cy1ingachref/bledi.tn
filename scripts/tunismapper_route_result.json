@@ -1,0 +1,1063 @@
+{
+  "best_fastest": {
+    "label": "4 → 5D (corresp. piétonne)",
+    "route_type": 1,
+    "color": "#FFCF06",
+    "icon": "img/icon-metro.png",
+    "duration": 95,
+    "walk": 10,
+    "transfers": 1,
+    "has_walk_transfer": true,
+    "steps": [
+      {
+        "type": "walk",
+        "duration": 4,
+        "color": "#8E8E93",
+        "start": [
+          36.8151533,
+          10.0568158
+        ],
+        "end": [
+          36.81396,
+          10.05981
+        ],
+        "stop_name": "CAMPUS UNIVERSITAIRE MANOUBA",
+        "stops": []
+      },
+      {
+        "type": "transit",
+        "line": "4",
+        "route_type": 1,
+        "color": "#FFCF06",
+        "duration": 46,
+        "wait": 5,
+        "travel": 41,
+        "stop_name": "CAMPUS UNIVERSITAIRE MANOUBA → PLACE DE LA REPUBLIQUE",
+        "start": [
+          36.81396,
+          10.05981
+        ],
+        "end": [
+          36.80649,
+          10.18081
+        ],
+        "stops": [
+          {
+            "stop_sequence": 2,
+            "stop_id": 549,
+            "stop_name": "CAMPUS UNIVERSITAIRE MANOUBA",
+            "stop_lat": 36.81396,
+            "stop_lon": 10.05981
+          },
+          {
+            "stop_sequence": 3,
+            "stop_id": 548,
+            "stop_name": "KSAR EL WARDA",
+            "stop_lat": 36.8092,
+            "stop_lon": 10.07461
+          },
+          {
+            "stop_sequence": 4,
+            "stop_id": 547,
+            "stop_name": "POLE TECHNOLOGIQUE",
+            "stop_lat": 36.80811,
+            "stop_lon": 10.08053
+          },
+          {
+            "stop_sequence": 5,
+            "stop_id": 546,
+            "stop_name": "ABOUBAKER ERRAZI",
+            "stop_lat": 36.80739,
+            "stop_lon": 10.08247
+          },
+          {
+            "stop_sequence": 6,
+            "stop_id": 545,
+            "stop_name": "MONCEF BEY",
+            "stop_lat": 36.80528,
+            "stop_lon": 10.09065
+          },
+          {
+            "stop_sequence": 7,
+            "stop_id": 544,
+            "stop_name": "SLIMENE KEHIA",
+            "stop_lat": 36.80334,
+            "stop_lon": 10.09908
+          },
+          {
+            "stop_sequence": 8,
+            "stop_id": 543,
+            "stop_name": "MANOUBA",
+            "stop_lat": 36.80211,
+            "stop_lon": 10.10269
+          },
+          {
+            "stop_sequence": 9,
+            "stop_id": 542,
+            "stop_name": "DENDEN",
+            "stop_lat": 36.80221,
+            "stop_lon": 10.11075
+          },
+          {
+            "stop_sequence": 10,
+            "stop_id": 541,
+            "stop_name": "ARTISANAT",
+            "stop_lat": 36.80293,
+            "stop_lon": 10.11601
+          },
+          {
+            "stop_sequence": 11,
+            "stop_id": 540,
+            "stop_name": "KHAZNADAR",
+            "stop_lat": 36.80421,
+            "stop_lon": 10.12177
+          },
+          {
+            "stop_sequence": 12,
+            "stop_id": 539,
+            "stop_name": "ESSAIDIA",
+            "stop_lat": 36.80541,
+            "stop_lon": 10.12664
+          },
+          {
+            "stop_sequence": 13,
+            "stop_id": 538,
+            "stop_name": "BARDO",
+            "stop_lat": 36.80724,
+            "stop_lon": 10.13523
+          },
+          {
+            "stop_sequence": 14,
+            "stop_id": 537,
+            "stop_name": "20-mars",
+            "stop_lat": 36.80835,
+            "stop_lon": 10.14238
+          },
+          {
+            "stop_sequence": 15,
+            "stop_id": 536,
+            "stop_name": "BOUCHOUCHA",
+            "stop_lat": 36.80953,
+            "stop_lon": 10.15026
+          },
+          {
+            "stop_sequence": 16,
+            "stop_id": 529,
+            "stop_name": "BAB SAADOUN",
+            "stop_lat": 36.80986,
+            "stop_lon": 10.16219
+          },
+          {
+            "stop_sequence": 17,
+            "stop_id": 528,
+            "stop_name": "BAB LAASSAL",
+            "stop_lat": 36.81331,
+            "stop_lon": 10.16817
+          },
+          {
+            "stop_sequence": 18,
+            "stop_id": 527,
+            "stop_name": "BAB EL KHADHRA",
+            "stop_lat": 36.8103,
+            "stop_lon": 10.17239
+          },
+          {
+            "stop_sequence": 19,
+            "stop_id": 511,
+            "stop_name": "PLACE DE LA REPUBLIQUE",
+            "stop_lat": 36.80649,
+            "stop_lon": 10.18081
+          }
+        ]
+      },
+      {
+        "type": "transfer_walk",
+        "duration": 2,
+        "color": "#FF6B00",
+        "walk_dist": 80,
+        "start": [
+          36.80649,
+          10.18081
+        ],
+        "end": [
+          36.8069114,
+          10.1815361
+        ],
+        "stop_name": "PLACE DE LA REPUBLIQUE → Passage Jeans Jaures ",
+        "stops": []
+      },
+      {
+        "type": "transit",
+        "line": "5D",
+        "route_type": 3,
+        "color": "#407E15",
+        "duration": 39,
+        "wait": 10,
+        "travel": 29,
+        "stop_name": "Passage Jeans Jaures  → Centre Ikram",
+        "start": [
+          36.8069114,
+          10.1815361
+        ],
+        "end": [
+          36.8560526,
+          10.1682516
+        ],
+        "stops": [
+          {
+            "stop_sequence": 4,
+            "stop_id": 7228,
+            "stop_name": "Passage Jeans Jaures ",
+            "stop_lat": 36.8069114,
+            "stop_lon": 10.1815361
+          },
+          {
+            "stop_sequence": 5,
+            "stop_id": 7224,
+            "stop_name": "La Fayette ",
+            "stop_lat": 36.8105618,
+            "stop_lon": 10.1807238
+          },
+          {
+            "stop_sequence": 6,
+            "stop_id": 7229,
+            "stop_name": "Place Jeans Dark ",
+            "stop_lat": 36.8183566,
+            "stop_lon": 10.1795785
+          },
+          {
+            "stop_sequence": 7,
+            "stop_id": 7984,
+            "stop_name": "Place Pasteur",
+            "stop_lat": 36.8232402,
+            "stop_lon": 10.1785494
+          },
+          {
+            "stop_sequence": 8,
+            "stop_id": 7985,
+            "stop_name": "Patisserie Ben Yeder",
+            "stop_lat": 36.8265346,
+            "stop_lon": 10.1795924
+          },
+          {
+            "stop_sequence": 9,
+            "stop_id": 7986,
+            "stop_name": "Cite Mahrajene",
+            "stop_lat": 36.828874,
+            "stop_lon": 10.1800943
+          },
+          {
+            "stop_sequence": 10,
+            "stop_id": 7987,
+            "stop_name": "Ministére De  Équipement",
+            "stop_lat": 36.8319311,
+            "stop_lon": 10.1801694
+          },
+          {
+            "stop_sequence": 11,
+            "stop_id": 8245,
+            "stop_name": "Menzeh1",
+            "stop_lat": 36.8335866,
+            "stop_lon": 10.1792613
+          },
+          {
+            "stop_sequence": 12,
+            "stop_id": 8246,
+            "stop_name": "Ambassade Iraq",
+            "stop_lat": 36.8353899,
+            "stop_lon": 10.1756778
+          },
+          {
+            "stop_sequence": 13,
+            "stop_id": 8247,
+            "stop_name": "État Unis",
+            "stop_lat": 36.8369167,
+            "stop_lon": 10.1737849
+          },
+          {
+            "stop_sequence": 14,
+            "stop_id": 8248,
+            "stop_name": "Souréseau",
+            "stop_lat": 36.8421244,
+            "stop_lon": 10.1673476
+          },
+          {
+            "stop_sequence": 15,
+            "stop_id": 8249,
+            "stop_name": "SNIT Menzeh 6",
+            "stop_lat": 36.84421,
+            "stop_lon": 10.1661189
+          },
+          {
+            "stop_sequence": 16,
+            "stop_id": 8250,
+            "stop_name": "Monoprix Menzeh 6",
+            "stop_lat": 36.8461572,
+            "stop_lon": 10.1662365
+          },
+          {
+            "stop_sequence": 17,
+            "stop_id": 8251,
+            "stop_name": "Pharmacie Menzeh 6",
+            "stop_lat": 36.8469317,
+            "stop_lon": 10.165282
+          },
+          {
+            "stop_sequence": 18,
+            "stop_id": 7994,
+            "stop_name": "Lycee Menzeh6",
+            "stop_lat": 36.8524589,
+            "stop_lon": 10.1775445
+          },
+          {
+            "stop_sequence": 19,
+            "stop_id": 8253,
+            "stop_name": "Centre Ikram",
+            "stop_lat": 36.8560526,
+            "stop_lon": 10.1682516
+          }
+        ]
+      },
+      {
+        "type": "walk",
+        "duration": 4,
+        "color": "#8E8E93",
+        "start": [
+          36.8560526,
+          10.1682516
+        ],
+        "end": [
+          36.8585478,
+          10.1682756
+        ],
+        "stop_name": "Centre Ikram",
+        "stops": []
+      }
+    ]
+  },
+  "best_less_walk": {
+    "label": "4 → 5D (corresp. piétonne)",
+    "route_type": 1,
+    "color": "#FFCF06",
+    "icon": "img/icon-metro.png",
+    "duration": 98,
+    "walk": 7,
+    "transfers": 1,
+    "has_walk_transfer": true,
+    "steps": [
+      {
+        "type": "walk",
+        "duration": 1,
+        "color": "#8E8E93",
+        "start": [
+          36.8151533,
+          10.0568158
+        ],
+        "end": [
+          36.81533,
+          10.05678
+        ],
+        "stop_name": "KHAIREDDINE",
+        "stops": []
+      },
+      {
+        "type": "transit",
+        "line": "4",
+        "route_type": 1,
+        "color": "#FFCF06",
+        "duration": 52,
+        "wait": 5,
+        "travel": 47,
+        "stop_name": "KHAIREDDINE → PLACE DE LA REPUBLIQUE",
+        "start": [
+          36.81533,
+          10.05678
+        ],
+        "end": [
+          36.80649,
+          10.18081
+        ],
+        "stops": [
+          {
+            "stop_sequence": 1,
+            "stop_id": 550,
+            "stop_name": "KHAIREDDINE",
+            "stop_lat": 36.81533,
+            "stop_lon": 10.05678
+          },
+          {
+            "stop_sequence": 2,
+            "stop_id": 549,
+            "stop_name": "CAMPUS UNIVERSITAIRE MANOUBA",
+            "stop_lat": 36.81396,
+            "stop_lon": 10.05981
+          },
+          {
+            "stop_sequence": 3,
+            "stop_id": 548,
+            "stop_name": "KSAR EL WARDA",
+            "stop_lat": 36.8092,
+            "stop_lon": 10.07461
+          },
+          {
+            "stop_sequence": 4,
+            "stop_id": 547,
+            "stop_name": "POLE TECHNOLOGIQUE",
+            "stop_lat": 36.80811,
+            "stop_lon": 10.08053
+          },
+          {
+            "stop_sequence": 5,
+            "stop_id": 546,
+            "stop_name": "ABOUBAKER ERRAZI",
+            "stop_lat": 36.80739,
+            "stop_lon": 10.08247
+          },
+          {
+            "stop_sequence": 6,
+            "stop_id": 545,
+            "stop_name": "MONCEF BEY",
+            "stop_lat": 36.80528,
+            "stop_lon": 10.09065
+          },
+          {
+            "stop_sequence": 7,
+            "stop_id": 544,
+            "stop_name": "SLIMENE KEHIA",
+            "stop_lat": 36.80334,
+            "stop_lon": 10.09908
+          },
+          {
+            "stop_sequence": 8,
+            "stop_id": 543,
+            "stop_name": "MANOUBA",
+            "stop_lat": 36.80211,
+            "stop_lon": 10.10269
+          },
+          {
+            "stop_sequence": 9,
+            "stop_id": 542,
+            "stop_name": "DENDEN",
+            "stop_lat": 36.80221,
+            "stop_lon": 10.11075
+          },
+          {
+            "stop_sequence": 10,
+            "stop_id": 541,
+            "stop_name": "ARTISANAT",
+            "stop_lat": 36.80293,
+            "stop_lon": 10.11601
+          },
+          {
+            "stop_sequence": 11,
+            "stop_id": 540,
+            "stop_name": "KHAZNADAR",
+            "stop_lat": 36.80421,
+            "stop_lon": 10.12177
+          },
+          {
+            "stop_sequence": 12,
+            "stop_id": 539,
+            "stop_name": "ESSAIDIA",
+            "stop_lat": 36.80541,
+            "stop_lon": 10.12664
+          },
+          {
+            "stop_sequence": 13,
+            "stop_id": 538,
+            "stop_name": "BARDO",
+            "stop_lat": 36.80724,
+            "stop_lon": 10.13523
+          },
+          {
+            "stop_sequence": 14,
+            "stop_id": 537,
+            "stop_name": "20-mars",
+            "stop_lat": 36.80835,
+            "stop_lon": 10.14238
+          },
+          {
+            "stop_sequence": 15,
+            "stop_id": 536,
+            "stop_name": "BOUCHOUCHA",
+            "stop_lat": 36.80953,
+            "stop_lon": 10.15026
+          },
+          {
+            "stop_sequence": 16,
+            "stop_id": 529,
+            "stop_name": "BAB SAADOUN",
+            "stop_lat": 36.80986,
+            "stop_lon": 10.16219
+          },
+          {
+            "stop_sequence": 17,
+            "stop_id": 528,
+            "stop_name": "BAB LAASSAL",
+            "stop_lat": 36.81331,
+            "stop_lon": 10.16817
+          },
+          {
+            "stop_sequence": 18,
+            "stop_id": 527,
+            "stop_name": "BAB EL KHADHRA",
+            "stop_lat": 36.8103,
+            "stop_lon": 10.17239
+          },
+          {
+            "stop_sequence": 19,
+            "stop_id": 511,
+            "stop_name": "PLACE DE LA REPUBLIQUE",
+            "stop_lat": 36.80649,
+            "stop_lon": 10.18081
+          }
+        ]
+      },
+      {
+        "type": "transfer_walk",
+        "duration": 2,
+        "color": "#FF6B00",
+        "walk_dist": 80,
+        "start": [
+          36.80649,
+          10.18081
+        ],
+        "end": [
+          36.8069114,
+          10.1815361
+        ],
+        "stop_name": "PLACE DE LA REPUBLIQUE → Passage Jeans Jaures ",
+        "stops": []
+      },
+      {
+        "type": "transit",
+        "line": "5D",
+        "route_type": 3,
+        "color": "#407E15",
+        "duration": 39,
+        "wait": 10,
+        "travel": 29,
+        "stop_name": "Passage Jeans Jaures  → Centre Ikram",
+        "start": [
+          36.8069114,
+          10.1815361
+        ],
+        "end": [
+          36.8560526,
+          10.1682516
+        ],
+        "stops": [
+          {
+            "stop_sequence": 4,
+            "stop_id": 7228,
+            "stop_name": "Passage Jeans Jaures ",
+            "stop_lat": 36.8069114,
+            "stop_lon": 10.1815361
+          },
+          {
+            "stop_sequence": 5,
+            "stop_id": 7224,
+            "stop_name": "La Fayette ",
+            "stop_lat": 36.8105618,
+            "stop_lon": 10.1807238
+          },
+          {
+            "stop_sequence": 6,
+            "stop_id": 7229,
+            "stop_name": "Place Jeans Dark ",
+            "stop_lat": 36.8183566,
+            "stop_lon": 10.1795785
+          },
+          {
+            "stop_sequence": 7,
+            "stop_id": 7984,
+            "stop_name": "Place Pasteur",
+            "stop_lat": 36.8232402,
+            "stop_lon": 10.1785494
+          },
+          {
+            "stop_sequence": 8,
+            "stop_id": 7985,
+            "stop_name": "Patisserie Ben Yeder",
+            "stop_lat": 36.8265346,
+            "stop_lon": 10.1795924
+          },
+          {
+            "stop_sequence": 9,
+            "stop_id": 7986,
+            "stop_name": "Cite Mahrajene",
+            "stop_lat": 36.828874,
+            "stop_lon": 10.1800943
+          },
+          {
+            "stop_sequence": 10,
+            "stop_id": 7987,
+            "stop_name": "Ministére De  Équipement",
+            "stop_lat": 36.8319311,
+            "stop_lon": 10.1801694
+          },
+          {
+            "stop_sequence": 11,
+            "stop_id": 8245,
+            "stop_name": "Menzeh1",
+            "stop_lat": 36.8335866,
+            "stop_lon": 10.1792613
+          },
+          {
+            "stop_sequence": 12,
+            "stop_id": 8246,
+            "stop_name": "Ambassade Iraq",
+            "stop_lat": 36.8353899,
+            "stop_lon": 10.1756778
+          },
+          {
+            "stop_sequence": 13,
+            "stop_id": 8247,
+            "stop_name": "État Unis",
+            "stop_lat": 36.8369167,
+            "stop_lon": 10.1737849
+          },
+          {
+            "stop_sequence": 14,
+            "stop_id": 8248,
+            "stop_name": "Souréseau",
+            "stop_lat": 36.8421244,
+            "stop_lon": 10.1673476
+          },
+          {
+            "stop_sequence": 15,
+            "stop_id": 8249,
+            "stop_name": "SNIT Menzeh 6",
+            "stop_lat": 36.84421,
+            "stop_lon": 10.1661189
+          },
+          {
+            "stop_sequence": 16,
+            "stop_id": 8250,
+            "stop_name": "Monoprix Menzeh 6",
+            "stop_lat": 36.8461572,
+            "stop_lon": 10.1662365
+          },
+          {
+            "stop_sequence": 17,
+            "stop_id": 8251,
+            "stop_name": "Pharmacie Menzeh 6",
+            "stop_lat": 36.8469317,
+            "stop_lon": 10.165282
+          },
+          {
+            "stop_sequence": 18,
+            "stop_id": 7994,
+            "stop_name": "Lycee Menzeh6",
+            "stop_lat": 36.8524589,
+            "stop_lon": 10.1775445
+          },
+          {
+            "stop_sequence": 19,
+            "stop_id": 8253,
+            "stop_name": "Centre Ikram",
+            "stop_lat": 36.8560526,
+            "stop_lon": 10.1682516
+          }
+        ]
+      },
+      {
+        "type": "walk",
+        "duration": 4,
+        "color": "#8E8E93",
+        "start": [
+          36.8560526,
+          10.1682516
+        ],
+        "end": [
+          36.8585478,
+          10.1682756
+        ],
+        "stop_name": "Centre Ikram",
+        "stops": []
+      }
+    ]
+  },
+  "alternatives": [
+    {
+      "label": "4 → 5D (corresp. piétonne)",
+      "route_type": 1,
+      "color": "#FFCF06",
+      "icon": "img/icon-metro.png",
+      "duration": 95,
+      "walk": 10,
+      "transfers": 1,
+      "has_walk_transfer": true,
+      "steps": [
+        {
+          "type": "walk",
+          "duration": 4,
+          "color": "#8E8E93",
+          "start": [
+            36.8151533,
+            10.0568158
+          ],
+          "end": [
+            36.81396,
+            10.05981
+          ],
+          "stop_name": "CAMPUS UNIVERSITAIRE MANOUBA",
+          "stops": []
+        },
+        {
+          "type": "transit",
+          "line": "4",
+          "route_type": 1,
+          "color": "#FFCF06",
+          "duration": 46,
+          "wait": 5,
+          "travel": 41,
+          "stop_name": "CAMPUS UNIVERSITAIRE MANOUBA → PLACE DE LA REPUBLIQUE",
+          "start": [
+            36.81396,
+            10.05981
+          ],
+          "end": [
+            36.80649,
+            10.18081
+          ],
+          "stops": [
+            {
+              "stop_sequence": 2,
+              "stop_id": 549,
+              "stop_name": "CAMPUS UNIVERSITAIRE MANOUBA",
+              "stop_lat": 36.81396,
+              "stop_lon": 10.05981
+            },
+            {
+              "stop_sequence": 3,
+              "stop_id": 548,
+              "stop_name": "KSAR EL WARDA",
+              "stop_lat": 36.8092,
+              "stop_lon": 10.07461
+            },
+            {
+              "stop_sequence": 4,
+              "stop_id": 547,
+              "stop_name": "POLE TECHNOLOGIQUE",
+              "stop_lat": 36.80811,
+              "stop_lon": 10.08053
+            },
+            {
+              "stop_sequence": 5,
+              "stop_id": 546,
+              "stop_name": "ABOUBAKER ERRAZI",
+              "stop_lat": 36.80739,
+              "stop_lon": 10.08247
+            },
+            {
+              "stop_sequence": 6,
+              "stop_id": 545,
+              "stop_name": "MONCEF BEY",
+              "stop_lat": 36.80528,
+              "stop_lon": 10.09065
+            },
+            {
+              "stop_sequence": 7,
+              "stop_id": 544,
+              "stop_name": "SLIMENE KEHIA",
+              "stop_lat": 36.80334,
+              "stop_lon": 10.09908
+            },
+            {
+              "stop_sequence": 8,
+              "stop_id": 543,
+              "stop_name": "MANOUBA",
+              "stop_lat": 36.80211,
+              "stop_lon": 10.10269
+            },
+            {
+              "stop_sequence": 9,
+              "stop_id": 542,
+              "stop_name": "DENDEN",
+              "stop_lat": 36.80221,
+              "stop_lon": 10.11075
+            },
+            {
+              "stop_sequence": 10,
+              "stop_id": 541,
+              "stop_name": "ARTISANAT",
+              "stop_lat": 36.80293,
+              "stop_lon": 10.11601
+            },
+            {
+              "stop_sequence": 11,
+              "stop_id": 540,
+              "stop_name": "KHAZNADAR",
+              "stop_lat": 36.80421,
+              "stop_lon": 10.12177
+            },
+            {
+              "stop_sequence": 12,
+              "stop_id": 539,
+              "stop_name": "ESSAIDIA",
+              "stop_lat": 36.80541,
+              "stop_lon": 10.12664
+            },
+            {
+              "stop_sequence": 13,
+              "stop_id": 538,
+              "stop_name": "BARDO",
+              "stop_lat": 36.80724,
+              "stop_lon": 10.13523
+            },
+            {
+              "stop_sequence": 14,
+              "stop_id": 537,
+              "stop_name": "20-mars",
+              "stop_lat": 36.80835,
+              "stop_lon": 10.14238
+            },
+            {
+              "stop_sequence": 15,
+              "stop_id": 536,
+              "stop_name": "BOUCHOUCHA",
+              "stop_lat": 36.80953,
+              "stop_lon": 10.15026
+            },
+            {
+              "stop_sequence": 16,
+              "stop_id": 529,
+              "stop_name": "BAB SAADOUN",
+              "stop_lat": 36.80986,
+              "stop_lon": 10.16219
+            },
+            {
+              "stop_sequence": 17,
+              "stop_id": 528,
+              "stop_name": "BAB LAASSAL",
+              "stop_lat": 36.81331,
+              "stop_lon": 10.16817
+            },
+            {
+              "stop_sequence": 18,
+              "stop_id": 527,
+              "stop_name": "BAB EL KHADHRA",
+              "stop_lat": 36.8103,
+              "stop_lon": 10.17239
+            },
+            {
+              "stop_sequence": 19,
+              "stop_id": 511,
+              "stop_name": "PLACE DE LA REPUBLIQUE",
+              "stop_lat": 36.80649,
+              "stop_lon": 10.18081
+            }
+          ]
+        },
+        {
+          "type": "transfer_walk",
+          "duration": 2,
+          "color": "#FF6B00",
+          "walk_dist": 80,
+          "start": [
+            36.80649,
+            10.18081
+          ],
+          "end": [
+            36.8069114,
+            10.1815361
+          ],
+          "stop_name": "PLACE DE LA REPUBLIQUE → Passage Jeans Jaures ",
+          "stops": []
+        },
+        {
+          "type": "transit",
+          "line": "5D",
+          "route_type": 3,
+          "color": "#407E15",
+          "duration": 39,
+          "wait": 10,
+          "travel": 29,
+          "stop_name": "Passage Jeans Jaures  → Centre Ikram",
+          "start": [
+            36.8069114,
+            10.1815361
+          ],
+          "end": [
+            36.8560526,
+            10.1682516
+          ],
+          "stops": [
+            {
+              "stop_sequence": 4,
+              "stop_id": 7228,
+              "stop_name": "Passage Jeans Jaures ",
+              "stop_lat": 36.8069114,
+              "stop_lon": 10.1815361
+            },
+            {
+              "stop_sequence": 5,
+              "stop_id": 7224,
+              "stop_name": "La Fayette ",
+              "stop_lat": 36.8105618,
+              "stop_lon": 10.1807238
+            },
+            {
+              "stop_sequence": 6,
+              "stop_id": 7229,
+              "stop_name": "Place Jeans Dark ",
+              "stop_lat": 36.8183566,
+              "stop_lon": 10.1795785
+            },
+            {
+              "stop_sequence": 7,
+              "stop_id": 7984,
+              "stop_name": "Place Pasteur",
+              "stop_lat": 36.8232402,
+              "stop_lon": 10.1785494
+            },
+            {
+              "stop_sequence": 8,
+              "stop_id": 7985,
+              "stop_name": "Patisserie Ben Yeder",
+              "stop_lat": 36.8265346,
+              "stop_lon": 10.1795924
+            },
+            {
+              "stop_sequence": 9,
+              "stop_id": 7986,
+              "stop_name": "Cite Mahrajene",
+              "stop_lat": 36.828874,
+              "stop_lon": 10.1800943
+            },
+            {
+              "stop_sequence": 10,
+              "stop_id": 7987,
+              "stop_name": "Ministére De  Équipement",
+              "stop_lat": 36.8319311,
+              "stop_lon": 10.1801694
+            },
+            {
+              "stop_sequence": 11,
+              "stop_id": 8245,
+              "stop_name": "Menzeh1",
+              "stop_lat": 36.8335866,
+              "stop_lon": 10.1792613
+            },
+            {
+              "stop_sequence": 12,
+              "stop_id": 8246,
+              "stop_name": "Ambassade Iraq",
+              "stop_lat": 36.8353899,
+              "stop_lon": 10.1756778
+            },
+            {
+              "stop_sequence": 13,
+              "stop_id": 8247,
+              "stop_name": "État Unis",
+              "stop_lat": 36.8369167,
+              "stop_lon": 10.1737849
+            },
+            {
+              "stop_sequence": 14,
+              "stop_id": 8248,
+              "stop_name": "Souréseau",
+              "stop_lat": 36.8421244,
+              "stop_lon": 10.1673476
+            },
+            {
+              "stop_sequence": 15,
+              "stop_id": 8249,
+              "stop_name": "SNIT Menzeh 6",
+              "stop_lat": 36.84421,
+              "stop_lon": 10.1661189
+            },
+            {
+              "stop_sequence": 16,
+              "stop_id": 8250,
+              "stop_name": "Monoprix Menzeh 6",
+              "stop_lat": 36.8461572,
+              "stop_lon": 10.1662365
+            },
+            {
+              "stop_sequence": 17,
+              "stop_id": 8251,
+              "stop_name": "Pharmacie Menzeh 6",
+              "stop_lat": 36.8469317,
+              "stop_lon": 10.165282
+            },
+            {
+              "stop_sequence": 18,
+              "stop_id": 7994,
+              "stop_name": "Lycee Menzeh6",
+              "stop_lat": 36.8524589,
+              "stop_lon": 10.1775445
+            },
+            {
+              "stop_sequence": 19,
+              "stop_id": 8253,
+              "stop_name": "Centre Ikram",
+              "stop_lat": 36.8560526,
+              "stop_lon": 10.1682516
+            }
+          ]
+        },
+        {
+          "type": "walk",
+          "duration": 4,
+          "color": "#8E8E93",
+          "start": [
+            36.8560526,
+            10.1682516
+          ],
+          "end": [
+            36.8585478,
+            10.1682756
+          ],
+          "stop_name": "Centre Ikram",
+          "stops": []
+        }
+      ]
+    }
+  ],
+  "taxi": {
+    "label": "Taxi",
+    "route_type": 99,
+    "color": "#F5A623",
+    "icon": "img/icon-taxi.png",
+    "duration": 26,
+    "walk": 0,
+    "transfers": 0,
+    "has_walk_transfer": false,
+    "is_taxi": true,
+    "taxi_dist_km": 11.03,
+    "taxi_fare_min": 6.567,
+    "taxi_fare_max": 7.67,
+    "steps": [
+      {
+        "type": "taxi",
+        "duration": 26,
+        "color": "#F5A623",
+        "start": [
+          36.8151533,
+          10.0568158
+        ],
+        "end": [
+          36.8585478,
+          10.1682756
+        ],
+        "stop_name": "Taxi avec compteur",
+        "dist_km": 11.03,
+        "fare_min": 6.567,
+        "fare_max": 7.67,
+        "stops": []
+      }
+    ]
+  },
+  "debug": {
+    "start_stops": 5,
+    "end_stops": 8,
+    "mid1_stops": 109,
+    "mid2_stops": 80,
+    "walk_transfers": 50,
+    "itineraries_found": 6,
+    "taxi_proposed": true,
+    "direct_walk_min": 165
+  }
+}
