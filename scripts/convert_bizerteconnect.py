@@ -30,6 +30,16 @@ def main():
                     "name_en": line.get(f"{key}_en", name),
                 }
 
+    # Save expanded seed
+    # First load existing seed to merge
+    seed_path = BASE / "data/seed_lines_bizerte.json"
+    with open(seed_path, encoding="utf-8") as f:
+        existing = json.load(f)
+
+    # Preserve lines from OTHER operators that may already be in the seed
+    # (so repeated runs + convert_transtu accumulate rather than displace)
+    keep_lines = [l for l in existing["lines"] if l.get("operator") != "BizerteConnect"]
+
     # Build lines in seed format
     seed_lines = []
     for line in lines:
@@ -49,8 +59,11 @@ def main():
         dest_id = slugify(dest)
         line_stations = [origin_id, dest_id]
 
+        # Use API's unique id to avoid collisions for route variants
+        # (same number, different service types like confort/standard/scolaire)
+        api_id = line.get("id", "")[:8]  # short UUID prefix
         entry = {
-            "id": f"biz_{slugify(f'{num}_{origin}_{dest}')}",
+            "id": f"biz_{api_id}_{slugify(f'{num}_{origin}_{dest}')}",
             "number": num,
             "name": line.get("name", f"Ligne {origin} - {dest}"),
             "operator": "BizerteConnect",
@@ -62,20 +75,14 @@ def main():
         }
         seed_lines.append(entry)
 
-    # Save expanded seed
-    # First load existing seed to merge
-    seed_path = BASE / "data/seed_lines_bizerte.json"
-    with open(seed_path, encoding="utf-8") as f:
-        existing = json.load(f)
-
-    # Merge: add new stations, replace lines with full set
+    # Merge: add new stations, combine lines without duplicates by id
     existing_station_ids = {s["id"] for s in existing["stations"]}
     for s in stations.values():
         if s["id"] not in existing_station_ids:
             existing["stations"].append(s)
 
-    existing["lines"] = seed_lines
-    existing["metadata"]["total_lines"] = len(seed_lines)
+    existing["lines"] = keep_lines + seed_lines
+    existing["metadata"]["total_lines"] = len(existing["lines"])
     existing["metadata"]["source"] = "BizerteConnect API v1 (bizerteconnect.com)"
 
     with open(seed_path, "w", encoding="utf-8") as f:

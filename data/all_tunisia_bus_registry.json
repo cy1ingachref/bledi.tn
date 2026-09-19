@@ -2,7 +2,9 @@
   "metadata": {
     "source": "bledi.tn comprehensive extraction",
     "date": "2026-09-19",
-    "operators": {}
+    "operators": {},
+    "total_operators": 2,
+    "total_lines": 321
   },
   "operators": {
     "BizerteConnect": {
@@ -926,6 +928,964 @@
           "type": "intra_governorate",
           "origin": "Bizerte",
           "destination": "Sidi Ahmed"
+        }
+      ]
+    },
+    "Transtu": {
+      "website": "https://www.transtu.tn",
+      "coverage": "Grand Tunis (Tunis, Ariana, Manouba, Ben Arous)",
+      "line_count": 190,
+      "source": "Tunismapper API (tunismapper.com)",
+      "lines": [
+        {
+          "number": "Bus Aéroport",
+          "name": "Ligne Bus Aéroport: Aéroport de Tunis Carthage - Tunis Marine",
+          "type": "urban"
+        },
+        {
+          "number": "10",
+          "name": "Ligne 10: Avenue Carthage - Cité Ezitouna",
+          "type": "urban"
+        },
+        {
+          "number": "104",
+          "name": "Ligne 104: Tunis Marine - Khaireddine Mannouba",
+          "type": "urban"
+        },
+        {
+          "number": "10B",
+          "name": "Ligne 10B: Station Barcelone - Lycée Ibn Mandhour",
+          "type": "urban"
+        },
+        {
+          "number": "10C",
+          "name": "Ligne 10C: Station Barcelone - Hopital Régional Yesminet",
+          "type": "urban"
+        },
+        {
+          "number": "11",
+          "name": "Ligne 11: Tunis Marine - Jbel Lahmer",
+          "type": "urban"
+        },
+        {
+          "number": "116",
+          "name": "Ligne 116: Bab Alioua - Tebourba",
+          "type": "urban"
+        },
+        {
+          "number": "12",
+          "name": "Ligne 12: Jardin Thameur - Zayatine",
+          "type": "urban"
+        },
+        {
+          "number": "14A",
+          "name": "Ligne 14A: Ali Balahouan - Omrane Supérieur",
+          "type": "urban"
+        },
+        {
+          "number": "14C",
+          "name": "Ligne 14C: Ali Balahouan - Cité Elbasatine",
+          "type": "urban"
+        },
+        {
+          "number": "14CG",
+          "name": "Ligne 14CG: Kasbah - Intilaka",
+          "type": "urban"
+        },
+        {
+          "number": "15",
+          "name": "Ligne 15: Jardin Thameur - Saidia",
+          "type": "urban"
+        },
+        {
+          "number": "15A",
+          "name": "Ligne 15A: Jardin Thameur - Cité Ezzouhour 4",
+          "type": "urban"
+        },
+        {
+          "number": "15B",
+          "name": "Ligne 15B: Jardin Thameur - Cité Ezzouhour",
+          "type": "urban"
+        },
+        {
+          "number": "16",
+          "name": "Ligne 16: Ali Balahouan - El Hbibia",
+          "type": "urban"
+        },
+        {
+          "number": "16/",
+          "name": "Ligne 16/: Ali Balahouan - Cité Ennassim",
+          "type": "urban"
+        },
+        {
+          "number": "16A",
+          "name": "Ligne 16A: Boudreya - Sanhaja ",
+          "type": "urban"
+        },
+        {
+          "number": "16B",
+          "name": "Ligne 16B: Khaireddine Mannouba - Tebourba",
+          "type": "urban"
+        },
+        {
+          "number": "16C",
+          "name": "Ligne 16C: Ali Balahouan - Cité Elward",
+          "type": "urban"
+        },
+        {
+          "number": "16D",
+          "name": "Ligne 16D: Ali Balahouan - Sidi Othman",
+          "type": "urban"
+        },
+        {
+          "number": "17",
+          "name": "Ligne 17: Station Barcelone - Rades Zi",
+          "type": "urban"
+        },
+        {
+          "number": "17A",
+          "name": "Ligne 17A: Médina Jedida - Port La Goulette",
+          "type": "urban"
+        },
+        {
+          "number": "17B",
+          "name": "Ligne 17B: Station Barcelone - Port De Rades",
+          "type": "urban"
+        },
+        {
+          "number": "18",
+          "name": "Ligne 18: 10 Decembre - Mongi Slim",
+          "type": "urban"
+        },
+        {
+          "number": "18B",
+          "name": "Ligne 18B: 10 Decembre - Onas Sidi Salah",
+          "type": "urban"
+        },
+        {
+          "number": "18C",
+          "name": "Ligne 18C: 10 Decembre - Carthage Hannibal",
+          "type": "urban"
+        },
+        {
+          "number": "19",
+          "name": "Ligne 19: Station Barcelone - Megrine Coteaux",
+          "type": "urban"
+        },
+        {
+          "number": "19A",
+          "name": "Ligne 19A: Station Barcelone - Cité Chaker",
+          "type": "urban"
+        },
+        {
+          "number": "19C",
+          "name": "Ligne 19C: Station Barcelone - Lycée Ibn Mandhour",
+          "type": "urban"
+        },
+        {
+          "number": "19C/",
+          "name": "Ligne 19C/: Station Barcelone - Médina Jedida",
+          "type": "urban"
+        },
+        {
+          "number": "19D",
+          "name": "Ligne 19D: Station Barcelone - Stade Municipale",
+          "type": "urban"
+        },
+        {
+          "number": "19E",
+          "name": "Ligne 19E: Station Barcelone - Cité Chaker",
+          "type": "urban"
+        },
+        {
+          "number": "19G",
+          "name": "Ligne 19G: Hopital Des Enfants - Lycée Ibn Mandhour",
+          "type": "urban"
+        },
+        {
+          "number": "20",
+          "name": "Ligne 20: Jardin Thameur - Teminus Cité Riadh",
+          "type": "urban"
+        },
+        {
+          "number": "20A",
+          "name": "Ligne 20A: Jardin Thameur - Bhar Lazreg",
+          "type": "urban"
+        },
+        {
+          "number": "20B",
+          "name": "Ligne 20B: Jardin Thameur - Gammarth",
+          "type": "urban"
+        },
+        {
+          "number": "20C",
+          "name": "Ligne 20C: Jardin Thameur - Carthage Hannibal",
+          "type": "urban"
+        },
+        {
+          "number": "20G",
+          "name": "Ligne 20G: Kasbah - Sidi Abd Aziz",
+          "type": "urban"
+        },
+        {
+          "number": "21",
+          "name": "Ligne 21: Mornag - Ferch Annabi",
+          "type": "urban"
+        },
+        {
+          "number": "21A",
+          "name": "Ligne 21A: Mornag - Jebel Rassas",
+          "type": "urban"
+        },
+        {
+          "number": "21B",
+          "name": "Ligne 21B: Mornag - Tarhouna",
+          "type": "urban"
+        },
+        {
+          "number": "22",
+          "name": "Ligne 22: Station Barcelone - Centre De Traumatologie Et Des Grands Brulés",
+          "type": "urban"
+        },
+        {
+          "number": "22A",
+          "name": "Ligne 22A: Station Barcelone - Lycée Yassminet",
+          "type": "urban"
+        },
+        {
+          "number": "22G",
+          "name": "Ligne 22G: Hopital Des Enfants - Cite El Eskan Ben Arous",
+          "type": "urban"
+        },
+        {
+          "number": "23",
+          "name": "Ligne 23: SLIMEN KAHIA - CITE EL INTILAKA",
+          "type": "urban"
+        },
+        {
+          "number": "23/",
+          "name": "Ligne 23/: Cafe Medina - Ecole Fejja",
+          "type": "urban"
+        },
+        {
+          "number": "23B",
+          "name": "Ligne 23B: Slimen Kahia - Lycee 20 Mars",
+          "type": "urban"
+        },
+        {
+          "number": "23C",
+          "name": "Ligne 23C: Slimen Kahia - Sidi Hmida",
+          "type": "urban"
+        },
+        {
+          "number": "23D",
+          "name": "Ligne 23D: Slimen Kahia - Drijet",
+          "type": "urban"
+        },
+        {
+          "number": "23E",
+          "name": "Ligne 23E: Slimen Kahia - Griaat",
+          "type": "urban"
+        },
+        {
+          "number": "23F",
+          "name": "Ligne 23F: Slimen Kahia - Frinech",
+          "type": "urban"
+        },
+        {
+          "number": "23H",
+          "name": "Ligne 23H: Slimen Kahia - Sidi Medien",
+          "type": "urban"
+        },
+        {
+          "number": "23T",
+          "name": "Ligne 23T: Slimen Kahia - Ksar Hdid",
+          "type": "urban"
+        },
+        {
+          "number": "24",
+          "name": "Ligne 24: Mourouj 2 - Cebalet Cheikh",
+          "type": "urban"
+        },
+        {
+          "number": "24/",
+          "name": "Ligne 24/: Mourouj 2 - Cité El Elmi",
+          "type": "urban"
+        },
+        {
+          "number": "247",
+          "name": "Ligne 247: Port La Goulette - Cité Riadh",
+          "type": "urban"
+        },
+        {
+          "number": "24A",
+          "name": "Ligne 24A: Mourouj 2 - Ouedhna",
+          "type": "urban"
+        },
+        {
+          "number": "24D",
+          "name": "Ligne 24D: Mourouj 2 - Douar Houch",
+          "type": "urban"
+        },
+        {
+          "number": "24E",
+          "name": "Ligne 24E: Mourouj 2 - Sidi Fredj",
+          "type": "urban"
+        },
+        {
+          "number": "24F",
+          "name": "Ligne 24F: Mourouj 2 - Cité El Amal Fouchana",
+          "type": "urban"
+        },
+        {
+          "number": "24H",
+          "name": "Ligne 24H: Mourouj 2 - Taieb Mhiri",
+          "type": "urban"
+        },
+        {
+          "number": "25",
+          "name": "Ligne 25: Avenue Carthage - Ferch Annabi",
+          "type": "urban"
+        },
+        {
+          "number": "25A",
+          "name": "Ligne 25A: Avenue Carthage - Cité El Amal Fouchana",
+          "type": "urban"
+        },
+        {
+          "number": "25B",
+          "name": "Ligne 25B: Avenue Carthage - Bir Jeddid",
+          "type": "urban"
+        },
+        {
+          "number": "25C",
+          "name": "Ligne 25C: Avenue Carthage - Naassen",
+          "type": "urban"
+        },
+        {
+          "number": "25D",
+          "name": "Ligne 25D: Avenue Carthage - Cité Salem",
+          "type": "urban"
+        },
+        {
+          "number": "26",
+          "name": "Ligne 26: Station Barcelone - Mornag",
+          "type": "urban"
+        },
+        {
+          "number": "26A",
+          "name": "Ligne 26A: Station Barcelone - Mornag",
+          "type": "urban"
+        },
+        {
+          "number": "26B",
+          "name": "Ligne 26B: Station Barcelone - Mornag",
+          "type": "urban"
+        },
+        {
+          "number": "26C",
+          "name": "Ligne 26C: Cité Thameur - Mornag",
+          "type": "urban"
+        },
+        {
+          "number": "27",
+          "name": "Ligne 27: 10 Decembre - Raoued",
+          "type": "urban"
+        },
+        {
+          "number": "27A",
+          "name": "Ligne 27A: 10 Decembre - Cité El Ghazela",
+          "type": "urban"
+        },
+        {
+          "number": "27C",
+          "name": "Ligne 27C: 10 Decembre - Cite El Bokri",
+          "type": "urban"
+        },
+        {
+          "number": "29",
+          "name": "Ligne 29: Station Barcelone - Bellevue",
+          "type": "urban"
+        },
+        {
+          "number": "31",
+          "name": "Ligne 31: Ali Balahouan - Protville",
+          "type": "urban"
+        },
+        {
+          "number": "31A",
+          "name": "Ligne 31A: Ali Balahouan - Bech Hamba",
+          "type": "urban"
+        },
+        {
+          "number": "31B",
+          "name": "Ligne 31B: Ali Balahouan - Lycée Kalaate Al Andalouss",
+          "type": "urban"
+        },
+        {
+          "number": "31C",
+          "name": "Ligne 31C: Ali Balahouan - Chorfech",
+          "type": "urban"
+        },
+        {
+          "number": "31C/",
+          "name": "Ligne 31C/: Charguia - Chorfech",
+          "type": "urban"
+        },
+        {
+          "number": "32",
+          "name": "Ligne 32: Jardin Thameur - Zahrouni",
+          "type": "urban"
+        },
+        {
+          "number": "32A",
+          "name": "Ligne 32A: Bab Alioua - Sidi Hassine",
+          "type": "urban"
+        },
+        {
+          "number": "32B",
+          "name": "Ligne 32B: Jardin Thameur - Borj Chakir",
+          "type": "urban"
+        },
+        {
+          "number": "32C",
+          "name": "Ligne 32C: Jardin Thameur - Zahrouni",
+          "type": "urban"
+        },
+        {
+          "number": "32D",
+          "name": "Ligne 32D: Jardin Thameur - Sidi Hassine",
+          "type": "urban"
+        },
+        {
+          "number": "33",
+          "name": "Ligne 33: Jardin Thameur - Mghira",
+          "type": "urban"
+        },
+        {
+          "number": "33A",
+          "name": "Ligne 33A: Jardin Thameur - Bouhamed",
+          "type": "urban"
+        },
+        {
+          "number": "33A/",
+          "name": "Ligne 33A/: Jardin Thameur - Taieb Mhiri",
+          "type": "urban"
+        },
+        {
+          "number": "33B",
+          "name": "Ligne 33B: Jardin Thameur - Sidi Hassine",
+          "type": "urban"
+        },
+        {
+          "number": "33C",
+          "name": "Ligne 33C: Jardin Thameur - Cite 25 Juillet",
+          "type": "urban"
+        },
+        {
+          "number": "34",
+          "name": "Ligne 34: Jardin Thameur - Epicier Lagraa",
+          "type": "urban"
+        },
+        {
+          "number": "34A",
+          "name": "Ligne 34A: Jardin Thameur - Prison Civile Mornagiaa",
+          "type": "urban"
+        },
+        {
+          "number": "35",
+          "name": "Ligne 35: Tunis Marine - 10 Decembre",
+          "type": "urban"
+        },
+        {
+          "number": "36",
+          "name": "Ligne 36: La Fayette - Ministére Des Affaires Etrangeres",
+          "type": "urban"
+        },
+        {
+          "number": "36B",
+          "name": "Ligne 36B: Ministére Des Affaires Etrangeres - Bardo",
+          "type": "urban"
+        },
+        {
+          "number": "37",
+          "name": "Ligne 37: Mornag - Borj Cedria",
+          "type": "urban"
+        },
+        {
+          "number": "3710",
+          "name": "Ligne 3710: Marché De Gros - Borj Cedria",
+          "type": "urban"
+        },
+        {
+          "number": "38B",
+          "name": "Ligne 38B: Tunis Marine - Omrane Supérieur",
+          "type": "urban"
+        },
+        {
+          "number": "38C",
+          "name": "Ligne 38C: Tunis Marine - Cité Errafeha",
+          "type": "urban"
+        },
+        {
+          "number": "39",
+          "name": "Ligne 39: Lycée Ezzahra - Rades Foret",
+          "type": "urban"
+        },
+        {
+          "number": "3A",
+          "name": "Ligne 3A: Ali Balahouan - Ksar Said",
+          "type": "urban"
+        },
+        {
+          "number": "3AG",
+          "name": "Ligne 3AG: Kasbah - Ksar Said",
+          "type": "urban"
+        },
+        {
+          "number": "3D",
+          "name": "Ligne 3D: Ali Balahouan - Ettadhamen",
+          "type": "urban"
+        },
+        {
+          "number": "410B",
+          "name": "Ligne 410B: Marché De Gros - Boudria",
+          "type": "urban"
+        },
+        {
+          "number": "42",
+          "name": "Ligne 42: Ali Balahouan - Tebourba",
+          "type": "urban"
+        },
+        {
+          "number": "42B",
+          "name": "Ligne 42B: Khaireddine Mannouba - Zouitina",
+          "type": "urban"
+        },
+        {
+          "number": "43",
+          "name": "Ligne 43: Hopital Des Enfants - Institut De La Nutrition",
+          "type": "urban"
+        },
+        {
+          "number": "43B",
+          "name": "Ligne 43B: Tunis Marine - Rabta",
+          "type": "urban"
+        },
+        {
+          "number": "44",
+          "name": "Ligne 44: Intilaka - Lycée Kalaate Al Andalouss",
+          "type": "urban"
+        },
+        {
+          "number": "44A",
+          "name": "Ligne 44A: Les Abattoirs - Kalaate Al Andalouss",
+          "type": "urban"
+        },
+        {
+          "number": "44B",
+          "name": "Ligne 44B: Intilaka - Cité Monji Slim",
+          "type": "urban"
+        },
+        {
+          "number": "44C",
+          "name": "Ligne 44C: Intilaka - Jabbes",
+          "type": "urban"
+        },
+        {
+          "number": "44D",
+          "name": "Ligne 44D: Charguia - Oued Ellil",
+          "type": "urban"
+        },
+        {
+          "number": "44D/",
+          "name": "Ligne 44D/: Charguia - Cité Monji Slim",
+          "type": "urban"
+        },
+        {
+          "number": "45",
+          "name": "Ligne 45: Tebourba - Chouigui",
+          "type": "urban"
+        },
+        {
+          "number": "45B",
+          "name": "Ligne 45B: Tebourba - Maafrine",
+          "type": "urban"
+        },
+        {
+          "number": "46",
+          "name": "Ligne 46: Tebourba - El Hrachnia",
+          "type": "urban"
+        },
+        {
+          "number": "460",
+          "name": "Ligne 460: Les Abattoirs - Boudria",
+          "type": "urban"
+        },
+        {
+          "number": "46B",
+          "name": "Ligne 46B: Tebourba - Laajema",
+          "type": "urban"
+        },
+        {
+          "number": "47",
+          "name": "Ligne 47: 10 Decembre - Port La Goulette",
+          "type": "urban"
+        },
+        {
+          "number": "47A",
+          "name": "Ligne 47A: Menzeh 5 - El Anbaria",
+          "type": "urban"
+        },
+        {
+          "number": "48",
+          "name": "Ligne 48: Slimen Kahia - Cité Elbasatine",
+          "type": "urban"
+        },
+        {
+          "number": "4A",
+          "name": "Ligne 4A: Jardin Thameur - Cité El Amal Mannouba",
+          "type": "urban"
+        },
+        {
+          "number": "4G",
+          "name": "Ligne 4G: Kasbah - Boudria",
+          "type": "urban"
+        },
+        {
+          "number": "5",
+          "name": "Ligne 5: Tunis Marine - Charguia",
+          "type": "urban"
+        },
+        {
+          "number": "514A",
+          "name": "Ligne 514A: Charguia - Cité Elbasatine",
+          "type": "urban"
+        },
+        {
+          "number": "51A",
+          "name": "Ligne 51A: Tunis Marine - Cité Nacer",
+          "type": "urban"
+        },
+        {
+          "number": "52",
+          "name": "Ligne 52: Gammarth - Carthage Présidence",
+          "type": "urban"
+        },
+        {
+          "number": "527",
+          "name": "Ligne 527: Jeans Jaures - Cité El Ghazela",
+          "type": "urban"
+        },
+        {
+          "number": "54",
+          "name": "Ligne 54: Mourouj 5 - Cité Chaker",
+          "type": "urban"
+        },
+        {
+          "number": "54A",
+          "name": "Ligne 54A: Cebalet Cheikh - Cité Chaker",
+          "type": "urban"
+        },
+        {
+          "number": "54A/",
+          "name": "Ligne 54A/: Cité El Elmi - Cité Chaker",
+          "type": "urban"
+        },
+        {
+          "number": "54B",
+          "name": "Ligne 54B: Mourouj 5 - Brulés",
+          "type": "urban"
+        },
+        {
+          "number": "54C",
+          "name": "Ligne 54C: Hopital De Traumatologie Et Des Grands Brules - Cité Chaker",
+          "type": "urban"
+        },
+        {
+          "number": "54D",
+          "name": "Ligne 54D: Mourouj 5 - Djebel Jelloud",
+          "type": "urban"
+        },
+        {
+          "number": "55",
+          "name": "Ligne 55: Ali Balahouan - Hopital Daouar Hicher",
+          "type": "urban"
+        },
+        {
+          "number": "56",
+          "name": "Ligne 56: Ali Balahouan - Daouar Hicher",
+          "type": "urban"
+        },
+        {
+          "number": "57A",
+          "name": "Ligne 57A: Intilaka - Bricorama",
+          "type": "urban"
+        },
+        {
+          "number": "58",
+          "name": "Ligne 58: Khaireddine Mannouba - Cité Elward ",
+          "type": "urban"
+        },
+        {
+          "number": "59A",
+          "name": "Ligne 59A: Station Barcelone - Mourouj 1",
+          "type": "urban"
+        },
+        {
+          "number": "5C",
+          "name": "Ligne 5C: Tunis Marine - Menzeh 6",
+          "type": "urban"
+        },
+        {
+          "number": "5D",
+          "name": "Ligne 5D: Tunis Marine - Hedi Nouira",
+          "type": "urban"
+        },
+        {
+          "number": "6",
+          "name": "Ligne 6: 10 Decembre - Sidi Soufiene",
+          "type": "urban"
+        },
+        {
+          "number": "60",
+          "name": "Ligne 60: Station Barcelone - Ibn Sina",
+          "type": "urban"
+        },
+        {
+          "number": "60A",
+          "name": "Ligne 60A: Hopital Des Enfants - Ibn Sina",
+          "type": "urban"
+        },
+        {
+          "number": "60G",
+          "name": "Ligne 60G: Hopital Des Enfants - Ibn Sina",
+          "type": "urban"
+        },
+        {
+          "number": "61",
+          "name": "Ligne 61: Slimen Kahia - Prison Civile Mornagiaa",
+          "type": "urban"
+        },
+        {
+          "number": "62",
+          "name": "Ligne 62: Cité Ellil - Cite El Bokri",
+          "type": "urban"
+        },
+        {
+          "number": "62A",
+          "name": "Ligne 62A: 10 Decembre - Raoued",
+          "type": "urban"
+        },
+        {
+          "number": "63",
+          "name": "Ligne 63: Jardin Thameur - Enkhilette",
+          "type": "urban"
+        },
+        {
+          "number": "635",
+          "name": "Ligne 635: Tunis Marine - Place Sala Centre",
+          "type": "urban"
+        },
+        {
+          "number": "635A",
+          "name": "Ligne 635A: Tunis Marine - Charguia",
+          "type": "urban"
+        },
+        {
+          "number": "64",
+          "name": "Ligne 64: Ali Balahouan - Cité Ettahrir",
+          "type": "urban"
+        },
+        {
+          "number": "65",
+          "name": "Ligne 65: Gare Routiére Sud - Zahrouni",
+          "type": "urban"
+        },
+        {
+          "number": "66",
+          "name": "Ligne 66: Tebourba - Edkhila",
+          "type": "urban"
+        },
+        {
+          "number": "66B",
+          "name": "Ligne 66B: Tebourba - Lansarine",
+          "type": "urban"
+        },
+        {
+          "number": "68",
+          "name": "Ligne 68: Ali Balahouan - 18 Janvier",
+          "type": "urban"
+        },
+        {
+          "number": "69",
+          "name": "Ligne 69: Avenue Carthage - Cité Hellal",
+          "type": "urban"
+        },
+        {
+          "number": "6B",
+          "name": "Ligne 6B: 10 Decembre - Cité El Mallaha",
+          "type": "urban"
+        },
+        {
+          "number": "6P",
+          "name": "Ligne 6P: Jardin Thameur - Hopital Mahmoude El Matri",
+          "type": "urban"
+        },
+        {
+          "number": "71",
+          "name": "Ligne 71: Bab Alioua - Zahrouni",
+          "type": "urban"
+        },
+        {
+          "number": "714",
+          "name": "Ligne 714: Station Barcelone - Cite Olympique Rades",
+          "type": "urban"
+        },
+        {
+          "number": "72",
+          "name": "Ligne 72: Gare Routiére Sud - Daouar Hicher",
+          "type": "urban"
+        },
+        {
+          "number": "74",
+          "name": "Ligne 74: Tunis Marine - Mourouj 5",
+          "type": "urban"
+        },
+        {
+          "number": "74B",
+          "name": "Ligne 74B: Hopital Des Enfants - Mourouj 5",
+          "type": "urban"
+        },
+        {
+          "number": "74G",
+          "name": "Ligne 74G: Hopital Des Enfants - Mourouj 5",
+          "type": "urban"
+        },
+        {
+          "number": "75",
+          "name": "Ligne 75: Station Barcelone - Boumhel El Bassatine",
+          "type": "urban"
+        },
+        {
+          "number": "77",
+          "name": "Ligne 77: Tunis Marine - Kalaat Al Andalous",
+          "type": "urban"
+        },
+        {
+          "number": "78",
+          "name": "Ligne 78: Gare Routiére Sud - Omrane Supérieur",
+          "type": "urban"
+        },
+        {
+          "number": "79",
+          "name": "Ligne 79: Gare Routiére Sud - Cite El Mechtel",
+          "type": "urban"
+        },
+        {
+          "number": "80",
+          "name": "Ligne 80: Jardin Thameur - Cite El Bokri",
+          "type": "urban"
+        },
+        {
+          "number": "81A",
+          "name": "Ligne 81A: Av El Borhene - Lycée Mourouj6",
+          "type": "urban"
+        },
+        {
+          "number": "81B",
+          "name": "Ligne 81B: Centre Challakh El Mourouj 4 - Av El Borhene",
+          "type": "urban"
+        },
+        {
+          "number": "82",
+          "name": "Ligne 82: Station Barcelone - Boumhal",
+          "type": "urban"
+        },
+        {
+          "number": "84",
+          "name": "Ligne 84: Aerolia 1 - Cité Trabelsi",
+          "type": "urban"
+        },
+        {
+          "number": "85",
+          "name": "Ligne 85: Sealatelec - Boumhel El Bassatine",
+          "type": "urban"
+        },
+        {
+          "number": "86",
+          "name": "Ligne 86: Mourouj 2 - Aerolia",
+          "type": "urban"
+        },
+        {
+          "number": "87",
+          "name": "Ligne 87: Jardin Thameur - Omar Mokhtar",
+          "type": "urban"
+        },
+        {
+          "number": "88",
+          "name": "Ligne 88: Jardin Thameur - Elwaha",
+          "type": "urban"
+        },
+        {
+          "number": "88A",
+          "name": "Ligne 88A: Jardin Thameur - Ghdir Elgollah",
+          "type": "urban"
+        },
+        {
+          "number": "89",
+          "name": "Ligne 89: Jardin Thameur - Montazah",
+          "type": "urban"
+        },
+        {
+          "number": "90",
+          "name": "Ligne 90: Slimen Kahia - Cite Ben Younes",
+          "type": "urban"
+        },
+        {
+          "number": "91",
+          "name": "Ligne 91: Slimen Kahia - Terminus L91 (Manouba)",
+          "type": "urban"
+        },
+        {
+          "number": "92",
+          "name": "Ligne 92: Slimen Kahia - Terminus L92 (Manouba)",
+          "type": "urban"
+        },
+        {
+          "number": "93",
+          "name": "Ligne 93: Khaireddine Mannouba - Sanhaja  ",
+          "type": "urban"
+        },
+        {
+          "number": "94",
+          "name": "Ligne 94: Slimen Kahia - Tebourba",
+          "type": "urban"
+        },
+        {
+          "number": "95",
+          "name": "Ligne 95: Slimen Kahia - Daouar Hicher",
+          "type": "urban"
+        },
+        {
+          "number": "96",
+          "name": "Ligne 96: Khaireddine Mannouba - Gobaa",
+          "type": "urban"
+        },
+        {
+          "number": "97",
+          "name": "Ligne 97: Khaireddine Mannouba - Cité Ennassim",
+          "type": "urban"
+        },
+        {
+          "number": "98",
+          "name": "Ligne 98: Khaireddine Mannouba - Café Jallou",
+          "type": "urban"
+        },
+        {
+          "number": "9B",
+          "name": "Ligne 9B: Station Barcelone - Cité Thameur",
+          "type": "urban"
         }
       ]
     }
