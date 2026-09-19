@@ -1,694 +1,2937 @@
 {
   "metadata": {
-    "source": "Extracted from bizerteconnect.com + destination-tunis.fr",
+    "source": "BizerteConnect API v1 (bizerteconnect.com)",
     "extracted_date": "2026-09-18",
-    "note": "User wants: show closest transport to current location, then lines from A to B with midway stops"
+    "note": "User wants: show closest transport to current location, then lines from A to B with midway stops",
+    "total_lines": 131
   },
   "data_model": {
     "version": "0.2",
     "description": "Line-based model with ordered stops. Each line has stations[] in order. User query: from my location → to destination → show nearby stations + lines connecting them + all stops in between.",
-    "entities": ["stations", "lines", "line_stops", "departures", "fares"]
+    "entities": [
+      "stations",
+      "lines",
+      "line_stops",
+      "departures",
+      "fares"
+    ]
   },
   "stations": [
-    {"id": "bizerte_ville", "name_ar": "بنزرت", "name_fr": "Bizerte", "name_en": "Bizerte", "lat": 37.274, "lon": 9.874, "type": "bus_louage_station"},
-    {"id": "bizerte_corniche", "name_ar": "كورنيش بنزرت", "name_fr": "Corniche Bizerte", "name_en": "Bizerte Corniche", "lat": 37.280, "lon": 9.865, "type": "bus_stop"},
-    {"id": "menzel_bourguiba", "name_ar": "منزل بورقيبة", "name_fr": "Menzel Bourguiba", "name_en": "Menzel Bourguiba", "lat": 37.155, "lon": 9.794, "type": "bus_louage_station"},
-    {"id": "menzel_jemil", "name_ar": "منزل جميل", "name_fr": "Menzel Jemil", "name_en": "Menzel Jemil", "lat": 37.238, "lon": 9.914, "type": "bus_stop"},
-    {"id": "menzel_abderrahmane", "name_ar": "منزل عبد الرحمن", "name_fr": "Menzel Abderrahmane", "name_en": "Menzel Abderrahmane", "lat": 37.220, "lon": 9.930, "type": "bus_stop"},
-    {"id": "tinja", "name_ar": "تينجة", "name_fr": "Tinja", "name_en": "Tinja", "lat": 37.160, "lon": 9.750, "type": "bus_stop"},
-    {"id": "ras_jebel", "name_ar": "رأس الجبل", "name_fr": "Ras Jebel", "name_en": "Ras Jebel", "lat": 37.215, "lon": 9.980, "type": "bus_stop"},
-    {"id": "ghar_el_melh", "name_ar": "غار الملح", "name_fr": "Ghar El Melh", "name_en": "Ghar El Melh", "lat": 37.300, "lon": 9.850, "type": "bus_stop"},
-    {"id": "sejnane", "name_ar": "سجنان", "name_fr": "Sejnane", "name_en": "Sejnane", "lat": 37.150, "lon": 9.550, "type": "bus_stop"},
-    {"id": "mateur", "name_ar": "ماطر", "name_fr": "Mateur", "name_en": "Mateur", "lat": 37.040, "lon": 9.660, "type": "bus_stop"},
-    {"id": "el_alia", "name_ar": "العالية", "name_fr": "El Alia", "name_en": "El Alia", "lat": 37.230, "lon": 10.030, "type": "bus_stop"},
-    {"id": "ras_el_jebel", "name_ar": "رأس الجبل", "name_fr": "Ras El Jebel", "name_en": "Ras El Jebel", "lat": 37.210, "lon": 10.140, "type": "bus_stop"},
-    {"id": "metline", "name_ar": "المطلين", "name_fr": "El Metline", "name_en": "Metline", "lat": 37.250, "lon": 10.070, "type": "bus_stop"},
-    {"id": "el_ghirane", "name_ar": "الغيران", "name_fr": "El Ghirane", "name_en": "El Ghirane", "lat": 37.260, "lon": 9.930, "type": "bus_stop"},
-    {"id": "el_mssida", "name_ar": "المساعدة", "name_fr": "El Mssida", "name_en": "El Mssida", "lat": 37.245, "lon": 9.880, "type": "bus_stop"},
-    {"id": "enadhour", "name_ar": "الناظور", "name_fr": "Enadhour", "name_en": "Enadhour", "lat": 37.290, "lon": 9.840, "type": "bus_stop"},
-    {"id": "louata", "name_ar": "اللواتة", "name_fr": "Louata", "name_en": "Louata", "lat": 37.200, "lon": 9.950, "type": "bus_stop"},
-    {"id": "jbel_ahmed", "name_ar": "جبل أحمد", "name_fr": "Sidi Ahmed", "name_en": "Sidi Ahmed", "lat": 37.205, "lon": 9.870, "type": "bus_stop"},
-    {"id": "bazina", "name_ar": "بازينة", "name_fr": "Bazina", "name_en": "Bazina", "lat": 37.180, "lon": 9.900, "type": "bus_stop"},
-    {"id": "joumine", "name_ar": "جومين", "name_fr": "Joumine", "name_en": "Joumine", "lat": 37.100, "lon": 9.700, "type": "bus_stop"},
-    {"id": "rafraf", "name_ar": "رفراف", "name_fr": "Rafraf", "name_en": "Rafraf", "lat": 37.190, "lon": 10.200, "type": "bus_stop"},
-    {"id": "utique", "name_ar": "أوتيك", "name_fr": "Utique", "name_en": "Utique", "lat": 37.050, "lon": 10.050, "type": "bus_stop"},
-    {"id": "el_mabtouh", "name_ar": "المبطوح", "name_fr": "El Mabtouh", "name_en": "El Mabtouh", "lat": 37.310, "lon": 9.830, "type": "bus_stop"},
-    {"id": "hay_el_oummal", "name_ar": "حي العمال", "name_fr": "Hay El Ommal", "name_en": "Hay El Oummal", "lat": 37.265, "lon": 9.875, "type": "bus_stop"},
-    {"id": "zahana", "name_ar": "زهانة", "name_fr": "Zahana", "name_en": "Zahana", "lat": 37.300, "lon": 9.900, "type": "bus_stop"},
-    {"id": "bab_saadoun", "name_ar": "باب سعدون", "name_fr": "Bab Saadoun", "name_en": "Bab Saadoun", "lat": 36.8096, "lon": 10.1617, "type": "louage_bus_station"},
-    {"id": "tunis_marine", "name_ar": "تونس البحرية", "name_fr": "Tunis Marine", "name_en": "Tunis Marine", "lat": 36.8003, "lon": 10.1904, "type": "bus_metro_station"},
-    {"id": "aeroport_tunis", "name_ar": "مطار تونس قرطاج", "name_fr": "Aéroport Tunis-Carthage", "name_en": "Tunis-Carthage Airport", "lat": 36.851, "lon": 10.227, "type": "bus_stop"},
-    {"id": "sousse_louage", "name_ar": "محطة النقل بسوسة", "name_fr": "Sousse", "name_en": "Sousse", "lat": 35.828, "lon": 10.639, "type": "louage_station"},
-    {"id": "monastir_louage", "name_ar": "المنستير", "name_fr": "Monastir", "name_en": "Monastir", "lat": 35.764, "lon": 10.813, "type": "louage_station"},
-    {"id": "hammamet", "name_ar": "الحمامات", "name_fr": "Hammamet", "name_en": "Hammamet", "lat": 36.400, "lon": 10.617, "type": "bus_louage_station"},
-    {"id": "nabeul", "name_ar": "نابل", "name_fr": "Nabeul", "name_en": "Nabeul", "lat": 36.456, "lon": 10.738, "type": "louage_station"},
-    {"id": "ain_el_berda", "name_ar": "عين البردة", "name_fr": "Ain El Berda", "name_en": "Ain El Berda", "lat": 37.210, "lon": 9.860, "type": "bus_stop"},
-    {"id": "ain_meriem", "name_ar": "عين مريم", "name_fr": "Ain Meriem", "name_en": "Ain Meriem", "lat": 37.290, "lon": 9.890, "type": "bus_stop"},
-    {"id": "amila", "name_ar": "أميلة", "name_fr": "Amila", "name_en": "Amila", "lat": 37.275, "lon": 9.915, "type": "bus_stop"},
-    {"id": "bechater", "name_ar": "بشاتر", "name_fr": "Bechater", "name_en": "Bechater", "lat": 37.295, "lon": 9.940, "type": "bus_stop"},
-    {"id": "beni_aouf", "name_ar": "بني عوف", "name_fr": "Béni Aouf", "name_en": "Béni Aouf", "lat": 37.310, "lon": 9.920, "type": "bus_stop"},
-    {"id": "beni_nafaa", "name_ar": "بني نفاع", "name_fr": "Béni Nafaa", "name_en": "Béni Nafaa", "lat": 37.250, "lon": 9.960, "type": "bus_stop"},
-    {"id": "el_bespasia", "name_ar": "البسباسية", "name_fr": "El Bespasia", "name_en": "El Bespasia", "lat": 37.170, "lon": 9.990, "type": "bus_stop"},
-    {"id": "el_blat", "name_ar": "البلاط", "name_fr": "El Blat", "name_en": "El Blat", "lat": 37.140, "lon": 10.020, "type": "bus_stop"},
-    {"id": "el_garia", "name_ar": "الجرية", "name_fr": "El Garia", "name_en": "El Garia", "lat": 37.220, "lon": 10.100, "type": "bus_stop"},
-    {"id": "el_hammari", "name_ar": "الحماري", "name_fr": "El Hammari", "name_en": "El Hammari", "lat": 37.230, "lon": 10.130, "type": "bus_stop"},
-    {"id": "el_kantara", "name_ar": "القنطرة", "name_fr": "El Kantara", "name_en": "El Kantara", "lat": 37.120, "lon": 9.880, "type": "bus_stop"},
-    {"id": "el_khetracha", "name_ar": "الخترشة", "name_fr": "El Khetracha", "name_en": "El Khetracha", "lat": 37.190, "lon": 9.840, "type": "bus_stop"},
-    {"id": "es_saoudia", "name_ar": "السعدية", "name_fr": "Es Saoudia", "name_en": "Es Saoudia", "lat": 37.250, "lon": 10.000, "type": "bus_stop"},
-    {"id": "ettouajnia", "name_ar": "التواجنية", "name_fr": "Ettouajnia", "name_en": "Ettouajnia", "lat": 37.160, "lon": 9.930, "type": "bus_stop"},
-    {"id": "garnata", "name_ar": "قرنطة", "name_fr": "Garnata", "name_en": "Garnata", "lat": 37.210, "lon": 9.820, "type": "bus_stop"},
-    {"id": "gankla", "name_ar": "جكنكلا", "name_fr": "Gannkla", "name_en": "Gannkla", "lat": 37.180, "lon": 9.970, "type": "bus_stop"},
-    {"id": "boujrir", "name_ar": "بوجرير", "name_fr": "Boujrir", "name_en": "Boujrir", "lat": 37.080, "lon": 9.690, "type": "bus_stop"},
-    {"id": "beni_ibrahim", "name_ar": "بني إبراهيم", "name_fr": "Beni Ibrahim", "name_en": "Beni Ibrahim", "lat": 37.100, "lon": 9.720, "type": "bus_stop"},
-    {"id": "ed_dkhila", "name_ar": "الدخيلة", "name_fr": "Ed Dkhila", "name_en": "Ed Dkhila", "lat": 37.110, "lon": 9.750, "type": "bus_stop"},
-    {"id": "eddouaouda", "name_ar": "الدوادة", "name_fr": "Eddouaouda", "name_en": "Eddouaouda", "lat": 37.120, "lon": 9.780, "type": "bus_stop"},
-    {"id": "el_hamrounia", "name_ar": "الحمرونية", "name_fr": "El Hamrounia", "name_en": "El Hamrounia", "lat": 37.130, "lon": 9.800, "type": "bus_stop"},
-    {"id": "el_kahla", "name_ar": "الكحلة", "name_fr": "El Kahla", "name_en": "El Kahla", "lat": 37.140, "lon": 9.820, "type": "bus_stop"},
-    {"id": "ksar_khrouf", "name_ar": "قصر خروف", "name_fr": "Ksar Khrouf", "name_en": "Ksar Khrouf", "lat": 37.320, "lon": 9.880, "type": "bus_stop"},
-    {"id": "bouzaria", "name_ar": "بوزارية", "name_fr": "Bouzaria", "name_en": "Bouzaria", "lat": 37.300, "lon": 9.960, "type": "bus_stop"},
-    {"id": "beni_toun", "name_ar": "بني تون", "name_fr": "Béni Toun", "name_en": "Béni Toun", "lat": 37.100, "lon": 10.050, "type": "bus_stop"},
-    {"id": "ezzaghrour", "name_ar": "الزغرور", "name_fr": "Ezzaghrour", "name_en": "Ezzaghrour", "lat": 37.160, "lon": 10.080, "type": "bus_stop"},
-    {"id": "oumhani", "name_ar": "أم هاني", "name_fr": "Oum Hani", "name_en": "Oum Hani", "lat": 37.140, "lon": 10.100, "type": "bus_stop"},
-    {"id": "sidi_yahia", "name_ar": "سيدي يحيى", "name_fr": "Sidi Yahia", "name_en": "Sidi Yahia", "lat": 37.170, "lon": 10.120, "type": "bus_stop"},
-    {"id": "ezzgueb", "name_ar": "الزقاب", "name_fr": "Ezzgueb", "name_en": "Ezzgueb", "lat": 37.220, "lon": 9.850, "type": "bus_stop"},
-    {"id": "el_azib", "name_ar": "العزب", "name_fr": "El Azib", "name_en": "El Azib", "lat": 37.235, "lon": 9.905, "type": "bus_stop"},
-    {"id": "rouaha", "name_ar": "رواحة", "name_fr": "Rouaha", "name_en": "Rouaha", "lat": 37.070, "lon": 9.660, "type": "bus_stop"},
-    {"id": "tahent", "name_ar": "تاهنت", "name_fr": "Tahent", "name_en": "Tahent", "lat": 37.050, "lon": 9.650, "type": "bus_stop"},
-    {"id": "sidi_el_bechir", "name_ar": "سيدي البشير", "name_fr": "Sidi El Bechir", "name_en": "Sidi El Bechir", "lat": 37.030, "lon": 9.620, "type": "bus_stop"},
-    {"id": "sogman", "name_ar": "سوجمان", "name_fr": "Sogman", "name_en": "Sogman", "lat": 37.290, "lon": 9.980, "type": "bus_stop"},
-    {"id": "el_blat", "name_ar": "البلاط", "name_fr": "El Blat", "name_en": "El Blat", "lat": 37.150, "lon": 10.000, "type": "bus_stop"},
-    {"id": "sidi_abdelbasset", "name_ar": "سيدي عبد الباسط", "name_fr": "Sidi Abdelbasset", "name_en": "Sidi Abdelbasset", "lat": 37.130, "lon": 9.940, "type": "bus_stop"},
-    {"id": "sidi_mansour", "name_ar": "سيدي منصور", "name_fr": "Sidi Mansour", "name_en": "Sidi Mansour", "lat": 37.110, "lon": 9.920, "type": "bus_stop"},
-    {"id": "sidi_othman", "name_ar": "سيدي عثمان", "name_fr": "Sidi Othman", "name_en": "Sidi Othman", "lat": 37.320, "lon": 9.820, "type": "bus_stop"},
-    {"id": "beni_hamaba", "name_ar": "بني همامة", "name_fr": "Béni Hamaba", "name_en": "Béni Hamaba", "lat": 37.330, "lon": 9.810, "type": "bus_stop"},
-    {"id": "plage_salem", "name_ar": "شاطئ سيدي سالم", "name_fr": "Plage Sidi Salem Bizerte", "name_en": "Sidi Salem Beach", "lat": 37.350, "lon": 9.780, "type": "bus_stop"},
-    {"id": "sidi_gharib", "name_ar": "سيدي غريب", "name_fr": "Plage Sidi Gharib Sejnane", "name_en": "Sidi Gharib Beach", "lat": 37.120, "lon": 9.500, "type": "bus_stop"},
-    {"id": "boumkhila", "name_ar": "بومخيلة", "name_fr": "Boumkhila", "name_en": "Boumkhila", "lat": 37.120, "lon": 9.850, "type": "bus_stop"},
-    {"id": "amaden", "name_ar": "أمادن", "name_fr": "Amaden", "name_en": "Amaden", "lat": 37.270, "lon": 9.930, "type": "bus_stop"},
-    {"id": "el_bessbessia", "name_ar": "البسبسية", "name_fr": "El Bessbessia", "name_en": "El Bessbessia", "lat": 37.280, "lon": 9.870, "type": "bus_stop"},
-    {"id": "el_garoudi", "name_ar": "الغرودي", "name_fr": "El Garoudi", "name_en": "El Garoudi", "lat": 37.240, "lon": 9.840, "type": "bus_stop"},
-    {"id": "el_hkara", "name_ar": "الحكرة", "name_fr": "El Hkara", "name_en": "El Hkara", "lat": 37.200, "lon": 9.870, "type": "bus_stop"},
-    {"id": "el_hnia", "name_ar": "الهنية", "name_fr": "El Hnia", "name_en": "El Hnia", "lat": 37.170, "lon": 9.860, "type": "bus_stop"},
-    {"id": "el_jadida", "name_ar": "الجديدة", "name_fr": "El Jadida", "name_en": "El Jadida", "lat": 37.290, "lon": 9.830, "type": "bus_stop"},
-    {"id": "el_tella", "name_ar": "التلة", "name_fr": "El Tella", "name_en": "El Tella", "lat": 37.260, "lon": 9.950, "type": "bus_stop"},
-    {"id": "eschallahmia", "name_ar": "الشلغماية", "name_fr": "Echellaghmia", "name_en": "Echellaghmia", "lat": 37.190, "lon": 10.150, "type": "bus_stop"},
-    {"id": "michou", "name_ar": "ميشو", "name_fr": "Michou", "name_en": "Michou", "lat": 37.070, "lon": 9.830, "type": "bus_stop"},
-    {"id": "beni_moslem", "name_ar": "بني مسلم", "name_fr": "Béni Moslem", "name_en": "Béni Moslem", "lat": 37.330, "lon": 9.900, "type": "bus_stop"},
-    {"id": "sidi_amer", "name_ar": "سيدي عامر", "name_fr": "Sidi Amer - Ghar Wankel", "name_en": "Sidi Amer", "lat": 37.250, "lon": 9.980, "type": "bus_stop"},
-    {"id": "hay_bougatfa", "name_ar": "حي بوقاطفة", "name_fr": "Hay Bougatfa", "name_en": "Hay Bougatfa", "lat": 37.255, "lon": 9.890, "type": "bus_stop"},
-    {"id": "chatt_el_kebir", "name_ar": "شط الكبير", "name_fr": "Chatt El Kebir (Jarzouna)", "name_en": "Chatt El Kebir", "lat": 37.240, "lon": 9.860, "type": "bus_stop"},
-    {"id": "institut_boukhris", "name_ar": "معهد بخريص", "name_fr": "Institut Boukhris", "name_en": "Institut Boukhris", "lat": 37.250, "lon": 9.880, "type": "bus_stop"},
-    {"id": "el_houidh", "name_ar": "الهويذ", "name_fr": "El Houidh Line", "name_en": "El Houidh", "lat": 37.270, "lon": 9.920, "type": "bus_stop"},
-    {"id": "cite_el_manar", "name_ar": "cite المنار", "name_fr": "Cité El Manar", "name_en": "Cité El Manar", "lat": 37.310, "lon": 9.870, "type": "bus_stop"},
-    {"id": "lycee_menzel_jemil", "name_ar": "ثانوية منزل جميل", "name_fr": "Lycée Menzel Jemil", "name_en": "Menzel Jemil High School", "lat": 37.240, "lon": 9.920, "type": "bus_stop"},
-    {"id": "lycee_el_canal", "name_ar": "ثانوية القنال", "name_fr": "Lycée El Canal", "name_en": "El Canal High School", "lat": 37.230, "lon": 9.930, "type": "bus_stop"}
+    {
+      "id": "bizerte_ville",
+      "name_ar": "بنزرت",
+      "name_fr": "Bizerte",
+      "name_en": "Bizerte",
+      "lat": 37.274,
+      "lon": 9.874,
+      "type": "bus_louage_station"
+    },
+    {
+      "id": "bizerte_corniche",
+      "name_ar": "كورنيش بنزرت",
+      "name_fr": "Corniche Bizerte",
+      "name_en": "Bizerte Corniche",
+      "lat": 37.28,
+      "lon": 9.865,
+      "type": "bus_stop"
+    },
+    {
+      "id": "menzel_bourguiba",
+      "name_ar": "منزل بورقيبة",
+      "name_fr": "Menzel Bourguiba",
+      "name_en": "Menzel Bourguiba",
+      "lat": 37.155,
+      "lon": 9.794,
+      "type": "bus_louage_station"
+    },
+    {
+      "id": "menzel_jemil",
+      "name_ar": "منزل جميل",
+      "name_fr": "Menzel Jemil",
+      "name_en": "Menzel Jemil",
+      "lat": 37.238,
+      "lon": 9.914,
+      "type": "bus_stop"
+    },
+    {
+      "id": "menzel_abderrahmane",
+      "name_ar": "منزل عبد الرحمن",
+      "name_fr": "Menzel Abderrahmane",
+      "name_en": "Menzel Abderrahmane",
+      "lat": 37.22,
+      "lon": 9.93,
+      "type": "bus_stop"
+    },
+    {
+      "id": "tinja",
+      "name_ar": "تينجة",
+      "name_fr": "Tinja",
+      "name_en": "Tinja",
+      "lat": 37.16,
+      "lon": 9.75,
+      "type": "bus_stop"
+    },
+    {
+      "id": "ras_jebel",
+      "name_ar": "رأس الجبل",
+      "name_fr": "Ras Jebel",
+      "name_en": "Ras Jebel",
+      "lat": 37.215,
+      "lon": 9.98,
+      "type": "bus_stop"
+    },
+    {
+      "id": "ghar_el_melh",
+      "name_ar": "غار الملح",
+      "name_fr": "Ghar El Melh",
+      "name_en": "Ghar El Melh",
+      "lat": 37.3,
+      "lon": 9.85,
+      "type": "bus_stop"
+    },
+    {
+      "id": "sejnane",
+      "name_ar": "سجنان",
+      "name_fr": "Sejnane",
+      "name_en": "Sejnane",
+      "lat": 37.15,
+      "lon": 9.55,
+      "type": "bus_stop"
+    },
+    {
+      "id": "mateur",
+      "name_ar": "ماطر",
+      "name_fr": "Mateur",
+      "name_en": "Mateur",
+      "lat": 37.04,
+      "lon": 9.66,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_alia",
+      "name_ar": "العالية",
+      "name_fr": "El Alia",
+      "name_en": "El Alia",
+      "lat": 37.23,
+      "lon": 10.03,
+      "type": "bus_stop"
+    },
+    {
+      "id": "ras_el_jebel",
+      "name_ar": "رأس الجبل",
+      "name_fr": "Ras El Jebel",
+      "name_en": "Ras El Jebel",
+      "lat": 37.21,
+      "lon": 10.14,
+      "type": "bus_stop"
+    },
+    {
+      "id": "metline",
+      "name_ar": "المطلين",
+      "name_fr": "El Metline",
+      "name_en": "Metline",
+      "lat": 37.25,
+      "lon": 10.07,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_ghirane",
+      "name_ar": "الغيران",
+      "name_fr": "El Ghirane",
+      "name_en": "El Ghirane",
+      "lat": 37.26,
+      "lon": 9.93,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_mssida",
+      "name_ar": "المساعدة",
+      "name_fr": "El Mssida",
+      "name_en": "El Mssida",
+      "lat": 37.245,
+      "lon": 9.88,
+      "type": "bus_stop"
+    },
+    {
+      "id": "enadhour",
+      "name_ar": "الناظور",
+      "name_fr": "Enadhour",
+      "name_en": "Enadhour",
+      "lat": 37.29,
+      "lon": 9.84,
+      "type": "bus_stop"
+    },
+    {
+      "id": "louata",
+      "name_ar": "اللواتة",
+      "name_fr": "Louata",
+      "name_en": "Louata",
+      "lat": 37.2,
+      "lon": 9.95,
+      "type": "bus_stop"
+    },
+    {
+      "id": "jbel_ahmed",
+      "name_ar": "جبل أحمد",
+      "name_fr": "Sidi Ahmed",
+      "name_en": "Sidi Ahmed",
+      "lat": 37.205,
+      "lon": 9.87,
+      "type": "bus_stop"
+    },
+    {
+      "id": "bazina",
+      "name_ar": "بازينة",
+      "name_fr": "Bazina",
+      "name_en": "Bazina",
+      "lat": 37.18,
+      "lon": 9.9,
+      "type": "bus_stop"
+    },
+    {
+      "id": "joumine",
+      "name_ar": "جومين",
+      "name_fr": "Joumine",
+      "name_en": "Joumine",
+      "lat": 37.1,
+      "lon": 9.7,
+      "type": "bus_stop"
+    },
+    {
+      "id": "rafraf",
+      "name_ar": "رفراف",
+      "name_fr": "Rafraf",
+      "name_en": "Rafraf",
+      "lat": 37.19,
+      "lon": 10.2,
+      "type": "bus_stop"
+    },
+    {
+      "id": "utique",
+      "name_ar": "أوتيك",
+      "name_fr": "Utique",
+      "name_en": "Utique",
+      "lat": 37.05,
+      "lon": 10.05,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_mabtouh",
+      "name_ar": "المبطوح",
+      "name_fr": "El Mabtouh",
+      "name_en": "El Mabtouh",
+      "lat": 37.31,
+      "lon": 9.83,
+      "type": "bus_stop"
+    },
+    {
+      "id": "hay_el_oummal",
+      "name_ar": "حي العمال",
+      "name_fr": "Hay El Ommal",
+      "name_en": "Hay El Oummal",
+      "lat": 37.265,
+      "lon": 9.875,
+      "type": "bus_stop"
+    },
+    {
+      "id": "zahana",
+      "name_ar": "زهانة",
+      "name_fr": "Zahana",
+      "name_en": "Zahana",
+      "lat": 37.3,
+      "lon": 9.9,
+      "type": "bus_stop"
+    },
+    {
+      "id": "bab_saadoun",
+      "name_ar": "باب سعدون",
+      "name_fr": "Bab Saadoun",
+      "name_en": "Bab Saadoun",
+      "lat": 36.8096,
+      "lon": 10.1617,
+      "type": "louage_bus_station"
+    },
+    {
+      "id": "tunis_marine",
+      "name_ar": "تونس البحرية",
+      "name_fr": "Tunis Marine",
+      "name_en": "Tunis Marine",
+      "lat": 36.8003,
+      "lon": 10.1904,
+      "type": "bus_metro_station"
+    },
+    {
+      "id": "aeroport_tunis",
+      "name_ar": "مطار تونس قرطاج",
+      "name_fr": "Aéroport Tunis-Carthage",
+      "name_en": "Tunis-Carthage Airport",
+      "lat": 36.851,
+      "lon": 10.227,
+      "type": "bus_stop"
+    },
+    {
+      "id": "sousse_louage",
+      "name_ar": "محطة النقل بسوسة",
+      "name_fr": "Sousse",
+      "name_en": "Sousse",
+      "lat": 35.828,
+      "lon": 10.639,
+      "type": "louage_station"
+    },
+    {
+      "id": "monastir_louage",
+      "name_ar": "المنستير",
+      "name_fr": "Monastir",
+      "name_en": "Monastir",
+      "lat": 35.764,
+      "lon": 10.813,
+      "type": "louage_station"
+    },
+    {
+      "id": "hammamet",
+      "name_ar": "الحمامات",
+      "name_fr": "Hammamet",
+      "name_en": "Hammamet",
+      "lat": 36.4,
+      "lon": 10.617,
+      "type": "bus_louage_station"
+    },
+    {
+      "id": "nabeul",
+      "name_ar": "نابل",
+      "name_fr": "Nabeul",
+      "name_en": "Nabeul",
+      "lat": 36.456,
+      "lon": 10.738,
+      "type": "louage_station"
+    },
+    {
+      "id": "ain_el_berda",
+      "name_ar": "عين البردة",
+      "name_fr": "Ain El Berda",
+      "name_en": "Ain El Berda",
+      "lat": 37.21,
+      "lon": 9.86,
+      "type": "bus_stop"
+    },
+    {
+      "id": "ain_meriem",
+      "name_ar": "عين مريم",
+      "name_fr": "Ain Meriem",
+      "name_en": "Ain Meriem",
+      "lat": 37.29,
+      "lon": 9.89,
+      "type": "bus_stop"
+    },
+    {
+      "id": "amila",
+      "name_ar": "أميلة",
+      "name_fr": "Amila",
+      "name_en": "Amila",
+      "lat": 37.275,
+      "lon": 9.915,
+      "type": "bus_stop"
+    },
+    {
+      "id": "bechater",
+      "name_ar": "بشاتر",
+      "name_fr": "Bechater",
+      "name_en": "Bechater",
+      "lat": 37.295,
+      "lon": 9.94,
+      "type": "bus_stop"
+    },
+    {
+      "id": "beni_aouf",
+      "name_ar": "بني عوف",
+      "name_fr": "Béni Aouf",
+      "name_en": "Béni Aouf",
+      "lat": 37.31,
+      "lon": 9.92,
+      "type": "bus_stop"
+    },
+    {
+      "id": "beni_nafaa",
+      "name_ar": "بني نفاع",
+      "name_fr": "Béni Nafaa",
+      "name_en": "Béni Nafaa",
+      "lat": 37.25,
+      "lon": 9.96,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_bespasia",
+      "name_ar": "البسباسية",
+      "name_fr": "El Bespasia",
+      "name_en": "El Bespasia",
+      "lat": 37.17,
+      "lon": 9.99,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_blat",
+      "name_ar": "البلاط",
+      "name_fr": "El Blat",
+      "name_en": "El Blat",
+      "lat": 37.14,
+      "lon": 10.02,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_garia",
+      "name_ar": "الجرية",
+      "name_fr": "El Garia",
+      "name_en": "El Garia",
+      "lat": 37.22,
+      "lon": 10.1,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_hammari",
+      "name_ar": "الحماري",
+      "name_fr": "El Hammari",
+      "name_en": "El Hammari",
+      "lat": 37.23,
+      "lon": 10.13,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_kantara",
+      "name_ar": "القنطرة",
+      "name_fr": "El Kantara",
+      "name_en": "El Kantara",
+      "lat": 37.12,
+      "lon": 9.88,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_khetracha",
+      "name_ar": "الخترشة",
+      "name_fr": "El Khetracha",
+      "name_en": "El Khetracha",
+      "lat": 37.19,
+      "lon": 9.84,
+      "type": "bus_stop"
+    },
+    {
+      "id": "es_saoudia",
+      "name_ar": "السعدية",
+      "name_fr": "Es Saoudia",
+      "name_en": "Es Saoudia",
+      "lat": 37.25,
+      "lon": 10.0,
+      "type": "bus_stop"
+    },
+    {
+      "id": "ettouajnia",
+      "name_ar": "التواجنية",
+      "name_fr": "Ettouajnia",
+      "name_en": "Ettouajnia",
+      "lat": 37.16,
+      "lon": 9.93,
+      "type": "bus_stop"
+    },
+    {
+      "id": "garnata",
+      "name_ar": "قرنطة",
+      "name_fr": "Garnata",
+      "name_en": "Garnata",
+      "lat": 37.21,
+      "lon": 9.82,
+      "type": "bus_stop"
+    },
+    {
+      "id": "gankla",
+      "name_ar": "جكنكلا",
+      "name_fr": "Gannkla",
+      "name_en": "Gannkla",
+      "lat": 37.18,
+      "lon": 9.97,
+      "type": "bus_stop"
+    },
+    {
+      "id": "boujrir",
+      "name_ar": "بوجرير",
+      "name_fr": "Boujrir",
+      "name_en": "Boujrir",
+      "lat": 37.08,
+      "lon": 9.69,
+      "type": "bus_stop"
+    },
+    {
+      "id": "beni_ibrahim",
+      "name_ar": "بني إبراهيم",
+      "name_fr": "Beni Ibrahim",
+      "name_en": "Beni Ibrahim",
+      "lat": 37.1,
+      "lon": 9.72,
+      "type": "bus_stop"
+    },
+    {
+      "id": "ed_dkhila",
+      "name_ar": "الدخيلة",
+      "name_fr": "Ed Dkhila",
+      "name_en": "Ed Dkhila",
+      "lat": 37.11,
+      "lon": 9.75,
+      "type": "bus_stop"
+    },
+    {
+      "id": "eddouaouda",
+      "name_ar": "الدوادة",
+      "name_fr": "Eddouaouda",
+      "name_en": "Eddouaouda",
+      "lat": 37.12,
+      "lon": 9.78,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_hamrounia",
+      "name_ar": "الحمرونية",
+      "name_fr": "El Hamrounia",
+      "name_en": "El Hamrounia",
+      "lat": 37.13,
+      "lon": 9.8,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_kahla",
+      "name_ar": "الكحلة",
+      "name_fr": "El Kahla",
+      "name_en": "El Kahla",
+      "lat": 37.14,
+      "lon": 9.82,
+      "type": "bus_stop"
+    },
+    {
+      "id": "ksar_khrouf",
+      "name_ar": "قصر خروف",
+      "name_fr": "Ksar Khrouf",
+      "name_en": "Ksar Khrouf",
+      "lat": 37.32,
+      "lon": 9.88,
+      "type": "bus_stop"
+    },
+    {
+      "id": "bouzaria",
+      "name_ar": "بوزارية",
+      "name_fr": "Bouzaria",
+      "name_en": "Bouzaria",
+      "lat": 37.3,
+      "lon": 9.96,
+      "type": "bus_stop"
+    },
+    {
+      "id": "beni_toun",
+      "name_ar": "بني تون",
+      "name_fr": "Béni Toun",
+      "name_en": "Béni Toun",
+      "lat": 37.1,
+      "lon": 10.05,
+      "type": "bus_stop"
+    },
+    {
+      "id": "ezzaghrour",
+      "name_ar": "الزغرور",
+      "name_fr": "Ezzaghrour",
+      "name_en": "Ezzaghrour",
+      "lat": 37.16,
+      "lon": 10.08,
+      "type": "bus_stop"
+    },
+    {
+      "id": "oumhani",
+      "name_ar": "أم هاني",
+      "name_fr": "Oum Hani",
+      "name_en": "Oum Hani",
+      "lat": 37.14,
+      "lon": 10.1,
+      "type": "bus_stop"
+    },
+    {
+      "id": "sidi_yahia",
+      "name_ar": "سيدي يحيى",
+      "name_fr": "Sidi Yahia",
+      "name_en": "Sidi Yahia",
+      "lat": 37.17,
+      "lon": 10.12,
+      "type": "bus_stop"
+    },
+    {
+      "id": "ezzgueb",
+      "name_ar": "الزقاب",
+      "name_fr": "Ezzgueb",
+      "name_en": "Ezzgueb",
+      "lat": 37.22,
+      "lon": 9.85,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_azib",
+      "name_ar": "العزب",
+      "name_fr": "El Azib",
+      "name_en": "El Azib",
+      "lat": 37.235,
+      "lon": 9.905,
+      "type": "bus_stop"
+    },
+    {
+      "id": "rouaha",
+      "name_ar": "رواحة",
+      "name_fr": "Rouaha",
+      "name_en": "Rouaha",
+      "lat": 37.07,
+      "lon": 9.66,
+      "type": "bus_stop"
+    },
+    {
+      "id": "tahent",
+      "name_ar": "تاهنت",
+      "name_fr": "Tahent",
+      "name_en": "Tahent",
+      "lat": 37.05,
+      "lon": 9.65,
+      "type": "bus_stop"
+    },
+    {
+      "id": "sidi_el_bechir",
+      "name_ar": "سيدي البشير",
+      "name_fr": "Sidi El Bechir",
+      "name_en": "Sidi El Bechir",
+      "lat": 37.03,
+      "lon": 9.62,
+      "type": "bus_stop"
+    },
+    {
+      "id": "sogman",
+      "name_ar": "سوجمان",
+      "name_fr": "Sogman",
+      "name_en": "Sogman",
+      "lat": 37.29,
+      "lon": 9.98,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_blat",
+      "name_ar": "البلاط",
+      "name_fr": "El Blat",
+      "name_en": "El Blat",
+      "lat": 37.15,
+      "lon": 10.0,
+      "type": "bus_stop"
+    },
+    {
+      "id": "sidi_abdelbasset",
+      "name_ar": "سيدي عبد الباسط",
+      "name_fr": "Sidi Abdelbasset",
+      "name_en": "Sidi Abdelbasset",
+      "lat": 37.13,
+      "lon": 9.94,
+      "type": "bus_stop"
+    },
+    {
+      "id": "sidi_mansour",
+      "name_ar": "سيدي منصور",
+      "name_fr": "Sidi Mansour",
+      "name_en": "Sidi Mansour",
+      "lat": 37.11,
+      "lon": 9.92,
+      "type": "bus_stop"
+    },
+    {
+      "id": "sidi_othman",
+      "name_ar": "سيدي عثمان",
+      "name_fr": "Sidi Othman",
+      "name_en": "Sidi Othman",
+      "lat": 37.32,
+      "lon": 9.82,
+      "type": "bus_stop"
+    },
+    {
+      "id": "beni_hamaba",
+      "name_ar": "بني همامة",
+      "name_fr": "Béni Hamaba",
+      "name_en": "Béni Hamaba",
+      "lat": 37.33,
+      "lon": 9.81,
+      "type": "bus_stop"
+    },
+    {
+      "id": "plage_salem",
+      "name_ar": "شاطئ سيدي سالم",
+      "name_fr": "Plage Sidi Salem Bizerte",
+      "name_en": "Sidi Salem Beach",
+      "lat": 37.35,
+      "lon": 9.78,
+      "type": "bus_stop"
+    },
+    {
+      "id": "sidi_gharib",
+      "name_ar": "سيدي غريب",
+      "name_fr": "Plage Sidi Gharib Sejnane",
+      "name_en": "Sidi Gharib Beach",
+      "lat": 37.12,
+      "lon": 9.5,
+      "type": "bus_stop"
+    },
+    {
+      "id": "boumkhila",
+      "name_ar": "بومخيلة",
+      "name_fr": "Boumkhila",
+      "name_en": "Boumkhila",
+      "lat": 37.12,
+      "lon": 9.85,
+      "type": "bus_stop"
+    },
+    {
+      "id": "amaden",
+      "name_ar": "أمادن",
+      "name_fr": "Amaden",
+      "name_en": "Amaden",
+      "lat": 37.27,
+      "lon": 9.93,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_bessbessia",
+      "name_ar": "البسبسية",
+      "name_fr": "El Bessbessia",
+      "name_en": "El Bessbessia",
+      "lat": 37.28,
+      "lon": 9.87,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_garoudi",
+      "name_ar": "الغرودي",
+      "name_fr": "El Garoudi",
+      "name_en": "El Garoudi",
+      "lat": 37.24,
+      "lon": 9.84,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_hkara",
+      "name_ar": "الحكرة",
+      "name_fr": "El Hkara",
+      "name_en": "El Hkara",
+      "lat": 37.2,
+      "lon": 9.87,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_hnia",
+      "name_ar": "الهنية",
+      "name_fr": "El Hnia",
+      "name_en": "El Hnia",
+      "lat": 37.17,
+      "lon": 9.86,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_jadida",
+      "name_ar": "الجديدة",
+      "name_fr": "El Jadida",
+      "name_en": "El Jadida",
+      "lat": 37.29,
+      "lon": 9.83,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_tella",
+      "name_ar": "التلة",
+      "name_fr": "El Tella",
+      "name_en": "El Tella",
+      "lat": 37.26,
+      "lon": 9.95,
+      "type": "bus_stop"
+    },
+    {
+      "id": "eschallahmia",
+      "name_ar": "الشلغماية",
+      "name_fr": "Echellaghmia",
+      "name_en": "Echellaghmia",
+      "lat": 37.19,
+      "lon": 10.15,
+      "type": "bus_stop"
+    },
+    {
+      "id": "michou",
+      "name_ar": "ميشو",
+      "name_fr": "Michou",
+      "name_en": "Michou",
+      "lat": 37.07,
+      "lon": 9.83,
+      "type": "bus_stop"
+    },
+    {
+      "id": "beni_moslem",
+      "name_ar": "بني مسلم",
+      "name_fr": "Béni Moslem",
+      "name_en": "Béni Moslem",
+      "lat": 37.33,
+      "lon": 9.9,
+      "type": "bus_stop"
+    },
+    {
+      "id": "sidi_amer",
+      "name_ar": "سيدي عامر",
+      "name_fr": "Sidi Amer - Ghar Wankel",
+      "name_en": "Sidi Amer",
+      "lat": 37.25,
+      "lon": 9.98,
+      "type": "bus_stop"
+    },
+    {
+      "id": "hay_bougatfa",
+      "name_ar": "حي بوقاطفة",
+      "name_fr": "Hay Bougatfa",
+      "name_en": "Hay Bougatfa",
+      "lat": 37.255,
+      "lon": 9.89,
+      "type": "bus_stop"
+    },
+    {
+      "id": "chatt_el_kebir",
+      "name_ar": "شط الكبير",
+      "name_fr": "Chatt El Kebir (Jarzouna)",
+      "name_en": "Chatt El Kebir",
+      "lat": 37.24,
+      "lon": 9.86,
+      "type": "bus_stop"
+    },
+    {
+      "id": "institut_boukhris",
+      "name_ar": "معهد بخريص",
+      "name_fr": "Institut Boukhris",
+      "name_en": "Institut Boukhris",
+      "lat": 37.25,
+      "lon": 9.88,
+      "type": "bus_stop"
+    },
+    {
+      "id": "el_houidh",
+      "name_ar": "الهويذ",
+      "name_fr": "El Houidh Line",
+      "name_en": "El Houidh",
+      "lat": 37.27,
+      "lon": 9.92,
+      "type": "bus_stop"
+    },
+    {
+      "id": "cite_el_manar",
+      "name_ar": "cite المنار",
+      "name_fr": "Cité El Manar",
+      "name_en": "Cité El Manar",
+      "lat": 37.31,
+      "lon": 9.87,
+      "type": "bus_stop"
+    },
+    {
+      "id": "lycee_menzel_jemil",
+      "name_ar": "ثانوية منزل جميل",
+      "name_fr": "Lycée Menzel Jemil",
+      "name_en": "Menzel Jemil High School",
+      "lat": 37.24,
+      "lon": 9.92,
+      "type": "bus_stop"
+    },
+    {
+      "id": "lycee_el_canal",
+      "name_ar": "ثانوية القنال",
+      "name_fr": "Lycée El Canal",
+      "name_en": "El Canal High School",
+      "lat": 37.23,
+      "lon": 9.93,
+      "type": "bus_stop"
+    },
+    {
+      "id": "bizerte",
+      "name": "Bizerte",
+      "name_ar": "بنزرت",
+      "name_en": "Bizerte"
+    },
+    {
+      "id": "tunis",
+      "name": "Tunis",
+      "name_ar": "تونس",
+      "name_en": "Tunis"
+    },
+    {
+      "id": "plage_sidi_gharib_sejnane",
+      "name": "Plage Sidi Gharib Sejnane",
+      "name_ar": "شاطئ سيدي غريب سجنان",
+      "name_en": "Sidi Gharib Beach Sejnane"
+    },
+    {
+      "id": "a_roport_tunis_carthage",
+      "name": "Aéroport Tunis-Carthage",
+      "name_ar": "مطار تونس قرطاج",
+      "name_en": "Tunis-Carthage Airport"
+    },
+    {
+      "id": "monastir",
+      "name": "Monastir",
+      "name_ar": "المنستير",
+      "name_en": "Monastir"
+    },
+    {
+      "id": "b_ni_aouf",
+      "name": "Béni Aouf",
+      "name_ar": "بني عوف",
+      "name_en": "Beni Aouf"
+    },
+    {
+      "id": "b_ni_aouf_bechater",
+      "name": "Béni Aouf + Bechater",
+      "name_ar": "بني عوف + بشاطر",
+      "name_en": "Beni Aouf + Bechater"
+    },
+    {
+      "id": "b_ni_nafaa",
+      "name": "Béni Nafaa",
+      "name_ar": "بني نافع",
+      "name_en": "Beni Nafaa"
+    },
+    {
+      "id": "corniche_enadhour",
+      "name": "Corniche - Enadhour",
+      "name_ar": "الكرنيش - الناظور",
+      "name_en": "Corniche - Enadhour"
+    },
+    {
+      "id": "corniche_la_nouvelle_route",
+      "name": "Corniche - La Nouvelle Route",
+      "name_ar": "الكورنيش - الطريق الجديد",
+      "name_en": "Corniche - New Road"
+    },
+    {
+      "id": "el_azib_el_alia_lyc_e_menzel_jemil_lyc_e_el_canal",
+      "name": "El Azib - El Alia - Lycée Menzel Jemil - Lycée El Canal",
+      "name_ar": "العزيب - العالية - معهد منزل جميل - معهد القنال",
+      "name_en": "El Azib - El Alia - Menzel Jemil High School - El Canal High School"
+    },
+    {
+      "id": "plage_sidi_salem_bizerte",
+      "name": "Plage Sidi Salem Bizerte",
+      "name_ar": "شاطئ سيدي سالم بنزرت",
+      "name_en": "Sidi Salem Beach Bizerte"
+    },
+    {
+      "id": "hay_el_ommal",
+      "name": "Hay El Ommal",
+      "name_ar": "حي العمال",
+      "name_en": "Hay El Ommal"
+    },
+    {
+      "id": "chatt_el_kebir_jarzouna",
+      "name": "Chatt El Kebir (Jarzouna)",
+      "name_ar": "الشاطئ الكبير بجرزونة",
+      "name_en": "Chatt El Kebir (Jarzouna)"
+    },
+    {
+      "id": "hay_el_waha",
+      "name": "Hay El Waha",
+      "name_ar": "حي الواحة",
+      "name_en": "Hay El Waha"
+    },
+    {
+      "id": "coll_ge_boukhris",
+      "name": "Collége Boukhris",
+      "name_ar": "معهد بوخريص",
+      "name_en": "Boukhris High School"
+    },
+    {
+      "id": "el_baspasia",
+      "name": "El Baspasia",
+      "name_ar": "البسباسية",
+      "name_en": "El Baspasia"
+    },
+    {
+      "id": "menzel_bourguiba_1",
+      "name": "Menzel Bourguiba 1",
+      "name_ar": "منزل بورقيبة 1",
+      "name_en": "Menzel Bourguiba 1"
+    },
+    {
+      "id": "menzel_bourguiba_2",
+      "name": "Menzel Bourguiba 2",
+      "name_ar": "منزل بورقيبة 2",
+      "name_en": "Menzel Bourguiba 2"
+    },
+    {
+      "id": "menzel_abderrahmane_menzel_jemil",
+      "name": "Menzel Abderrahmane - Menzel Jemil",
+      "name_ar": "منزل عبد الرحمان - منزل جميل",
+      "name_en": "Menzel Abderrahmane - Menzel Jemil"
+    },
+    {
+      "id": "b_ni_toun",
+      "name": "Béni Toun",
+      "name_ar": "بني طون",
+      "name_en": "Beni Toun"
+    },
+    {
+      "id": "echellaghmia",
+      "name": "Echellaghmia",
+      "name_ar": "الشلاغمية",
+      "name_en": "Echellaghmia"
+    },
+    {
+      "id": "gannkla",
+      "name": "Gannkla",
+      "name_ar": "قنقلة",
+      "name_en": "Gannkla"
+    },
+    {
+      "id": "oum_hani",
+      "name": "Oum Hani",
+      "name_ar": "أم هاني",
+      "name_en": "Oum Hani"
+    },
+    {
+      "id": "bizerte",
+      "name": "BIzerte",
+      "name_ar": "بنزرت",
+      "name_en": "BIzerte"
+    },
+    {
+      "id": "menzel_jemil_coll_ge_de_menzel_jemil",
+      "name": "Menzel Jemil - Collège de Menzel Jemil",
+      "name_ar": "منزل جميل - المدرسة الاعدادية بمنزل جميل",
+      "name_en": "Menzel Jemil - Menzel Jemil Middle School Line"
+    },
+    {
+      "id": "m_teleine",
+      "name": "Mâteleine",
+      "name_ar": "الماتلين",
+      "name_en": "Mâteleine"
+    },
+    {
+      "id": "el_metline",
+      "name": "El Metline",
+      "name_ar": "الماتلين",
+      "name_en": "El Metline"
+    },
+    {
+      "id": "sidi_bouchoucha",
+      "name": "Sidi Bouchoucha",
+      "name_ar": "سيدي بوشوشة",
+      "name_en": "Sidi Bouchoucha"
+    },
+    {
+      "id": "ras_el_jebel_via_aousja",
+      "name": "Ras El Jebel via Aousja",
+      "name_ar": "رأس الجبل عبر عوسجة",
+      "name_en": "Ras El Jebel via Aousja"
+    },
+    {
+      "id": "cap_zebib",
+      "name": "Cap Zebib",
+      "name_ar": "كاب زبيب",
+      "name_en": "Cap Zebib"
+    },
+    {
+      "id": "el_blaket",
+      "name": "El Blaket",
+      "name_ar": "البلاكات",
+      "name_en": "El Blaket"
+    },
+    {
+      "id": "es_skhira",
+      "name": "Es Skhira",
+      "name_ar": "الصخيرة",
+      "name_en": "Es Skhira"
+    },
+    {
+      "id": "sidi_mechreg",
+      "name": "Sidi Mechreg",
+      "name_ar": "سيدي مشرق",
+      "name_en": "Sidi Mechreg"
+    },
+    {
+      "id": "tamra",
+      "name": "Tamra",
+      "name_ar": "تمرة",
+      "name_en": "Tamra"
+    },
+    {
+      "id": "cap_serrat",
+      "name": "Cap Serrat",
+      "name_ar": "كاب سيرات",
+      "name_en": "Cap Serrat"
+    },
+    {
+      "id": "sidi_ahmed",
+      "name": "Sidi Ahmed",
+      "name_ar": "سيدي أحمد",
+      "name_en": "Sidi Ahmed"
+    },
+    {
+      "id": "sidi_amer_ghar_wankel",
+      "name": "Sidi Amer - Ghar Wankel",
+      "name_ar": "سيدي عامر و غار ونكل",
+      "name_en": "Sidi Amer - Ghar Wankel"
+    },
+    {
+      "id": "bach_hamba_ezzouia",
+      "name": "Bach Hamba - Ezzouia",
+      "name_ar": "الزوية",
+      "name_en": "Bach Hamba - Ezzouia"
+    },
+    {
+      "id": "cit_el_manar",
+      "name": "Cité El Manar",
+      "name_ar": "حي المنار",
+      "name_en": "El Manar District"
+    },
+    {
+      "id": "el_houidh_line",
+      "name": "El Houidh Line",
+      "name_ar": "الحويض",
+      "name_en": "El Houidh Line"
+    },
+    {
+      "id": "coll_ge_el_khitmine",
+      "name": "collège El Khitmine",
+      "name_ar": "المدرسة الاعدادية بالخيتمين",
+      "name_en": "El Khitmine Middle School"
+    }
   ],
   "lines": [
     {
-      "id": "biz_confort_tunis_bab_saadoun",
-      "number": "Confort",
-      "name": "Ligne Bizerte - Bab Saâdoun - Bizerte (Confort)",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "inter_governorate",
-      "description": "Confort service: Bizerte to Tunis via highway, non-stop",
-      "frequency": "Every 30 min",
-      "stations": [
-        "bizerte_ville",
-        "menzel_bourguiba",
-        "ras_el_jebel",
-        "bab_saadoun"
-      ],
-      "departures": {
-        "outbound": ["06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"],
-        "return": ["06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30"]
-      },
-      "fares": [
-        {"from": "bizerte_ville", "to": "bab_saadoun", "fare_dt": 6500}
-      ]
-    },
-    {
-      "id": "biz_confort_aeroport",
-      "number": "Confort",
-      "name": "Ligne Bizerte - Aéroport Tunis-Carthage (Confort)",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "inter_governorate",
-      "description": "Confort service: Bizerte to Tunis-Carthage Airport",
-      "frequency": "Every hour",
-      "stations": [
-        "bizerte_ville",
-        "menzel_bourguiba",
-        "aeroport_tunis"
-      ]
-    },
-    {
-      "id": "biz_confort_sousse_monastir",
-      "number": "Confort",
-      "name": "Ligne Bizerte - Sousse - Monastir",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "inter_governorate",
-      "description": "Confort service: Bizerte to Sousse to Monastir",
-      "frequency": "3x daily",
-      "stations": [
-        "bizerte_ville",
-        "menzel_bourguiba",
-        "ras_el_jebel",
-        "bab_saadoun",
-        "sousse_louage",
-        "monastir_louage"
-      ]
-    },
-    {
-      "id": "biz_louage_tunis",
-      "number": "—",
-      "name": "Louage Bizerte - Tunis (Bande rouge)",
-      "operator": "Louage Bizerte",
-      "mode": "louage",
-      "type": "inter_governorate",
-      "description": "White minibus with red stripe. Inter-governorate, non-stop",
-      "frequency": "When full (~every 20 min)",
-      "schedule_type": "when_fill",
-      "stations": [
-        "bizerte_ville",
-        "bab_saadoun"
-      ],
-      "fares": [
-        {"from": "bizerte_ville", "to": "bab_saadoun", "fare_dt": 6500}
-      ]
-    },
-    {
-      "id": "biz_louage_bab_saadoun",
-      "number": "—",
-      "name": "Louage Bizerte - Bab Saadoun",
-      "operator": "Louage Bizerte",
-      "mode": "louage",
-      "type": "inter_governorate",
-      "description": "Direct louage to Bab Saadoun interchange",
-      "frequency": "When full (~every 15 min)",
-      "schedule_type": "when_fill",
-      "stations": [
-        "bizerte_ville",
-        "bab_saadoun"
-      ],
-      "fares": [
-        {"from": "bizerte_ville", "to": "bab_saadoun", "fare_dt": 6500}
-      ]
-    },
-    {
-      "id": "biz_louage_sejnane",
-      "number": "—",
-      "name": "Louage Bizerte - Sejnane",
-      "operator": "Louage Bizerte",
-      "mode": "louage",
-      "type": "intra_governorate",
-      "description": "White minibus with blue stripe. Intra-governorate",
-      "frequency": "When full (~every 30 min)",
-      "schedule_type": "when_fill",
-      "stations": [
-        "bizerte_ville",
-        "ghar_el_melh",
-        "sejnane"
-      ]
-    },
-    {
-      "id": "biz_louage_menzel",
-      "number": "—",
-      "name": "Louage Bizerte - Menzel Bourguiba - Menzel Jemil",
-      "operator": "Louage Bizerte",
-      "mode": "louage",
-      "type": "intra_governorate",
-      "description": "White minibus with blue stripe",
-      "frequency": "When full (~every 20 min)",
-      "schedule_type": "when_fill",
-      "stations": [
-        "bizerte_ville",
-        "menzel_jemil",
-        "menzel_bourguiba"
-      ]
-    },
-    {
-      "id": "biz_bus_8",
-      "number": "8",
-      "name": "Ligne 8 - Bizerte - Menzel Jemil",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 20 min",
-      "stations": [
-        "bizerte_corniche",
-        "el_ghirane",
-        "menzel_jemil"
-      ]
-    },
-    {
-      "id": "biz_bus_9",
-      "number": "9",
-      "name": "Ligne 9 - Bizerte – Menzel Abderrahmane",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 20 min",
-      "stations": [
-        "bizerte_corniche",
-        "hay_el_oummal",
-        "menzel_abderrahmane"
-      ]
-    },
-    {
-      "id": "biz_bus_44",
-      "number": "44",
-      "name": "Ligne 44 - Menzel Bourguiba",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 30 min",
-      "stations": [
-        "bizerte_ville",
-        "menzel_bourguiba"
-      ]
-    },
-    {
-      "id": "biz_bus_corniche_enadhour",
-      "number": "21",
-      "name": "Ligne 21 - Corniche - Enadhour",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 30 min",
-      "stations": [
-        "bizerte_corniche",
-        "zahana",
-        "enadhour"
-      ]
-    },
-    {
-      "id": "biz_bus_corniche_nouvelle_route",
-      "number": "1",
-      "name": "Ligne 1 - Corniche - La Nouvelle Route",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 30 min",
-      "stations": [
-        "bizerte_corniche",
-        "el_ghirane",
-        "hay_el_oummal"
-      ]
-    },
-    {
-      "id": "biz_bus_2",
-      "number": "2",
-      "name": "Ligne 2 - Enadhour",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 30 min",
-      "stations": [
-        "bizerte_corniche",
-        "enadhour"
-      ]
-    },
-    {
-      "id": "biz_bus_23",
+      "id": "biz_23_bizerte_ain_el_berda",
       "number": "23",
-      "name": "Ligne 23 - Ain El Berda",
+      "name": "Ligne Ain El Berda",
       "operator": "BizerteConnect",
       "mode": "bus",
       "type": "intra_governorate",
-      "frequency": "Every 30 min",
+      "description": "Ain El Berda Line",
       "stations": [
-        "bizerte_ville",
+        "bizerte",
         "ain_el_berda"
-      ]
+      ],
+      "api_id": "df9f82bb-942c-4a32-958a-5ca0ebceee7c"
     },
     {
-      "id": "biz_bus_5",
+      "id": "biz_5_bizerte_ain_meriem",
       "number": "5",
-      "name": "Ligne 5 - Ain Meriem",
+      "name": "Ligne Ain Meriem",
       "operator": "BizerteConnect",
       "mode": "bus",
       "type": "intra_governorate",
-      "frequency": "Every 30 min",
+      "description": "Ain Meriem Line",
       "stations": [
-        "bizerte_ville",
+        "bizerte",
         "ain_meriem"
-      ]
+      ],
+      "api_id": "187f9b81-75f2-466e-a9ae-e01659454454"
     },
     {
-      "id": "biz_bus_7_4_amila",
+      "id": "biz_7_4_bizerte_amila",
       "number": "7/4",
-      "name": "Ligne 7/4 - Amila",
+      "name": "Ligne Amila",
       "operator": "BizerteConnect",
       "mode": "bus",
       "type": "intra_governorate",
-      "frequency": "Every 45 min",
+      "description": "Amila Line",
       "stations": [
-        "bizerte_ville",
+        "bizerte",
         "amila"
-      ]
+      ],
+      "api_id": "7d83e364-efd0-4c76-b20e-3c812f06d9e4"
     },
     {
-      "id": "biz_bus_6",
-      "number": "6",
-      "name": "Ligne 6 - Bechater",
+      "id": "biz_bazina_el_garia",
+      "number": "",
+      "name": "Ligne Bazina - El Garia (réservée aux élèves)",
       "operator": "BizerteConnect",
       "mode": "bus",
       "type": "intra_governorate",
-      "frequency": "Every 45 min",
+      "description": "Bazina - El Garia Line (for students only)",
       "stations": [
-        "bizerte_ville",
-        "bechater"
-      ]
+        "bazina",
+        "el_garia"
+      ],
+      "api_id": "d1a98421-4f85-4a74-9c27-9b62498c56ed"
     },
     {
-      "id": "biz_bus_29",
-      "number": "29",
-      "name": "Ligne 29 - Béni Aouf",
+      "id": "biz_bazina_el_khetracha",
+      "number": "",
+      "name": "Ligne Bazina - El Khetracha (réservée aux élèves)",
       "operator": "BizerteConnect",
       "mode": "bus",
       "type": "intra_governorate",
-      "frequency": "Every 45 min",
+      "description": "Bazina - El Khetracha Line (for students only)",
       "stations": [
-        "bizerte_ville",
-        "beni_aouf"
-      ]
+        "bazina",
+        "el_khetracha"
+      ],
+      "api_id": "41dc5b72-26c2-4167-b26a-50a521825dca"
     },
     {
-      "id": "biz_bus_3",
-      "number": "3",
-      "name": "Ligne 3 - El Mssida",
+      "id": "biz_bazina_ettouajnia",
+      "number": "",
+      "name": "Ligne Bazina - Ettouajnia (réservée aux élèves)",
       "operator": "BizerteConnect",
       "mode": "bus",
       "type": "intra_governorate",
-      "frequency": "Every 45 min",
+      "description": "Bazina - Ettouajnia Line (for students only)",
       "stations": [
-        "bizerte_ville",
-        "el_mssida"
-      ]
+        "bazina",
+        "ettouajnia"
+      ],
+      "api_id": "131a55ec-75b8-4ce4-b273-88be9f878c76"
     },
     {
-      "id": "biz_bus_4",
-      "number": "4",
-      "name": "Ligne 4 - Louata",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 30 min",
-      "stations": [
-        "bizerte_ville",
-        "sidi_ahmed",
-        "louata"
-      ]
-    },
-    {
-      "id": "biz_bus_10",
-      "number": "10",
-      "name": "Ligne 10 - Hay El Oummal",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 20 min",
-      "stations": [
-        "bizerte_corniche",
-        "hay_el_oummal"
-      ]
-    },
-    {
-      "id": "biz_bus_2000",
-      "number": "2000",
-      "name": "Ligne 2000 - Hay El Waha",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 30 min",
-      "stations": [
-        "bizerte_ville",
-        "hay_el_oummal"
-      ]
-    },
-    {
-      "id": "biz_bus_16",
-      "number": "16",
-      "name": "Ligne 16 - El Ghirane",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 30 min",
-      "stations": [
-        "bizerte_ville",
-        "el_ghirane"
-      ]
-    },
-    {
-      "id": "biz_bus_15",
-      "number": "15",
-      "name": "Ligne 15 - Hay Bougatfa",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 30 min",
-      "stations": [
-        "bizerte_ville",
-        "hay_bougatfa"
-      ]
-    },
-    {
-      "id": "biz_bus_515",
-      "number": "515",
-      "name": "Ligne 515 - Bizerte El Kantara - Bech Hamba",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "inter_governorate",
-      "frequency": "Every hour",
-      "stations": [
-        "bizerte_ville",
-        "el_kantara",
-        "bab_saadoun"
-      ]
-    },
-    {
-      "id": "biz_bus_bizerte_ras_jebel",
-      "number": "—",
-      "name": "Ligne Ras El Jebel - Bizerte",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 45 min",
-      "stations": [
-        "bizerte_ville",
-        "ras_el_jebel"
-      ]
-    },
-    {
-      "id": "biz_bus_bizerte_mateur",
-      "number": "—",
-      "name": "Ligne Mateur - Bizerte",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 45 min",
-      "stations": [
-        "bizerte_ville",
-        "mateur"
-      ]
-    },
-    {
-      "id": "biz_bus_bizerte_ghar_el_melh",
-      "number": "—",
-      "name": "Ligne Ghar El Melh - Bizerte",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 45 min",
-      "stations": [
-        "bizerte_ville",
-        "ghar_el_melh"
-      ]
-    },
-    {
-      "id": "biz_bus_el_alia_tunis",
-      "number": "—",
-      "name": "Ligne El Alia - Tunis",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "inter_governorate",
-      "frequency": "Every hour",
-      "stations": [
-        "bizerte_ville",
-        "el_alia",
-        "bab_saadoun"
-      ]
-    },
-    {
-      "id": "biz_bus_rafraf_tunis",
-      "number": "—",
-      "name": "Ligne Rafraf - Tunis",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "inter_governorate",
-      "frequency": "Every hour",
-      "stations": [
-        "bizerte_ville",
-        "rafraf",
-        "bab_saadoun"
-      ]
-    },
-    {
-      "id": "biz_bus_mateur_tunis",
-      "number": "—",
-      "name": "Ligne Mateur - Tunis",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "inter_governorate",
-      "frequency": "Every hour",
-      "stations": [
-        "bizerte_ville",
-        "mateur",
-        "bab_saadoun"
-      ]
-    },
-    {
-      "id": "biz_bus_meteline_tunis",
-      "number": "—",
-      "name": "Ligne Mâteleine - Tunis",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "inter_governorate",
-      "frequency": "Every hour",
-      "stations": [
-        "bizerte_ville",
-        "metline",
-        "bab_saadoun"
-      ]
-    },
-    {
-      "id": "biz_bus_menzel_bourguiba_aeroport",
-      "number": "Commerciale",
-      "name": "Ligne Menzel Bourguiba - Aéroport Tunis-Carthage (Commerciale)",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "inter_governorate",
-      "frequency": "Every hour",
-      "stations": [
-        "menzel_bourguiba",
-        "aeroport_tunis"
-      ]
-    },
-    {
-      "id": "biz_bus_menzel_bourguiba_tinja_plage",
-      "number": "—",
-      "name": "Ligne Menzel Bourguiba – Tinja – Plage Sidi Salem Bizerte",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 30 min",
-      "stations": [
-        "menzel_bourguiba",
-        "tinja",
-        "plage_salem"
-      ]
-    },
-    {
-      "id": "biz_bus_menzel_bourguiba_tinja",
-      "number": "—",
-      "name": "Ligne Menzel Bourguiba - Tinja",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 30 min",
-      "stations": [
-        "menzel_bourguiba",
-        "tinja"
-      ]
-    },
-    {
-      "id": "biz_bus_menzel_bourguiba_beni_toun",
-      "number": "—",
-      "name": "Ligne Menzel Bourguiba - Béni Toun",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every 45 min",
-      "stations": [
-        "menzel_bourguiba",
-        "beni_toun"
-      ]
-    },
-    {
-      "id": "biz_bus_el_mabtouh_salem",
-      "number": "—",
-      "name": "Ligne El Mabtouh – Sidi Othmane – Béni Hamaba – Utique – Plage Sidi Salem Bizerte",
-      "operator": "BizerteConnect",
-      "mode": "bus",
-      "type": "intra_governorate",
-      "frequency": "Every hour",
-      "stations": [
-        "bizerte_ville",
-        "el_mabtouh",
-        "sidi_othmane",
-        "beni_hamaba",
-        "utique",
-        "plage_salem"
-      ]
-    },
-    {
-      "id": "biz_bus_bazina_joumine_tunis",
-      "number": "—",
+      "id": "biz_bazina_tunis",
+      "number": "",
       "name": "Ligne Bazina - Joumine - Tunis",
       "operator": "BizerteConnect",
       "mode": "bus",
       "type": "inter_governorate",
-      "frequency": "Every hour",
+      "description": "Bazina - Joumine - Tunis Line",
       "stations": [
-        "bizerte_ville",
         "bazina",
-        "joumine",
-        "bab_saadoun"
-      ]
+        "tunis"
+      ],
+      "api_id": "426980d4-3436-4f96-a215-be985f0e3d18"
     },
     {
-      "id": "biz_bus_bazina_joumine_sejnane",
-      "number": "—",
+      "id": "biz_bazina_plage_sidi_gharib_sejnane",
+      "number": "",
       "name": "Ligne Bazina – Joumine – Plage Sidi Gharib Sejnane",
       "operator": "BizerteConnect",
       "mode": "bus",
       "type": "intra_governorate",
-      "frequency": "Every 2 hours",
+      "description": "Bazina – Joumine – Sidi Gharib Beach Sejnane Line",
       "stations": [
-        "bizerte_ville",
         "bazina",
-        "joumine",
-        "sidi_gharib"
-      ]
+        "plage_sidi_gharib_sejnane"
+      ],
+      "api_id": "07f178f1-4147-4ed8-9fb2-ffef32531481"
     },
     {
-      "id": "biz_bus_bizerte_sejnane",
-      "number": "—",
+      "id": "biz_6_bizerte_bechater",
+      "number": "6",
+      "name": "Ligne Bechater",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Bechater Line",
+      "stations": [
+        "bizerte",
+        "bechater"
+      ],
+      "api_id": "8f2739df-b696-47ed-a25d-5f1074393b8b"
+    },
+    {
+      "id": "biz_bizerte_a_roport_tunis_carthage",
+      "number": "",
+      "name": "Ligne Bizerte - Aéroport Tunis-Carthage (Confort)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "inter_governorate",
+      "description": "Bizerte - Tunis-Carthage Airport Line (Comfort)",
+      "stations": [
+        "bizerte",
+        "a_roport_tunis_carthage"
+      ],
+      "api_id": "48a3afff-9632-408b-909f-ea8e655afe0b"
+    },
+    {
+      "id": "biz_bizerte_bab_saadoun",
+      "number": "",
+      "name": "Ligne Bizerte - Bab Saâdoun - Bizerte (Confort)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "inter_governorate",
+      "description": "Bizerte - Bab Saadoun - Bizerte Line (Comfort)",
+      "stations": [
+        "bizerte",
+        "bab_saadoun"
+      ],
+      "api_id": "60743f25-b4af-430e-96b0-54c450c3cf24"
+    },
+    {
+      "id": "biz_4_bizerte_louata",
+      "number": "ب 4",
+      "name": "Ligne Bizerte - Louata via Sidi Ahmed (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Bizerte - Louata Line via Sidi Ahmed (for students only)",
+      "stations": [
+        "bizerte",
+        "louata"
+      ],
+      "api_id": "c80ec008-ff32-4869-b3d3-66d1ff449ee9"
+    },
+    {
+      "id": "biz_8_bizerte_menzel_jemil",
+      "number": "8",
+      "name": "Ligne Bizerte - Menzel Jemil",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Bizerte - Menzel Jemil Line",
+      "stations": [
+        "bizerte",
+        "menzel_jemil"
+      ],
+      "api_id": "cf4c659e-4774-46d0-9591-2d0f93837517"
+    },
+    {
+      "id": "biz_bizerte_sejnane",
+      "number": "",
       "name": "Ligne Bizerte - Sejnane",
       "operator": "BizerteConnect",
       "mode": "bus",
       "type": "intra_governorate",
-      "frequency": "Every hour",
+      "description": "Bizerte - Sejnane Line",
       "stations": [
-        "bizerte_ville",
-        "ghar_el_melh",
+        "bizerte",
         "sejnane"
-      ]
+      ],
+      "api_id": "e278b9fb-aa56-4c33-aaf0-7f1f217f6777"
     },
     {
-      "id": "biz_bus_bizerte_joumine_special",
-      "number": "—",
+      "id": "biz_bizerte_monastir",
+      "number": "",
+      "name": "Ligne Bizerte - Sousse - Monastir",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "inter_governorate",
+      "description": "Bizerte - Sousse - Monastir Line",
+      "stations": [
+        "bizerte",
+        "monastir"
+      ],
+      "api_id": "46f8e1a8-77b6-4ea6-86df-42c1d097bb59"
+    },
+    {
+      "id": "biz_bizerte_tunis",
+      "number": "",
+      "name": "Ligne Bizerte - Tunis",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "inter_governorate",
+      "description": "Bizerte - Tunis Line",
+      "stations": [
+        "bizerte",
+        "tunis"
+      ],
+      "api_id": "27ca5533-8c90-416d-829e-de7a5515b194"
+    },
+    {
+      "id": "biz_515_bizerte_el_kantara",
+      "number": "515",
+      "name": "Ligne Bizerte El Kantara - Bech Hamba",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Bizerte El Kantara - Bech Hamba Line",
+      "stations": [
+        "bizerte",
+        "el_kantara"
+      ],
+      "api_id": "d38da298-aa4b-4642-9f7a-53702afe07a9"
+    },
+    {
+      "id": "biz_bizerte_joumine",
+      "number": "",
       "name": "Ligne Bizerte – Joumine (Service spécial)",
       "operator": "BizerteConnect",
       "mode": "bus",
       "type": "intra_governorate",
-      "frequency": "On demand",
+      "description": "Bizerte – Joumine Line (Special Service)",
       "stations": [
-        "bizerte_ville",
+        "bizerte",
         "joumine"
-      ]
+      ],
+      "api_id": "f5a76908-6366-4458-961d-74bebc647e59"
+    },
+    {
+      "id": "biz_9_bizerte_menzel_abderrahmane",
+      "number": "9",
+      "name": "Ligne Bizerte – Menzel Abderrahmane",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Bizerte – Menzel Abderrahmane Line",
+      "stations": [
+        "bizerte",
+        "menzel_abderrahmane"
+      ],
+      "api_id": "cf97d156-2f92-40b3-ba98-6a3344c5a2fb"
+    },
+    {
+      "id": "biz_12_bizerte_bouzaria",
+      "number": "12",
+      "name": "Ligne Bouzaria (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Bouzaria Line (for students only)",
+      "stations": [
+        "bizerte",
+        "bouzaria"
+      ],
+      "api_id": "ff4e8b5e-9805-47bf-8731-7610c63df2f0"
+    },
+    {
+      "id": "biz_29_bizerte_b_ni_aouf",
+      "number": "29",
+      "name": "Ligne Béni Aouf",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Beni Aouf Line",
+      "stations": [
+        "bizerte",
+        "b_ni_aouf"
+      ],
+      "api_id": "5b9e1d88-bec6-4733-8efe-65b4de03b019"
+    },
+    {
+      "id": "biz_6_29_bizerte_b_ni_aouf_bechater",
+      "number": "6-29",
+      "name": "Ligne Béni Aouf + Bechater (réservée aux dimanches)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Beni Aouf + Bechater Line (for Sundays only)",
+      "stations": [
+        "bizerte",
+        "b_ni_aouf_bechater"
+      ],
+      "api_id": "5ffa2e50-bf78-432d-bb39-7c4d91633f49"
+    },
+    {
+      "id": "biz_11_bizerte_ksar_khrouf",
+      "number": "11",
+      "name": "Ligne Béni Moslem - Ksar Khrouf",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Béni Moslem - Ksar Khrouf Line",
+      "stations": [
+        "bizerte",
+        "ksar_khrouf"
+      ],
+      "api_id": "22fabbd2-7492-412a-8c3d-6304036e1f73"
+    },
+    {
+      "id": "biz_none_bizerte_b_ni_nafaa",
+      "number": null,
+      "name": "Ligne Béni Nafaa",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Beni Nafaa Line",
+      "stations": [
+        "bizerte",
+        "b_ni_nafaa"
+      ],
+      "api_id": "66bf2a6a-fb28-48d6-9a20-fe8ddded6137"
+    },
+    {
+      "id": "biz_21_bizerte_corniche_enadhour",
+      "number": "21",
+      "name": "Ligne Corniche - Enadhour",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Corniche - Enadhour Line",
+      "stations": [
+        "bizerte",
+        "corniche_enadhour"
+      ],
+      "api_id": "57a73c57-53b7-4ae9-a50d-bee7228111b8"
+    },
+    {
+      "id": "biz_21_bizerte_corniche_la_nouvelle_route",
+      "number": "21",
+      "name": "Ligne Corniche - La Nouvelle Route",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Corniche - New Road Line",
+      "stations": [
+        "bizerte",
+        "corniche_la_nouvelle_route"
+      ],
+      "api_id": "c0b9f947-3630-4124-a560-e480906c1ce8"
+    },
+    {
+      "id": "biz_1_bizerte_corniche_la_nouvelle_route",
+      "number": "1",
+      "name": "Ligne Corniche - La Nouvelle Route",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Corniche - New Road Line",
+      "stations": [
+        "bizerte",
+        "corniche_la_nouvelle_route"
+      ],
+      "api_id": "4882d620-2c34-4ca4-a4ed-0fcd6ae7baaa"
+    },
+    {
+      "id": "biz_el_alia_tunis",
+      "number": "",
+      "name": "Ligne El Alia - Tunis",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "inter_governorate",
+      "description": "El Alia - Tunis Line",
+      "stations": [
+        "el_alia",
+        "tunis"
+      ],
+      "api_id": "03dbb84d-4b8b-4a3b-bedc-2170f60d87ca"
+    },
+    {
+      "id": "biz_34_bizerte_el_alia",
+      "number": "34",
+      "name": "Ligne El Alia via Hariza",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "El Alia Line via Hariza",
+      "stations": [
+        "bizerte",
+        "el_alia"
+      ],
+      "api_id": "2688a1b2-d0cc-4ff3-99b0-7e2c9be5e0f9"
+    },
+    {
+      "id": "biz_33_bizerte_el_azib_el_alia_lyc_e_menzel_jemil_lyc_e_el_canal",
+      "number": "33",
+      "name": "Ligne El Azib - El Alia - Lycée Menzel Jemil - Lycée El Canal",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "El Azib - El Alia - Menzel Jemil High School - El Canal High School Line",
+      "stations": [
+        "bizerte",
+        "el_azib_el_alia_lyc_e_menzel_jemil_lyc_e_el_canal"
+      ],
+      "api_id": "e665ee9a-6668-4b5a-9fb0-845cc26a3504"
+    },
+    {
+      "id": "biz_16_bizerte_el_ghirane",
+      "number": "16",
+      "name": "Ligne El Ghirane",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "El Ghirane Line",
+      "stations": [
+        "bizerte",
+        "el_ghirane"
+      ],
+      "api_id": "fe8bd2dc-24b0-4098-b6e1-bfeb7fbfab59"
+    },
+    {
+      "id": "biz_16_bizerte_el_ghirane",
+      "number": "16 ب",
+      "name": "Ligne El Ghirane - Oued El Hammam (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "El Ghirane - Oued El Hammam Line (for students only)",
+      "stations": [
+        "bizerte",
+        "el_ghirane"
+      ],
+      "api_id": "3da0450c-1b7e-4762-aa8d-1318d6dd74d0"
+    },
+    {
+      "id": "biz_el_mabtouh_plage_sidi_salem_bizerte",
+      "number": "",
+      "name": "Ligne El Mabtouh – Sidi Othmane – Béni Hamaba – Utique – Plage Sidi Salem Bizerte",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "El Mabtouh – Sidi Othmane – Béni Hamaba – Utique – Sidi Salem Beach Bizerte Line",
+      "stations": [
+        "el_mabtouh",
+        "plage_sidi_salem_bizerte"
+      ],
+      "api_id": "13916860-dceb-468a-872a-961b57fd6f9f"
+    },
+    {
+      "id": "biz_3_bizerte_el_mssida",
+      "number": "3",
+      "name": "Ligne El Mssida",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "El Mssida Line",
+      "stations": [
+        "bizerte",
+        "el_mssida"
+      ],
+      "api_id": "8d9ed1fe-33c2-4a89-99c3-f0f37305682d"
+    },
+    {
+      "id": "biz_24_bizerte_el_tella",
+      "number": "24",
+      "name": "Ligne El Tella (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "El Tella Line (for students only)",
+      "stations": [
+        "bizerte",
+        "el_tella"
+      ],
+      "api_id": "93fe09ae-25a2-49e0-8718-6f32a4734ced"
+    },
+    {
+      "id": "biz_2_bizerte_enadhour",
+      "number": "2",
+      "name": "Ligne Enadhour",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Enadhour Line",
+      "stations": [
+        "bizerte",
+        "enadhour"
+      ],
+      "api_id": "0b549b79-ecdf-458c-b327-0ea48c158c0c"
+    },
+    {
+      "id": "biz_ghar_el_melh_bizerte",
+      "number": "",
+      "name": "Ligne Ghar El Melh - Bizerte",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Ghar El Melh - Bizerte Line",
+      "stations": [
+        "ghar_el_melh",
+        "bizerte"
+      ],
+      "api_id": "6f922255-a87b-4f83-adf0-c0794cfeeaf4"
+    },
+    {
+      "id": "biz_none_ghar_el_melh_tunis",
+      "number": null,
+      "name": "Ligne Ghar El Melh - Tunis",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "inter_governorate",
+      "description": "Ghar El Melh - Tunis Line",
+      "stations": [
+        "ghar_el_melh",
+        "tunis"
+      ],
+      "api_id": "797ef74f-d62f-40c9-bc28-be5f190174b9"
+    },
+    {
+      "id": "biz_15_bizerte_hay_bougatfa",
+      "number": "15",
+      "name": "Ligne Hay Bougatfa",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Hay Bougatfa Line",
+      "stations": [
+        "bizerte",
+        "hay_bougatfa"
+      ],
+      "api_id": "d5e6cc97-d99c-4692-a508-66698e0f9528"
+    },
+    {
+      "id": "biz_15_bizerte_hay_bougatfa",
+      "number": "15أ",
+      "name": "Ligne Hay Bougatfa",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Hay Bougatfa Line",
+      "stations": [
+        "bizerte",
+        "hay_bougatfa"
+      ],
+      "api_id": "2d2f4463-30a2-4eca-a258-b33a4b75e95d"
+    },
+    {
+      "id": "biz_hay_el_ommal_chatt_el_kebir_jarzouna",
+      "number": "",
+      "name": "Ligne Hay El Ommal – Chatt El Kebir (Jarzouna)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Hay El Ommal – Chatt El Kebir (Jarzouna) Line",
+      "stations": [
+        "hay_el_ommal",
+        "chatt_el_kebir_jarzouna"
+      ],
+      "api_id": "80371b13-d956-4fa3-868d-a3eab3dc2f07"
+    },
+    {
+      "id": "biz_10_bizerte_hay_el_oummal",
+      "number": "10",
+      "name": "Ligne Hay El Oummal",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Hay El Oummal Line",
+      "stations": [
+        "bizerte",
+        "hay_el_oummal"
+      ],
+      "api_id": "60929c12-c216-49f9-9ce2-07b6162fd85b"
+    },
+    {
+      "id": "biz_2000_bizerte_hay_el_waha",
+      "number": "2000",
+      "name": "Ligne Hay El Waha",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Hay El Waha Line",
+      "stations": [
+        "bizerte",
+        "hay_el_waha"
+      ],
+      "api_id": "8889521e-48e5-40de-82f4-81ae115861ba"
+    },
+    {
+      "id": "biz_20_bizerte_coll_ge_boukhris",
+      "number": "20",
+      "name": "Ligne Institut Boukhris via Bougatfa (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Boukhris High School Line via Bougatfa (for students only)",
+      "stations": [
+        "bizerte",
+        "coll_ge_boukhris"
+      ],
+      "api_id": "f966495a-6cb0-4a39-b7ea-9991df6db1d3"
+    },
+    {
+      "id": "biz_none_joumine_rouaha",
+      "number": null,
+      "name": "Ligne Joumine - Rouaha (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Joumine - Rouaha Line (for students only)",
+      "stations": [
+        "joumine",
+        "rouaha"
+      ],
+      "api_id": "cb6ec4c8-1a3f-4e59-a0cd-043b99d5e9ef"
+    },
+    {
+      "id": "biz_none_joumine_sidi_el_bechir",
+      "number": null,
+      "name": "Ligne Joumine - Sidi El Bechir (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Joumine - Sidi El Bechir Line (for students only)",
+      "stations": [
+        "joumine",
+        "sidi_el_bechir"
+      ],
+      "api_id": "9a9a8aa9-c35a-48b3-8e44-d0afb5ac2529"
+    },
+    {
+      "id": "biz_none_joumine_tahent",
+      "number": null,
+      "name": "Ligne Joumine - Tahent (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Joumine - Tahent Line (for students only)",
+      "stations": [
+        "joumine",
+        "tahent"
+      ],
+      "api_id": "57d1bdc7-fc49-40da-b9b8-4ef88cb52d21"
+    },
+    {
+      "id": "biz_4_bizerte_louata",
+      "number": "4",
+      "name": "Ligne Louata",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Louata Line",
+      "stations": [
+        "bizerte",
+        "louata"
+      ],
+      "api_id": "6b83794d-1e9e-4438-b59d-14d4133ad7fd"
+    },
+    {
+      "id": "biz_31_19_bizerte_el_alia",
+      "number": "31-19",
+      "name": "Ligne Lycée Menzel Jemil - Lycée El Canal - El Azib - El Alia",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Jemil High School - El Canal High School - El Azib - El Alia Line",
+      "stations": [
+        "bizerte",
+        "el_alia"
+      ],
+      "api_id": "1a975e58-8f0f-431a-97ca-8aa379d4aefb"
+    },
+    {
+      "id": "biz_bizerte_mateur",
+      "number": "",
+      "name": "Ligne Mateur - Bizerte",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - Bizerte Line",
+      "stations": [
+        "bizerte",
+        "mateur"
+      ],
+      "api_id": "6ab458a1-756e-4efc-b844-93889196c32f"
+    },
+    {
+      "id": "biz_mateur_boujrir",
+      "number": "",
+      "name": "Ligne Mateur - Boujrir (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - Boujrir Line (for students only)",
+      "stations": [
+        "mateur",
+        "boujrir"
+      ],
+      "api_id": "624c7434-ace3-483f-b58f-bceb395e9fd7"
+    },
+    {
+      "id": "biz_mateur_boumkhila",
+      "number": "",
+      "name": "Ligne Mateur - Boumkhila (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - Boumkhila Line (for students only)",
+      "stations": [
+        "mateur",
+        "boumkhila"
+      ],
+      "api_id": "6800b0f8-a761-4f5f-8406-ef8ee5f1caa8"
+    },
+    {
+      "id": "biz_mateur_beni_ibrahim",
+      "number": "",
+      "name": "Ligne Mateur - Béni Ibrahim (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - Beni Ibrahim Line (for students only)",
+      "stations": [
+        "mateur",
+        "beni_ibrahim"
+      ],
+      "api_id": "b87b76b4-c2c1-4336-97c2-ff10098123ee"
+    },
+    {
+      "id": "biz_none_mateur_ed_dkhila",
+      "number": null,
+      "name": "Ligne Mateur - Ed Dkhila (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - Ed Dkhila Line (for students only)",
+      "stations": [
+        "mateur",
+        "ed_dkhila"
+      ],
+      "api_id": "a72a0cef-c114-46ce-8b38-69ad4742687d"
+    },
+    {
+      "id": "biz_none_mateur_eddouaouda",
+      "number": null,
+      "name": "Ligne Mateur - Eddouaouda (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - Eddouaouda Line (for students only)",
+      "stations": [
+        "mateur",
+        "eddouaouda"
+      ],
+      "api_id": "41f560cd-7839-44aa-bddf-73f37b8b7afa"
+    },
+    {
+      "id": "biz_none_mateur_el_baspasia",
+      "number": null,
+      "name": "Ligne Mateur - El Baspasia (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - El Baspasia Line (for students only)",
+      "stations": [
+        "mateur",
+        "el_baspasia"
+      ],
+      "api_id": "62894ad8-3add-4840-b894-69b6ff4abb70"
+    },
+    {
+      "id": "biz_none_mateur_el_hamrounia",
+      "number": null,
+      "name": "Ligne Mateur - El Hamrounia (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - El Hamrounia Line (for students only)",
+      "stations": [
+        "mateur",
+        "el_hamrounia"
+      ],
+      "api_id": "74faa294-2014-442c-a1c2-72355d8e99ab"
+    },
+    {
+      "id": "biz_none_mateur_el_kahla",
+      "number": null,
+      "name": "Ligne Mateur - El Kahla (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - El Kahla Line (for students only)",
+      "stations": [
+        "mateur",
+        "el_kahla"
+      ],
+      "api_id": "25dde014-bcc6-4c71-9a29-8e3b67fead75"
+    },
+    {
+      "id": "biz_none_mateur_es_saoudia",
+      "number": null,
+      "name": "Ligne Mateur - Es Saoudia (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - Es Saoudia Line (for students only)",
+      "stations": [
+        "mateur",
+        "es_saoudia"
+      ],
+      "api_id": "68257a94-9b21-40c2-a287-b4520ba9c642"
+    },
+    {
+      "id": "biz_mateur_menzel_bourguiba_1",
+      "number": "",
+      "name": "Ligne Mateur - Menzel Bourguiba 1",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - Menzel Bourguiba 1 Line",
+      "stations": [
+        "mateur",
+        "menzel_bourguiba_1"
+      ],
+      "api_id": "c253bd23-9583-4bf9-bbed-aae9e97b6438"
+    },
+    {
+      "id": "biz_mateur_menzel_bourguiba_2",
+      "number": "",
+      "name": "Ligne Mateur - Menzel Bourguiba 2",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - Menzel Bourguiba 2 Line",
+      "stations": [
+        "mateur",
+        "menzel_bourguiba_2"
+      ],
+      "api_id": "f965e2d2-14a6-4e25-a01a-d2c58b7e7436"
+    },
+    {
+      "id": "biz_mateur_michou",
+      "number": "",
+      "name": "Ligne Mateur - Michou (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - Michou Line (for students only)",
+      "stations": [
+        "mateur",
+        "michou"
+      ],
+      "api_id": "7b08168c-ace3-4e3b-803d-658f3d803ae5"
+    },
+    {
+      "id": "biz_mateur_sidi_abdelbasset",
+      "number": "",
+      "name": "Ligne Mateur - Sidi Abdelbasset (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - Sidi Abdelbasset Line (for students only)",
+      "stations": [
+        "mateur",
+        "sidi_abdelbasset"
+      ],
+      "api_id": "5fc6260e-17ce-4c73-baf3-0bbb7a7102c1"
+    },
+    {
+      "id": "biz_mateur_sidi_mansour",
+      "number": "",
+      "name": "Ligne Mateur - Sidi Mansour (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mateur - Sidi Mansour Line (for students only)",
+      "stations": [
+        "mateur",
+        "sidi_mansour"
+      ],
+      "api_id": "04926c89-95fe-49f6-99e3-c457abb21c45"
+    },
+    {
+      "id": "biz_mateur_tunis",
+      "number": "",
+      "name": "Ligne Mateur - Tunis",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "inter_governorate",
+      "description": "Mateur - Tunis Line",
+      "stations": [
+        "mateur",
+        "tunis"
+      ],
+      "api_id": "05e252fd-5dd1-48ca-96ab-e0c2d0d63e8f"
+    },
+    {
+      "id": "biz_9_bizerte_menzel_abderrahmane",
+      "number": "9",
+      "name": "Ligne Menzel Abderrahmane",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Abderrahmane Line",
+      "stations": [
+        "bizerte",
+        "menzel_abderrahmane"
+      ],
+      "api_id": "0ae8157f-37c6-49bd-8175-a510976680c3"
+    },
+    {
+      "id": "biz_9_bizerte_menzel_abderrahmane",
+      "number": "9ب",
+      "name": "Ligne Menzel Abderrahmane",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Abderrahmane Line",
+      "stations": [
+        "bizerte",
+        "menzel_abderrahmane"
+      ],
+      "api_id": "c44521d9-a96a-4989-bb5f-8030165131f8"
+    },
+    {
+      "id": "biz_8_9_bizerte_menzel_abderrahmane_menzel_jemil",
+      "number": "8/9",
+      "name": "Ligne Menzel Abderrahmane - Menzel Jemil",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Abderrahmane - Menzel Jemil Line",
+      "stations": [
+        "bizerte",
+        "menzel_abderrahmane_menzel_jemil"
+      ],
+      "api_id": "1a364f6c-3822-407e-bba4-40c88e6a9618"
+    },
+    {
+      "id": "biz_44_bizerte_menzel_bourguiba",
+      "number": "44",
+      "name": "Ligne Menzel Bourguiba",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba Line",
+      "stations": [
+        "bizerte",
+        "menzel_bourguiba"
+      ],
+      "api_id": "208041eb-f02d-4575-9296-d65c8c50328b"
+    },
+    {
+      "id": "biz_53_bizerte_menzel_bourguiba",
+      "number": "53",
+      "name": "Ligne Menzel Bourguiba",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba Line",
+      "stations": [
+        "bizerte",
+        "menzel_bourguiba"
+      ],
+      "api_id": "89b8e8d8-53a0-4c23-bed8-dde6f7aa5612"
+    },
+    {
+      "id": "biz_menzel_bourguiba_a_roport_tunis_carthage",
+      "number": "",
+      "name": "Ligne Menzel Bourguiba - Aéroport Tunis-Carthage (Commerciale)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "inter_governorate",
+      "description": "Menzel Bourguiba - Tunis-Carthage Airport Line (Commercial)",
+      "stations": [
+        "menzel_bourguiba",
+        "a_roport_tunis_carthage"
+      ],
+      "api_id": "33d044ab-21e1-43fd-a57f-b21b058538be"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_bizerte",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - Bizerte",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba - Bizerte Line",
+      "stations": [
+        "menzel_bourguiba",
+        "bizerte"
+      ],
+      "api_id": "bf4d77ea-6f3e-40b9-8b5e-48ebe0ec1a60"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_b_ni_toun",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - Béni Toun",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba - Béni Toun Line",
+      "stations": [
+        "menzel_bourguiba",
+        "b_ni_toun"
+      ],
+      "api_id": "ea95a9a6-5cc8-4876-8dc3-a9ae4f115b18"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_echellaghmia",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - Echellaghmia",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba - Echellaghmia Line",
+      "stations": [
+        "menzel_bourguiba",
+        "echellaghmia"
+      ],
+      "api_id": "05e971c7-1d77-481d-ac14-a29d1db0a486"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_el_baspasia",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - El Baspasia",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba - El Baspasia Line",
+      "stations": [
+        "menzel_bourguiba",
+        "el_baspasia"
+      ],
+      "api_id": "560afabe-799e-4797-ae26-b5e45fb87414"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_el_blat",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - El Blat",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba - El Blat Line",
+      "stations": [
+        "menzel_bourguiba",
+        "el_blat"
+      ],
+      "api_id": "5f7400ae-5603-42b7-b4d4-4c0ae8db2d8a"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_ezzaghrour",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - Ezzaghrour",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba - Ezzaghrour Line",
+      "stations": [
+        "menzel_bourguiba",
+        "ezzaghrour"
+      ],
+      "api_id": "0a0f6cff-64c8-45b5-8530-eed36115dc23"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_gannkla",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - Gannkla",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba - Gannkla Line",
+      "stations": [
+        "menzel_bourguiba",
+        "gannkla"
+      ],
+      "api_id": "709cdc6b-badd-497b-9661-6f00dea2b0e8"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_oum_hani",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - Oum Hani",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba - Oum Hani Line",
+      "stations": [
+        "menzel_bourguiba",
+        "oum_hani"
+      ],
+      "api_id": "4efddf4d-9046-4eed-a0e9-e2d7356cd0d3"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_oum_hani",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - Oum Hani",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba - Oum Hani Line",
+      "stations": [
+        "menzel_bourguiba",
+        "oum_hani"
+      ],
+      "api_id": "99a4b559-616f-4a0b-83de-4990971d9368"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_sidi_yahia",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - Sidi Yahia",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba - Sidi Yahia Line",
+      "stations": [
+        "menzel_bourguiba",
+        "sidi_yahia"
+      ],
+      "api_id": "ac15a604-00e2-4e74-a4ee-b708c55f68e4"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_tinja",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - Tinja",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba - Tinja Line",
+      "stations": [
+        "menzel_bourguiba",
+        "tinja"
+      ],
+      "api_id": "7ca7bc48-691d-44ab-af22-6192f2761d86"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_tunis",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - Tunis (confort)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "inter_governorate",
+      "description": "Menzel Bourguiba - Tunis Line (comfort)",
+      "stations": [
+        "menzel_bourguiba",
+        "tunis"
+      ],
+      "api_id": "81ec420a-176c-4429-be11-91ff06e4e991"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_tunis",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - Tunis (standard/non confort)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "inter_governorate",
+      "description": "Menzel Bourguiba - Tunis Line (standard / non-comfort)",
+      "stations": [
+        "menzel_bourguiba",
+        "tunis"
+      ],
+      "api_id": "4712b38e-8a03-43e8-9bb3-3987609c112d"
+    },
+    {
+      "id": "biz_none_menzel_bourguiba_tunis",
+      "number": null,
+      "name": "Ligne Menzel Bourguiba - Tunis via Charguia",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "inter_governorate",
+      "description": "Menzel Bourguiba - Tunis Line (via Charguia)",
+      "stations": [
+        "menzel_bourguiba",
+        "tunis"
+      ],
+      "api_id": "cba198d1-c3ea-48b0-8a38-d83e3955fa80"
+    },
+    {
+      "id": "biz_menzel_bourguiba_plage_sidi_salem_bizerte",
+      "number": "",
+      "name": "Ligne Menzel Bourguiba – Tinja – Plage Sidi Salem Bizerte",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Bourguiba – Tinja – Sidi Salem Beach Bizerte Line",
+      "stations": [
+        "menzel_bourguiba",
+        "plage_sidi_salem_bizerte"
+      ],
+      "api_id": "b1a79340-e979-4b62-a851-e087d0308e5b"
+    },
+    {
+      "id": "biz_8_bizerte_menzel_jemil",
+      "number": "8",
+      "name": "Ligne Menzel Jemil",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Jemil Line",
+      "stations": [
+        "bizerte",
+        "menzel_jemil"
+      ],
+      "api_id": "bf008f7e-e1ff-4f7c-b509-7f78aa538f0f"
+    },
+    {
+      "id": "biz_8_bizerte_menzel_jemil",
+      "number": "8أ",
+      "name": "Ligne Menzel Jemil",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Jemil Line",
+      "stations": [
+        "bizerte",
+        "menzel_jemil"
+      ],
+      "api_id": "d9ae7d21-294c-42a6-9458-348ed73cfd7a"
+    },
+    {
+      "id": "biz_8_bizerte_menzel_jemil",
+      "number": "8",
+      "name": "Ligne Menzel Jemil",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Jemil LIne",
+      "stations": [
+        "bizerte",
+        "menzel_jemil"
+      ],
+      "api_id": "307dd98d-3445-4251-809a-68615bfe4dc4"
+    },
+    {
+      "id": "biz_32_bizerte_menzel_jemil_coll_ge_de_menzel_jemil",
+      "number": "32",
+      "name": "Ligne Menzel Jemil - Collège de Menzel Jemil (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Menzel Jemil - Menzel Jemil Middle School Line (for students only)",
+      "stations": [
+        "bizerte",
+        "menzel_jemil_coll_ge_de_menzel_jemil"
+      ],
+      "api_id": "2c2ae0ea-fe0f-4f82-9bda-5899f08f392a"
+    },
+    {
+      "id": "biz_m_teleine_tunis",
+      "number": "",
+      "name": "Ligne Mâteleine - Tunis",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Mâteleine - Tunis Line",
+      "stations": [
+        "m_teleine",
+        "tunis"
+      ],
+      "api_id": "a9712028-8000-4a84-b77c-57f41e8302bb"
+    },
+    {
+      "id": "biz_none_rafraf_tunis",
+      "number": null,
+      "name": "Ligne Rafraf - Tunis",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Rafraf - Tunis Line",
+      "stations": [
+        "rafraf",
+        "tunis"
+      ],
+      "api_id": "797601fb-6f3b-49fb-a1e2-35a809737d81"
+    },
+    {
+      "id": "biz_none_ras_el_jebel_bizerte",
+      "number": null,
+      "name": "Ligne Ras El Jebel - Bizerte",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Ras El Jebel - Bizerte Line",
+      "stations": [
+        "ras_el_jebel",
+        "bizerte"
+      ],
+      "api_id": "d3108699-f549-436d-b5f2-c735ebd9d4f2"
+    },
+    {
+      "id": "biz_none_ras_el_jebel_el_metline",
+      "number": null,
+      "name": "Ligne Ras El Jebel - El Garia - El Metline - Ras El Jebel",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Ras El Jebel - El Garia - El Metline - Ras El Jebel Line",
+      "stations": [
+        "ras_el_jebel",
+        "el_metline"
+      ],
+      "api_id": "996511af-0236-480a-85da-d84729669344"
+    },
+    {
+      "id": "biz_none_ras_el_jebel_el_hammari",
+      "number": null,
+      "name": "Ligne Ras El Jebel - El Hammari",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Ras El Jebel - El Hammari Line",
+      "stations": [
+        "ras_el_jebel",
+        "el_hammari"
+      ],
+      "api_id": "5b745dad-cce8-4af2-a0c9-17d0401526e6"
+    },
+    {
+      "id": "biz_none_ras_el_jebel_sidi_bouchoucha",
+      "number": null,
+      "name": "Ligne Ras El Jebel - Sidi Bouchoucha",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Ras El Jebel - Sidi Bouchoucha Line",
+      "stations": [
+        "ras_el_jebel",
+        "sidi_bouchoucha"
+      ],
+      "api_id": "78970931-8b0b-405a-baf0-790014b4cc8e"
+    },
+    {
+      "id": "biz_none_ras_el_jebel_rafraf",
+      "number": null,
+      "name": "Ligne Ras El Jebel - Sounine - Rafraf (réservée aux élèves 1)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Ras El Jebel - Sounine - Rafraf Line (for students only 1)",
+      "stations": [
+        "ras_el_jebel",
+        "rafraf"
+      ],
+      "api_id": "c1608e6a-6fd4-4e54-be9e-22b94b86eab2"
+    },
+    {
+      "id": "biz_none_ras_el_jebel_rafraf",
+      "number": null,
+      "name": "Ligne Ras El Jebel - Sounine - Rafraf (réservée aux élèves 2)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Ras El Jebel - Sounine - Rafraf Line (for students only 2)",
+      "stations": [
+        "ras_el_jebel",
+        "rafraf"
+      ],
+      "api_id": "48717f74-fee7-417e-8616-45b76bd97442"
+    },
+    {
+      "id": "biz_none_ras_el_jebel_tunis",
+      "number": null,
+      "name": "Ligne Ras El Jebel - Tunis - Ras El Jebel (directe)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "inter_governorate",
+      "description": "Ras El Jebel - Tunis - Ras El Jebel Line (direct)",
+      "stations": [
+        "ras_el_jebel",
+        "tunis"
+      ],
+      "api_id": "b231045b-bac3-49af-9ac5-70ecf4bf5915"
+    },
+    {
+      "id": "biz_none_ras_el_jebel_tunis",
+      "number": null,
+      "name": "Ligne Ras El Jebel - Tunis - Ras El Jebel (via Gornata)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "inter_governorate",
+      "description": "Ras El Jebel - Tunis - Ras El Jebel Line (via Gornata)",
+      "stations": [
+        "ras_el_jebel",
+        "tunis"
+      ],
+      "api_id": "0ace5a8c-ccfa-49ab-a358-afcf756c0b60"
+    },
+    {
+      "id": "biz_none_ras_el_jebel_zahana",
+      "number": null,
+      "name": "Ligne Ras El Jebel - Zahana - Ras El Jebel",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Ras El Jebel - Zahana - Ras El Jebel Line",
+      "stations": [
+        "ras_el_jebel",
+        "zahana"
+      ],
+      "api_id": "5ea51115-eef0-4673-bf3c-496737b3f9bd"
+    },
+    {
+      "id": "biz_36_bizerte_ras_el_jebel_via_aousja",
+      "number": "36",
+      "name": "Ligne Ras El Jebel via Aousja",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Ras El Jebel via Aousja Line",
+      "stations": [
+        "bizerte",
+        "ras_el_jebel_via_aousja"
+      ],
+      "api_id": "a6c9f5b4-5130-4ddf-ada5-5519a7c9fad9"
+    },
+    {
+      "id": "biz_37_bizerte_ras_el_jebel",
+      "number": "37",
+      "name": "Ligne Ras El Jebel via El Metline",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Ras El Jebel via El Metline Line",
+      "stations": [
+        "bizerte",
+        "ras_el_jebel"
+      ],
+      "api_id": "010d76f7-0e5f-4c37-993a-49f27b873816"
+    },
+    {
+      "id": "biz_ras_jebel_cap_zebib",
+      "number": "",
+      "name": "Ligne Ras Jebel - Cap Zebib",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Ras Jebel - Cap Zebib Line",
+      "stations": [
+        "ras_jebel",
+        "cap_zebib"
+      ],
+      "api_id": "9d4a85fa-1ef2-4796-b69b-b9dcdcf0b2c1"
+    },
+    {
+      "id": "biz_ras_jebel_garnata",
+      "number": "",
+      "name": "Ligne Ras Jebel - Garnata",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Ras Jebel - Garnata Line",
+      "stations": [
+        "ras_jebel",
+        "garnata"
+      ],
+      "api_id": "9f0ce036-0169-4106-84bc-3efe52f753e7"
+    },
+    {
+      "id": "biz_ras_jebel_ghar_el_melh",
+      "number": "",
+      "name": "Ligne Ras Jebel - Ghar El Melh",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Ras Jebel - Ghar El Melh Line",
+      "stations": [
+        "ras_jebel",
+        "ghar_el_melh"
+      ],
+      "api_id": "6ee8dab6-065b-4087-ab0e-ff74e1b0b6d7"
+    },
+    {
+      "id": "biz_none_sejnane_amaden",
+      "number": null,
+      "name": "Ligne Sejnane - Amaden",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sejnane - Amaden Line",
+      "stations": [
+        "sejnane",
+        "amaden"
+      ],
+      "api_id": "6c4514db-a7d1-48e8-b303-6018b7290724"
+    },
+    {
+      "id": "biz_none_sejnane_el_blaket",
+      "number": null,
+      "name": "Ligne Sejnane - El Blaket",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sejnane - El Blaket Line",
+      "stations": [
+        "sejnane",
+        "el_blaket"
+      ],
+      "api_id": "5e56da7a-6362-4657-bd63-3258cc98f914"
+    },
+    {
+      "id": "biz_sejnane_el_garoudi",
+      "number": "",
+      "name": "Ligne Sejnane - El Garoudi",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sejnane - El Garoudi Line",
+      "stations": [
+        "sejnane",
+        "el_garoudi"
+      ],
+      "api_id": "61bfcb8c-c096-4906-9c22-9f366b2c6219"
+    },
+    {
+      "id": "biz_none_sejnane_el_hkara",
+      "number": null,
+      "name": "Ligne Sejnane - El Hkara",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sejnane - El Hkara Line",
+      "stations": [
+        "sejnane",
+        "el_hkara"
+      ],
+      "api_id": "2efce714-db22-4672-9660-16fbba7ba536"
+    },
+    {
+      "id": "biz_none_sejnane_el_hnia",
+      "number": null,
+      "name": "Ligne Sejnane - El Hnia",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sejnane - El Hnia Line",
+      "stations": [
+        "sejnane",
+        "el_hnia"
+      ],
+      "api_id": "e804c4db-0299-43ab-a300-008ccb7586f2"
+    },
+    {
+      "id": "biz_none_sejnane_es_skhira",
+      "number": null,
+      "name": "Ligne Sejnane - Es Skhira",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sejnane - Es Skhira Line",
+      "stations": [
+        "sejnane",
+        "es_skhira"
+      ],
+      "api_id": "4f1876f0-0abf-4e08-b336-2bb49ae1ba9e"
+    },
+    {
+      "id": "biz_sejnane_sidi_mechreg",
+      "number": "",
+      "name": "Ligne Sejnane - Sidi Mechreg",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sejnane - Sidi Mechreg Line",
+      "stations": [
+        "sejnane",
+        "sidi_mechreg"
+      ],
+      "api_id": "30f15ec5-0db0-4dc9-b128-52c494a50c3c"
+    },
+    {
+      "id": "biz_sejnane_sogman",
+      "number": "",
+      "name": "Ligne Sejnane - Sogman",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sejnane - Sogman Line",
+      "stations": [
+        "sejnane",
+        "sogman"
+      ],
+      "api_id": "37ff3212-35cd-46c8-a0e3-b6452e3cb5d9"
+    },
+    {
+      "id": "biz_none_sejnane_tamra",
+      "number": null,
+      "name": "Ligne Sejnane - Tamra",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sejnane - Tamra Line",
+      "stations": [
+        "sejnane",
+        "tamra"
+      ],
+      "api_id": "03534d3a-3af0-4589-a02f-5eef891ac036"
+    },
+    {
+      "id": "biz_none_sejnane_tunis",
+      "number": null,
+      "name": "Ligne Sejnane - Tunis",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sejnane - Tunis Line",
+      "stations": [
+        "sejnane",
+        "tunis"
+      ],
+      "api_id": "63e1f36c-3102-4163-872e-9a4bff403a8a"
+    },
+    {
+      "id": "biz_sejnane_cap_serrat",
+      "number": "",
+      "name": "Ligne Sejnane – Cap Serrat",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sejnane – Cap Serrat Line",
+      "stations": [
+        "sejnane",
+        "cap_serrat"
+      ],
+      "api_id": "8ba25918-f616-445e-919f-a47b3cbe4dab"
+    },
+    {
+      "id": "biz_sejnane_sidi_mechreg",
+      "number": "",
+      "name": "Ligne Sejnane – Sidi Mechreg",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sejnane – Sidi Mechreg Line",
+      "stations": [
+        "sejnane",
+        "sidi_mechreg"
+      ],
+      "api_id": "ccdd0174-e551-4408-aa30-cac603bf7fd1"
+    },
+    {
+      "id": "biz_4_bizerte_sidi_ahmed",
+      "number": "4",
+      "name": "Ligne Sidi Ahmed",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sidi Ahmed Line",
+      "stations": [
+        "bizerte",
+        "sidi_ahmed"
+      ],
+      "api_id": "283883fb-38ed-4bf5-856c-c04a8e8245ce"
+    },
+    {
+      "id": "biz_4_bizerte_sidi_ahmed",
+      "number": "4س",
+      "name": "Ligne Sidi Ahmed (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sidi Ahmed Line (for students only)",
+      "stations": [
+        "bizerte",
+        "sidi_ahmed"
+      ],
+      "api_id": "3078b19e-65d6-4fd0-a9c4-2e2d0161940a"
+    },
+    {
+      "id": "biz_35_bizerte_el_alia",
+      "number": "35",
+      "name": "Ligne Sidi Ali Echabab - El Alia (via El Khetmine)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sidi Ali Echabab - El Alia Line (via El Khetmine)",
+      "stations": [
+        "bizerte",
+        "el_alia"
+      ],
+      "api_id": "892bd881-331d-481a-893c-7b3970241874"
+    },
+    {
+      "id": "biz_17_bizerte_sidi_amer_ghar_wankel",
+      "number": "17",
+      "name": "Ligne Sidi Amer - Ghar Wankel",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Sidi Amer - Ghar Wankel Line",
+      "stations": [
+        "bizerte",
+        "sidi_amer_ghar_wankel"
+      ],
+      "api_id": "1698d8c4-6608-44ef-9889-6f612bd2fc78"
+    },
+    {
+      "id": "biz_utique_bach_hamba_ezzouia",
+      "number": "",
+      "name": "Ligne Utique - Bach Hamba - Ezzouia",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Utique - Bach Hamba - Ezzouia Line",
+      "stations": [
+        "utique",
+        "bach_hamba_ezzouia"
+      ],
+      "api_id": "0f25820e-a3a4-49df-aed8-03e29b8a3f5e"
+    },
+    {
+      "id": "biz_utique_cit_el_manar",
+      "number": "",
+      "name": "Ligne Utique - Cité El Manar",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Utique - El Manar District Line",
+      "stations": [
+        "utique",
+        "cit_el_manar"
+      ],
+      "api_id": "61b537eb-6272-4d50-8c49-2d2e6e8fa832"
+    },
+    {
+      "id": "biz_utique_sidi_othman",
+      "number": "",
+      "name": "Ligne Utique - Sidi Othman",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Utique - Sidi Othman Line",
+      "stations": [
+        "utique",
+        "sidi_othman"
+      ],
+      "api_id": "b230e2f6-0b4a-45bb-bda8-bc5c6ab0c84d"
+    },
+    {
+      "id": "biz_utique_el_bessbessia",
+      "number": "",
+      "name": "Ligne Utique – El Bessbessia",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Utique – El Bessbessia Line",
+      "stations": [
+        "utique",
+        "el_bessbessia"
+      ],
+      "api_id": "922e4366-fec4-4ad7-88aa-09ee86303450"
+    },
+    {
+      "id": "biz_utique_el_houidh_line",
+      "number": "",
+      "name": "Ligne Utique – El Houidh (Réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Utique – El Houidh Line (Students Only)",
+      "stations": [
+        "utique",
+        "el_houidh_line"
+      ],
+      "api_id": "549a7adf-3c72-4452-9f30-a7030d0d6e9e"
+    },
+    {
+      "id": "biz_utique_el_jadida",
+      "number": "",
+      "name": "Ligne Utique – El Jadida",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Utique – El Jadida Line",
+      "stations": [
+        "utique",
+        "el_jadida"
+      ],
+      "api_id": "e8a990b5-5f13-4f87-861e-b1961f83220d"
+    },
+    {
+      "id": "biz_utique_ezzgueb",
+      "number": "",
+      "name": "Ligne Utique – Ezzgueb",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Utique – Ezzgueb Line",
+      "stations": [
+        "utique",
+        "ezzgueb"
+      ],
+      "api_id": "2d8c9643-91b6-475c-b7c7-060677791fde"
+    },
+    {
+      "id": "biz_39_coll_ge_el_khitmine_coll_ge_el_khitmine",
+      "number": "39",
+      "name": "Ligne du collège El Khitmine (réservée aux élèves)",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "El Khitmine Middle School Line (for students only)",
+      "stations": [
+        "coll_ge_el_khitmine",
+        "coll_ge_el_khitmine"
+      ],
+      "api_id": "348a9145-307c-4642-ac38-2d57e1d8d15d"
+    },
+    {
+      "id": "biz_4_bizerte_sidi_ahmed",
+      "number": "4",
+      "name": "Réservé aux élèves – Ligne Sidi Ahmed",
+      "operator": "BizerteConnect",
+      "mode": "bus",
+      "type": "intra_governorate",
+      "description": "Students Only – Sidi Ahmed Line",
+      "stations": [
+        "bizerte",
+        "sidi_ahmed"
+      ],
+      "api_id": "919f0297-a347-46d6-b331-3baaa2978a7b"
     }
   ]
 }

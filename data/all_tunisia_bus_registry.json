@@ -1,0 +1,933 @@
+{
+  "metadata": {
+    "source": "bledi.tn comprehensive extraction",
+    "date": "2026-09-19",
+    "operators": {}
+  },
+  "operators": {
+    "BizerteConnect": {
+      "website": "https://www.bizerteconnect.com",
+      "coverage": "Bizerte governorate (internal + external)",
+      "line_count": 131,
+      "lines": [
+        {
+          "number": "23",
+          "name": "Ligne Ain El Berda",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Ain El Berda"
+        },
+        {
+          "number": "5",
+          "name": "Ligne Ain Meriem",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Ain Meriem"
+        },
+        {
+          "number": "7/4",
+          "name": "Ligne Amila",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Amila"
+        },
+        {
+          "number": "",
+          "name": "Ligne Bazina - El Garia (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Bazina",
+          "destination": "El Garia"
+        },
+        {
+          "number": "",
+          "name": "Ligne Bazina - El Khetracha (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Bazina",
+          "destination": "El Khetracha"
+        },
+        {
+          "number": "",
+          "name": "Ligne Bazina - Ettouajnia (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Bazina",
+          "destination": "Ettouajnia"
+        },
+        {
+          "number": "",
+          "name": "Ligne Bazina - Joumine - Tunis",
+          "type": "inter_governorate",
+          "origin": "Bazina",
+          "destination": "Tunis"
+        },
+        {
+          "number": "",
+          "name": "Ligne Bazina – Joumine – Plage Sidi Gharib Sejnane",
+          "type": "intra_governorate",
+          "origin": "Bazina",
+          "destination": "Plage Sidi Gharib Sejnane"
+        },
+        {
+          "number": "6",
+          "name": "Ligne Bechater",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Bechater"
+        },
+        {
+          "number": "",
+          "name": "Ligne Bizerte - Aéroport Tunis-Carthage (Confort)",
+          "type": "inter_governorate",
+          "origin": "Bizerte",
+          "destination": "Aéroport Tunis-Carthage"
+        },
+        {
+          "number": "",
+          "name": "Ligne Bizerte - Bab Saâdoun - Bizerte (Confort)",
+          "type": "inter_governorate",
+          "origin": "Bizerte",
+          "destination": "Bab Saadoun"
+        },
+        {
+          "number": "ب 4",
+          "name": "Ligne Bizerte - Louata via Sidi Ahmed (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Louata"
+        },
+        {
+          "number": "8",
+          "name": "Ligne Bizerte - Menzel Jemil",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Menzel Jemil"
+        },
+        {
+          "number": "",
+          "name": "Ligne Bizerte - Sejnane",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Sejnane"
+        },
+        {
+          "number": "",
+          "name": "Ligne Bizerte - Sousse - Monastir",
+          "type": "inter_governorate",
+          "origin": "Bizerte",
+          "destination": "Monastir"
+        },
+        {
+          "number": "",
+          "name": "Ligne Bizerte - Tunis",
+          "type": "inter_governorate",
+          "origin": "Bizerte",
+          "destination": "Tunis"
+        },
+        {
+          "number": "515",
+          "name": "Ligne Bizerte El Kantara - Bech Hamba",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "El Kantara"
+        },
+        {
+          "number": "",
+          "name": "Ligne Bizerte – Joumine (Service spécial)",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Joumine"
+        },
+        {
+          "number": "9",
+          "name": "Ligne Bizerte – Menzel Abderrahmane",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Menzel Abderrahmane"
+        },
+        {
+          "number": "12",
+          "name": "Ligne Bouzaria (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Bouzaria"
+        },
+        {
+          "number": "29",
+          "name": "Ligne Béni Aouf",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Béni Aouf"
+        },
+        {
+          "number": "6-29",
+          "name": "Ligne Béni Aouf + Bechater (réservée aux dimanches)",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Béni Aouf + Bechater"
+        },
+        {
+          "number": "11",
+          "name": "Ligne Béni Moslem - Ksar Khrouf",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Ksar Khrouf"
+        },
+        {
+          "number": null,
+          "name": "Ligne Béni Nafaa",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Béni Nafaa"
+        },
+        {
+          "number": "21",
+          "name": "Ligne Corniche - Enadhour",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Corniche - Enadhour"
+        },
+        {
+          "number": "21",
+          "name": "Ligne Corniche - La Nouvelle Route",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Corniche - La Nouvelle Route"
+        },
+        {
+          "number": "1",
+          "name": "Ligne Corniche - La Nouvelle Route",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Corniche - La Nouvelle Route"
+        },
+        {
+          "number": "",
+          "name": "Ligne El Alia - Tunis",
+          "type": "inter_governorate",
+          "origin": "El Alia",
+          "destination": "Tunis"
+        },
+        {
+          "number": "34",
+          "name": "Ligne El Alia via Hariza",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "El Alia"
+        },
+        {
+          "number": "33",
+          "name": "Ligne El Azib - El Alia - Lycée Menzel Jemil - Lycée El Canal",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "El Azib - El Alia - Lycée Menzel Jemil - Lycée El Canal"
+        },
+        {
+          "number": "16",
+          "name": "Ligne El Ghirane",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "El Ghirane"
+        },
+        {
+          "number": "16 ب",
+          "name": "Ligne El Ghirane - Oued El Hammam (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "El Ghirane"
+        },
+        {
+          "number": "",
+          "name": "Ligne El Mabtouh – Sidi Othmane – Béni Hamaba – Utique – Plage Sidi Salem Bizerte",
+          "type": "intra_governorate",
+          "origin": "El Mabtouh",
+          "destination": "Plage Sidi Salem Bizerte"
+        },
+        {
+          "number": "3",
+          "name": "Ligne El Mssida",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "El Mssida"
+        },
+        {
+          "number": "24",
+          "name": "Ligne El Tella (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "El Tella"
+        },
+        {
+          "number": "2",
+          "name": "Ligne Enadhour",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Enadhour"
+        },
+        {
+          "number": "",
+          "name": "Ligne Ghar El Melh - Bizerte",
+          "type": "intra_governorate",
+          "origin": "Ghar El Melh",
+          "destination": "Bizerte"
+        },
+        {
+          "number": null,
+          "name": "Ligne Ghar El Melh - Tunis",
+          "type": "inter_governorate",
+          "origin": "Ghar El Melh",
+          "destination": "Tunis"
+        },
+        {
+          "number": "15",
+          "name": "Ligne Hay Bougatfa",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Hay Bougatfa"
+        },
+        {
+          "number": "15أ",
+          "name": "Ligne Hay Bougatfa",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Hay Bougatfa"
+        },
+        {
+          "number": "",
+          "name": "Ligne Hay El Ommal – Chatt El Kebir (Jarzouna)",
+          "type": "intra_governorate",
+          "origin": "Hay El Ommal",
+          "destination": "Chatt El Kebir (Jarzouna)"
+        },
+        {
+          "number": "10",
+          "name": "Ligne Hay El Oummal",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Hay El Oummal"
+        },
+        {
+          "number": "2000",
+          "name": "Ligne Hay El Waha",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Hay El Waha"
+        },
+        {
+          "number": "20",
+          "name": "Ligne Institut Boukhris via Bougatfa (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Collége Boukhris"
+        },
+        {
+          "number": null,
+          "name": "Ligne Joumine - Rouaha (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Joumine",
+          "destination": "Rouaha"
+        },
+        {
+          "number": null,
+          "name": "Ligne Joumine - Sidi El Bechir (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Joumine",
+          "destination": "Sidi El Bechir"
+        },
+        {
+          "number": null,
+          "name": "Ligne Joumine - Tahent (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Joumine",
+          "destination": "Tahent"
+        },
+        {
+          "number": "4",
+          "name": "Ligne Louata",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Louata"
+        },
+        {
+          "number": "31-19",
+          "name": "Ligne Lycée Menzel Jemil - Lycée El Canal - El Azib - El Alia",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "El Alia"
+        },
+        {
+          "number": "",
+          "name": "Ligne Mateur - Bizerte",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Mateur"
+        },
+        {
+          "number": "",
+          "name": "Ligne Mateur - Boujrir (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "Boujrir"
+        },
+        {
+          "number": "",
+          "name": "Ligne Mateur - Boumkhila (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "Boumkhila"
+        },
+        {
+          "number": "",
+          "name": "Ligne Mateur - Béni Ibrahim (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "Beni Ibrahim"
+        },
+        {
+          "number": null,
+          "name": "Ligne Mateur - Ed Dkhila (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "Ed Dkhila"
+        },
+        {
+          "number": null,
+          "name": "Ligne Mateur - Eddouaouda (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "Eddouaouda"
+        },
+        {
+          "number": null,
+          "name": "Ligne Mateur - El Baspasia (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "El Baspasia"
+        },
+        {
+          "number": null,
+          "name": "Ligne Mateur - El Hamrounia (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "El Hamrounia"
+        },
+        {
+          "number": null,
+          "name": "Ligne Mateur - El Kahla (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "El Kahla"
+        },
+        {
+          "number": null,
+          "name": "Ligne Mateur - Es Saoudia (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "Es Saoudia"
+        },
+        {
+          "number": "",
+          "name": "Ligne Mateur - Menzel Bourguiba 1",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "Menzel Bourguiba 1"
+        },
+        {
+          "number": "",
+          "name": "Ligne Mateur - Menzel Bourguiba 2",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "Menzel Bourguiba 2"
+        },
+        {
+          "number": "",
+          "name": "Ligne Mateur - Michou (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "Michou"
+        },
+        {
+          "number": "",
+          "name": "Ligne Mateur - Sidi Abdelbasset (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "Sidi Abdelbasset"
+        },
+        {
+          "number": "",
+          "name": "Ligne Mateur - Sidi Mansour (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Mateur",
+          "destination": "Sidi Mansour"
+        },
+        {
+          "number": "",
+          "name": "Ligne Mateur - Tunis",
+          "type": "inter_governorate",
+          "origin": "Mateur",
+          "destination": "Tunis"
+        },
+        {
+          "number": "9",
+          "name": "Ligne Menzel Abderrahmane",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Menzel Abderrahmane"
+        },
+        {
+          "number": "9ب",
+          "name": "Ligne Menzel Abderrahmane",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Menzel Abderrahmane"
+        },
+        {
+          "number": "8/9",
+          "name": "Ligne Menzel Abderrahmane - Menzel Jemil",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Menzel Abderrahmane - Menzel Jemil"
+        },
+        {
+          "number": "44",
+          "name": "Ligne Menzel Bourguiba",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Menzel Bourguiba"
+        },
+        {
+          "number": "53",
+          "name": "Ligne Menzel Bourguiba",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Menzel Bourguiba"
+        },
+        {
+          "number": "",
+          "name": "Ligne Menzel Bourguiba - Aéroport Tunis-Carthage (Commerciale)",
+          "type": "inter_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Aéroport Tunis-Carthage"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - Bizerte",
+          "type": "intra_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Bizerte"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - Béni Toun",
+          "type": "intra_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Béni Toun"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - Echellaghmia",
+          "type": "intra_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Echellaghmia"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - El Baspasia",
+          "type": "intra_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "El Baspasia"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - El Blat",
+          "type": "intra_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "El Blat"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - Ezzaghrour",
+          "type": "intra_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Ezzaghrour"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - Gannkla",
+          "type": "intra_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Gannkla"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - Oum Hani",
+          "type": "intra_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Oum Hani"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - Oum Hani",
+          "type": "intra_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Oum Hani"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - Sidi Yahia",
+          "type": "intra_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Sidi Yahia"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - Tinja",
+          "type": "intra_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Tinja"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - Tunis (confort)",
+          "type": "inter_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Tunis"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - Tunis (standard/non confort)",
+          "type": "inter_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Tunis"
+        },
+        {
+          "number": null,
+          "name": "Ligne Menzel Bourguiba - Tunis via Charguia",
+          "type": "inter_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Tunis"
+        },
+        {
+          "number": "",
+          "name": "Ligne Menzel Bourguiba – Tinja – Plage Sidi Salem Bizerte",
+          "type": "intra_governorate",
+          "origin": "Menzel Bourguiba",
+          "destination": "Plage Sidi Salem Bizerte"
+        },
+        {
+          "number": "8",
+          "name": "Ligne Menzel Jemil",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Menzel Jemil"
+        },
+        {
+          "number": "8أ",
+          "name": "Ligne Menzel Jemil",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Menzel Jemil"
+        },
+        {
+          "number": "8",
+          "name": "Ligne Menzel Jemil",
+          "type": "intra_governorate",
+          "origin": "BIzerte",
+          "destination": "Menzel Jemil"
+        },
+        {
+          "number": "32",
+          "name": "Ligne Menzel Jemil - Collège de Menzel Jemil (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Menzel Jemil - Collège de Menzel Jemil"
+        },
+        {
+          "number": "",
+          "name": "Ligne Mâteleine - Tunis",
+          "type": "intra_governorate",
+          "origin": "Mâteleine",
+          "destination": "Tunis"
+        },
+        {
+          "number": null,
+          "name": "Ligne Rafraf - Tunis",
+          "type": "intra_governorate",
+          "origin": "Rafraf",
+          "destination": "Tunis"
+        },
+        {
+          "number": null,
+          "name": "Ligne Ras El Jebel - Bizerte",
+          "type": "intra_governorate",
+          "origin": "Ras El Jebel",
+          "destination": "Bizerte"
+        },
+        {
+          "number": null,
+          "name": "Ligne Ras El Jebel - El Garia - El Metline - Ras El Jebel",
+          "type": "intra_governorate",
+          "origin": "Ras El Jebel",
+          "destination": "El Metline"
+        },
+        {
+          "number": null,
+          "name": "Ligne Ras El Jebel - El Hammari",
+          "type": "intra_governorate",
+          "origin": "Ras El Jebel",
+          "destination": "El Hammari"
+        },
+        {
+          "number": null,
+          "name": "Ligne Ras El Jebel - Sidi Bouchoucha",
+          "type": "intra_governorate",
+          "origin": "Ras El Jebel",
+          "destination": "Sidi Bouchoucha"
+        },
+        {
+          "number": null,
+          "name": "Ligne Ras El Jebel - Sounine - Rafraf (réservée aux élèves 1)",
+          "type": "intra_governorate",
+          "origin": "Ras El Jebel",
+          "destination": "Rafraf"
+        },
+        {
+          "number": null,
+          "name": "Ligne Ras El Jebel - Sounine - Rafraf (réservée aux élèves 2)",
+          "type": "intra_governorate",
+          "origin": "Ras El Jebel",
+          "destination": "Rafraf"
+        },
+        {
+          "number": null,
+          "name": "Ligne Ras El Jebel - Tunis - Ras El Jebel (directe)",
+          "type": "inter_governorate",
+          "origin": "Ras El Jebel",
+          "destination": "Tunis"
+        },
+        {
+          "number": null,
+          "name": "Ligne Ras El Jebel - Tunis - Ras El Jebel (via Gornata)",
+          "type": "inter_governorate",
+          "origin": "Ras El Jebel",
+          "destination": "Tunis"
+        },
+        {
+          "number": null,
+          "name": "Ligne Ras El Jebel - Zahana - Ras El Jebel",
+          "type": "intra_governorate",
+          "origin": "Ras El Jebel",
+          "destination": "Zahana"
+        },
+        {
+          "number": "36",
+          "name": "Ligne Ras El Jebel via Aousja",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Ras El Jebel via Aousja"
+        },
+        {
+          "number": "37",
+          "name": "Ligne Ras El Jebel via El Metline",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Ras El Jebel"
+        },
+        {
+          "number": "",
+          "name": "Ligne Ras Jebel - Cap Zebib",
+          "type": "intra_governorate",
+          "origin": "Ras Jebel",
+          "destination": "Cap Zebib"
+        },
+        {
+          "number": "",
+          "name": "Ligne Ras Jebel - Garnata",
+          "type": "intra_governorate",
+          "origin": "Ras Jebel",
+          "destination": "Garnata"
+        },
+        {
+          "number": "",
+          "name": "Ligne Ras Jebel - Ghar El Melh",
+          "type": "intra_governorate",
+          "origin": "Ras Jebel",
+          "destination": "Ghar El Melh"
+        },
+        {
+          "number": null,
+          "name": "Ligne Sejnane - Amaden",
+          "type": "intra_governorate",
+          "origin": "Sejnane",
+          "destination": "Amaden"
+        },
+        {
+          "number": null,
+          "name": "Ligne Sejnane - El Blaket",
+          "type": "intra_governorate",
+          "origin": "Sejnane",
+          "destination": "El Blaket"
+        },
+        {
+          "number": "",
+          "name": "Ligne Sejnane - El Garoudi",
+          "type": "intra_governorate",
+          "origin": "Sejnane",
+          "destination": "El Garoudi"
+        },
+        {
+          "number": null,
+          "name": "Ligne Sejnane - El Hkara",
+          "type": "intra_governorate",
+          "origin": "Sejnane",
+          "destination": "El Hkara"
+        },
+        {
+          "number": null,
+          "name": "Ligne Sejnane - El Hnia",
+          "type": "intra_governorate",
+          "origin": "Sejnane",
+          "destination": "El Hnia"
+        },
+        {
+          "number": null,
+          "name": "Ligne Sejnane - Es Skhira",
+          "type": "intra_governorate",
+          "origin": "Sejnane",
+          "destination": "Es Skhira"
+        },
+        {
+          "number": "",
+          "name": "Ligne Sejnane - Sidi Mechreg",
+          "type": "intra_governorate",
+          "origin": "Sejnane",
+          "destination": "Sidi Mechreg"
+        },
+        {
+          "number": "",
+          "name": "Ligne Sejnane - Sogman",
+          "type": "intra_governorate",
+          "origin": "Sejnane",
+          "destination": "Sogman"
+        },
+        {
+          "number": null,
+          "name": "Ligne Sejnane - Tamra",
+          "type": "intra_governorate",
+          "origin": "Sejnane",
+          "destination": "Tamra"
+        },
+        {
+          "number": null,
+          "name": "Ligne Sejnane - Tunis",
+          "type": "intra_governorate",
+          "origin": "Sejnane",
+          "destination": "Tunis"
+        },
+        {
+          "number": "",
+          "name": "Ligne Sejnane – Cap Serrat",
+          "type": "intra_governorate",
+          "origin": "Sejnane",
+          "destination": "Cap Serrat"
+        },
+        {
+          "number": "",
+          "name": "Ligne Sejnane – Sidi Mechreg",
+          "type": "intra_governorate",
+          "origin": "Sejnane",
+          "destination": "Sidi Mechreg"
+        },
+        {
+          "number": "4",
+          "name": "Ligne Sidi Ahmed",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Sidi Ahmed"
+        },
+        {
+          "number": "4س",
+          "name": "Ligne Sidi Ahmed (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Sidi Ahmed"
+        },
+        {
+          "number": "35",
+          "name": "Ligne Sidi Ali Echabab - El Alia (via El Khetmine)",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "El Alia"
+        },
+        {
+          "number": "17",
+          "name": "Ligne Sidi Amer - Ghar Wankel",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Sidi Amer - Ghar Wankel"
+        },
+        {
+          "number": "",
+          "name": "Ligne Utique - Bach Hamba - Ezzouia",
+          "type": "intra_governorate",
+          "origin": "Utique",
+          "destination": "Bach Hamba - Ezzouia"
+        },
+        {
+          "number": "",
+          "name": "Ligne Utique - Cité El Manar",
+          "type": "intra_governorate",
+          "origin": "Utique",
+          "destination": "Cité El Manar"
+        },
+        {
+          "number": "",
+          "name": "Ligne Utique - Sidi Othman",
+          "type": "intra_governorate",
+          "origin": "Utique",
+          "destination": "Sidi Othman"
+        },
+        {
+          "number": "",
+          "name": "Ligne Utique – El Bessbessia",
+          "type": "intra_governorate",
+          "origin": "Utique",
+          "destination": "El Bessbessia"
+        },
+        {
+          "number": "",
+          "name": "Ligne Utique – El Houidh (Réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "Utique",
+          "destination": "El Houidh Line"
+        },
+        {
+          "number": "",
+          "name": "Ligne Utique – El Jadida",
+          "type": "intra_governorate",
+          "origin": "Utique",
+          "destination": "El Jadida"
+        },
+        {
+          "number": "",
+          "name": "Ligne Utique – Ezzgueb",
+          "type": "intra_governorate",
+          "origin": "Utique",
+          "destination": "Ezzgueb"
+        },
+        {
+          "number": "39",
+          "name": "Ligne du collège El Khitmine (réservée aux élèves)",
+          "type": "intra_governorate",
+          "origin": "collège El Khitmine",
+          "destination": "collège El Khitmine"
+        },
+        {
+          "number": "4",
+          "name": "Réservé aux élèves – Ligne Sidi Ahmed",
+          "type": "intra_governorate",
+          "origin": "Bizerte",
+          "destination": "Sidi Ahmed"
+        }
+      ]
+    }
+  }
+}
