@@ -3,7 +3,7 @@
     "source": "Tunismapper (tunismapper.com ligne_details.php)",
     "extracted_date": "2026-09-19",
     "total_lines": 228,
-    "total_stations": 1534,
+    "total_stations": 1590,
     "by_mode": {
       "Train": 29,
       "RFR": 3,
@@ -12,7 +12,8 @@
     },
     "coordinate_coverage": 1534,
     "stations_enriched": 1534,
-    "enrichment_source": "tunismapper station_details API"
+    "enrichment_source": "tunismapper station_details API",
+    "stations_added_from_sweep": 56
   },
   "stations": [
     {
@@ -67586,6 +67587,577 @@
         }
       ],
       "route_type": 3
+    },
+    {
+      "id": "haidra",
+      "name": "Haidra",
+      "lat": 35.5660212,
+      "lon": 8.4482377,
+      "source_stop_id": "117",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "foussana",
+      "name": "Foussana",
+      "lat": 35.3492711,
+      "lon": 8.6250111,
+      "source_stop_id": "118",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "voie_ballastiere_el_hrich",
+      "name": "Voie Ballastiere- El hrich",
+      "lat": 35.2407172,
+      "lon": 8.7477377,
+      "source_stop_id": "119",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "jemmal",
+      "name": "Jemmal",
+      "lat": 35.6286111,
+      "lon": 10.7575972,
+      "source_stop_id": "126",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "moknine_marchandises",
+      "name": "Moknine Marchandises",
+      "lat": 35.6279133,
+      "lon": 10.895083,
+      "source_stop_id": "127",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "beau_sejour",
+      "name": "Beau Sejour",
+      "lat": 37.151423,
+      "lon": 9.7933841,
+      "source_stop_id": "130",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "menzel_bourguiba",
+      "name": "Menzel Bourguiba",
+      "lat": 37.1397823,
+      "lon": 9.8030994,
+      "source_stop_id": "131",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "sehib",
+      "name": "Sehib",
+      "lat": 34.2369521,
+      "lon": 8.646821,
+      "source_stop_id": "137",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "kasserine",
+      "name": "Kasserine",
+      "lat": 35.1674016,
+      "lon": 8.8347042,
+      "source_stop_id": "140",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "sbeitla",
+      "name": "Sbeitla",
+      "lat": 35.2275949,
+      "lon": 9.1281117,
+      "source_stop_id": "141",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "zerzour",
+      "name": "Zerzour",
+      "lat": 35.2490918,
+      "lon": 9.3036993,
+      "source_stop_id": "142",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "jilma",
+      "name": "Jilma",
+      "lat": 35.2741441,
+      "lon": 9.421765,
+      "source_stop_id": "143",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "hajeb_el_aioun",
+      "name": "Hajeb El Aioun",
+      "lat": 35.368141,
+      "lon": 9.5710127,
+      "source_stop_id": "144",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "tajerouine",
+      "name": "Tajerouine",
+      "lat": 35.8519636,
+      "lon": 8.5459635,
+      "source_stop_id": "148",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "charaf",
+      "name": "Charaf",
+      "lat": 35.594883,
+      "lon": 11.0098213,
+      "source_stop_id": "155",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "frina",
+      "name": "Frina",
+      "lat": 35.7306706,
+      "lon": 10.8126974,
+      "source_stop_id": "168",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "la_faculte_2",
+      "name": "La Faculte 2",
+      "lat": 35.7613195,
+      "lon": 10.809322,
+      "source_stop_id": "170",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "skanes",
+      "name": "Skanes",
+      "lat": 35.7680658,
+      "lon": 10.7882324,
+      "source_stop_id": "180",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "aig_l12",
+      "name": "Aig L12",
+      "lat": 35.8217595,
+      "lon": 10.5756493,
+      "source_stop_id": "184",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "beja_marchandises",
+      "name": "Beja Marchandises",
+      "lat": 36.7387942,
+      "lon": 9.1898576,
+      "source_stop_id": "188",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "oued_ellil",
+      "name": "Oued Ellil",
+      "lat": 36.8358397,
+      "lon": 10.0091068,
+      "source_stop_id": "196",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "cit_erraoudha",
+      "name": "Cité Erraoudha",
+      "lat": 36.8062597,
+      "lon": 10.1392118,
+      "source_stop_id": "199",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "aiguille_0_730",
+      "name": "Aiguille 0+730",
+      "lat": 36.7870788,
+      "lon": 10.177167,
+      "source_stop_id": "200",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "ichkeul",
+      "name": "Ichkeul",
+      "lat": 37.1149215,
+      "lon": 9.7292643,
+      "source_stop_id": "210",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "aig_ss_l22",
+      "name": "Aig-SS-L22",
+      "lat": 35.782247,
+      "lon": 10.6619746,
+      "source_stop_id": "216",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "mseken_messadine",
+      "name": "Mseken Messadine",
+      "lat": 35.7549566,
+      "lon": 10.5909218,
+      "source_stop_id": "46",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "ksar_mezouar",
+      "name": "Ksar Mezouar",
+      "lat": 36.9153999,
+      "lon": 9.4580425,
+      "source_stop_id": "47",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "sidi_nsir",
+      "name": "Sidi Nsir",
+      "lat": 36.9615341,
+      "lon": 9.5245642,
+      "source_stop_id": "48",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "mettarcheni",
+      "name": "Mettarcheni",
+      "lat": 37.0012275,
+      "lon": 9.6008757,
+      "source_stop_id": "49",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "el_arima",
+      "name": "El Arima",
+      "lat": 37.0216504,
+      "lon": 9.6388624,
+      "source_stop_id": "50",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "el_kerma",
+      "name": "El Kerma",
+      "lat": 34.6312105,
+      "lon": 9.7487658,
+      "source_stop_id": "53",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "le_kriz",
+      "name": "Le Kriz",
+      "lat": 34.0331235,
+      "lon": 8.2430399,
+      "source_stop_id": "61",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "el_guetar",
+      "name": "El Guetar",
+      "lat": 34.3301217,
+      "lon": 8.9496254,
+      "source_stop_id": "65",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "mg_n1",
+      "name": "Mg N1",
+      "lat": 34.2252007,
+      "lon": 9.1666819,
+      "source_stop_id": "66",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "segui",
+      "name": "Segui",
+      "lat": 34.174233,
+      "lon": 9.4056288,
+      "source_stop_id": "67",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "el_fejij",
+      "name": "El Fejij",
+      "lat": 34.0658562,
+      "lon": 9.7362494,
+      "source_stop_id": "68",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "mg_n4",
+      "name": "Mg N4",
+      "lat": 34.0112183,
+      "lon": 9.8456117,
+      "source_stop_id": "69",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "kiosque_agil",
+      "name": "Kiosque Agil",
+      "lat": 36.7114257,
+      "lon": 9.8783878,
+      "source_stop_id": "7033",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "maagen_bel_abbes",
+      "name": "Maagen Bel Abbes",
+      "lat": 34.7500864,
+      "lon": 8.5195195,
+      "source_stop_id": "73",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "cite_el_mechtel",
+      "name": "Cite El Mechtel",
+      "lat": 36.7925903,
+      "lon": 10.0959844,
+      "source_stop_id": "7332",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "feriana",
+      "name": "Feriana",
+      "lat": 34.9491796,
+      "lon": 8.5681485,
+      "source_stop_id": "74",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "sabra_amp_chatila",
+      "name": "Sabra &amp; Chatila ",
+      "lat": 36.7987274,
+      "lon": 10.1309368,
+      "source_stop_id": "7449",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": [
+        {
+          "route_short_name": "15",
+          "route_color": "FF0000",
+          "direction": "Jardin Thameur"
+        },
+        {
+          "route_short_name": "15",
+          "route_color": "FF0000",
+          "direction": "Saidia "
+        }
+      ]
+    },
+    {
+      "id": "thelepte",
+      "name": "Thelepte",
+      "lat": 34.9765388,
+      "lon": 8.5962215,
+      "source_stop_id": "75",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "frechich",
+      "name": "Frechich",
+      "lat": 36.9146687,
+      "lon": 10.0994286,
+      "source_stop_id": "7585",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "mekdoudech",
+      "name": "Mekdoudech",
+      "lat": 35.0838213,
+      "lon": 8.7266047,
+      "source_stop_id": "76",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "cit_el_hidhab",
+      "name": "Cité El Hidhab",
+      "lat": 36.7101875,
+      "lon": 10.1780156,
+      "source_stop_id": "7694",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "mateur_sud",
+      "name": "Mateur Sud",
+      "lat": 37.0367493,
+      "lon": 9.6622766,
+      "source_stop_id": "78",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "bab_sadoun",
+      "name": "Bab Sadoun",
+      "lat": 36.8097562,
+      "lon": 10.1532187,
+      "source_stop_id": "7867",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "ghezala",
+      "name": "Ghezala",
+      "lat": 37.0646914,
+      "lon": 9.6021629,
+      "source_stop_id": "79",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "jalta",
+      "name": "Jalta",
+      "lat": 37.0740394,
+      "lon": 9.5347362,
+      "source_stop_id": "80",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "jefna",
+      "name": "Jefna",
+      "lat": 37.0426792,
+      "lon": 9.4417664,
+      "source_stop_id": "81",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "lansarine",
+      "name": "Lansarine",
+      "lat": 36.8331351,
+      "lon": 9.6821205,
+      "source_stop_id": "8131",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "sedjnane",
+      "name": "Sedjnane",
+      "lat": 37.0513765,
+      "lon": 9.2764831,
+      "source_stop_id": "82",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "lyc_e_menzeh6",
+      "name": "Lycée Menzeh6",
+      "lat": 36.8521868,
+      "lon": 10.16466,
+      "source_stop_id": "8252",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "el_harrech",
+      "name": "El Harrech",
+      "lat": 37.0596772,
+      "lon": 9.2207192,
+      "source_stop_id": "83",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
+    },
+    {
+      "id": "tamera",
+      "name": "Tamera",
+      "lat": 37.0558225,
+      "lon": 9.1195977,
+      "source_stop_id": "84",
+      "mode": "unknown",
+      "operator": "unknown",
+      "lines_served": []
     }
   ],
   "lines": [

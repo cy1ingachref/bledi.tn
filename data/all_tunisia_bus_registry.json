@@ -6,7 +6,9 @@
     "total_operators": 3,
     "total_lines": 321,
     "last_updated": "2026-09-19",
-    "notes": "Transtu (bus/metro/RFR) scraped from Tunismapper with GPS coords + schedules. BizerteConnect remains the best Bizerte governorate intercity dataset. SNCFT trains scraped from Tunismapper."
+    "notes": "Transtu (bus/metro/RFR) scraped from Tunismapper with GPS coords + schedules. BizerteConnect remains the best Bizerte governorate intercity dataset. SNCFT trains scraped from Tunismapper.",
+    "total_stations_enriched": 1663,
+    "new_stations_from_sweep": 56
   },
   "operators": {
     "BizerteConnect": {
@@ -1896,7 +1898,7 @@
       "coverage": "Tunisia nation-wide (Tunis + intercity rail)",
       "line_count": 228,
       "stop_count": 4993,
-      "station_count": 1534,
+      "station_count": 1663,
       "source": "tunismapper.com ligne_details.php (scraped)",
       "extracted_date": "2026-09-19",
       "modes": {
@@ -1904,7 +1906,8 @@
         "metro": 7,
         "train": 29,
         "rfr": 3
-      }
+      },
+      "last_updated": "2026-09-19"
     }
   }
 }
