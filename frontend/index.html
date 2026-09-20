@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bledi.tn — Carte des transports tunisiens</title>
+<meta name="description" content="Planifiez votre trajet avec les transports publics en Tunisie : bus, métro, train, RFR.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; font-family: system-ui, -apple-system, sans-serif; background: #0f1923; color: #e6edf3; }
+  #map { height: 100%; width: 100%; }
+  .leaflet-popup-content { background: #161f2b; color: #e6edf3; border-radius: 8px; padding: 4px 8px; }
+  .leaflet-popup-tip { background: #161f2b; }
+  .leaflet-control-zoom a { background: #161f2b; color: #e6edf3; border-color: #30363d; }
+  .leaflet-control-zoom a:hover { background: #21262d; }
+  .leaflet-control-attribution { background: rgba(15,25,35,0.7); color: #8b949e; }
+  .leaflet-control-attribution a { color: #58a6ff; }
+  .panel {
+    position: absolute; top: 12px; left: 12px; z-index: 1000;
+    background: #161f2b; border: 1px solid #30363d; border-radius: 10px;
+    padding: 14px 16px; width: 300px; max-height: calc(100vh - 24px); overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .panel h1 { font-size: 15px; font-weight: 600; margin: 0 0 10px; color: #f0f6fc; letter-spacing: 0.3px; }
+  .panel .sub { font-size: 11px; color: #8b949e; margin-bottom: 12px; }
+  .panel label { display: block; font-size: 12px; color: #8b949e; margin-bottom: 2px; margin-top: 10px; }
+  .panel input[type=button] {
+    display: inline-block; background: #238636; color: #fff; border: 1px solid #2ea043;
+    padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; margin-right: 6px; margin-top: 4px;
+  }
+  .panel input[type=button]:hover { background: #2ea043; }
+  .panel input[type=button].danger { background: #da3633; border-color: #f85149; }
+  .panel input[type=button].danger:hover { background: #f85149; }
+  .panel input[type=button].outline { background: transparent; border-color: #30363d; color: #c9d1d9; }
+  .panel input[type=button].outline:hover { background: #21262d; }
+  .panel .row { display: flex; gap: 6px; margin-top: 6px; }
+  .panel button { cursor: pointer; }
+  .panel select, .panel input[type=text] {
+    background: #0d1117; color: #c9d1d9; border: 1px solid #30363d; border-radius: 6px;
+    padding: 6px 8px; font-size: 13px; width: 100%; outline: none;
+  }
+  .panel select:focus, .panel input[type=text]:focus { border-color: #58a6ff; }
+  .panel .stats { font-size: 12px; color: #8b949e; margin-top: 10px; line-height: 1.6; }
+  .panel .stats b { color: #f0f6fc; }
+  .panel .result { margin-top: 12px; padding: 10px; background: #0d1117; border-radius: 6px; font-size: 12px; border: 1px solid #21262d; }
+  .panel .result .title { font-weight: 600; margin-bottom: 4px; color: #58a6ff; }
+  .panel .result .row2 { display: flex; justify-content: space-between; margin-top: 3px; }
+  .icon { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<div class="panel">
+  <h1>Bledi.tn</h1>
+  <div class="sub">Transports publics en Tunisie — Bus · Métro · Train · RFR</div>
+
+  <label>Départ / Arrivée</label>
+  <div class="row">
+    <input type=button id=btnStart value="Repère le départ">
+    <input type=button id=btnEnd value="Repère l'arrivée">
+  </div>
+  <div class="row" style="margin-top:4px">
+    <input type=text id=startName placeholder="Nom du lieu (ex: Taborba)" style="flex:1">
+    <input type=text id=endName placeholder="Nom du lieu" style="flex:1">
+    <input type=button id=btnSearch class=outline value="Rechercher">
+  </div>
+  <div class="row" style="margin-top:4px">
+    <input type=text id=startLat disabled>
+    <input type=text id=startLng disabled>
+    <input type=text id=endLat disabled>
+    <input type=text id=endLng disabled>
+  </div>
+
+  <label style="margin-top:10px">Ligne de transport</label>
+  <select id=lineSelect>
+    <option value="">— Choisir une ligne —</option>
+  </select>
+
+  <label style="margin-top:10px">
+    <input type=checkbox id=chkStations checked>
+    Afficher les stations
+  </label>
+  <label style="margin-top:4px">
+    <input type=checkbox id=chkRoute checked>
+    Afficher le trajet (OSRM)
+  </label>
+
+  <input type=button id=btnRoute class=outline style="margin-top:10px;width:100%;background:#1f6feb;border-color:#388bfd" value="Calculer l'itinéraire (OSRM)">
+  <input type=button id=btnTransit style="margin-top:6px;width:100%;background:#845ef7;border-color:#a371f7" value="Itinéraire transport public">
+  <input type=button id=btnClear class=danger style="margin-top:6px;width:100%" value="Effacer tout">
+
+  <div class="stats" id=stats>
+    <b>228 lignes</b> · <b>1 693 gares</b> disponibles<br>
+    <span id=lineStats>Chargement…</span>
+  </div>
+
+  <div class="result" id=result>
+    <div class="title">Résultat</div>
+    <div id=resultContent>Sélectionnez un point de départ et d'arrivée.</div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function () {
+  "use strict";
+  let map, startMarker, endMarker, routeLine, stationsLayer, lineLayer;
+  const BASE = "/api";
+  const colors = {
+    bus: "#e03131",
+    metro: "#339af0",
+    train: "#845ef7",
+    rfr: "#ff922b",
+    default: "#8b949e",
+  };
+
+  function styleLine(number) {
+    const n = (number || "").toUpperCase();
+    if (n.startsWith("R")) return { color: colors.rfr, weight: 3 };
+    if (n === "M1" || n.startsWith("M")) return { color: colors.metro, weight: 4 };
+    if (n.startsWith("T") && !n.startsWith("TR")) return { color: colors.train, weight: 3 };
+    return { color: colors.bus, weight: 3 };
+  }
+
+  function styleStation(s) {
+    const c = s.lines && s.lines.length ? s.lines[0] : "default";
+    return { color: colors[c] || colors.default, radius: 5, fillOpacity: 0.7, weight: 1, fillColor: colors[c] || colors.default };
+  }
+
+  async function loadAPI(url, params) {
+    const p = new URLSearchParams(params);
+    const r = await fetch(BASE + url + "?" + p.toString());
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  }
+
+  async function loadLines() {
+    const data = await loadAPI("/lines");
+    const sel = document.getElementById("lineSelect");
+    sel.innerHTML = `<option value="">— Choisir une ligne —</option>`;
+    data.lines.forEach(l => {
+      const opt = document.createElement("option");
+      opt.value = l.number;
+      opt.textContent = `${l.number} — ${l.long_name || l.short_name || l.number}`;
+      sel.appendChild(opt);
+    });
+    document.getElementById("lineStats").textContent =
+      `${data.count} lignes chargées`;
+    return data;
+  }
+
+  async function loadStations() {
+    const data = await loadAPI("/stations");
+    const fc = data.features || [];
+    if (stationsLayer) { map.removeLayer(stationsLayer); }
+    stationsLayer = L.layerGroup(fc.map(f => {
+      const coords = f.geometry.coordinates;
+      const props = f.properties || {};
+      const color = props.lines && props.lines.length
+        ? (props.lines[0].route_color || '#8b949e')
+        : '#8b949e';
+      const icon = L.divIcon({
+        className: "",
+        html: `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${color};border:1px solid #0d1117"></span>`,
+        iconSize: [10, 10],
+        iconAnchor: [5, 5],
+      });
+      return L.marker([coords[1], coords[0]], { icon, title: props.name })
+        .bindPopup(`<b>${props.name}</b><br>${props.lines?.map(l => `<span style="color:${l.route_color||'#58a6ff'}">${l.route_short_name||l.route_id||l.direction||'?'}</span>`).join(', ') || '—'}`);
+    }));
+    stationsLayer.addTo(map);
+    document.getElementById("stats").innerHTML =
+      `<b>${data.metadata.count} stations</b> · <b>${data.metadata.total} total</b><br><span id="lineStats">${data.lines?.length || 0} lignes chargées</span>`;
+    return fc;
+  }
+
+  function clearRoute() {
+    if (routeLine) map.removeLayer(routeLine);
+    routeLine = null;
+    document.getElementById("resultContent").innerHTML = "";
+  }
+
+  function clearAll() {
+    if (startMarker) map.removeLayer(startMarker);
+    if (endMarker) map.removeLayer(endMarker);
+    if (routeLine) map.removeLayer(routeLine);
+    if (lineLayer) map.removeLayer(lineLayer);
+    startMarker = endMarker = routeLine = lineLayer = null;
+    clearRoute();
+    document.getElementById("startLat").value = "";
+    document.getElementById("startLng").value = "";
+    document.getElementById("endLat").value = "";
+    document.getElementById("endLng").value = "";
+    document.getElementById("startName").value = "";
+    document.getElementById("endName").value = "";
+    map.setView([36.80, 10.18], 11);
+  }
+
+  function centerTo(latlng, zoom) {
+    map.setView(latlng, zoom || 13);
+  }
+
+  async function computeRoute() {
+    if (!startMarker || !endMarker) {
+      alert("Sélectionnez un point de départ et d'arrivée.");
+      return;
+    }
+    const sw = startMarker.getLatLng();
+    const en = endMarker.getLatLng();
+    clearRoute();
+    const panel = document.getElementById("result");
+    panel.innerHTML = '<div class="title">Calcul en cours…</div><div class="row2">Chargement…</div>';
+    try {
+      const r = await loadAPI("/route", {
+        start_lat: sw.lat.toFixed(6),
+        start_lon: sw.lng.toFixed(6),
+        end_lat: en.lat.toFixed(6),
+        end_lon: en.lng.toFixed(6),
+      });
+      if (r.error) {
+        panel.innerHTML = `<div class="title">Erreur</div><div>${r.error}</div>`;
+        return;
+      }
+      const d = (r.distance_m / 1000).toFixed(1);
+      const t = Math.round(r.duration_s / 60);
+      panel.innerHTML = `
+        <div class="title">Trajet automobile (OSRM)</div>
+        <div class="row2"><span>Distance</span><b>${d} km</b></div>
+        <div class="row2"><span>Durée</span><b>~${t} min</b></div>
+        <div class="row2" style="margin-top:6px;color:#8b949e;font-size:11px">Chemin réel routier · hors embouteillages</div>`;
+      // Draw the actual road geometry from OSRM (overview=full)
+      if (r.geometry && r.geometry.type === "LineString" && r.geometry.coordinates.length > 1) {
+        const pts = r.geometry.coordinates.map(c => [c[1], c[0]]);
+        routeLine = L.polyline(pts, { color: "#f0883e", weight: 4, opacity: 0.9 }).addTo(map);
+      } else if (r.waypoints && r.waypoints.length >= 2) {
+        // Fallback: direct line between waypoints
+        const pts = r.waypoints.map(w => [w.location[1], w.location[0]]);
+        routeLine = L.polyline(pts, { color: "#f0883e", weight: 4, opacity: 0.9 }).addTo(map);
+      }
+      // zoom to fit
+      map.fitBounds(
+        L.latLngBounds(
+          [sw.lat, sw.lng],
+          [en.lat, en.lng]
+        ).pad(0.15)
+      );
+    } catch (e) {
+      panel.innerHTML = `<div class="title">Erreur</div><div>${e.message}</div>`;
+    }
+  }
+
+  async function getItinerary() {
+    if (!startMarker || !endMarker) return null;
+    const sw = startMarker.getLatLng();
+    const en = endMarker.getLatLng();
+    try {
+      const r = await loadAPI("/itinerary", {
+        start_lat: sw.lat.toFixed(6),
+        start_lon: sw.lng.toFixed(6),
+        end_lat: en.lat.toFixed(6),
+        end_lon: en.lng.toFixed(6),
+      });
+      return r;
+    } catch (e) {
+      console.warn("itinéraire Tunismapper:", e.message);
+      return null;
+    }
+  }
+
+  async function computeTransit() {
+    if (!startMarker || !endMarker) {
+      alert("Sélectionnez un point de départ et d'arrivée.");
+      return;
+    }
+    const sw = startMarker.getLatLng();
+    const en = endMarker.getLatLng();
+    clearRoute();
+    const panel = document.getElementById("result");
+    panel.innerHTML = '<div class="title">Itinéraire transport public (Tunismapper)…</div><div class="row2">Requête…</div>';
+    try {
+      const r = await loadAPI("/itinerary", {
+        start_lat: sw.lat.toFixed(6),
+        start_lon: sw.lng.toFixed(6),
+        end_lat: en.lat.toFixed(6),
+        end_lon: en.lng.toFixed(6),
+      });
+      if (!r || r.error) {
+        panel.innerHTML = `<div class="title">Aucun itinéraire transport public disponible</div>
+          <div class="row2">Utilisez le trajet automobile ci-dessus.</div>`;
+        return;
+      }
+      let html = `<div class="title">Résultats transport public</div>`;
+      let count = 0;
+      ["best_fastest","best_less_walk","alternatives"].forEach(k => {
+        const opt = r[k];
+        if (!opt) return;
+        count++;
+        const t = opt.duration;
+        const mins = Math.round(t / 60);
+        const transfers = opt.transfers || 0;
+        const hasWalk = opt.has_walk_transfer ? "avec marche" : "sans marche";
+        html += `<div style="margin-top:6px;border-top:1px solid #21262d;padding-top:6px">
+          <b style="color:#58a6ff">${k.replace(/_/g," ")}</b>
+          <div class="row2"><span>Durée</span><b>${mins} min</b></div>
+          <div class="row2"><span>Transfers</span><b>${transfers}</b></div>
+          <div class="row2"><span>Type</span><b>${hasWalk}</b></div>`;
+        if (opt.steps && opt.steps.length) {
+          html += `<div style="margin-top:3px;color:#8b949e;font-size:11px">`;
+          opt.steps.forEach(step => {
+            const st = step.type || step.mode || "?";
+            const from = step.start ? `${step.start[1].toFixed(4)}, ${step.start[0].toFixed(4)}` : "";
+            const to = step.end ? `${step.end[1].toFixed(4)}, ${step.end[0].toFixed(4)}` : "";
+            const stop = step.stop_name || "";
+            html += `<div>${st}${stop ? " · " + stop : ""}</div>`;
+          });
+          html += '</div>';
+        }
+        html += '</div>';
+      });
+      if (!count) html += '<div style="color:#8b949e">Aucun résultat multimodal trouvé.</div>';
+      panel.innerHTML = html;
+
+      // Plot the route on the map
+      const fc = r.best_fastest || r.best_less_walk || r.alternatives?.[0];
+      if (fc && fc.steps) {
+        const allCoords = [];
+        const lines = [];
+        fc.steps.forEach(step => {
+          if (step.start && step.end) {
+            const pts = [[step.start[0], step.start[1]], [step.end[0], step.end[1]]];
+            allCoords.push(...pts);
+            const line = {
+              coords: pts,
+              color: step.color || (step.type === "walk" ? "#8E8E93" : step.color || "#f0883e"),
+              weight: step.type === "walk" ? 2 : 4,
+              dash: step.type === "walk" ? "6 6" : null,
+              label: step.type === "walk" ? "Marche" : (step.stop_name || step.type),
+            };
+            lines.push(line);
+          } else if (step.type === "walk" && step.start && step.end) {
+            allCoords.push([step.start[0], step.start[1]], [step.end[0], step.end[1]]);
+          }
+        });
+        // Draw each segment
+        lines.forEach(l => {
+          L.polyline(l.coords, {
+            color: l.color,
+            weight: l.weight,
+            opacity: 0.9,
+            dashArray: l.dash,
+            smoothFactor: 1.5,
+          }).addTo(map);
+        });
+        // Add a marker for each stop
+        if (fc.steps) {
+          fc.steps.forEach(step => {
+            if (step.stop_name && step.start) {
+              L.circleMarker([step.start[0], step.start[1]], {
+                radius: 6,
+                fillColor: step.color || "#f0883e",
+                fillOpacity: 0.8,
+                color: "#0d1117",
+                weight: 2,
+              }).addTo(map).bindPopup(`<b>${step.stop_name}</b>`);
+            }
+          });
+        }
+        // Add start and end markers if not already present
+        if (!startMarker) {
+          L.marker([sw.lat, sw.lng], {
+            icon: L.divIcon({
+              className: "",
+              html: '<span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#58a6ff;border:2px solid #0d1117"></span>',
+              iconSize:[14,14], iconAnchor:[7,7]
+            })
+          }).addTo(map).bindPopup("Départ");
+        }
+        if (!endMarker) {
+          L.marker([en.lat, en.lng], {
+            icon: L.divIcon({
+              className: "",
+              html: '<span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#f85149;border:2px solid #0d1117"></span>',
+              iconSize:[14,14], iconAnchor:[7,7]
+            })
+          }).addTo(map).bindPopup("Arrivée");
+        }
+        map.fitBounds(
+          L.latLngBounds(
+            [sw.lat, sw.lng],
+            [en.lat, en.lng]
+          ).pad(0.12)
+        );
+      }
+    } catch (e) {
+      panel.innerHTML = `<div class="title">Erreur</div><div>${e.message}</div>`;
+    }
+  }
+
+  async function loadLineStops() {
+    const num = document.getElementById("lineSelect").value;
+    if (!num) return;
+    const data = await loadAPI("/lines/" + num);
+    if (!data.stops || !data.stops.length) {
+      alert("Aucune station pour la ligne " + num);
+      return;
+    }
+    if (lineLayer) map.removeLayer(lineLayer);
+    lineLayer = L.layerGroup();
+    const coords = data.stops.filter(s => s.lat && s.lon).map(s => [s.lat, s.lon]);
+    if (coords.length > 1) {
+      lineLayer.addLayer(L.polyline(coords, { ...styleLine(num), weight: 4, opacity: 0.9, dashArray: "6 6" }));
+    }
+    data.stops.filter(s => s.lat && s.lon).forEach(s => {
+      lineLayer.addLayer(L.marker([s.lat, s.lon])
+        .bindPopup(`<b>${s.name}</b><br>Ligne ${num}${s.order != null ? " · étape " + s.order : ""}`))
+    });
+    lineLayer.addTo(map);
+    const bounds = L.latLngBounds(coords);
+    map.fitBounds(bounds.pad(0.1));
+    document.getElementById("resultContent").innerHTML =
+      `<div class="title">Ligne ${num}</div><div class="row2">Gares: <b>${data.stops.length}</b></div>`;
+  }
+
+  // ── Nominatim geocoding ──────────────────────────────────────────────
+  async function nominatimSearch(query) {
+    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&countrycodes=tn&limit=3&format=json`;
+    const r = await fetch(url, { headers: { "User-Agent": "bledi.tn/1.0" } });
+    if (!r.ok) throw new Error("Nominatim: HTTP " + r.status);
+    const data = await r.json();
+    if (!data || !data.length) return null;
+    const best = data[0];
+    return [
+      [parseFloat(best.lon), parseFloat(best.lat)],
+      best.display_name,
+    ];
+  }
+
+  function addStartMarker() {
+    if (startMarker) map.removeLayer(startMarker);
+    startMarker = L.marker([state.start.lat, state.start.lng], {
+      icon: L.divIcon({
+        className: "", html: '<span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#58a6ff;border:2px solid #0d1117"></span>',
+        iconSize: [14,14], iconAnchor: [7,7],
+      }),
+    }).addTo(map).bindPopup("Départ: " + (state.start.name || ""));
+    startMarker.openPopup();
+  }
+
+  function addEndMarker() {
+    if (endMarker) map.removeLayer(endMarker);
+    endMarker = L.marker([state.end.lat, state.end.lng], {
+      icon: L.divIcon({
+        className: "", html: '<span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#f85149;border:2px solid #0d1117"></span>',
+        iconSize: [14,14], iconAnchor: [7,7],
+      }),
+    }).addTo(map).bindPopup("Arrivée: " + (state.end.name || ""));
+    endMarker.openPopup();
+  }
+
+  function clearStartFromState() {
+    state.start = null;
+    document.getElementById("startLat").value = "";
+    document.getElementById("startLng").value = "";
+    document.getElementById("startName").value = "";
+  }
+
+  function clearEndFromState() {
+    state.end = null;
+    document.getElementById("endLat").value = "";
+    document.getElementById("endLng").value = "";
+    document.getElementById("endName").value = "";
+  }
+
+  // ── Init ─────────────────────────────────────────────────────────────
+  function init() {
+    map = L.map("map", { zoomControl: true, attributionControl: true })
+      .setView([36.80, 10.18], 11);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap contributors",
+      maxZoom: 19,
+    }).addTo(map);
+    map.attributionControl.setPrefix(false);
+
+    stationsLayer = L.layerGroup().addTo(map);
+    document.getElementById("chkStations").addEventListener("change", e => {
+      if (e.target.checked) map.addLayer(stationsLayer);
+      else map.removeLayer(stationsLayer);
+    });
+    document.getElementById("chkRoute").addEventListener("change", e => {
+      if (!e.target.checked && routeLine) map.removeLayer(routeLine);
+    });
+
+    document.getElementById("btnStart").addEventListener("click", () => {
+      map.once("click", e => {
+        if (startMarker) map.removeLayer(startMarker);
+        startMarker = L.marker(e.latlng, { icon: L.divIcon({ className: "", html: '<span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#58a6ff;border:2px solid #0d1117"></span>', iconSize:[14,14], iconAnchor:[7,7] }) }).addTo(map);
+        startMarker.bindPopup("Départ").openPopup();
+        document.getElementById("startLat").value = e.latlng.lat.toFixed(6);
+        document.getElementById("startLng").value = e.latlng.lng.toFixed(6);
+        document.getElementById("startName").value = "";
+        centerTo(e.latlng, 14);
+        clearRoute();
+        updateResultPlaceholder();
+      });
+    });
+    document.getElementById("btnEnd").addEventListener("click", () => {
+      map.once("click", e => {
+        if (endMarker) map.removeLayer(endMarker);
+        endMarker = L.marker(e.latlng, { icon: L.divIcon({ className: "", html: '<span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#f85149;border:2px solid #0d1117"></span>', iconSize:[14,14], iconAnchor:[7,7] }) }).addTo(map);
+        endMarker.bindPopup("Arrivée").openPopup();
+        document.getElementById("endLat").value = e.latlng.lat.toFixed(6);
+        document.getElementById("endLng").value = e.latlng.lng.toFixed(6);
+        document.getElementById("endName").value = "";
+        centerTo(e.latlng, 14);
+        clearRoute();
+        updateResultPlaceholder();
+      });
+    });
+    document.getElementById("btnSearch").addEventListener("click", async () => {
+      const q = document.getElementById("startName").value.trim();
+      const qe = document.getElementById("endName").value.trim();
+      if (!q && !qe) { alert("Entrez un lieu à rechercher."); return; }
+      const searchBox = document.getElementById("btnSearch");
+      searchBox.value = "Recherche…";
+      searchBox.disabled = true;
+      try {
+        const results = {};
+        if (q) results.start = await nominatimSearch(q);
+        if (qe) results.end = await nominatimSearch(qe);
+        if (q && results.start) {
+          state.start = { lat: results.start[0][1], lng: results.start[0][0], name: results.start[1] };
+          updateStartUI();
+          addStartMarker();
+          toast(`Départ: ${results.start[1]}`);
+        } else if (q) {
+          toast("Lieu non trouvé: " + q, true);
+        }
+        if (qe && results.end) {
+          state.end = { lat: results.end[0][1], lng: results.end[0][0], name: results.end[1] };
+          updateEndUI();
+          addEndMarker();
+          toast(`Arrivée: ${results.end[1]}`);
+        } else if (qe) {
+          toast("Lieu non trouvé: " + qe, true);
+        }
+        if (!q || !results.start) clearStartFromState();
+        if (!qe || !results.end) clearEndFromState();
+        if (q && results.start) updateStartUI();
+        if (qe && results.end) updateEndUI();
+      } catch (e) {
+        toast("Erreur de recherche: " + e.message, true);
+      } finally {
+        searchBox.value = "Rechercher";
+        searchBox.disabled = false;
+      }
+    });
+    document.getElementById("btnRoute").addEventListener("click", computeRoute);
+    document.getElementById("btnTransit").addEventListener("click", computeTransit);
+    document.getElementById("btnClear").addEventListener("click", clearAll);
+    document.getElementById("lineSelect").addEventListener("change", loadLineStops);
+
+    updateResultPlaceholder();
+    loadLines().then(loadStations).catch(e => console.error(e));
+  }
+
+  function updateResultPlaceholder() {
+    const el = document.getElementById("resultContent");
+    if (!el.innerHTML) el.innerHTML = "Sélectionnez un point de départ et d'arrivée.";
+  }
+
+  // ── Toast ────────────────────────────────────────────────────────────
+  const toastEl = document.createElement("div");
+  toastEl.style.cssText = "position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#238636;color:#fff;padding:8px 16px;border-radius:6px;font-size:13px;z-index:9999;opacity:0;transition:opacity 0.3s;pointer-events:none;";
+  document.body.appendChild(toastEl);
+  let toastTimer = null;
+  function toast(msg, isError) {
+    toastEl.textContent = msg;
+    toastEl.style.background = isError ? "#da3633" : "#238636";
+    toastEl.style.opacity = "1";
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toastEl.style.opacity = "0"; }, 3000);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>
