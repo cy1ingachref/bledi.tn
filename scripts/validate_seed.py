@@ -6,7 +6,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-repo = Path(r"C:\Users\cy1in\Downloads\TunisiaTransport")
+repo = Path(__file__).resolve().parent.parent
 seed_path = repo / "data/seed_all_tunisia_routes.json"
 
 R = 6371000.0

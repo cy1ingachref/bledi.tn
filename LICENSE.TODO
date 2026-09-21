@@ -1,0 +1,16 @@
+LICENSE STATUS — UNDECIDED (pending provenance audit, see docs/provenance.md)
+
+This repository intentionally does NOT claim any license yet.
+
+Most of the routing data in data/seed_all_tunisia_routes.json is derived from
+Tunismapper (see docs/provenance.md). The license and redistribution terms of
+that source have not been verified. Until that is resolved, no license is
+asserted for the dataset or for the repository as a whole.
+
+Decisions needed before a license can be chosen:
+- Contact Tunismapper to clarify terms, or replace that data with licensable
+  sources (Transtu PDFs, SNCFT, OSM under ODbL, or own field data).
+- Choose a license for the code (for example MIT, Apache-2.0, or GPL) once the
+  data provenance is settled.
+
+See docs/provenance.md for the current provenance audit.

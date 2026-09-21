@@ -10,7 +10,7 @@ from typing import Any
 
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 
 BASE = Path(__file__).resolve().parent.parent
 SEED = BASE / "data/seed_all_tunisia_routes.json"
@@ -132,7 +132,30 @@ def itinerary(
     end_lat: float = Query(..., description="End latitude"),
     end_lon: float = Query(..., description="End longitude"),
 ) -> dict[str, Any]:
-    """Return transit itinerary from Tunismapper."""
+    """Transit itinerary endpoint.
+
+    Formerly proxied to tunismapper.com. That behavior is now disabled by
+    default because the data source's terms have not been verified (see
+    docs/provenance.md). Set ENABLE_TUNISMAPPER_PROXY=true to re-enable.
+
+    When disabled, returns 410 so the frontend can fall back to the local router.
+    """
+    if os.environ.get("ENABLE_TUNISMAPPER_PROXY", "").strip().lower() not in (
+        "1", "true", "yes",
+    ):
+        return JSONResponse(
+            {
+                "error": "Transit itinerary service is disabled by default.",
+                "detail": (
+                    "The previous tunismapper.com proxy is off pending a provenance "
+                    "review (docs/provenance.md). Set ENABLE_TUNISMAPPER_PROXY=true to "
+                    "re-enable, or use the local transit router when it is available."
+                ),
+                "source": "disabled",
+            },
+            status_code=410,
+        )
+
     url = (
         "https://www.tunismapper.com/backend/api/itinerary.php"
         f"?startLat={start_lat}&startLng={start_lon}"

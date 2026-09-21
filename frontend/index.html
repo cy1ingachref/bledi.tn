@@ -140,7 +140,7 @@
   async function loadLines() {
     const data = await loadAPI("/lines");
     const sel = document.getElementById("lineSelect");
-    sel.innerHTML = `<option value="">— Choisir une ligne —</option>`;
+    sel.innerHTML = '<option value="">— Choisir une ligne —</option>';
     data.lines.forEach(l => {
       const opt = document.createElement("option");
       opt.value = l.number;
@@ -152,6 +152,14 @@
     return data;
   }
 
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
   async function loadStations() {
     const data = await loadAPI("/stations");
     const fc = data.features || [];
@@ -159,28 +167,49 @@
     stationsLayer = L.layerGroup(fc.map(f => {
       const coords = f.geometry.coordinates;
       const props = f.properties || {};
+      const name = esc(props.name || "");
+      const lines = (props.lines || [])
+        .map(l => esc(l.route_short_name || l.route_id || l.direction || "?"))
+        .join(", ");
       const color = props.lines && props.lines.length
-        ? (props.lines[0].route_color || '#8b949e')
-        : '#8b949e';
+        ? (props.lines[0].route_color || "#8b949e")
+        : "#8b949e";
       const icon = L.divIcon({
         className: "",
         html: `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${color};border:1px solid #0d1117"></span>`,
         iconSize: [10, 10],
         iconAnchor: [5, 5],
       });
-      return L.marker([coords[1], coords[0]], { icon, title: props.name })
-        .bindPopup(`<b>${props.name}</b><br>${props.lines?.map(l => `<span style="color:${l.route_color||'#58a6ff'}">${l.route_short_name||l.route_id||l.direction||'?'}</span>`).join(', ') || '—'}`);
+      const marker = L.marker([coords[1], coords[0]], { icon, title: name });
+      const popupParts = [name];
+      if (lines) popupParts.push(lines);
+      marker.bindPopup(popupParts.join("<br>"));
+      return marker;
     }));
     stationsLayer.addTo(map);
-    document.getElementById("stats").innerHTML =
-      `<b>${data.metadata.count} stations</b> · <b>${data.metadata.total} total</b><br><span id="lineStats">${data.lines?.length || 0} lignes chargées</span>`;
+    // Safe DOM construction for stats (no innerHTML with data)
+    const statsEl = document.getElementById("stats");
+    statsEl.innerHTML = "";
+    const b1 = document.createElement("b");
+    b1.textContent = data.metadata.count + " stations";
+    statsEl.appendChild(b1);
+    statsEl.appendChild(document.createTextNode(" · "));
+    const b2 = document.createElement("b");
+    b2.textContent = data.metadata.total + " total";
+    statsEl.appendChild(b2);
+    statsEl.appendChild(document.createTextNode("<br>"));
+    const ls = document.createElement("span");
+    ls.id = "lineStats";
+    ls.textContent = (data.lines ? data.lines.length : 0) + " lignes chargées";
+    statsEl.appendChild(ls);
     return fc;
   }
 
   function clearRoute() {
     if (routeLine) map.removeLayer(routeLine);
     routeLine = null;
-    document.getElementById("resultContent").innerHTML = "";
+    const rc = document.getElementById("resultContent");
+    rc.textContent = "";
   }
 
   function clearAll() {
@@ -212,7 +241,7 @@
     const en = endMarker.getLatLng();
     clearRoute();
     const panel = document.getElementById("result");
-    panel.innerHTML = '<div class="title">Calcul en cours…</div><div class="row2">Chargement…</div>';
+    setResultHTML('<div class="title">Calcul en cours…</div><div class="row2">Chargement…</div>');
     try {
       const r = await loadAPI("/route", {
         start_lat: sw.lat.toFixed(6),
@@ -221,16 +250,16 @@
         end_lon: en.lng.toFixed(6),
       });
       if (r.error) {
-        panel.innerHTML = `<div class="title">Erreur</div><div>${r.error}</div>`;
+        setResultHTML(`<div class="title">Erreur</div><div>${esc(r.error)}</div>`);
         return;
       }
       const d = (r.distance_m / 1000).toFixed(1);
       const t = Math.round(r.duration_s / 60);
-      panel.innerHTML = `
-        <div class="title">Trajet automobile (OSRM)</div>
-        <div class="row2"><span>Distance</span><b>${d} km</b></div>
-        <div class="row2"><span>Durée</span><b>~${t} min</b></div>
-        <div class="row2" style="margin-top:6px;color:#8b949e;font-size:11px">Chemin réel routier · hors embouteillages</div>`;
+      setResultHTML(
+        `<div class="title">Trajet automobile (OSRM)</div>` +
+        `<div class="row2"><span>Distance</span><b>${esc(d)} km</b></div>` +
+        `<div class="row2"><span>Durée</span><b>~${esc(t)} min</b></div>` +
+        `<div class="row2" style="margin-top:6px;color:#8b949e;font-size:11px">Chemin réel routier · hors embouteillages</div>`);
       // Draw the actual road geometry from OSRM (overview=full)
       if (r.geometry && r.geometry.type === "LineString" && r.geometry.coordinates.length > 1) {
         const pts = r.geometry.coordinates.map(c => [c[1], c[0]]);
@@ -248,7 +277,7 @@
         ).pad(0.15)
       );
     } catch (e) {
-      panel.innerHTML = `<div class="title">Erreur</div><div>${e.message}</div>`;
+      setResultHTML(`<div class="title">Erreur</div><div>${esc(e.message)}</div>`);
     }
   }
 
@@ -270,6 +299,18 @@
     }
   }
 
+  function makeRow(label, value) {
+    const row = document.createElement("div");
+    row.className = "row2";
+    const s1 = document.createElement("span");
+    s1.textContent = label;
+    const s2 = document.createElement("b");
+    s2.textContent = value;
+    row.appendChild(s1);
+    row.appendChild(s2);
+    return row;
+  }
+
   async function computeTransit() {
     if (!startMarker || !endMarker) {
       alert("Sélectionnez un point de départ et d'arrivée.");
@@ -279,7 +320,7 @@
     const en = endMarker.getLatLng();
     clearRoute();
     const panel = document.getElementById("result");
-    panel.innerHTML = '<div class="title">Itinéraire transport public (Tunismapper)…</div><div class="row2">Requête…</div>';
+    setResultHTML('<div class="title">Itinéraire transport public…</div><div class="row2">Requête…</div>');
     try {
       const r = await loadAPI("/itinerary", {
         start_lat: sw.lat.toFixed(6),
@@ -288,41 +329,67 @@
         end_lon: en.lng.toFixed(6),
       });
       if (!r || r.error) {
-        panel.innerHTML = `<div class="title">Aucun itinéraire transport public disponible</div>
-          <div class="row2">Utilisez le trajet automobile ci-dessus.</div>`;
+        const disabled = r && r.source === "disabled";
+        const title = disabled ? "Service désactivé" : "Aucun itinéraire";
+        const sub = disabled
+          ? "Routeur local en cours de connexion…"
+          : "Utilisez le trajet automobile ci-dessus.";
+        setResultHTML(`<div class="title">${esc(title)}</div>` +
+                      `<div class="row2">${esc(sub)}</div>`);
+        console.warn("itinéraire transport public:", r && r.error || "aucun résultat");
         return;
       }
-      let html = `<div class="title">Résultats transport public</div>`;
+      // Build result DOM safely
+      const root = document.createElement("div");
+      const titleEl = document.createElement("div");
+      titleEl.className = "title";
+      titleEl.textContent = "Résultats transport public";
+      root.appendChild(titleEl);
       let count = 0;
       ["best_fastest","best_less_walk","alternatives"].forEach(k => {
         const opt = r[k];
         if (!opt) return;
         count++;
+        const row = document.createElement("div");
+        row.style.marginTop = "6px";
+        row.style.borderTop = "1px solid #21262d";
+        row.style.paddingTop = "6px";
+        const b = document.createElement("b");
+        b.style.color = "#58a6ff";
+        b.textContent = k.replace(/_/g, " ");
+        row.appendChild(b);
         const t = opt.duration;
         const mins = Math.round(t / 60);
         const transfers = opt.transfers || 0;
         const hasWalk = opt.has_walk_transfer ? "avec marche" : "sans marche";
-        html += `<div style="margin-top:6px;border-top:1px solid #21262d;padding-top:6px">
-          <b style="color:#58a6ff">${k.replace(/_/g," ")}</b>
-          <div class="row2"><span>Durée</span><b>${mins} min</b></div>
-          <div class="row2"><span>Transfers</span><b>${transfers}</b></div>
-          <div class="row2"><span>Type</span><b>${hasWalk}</b></div>`;
+        row.appendChild(makeRow("Durée", mins + " min"));
+        row.appendChild(makeRow("Transfers", String(transfers)));
+        row.appendChild(makeRow("Type", hasWalk));
         if (opt.steps && opt.steps.length) {
-          html += `<div style="margin-top:3px;color:#8b949e;font-size:11px">`;
+          const stepsDiv = document.createElement("div");
+          stepsDiv.style.marginTop = "3px";
+          stepsDiv.style.color = "#8b949e";
+          stepsDiv.style.fontSize = "11px";
           opt.steps.forEach(step => {
             const st = step.type || step.mode || "?";
-            const from = step.start ? `${step.start[1].toFixed(4)}, ${step.start[0].toFixed(4)}` : "";
-            const to = step.end ? `${step.end[1].toFixed(4)}, ${step.end[0].toFixed(4)}` : "";
             const stop = step.stop_name || "";
-            html += `<div>${st}${stop ? " · " + stop : ""}</div>`;
+            const s = document.createElement("div");
+            s.textContent = st + (stop ? " · " + stop : "");
+            stepsDiv.appendChild(s);
           });
-          html += '</div>';
+          row.appendChild(stepsDiv);
         }
-        html += '</div>';
+        root.appendChild(row);
       });
-      if (!count) html += '<div style="color:#8b949e">Aucun résultat multimodal trouvé.</div>';
-      panel.innerHTML = html;
-
+      if (!count) {
+        const empty = document.createElement("div");
+        empty.style.color = "#8b949e";
+        empty.textContent = "Aucun résultat multimodal trouvé.";
+        root.appendChild(empty);
+      }
+      setResultHTML("");
+      const panelEl = document.getElementById("result");
+      while (root.firstChild) panelEl.appendChild(root.firstChild);
       // Plot the route on the map
       const fc = r.best_fastest || r.best_less_walk || r.alternatives?.[0];
       if (fc && fc.steps) {
@@ -395,7 +462,7 @@
         );
       }
     } catch (e) {
-      panel.innerHTML = `<div class="title">Erreur</div><div>${e.message}</div>`;
+      setResultHTML(`<div class="title">Erreur</div><div>${esc(e.message)}</div>`);
     }
   }
 
@@ -415,27 +482,43 @@
     }
     data.stops.filter(s => s.lat && s.lon).forEach(s => {
       lineLayer.addLayer(L.marker([s.lat, s.lon])
-        .bindPopup(`<b>${s.name}</b><br>Ligne ${num}${s.order != null ? " · étape " + s.order : ""}`))
+        .bindPopup((() => { const p = document.createElement("div"); const b = document.createElement("b"); b.textContent = s.name || ""; p.appendChild(b); if (s.order != null) { p.appendChild(document.createTextNode(" · étape " + s.order)); } return p; })()))
     });
     lineLayer.addTo(map);
     const bounds = L.latLngBounds(coords);
     map.fitBounds(bounds.pad(0.1));
-    document.getElementById("resultContent").innerHTML =
-      `<div class="title">Ligne ${num}</div><div class="row2">Gares: <b>${data.stops.length}</b></div>`;
+    const rc = document.getElementById("resultContent");
+    rc.innerHTML = "";
+    const t = document.createElement("div");
+    t.className = "title";
+    t.textContent = "Ligne " + esc(num);
+    rc.appendChild(t);
+    const r2 = document.createElement("div");
+    r2.className = "row2";
+    const s1 = document.createElement("span");
+    s1.textContent = "Gares: ";
+    const s2 = document.createElement("b");
+    s2.textContent = String(data.stops.length);
+    r2.appendChild(s1);
+    r2.appendChild(s2);
+    rc.appendChild(r2);
   }
 
-  // ── Nominatim geocoding ──────────────────────────────────────────────
-  async function nominatimSearch(query) {
-    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&countrycodes=tn&limit=3&format=json`;
-    const r = await fetch(url, { headers: { "User-Agent": "bledi.tn/1.0" } });
-    if (!r.ok) throw new Error("Nominatim: HTTP " + r.status);
+  // ── Geocoding via backend (no browser User-Agent, server-side caching) ──
+  async function geocode(query) {
+    const p = new URLSearchParams({ q: query, limit: 3 });
+    const r = await fetch(BASE + "/api/v1/geocode?" + p.toString());
+    if (!r.ok) throw new Error("géocodage HTTP " + r.status);
     const data = await r.json();
-    if (!data || !data.length) return null;
-    const best = data[0];
+    if (!data.results || !data.results.length) return null;
+    const best = data.results[0];
     return [
-      [parseFloat(best.lon), parseFloat(best.lat)],
+      [best.lon, best.lat],
       best.display_name,
     ];
+  }
+  async function nominatimSearch(query) {
+    return geocode(query);
   }
 
   function addStartMarker() {
@@ -445,7 +528,7 @@
         className: "", html: '<span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#58a6ff;border:2px solid #0d1117"></span>',
         iconSize: [14,14], iconAnchor: [7,7],
       }),
-    }).addTo(map).bindPopup("Départ: " + (state.start.name || ""));
+    }).addTo(map).bindPopup((() => { const p = document.createElement("div"); p.textContent = "Départ: " + (state.start.name || ""); return p; })());
     startMarker.openPopup();
   }
 
@@ -456,7 +539,7 @@
         className: "", html: '<span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#f85149;border:2px solid #0d1117"></span>',
         iconSize: [14,14], iconAnchor: [7,7],
       }),
-    }).addTo(map).bindPopup("Arrivée: " + (state.end.name || ""));
+    }).addTo(map).bindPopup((() => { const p = document.createElement("div"); p.textContent = "Arrivée: " + (state.end.name || ""); return p; })());
     endMarker.openPopup();
   }
 
@@ -568,7 +651,7 @@
 
   function updateResultPlaceholder() {
     const el = document.getElementById("resultContent");
-    if (!el.innerHTML) el.innerHTML = "Sélectionnez un point de départ et d'arrivée.";
+    if (!el.textContent) el.textContent = "Sélectionnez un point de départ et d'arrivée.";
   }
 
   // ── Toast ────────────────────────────────────────────────────────────

@@ -25,7 +25,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
-BASE = Path(r"C:\Users\cy1in\Downloads\TunisiaTransport")
+BASE = Path(__file__).resolve().parent.parent
 SEED_PATH = BASE / "data" / "seed_all_tunisia_routes.json"
 
 # Walking speed
@@ -40,6 +40,14 @@ TRANSIT_COST_SPEED_MS = 3000.0  # ~2400:1 vs walking at 1.25 m/s
 # Transit display speed (user-facing times) — realistic average bus speed
 TRANSIT_DISPLAY_SPEED_KMH = 22.0
 TRANSIT_DISPLAY_SPEED_MS = TRANSIT_DISPLAY_SPEED_KMH / 3.6  # ~6.11 m/s
+
+# Transit ROUTING cost speed — now physical, NOT a fudge factor.
+# Cost = ride time at this speed + expected wait + transfer penalty.
+# Keep cost speed == display speed so the cheapest path is also the physically
+# fastest one; preference for transit comes from wait + transfer penalties, not
+# from an artificial speed ratio.
+TRANSIT_COST_SPEED_KMH = 22.0
+TRANSIT_COST_SPEED_MS = TRANSIT_COST_SPEED_KMH / 3.6  # ~6.11 m/s
 
 # Taxi speed
 TAXI_SPEED_KMH = 45.0
