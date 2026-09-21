@@ -107,7 +107,7 @@
 <script>
 (function () {
   "use strict";
-  let map, startMarker, endMarker, routeLine, stationsLayer, lineLayer;
+  let map, startMarker, endMarker, routeLine, stationsLayer, lineLayer, transitLayer;
   const BASE = "/api";
   const colors = {
     bus: "#e03131",
@@ -208,6 +208,8 @@
   function clearRoute() {
     if (routeLine) map.removeLayer(routeLine);
     routeLine = null;
+    if (transitLayer) map.removeLayer(transitLayer);
+    transitLayer = null;
     const rc = document.getElementById("resultContent");
     rc.textContent = "";
   }
@@ -217,7 +219,8 @@
     if (endMarker) map.removeLayer(endMarker);
     if (routeLine) map.removeLayer(routeLine);
     if (lineLayer) map.removeLayer(lineLayer);
-    startMarker = endMarker = routeLine = lineLayer = null;
+    if (transitLayer) map.removeLayer(transitLayer);
+    startMarker = endMarker = routeLine = lineLayer = transitLayer = null;
     clearRoute();
     document.getElementById("startLat").value = "";
     document.getElementById("startLng").value = "";
@@ -555,6 +558,30 @@
     document.getElementById("endLat").value = "";
     document.getElementById("endLng").value = "";
     document.getElementById("endName").value = "";
+  }
+
+  function updateStartUI() {
+    if (!state || !state.start) {
+      document.getElementById("startLat").value = "";
+      document.getElementById("startLng").value = "";
+      document.getElementById("startName").value = "";
+      return;
+    }
+    document.getElementById("startLat").value = state.start.lat.toFixed(6);
+    document.getElementById("startLng").value = state.start.lng.toFixed(6);
+    document.getElementById("startName").value = state.start.name || "";
+  }
+
+  function updateEndUI() {
+    if (!state || !state.end) {
+      document.getElementById("endLat").value = "";
+      document.getElementById("endLng").value = "";
+      document.getElementById("endName").value = "";
+      return;
+    }
+    document.getElementById("endLat").value = state.end.lat.toFixed(6);
+    document.getElementById("endLng").value = state.end.lng.toFixed(6);
+    document.getElementById("endName").value = state.end.name || "";
   }
 
   // ── Init ─────────────────────────────────────────────────────────────
