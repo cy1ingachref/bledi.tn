@@ -526,8 +526,8 @@ for (var i = 0; i < ST.length; i++) {
     iconSize: [7, 7], iconAnchor: [3.5, 3.5],
     html: '<span style="display:block;width:7px;height:7px;border-radius:50%;background:'+color+';border:1px solid #0f1923;opacity:0.85"></span>'
   });
-  L.marker([s._lat, s._lon], {icon: icon, title: s._name})
-    .bindPopup('<b>'+s._name+'</b><br><span style="font-size:11px;color:#8b949e">'+s._color+'</span>')
+  L.marker([s._lat, s._lon], {icon: icon, title: esc(s._name)})
+    .bindPopup('<b>'+esc(s._name)+'</b><br><span style="font-size:11px;color:#8b949e">'+esc(s._color)+'</span>')
     .addTo(stationLayer);
 }
 
@@ -571,6 +571,12 @@ function updateUI() {
   }
 }
 
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, function(c) {
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+
 function setStart(lat, lng, name) {
   state.start = {lat: lat, lng: lng, name: name || (lat.toFixed(4)+", "+lng.toFixed(4))};
   if (startMk) map.removeLayer(startMk);
@@ -578,7 +584,7 @@ function setStart(lat, lng, name) {
     icon: L.divIcon({className:"", iconSize:[14,14], iconAnchor:[7,7],
       html:'<span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#58a6ff;border:2px solid #0d1117;box-shadow:0 0 6px rgba(88,166,255,0.5)"></span>'}),
     title: "D\u00E9part"
-  }).addTo(map).bindPopup("<b>D\u00E9part</b><br>"+(name||"")).openPopup();
+  }).addTo(map).bindPopup("<b>D\u00E9part</b><br>" + esc(name || "")).openPopup();
   map.setView([lat, lng], map.getZoom() < 13 ? 13 : map.getZoom());
   updateUI();
 }
@@ -590,7 +596,7 @@ function setEnd(lat, lng, name) {
     icon: L.divIcon({className:"", iconSize:[14,14], iconAnchor:[7,7],
       html:'<span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#f85149;border:2px solid #0d1117;box-shadow:0 0 6px rgba(248,81,73,0.5)"></span>'}),
     title: "Arriv\u00E9e"
-  }).addTo(map).bindPopup("<b>Arriv\u00E9e</b><br>"+(name||"")).openPopup();
+  }).addTo(map).bindPopup("<b>Arriv\u00E9e</b><br>" + esc(name || "")).openPopup();
   updateUI();
 }
 
@@ -628,7 +634,7 @@ map.on("click", function(e) {
 // -- Nominatim search ---------------------------------------------------
 function geocode(query) {
   return fetch("https://nominatim.openstreetmap.org/search?q="+encodeURIComponent(query)+
-    "&countrycodes=tn&limit=3&format=json", {headers:{"Accept-Language":"fr,en","User-Agent":"bledi.tn/1.0"}})
+    "&countrycodes=tn&limit=3&format=json", {headers:{"Accept-Language":"fr,en"}})
     .then(function(r){return r.json();})
     .then(function(j){
       if (!j || !j.length) return null;
@@ -661,15 +667,15 @@ function doSearch() {
     bt.disabled = false;
     bt.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg> Rechercher';
 
-    if (res[0]) { setStart(res[0].lat, res[0].lng, res[0].name); toast("D\u00E9part: "+res[0].name); }
-    else if (qs) toast("Introuvable: "+qs,"err");
+    if (res[0]) { setStart(res[0].lat, res[0].lng, res[0].name); toast(esc("D\u00E9part: " + res[0].name)); }
+    else if (qs) toast(esc("Introuvable: " + qs), "err");
 
-    if (res[1]) { setEnd(res[1].lat, res[1].lng, res[1].name); toast("Arriv\u00E9e: "+res[1].name); }
-    else if (qe) toast("Introuvable: "+qe,"err");
+    if (res[1]) { setEnd(res[1].lat, res[1].lng, res[1].name); toast(esc("Arriv\u00E9e: " + res[1].name)); }
+    else if (qe) toast(esc("Introuvable: " + qe), "err");
   }).catch(function(e){
     bt.disabled = false;
     bt.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg> Rechercher';
-    toast("Erreur de recherche: "+e.message,"err");
+    toast(esc("Erreur de recherche: " + (e && e.message ? e.message : String(e))), "err");
   });
 }
 

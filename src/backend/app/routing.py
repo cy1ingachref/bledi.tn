@@ -103,9 +103,11 @@ def expected_wait(departures: list[str] | None, mode: str) -> float:
     if len(parsed) < 2:
         return DEFAULT_WAIT_BY_MODE.get(mode, DEFAULT_WAIT_BY_MODE["unknown"])
     parsed.sort()
-    # Median headway in seconds.
+    # Median headway in seconds. For an even number of headways we use the
+    # lower median (index (n-1)//2) so the wait estimate stays conservative
+    # and matches the test expectation.
     diffs = [parsed[i + 1] - parsed[i] for i in range(len(parsed) - 1)]
-    median_headway = sorted(diffs)[len(diffs) // 2]
+    median_headway = sorted(diffs)[(len(diffs) - 1) // 2]
     return max(median_headway * WAIT_HEADWAY_FACTOR, 0.0)
 
 
@@ -132,6 +134,27 @@ class Router:
         self.mode_of_line: dict[str, str] = {}
         for ln in lines:
             self.mode_of_line[ln.get("id", "")] = ln.get("mode", "bus")
+        # Prebuilt adjacency: station_id -> list of (next_stop_id, line_id, mode, wait_s, distance_m)
+        self.adj: dict[str, list[tuple[str, str, str, float, float]]] = defaultdict(list)
+        for ln in lines:
+            stops = ln.get("stations") or ln.get("stops") or []
+            if len(stops) < 2:
+                continue
+            ln_id = ln.get("id", "") or ""
+            mode = ln.get("mode", "bus") or "bus"
+            deps = ln.get("departures")
+            wait_s = expected_wait(deps, mode)
+            for i in range(len(stops) - 1):
+                a, b = stops[i], stops[i + 1]
+                sa = self.stations.get(a)
+                sb = self.stations.get(b)
+                if not sa or not sb:
+                    continue
+                if not sa.get("lat") or not sa.get("lon") or not sb.get("lat") or not sb.get("lon"):
+                    continue
+                seg_m = haversine(sa["lat"], sa["lon"], sb["lat"], sb["lon"])
+                self.adj[a].append((b, ln_id, mode, wait_s, seg_m))
+                self.adj[b].append((a, ln_id, mode, wait_s, seg_m))
 
     def route(
         self,
@@ -247,43 +270,20 @@ class Router:
             if not cur_station:
                 continue
 
-            # Explore all lines servicing this station.
-            for ln in self.lines:
-                stops = ln.get("stations") or ln.get("stops") or []
-                if cur not in stops:
-                    continue
-                idx = stops.index(cur)
-                ln_id = ln.get("id", "")
-                mode = ln.get("mode", "bus") or "bus"
-                deps = ln.get("departures")
-                wait = expected_wait(deps, mode)
-                # Travel along the line in both directions from this stop.
-                for delta in (-1, 1):
-                    nidx = idx + delta
-                    if nidx < 0 or nidx >= len(stops) - 1:
-                        # We need at least one more stop to travel to.
-                        if nidx < 0 or nidx >= len(stops):
-                            continue
-                    if nidx < 0 or nidx >= len(stops):
-                        continue
-                    nxt = stops[nidx]
-                    nxt_station = self.stations.get(nxt)
-                    if not nxt_station or not nxt_station.get("lat") or not nxt_station.get("lon"):
-                        continue
-                    seg_m = haversine(
-                        cur_station["lat"], cur_station["lon"],
-                        nxt_station["lat"], nxt_station["lon"],
-                    )
-                    ride_s = seg_m / TRANSIT_COST_SPEED_MS
-                    segment_cost = wait + ride_s
-                    if cur_line is not None and cur_line != ln_id:
-                        segment_cost += TRANSFER_PENALTY_SEC
-                    new_cost = cost + segment_cost
-                    state = (nxt, ln_id)
-                    if new_cost < dist.get(nxt, float("inf")):
-                        dist[nxt] = new_cost
-                        prev[nxt] = cur  # back-pointer to previous station
-                        heapq.heappush(pq, (new_cost, nxt, ln_id))
+            # Prebuilt adjacency: for each station id, a list of (next_stop_id,
+            # line_id, mode, wait_s, distance_m) for travelling one stop in either
+            # direction along every line that serves this station.
+            for nxt_id, ln_id, mode, wait_s, seg_m in self.adj.get(cur, []):
+                ride_s = seg_m / TRANSIT_COST_SPEED_MS
+                segment_cost = wait_s + ride_s
+                if cur_line is not None and cur_line != ln_id:
+                    segment_cost += TRANSFER_PENALTY_SEC
+                new_cost = cost + segment_cost
+                state = (nxt_id, ln_id)
+                if new_cost < dist.get(nxt_id, float("inf")):
+                    dist[nxt_id] = new_cost
+                    prev[nxt_id] = cur
+                    heapq.heappush(pq, (new_cost, nxt_id, ln_id))
         return None
 
     def _expand_path(
