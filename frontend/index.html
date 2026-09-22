@@ -174,9 +174,12 @@
       const color = props.lines && props.lines.length
         ? (props.lines[0].route_color || "#8b949e")
         : "#8b949e";
+      const escapedColor = (color || "#8b949e")
+        .replace(/[<>\"'&]/g, "")
+        .replace(/;/g, "");
       const icon = L.divIcon({
         className: "",
-        html: `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${color};border:1px solid #0d1117"></span>`,
+        html: `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${escapedColor};border:1px solid #0d1117"></span>`,
         iconSize: [10, 10],
         iconAnchor: [5, 5],
       });
@@ -197,7 +200,7 @@
     const b2 = document.createElement("b");
     b2.textContent = data.metadata.total + " total";
     statsEl.appendChild(b2);
-    statsEl.appendChild(document.createTextNode("<br>"));
+    statsEl.appendChild(document.createElement("br"));
     const ls = document.createElement("span");
     ls.id = "lineStats";
     ls.textContent = (data.lines ? data.lines.length : 0) + " lignes chargées";

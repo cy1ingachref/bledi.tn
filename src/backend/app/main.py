@@ -17,6 +17,7 @@ import math
 import os
 import time
 import urllib.request
+import urllib.parse
 from collections import defaultdict
 from functools import lru_cache
 from pathlib import Path
@@ -540,6 +541,7 @@ def _router_to_option(router_out: dict[str, Any]) -> dict[str, Any]:
     transfer_count = 0
     steps_raw = router_out.get("steps", [])
     prev_mode: str | None = None
+    after_transfer = False
     for s in steps_raw:
         t = s.get("type", "ride")
         line = s.get("line") or ""
@@ -551,11 +553,19 @@ def _router_to_option(router_out: dict[str, Any]) -> dict[str, Any]:
         to_lon = to.get("lon") if isinstance(to, dict) else to[1] if isinstance(to, list) else 0.0
         # transfer detection: a transfer step already counts; also count mode
         # changes between consecutive ride segments (legacy path, in case a
-        # transfer step was not emitted).
+        # transfer step was not emitted). These are mutually exclusive across
+        # iterations — a bus->train transfer produces BOTH a "transfer" step
+        # AND a mode change on the next ride, so we suppress the mode-change
+        # check on the ride immediately following a transfer.
         if t == "transfer":
             transfer_count += 1
-        if t == "ride" and prev_mode is not None and prev_mode != st_mode:
-            transfer_count += 1
+            after_transfer = True
+        elif t == "ride" and prev_mode is not None and prev_mode != st_mode:
+            if not after_transfer:
+                transfer_count += 1
+            after_transfer = False
+        if t != "transfer":
+            after_transfer = False
         # has_walk_transfer: any walk segment that is not the start/end access
         # walk (i.e. an intermediate walk between lines) counts as a walk-transfer.
         has_walk_transfer = any(

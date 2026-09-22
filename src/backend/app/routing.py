@@ -409,7 +409,7 @@ class Router:
         for i in range(len(path_stations) - 1):
             a = self.stations.get(path_stations[i])
             b = self.stations.get(path_stations[i + 1])
-            if not a or not b or not a.get("lat") or not b.get("lon"):
+            if not a or not b or not a.get("lat") or not a.get("lon") or not b.get("lat") or not b.get("lon"):
                 continue
             line_used = path_lines[i + 1]  # line arrived on at b = line used for a->b
             mode = self.mode_of_line.get(line_used or "", "bus") or "bus"
