@@ -27,6 +27,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field
 
+# Local transit router (physical-cost Dijkstra).
+from src.backend.app.routing import Router
+
 log = logging.getLogger("bledi")
 
 # ── Paths ──────────────────────────────────────────────────────────────
@@ -109,6 +112,12 @@ log.info(
 )
 
 
+# ── Local transit router instance ──────────────────────────────────────────
+# Built once at startup from the already-loaded seed (STATION_BY_ID + _lines).
+# Reused by the /api/v1/route/transit endpoint — no re-load per request.
+ROUTER: Router = Router(STATION_BY_ID, _lines)
+
+
 # ── Pydantic response models ─────────────────────────────────────────────
 class HealthResponse(BaseModel):
     status: str = "ok"
@@ -180,6 +189,39 @@ class LineDetail(BaseModel):
     line: dict[str, Any]
     stops: list[StopInfo]
     count: int
+
+
+# ── Pydantic models for the local transit-router endpoint ─────────────────
+#
+# Step shape is deliberately the same arrays the frontend computeTransit()
+# renderer reads (step.start[0]/[1], step.end[0]/[1]) so the existing safe-DOM
+# map plotter needs no new code path.
+class TransitStep(BaseModel):
+    type: str                     # walk | ride | transfer | taxi
+    start: list[float]            # [lat, lon]
+    end: list[float]              # [lat, lon]
+    color: str | None = None
+    stop_name: str | None = None
+    duration_min: float = 0.0
+    mode: str | None = None
+    line: str | None = None
+    from_name: str | None = None
+    to_name: str | None = None
+
+
+class TransitOption(BaseModel):
+    duration: float               # total seconds
+    duration_min: float
+    transfers: int = 0
+    has_walk_transfer: bool = False
+    steps: list[TransitStep] = Field(default_factory=list)
+    fare_dinars: float | None = None
+
+
+class TransitResponse(BaseModel):
+    best_fastest: TransitOption | None = None
+    best_less_walk: TransitOption | None = None
+    alternatives: list[TransitOption] = Field(default_factory=list)
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────
@@ -444,6 +486,129 @@ def route(
         "waypoints": result.get("waypoints", []),
         "geometry": route_data.get("geometry"),
         "source": "osrm",
+    }
+
+
+# ── Local transit router endpoint ─────────────────────────────────────────
+#
+# Physical-cost multi-modal Dijkstra over the seed (stations + lines).
+# Outputs the same 3-alternative envelope the frontend computeTransit()
+# renderer expects (best_fastest / best_less_walk / alternatives) so the
+# existing safe-DOM map plotter can draw it without another code path.
+#
+# Steps are translated from the router's internal {type, from, to, ...} dicts
+# into the frontend's {type, start:[lat,lon], end:[lat,lon], color, stop_name,
+# mode, line} shape.  Mode colour comes from the inline `colors` map already in
+# index.html (bus / metro / train / rfr / default).
+#
+def _mode_color(mode: str) -> str:
+    return {
+        "metro": "#339af0",
+        "train": "#845ef7",
+        "rfr": "#ff922b",
+        "bus": "#e03131",
+    }.get(mode, "#8b949e")
+
+
+def _router_to_option(router_out: dict[str, Any]) -> dict[str, Any]:
+    """Convert a Router.route() dict into the frontend 3-alternative envelope."""
+    mode = router_out.get("mode")
+    if mode == "walk":
+        # walk-only: no transit alternatives; just return the walk as best_fastest.
+        steps_raw = router_out.get("steps", [])
+        return {
+            "duration": round(router_out.get("duration_min", 0) * 60, 1),
+            "duration_min": router_out.get("duration_min", 0),
+            "transfers": 0,
+            "has_walk_transfer": True,
+            "steps": [
+                {
+                    "type": "walk",
+                    "start": [s["from"]["lat"], s["from"]["lon"]],
+                    "end": [s["to"]["lat"], s["to"]["lon"]],
+                    "color": "#8E8E93",
+                    "stop_name": s.get("label", ""),
+                    "mode": "walk",
+                    "line": None,
+                }
+                for s in steps_raw
+            ],
+        }
+
+    dur_min = router_out.get("duration_min", 0)
+    steps_out: list[dict[str, Any]] = []
+    transfer_count = 0
+    steps_raw = router_out.get("steps", [])
+    prev_mode: str | None = None
+    for s in steps_raw:
+        t = s.get("type", "ride")
+        line = s.get("line") or ""
+        st_mode = s.get("mode", "bus") if t == "ride" else t
+        fr, to = s.get("from", {}), s.get("to", {})
+        fr_lat = fr.get("lat") if isinstance(fr, dict) else fr[0] if isinstance(fr, list) else 0.0
+        fr_lon = fr.get("lon") if isinstance(fr, dict) else fr[1] if isinstance(fr, list) else 0.0
+        to_lat = to.get("lat") if isinstance(to, dict) else to[0] if isinstance(to, list) else 0.0
+        to_lon = to.get("lon") if isinstance(to, dict) else to[1] if isinstance(to, list) else 0.0
+        # transfer detection: a transfer step already counts; also count mode
+        # changes between consecutive ride segments (legacy path, in case a
+        # transfer step was not emitted).
+        if t == "transfer":
+            transfer_count += 1
+        if t == "ride" and prev_mode is not None and prev_mode != st_mode:
+            transfer_count += 1
+        # has_walk_transfer: any walk segment that is not the start/end access
+        # walk (i.e. an intermediate walk between lines) counts as a walk-transfer.
+        has_walk_transfer = any(
+            ss.get("type") == "walk"
+            for ss in steps_raw[1:-1]  # exclude first (access) and last (egress)
+        )
+        steps_out.append({
+            "type": t,
+            "start": [fr_lat, fr_lon],
+            "end": [to_lat, to_lon],
+            "color": _mode_color(st_mode if t == "ride" else "walk"),
+            "stop_name": (s.get("to_name") or s.get("label") or "").strip(),
+            "mode": st_mode,
+            "line": line if t == "ride" else None,
+        })
+        prev_mode = st_mode if t == "ride" else prev_mode
+
+    return {
+        "duration": round(dur_min * 60, 1),
+        "duration_min": dur_min,
+        "transfers": transfer_count,
+        "has_walk_transfer": has_walk_transfer,
+        "steps": steps_out,
+        "fare_dinars": router_out.get("fare_dinars"),
+    }
+
+
+@app.get("/api/v1/route/transit", tags=["Routing"])
+def route_transit(
+    start_lat: float = Query(..., description="Start latitude"),
+    start_lon: float = Query(..., description="Start longitude"),
+    end_lat: float = Query(..., description="End latitude"),
+    end_lon: float = Query(..., description="End longitude"),
+) -> dict[str, Any]:
+    """Local multi-modal transit itinerary (physical-cost Dijkstra).
+
+    Reuses the router's already-loaded seed via STATION_BY_ID / _lines.  The
+    response uses the same 3-alternative envelope as the (now-removed)
+    tunismapper proxy so the frontend renderer needs no new code path.
+    """
+    result = ROUTER.route(start_lat, start_lon, end_lat, end_lon)
+    if result.get("error"):
+        return {"error": result["error"], "source": "local-router"}
+
+    option = _router_to_option(result)
+    if not option.get("steps"):
+        return {"error": "No transit route found", "source": "local-router"}
+
+    return {
+        "best_fastest": option,
+        "best_less_walk": None,
+        "alternatives": [],
+        "source": "local-router",
     }
 
 

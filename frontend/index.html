@@ -324,25 +324,48 @@
     clearRoute();
     const panel = document.getElementById("result");
     setResultHTML('<div class="title">Itinéraire transport public…</div><div class="row2">Requête…</div>');
+    let r = null;
+    // 1. Local multi-modal router (physical-cost Dijkstra) first — works
+    //    offline from the seed, no third-party dependency.
     try {
-      const r = await loadAPI("/itinerary", {
+      r = await loadAPI("/api/v1/route/transit", {
         start_lat: sw.lat.toFixed(6),
         start_lon: sw.lng.toFixed(6),
         end_lat: en.lat.toFixed(6),
         end_lon: en.lng.toFixed(6),
       });
-      if (!r || r.error) {
-        const disabled = r && r.source === "disabled";
-        const title = disabled ? "Service désactivé" : "Aucun itinéraire";
-        const sub = disabled
-          ? "Routeur local en cours de connexion…"
-          : "Utilisez le trajet automobile ci-dessus.";
-        setResultHTML(`<div class="title">${esc(title)}</div>` +
-                      `<div class="row2">${esc(sub)}</div>`);
-        console.warn("itinéraire transport public:", r && r.error || "aucun résultat");
-        return;
+    } catch (e) {
+      console.warn("routeur local:", e.message);
+    }
+    // 2. Fall back to the (disabled-by-default) tunismapper proxy only if the
+    //    local router found nothing and the proxy is enabled.
+    if ((!r || r.error) && ENABLE_TUNISMAPPER_PROXY) {
+      try {
+        const t = await loadAPI("/itinerary", {
+          start_lat: sw.lat.toFixed(6),
+          start_lon: sw.lng.toFixed(6),
+          end_lat: en.lat.toFixed(6),
+          end_lon: en.lng.toFixed(6),
+        });
+        if (t && !t.error) r = t;
+      } catch (e) {
+        console.warn("itinéraire tunismapper:", e.message);
       }
-      // Build result DOM safely
+    }
+    if (!r || r.error) {
+      const noLocal = !r || r.source === "local-router";
+      const disabled = r && r.source === "disabled";
+      const title = disabled ? "Service désactivé" : (noLocal ? "Aucun itinéraire trouvé" : "Erreur");
+      const sub = disabled
+        ? "Le proxy tunismapper est désactivé. Utilisez le routeur local (bouton ci-dessus)."
+        : (noLocal ? "Le routeur local n'a pas trouvé d'itinéraire multimodal pour ces points."
+                   : "Utilisez le trajet automobile ci-dessus.");
+      setResultHTML(`<div class="title">${esc(title)}</div>` +
+                    `<div class="row2">${esc(sub)}</div>`);
+      console.warn("itinéraire transport public:", r && r.error || "aucun résultat");
+      return;
+    }
+    // Build result DOM safely
       const root = document.createElement("div");
       const titleEl = document.createElement("div");
       titleEl.className = "title";
@@ -422,7 +445,7 @@
             opacity: 0.9,
             dashArray: l.dash,
             smoothFactor: 1.5,
-          }).addTo(map);
+          }).addTo(transitLayer);
         });
         // Add a marker for each stop
         if (fc.steps) {
@@ -434,7 +457,7 @@
                 fillOpacity: 0.8,
                 color: "#0d1117",
                 weight: 2,
-              }).addTo(map).bindPopup(`<b>${step.stop_name}</b>`);
+              }).addTo(transitLayer).bindPopup(esc(step && step.stop_name ? String(step.stop_name) : ""));
             }
           });
         }
