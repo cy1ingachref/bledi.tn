@@ -95,12 +95,26 @@ Superseded files are moved to `archive/` rather than deleted:
 ## TODO / known issues
 
 - The 3 pre-existing `index.html` bugs (state undeclared, missing
-  `updateStartUI`/`updateEndUI`, transit layers untracked) are documented; the
-  safe-DOM/geocoding/prefix/User-Agent patches applied here did not explicitly
-  close them. A follow-up patch is needed.
+  `updateStartUI`/`updateEndUI`, transit layers untracked in `clearRoute`)
+  were closed in commit `74ae929` (frontend/index.html bug fixes).
 - `bledi-map.html` enhancements (statUpdate, drawOption, selectOption(i),
   stepHTML, fmtDur, fmtDT, rich ride-step text, metered taxi fare, walk-only
   gate, tuning-knob block) remain open follow-ups if the self-contained file
   track is re-raised.
+- The `computeTransit()` rewrite in this session addresses:
+  - Bug 1 — the "Itinéraire transport public" button now calls the local
+    `/api/v1/route/transit` endpoint (physical-cost Dijkstra over the seeded
+    network) instead of the Tunismapper `/itinerary` proxy, which is
+    disabled by default (`ENABLE_TUNISMAPPER_PROXY` off → 410). The local
+    router works from the seed alone with no third-party dependency.
+  - Bug 2 — the backend endpoint returns a shape (`best_fastest` with
+    `steps[]` carrying `start`/`end` as `[lat, lon]`, `type`, `color`,
+    `stop_name`) that the existing safe-DOM renderer already consumes, so
+    the result panel, duration, transfers, and step list render correctly
+    from local data.
+  - Bug 3 — transit polylines and stop markers are added to a dedicated
+    `transitLayer` layer group (not directly to `map`), and `clearRoute()`
+    calls `transitLayer.clearLayers()` before recomputing, so switching
+    trips or re-running the local router clears the old overlay.
 - Pilot region: currently documented as Tunis Centre → Bizerte corridor
   (Greater Tunis). Confirm or change in `docs/roadmap.md`.
