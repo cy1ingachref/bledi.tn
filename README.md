@@ -116,5 +116,4 @@ Superseded files are moved to `archive/` rather than deleted:
     `transitLayer` layer group (not directly to `map`), and `clearRoute()`
     calls `transitLayer.clearLayers()` before recomputing, so switching
     trips or re-running the local router clears the old overlay.
-- Pilot region: currently documented as Tunis Centre → Bizerte corridor
-  (Greater Tunis). Confirm or change in `docs/roadmap.md`.
+- Pilot region: currently documented as Tunis Centre → Bizerte corridor. Confirm or change in `docs/roadmap.md`.
