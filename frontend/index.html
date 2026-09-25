@@ -10,7 +10,7 @@
 <style>
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; height: 100%; font-family: system-ui, -apple-system, sans-serif; background: #0f1923; color: #e6edf3; }
-  #map { height: 100%; width: 100%; }
+  #map { height: 100vh; width: 100%; min-height: 500px; }
   .leaflet-popup-content { background: #161f2b; color: #e6edf3; border-radius: 8px; padding: 4px 8px; }
   .leaflet-popup-tip { background: #161f2b; }
   .leaflet-control-zoom a { background: #161f2b; color: #e6edf3; border-color: #30363d; }
@@ -610,8 +610,8 @@
   function init() {
     map = L.map("map", { zoomControl: true, attributionControl: true })
       .setView([36.80, 10.18], 11);
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "© OpenStreetMap contributors",
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      attribution: "© OpenStreetMap contributors © CARTO",
       maxZoom: 19,
     }).addTo(map);
     map.attributionControl.setPrefix(false);
