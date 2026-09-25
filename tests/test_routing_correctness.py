@@ -25,8 +25,6 @@ sys.path.insert(0, str(REPO_ROOT))
 from src.backend.app.routing import (
     Router,
     WALK_SPEED_KMH,
-    TRANSIT_COST_SPEED_KMH,
-    TRANSIT_DISPLAY_SPEED_KMH,
     TRANSFER_PENALTY_SEC,
     TAXI_FARE_BASE,
     TAXI_FARE_PER_KM,
@@ -58,11 +56,13 @@ def _line(idv: str, mode: str, stops: list[str], departures: list[str] | None = 
 
 
 def _ride_s(meters: float) -> float:
-    return meters / (TRANSIT_COST_SPEED_KMH / 3.6)
+    from src.backend.app.routing import transit_speed_ms
+    return meters / transit_speed_ms("bus")
 
 
 def _ride_min_display(meters: float) -> float:
-    return meters / 1000 / TRANSIT_DISPLAY_SPEED_KMH * 60
+    from src.backend.app.routing import transit_speed_kmh
+    return meters / 1000 / transit_speed_kmh("bus") * 60
 
 
 def _walk_min(meters: float) -> float:
@@ -184,7 +184,7 @@ class TestWaitChargedOncePerBoarding:
         assert res.get("error") is None, res
         dur = res["duration_min"]
         # wait 300 s + ride 2.5 km at 22 km/h: 300/60 + 2.5/22*60 = 5 + 6.82 = 11.82 min
-        expected = 300 / 60 + 2500 / 1000 / TRANSIT_DISPLAY_SPEED_KMH * 60
+        expected = 300 / 60 + 2500 / 1000 / 22.0 * 60
         assert dur == pytest.approx(expected, abs=0.5), (
             f"duration {dur} not ~{expected:.2f} (single boarding + 2.5km ride)"
         )
@@ -214,7 +214,7 @@ class TestWaitChargedOncePerBoarding:
         dur = res["duration_min"]
         # 10 segments * 200 m = 2000 m. wait = 150 s (median of ten 300s headways).
         # expected = 150/60 + 2000/1000/22*60 = 2.5 + 5.45 = 7.95 min
-        expected = 150 / 60 + 2000 / 1000 / TRANSIT_DISPLAY_SPEED_KMH * 60
+        expected = 150 / 60 + 2000 / 1000 / 22.0 * 60
         assert dur == pytest.approx(expected, abs=0.5), (
             f"duration {dur} not ~{expected:.2f} (single boarding + 2km ride)"
         )
