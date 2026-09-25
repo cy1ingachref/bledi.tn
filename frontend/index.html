@@ -348,21 +348,9 @@
     } catch (e) {
       console.warn("routeur local:", e.message);
     }
-    // 2. Fall back to the (disabled-by-default) tunismapper proxy only if the
-    //    local router found nothing and the proxy is enabled.
-    if ((!r || r.error) && ENABLE_TUNISMAPPER_PROXY) {
-      try {
-        const t = await loadAPI("/itinerary", {
-          start_lat: sw.lat.toFixed(6),
-          start_lon: sw.lng.toFixed(6),
-          end_lat: en.lat.toFixed(6),
-          end_lon: en.lng.toFixed(6),
-        });
-        if (t && !t.error) r = t;
-      } catch (e) {
-        console.warn("itinéraire tunismapper:", e.message);
-      }
-    }
+    // tunismapper proxy fallback removed: it is disabled by default server-side
+    // (/api/v1/itinerary returns 410 when ENABLE_TUNISMAPPER_PROXY is unset) and
+    // the local router above already covers the common case.
     if (!r || r.error) {
       const noLocal = !r || r.source === "local-router";
       const disabled = r && r.source === "disabled";
