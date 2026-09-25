@@ -152,6 +152,9 @@
     return data;
   }
 
+  // ── State ────────────────────────────────────────────────────────────
+  const state = { start: null, end: null };
+
   function esc(s) {
     return String(s == null ? "" : s)
       .replace(/&/g, "&amp;")
@@ -215,6 +218,11 @@
     transitLayer = null;
     const rc = document.getElementById("resultContent");
     rc.textContent = "";
+  }
+
+  function setResultHTML(html) {
+    const rc = document.getElementById("resultContent");
+    rc.innerHTML = html;
   }
 
   function clearAll() {
@@ -542,7 +550,7 @@
     if (!data.results || !data.results.length) return null;
     const best = data.results[0];
     return [
-      [best.lon, best.lat],
+      [best.lat, best.lon],
       best.display_name,
     ];
   }
@@ -621,6 +629,8 @@
     map.attributionControl.setPrefix(false);
 
     stationsLayer = L.layerGroup().addTo(map);
+    transitLayer = L.layerGroup().addTo(map);
+    routeLine = null;
     document.getElementById("chkStations").addEventListener("change", e => {
       if (e.target.checked) map.addLayer(stationsLayer);
       else map.removeLayer(stationsLayer);

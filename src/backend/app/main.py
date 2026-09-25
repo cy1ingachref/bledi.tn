@@ -42,8 +42,11 @@ SEED_TAGED_PATH = BASE / "data" / "seed_all_tunisia_routes.tagged.json"
 _SEED_PATH = SEED_TAGED_PATH if SEED_TAGED_PATH.exists() else SEED_PATH
 
 # ── Config ──────────────────────────────────────────────────────────────
-OSRM_URL = os.environ.get("OSRM_URL", "http://localhost:5000/route/v1/driving")
-OSRM_TIMEOUT = int(os.environ.get("OSRM_TIMEOUT", "10"))
+OSRM_URL = os.environ.get(
+    "OSRM_URL",
+    "https://router.project-osrm.org/route/v1/driving",
+)
+OSRM_TIMEOUT = int(os.environ.get("OSRM_TIMEOUT", "30"))
 ALLOWED_ORIGINS = [
     o.strip()
     for o in os.environ.get(
