@@ -27,7 +27,6 @@ from src.backend.app.routing import (
     BASE,
     MAX_START_WALK_METERS,
     MAX_END_WALK_METERS,
-    MAX_WALK_METERS,
     TAXI_MIN_DISTANCE_M,
     TRANSFER_PENALTY_SEC,
     WALK_SPEED_KMH,
@@ -109,7 +108,7 @@ class TestRouterSanity:
         steps = res.get("steps", [])
         for step in steps:
             if step.get("type") == "walk":
-                assert step.get("distance_m", 0) <= MAX_START_WALK_METERS + MAX_WALK_METERS + MAX_END_WALK_METERS + 500, (
+                assert step.get("distance_m", 0) <= MAX_START_WALK_METERS + MAX_END_WALK_METERS + 2000, (
                     f"walk step exceeds max budgets: {step}"
                 )
 

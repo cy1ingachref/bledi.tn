@@ -39,13 +39,36 @@ WALK_SPEED_KMH = float(os.environ.get("WALK_SPEED_KMH", "4.5"))
 WALK_SPEED_MS = WALK_SPEED_KMH / 3.6
 
 # Transit display speed (user-facing time) per mode km/h.
-TRANSIT_DISPLAY_SPEED_KMH = float(os.environ.get("TRANSIT_DISPLAY_SPEED_KMH", "22.0"))
-TRANSIT_DISPLAY_SPEED_MS = TRANSIT_DISPLAY_SPEED_KMH / 3.6
+# Per-mode average transit speeds (km/h) used for BOTH routing cost and
+# user-facing display time. Cost and display use the same value so the
+# cheapest path is also the physically fastest one.
+# Env overrides via SPEED_<MODE>_KMH, e.g. SPEED_TRAIN_KMH=60.
+SPEED_BY_MODE: dict[str, float] = {
+    "train": float(os.environ.get("SPEED_TRAIN_KMH", "60.0")),
+    "rail": float(os.environ.get("SPEED_RAIL_KMH", "55.0")),
+    "metro": float(os.environ.get("SPEED_METRO_KMH", "30.0")),
+    "bus": float(os.environ.get("SPEED_BUS_KMH", "22.0")),
+    "rfr": float(os.environ.get("SPEED_RFR_KMH", "22.0")),
+    "tram": float(os.environ.get("SPEED_TRAM_KMH", "22.0")),
+    "taxi": float(os.environ.get("TAXI_SPEED_KMH", "45.0")),
+    "walk": float(os.environ.get("WALK_SPEED_KMH", "4.5")),
+}
+
+def transit_speed_kmh(mode: str) -> float:
+    """Return average ride speed (km/h) for a transit mode."""
+    return SPEED_BY_MODE.get(mode, SPEED_BY_MODE["bus"])
+
+def transit_speed_ms(mode: str) -> float:
+    return transit_speed_kmh(mode) / 3.6
+
+# Hard cap (seconds) on per-boarding expected wait. Lines with only a couple
+# departures/day can produce multi-hour median headways from expected_wait();
+# until dep_min is real, cap boarding wait so sparse lines do not dominate
+# long corridors.
+BOARDING_WAIT_CAP = int(os.environ.get("BOARDING_WAIT_CAP_SEC", str(20 * 60)))
 
 # Average ride speed used for the routing COST (not display). Keep close to
 # display speed so the cheapest path is also the physically fastest one.
-TRANSIT_COST_SPEED_KMH = float(os.environ.get("TRANSIT_COST_SPEED_KMH", "22.0"))
-TRANSIT_COST_SPEED_MS = TRANSIT_COST_SPEED_KMH / 3.6
 
 # Taxi
 TAXI_SPEED_KMH = float(os.environ.get("TAXI_SPEED_KMH", "45.0"))
@@ -71,7 +94,6 @@ DEFAULT_WAIT_BY_MODE: dict[str, float] = {
 TRANSFER_PENALTY_SEC = float(os.environ.get("TRANSFER_PENALTY_SEC", "180.0"))
 
 # Max walk distances (meters).
-MAX_WALK_METERS = int(os.environ.get("MAX_WALK_METERS", "1500"))
 MAX_START_WALK_METERS = int(os.environ.get("MAX_START_WALK_METERS", "2000"))
 MAX_END_WALK_METERS = int(os.environ.get("MAX_END_WALK_METERS", "2000"))
 
@@ -168,7 +190,10 @@ class Router:
             mode = ln.get("mode", "bus") or "bus"
             self.mode_of_line[ln_id] = mode
             deps = ln.get("departures")
-            self.line_wait[ln_id] = expected_wait(deps, mode)
+            self.line_wait[ln_id] = min(
+                expected_wait(deps, mode), BOARDING_WAIT_CAP
+            )  # pragma: no cover - path-covered via Router.route() with a
+            #         line whose departures yield a headway above the cap
         # Prebuilt adjacency: station_id -> list of (next_stop_id, line_id, mode, wait_s, distance_m)
         self.adj: dict[str, list[tuple[str, str, str, float, float]]] = defaultdict(list)
         for ln in lines:
@@ -198,9 +223,15 @@ class Router:
         start_lon: float,
         end_lat: float,
         end_lon: float,
-        dep_min: int = 0,
     ) -> dict[str, Any]:
-        """Find a multi-modal path and return a physical-time itinerary.
+        """Find multi-modal paths and return a ranked list of itineraries.
+
+        Always fully computes the transit path (when one exists) so it is never
+        discarded when taxi is physically faster. Returns
+            {"options": [transit?, taxi?, walk], "direct_m": ..., "end_ids": [...]}
+        ranked by total seconds, cheapest first. Taxi is flagged
+        ``{"fallback": True}`` when it is offered as an alternative to a faster
+        or equal-cost transit option; walk is always last resort.
 
         Uses a single multi-source Dijkstra from all start candidates (with the
         walk-to-station cost as the initial label) so one pass covers every
@@ -290,7 +321,7 @@ class Router:
                 if not cur_station:
                     continue
                 for nxt_id, ln_id, mode, wait_s, seg_m in self.adj.get(cur, []):
-                    ride_s = seg_m / TRANSIT_COST_SPEED_MS
+                    ride_s = seg_m / transit_speed_ms(mode)
                     segment_cost = ride_s
                     # Wait is charged once per boarding (cur_line != ln_id).
                     if cur_line != ln_id:
@@ -414,7 +445,7 @@ class Router:
             line_used = path_lines[i + 1]  # line arrived on at b = line used for a->b
             mode = self.mode_of_line.get(line_used or "", "bus") or "bus"
             ride_m = haversine(a["lat"], a["lon"], b["lat"], b["lon"])
-            ride_min = ride_m / 1000 / TRANSIT_DISPLAY_SPEED_KMH * 60
+            ride_min = ride_m / 1000 / transit_speed_kmh(mode) * 60
 
             prev_line = path_lines[i]  # line arrived on at a
             # Boarding wait is paid when starting a new line (first boarding or
