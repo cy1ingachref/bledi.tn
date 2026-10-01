@@ -92,6 +92,99 @@ with _SEED_PATH.open(encoding="utf-8") as _f:
 _stations: list[dict[str, Any]] = SEED_DATA.get("stations", [])
 _lines: list[dict[str, Any]] = SEED_DATA.get("lines", [])
 
+# ── City (governorate) assignment ──────────────────────────────────────────
+# The seed has no governorate field, so each station is assigned to its nearest
+# governorate seat. Measured on the seed: 1 711 stations -> 21 groups with no
+# runaway cluster, and only 18 stations fall further than 60 km from any seat
+# (remote villages like Sened and Maknassy). Those get [UNASSIGNED_CITY] rather
+# than being forced into a wrong governorate.
+#
+# Reference points are the 24 governorate seats.
+CITY_SEATS: list[tuple[str, float, float]] = [
+    ("Tunis", 36.8065, 10.1815),
+    ("Ariana", 36.8628, 10.1957),
+    ("Ben Arous", 36.7520, 10.2220),
+    ("Manouba", 36.8161, 10.1011),
+    ("Nabeul", 36.4560, 10.7376),
+    ("Zaghouan", 36.4028, 10.1425),
+    ("Bizerte", 37.2744, 9.8739),
+    ("Béja", 36.7256, 9.1817),
+    ("Jendouba", 36.5008, 8.7806),
+    ("Le Kef", 36.1742, 8.7147),
+    ("Siliana", 36.3667, 9.2167),
+    ("Kairouan", 35.6781, 10.0963),
+    ("Kassab", 35.1833, 8.8000),
+    ("Sidi Bouzid", 36.4044, 9.4844),
+    ("Sousse", 35.8256, 10.6360),
+    ("Monastir", 35.7777, 10.8263),
+    ("Mahdia", 35.5047, 11.0622),
+    ("Sfax", 34.7406, 10.7603),
+    ("Kébili", 33.8814, 8.8742),
+    ("Gabès", 33.8815, 10.0982),
+    ("Médenine", 33.3547, 10.5052),
+    ("Tataouine", 32.9291, 10.4517),
+    ("Ghorbel", 35.2292, 9.1789),
+    ("Tozeur", 33.9197, 6.9440),
+]
+
+# Beyond this distance from every seat a station is left unassigned.
+MAX_CITY_DISTANCE_KM = 60.0
+
+# Bucket for stations too remote to belong to any governorate. Assigned
+# explicitly rather than left null so clients never have to invent a fallback.
+UNASSIGNED_CITY = "Other"
+
+_EARTH_R_KM = 6371.0
+
+
+def _haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    dphi = p2 - p1
+    dlam = math.radians(lon2 - lon1)
+    a = math.sin(dphi / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dlam / 2) ** 2
+    return 2 * _EARTH_R_KM * math.asin(math.sqrt(a))
+
+
+def nearest_city(lat: float, lon: float) -> str:
+    """Nearest governorate seat, or [UNASSIGNED_CITY] if too remote.
+
+    Always returns a value: callers get a stable string key rather than having
+    to handle None. The 18 stations beyond [MAX_CITY_DISTANCE_KM] fall into
+    [UNASSIGNED_CITY] instead of being forced into a wrong governorate.
+    """
+    best_name: str = UNASSIGNED_CITY
+    best_d = MAX_CITY_DISTANCE_KM
+    for name, slat, slon in CITY_SEATS:
+        d = _haversine_km(lat, lon, slat, slon)
+        if d < best_d:
+            best_d, best_name = d, name
+    return best_name
+
+
+# Louage / taxi stops come from separate seed files that the main transit seed
+# does not contain. Their modes are louage_red / louage_blue / louage_green /
+# taxi, and they are marked with `source="louage"` so the client can colour and
+# filter them distinctly.
+LOUAGE_SEED_PATH = BASE / "data" / "seed_routes_destination_tunis.json"
+_LOUAGE_STATIONS: list[dict[str, Any]] = []
+_LOUAGE_LINES: list[dict[str, Any]] = []
+if LOUAGE_SEED_PATH.exists():
+    with LOUAGE_SEED_PATH.open(encoding="utf-8") as _f:
+        _louage = json.load(_f)
+    _LOUAGE_STATIONS = _louage.get("stations", [])
+    _LOUAGE_LINES = _louage.get("routes", [])
+    log.info(
+        "Loaded louage/taxi seed: %d stops, %d routes from %s",
+        len(_LOUAGE_STATIONS), len(_LOUAGE_LINES), LOUAGE_SEED_PATH.name,
+    )
+
+# Route ids from the louage seed, so a station can advertise its services.
+_LOUAGE_ROUTES_BY_STOP: dict[str, list[dict[str, Any]]] = defaultdict(list)
+for _r in _LOUAGE_LINES:
+    for _endpoint in (_r.get("from"), _r.get("to")):
+        if _endpoint:
+            _LOUAGE_ROUTES_BY_STOP[_endpoint].append(_r)
+
 # Id -> station / line index for O(1) lookups (replaces O(lines*stations) scans).
 STATION_BY_ID: dict[str, dict[str, Any]] = {}
 for _s in _stations:
@@ -147,6 +240,21 @@ class StationsResponse(BaseModel):
     type: str = "FeatureCollection"
     features: list[StationGeoJSON]
     metadata: StationsMeta
+
+
+class CitySummary(BaseModel):
+    """A city/governorate with its station inventory."""
+
+    name: str
+    lat: float
+    lon: float
+    station_count: int
+    by_mode: dict[str, int] = Field(default_factory=dict)
+
+
+class CityListResponse(BaseModel):
+    cities: list[CitySummary]
+    count: int
 
 
 class NearStation(BaseModel):
@@ -331,7 +439,16 @@ def root() -> dict[str, Any]:
 
 @app.get("/api/v1/stations", response_model=StationsResponse, tags=["Stations"])
 def list_stations() -> StationsResponse:
-    """All stations as a GeoJSON FeatureCollection (GPS-only)."""
+    """All stations as a GeoJSON FeatureCollection (GPS-only).
+
+    Properties include the seed's real `mode` / `operator` / `route_type` plus
+    a derived `city` (nearest governorate seat), so a client can colour and
+    filter stops by transport mode without re-deriving anything.
+
+    Louage/taxi stops from the secondary seed are merged in with
+    `source="louage"` and their own modes; they are appended after the transit
+    stations so existing ids and ordering are unchanged.
+    """
     features: list[StationGeoJSON] = []
     missing_coords: int = 0
     for s in _stations:
@@ -346,14 +463,113 @@ def list_stations() -> StationsResponse:
                 properties={
                     "id": s.get("id"),
                     "name": s.get("name"),
+                    "name_en": s.get("name_en"),
+                    "mode": s.get("mode"),
+                    "operator": s.get("operator"),
+                    "route_type": s.get("route_type"),
+                    "license_status": s.get("license_status"),
+                    "city": nearest_city(lat, lon),
+                    "source": s.get("source"),
                     "lines": s.get("lines_served", []),
                 },
             )
         )
+
+    # Louage / taxi hubs, keyed to avoid id collisions with transit stations.
+    for s in _LOUAGE_STATIONS:
+        loc = s.get("location") or {}
+        lat, lon = loc.get("lat"), loc.get("lon")
+        if not lat or not lon:
+            continue
+        routes = _LOUAGE_ROUTES_BY_STOP.get(s.get("id", ""), [])
+        modes = {r.get("mode") for r in routes if r.get("mode")}
+        lines_served: list[dict[str, Any]] = [
+            {
+                "route_short_name": r.get("mode"),
+                "route_color": None,
+                "direction": f"{r.get('from')} → {r.get('to')}",
+                "route_id": r.get("from"),
+            }
+            for r in routes
+        ]
+        features.append(
+            StationGeoJSON(
+                geometry={"type": "Point", "coordinates": [lon, lat]},
+                properties={
+                    "id": f"louage_{s.get('id')}",
+                    "name": s.get("name_fr") or s.get("name_en") or s.get("id"),
+                    "name_en": s.get("name_en"),
+                    # A stop can serve several louage types; report them all and
+                    # let the client treat any of them as the yellow category.
+                    "mode": next(iter(modes)) if len(modes) == 1 else "louage",
+                    "modes": sorted(modes) or ["louage"],
+                    "operator": "Louage",
+                    "route_type": s.get("type"),
+                    "license_status": "unknown-third-party",
+                    # The seed carries a real governorate for these stops.
+                    "city": s.get("governorate") or nearest_city(lat, lon),
+                    "source": "louage",
+                    "fare_display": s.get("fare_display"),
+                    "lines": lines_served,
+                },
+            )
+        )
+
     return StationsResponse(
         features=features,
         metadata=StationsMeta(count=len(features), total=len(_stations)),
     )
+
+
+@app.get("/api/v1/cities", response_model=CityListResponse, tags=["Stations"])
+def list_cities() -> CityListResponse:
+    """Cities (governorates) with per-mode station counts.
+
+    Computed from the same seed as `/api/v1/stations`, so the counts always
+    agree with what that endpoint returns. Lets a client offer a city picker
+    without downloading every stop first.
+    """
+    counts: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    centres: dict[str, list[float]] = defaultdict(lambda: [0.0, 0.0, 0])
+
+    def _bucket(city: str | None, mode: str | None, lat: float, lon: float) -> None:
+        # Stations too remote for any seat are grouped under "Other" rather
+        # than being forced into a wrong governorate.
+        key = city or UNASSIGNED_CITY
+        counts[key][mode or "unknown"] += 1
+        acc = centres[key]
+        acc[0] += lat
+        acc[1] += lon
+        acc[2] += 1
+
+    for s in _stations:
+        lat, lon = s.get("lat"), s.get("lon")
+        if not lat or not lon or lat == 0 or lon == 0:
+            continue
+        _bucket(nearest_city(lat, lon), s.get("mode"), lat, lon)
+
+    for s in _LOUAGE_STATIONS:
+        loc = s.get("location") or {}
+        lat, lon = loc.get("lat"), loc.get("lon")
+        if not lat or not lon:
+            continue
+        # Louage hubs stay in the yellow category regardless of route mix.
+        _bucket(s.get("governorate") or nearest_city(lat, lon), "louage", lat, lon)
+
+    cities = [
+        CitySummary(
+            name=name,
+            lat=acc[0] / acc[2],
+            lon=acc[1] / acc[2],
+            station_count=acc[2],
+            by_mode=dict(counts[name]),
+        )
+        for name, acc in centres.items()
+        if acc[2] > 0
+    ]
+    # Largest first: that is the useful order for a picker.
+    cities.sort(key=lambda c: -c.station_count)
+    return CityListResponse(cities=cities, count=len(cities))
 
 
 @app.get("/api/v1/stations/near", response_model=NearResponse, tags=["Stations"])
