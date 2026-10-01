@@ -532,12 +532,9 @@ def list_cities() -> CityListResponse:
     counts: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     centres: dict[str, list[float]] = defaultdict(lambda: [0.0, 0.0, 0])
 
-    def _bucket(city: str | None, mode: str | None, lat: float, lon: float) -> None:
-        # Stations too remote for any seat are grouped under "Other" rather
-        # than being forced into a wrong governorate.
-        key = city or UNASSIGNED_CITY
-        counts[key][mode or "unknown"] += 1
-        acc = centres[key]
+    def _bucket(city: str, mode: str | None, lat: float, lon: float) -> None:
+        counts[city][mode or "unknown"] += 1
+        acc = centres[city]
         acc[0] += lat
         acc[1] += lon
         acc[2] += 1
