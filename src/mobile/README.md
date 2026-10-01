@@ -100,11 +100,9 @@ lib/
   providers/                    riverpod providers
 assets/l10n/                    en / fr / ar (generated — see tool/gen_arb.py)
 tool/
-  gen_arb.py                    regenerates assets/l10n from one table
-  serve_web.py                  same-origin dev server for web
-  analyze_stop_coverage.py      one-off seed analysis (documented in git history)
-  analyze_city_grouping.py      one-off city-grouping analysis
-  check_backend_city.py         sanity-checks the backend's city assignment
+  gen_arb.py              regenerates assets/l10n from one table
+  serve_web.py            same-origin dev server for web
+  check_backend_city.py   asserts the backend's station→city assignment
 ```
 
 ## Data layer notes
