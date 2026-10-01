@@ -1,55 +1,55 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'core/router/app_router.dart';
-import 'core/theme/app_theme.dart';
-import 'core/constants/api_constants.dart';
+import 'app.dart';
+import 'core/theme.dart';
 
-void main() async {
+/// Supported locales. Arabic is first so it becomes the default.
+const List<Locale> supportedLocales = [
+  Locale('ar'),
+  Locale('fr'),
+  Locale('en'),
+];
+
+const List<Locale> easyLocalizationSupportedLocales = supportedLocales;
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
-  runApp(
-    const ProviderScope(
-      child: BlediApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: BlediApp()));
 }
 
-class BlediApp extends ConsumerWidget {
+class BlediApp extends StatelessWidget {
   const BlediApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final router = ref.watch(appRouterProvider);
-    final themeMode = ref.watch(themeModeProvider);
-
-    return MaterialApp.router(
-      title: 'BLEDI.TN',
-      debugShowCheckedModeBanner: false,
-      
-      // Theme
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: themeMode,
-      
-      // Localization
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('ar'), // Arabic (default)
-        Locale('fr'), // French
-        Locale('en'), // English
-      ],
-      locale: const Locale('ar'),
-      
-      // Routing
-      routerConfig: router,
-    );
+  Widget build(BuildContext context) {
+    return EasyLocalization(
+              supportedLocales: easyLocalizationSupportedLocales,
+              // Asset key prefix. Flutter registers `assets: [assets/l10n/]` under
+              // the key `assets/l10n/`, and easy_localization appends
+              // `<locale>.json` to this — so it must not start with `assets/`.
+              path: 'assets/l10n',
+          fallbackLocale: const Locale('fr'),
+          startLocale: const Locale('fr'),
+          child: Builder(
+            builder: (context) => MaterialApp.router(
+              title: 'BLEDI.TN',
+              debugShowCheckedModeBanner: false,
+              routerConfig: appRouter,
+              themeMode: ThemeMode.system,
+              theme: AppTheme.light(),
+              darkTheme: AppTheme.dark(),
+              localizationsDelegates: [
+                              ...EasyLocalization.of(context)!.delegates,
+                              GlobalMaterialLocalizations.delegate,
+                              GlobalWidgetsLocalizations.delegate,
+                              GlobalCupertinoLocalizations.delegate,
+                            ],
+                            supportedLocales: EasyLocalization.of(context)!.supportedLocales,
+            ),
+          ),
+        );
   }
 }
