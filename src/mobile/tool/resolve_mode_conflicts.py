@@ -39,8 +39,18 @@ RAIL_OPERATORS = (
 RAIL_OPERATORS_LATIN = ("sncft", "tgm", "transtu", "metropole", "metro tunis")
 
 
-def fetch(nodes: list[str]) -> dict[str, dict]:
-    """Raw tags for the given OSM node ids, keyed 'node/123'."""
+def fetch(nodes: list[str], cache: Path | None = None) -> dict[str, dict]:
+    """Raw tags for the given OSM node ids, keyed 'node/123'.
+
+    Cached on disk: Overpass rate-limits (HTTP 504) after a handful of calls, so
+    re-running this analysis should not depend on the public instance again.
+    """
+    if cache and cache.is_file():
+        stored = json.loads(cache.read_text(encoding="utf-8"))
+        if set(stored) >= {n for n in nodes if n}:
+            print(f"  loaded {len(stored)} node tag sets from cache {cache.name}")
+            return stored
+
     ids = ",".join(n.split("/")[1] for n in nodes if n.startswith("node/"))
     if not ids:
         return {}
@@ -53,10 +63,13 @@ def fetch(nodes: list[str]) -> dict[str, dict]:
                 url, data=data, headers={"User-Agent": "bledi-tn-audit/1.0"}
             )
             with urllib.request.urlopen(req, timeout=180) as r:
-                return {
+                tags = {
                     f"node/{e['id']}": e.get("tags", {})
                     for e in json.load(r)["elements"]
                 }
+            if cache:
+                cache.write_text(json.dumps(tags, ensure_ascii=False), encoding="utf-8")
+            return tags
         except Exception as exc:  # noqa: BLE001
             last = exc
             time.sleep(10)
@@ -70,6 +83,11 @@ def main() -> None:
     ap.add_argument("--reference", required=True)
     ap.add_argument("--tolerance", type=float, default=250.0)
     ap.add_argument("--limit", type=int, default=20)
+    ap.add_argument(
+        "--cache",
+        default=str(Path(__file__).with_name("conflict_node_tags.json")),
+        help="raw OSM tags for the conflicting nodes; fetched once, then reused",
+    )
     args = ap.parse_args()
 
     seed = load_seed(args.seed)
@@ -98,7 +116,8 @@ def main() -> None:
 
     print(f"rail-vs-bus conflicts: {len(conflicts)}\n")
 
-    tags_by_node = fetch([c[1].get("osm_ref", "") for c in conflicts])
+    cache = Path(args.cache) if args.cache else None
+    tags_by_node = fetch([c[1].get("osm_ref", "") for c in conflicts], cache)
     print(f"fetched raw tags for {len(tags_by_node)}/{len(conflicts)} nodes\n")
 
     ours_right, ours_wrong, ambiguous = [], [], []
@@ -136,7 +155,10 @@ def main() -> None:
             why.append("operator=SNCFT/TGM")
         if railway:
             why.append(f"railway={railway}")
-        print(f"  {s['name'][:30]:30s} ours={s['mode']:6s} {' + '.join(why)}")
+        # Print the evidence, not just the conclusion — without the actual tag
+        # values a reader cannot tell an SNCFT operator apart from an empty one.
+        print(f"  {s['name'][:30]:30s} ours={s['mode']:6s} {' + '.join(why):24s} "
+              f"operator={op[:34]!r} railway={railway!r}")
 
     print(f"\n=== still ambiguous (first {args.limit}) ===")
     for s, r, d, op, railway in ambiguous[: args.limit]:
