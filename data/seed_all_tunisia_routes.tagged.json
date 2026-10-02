@@ -8405,7 +8405,7 @@
       "lat": 36.80334,
       "lon": 10.09908,
       "source_stop_id": 544,
-      "mode": "metro",
+      "mode": "bus",
       "operator": "Transtu",
       "lines_served": [
         {
@@ -8421,7 +8421,9 @@
       ],
       "route_type": 1,
       "source": "official-public",
-      "license_status": "official-public"
+      "license_status": "official-public",
+      "mode_source": "osm-audit",
+      "mode_corrected_from": "metro"
     },
     {
       "id": "moncef_bey",
