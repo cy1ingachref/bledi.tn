@@ -45,15 +45,23 @@ def fetch(nodes: list[str], cache: Path | None = None) -> dict[str, dict]:
     Cached on disk: Overpass rate-limits (HTTP 504) after a handful of calls, so
     re-running this analysis should not depend on the public instance again.
     """
+    wanted = {n for n in nodes if n}
+    stored: dict[str, dict] = {}
     if cache and cache.is_file():
         stored = json.loads(cache.read_text(encoding="utf-8"))
-        if set(stored) >= {n for n in nodes if n}:
-            print(f"  loaded {len(stored)} node tag sets from cache {cache.name}")
+        if set(stored) >= wanted:
+            print(f"  loaded {len(wanted)}/{len(wanted)} node tag sets "
+                  f"from cache {cache.name}")
             return stored
+        # Partial: fall through and fetch only what is missing, then merge.
+        if stored:
+            print(f"  loaded {len(set(stored) & wanted)}/{len(wanted)} node tag sets "
+                  f"from cache {cache.name}, fetching the rest")
 
-    ids = ",".join(n.split("/")[1] for n in nodes if n.startswith("node/"))
+    missing = wanted - set(stored)
+    ids = ",".join(n.split("/")[1] for n in missing if n.startswith("node/"))
     if not ids:
-        return {}
+        return stored
     q = f"[out:json][timeout:120];node(id:{ids});out body;"
     data = urllib.parse.urlencode({"data": q}).encode()
     last = None
@@ -68,13 +76,15 @@ def fetch(nodes: list[str], cache: Path | None = None) -> dict[str, dict]:
                     for e in json.load(r)["elements"]
                 }
             if cache:
-                cache.write_text(json.dumps(tags, ensure_ascii=False), encoding="utf-8")
+                # Merge into whatever was cached, so a later run is offline-complete.
+                merged = {**stored, **tags}
+                cache.write_text(json.dumps(merged, ensure_ascii=False), encoding="utf-8")
             return tags
         except Exception as exc:  # noqa: BLE001
             last = exc
             time.sleep(10)
     print(f"  overpass unavailable: {last}", file=sys.stderr)
-    return {}
+    return stored
 
 
 def main() -> None:
