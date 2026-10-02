@@ -4,10 +4,12 @@
 
 The repository currently contains a working backend (`src/backend/app/main.py`),
 a physical-cost local router (`src/backend/app/routing.py`), a canonical
-Leaflet frontend (`frontend/index.html`), and a self-contained offline variant
-(`frontend/bledi-map.html`). Seed data covers 232 lines and 1,711 stations
-countrywide. See `README.md` for what exists today and `docs/provenance.md` for
-the data-source audit.
+Leaflet frontend (`frontend/index.html`), a self-contained offline variant
+(`frontend/bledi-map.html`), and a Flutter client (`src/mobile/`). Seed data
+covers 232 lines and 1,711 stations countrywide, from which `/api/v1/stations`
+serves 1,729 features (the extra 18 are the merged louage/taxi hubs — see
+`StationsMeta.total` vs `count`). See `README.md` for what exists today and
+`docs/provenance.md` for the data-source audit.
 
 ## Previously planned phases (kept for context, not commitments)
 
@@ -44,7 +46,6 @@ unstarted.
 The following are not implemented and are not on the critical path for the
 current pilot:
 
-- Flutter mobile app (`src/mobile/` is a stub).
 - PostGIS / PostgreSQL backend replacing the in-memory seed.
 - Places database with ratings and photos.
 - Live location sharing.
