@@ -10,11 +10,11 @@ The `#map/...` fragment is a **viewport**, not a dataset — the wiki page carri
 no stop data. What that map draws comes from OpenStreetMap, so OSM is the
 ground truth for "which stops exist, and where".
 
-Method (`tool/compare_with_osm.py`, `tool/audit_unmatched.py`,
-`tool/classify_conflicts_offline.py`):
+Method (`tool/compare_with_osm.py` for coverage, `tool/classify_conflicts.py`
+for the mode question, sharing `tool/osm_common.py`):
 
-- Overpass query for `public_transport=*`, `highway=bus_stop`,
-  `railway=station|halt|tram_stop` across Tunisia → **4 361** transport nodes.
+- Overpass query for `public_transport=*`, `highway=bus_stop` and
+  `railway=*` across Tunisia → **4 361** transport nodes.
 - Matched to seed stations within **250 m** using a lat/lon bucket grid.
 - Raw OSM nodes cached in `tool/osm_nodes_cache.json` so re-analysis is free and
   does not re-hit Overpass (which rate-limits with HTTP 504).
