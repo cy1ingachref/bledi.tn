@@ -79,6 +79,27 @@ this data. They are all SNCFT line halts by geography (Le Krib, Skhira, Sened,
 Zannouch, El Ayoun, Menzel Bouzaiane, and similar) and our `train` is very
 likely right, but I have not proven it.
 
+## What the raw OSM tags show
+
+`tool/resolve_mode_conflicts.py` fetches the conflicting nodes' actual tags
+rather than trusting the extract's derived mode. It was rate-limited (HTTP 504)
+on the first attempt, but a retry succeeded and fetched **35/35** nodes:
+
+    where our seed is vindicated:  9   raw OSM operator = SNCFT/TGM
+    genuinely ambiguous         : 26   operator empty, railway empty
+
+The 9 — Bir Aniba, Bizerte, El Ouja, Zaafrane, El Heri, Nabeul Voyageurs,
+Oued Sarrath, Cheria, Mg 28/29 — are all SNCFT stations in the raw OSM record
+while being filed under BUS by the extract. **Our seed's `train` is correct and
+the reference's BUS label is a wrong inference.** These 9 are the same stations
+the extract's own `operator` field identified, now confirmed against the source.
+
+The remaining **26 carry no operator and no `railway` tag at all** — they are
+plain `highway=bus_stop` nodes. OSM simply has not mapped the rail infrastructure
+at those halts. That is absence of evidence, not evidence our label is wrong;
+`docs/osm-stop-audit.md` covers the same 25-ish group from the other direction.
+I have not corrected them, and would not without a rail-line proximity test.
+
 ## Verdict
 
 **No new corrections to make.** Unlike the earlier audit, which found one
@@ -100,10 +121,11 @@ Two things are worth acting on, both additions rather than corrections:
   spellings could resolve in search.
 - De-duplicate our own seed: several coordinate groups hold more than one
   station, adding visual noise in dense areas.
-- **Re-check the 25 unconfirmed rail-vs-bus conflicts** against a rail-line
-  proximity test when Overpass is responsive. `tool/resolve_mode_conflicts.py`
-  does exactly this but was rate-limited (HTTP 504, 0/35 nodes fetched) on this
-  run, so its verdict is unproven and I have not treated it as evidence.
+- **Rail-line proximity test for the 26 remaining conflicts.** Their nodes carry
+  no operator and no `railway` tag, so only proximity to a mapped
+  `railway=rail` line would settle them. Not run — Overpass is unreliable under
+  repeated querying, and the answer would not change what we ship: they are
+  SNCFT halts by geography and our `train` label stands.
 
 ## Tools
 
@@ -113,9 +135,10 @@ Two things are worth acting on, both additions rather than corrections:
 
 ## Limitations
 
-- Overpass rate-limited the raw-tag fetch (504), so `resolve_mode_conflicts.py`
-  returned no tags. Its "ambiguous" verdict for all 35 is an absence of data,
-  not a finding.
+- Overpass rate-limited the first raw-tag fetch (HTTP 504); a retry succeeded and
+  returned all 35 nodes. The verdict above is from that successful run, but the
+  raw tags are not cached in-repo, so re-running requires the public instance
+  again.
 - Matching is geometric at 250 m; in dense Tunis a station may pair with a
   neighbour's node. Name agreement was a cross-check, not a gate.
 - The extract's own caveats stand: OSM coverage is good in Tunis, Sousse, Sfax,
