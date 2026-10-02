@@ -46,11 +46,13 @@ It is also editable at runtime from the Settings screen, and persisted with
 
 ### Running on web
 
-The backend does not send CORS headers, so a browser cannot call it from another
-origin. That affects **web only** — Android and iOS are not subject to CORS.
+The backend serves CORS from an allowlist (`ALLOWED_ORIGINS`, defaults to the
+localhost dev ports 8000/8080/5173), so a browser cannot call it from an
+arbitrary origin. That affects **web only** — Android and iOS are not subject to
+CORS.
 
 `tool/serve_web.py` serves the built app and proxies `/api/` on the same origin,
-which removes the restriction without changing the backend:
+which sidesteps the restriction entirely and remains the recommended route:
 
 ```bash
 flutter build web --dart-define=BLED_API_BASE=http://127.0.0.1:8080

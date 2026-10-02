@@ -47,11 +47,20 @@ OSRM_URL = os.environ.get(
     "https://router.project-osrm.org/route/v1/driving",
 )
 OSRM_TIMEOUT = int(os.environ.get("OSRM_TIMEOUT", "30"))
+# Local dev origins only. 8080 is the Flutter web dev server's default port
+# (see src/mobile/tool/serve_web.py); without it a browser build gets a CORS
+# failure instead of data. Override with ALLOWED_ORIGINS for other hosts.
 ALLOWED_ORIGINS = [
     o.strip()
     for o in os.environ.get(
         "ALLOWED_ORIGINS",
-        "http://127.0.0.1:8000,http://localhost:8000,http://localhost:5173",
+        ",".join([
+            "http://127.0.0.1:8000",
+            "http://localhost:8000",
+            "http://localhost:5173",
+            "http://127.0.0.1:8080",
+            "http://localhost:8080",
+        ]),
     ).split(",")
     if o.strip()
 ]
