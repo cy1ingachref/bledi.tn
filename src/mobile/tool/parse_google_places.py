@@ -47,10 +47,18 @@ TYPE_RULES: list[tuple[tuple[str, ...], str]] = [
     (("intercity",), "bus"),
 ]
 
-SHEET_CITY = {"Bizerte": "Bizerte", "Mateur": "Mateur", "Ras Jebel": "Ras Jebel"}
-# Sheet -> the governorate each belongs to. Ras Jebel sits in Bizerte
-# governorate; the workbook's own Notes sheet says so.
-SHEET_GOV = {"Bizerte": "Bizerte", "Mateur": "Bizerte", "Ras Jebel": "Bizerte"}
+# Sheet -> governorate. Ras Jebel and Mateur both sit in Bizerte governorate;
+# the workbook's own Notes sheet says so. Anything unlisted inherits its sheet
+# name, which is also the city.
+SHEET_GOV = {"Mateur": "Bizerte", "Ras Jebel": "Bizerte"}
+
+
+def col(header: list[str], *names: str) -> int | None:
+    """Index of the first matching column, or None."""
+    for n in names:
+        if n in header:
+            return header.index(n)
+    return None
 
 
 def classify(type_raw: str) -> str:
@@ -87,20 +95,14 @@ def main() -> None:
             continue
         header = [str(h).strip().lower() if h else "" for h in rows[0]]
 
-        def col(*names: str) -> int | None:
-            for n in names:
-                if n in header:
-                    return header.index(n)
-            return None
-
-        i_name = col("name")
-        i_type = col("type")
-        i_lat = col("latitude", "lat")
-        i_lon = col("longitude", "lon", "lng")
-        i_addr = col("address / plus code", "address")
-        i_pid = col("google place id", "id", "place_id")
-        i_hours = col("hours (per google)", "hours")
-        i_notes = col("operator / notes", "notes")
+        i_name = col(header, "name")
+        i_type = col(header, "type")
+        i_lat = col(header, "latitude", "lat")
+        i_lon = col(header, "longitude", "lon", "lng")
+        i_addr = col(header, "address / plus code", "address")
+        i_pid = col(header, "google place id", "id", "place_id")
+        i_hours = col(header, "hours (per google)", "hours")
+        i_notes = col(header, "operator / notes", "notes")
         if i_name is None or i_lat is None or i_lon is None:
             skipped.append(f"{sheet}: header lacks name/lat/lon -> {header[:6]}")
             continue
@@ -120,23 +122,28 @@ def main() -> None:
                 skipped.append(f"{sheet}/{name}: outside Tunisia ({lat},{lon})")
                 continue
 
-            type_raw = str(row[i_type] or "").strip() if i_type is not None else ""
+            def cell(idx: int | None) -> str:
+                if idx is None or idx >= len(row) or row[idx] is None:
+                    return ""
+                return str(row[idx]).strip()
+
+            type_raw = cell(i_type)
             records.append({
                 "operator": "GOOGLE-PLACES",
                 "mode": classify(type_raw),
                 "name": str(name).strip(),
                 "lat": lat,
                 "lon": lon,
-                "governorate": SHEET_GOV.get(sheet, ""),
-                "city": SHEET_CITY.get(sheet, sheet),
+                "governorate": SHEET_GOV.get(sheet, sheet),
+                "city": sheet,
                 "source_file": Path(args.xlsx).name,
                 "source_sheet": sheet,
                 "source": "google-places-workbook",
-                "place_id": str(row[i_pid] or "").strip() if i_pid is not None else "",
+                "place_id": cell(i_pid),
                 "type_raw": type_raw,
-                "address": str(row[i_addr] or "").strip() if i_addr is not None else "",
-                "hours": str(row[i_hours] or "").strip() if i_hours is not None else "",
-                "notes": str(row[i_notes] or "").strip() if i_notes is not None else "",
+                "address": cell(i_addr),
+                "hours": cell(i_hours),
+                "notes": cell(i_notes),
                 "license_status": "user-compiled-from-google-places",
             })
 
