@@ -43,3 +43,8 @@ android/app/release
 
 # Don't ignore important config
 !.env.example
+
+# OSRM response cache for tool/build_route_geometry.py. A fetch accelerator so
+# a rebuild after a rule change does not re-request ~1580 routes; it is not
+# product data and data/route_geometry.json is the committed artefact.
+data/.osrm_raw_cache.json

@@ -577,8 +577,10 @@ class Router:
                 total_min += walk_min
 
         for i in range(len(path_stations) - 1):
-            a = self.stations.get(path_stations[i])
-            b = self.stations.get(path_stations[i + 1])
+            a_id = path_stations[i]
+            b_id = path_stations[i + 1]
+            a = self.stations.get(a_id)
+            b = self.stations.get(b_id)
             if not a or not b or not a.get("lat") or not a.get("lon") or not b.get("lat") or not b.get("lon"):
                 continue
             line_used = path_lines[i + 1]  # line arrived on at b = line used for a->b
@@ -595,6 +597,11 @@ class Router:
                     "to": {"lat": b["lat"], "lon": b["lon"]},
                     "from_name": a.get("name", ""),
                     "to_name": b.get("name", ""),
+                    # Station ids let the API layer look up real geometry for
+                    # this leg in data/route_geometry.json.
+                    "from_id": a_id,
+                    "to_id": b_id,
+                    "mode": "walk",
                     "distance_m": round(seg_m),
                     "duration_min": round(walk_min, 1),
                     "label": f"Marcher {round(seg_m)} m jusqu'à {b.get('name', '')}",
@@ -642,6 +649,10 @@ class Router:
                 "to": {"lat": b["lat"], "lon": b["lon"]},
                 "from_name": a.get("name", ""),
                 "to_name": b.get("name", ""),
+                # Station ids let the API layer look up real geometry for
+                # this leg in data/route_geometry.json.
+                "from_id": a_id,
+                "to_id": b_id,
                 "distance_m": round(ride_m),
                 "duration_min": round(display_ride_min, 1),
                 "wait_min": round(wait_min, 1),

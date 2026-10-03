@@ -37,31 +37,72 @@ class RouteOverlay extends ConsumerWidget {
 
     return PolylineLayer(
       polylines: [
+        // A soft casing drawn under the whole route. One continuous path means
+        // the line reads as a single journey from departure to destination
+        // instead of a row of disconnected two-point segments with visible
+        // seams at every transfer.
+        if (itinerary.continuousPath.length >= 2)
+          Polyline(
+            points: itinerary.continuousPath,
+            strokeWidth: 11,
+            color: Colors.white.withValues(alpha: 0.55),
+            borderColor: Colors.white.withValues(alpha: 0.0),
+            borderStrokeWidth: 0,
+            strokeCap: StrokeCap.round,
+            strokeJoin: StrokeJoin.round,
+          ),
+        // Then each leg on top, keeping its own mode colour and dash pattern so
+        // walking legs still read as walking.
         for (final step in steps)
           if (step.start != step.end)
             Polyline(
-              points: [step.start, step.end],
-              strokeWidth: step.isWalk ? 3.5 : 6,
-              color: _colorFor(context, step),
-              borderColor: Colors.white.withValues(alpha: 0.85),
-              borderStrokeWidth: step.isWalk ? 1 : 1.5,
+              points: step.path,
+              strokeWidth: step.isWalk ? 4 : 7,
+              color: _colorFor(context, step).withValues(alpha: step.isWalk ? 0.9 : 1.0),
+              borderColor: Colors.white.withValues(alpha: 0.9),
+              borderStrokeWidth: step.isWalk ? 0.8 : 1.4,
               pattern: step.isWalk
                   ? StrokePattern.dashed(segments: const [10, 8])
                   : const StrokePattern.solid(),
+              strokeCap: StrokeCap.round,
+              strokeJoin: StrokeJoin.round,
             ),
       ],
     );
   }
 
-  /// Markers for the route: endpoints plus each intermediate boarding stop.
+  /// Markers for the route: every station it passes, in travel order.
+  ///
+  /// The previous rule drew a dot only where two consecutive steps failed to
+  /// meet, which meant the intermediate stops of a long ride were never
+  /// rendered at all -- Tunis -> Sfax reported Rades, Hammam Lif and
+  /// Grombalia in the step list and showed none of them. Milestones now come
+  /// from every leg, so each of those stops gets a numbered dot.
   static List<Marker> buildMarkers(Itinerary itinerary) {
     final steps = itinerary.steps;
+    final lastIndex = steps.length - 1;
+    final milestones = itinerary.milestones;
+    // Map each milestone back to the step that produced it, so a marker can
+    // borrow that step's mode colour.
+    final stepForMilestone = <int, RouteStep>{};
+    var mi = 0;
+    for (var i = 0; i < steps.length; i++) {
+      final step = steps[i];
+      if (step.start == step.end) continue;
+      if (step.endLabel.isEmpty) continue;
+      stepForMilestone[mi] = step;
+      mi++;
+    }
+
     return [
-      for (var i = 0; i < steps.length; i++)
-        if (i == steps.length - 1)
-          routeEndpointMarker(steps[i].end, steps[i])
-        else if (i == 0 || steps[i - 1].end != steps[i].start)
-          routeStopMarker(steps[i].start),
+      for (var i = 0; i < milestones.length; i++)
+        if (milestones[i].point == steps[lastIndex].end)
+          routeEndpointMarker(
+            milestones[i].point,
+            stepForMilestone[i] ?? steps[lastIndex],
+          )
+        else
+          routeMilestoneMarker(milestones[i], stepForMilestone[i]),
     ];
   }
 
@@ -83,20 +124,61 @@ class RouteOverlay extends ConsumerWidget {
   }
 }
 
-/// Small plain dot used for intermediate boarding stops.
-Marker routeStopMarker(LatLng point) => Marker(
-  point: point,
-  width: 14,
-  height: 14,
-  alignment: Alignment.center,
-  child: DecoratedBox(
-    decoration: BoxDecoration(
-      color: const Color(0xFF6B7280),
-      shape: BoxShape.circle,
-      border: Border.all(color: Colors.white, width: 2),
+/// A numbered milestone dot for a station along the route.
+///
+/// The number is the station's order along the journey, so the sequence reads
+/// left-to-right down the line and the rider can match it against the step list.
+/// Size encodes importance: transfers are largest, plain intermediate stops
+/// smaller, and walk/taxi touches are the smallest so they do not compete with
+/// the transit stops they sit between.
+Marker routeMilestoneMarker(RouteMilestone milestone, RouteStep? step) {
+  final color = step == null
+      ? const Color(0xFF6B7280)
+      : _colorFor2(step).withValues(alpha: 0.95);
+  final diameter = switch (milestone.kind) {
+    RouteMilestoneKind.transfer => 22.0,
+    RouteMilestoneKind.stop => 17.0,
+    RouteMilestoneKind.walk || RouteMilestoneKind.taxi => 13.0,
+    _ => 17.0,
+  };
+  return Marker(
+    point: milestone.point,
+    width: diameter,
+    height: diameter,
+    alignment: Alignment.center,
+    child: Container(
+      decoration: BoxDecoration(
+        color: color,
+        shape: BoxShape.circle,
+        border: Border.all(color: Colors.white, width: 2.5),
+        boxShadow: const [
+          BoxShadow(color: Color(0x33000000), blurRadius: 4, offset: Offset(0, 1)),
+        ],
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        '${milestone.order}',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: diameter <= 13 ? 8 : (diameter <= 17 ? 9.5 : 10.5),
+          fontWeight: FontWeight.w700,
+          height: 1,
+        ),
+      ),
     ),
-  ),
-);
+  );
+}
+
+/// Colour helper that tolerates a null step (unlike the private [_colorFor],
+/// which needs a BuildContext).
+Color _colorFor2(RouteStep step) {
+  final hex = step.hexColor;
+  if (hex != null) {
+    final parsed = int.tryParse(hex.replaceFirst('#', ''), radix: 16);
+    if (parsed != null) return Color(0xFF000000 | parsed);
+  }
+  return AppTheme.stepColor(step.isRide ? (step.mode ?? 'bus') : step.type);
+}
 
 /// Larger mode-coloured pin for the final destination.
 Marker routeEndpointMarker(LatLng point, RouteStep step) => Marker(

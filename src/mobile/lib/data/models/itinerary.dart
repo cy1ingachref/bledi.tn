@@ -36,6 +36,39 @@ List<double>? latLngToJsonList(LatLng? object) => object == null
     ? null
     : <double>[object.latitude, object.longitude];
 
+/// Decodes a backend geometry polyline (`[[lat, lon], ...]`) into [LatLng]s.
+///
+/// A separate converter is required rather than reusing [latLngFromJsonList]:
+/// `json_serializable` applies a per-element `fromJson` for `List<LatLng>` but
+/// hands the function the whole list, so the single-pair helper received a
+/// `List<dynamic>` where it expected `[lat, lon]` and threw
+/// `type 'List<dynamic>' is not a subtype of type 'Map<String, dynamic>'`.
+///
+/// A malformed entry is dropped rather than throwing, so one bad point cannot
+/// discard an entire route geometry.
+List<LatLng> latLngListFromJson(List<dynamic>? json) {
+  if (json == null) return const <LatLng>[];
+  final out = <LatLng>[];
+  for (final entry in json) {
+    if (entry is List && entry.length >= 2) {
+      final lat = (entry[0] as num?)?.toDouble();
+      final lon = (entry[1] as num?)?.toDouble();
+      if (lat != null && lon != null && !lat.isNaN && !lon.isNaN) {
+        out.add(LatLng(lat, lon));
+      }
+    }
+  }
+  return out;
+}
+
+/// Inverse of [latLngListFromJson].
+List<List<double>> latLngListToJson(List<LatLng>? object) =>
+    object == null
+        ? const <List<double>>[]
+        : object
+              .map((p) => <double>[p.latitude, p.longitude])
+              .toList();
+
 /// A single leg of a transit itinerary.
 ///
 /// Matches `TransitStep` in `src/backend/app/main.py`. Note the backend sends
@@ -60,6 +93,21 @@ abstract class RouteStep with _$RouteStep {
     String? line,
     @JsonKey(name: 'from_name') String? fromName,
     @JsonKey(name: 'to_name') String? toName,
+    /// Ordered `[lat, lon]` pairs tracing the real path of this leg, when the
+    /// backend has geometry for it (OSRM/OSM). Empty means "no geometry", and
+    /// the map then falls back to the straight [start]->[end] line.
+    @JsonKey(
+      name: 'geometry',
+      fromJson: latLngListFromJson,
+      toJson: latLngListToJson,
+    )
+    @Default(<LatLng>[])
+    List<LatLng> geometry,
+    /// True when [geometry] traces a real track/road rather than being a
+    /// synthesised straight line.
+    @JsonKey(name: 'has_geometry')
+    @Default(false)
+    bool hasGeometry,
   }) = _RouteStep;
 
   factory RouteStep.fromJson(Map<String, dynamic> json) =>
@@ -133,6 +181,32 @@ abstract class RouteStep with _$RouteStep {
   /// Straight-line distance of this step in metres. Used only for the
   /// step-list summary — the real route geometry is on the backend.
   double get distanceMeters => _distance(start, end);
+
+  /// The path to draw for this leg: the real geometry when present, otherwise
+  /// the straight line between the endpoints.
+  ///
+  /// A geometry that fails to start/end where the step says it does is dropped
+  /// rather than trusted, otherwise the line visibly detaches from the stop
+  /// markers at every transfer.
+  List<LatLng> get path {
+    if (geometry.length < 2) return <LatLng>[start, end];
+    final first = geometry.first;
+    final last = geometry.last;
+    const eps = 1e-6;
+    final startsOk = (first.latitude - start.latitude).abs() < eps
+        && (first.longitude - start.longitude).abs() < eps;
+    final endsOk = (last.latitude - end.latitude).abs() < eps
+        && (last.longitude - end.longitude).abs() < eps;
+    if (!startsOk || !endsOk) return <LatLng>[start, end];
+    return geometry;
+  }
+
+  /// True when [path] is the real track/road geometry.
+  bool get followsRealPath => geometry.length >= 2;
+
+  /// Cumulative distance covered by the preceding steps, in metres. Used to
+  /// number milestones along the route (1, 2, 3...) in travel order.
+  double get distanceKm => distanceMeters / 1000.0;
 }
 
 /// A complete itinerary option (`TransitOption` on the backend).
@@ -170,12 +244,97 @@ abstract class Itinerary with _$Itinerary {
     return out;
   }
 
+  /// Every station the route passes through, in travel order, with the step
+  /// index that arrives at it. These are the milestones the map labels.
+  ///
+  /// Derived from the steps themselves: each leg contributes its arrival point
+  /// and name. Before this existed the frontend drew a marker only where two
+  /// consecutive steps failed to meet, so intermediate stops on a long ride
+  /// (Rades, Hammam Lif, Grombalia on Tunis->Sfax) had no marker at all even
+  /// though the backend reported every one of them.
+  List<RouteMilestone> get milestones {
+    final out = <RouteMilestone>[];
+    for (final step in steps) {
+      // A zero-length step carries no position worth labelling.
+      if (step.start == step.end) continue;
+      final label = step.endLabel;
+      if (label.isEmpty) continue;
+      out.add(
+        RouteMilestone(
+          order: out.length + 1,
+          point: step.end,
+          name: label,
+          kind: step.isWalk
+              ? RouteMilestoneKind.walk
+              : step.isTaxi
+              ? RouteMilestoneKind.taxi
+              : step.isRide
+              ? RouteMilestoneKind.stop
+              : RouteMilestoneKind.transfer,
+          mode: step.isRide ? step.mode : step.type,
+          line: step.isRide ? step.line : null,
+        ),
+      );
+    }
+    return out;
+  }
+
+  /// The continuous path from origin to destination: every leg's real geometry
+  /// concatenated in order, so the drawn line has no gaps at transfers and no
+  /// visible per-leg seams.
+  List<LatLng> get continuousPath {
+    final out = <LatLng>[];
+    for (final step in steps) {
+      final leg = step.path;
+      if (out.isEmpty) {
+        out.addAll(leg);
+        continue;
+      }
+      // Skip the first point when it merely repeats the previous leg's last.
+      for (var i = 0; i < leg.length; i++) {
+        if (i == 0 && leg[i] == out.last) continue;
+        out.add(leg[i]);
+      }
+    }
+    return out;
+  }
+
+  /// True when at least one leg has real geometry rather than a straight line.
+  bool get hasRealGeometry => steps.any((s) => s.followsRealPath);
+
   /// Union of every step's start/end, for fitting the map camera.
   List<LatLng> get allPoints => [
-    for (final step in steps) ...[step.start, step.end],
+    for (final step in steps) ...step.path,
   ];
 
   bool get hasFare => fareDinars != null && fareDinars! > 0;
+}
+
+/// What kind of point a milestone is, which decides how it is drawn.
+enum RouteMilestoneKind { start, stop, transfer, walk, taxi, destination }
+
+/// One labelled point along the route, in travel order.
+@freezed
+abstract class RouteMilestone with _$RouteMilestone {
+  const factory RouteMilestone({
+    /// 1-based position along the route.
+    required int order,
+    required LatLng point,
+    required String name,
+    @Default(RouteMilestoneKind.stop) RouteMilestoneKind kind,
+    String? mode,
+    String? line,
+  }) = _RouteMilestone;
+
+  const RouteMilestone._();
+
+  factory RouteMilestone.fromJson(Map<String, dynamic> json) =>
+      _$RouteMilestoneFromJson(json);
+
+  /// True for the intermediate stops along a ride, which are the milestones
+  /// that were previously invisible on the map.
+  bool get isIntermediate =>
+      kind == RouteMilestoneKind.stop || kind == RouteMilestoneKind.transfer;
 }
 
 /// The `/api/v1/route/transit` envelope.

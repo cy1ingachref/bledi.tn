@@ -38,7 +38,29 @@ class RoutingPanel extends ConsumerWidget {
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
         children: [
           _SummaryCard(itinerary: itinerary),
-          const SizedBox(height: 16),
+          // Stations the route passes through, in travel order, numbered to
+          // match the dots on the map. Shown only when there are intermediate
+          // stops to list -- a one-leg route has no milestones.
+          if (itinerary.milestones.any((m) => m.isIntermediate)) ...[
+            const SizedBox(height: 16),
+            Text(
+              'stops_on_route'.tr(),
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              itinerary.milestones
+                  .where((m) => m.isIntermediate)
+                  .map((m) => m.name)
+                  .join('  \u2192  '),
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+            const SizedBox(height: 8),
+          ],
           Text(
             'steps'.tr(),
             style: theme.textTheme.titleMedium?.copyWith(
