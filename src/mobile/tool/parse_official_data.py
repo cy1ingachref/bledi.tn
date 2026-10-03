@@ -57,24 +57,45 @@ COORD_RE = re.compile(rf"({NUM})\s*[,;]\s*({NUM})")
 
 
 def sniff(path: Path) -> tuple[str, str]:
-    """Return (decoded text, delimiter). Handles UTF-16 and comma/tab/semicolon."""
+    """Return (decoded text, delimiter).
+
+    Encoding order matters and was the source of a real bug: `utf-16` decodes
+    almost any byte sequence without raising, so trying it early turned a
+    cp1252 file into mojibake (`瑳瑡椻...`) that then parsed as one junk row,
+    silently dropping every station in it. UTF-16 is now only tried when a BOM
+    actually says so, and single-byte decoders are preferred otherwise.
+    """
     raw = path.read_bytes()
-    for enc in ("utf-8-sig", "utf-16", "cp1252", "latin-1"):
+
+    # Trust an explicit BOM first.
+    if raw[:2] in (b"\xff\xfe", b"\xfe\xff"):
+        return raw.decode("utf-16"), _delim_of(raw.decode("utf-16"))
+    if raw[:3] == b"\xef\xbb\xbf":
+        return raw.decode("utf-8-sig"), _delim_of(raw.decode("utf-8-sig"))
+
+    for enc in ("utf-8", "cp1252", "latin-1"):
         try:
             text = raw.decode(enc)
-            # A NUL-heavy decode means we guessed the wrong encoding.
-            if "\x00" not in text[:200]:
-                break
-        except (UnicodeDecodeError, UnicodeError):
+        except UnicodeDecodeError:
             continue
-    else:  # pragma: no cover - latin-1 never fails
-        text = raw.decode("latin-1", errors="replace")
+        # Reject a decode that produced private-use characters, the signature
+        # of a wide encoding being misread as narrow.
+        if any(0xE000 <= ord(c) <= 0xF8FF or 0x50000 <= ord(c) <= 0x10FFFD
+               for c in text[:400]):
+            continue
+        return text, _delim_of(text)
 
+    return raw.decode("latin-1", errors="replace"), _delim_of(
+        raw.decode("latin-1", errors="replace")
+    )
+
+
+def _delim_of(text: str) -> str:
+    """Most common column separator on the first line; tab if none present."""
     head = text.splitlines()[0] if text.splitlines() else ""
     counts = {d: head.count(d) for d in (",", "\t", ";", "|")}
-    delim = max(counts, key=counts.get)
-    # Fall back to tab when no delimiter is present at all.
-    return text, (delim if counts[delim] else "\t")
+    best = max(counts, key=counts.get)
+    return best if counts[best] else "\t"
 
 
 def looks_like_header(cells: list[str]) -> bool:
