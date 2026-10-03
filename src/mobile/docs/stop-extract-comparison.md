@@ -1,5 +1,11 @@
 # Comparison against the supplied transit stop extract
 
+> **See also [`official-data-comparison.md`](official-data-comparison.md).**
+> The operator exports (SNCFT, TGM, TRANSTU...) are a better authority than
+> this OSM extract for mode questions, and they overturn one conclusion here:
+> the 26 "ambiguous" conflicts are SNCFT halts in official data, and
+> `SLIMENE KEHIA` is officially metro, not the bus stop OSM claims.
+
 Reference: `C:\Users\cy1in\tunisia_transit\tunisia_transit_stops.txt`
 (OSM via Overpass, ODbL 1.0, data date 2026-10-02 16:49 UTC).
 

@@ -1,5 +1,11 @@
 # OSM stop audit — findings
 
+> **SUPERSEDED (2026-10-03).** The station corrected below, `SLIMENE KEHIA`,
+> was wrong. The operator exports list it as a TGM **metro** station at the
+> same coordinates; OSM's node is mis-tagged. The correction was reverted in
+> the same commit that added `docs/official-data-comparison.md`. See that file
+> for the operator evidence.
+
 Comparison of the BLEDI.TN seed against live OpenStreetMap public-transport
 data, run 2026-10-02.
 
