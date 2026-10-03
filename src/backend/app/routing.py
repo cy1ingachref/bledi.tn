@@ -97,6 +97,38 @@ TRANSFER_PENALTY_SEC = float(os.environ.get("TRANSFER_PENALTY_SEC", "180.0"))
 MAX_START_WALK_METERS = int(os.environ.get("MAX_START_WALK_METERS", "2000"))
 MAX_END_WALK_METERS = int(os.environ.get("MAX_END_WALK_METERS", "2000"))
 
+# Walk EDGES between stops, i.e. the pedestrian network inside the graph.
+# This used to be 0, which meant a destination stop was reachable only if a line
+# happened to call at it: Kairouan has 29 stops within 2 km and every one of
+# them had zero edges, so the router could never "walk to the nearest transport
+# and ride", which is the entire point of a multi-modal router. 900 m is a
+# realistic walk-to-bus distance; it adds ~11k edges over 4.2k stops.
+MAX_WALK_EDGE_METERS = int(os.environ.get("MAX_WALK_EDGE_METERS", "900"))
+
+# Radius used to find the "drop-off" stop when the destination itself has no
+# station nearby. Lets the router answer ride-then-brief-walk for a town with
+# no stop of its own instead of drawing one taxi line across the country.
+# Measured against the seed: the nearest line-served station is 0.1 km for Tunis,
+# 0.6 km for Nabeul, 0.9 km for Sfax, but 44.3 km for Kairouan and 90.8 km for
+# Mahdia, because no line in the 232-line seed calls at either town. The radius
+# has to cover that worst case to give those towns a "nearest station" answer at
+# all; the resulting final leg is charged at taxi speed and labelled as a local
+# hop, so a 44 km gap is never presented as a walk.
+DROPOFF_SEARCH_METERS = int(os.environ.get("DROPOFF_SEARCH_METERS", "100000"))
+
+# A walk edge resets the line context: after walking you have not "arrived on"
+# any line, so the next boarding is a fresh boarding (wait paid again) rather
+# than a free continuation. The sentinel keeps that distinct from a real line id.
+WALK_EDGE = "__walk__"
+
+# How many line-served drop-off stops to consider, nearest first. Measured on
+# the seed: 1 is correct. Widening it to 6 made Mahdia *worse* -- Dijkstra then
+# picks a distant but better-connected station (98.3 km final hop, 414 min)
+# instead of the nearest one (90.8 km, 443 min), because a longer ride is cheaper
+# on time than a shorter one plus a long taxi hop. The user's question is "what
+# is the nearest transport", so the nearest served station is the answer.
+DROP_OFF_CANDIDATES = int(os.environ.get("DROP_OFF_CANDIDATES", "1"))
+
 # Direct taxi option is suppressed for very short trips (meters).
 TAXI_MIN_DISTANCE_M = int(os.environ.get("TAXI_MIN_DISTANCE_M", "3000"))
 
@@ -217,6 +249,45 @@ class Router:
                 self.adj[a].append((b, ln_id, mode, wait_s, seg_m))
                 self.adj[b].append((a, ln_id, mode, wait_s, seg_m))
 
+        self._build_walk_edges()
+
+    def _build_walk_edges(self) -> None:
+        """Connect nearby stops with bidirectional walk edges.
+
+        Without these the graph is transit-only, so a destination stop that no
+        line calls at is unreachable and the router falls back to a single taxi
+        line drawn straight across the map. This is what lets the router answer
+        "walk to the nearest stop, ride, walk to the destination".
+
+        Built through a lat/lon grid rather than an O(n^2) scan: 4221 stops
+        squared is ~9M haversine calls at import time, which would add seconds to
+        every server start. The grid keys on ~300 m cells so only the surrounding
+        cells are examined per stop.
+        """
+        pos: dict[str, tuple[float, float]] = {
+            sid: (s["lat"], s["lon"])
+            for sid, s in self.stations.items()
+            if s.get("lat") and s.get("lon")
+        }
+        cell_deg = max(MAX_WALK_EDGE_METERS, 100) / 111_000.0
+        grid: dict[tuple[int, int], list[str]] = defaultdict(list)
+        for sid, (lat, lon) in pos.items():
+            grid[(int(lat / cell_deg), int(lon / cell_deg))].append(sid)
+
+        span = 1 if MAX_WALK_EDGE_METERS <= cell_deg * 2 else 2
+        for sid, (lat, lon) in pos.items():
+            cx, cy = int(lat / cell_deg), int(lon / cell_deg)
+            for dx in range(-span, span + 1):
+                for dy in range(-span, span + 1):
+                    for other in grid.get((cx + dx, cy + dy), ()):
+                        if other <= sid:  # one direction only; pairs are symmetric
+                            continue
+                        o_lat, o_lon = pos[other]
+                        d = haversine(lat, lon, o_lat, o_lon)
+                        if d <= MAX_WALK_EDGE_METERS:
+                            self.adj[sid].append((other, WALK_EDGE, "walk", 0.0, d))
+                            self.adj[other].append((sid, WALK_EDGE, "walk", 0.0, d))
+
     def route(
         self,
         start_lat: float,
@@ -239,6 +310,33 @@ class Router:
         """
         start_candidates = self._nearest_stations(start_lat, start_lon, MAX_START_WALK_METERS)
         end_candidates = self._nearest_stations(end_lat, end_lon, MAX_END_WALK_METERS)
+        # True when the destination has no stop we could simply walk to. The
+        # search then widens (see the retry below) so a town with no station of
+        # its own still gets a ride-then-final-leg answer rather than a single
+        # taxi line drawn across the whole country.
+        # Note there is deliberately no "used_dropoff" flag. An earlier version
+        # set one when no stop was within MAX_END_WALK_METERS and gated the
+        # vehicle-speed cost branch on it, which was wrong: Mahdia does have one
+        # stop inside 2 km, so the flag stayed False while the chosen drop-off was
+        # still 90.8 km out, and the cost model charged that gap at *walking*
+        # speed while the rendered label called it a taxi hop. The branch is now
+        # decided per end-stop candidate by distance alone, in both route() and
+        # _expand_path, so the two cannot disagree.
+        wide: list[dict[str, Any]] = []
+        if not end_candidates:
+            wide = self._nearest_stations(end_lat, end_lon, DROPOFF_SEARCH_METERS)
+            # Only offer stops that can actually continue a journey: a stop with
+            # no line edge would just make the router walk to it and stop. Cap the
+            # set to the closest served station, measured: widening it makes
+            # Mahdia worse (98.3 km / 414 min) than the nearest one (90.8 km /
+            # 443 min), because a longer ride undercuts a shorter one plus a long
+            # final hop on time.
+            served = [
+                s for s in wide
+                if any(e[2] != "walk" for e in self.adj.get(s["id"], ()))
+            ]
+            if served:
+                end_candidates = served[:DROP_OFF_CANDIDATES]
         end_ids = {ec["id"] for ec in end_candidates}
 
         best: dict[str, Any] | None = None
@@ -269,18 +367,22 @@ class Router:
         if start_candidates and end_candidates:
             dist: dict[tuple[str, str | None], float] = {}
             prev: dict[tuple[str, str | None], tuple[str, str | None] | None] = {}
-            pq: list[tuple[float, str, str | None]] = []
+            pq: list[tuple[float, str, str]] = []
             for sc in start_candidates:
                 sid = sc["id"]
                 walk_s = sc["_dist_m"] / WALK_SPEED_MS
                 state: tuple[str, str | None] = (sid, None)
                 dist[state] = walk_s
                 prev[state] = None
-                heapq.heappush(pq, (walk_s, sid, None))
+                heapq.heappush(pq, (walk_s, sid, ""))
 
             visited: set[tuple[str, str | None]] = set()
             while pq:
-                cost, cur, cur_line = heapq.heappop(pq)
+                cost, cur, _tie = heapq.heappop(pq)
+                # The heap stores "" where the state has no line, so that cost
+                # ties stay comparable; map it back to None for the cost model,
+                # which distinguishes "not on a line" from a real line id.
+                cur_line = _tie or None
                 if cost >= best_cost:
                     break
                 state = (cur, cur_line)
@@ -295,7 +397,18 @@ class Router:
                     ec = self.stations.get(cur)
                     if ec and ec.get("lat") and ec.get("lon"):
                         end_walk_m = haversine(ec["lat"], ec["lon"], end_lat, end_lon)
-                        end_walk_s = end_walk_m / WALK_SPEED_MS
+                        # Per-candidate decision: a final gap beyond
+                        # MAX_END_WALK_METERS is not a walk any sane itinerary
+                        # would ask for. Charge it as a local vehicle hop at taxi
+                        # speed instead of pretending the rider walks 90 km.
+                        # Keyed on the distance alone, not on used_dropoff, so a
+                        # reachable-but-far end stop cannot fall back to walking
+                        # speed in the cost model.
+                        gap_is_hop = end_walk_m > MAX_END_WALK_METERS
+                        if gap_is_hop:
+                            end_walk_s = end_walk_m / TAXI_SPEED_MS
+                        else:
+                            end_walk_s = end_walk_m / WALK_SPEED_MS
                         total_s = cost + end_walk_s
                         if total_s < best_cost:
                             path_stations, path_lines = self._reconstruct(prev, state)
@@ -321,24 +434,55 @@ class Router:
                 if not cur_station:
                     continue
                 for nxt_id, ln_id, mode, wait_s, seg_m in self.adj.get(cur, []):
-                    ride_s = seg_m / transit_speed_ms(mode)
-                    segment_cost = ride_s
-                    # Wait is charged once per boarding (cur_line != ln_id).
-                    if cur_line != ln_id:
-                        segment_cost += wait_s
-                    # Transfer penalty when switching lines (not on first boarding).
-                    if cur_line is not None and cur_line != ln_id:
-                        segment_cost += TRANSFER_PENALTY_SEC
+                    is_walk = mode == "walk"
+                    # A walk edge has no line, so it resets the line context:
+                    # after walking you have not "arrived on" any line, so the
+                    # next boarding pays its wait afresh.
+                    arrived_line = None if is_walk else ln_id
+                    if is_walk:
+                        segment_cost = seg_m / WALK_SPEED_MS
+                    else:
+                        ride_s = seg_m / transit_speed_ms(mode)
+                        segment_cost = ride_s
+                        # Wait is charged once per boarding (cur_line != ln_id).
+                        if cur_line != ln_id:
+                            segment_cost += wait_s
+                        # Transfer penalty when switching lines.
+                        if cur_line is not None and cur_line != ln_id:
+                            segment_cost += TRANSFER_PENALTY_SEC
                     new_cost = cost + segment_cost
-                    new_state: tuple[str, str | None] = (nxt_id, ln_id)
+                    new_state: tuple[str, str | None] = (nxt_id, arrived_line)
                     if new_cost < dist.get(new_state, float("inf")):
                         dist[new_state] = new_cost
                         prev[new_state] = state
-                        heapq.heappush(pq, (new_cost, nxt_id, ln_id))
+                        # Monotonic tie-break key. Costs tie constantly in a walk
+                        # network, and comparing the raw ln_id raised TypeError
+                        # when one was None and the other a str; the empty string
+                        # is a total order over the id space and never equal to a
+                        # real line id.
+                        heapq.heappush(pq, (new_cost, nxt_id, arrived_line or ""))
 
         # Direct taxi fallback (physical time + metered fare).
+        # Only considered when no transit itinerary was found. Previously this
+        # block simply took the cheaper of the two, which meant a single taxi
+        # line was drawn across the whole map whenever it beat a multi-leg
+        # transit path on time -- exactly the "long distance is one straight
+        # line" behaviour being fixed. A real transit route must win outright.
+        have_transit = best is not None and best.get("mode") == "transit"
         direct_km = direct_m / 1000.0
-        if direct_km * 1000 >= TAXI_MIN_DISTANCE_M:
+        if have_transit:
+            # Record taxi as an alternative rather than as the answer.
+            taxi_s = direct_m / TAXI_SPEED_MS
+            if direct_km * 1000 >= TAXI_MIN_DISTANCE_M:
+                taxi_fare = TAXI_FARE_BASE + TAXI_FARE_PER_KM * direct_km
+                best["alternatives"] = best.get("alternatives", []) + [{
+                    "mode": "taxi",
+                    "duration_min": round(taxi_s / 60, 1),
+                    "distance_km": round(direct_km, 1),
+                    "fare_dinars": round(taxi_fare, 2),
+                    "label": f"Taxi direct - {round(direct_km, 1)} km (~{round(taxi_s / 60)} min, {round(taxi_fare, 2)} DT)",
+                }]
+        elif direct_km * 1000 >= TAXI_MIN_DISTANCE_M:
             taxi_s = direct_m / TAXI_SPEED_MS
             taxi_fare = TAXI_FARE_BASE + TAXI_FARE_PER_KM * direct_km
             if taxi_s < best_cost:
@@ -443,8 +587,30 @@ class Router:
             if not a or not b or not a.get("lat") or not a.get("lon") or not b.get("lat") or not b.get("lon"):
                 continue
             line_used = path_lines[i + 1]  # line arrived on at b = line used for a->b
+            seg_m = haversine(a["lat"], a["lon"], b["lat"], b["lon"])
+
+            # A walk edge is a real pedestrian leg, not a ride: surface it as its
+            # own walk step so the itinerary reads "walk, ride, walk" instead of
+            # silently absorbing the transfer into the following ride.
+            if line_used is None and seg_m > 1:
+                walk_min = seg_m / 1000 / WALK_SPEED_KMH * 60
+                steps.append({
+                    "type": "walk",
+                    "from": {"lat": a["lat"], "lon": a["lon"]},
+                    "to": {"lat": b["lat"], "lon": b["lon"]},
+                    "from_name": a.get("name", ""),
+                    "to_name": b.get("name", ""),
+                    "distance_m": round(seg_m),
+                    "duration_min": round(walk_min, 1),
+                    "label": f"Marcher {round(seg_m)} m jusqu'à {b.get('name', '')}",
+                })
+                total_min += walk_min
+                prev_lat, prev_lon = b["lat"], b["lon"]
+                prev_name = b.get("name", "")
+                continue
+
             mode = self.mode_of_line.get(line_used or "", "bus") or "bus"
-            ride_m = haversine(a["lat"], a["lon"], b["lat"], b["lon"])
+            ride_m = seg_m
             ride_min = ride_m / 1000 / transit_speed_kmh(mode) * 60
 
             prev_line = path_lines[i]  # line arrived on at a
@@ -490,20 +656,44 @@ class Router:
             prev_lat, prev_lon = b["lat"], b["lon"]
             prev_name = b.get("name", "")
 
-        # End walk.
+        # Final leg: walk when it is a walkable gap, otherwise an explicit local
+        # taxi hop. Labelled as such so the gap between the network and the
+        # destination is visible to the user instead of being hidden behind one
+        # straight line across the map.
         if s_end and s_end.get("lat") and s_end.get("lon"):
             walk_m = haversine(prev_lat, prev_lon, end_lat, end_lon)
             if walk_m > 1:
-                walk_min = walk_m / 1000 / WALK_SPEED_KMH * 60
-                steps.append({
-                    "type": "walk",
-                    "from": {"lat": prev_lat, "lon": prev_lon},
-                    "to": {"lat": end_lat, "lon": end_lon},
-                    "distance_m": round(walk_m),
-                    "duration_min": round(walk_min, 1),
-                    "label": f"Marcher {round(walk_m)} m (~{round(walk_min)} min) jusqu'à destination",
-                })
-                total_min += walk_min
+                # Same rule as the cost branch in route(): distance decides,
+                # not the used_dropoff flag, so the rendered leg and the
+                # optimised cost can never disagree about what this leg is.
+                if walk_m > MAX_END_WALK_METERS:
+                    hop_min = walk_m / 1000 / TAXI_SPEED_KMH * 60
+                    steps.append({
+                        "type": "taxi",
+                        "from": {"lat": prev_lat, "lon": prev_lon},
+                        "to": {"lat": end_lat, "lon": end_lon},
+                        "from_name": prev_name,
+                        "distance_m": round(walk_m),
+                        "distance_km": round(walk_m / 1000, 1),
+                        "duration_min": round(hop_min, 1),
+                        "note": "no_stop_near_destination",
+                        "label": (
+                            f"Taxi local ~{round(walk_m / 1000, 1)} km jusqu'a destination "
+                            f"(aucun arret de transport a proximite)"
+                        ),
+                    })
+                    total_min += hop_min
+                else:
+                    walk_min = walk_m / 1000 / WALK_SPEED_KMH * 60
+                    steps.append({
+                        "type": "walk",
+                        "from": {"lat": prev_lat, "lon": prev_lon},
+                        "to": {"lat": end_lat, "lon": end_lon},
+                        "distance_m": round(walk_m),
+                        "duration_min": round(walk_min, 1),
+                        "label": f"Marcher {round(walk_m)} m (~{round(walk_min)} min) jusqu'a destination",
+                    })
+                    total_min += walk_min
 
         return round(total_min, 1), steps
 
