@@ -27,11 +27,9 @@ from __future__ import annotations
 import argparse
 import collections
 import csv
-import glob
 import io
 import json
 import sys
-import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -43,7 +41,7 @@ RAIL_DIR = "Position géographique des stations du réseau ferré de la SNCFT"
 
 def load_rail(src: Path) -> list[dict]:
     out: list[dict] = []
-    for f in sorted(glob.glob(str(src / RAIL_DIR / "*.csv"))):
+    for f in sorted((src / RAIL_DIR).glob("*.csv")):
         text, delim = sniff(Path(f))
         for row in csv.DictReader(io.StringIO(text), delimiter=delim):
             try:
@@ -73,8 +71,6 @@ def main() -> None:
     if not rail:
         print(f"no SNCFT rail stops found under {args.src / RAIL_DIR}")
         return 1
-    by_name = {norm(r["name"]): r for r in rail if r["name"]}
-
     data = json.loads(Path(args.seed).read_text(encoding="utf-8"))
     stations = data["stations"]
     unknown = [s for s in stations if s.get("mode") == "unknown"]
