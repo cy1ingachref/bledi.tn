@@ -21,27 +21,15 @@ from __future__ import annotations
 import argparse
 import collections
 import json
-import math
 import sys
-import unicodedata
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from osm_common import cell_for, haversine_m  # noqa: E402
 
 RAILISH = {"train", "metro", "rail"}
 # Our seed's `metro` covers TGM light rail; `rail`/`train` cover SNCFT and RFR.
 OFFICIAL_TO_OURS = {"train": {"train", "rail"}, "metro": {"metro"}, "bus": {"bus"}}
-
-
-def norm(s: str) -> str:
-    s = unicodedata.normalize("NFD", s or "")
-    s = "".join(c for c in s if unicodedata.category(c) != "Mn").lower()
-    return " ".join("".join(c if c.isalnum() or c.isspace() else " " for c in s).split())
-
-
-def haversine(a, b, c, d):
-    p1, p2 = math.radians(a), math.radians(c)
-    x = (math.sin((p2 - p1) / 2) ** 2
-         + math.cos(p1) * math.cos(p2) * math.sin(math.radians(d - b) / 2) ** 2)
-    return 2 * 6371000.0 * math.asin(math.sqrt(x))
 
 
 def main() -> None:
@@ -65,7 +53,7 @@ def main() -> None:
         modes = collections.Counter(r["mode"] for r in official if r["operator"] == op)
         print(f"  {op:10s} {n:5d}   {dict(modes)}")
 
-    cell = max(args.tolerance / 111320.0, 1e-4)
+    cell = cell_for(args.tolerance)
     index: dict[tuple[int, int], list[dict]] = {}
     for r in official:
         index.setdefault((int(r["lat"] // cell), int(r["lon"] // cell)), []).append(r)
@@ -76,7 +64,7 @@ def main() -> None:
         for dy in (-1, 0, 1):
             for dx in (-1, 0, 1):
                 for c in index.get((ky + dy, kx + dx), []):
-                    d = haversine(lat, lon, c["lat"], c["lon"])
+                    d = haversine_m(lat, lon, c["lat"], c["lon"])
                     if bd is None or d < bd:
                         best, bd = c, d
         return best, bd
