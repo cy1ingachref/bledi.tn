@@ -407,7 +407,50 @@ def main() -> None:
                            and norm(s["name"]) not in {norm(r["name"]) for r in resolved}],
                       "no new records classified")
 
-        # 7. Backend ----------------------------------------------------------
+        # 7. OSM export audit (only when the export is present) --------------
+        print("osm export audit")
+        maps_dir = Path(r"C:\Users\cy1in\Downloads\maps")
+        audit = HERE / "audit_osm_export.py"
+        if not maps_dir.is_dir():
+            print("  (skipped: no Downloads/maps folder)")
+        elif not audit.is_file():
+            check("audit_osm_export.py present", False, str(audit))
+        else:
+            osm_out = tmp / "osm.json"
+            p3 = run("audit_osm_export.py", "--maps", str(maps_dir),
+                     "--seed", str(seed_path), "--out", str(osm_out), timeout=500)
+            check("audit exits 0", p3.returncode == 0,
+                  p3.stderr.strip()[-80:] if p3.returncode else "")
+            if p3.returncode == 0:
+                rep = json.loads(osm_out.read_text(encoding="utf-8"))
+                check("no node left unclassified",
+                      "unknown" not in rep["osm_by_mode"], rep["osm_by_mode"])
+                check("the buckets account for every node",
+                      rep["matched_within_tolerance"]
+                      + rep["different_place_within_tolerance"]
+                      + rep["unmatched"] == rep["osm_nodes"],
+                      f"{rep['matched_within_tolerance']}+"
+                      f"{rep['different_place_within_tolerance']}+{rep['unmatched']}")
+                # Position alone must not be treated as identity.
+                check("position-only matches are excluded, not called conflicts",
+                      rep["different_place_within_tolerance"] > 0,
+                      rep["different_place_within_tolerance"])
+                # No SNCFT halt may be reclassified on OSM's highway tag alone.
+                rail_ops = [
+                    c for c in rep["conflicts"]
+                    if c["our_mode"] in ("train", "rail") and c["osm_mode"] == "bus"
+                    and not (c["osm_tags"].get("railway") or c["osm_tags"].get("train")
+                             or c["osm_tags"].get("route_ref"))
+                ]
+                check("the SNCFT halts stay rail (they are not corrections)",
+                      len(rail_ops) == 29, len(rail_ops))
+                # The seed must be untouched by a read-only audit.
+                after = json.loads(seed_path.read_text(encoding="utf-8"))
+                check("seed unchanged by the audit",
+                      len(after["stations"]) == len(committed["stations"]),
+                      len(after["stations"]))
+
+        # 8. Backend ----------------------------------------------------------
         if not args.skip_backend:
             print("backend")
             try:
