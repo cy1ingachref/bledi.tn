@@ -310,29 +310,22 @@ class Router:
         """
         start_candidates = self._nearest_stations(start_lat, start_lon, MAX_START_WALK_METERS)
         end_candidates = self._nearest_stations(end_lat, end_lon, MAX_END_WALK_METERS)
-        # True when the destination has no stop we could simply walk to. The
-        # search then widens (see the retry below) so a town with no station of
-        # its own still gets a ride-then-final-leg answer rather than a single
-        # taxi line drawn across the whole country.
-        # Note there is deliberately no "used_dropoff" flag. An earlier version
-        # set one when no stop was within MAX_END_WALK_METERS and gated the
-        # vehicle-speed cost branch on it, which was wrong: Mahdia does have one
-        # stop inside 2 km, so the flag stayed False while the chosen drop-off was
-        # still 90.8 km out, and the cost model charged that gap at *walking*
-        # speed while the rendered label called it a taxi hop. The branch is now
-        # decided per end-stop candidate by distance alone, in both route() and
-        # _expand_path, so the two cannot disagree.
-        wide: list[dict[str, Any]] = []
+        # No stop to walk to: widen the search so a town with no station of its
+        # own still gets ride-then-final-gap instead of one taxi line across the
+        # country. Only stops a line actually serves are useful -- walking to an
+        # unserved one would just dead-end. Keep only the nearest: measured,
+        # widening further makes Mahdia worse (98.3 km hop / 414 min vs 90.8 km
+        # / 443 min), since a longer ride undercuts a short one plus a long hop.
+        #
+        # The final gap is priced by distance alone, in route() and
+        # _expand_path alike. An earlier "did the narrow search succeed?" flag
+        # got this wrong: Mahdia has a stop inside 2 km yet its drop-off is 90.8
+        # km out, so the flag priced the gap as a walk while the label called
+        # it a taxi hop.
         if not end_candidates:
-            wide = self._nearest_stations(end_lat, end_lon, DROPOFF_SEARCH_METERS)
-            # Only offer stops that can actually continue a journey: a stop with
-            # no line edge would just make the router walk to it and stop. Cap the
-            # set to the closest served station, measured: widening it makes
-            # Mahdia worse (98.3 km / 414 min) than the nearest one (90.8 km /
-            # 443 min), because a longer ride undercuts a shorter one plus a long
-            # final hop on time.
             served = [
-                s for s in wide
+                s
+                for s in self._nearest_stations(end_lat, end_lon, DROPOFF_SEARCH_METERS)
                 if any(e[2] != "walk" for e in self.adj.get(s["id"], ()))
             ]
             if served:
