@@ -280,7 +280,9 @@ class Router:
             for dx in range(-span, span + 1):
                 for dy in range(-span, span + 1):
                     for other in grid.get((cx + dx, cy + dy), ()):
-                        if other <= sid:  # one direction only; pairs are symmetric
+                        # Both cells see both stops, so without this guard every
+                        # pair is built twice; the extra appends are exact duplicates.
+                        if other <= sid:
                             continue
                         o_lat, o_lon = pos[other]
                         d = haversine(lat, lon, o_lat, o_lon)
