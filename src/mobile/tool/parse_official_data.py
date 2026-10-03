@@ -69,9 +69,9 @@ def sniff(path: Path) -> tuple[str, str]:
 
     # Trust an explicit BOM first.
     if raw[:2] in (b"\xff\xfe", b"\xfe\xff"):
-        return raw.decode("utf-16"), _delim_of(raw.decode("utf-16"))
+        return raw.decode("utf-16"), delim_of(raw.decode("utf-16"))
     if raw[:3] == b"\xef\xbb\xbf":
-        return raw.decode("utf-8-sig"), _delim_of(raw.decode("utf-8-sig"))
+        return raw.decode("utf-8-sig"), delim_of(raw.decode("utf-8-sig"))
 
     for enc in ("utf-8", "cp1252", "latin-1"):
         try:
@@ -83,14 +83,14 @@ def sniff(path: Path) -> tuple[str, str]:
         if any(0xE000 <= ord(c) <= 0xF8FF or 0x50000 <= ord(c) <= 0x10FFFD
                for c in text[:400]):
             continue
-        return text, _delim_of(text)
+        return text, delim_of(text)
 
-    return raw.decode("latin-1", errors="replace"), _delim_of(
+    return raw.decode("latin-1", errors="replace"), delim_of(
         raw.decode("latin-1", errors="replace")
     )
 
 
-def _delim_of(text: str) -> str:
+def delim_of(text: str) -> str:
     """Most common column separator on the first line; tab if none present."""
     head = text.splitlines()[0] if text.splitlines() else ""
     counts = {d: head.count(d) for d in (",", "\t", ";", "|")}
@@ -186,7 +186,7 @@ def parse_file(path: Path, mode: str, operator: str) -> list[dict]:
     return [r for r in out if r]
 
 
-def _to_float(raw: str) -> float | None:
+def to_float(raw: str) -> float | None:
     """Parse a coordinate cell.
 
     Tunisian exports mix decimal separators: some write `36.8097`, others
@@ -210,7 +210,7 @@ def _to_float(raw: str) -> float | None:
 
 
 def _rec(name: str, lat: str, lon: str, mode: str, operator: str, path: Path) -> dict | None:
-    la, lo = _to_float(lat), _to_float(lon)
+    la, lo = to_float(lat), to_float(lon)
     if la is None or lo is None:
         return None
     # Tunisia's bounds; anything else is a parsing artefact, not a real position.
