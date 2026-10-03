@@ -7,6 +7,7 @@ import '../../core/theme.dart';
 import '../../core/utils/transport_mode_l10n.dart';
 import '../../data/models/station.dart';
 import '../../providers/providers.dart';
+import 'station_icon_layer.dart';
 import 'station_map_model.dart';
 
 /// Draws every station as an individual coloured dot, grouped by city.
@@ -58,19 +59,9 @@ class StationMapLayer extends ConsumerWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
-        // Individual station dots — one circle per stop, no aggregation.
-        CircleLayer(
-          circles: [
-            for (final station in visible)
-              CircleMarker(
-                point: station.point,
-                radius: _dotRadius(ref.watch(mapZoomProvider)),
-                color: station.color.withValues(alpha: 0.85),
-                borderColor: Colors.white.withValues(alpha: 0.75),
-                borderStrokeWidth: 0.8,
-              ),
-          ],
-        ),
+        // Every stop, one glyph each, drawn in a single canvas pass. Shows a
+        // plain dot while zoomed out and a mode glyph from zoom 12.
+        StationIconLayer(stations: visible),
         // City labels, tappable.
         MarkerLayer(
           markers: [
@@ -96,13 +87,6 @@ class StationMapLayer extends ConsumerWidget {
     );
   }
 
-  /// Dots shrink when zoomed out so dense areas stay readable.
-  static double _dotRadius(double zoom) {
-    if (zoom >= 13) return 5;
-    if (zoom >= 11) return 4;
-    if (zoom >= 9) return 3;
-    return 2.5;
-  }
 }
 
 /// Resolves a tap to the nearest station within a touch radius.
