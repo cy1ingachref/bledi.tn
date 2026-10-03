@@ -71,13 +71,20 @@ def main() -> None:
     existing = list(data["stations"])
     before_count = len(existing)
 
-    # Spatial + name index of what we already have, so a "new" stop really is new.
+    # Spatial + name index of what we already hold. Deduplication deliberately
+    # considers only these pre-existing stations, never records added from the
+    # same batch: several distinct places can share a position (a bus terminus
+    # and the taxi rank outside it are 40 m apart), and inserting new records
+    # into the index discarded all but the first of each such cluster.
     cell = max(args.tolerance / 111320.0, 1e-5)
     index: dict[tuple[int, int], list[dict]] = {}
     for s in existing:
         if s.get("lat") and s.get("lon"):
             index.setdefault((int(s["lat"] // cell), int(s["lon"] // cell)), []).append(s)
     existing_names = {norm(s.get("name", "")) for s in existing}
+    # Names already claimed, so the same record twice in one source is still
+    # caught even without touching the spatial index.
+    claimed_names = set(existing_names)
 
     def near(lat: float, lon: float):
         best, bd = None, None
@@ -103,7 +110,7 @@ def main() -> None:
         if not name:
             continue
         # A stop we already hold under a near-identical name is not new.
-        if norm(name) in existing_names:
+        if norm(name) in claimed_names:
             skipped_name += 1
             continue
         hit, dist = near(lat, lon)
@@ -124,15 +131,22 @@ def main() -> None:
             "lon": round(lon, 6),
             "mode": mode,
             "operator": r.get("operator", ""),
-            "source": "official-open-data",
+            # Carry the source's own provenance through instead of stamping
+            # everything "official-open-data": a Google Places record has a
+            # place_id and a raw type string that make it re-checkable, and
+            # flattening those away loses the only way to audit it.
+            "source": r.get("source") or "official-open-data",
             "source_file": Path(r.get("source_file", "")).name,
             "lines_served": [],
             "route_type": 3,
-            "license_status": "official-public",
+            "license_status": r.get("license_status", "official-public"),
         }
+        for key in ("place_id", "type_raw", "source_sheet", "city",
+                    "governorate", "address", "hours", "notes"):
+            if r.get(key):
+                rec[key] = r[key]
         added.append(rec)
-        index.setdefault((int(lat // cell), int(lon // cell)), []).append(rec)
-        existing_names.add(norm(name))
+        claimed_names.add(norm(name))
 
     data["stations"].extend(added)
     data["metadata"]["official_import"] = {
