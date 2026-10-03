@@ -40,10 +40,15 @@
         "Douane Bir Mouzaina",
         "Ain Drahem"
       ],
-      "verified_correct": [
-        "Croiisement Ghorfa"
-      ],
       "water_source": "OSM relation/multiway water polygons, north-west Tunisia bbox"
+    },
+    "user_reported_faulty": {
+      "quarantined": 1,
+      "names": [
+        "Croisement ghorfa"
+      ],
+      "reason": "reported by the user as a wrong point on the map; coordinates nulled and the row kept for audit, per the same convention as water_quarantine. Previous revision of this file recorded it as verified_correct, which was not reproducible: Nominatim reverse-geocodes 37.003307/10.73375 to no feature at all, and the point is 13.5 km from the nearest other station in the seed, outside the area the surrounding SRTGN stops cluster in.",
+      "supersedes": "water_quarantine.verified_correct in d4f0c49"
     }
   },
   "stations": [
@@ -99813,15 +99818,21 @@
       "id": "srtgn_croisement_ghorfa_8e1674a84b",
       "name": "Croisement ghorfa",
       "name_en": "Croisement ghorfa",
-      "lat": 37.003307,
-      "lon": 10.73375,
+      "lat": null,
+      "lon": null,
       "mode": "bus",
       "operator": "SRTGN",
       "source": "official-open-data",
       "source_file": "ede7395f-ad39-448a-a05f-b174d1c15016_591a23f9-3da7-4365-b923-45232ab10789.xlsx",
       "lines_served": [],
       "route_type": 3,
-      "license_status": "official-public"
+      "license_status": "official-public",
+      "quarantined": true,
+      "quarantine_reason": "user-reported as a faulty point: 13.5 km from the nearest other station in the seed, outside the area any other SRTGN stop clusters in, and Nominatim reverse-geocodes it to no feature at all, so the position cannot be corroborated",
+      "quarantined_from": {
+        "lat": 37.003307,
+        "lon": 10.73375
+      }
     },
     {
       "id": "srtgn_avenue_boukrim_ef160357bb",
