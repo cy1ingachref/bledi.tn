@@ -422,8 +422,30 @@ def main() -> int:
         print(f"resuming with {len(existing)} cached segments")
 
     todo = [s for s in segs if f"{s[0]}|{s[1]}" not in existing]
+    total_missing = len(todo)
     if args.limit:
         todo = todo[: args.limit]
+        if not args.force:
+            # Refuse before spending the fetches, not after. This has already
+            # gone wrong three times in one session: `--limit 40` over a
+            # complete 1885-segment cache wrote 40 segments back with no
+            # warning, and two mutation runs interrupted mid-flight left the
+            # cache at 15 segments and the guard reverted away by
+            # `git checkout`. Either way data/route_geometry.json -- the file
+            # the map reads -- silently loses its geometry.
+            print(
+                f"\n!! --limit {args.limit} is a smoke test and will NOT write "
+                f"{OUT_PATH.name}."
+            )
+            print(
+                f"   A full build covers {len(segs)} segments; this run would "
+                f"fetch only {len(todo)} of the {total_missing} missing."
+            )
+            print(
+                "   The existing cache is left untouched. Pass --force to "
+                "overwrite it anyway."
+            )
+            return 0
     print(f"to fetch: {len(todo)}")
     if not todo:
         print("nothing to do")
