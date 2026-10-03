@@ -123,11 +123,22 @@ class TestTransferCountEndToEnd:
         res = router.route(36.806, 10.184, 36.914, 9.866)
         assert res.get("error") is None, res
         opt = _router_to_option(res)
-        # The current seed resolves Tunis Centre -> Bizerte as a single
-        # train line via TGM (no transfer), so transfers should be 0.
-        assert opt["transfers"] == 0, (
-            f"expected 0 transfers for single-line Tunis->Bizerte path, "
-            f"got {opt['transfers']} (double-count?)\n{opt}"
+        # The invariant under test is that a transfer is never double-counted,
+        # not that this particular OD pair happens to be a single line. Walk
+        # edges (added so the router can reach stops no line calls at) changed
+        # which line serves Bizerte, so the old hardcoded 0 no longer held; the
+        # count must still equal the real number of line changes.
+        ride_steps = [s for s in opt["steps"] if s["type"] == "ride"]
+        line_changes = sum(
+            1 for a, b in zip(ride_steps, ride_steps[1:]) if a.get("line") != b.get("line")
+        )
+        assert opt["transfers"] == line_changes, (
+            f"transfers ({opt['transfers']}) != real line changes "
+            f"({line_changes}) for Tunis->Bizerte\n{opt}"
+        )
+        assert opt["transfers"] <= len(ride_steps), (
+            f"transfers ({opt['transfers']}) exceed ride steps ({len(ride_steps)}): "
+            f"double-count bug in _router_to_option\n{opt}"
         )
 
     def test_real_path_with_walk_transfer_counts_correctly(self, router):

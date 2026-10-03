@@ -124,11 +124,17 @@ class TestRouterSanity:
         # Two points 4 km apart -> taxi should be offered (>= TAXI_MIN_DISTANCE_M).
         lat_off, lon_off = _hav(4000)
         res = r.route(36.806, 10.184, 36.806 + lat_off, 10.184 + lon_off)
-        modes = {s.get("type") for s in res.get("steps", [])}
-        assert "taxi" in modes
+        # Taxi must be *offered* at 4 km. It is an alternative rather than the
+        # itinerary itself whenever public transport can actually reach the
+        # destination, which is the behaviour this whole change is about: a
+        # single taxi leg must not displace a real multi-leg transit route.
+        offered = {s.get("type") for s in res.get("steps", [])}
+        offered |= {a.get("mode") for a in (res.get("alternatives") or [])}
+        assert "taxi" in offered
 
         # Two points 1 km apart -> taxi should NOT be offered (< TAXI_MIN_DISTANCE_M).
         lat_off2, lon_off2 = _hav(1000)
         res2 = r.route(36.806, 10.184, 36.806 + lat_off2, 10.184 + lon_off2)
         modes2 = {s.get("type") for s in res2.get("steps", [])}
+        modes2 |= {a.get("mode") for a in (res2.get("alternatives") or [])}
         assert "taxi" not in modes2
