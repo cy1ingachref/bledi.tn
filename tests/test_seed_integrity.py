@@ -7,6 +7,10 @@ Reports (does not fail on) data-quality issues:
 - coordinates outside Tunisia's bounding box
 - lines with fewer than 2 valid stops
 - count of stations with mode "unknown"
+
+Fails on the quarantine invariant, because a quarantined station is a silent
+behavioural change to the API surface and nothing else in this file would catch
+it being reverted or half-applied.
 """
 from __future__ import annotations
 
@@ -89,3 +93,47 @@ class TestSeedIntegrity:
             print("  Examples:")
             for s in unknown[:5]:
                 print(f"    {s.get('id')}: {s.get('name')}")
+
+    def test_quarantined_stations_are_well_formed(self, seed):
+        """A quarantined row must be inert: no coords, a reason, an audit trail.
+
+        The backend skips any station with null/zero coordinates, so nulling them
+        is what removes the point from the map. If a future edit quarantines a row
+        without nulling the coordinates the bad point silently stays on the map
+        while claiming to be fixed.
+        """
+        bad: list[str] = []
+        for s in seed.get("stations", []):
+            if not s.get("quarantined"):
+                continue
+            sid = s.get("id", "?")
+            if s.get("lat") is not None or s.get("lon") is not None:
+                bad.append(f"{sid}: coordinates still set ({s.get('lat')}, {s.get('lon')})")
+            if not s.get("quarantine_reason"):
+                bad.append(f"{sid}: no quarantine_reason")
+            if not s.get("quarantined_from"):
+                bad.append(f"{sid}: no quarantined_from to audit the original position")
+        assert not bad, "Malformed quarantine rows:\n  " + "\n  ".join(bad)
+
+    def test_quarantine_metadata_matches_the_rows(self, seed):
+        """metadata must not claim a station is correct that the rows quarantine.
+
+        d4f0c49 listed "Croiisement Ghorfa" under water_quarantine.verified_correct
+        while a user reported it as a wrong point. The file then asserted the
+        opposite of the data; this pins that the two cannot drift apart again.
+        """
+        meta = seed.get("metadata", {})
+        quarantined = {s["name"].strip().lower() for s in seed.get("stations", []) if s.get("quarantined")}
+
+        assert "verified_correct" not in meta.get("water_quarantine", {}), (
+            "water_quarantine.verified_correct is back; if a station has been "
+            "re-verified, remove its quarantine in the same commit"
+        )
+        verified = meta.get("water_quarantine", {}).get("verified_correct", [])
+        overlap = quarantined & {n.strip().lower() for n in verified}
+        assert not overlap, f"Metadata claims verified but rows quarantine: {overlap}"
+
+        reported = meta.get("user_reported_faulty", {})
+        assert set(n.strip().lower() for n in reported.get("names", [])) <= quarantined, (
+            f"user_reported_faulty names are not all quarantined in the rows: {reported.get('names')}"
+        )
