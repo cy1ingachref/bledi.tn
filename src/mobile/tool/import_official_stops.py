@@ -31,9 +31,12 @@ import argparse
 import collections
 import hashlib
 import json
-import math
+import sys
 import unicodedata
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from osm_common import haversine_m, norm  # noqa: E402
 
 # Official mode -> our seed's vocabulary.
 MODE_MAP = {
@@ -44,12 +47,6 @@ MODE_MAP = {
     "ferry": "ferry",
     "louage": "louage",
 }
-
-
-def norm(s: str) -> str:
-    s = unicodedata.normalize("NFD", s or "")
-    s = "".join(c for c in s if unicodedata.category(c) != "Mn").lower()
-    return " ".join("".join(c if c.isalnum() or c.isspace() else " " for c in s).split())
 
 
 def slug(s: str) -> str:
@@ -88,10 +85,7 @@ def main() -> None:
         for dy in (-1, 0, 1):
             for dx in (-1, 0, 1):
                 for c in index.get((ky + dy, kx + dx), []):
-                    d = 6371000.0 * 2 * math.asin(math.sqrt(
-                        math.sin(math.radians(c["lat"] - lat) / 2) ** 2
-                        + math.cos(math.radians(lat)) * math.cos(math.radians(c["lat"]))
-                        * math.sin(math.radians(c["lon"] - lon) / 2) ** 2))
+                    d = haversine_m(lat, lon, c["lat"], c["lon"])
                     if bd is None or d < bd:
                         best, bd = c, d
         return best, bd
