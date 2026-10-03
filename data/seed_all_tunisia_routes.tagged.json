@@ -30,6 +30,20 @@
       "rejected_name_mismatch": 0,
       "tolerance_m": 150.0,
       "exact_metres": 25.0
+    },
+    "water_quarantine": {
+      "reason": "coordinates inside a mapped water body, or a name whose position belongs to a different city",
+      "quarantined": 4,
+      "names": [
+        "Bir Mouzaina",
+        "Ajim",
+        "Douane Bir Mouzaina",
+        "Ain Drahem"
+      ],
+      "verified_correct": [
+        "Croiisement Ghorfa"
+      ],
+      "water_source": "OSM relation/multiway water polygons, north-west Tunisia bbox"
     }
   },
   "stations": [
@@ -74646,32 +74660,50 @@
     {
       "id": "bir_mouzaina",
       "name": "Bir Mouzaina",
-      "lat": 37.16,
-      "lon": 9.72,
+      "lat": null,
+      "lon": null,
       "mode": "bus",
       "operator": "Transtu",
       "source": "tunismapper",
-      "license_status": "unknown-third-party"
+      "license_status": "unknown-third-party",
+      "quarantined": true,
+      "quarantine_reason": "inside Lake Ichkeul (OSM relation بحيرة إشكل); not in the SRT Bizerte stop list",
+      "quarantined_from": {
+        "lat": 37.16,
+        "lon": 9.72
+      }
     },
     {
       "id": "ajim",
       "name": "Ajim",
-      "lat": 37.162,
-      "lon": 9.735,
+      "lat": null,
+      "lon": null,
       "mode": "bus",
       "operator": "Transtu",
       "source": "tunismapper",
-      "license_status": "unknown-third-party"
+      "license_status": "unknown-third-party",
+      "quarantined": true,
+      "quarantine_reason": "inside the Lake Ichkeul extent; SNTRI lists an Ajim 393 km away near Gabès",
+      "quarantined_from": {
+        "lat": 37.162,
+        "lon": 9.735
+      }
     },
     {
       "id": "douane_bir_mouzaina",
       "name": "Douane Bir Mouzaina",
-      "lat": 37.155,
-      "lon": 9.705,
+      "lat": null,
+      "lon": null,
       "mode": "bus",
       "operator": "Transtu",
       "source": "tunismapper",
-      "license_status": "unknown-third-party"
+      "license_status": "unknown-third-party",
+      "quarantined": true,
+      "quarantine_reason": "inside the Lake Ichkeul extent; not in the SRT Bizerte stop list",
+      "quarantined_from": {
+        "lat": 37.155,
+        "lon": 9.705
+      }
     },
     {
       "id": "douane_mateur",
@@ -74706,12 +74738,18 @@
     {
       "id": "ain_drahem",
       "name": "Ain Drahem",
-      "lat": 36.827,
-      "lon": 10.35,
+      "lat": null,
+      "lon": null,
       "mode": "bus",
       "operator": "Transtu",
       "source": "tunismapper",
-      "license_status": "unknown-third-party"
+      "license_status": "unknown-third-party",
+      "quarantined": true,
+      "quarantine_reason": "coordinate 36.827,10.350 is inside Tunis, 3 km from Carthage; Ain Drahem is a Bizerte-area town",
+      "quarantined_from": {
+        "lat": 36.827,
+        "lon": 10.35
+      }
     },
     {
       "id": "mateur_centre_ville",
