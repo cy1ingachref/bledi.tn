@@ -17,6 +17,10 @@ _RouteStep _$RouteStepFromJson(Map<String, dynamic> json) => _RouteStep(
   line: json['line'] as String?,
   fromName: json['from_name'] as String?,
   toName: json['to_name'] as String?,
+  geometry: json['geometry'] == null
+      ? const <LatLng>[]
+      : latLngListFromJson(json['geometry'] as List?),
+  hasGeometry: json['has_geometry'] as bool? ?? false,
 );
 
 Map<String, dynamic> _$RouteStepToJson(_RouteStep instance) =>
@@ -31,6 +35,8 @@ Map<String, dynamic> _$RouteStepToJson(_RouteStep instance) =>
       'line': instance.line,
       'from_name': instance.fromName,
       'to_name': instance.toName,
+      'geometry': latLngListToJson(instance.geometry),
+      'has_geometry': instance.hasGeometry,
     };
 
 _Itinerary _$ItineraryFromJson(Map<String, dynamic> json) => _Itinerary(
@@ -55,6 +61,37 @@ Map<String, dynamic> _$ItineraryToJson(_Itinerary instance) =>
       'steps': instance.steps,
       'fare_dinars': instance.fareDinars,
     };
+
+_RouteMilestone _$RouteMilestoneFromJson(Map<String, dynamic> json) =>
+    _RouteMilestone(
+      order: (json['order'] as num).toInt(),
+      point: LatLng.fromJson(json['point'] as Map<String, dynamic>),
+      name: json['name'] as String,
+      kind:
+          $enumDecodeNullable(_$RouteMilestoneKindEnumMap, json['kind']) ??
+          RouteMilestoneKind.stop,
+      mode: json['mode'] as String?,
+      line: json['line'] as String?,
+    );
+
+Map<String, dynamic> _$RouteMilestoneToJson(_RouteMilestone instance) =>
+    <String, dynamic>{
+      'order': instance.order,
+      'point': instance.point,
+      'name': instance.name,
+      'kind': _$RouteMilestoneKindEnumMap[instance.kind]!,
+      'mode': instance.mode,
+      'line': instance.line,
+    };
+
+const _$RouteMilestoneKindEnumMap = {
+  RouteMilestoneKind.start: 'start',
+  RouteMilestoneKind.stop: 'stop',
+  RouteMilestoneKind.transfer: 'transfer',
+  RouteMilestoneKind.walk: 'walk',
+  RouteMilestoneKind.taxi: 'taxi',
+  RouteMilestoneKind.destination: 'destination',
+};
 
 _RouteResponse _$RouteResponseFromJson(Map<String, dynamic> json) =>
     _RouteResponse(

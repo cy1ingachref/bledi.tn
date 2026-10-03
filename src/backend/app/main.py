@@ -37,6 +37,11 @@ log = logging.getLogger("bledi")
 BASE = Path(__file__).resolve().parents[3]  # repo root
 SEED_PATH = BASE / "data" / "seed_all_tunisia_routes.json"
 SEED_TAGED_PATH = BASE / "data" / "seed_all_tunisia_routes.tagged.json"
+# Real route geometry, precomputed by tool/build_route_geometry.py. Without it
+# every leg is drawn as a straight line between two stops; the seed carries no
+# shape data at all (0 of 232 lines have one), so this is the only way the map
+# can follow an actual track or road. Optional: absent means straight lines.
+GEOMETRY_PATH = BASE / "data" / "route_geometry.json"
 
 # Prefer the tagged file if it exists, else fall back to the original.
 _SEED_PATH = SEED_TAGED_PATH if SEED_TAGED_PATH.exists() else SEED_PATH
@@ -100,6 +105,43 @@ with _SEED_PATH.open(encoding="utf-8") as _f:
 
 _stations: list[dict[str, Any]] = SEED_DATA.get("stations", [])
 _lines: list[dict[str, Any]] = SEED_DATA.get("lines", [])
+
+# Geometry cache: "a|b" -> {"geometry": [[lat, lon], ...], "source": ...}.
+# Keyed by an unordered station-id pair so it is direction-independent.
+_GEOMETRY: dict[str, dict[str, Any]] = {}
+if GEOMETRY_PATH.exists():
+    with GEOMETRY_PATH.open(encoding="utf-8") as _f:
+        _GEOMETRY = json.load(_f).get("segments", {})
+    log.info(
+        "Loaded route geometry: %d segments (%d with geometry) from %s",
+        len(_GEOMETRY),
+        sum(1 for v in _GEOMETRY.values() if v.get("geometry")),
+        GEOMETRY_PATH.name,
+    )
+else:
+    log.info(
+        "No route geometry cache at %s; legs will render as straight lines. "
+        "Run: python src/backend/tool/build_route_geometry.py",
+        GEOMETRY_PATH.name,
+    )
+
+
+def _geometry_for(from_id: str | None, to_id: str | None) -> list[list[float]]:
+    """Cached geometry between two stations, oriented along travel direction.
+
+    The cache key is the unordered pair min|max and the stored polyline always
+    runs min -> max. A step runs from_id -> to_id, so when from_id sorts after
+    to_id the polyline has to be reversed to keep the drawn line pointing the
+    way the rider travels. Returns [] when there is no geometry, which tells
+    the client to draw the straight line instead.
+    """
+    if not from_id or not to_id:
+        return []
+    entry = _GEOMETRY.get(f"{min(from_id, to_id)}|{max(from_id, to_id)}")
+    if not entry or not entry.get("geometry"):
+        return []
+    pts = entry["geometry"]
+    return list(reversed(pts)) if from_id > to_id else list(pts)
 
 # ── City (governorate) assignment ──────────────────────────────────────────
 # The seed has no governorate field, so each station is assigned to its nearest
@@ -797,6 +839,13 @@ def _router_to_option(router_out: dict[str, Any]) -> dict[str, Any]:
             ss.get("type") == "walk"
             for ss in steps_raw[1:-1]  # exclude first (access) and last (egress)
         )
+        # Real geometry for this leg, when the cache has it. Walk legs are
+        # deliberately left straight: footways are absent from the OSRM driving
+        # profile used to build the cache, and walk legs are <= 900 m where the
+        # straight line is visually indistinguishable.
+        geom: list[list[float]] = []
+        if t == "ride":
+            geom = _geometry_for(s.get("from_id"), s.get("to_id"))
         steps_out.append({
             "type": t,
             "start": [fr_lat, fr_lon],
@@ -805,6 +854,8 @@ def _router_to_option(router_out: dict[str, Any]) -> dict[str, Any]:
             "stop_name": (s.get("to_name") or s.get("label") or "").strip(),
             "mode": st_mode,
             "line": line if t == "ride" else None,
+            "geometry": geom,
+            "has_geometry": len(geom) >= 2,
         })
         prev_mode = st_mode if t == "ride" else prev_mode
 
