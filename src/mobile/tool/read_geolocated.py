@@ -30,11 +30,11 @@ import io
 import json
 import re
 import sys
-import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from parse_official_data import sniff  # noqa: E402
+from osm_common import norm  # noqa: E402
+from parse_official_data import to_float, sniff  # noqa: E402
 
 # Which directories are stop inventories, and what mode/operator they describe.
 # Ordered by authority: an operator's own feed first, so a name collision
@@ -73,20 +73,12 @@ DIRECTION_SUFFIX = re.compile(
 )
 
 
-def norm(s: str) -> str:
-    s = unicodedata.normalize("NFD", s or "")
-    s = "".join(c for c in s if unicodedata.category(c) != "Mn").lower()
-    return " ".join("".join(c if c.isalnum() or c.isspace() else " " for c in s).split())
-
 
 def place_key(name: str) -> str:
     """Name with any direction marker removed, so aller/retour collapse."""
     return norm(DIRECTION_SUFFIX.sub("", name or ""))
 
 
-def to_float(v) -> float | None:
-    if v is None:
-        return None
     s = str(v).strip()
     if not s:
         return None

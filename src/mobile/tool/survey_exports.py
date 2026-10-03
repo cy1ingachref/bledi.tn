@@ -27,7 +27,7 @@ import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from parse_official_data import _delim_of, sniff  # noqa: E402
+from parse_official_data import sniff  # noqa: E402
 
 COORD = re.compile(r"\d{1,3}[.,]\d{4,}")
 
