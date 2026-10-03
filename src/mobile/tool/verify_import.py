@@ -119,6 +119,8 @@ def main() -> None:
                     help="root of the portal export")
     ap.add_argument("--seed", default=None,
                     help="defaults to the seed above src/mobile in this repo")
+    ap.add_argument("--workbook", default=r"C:\Users\cy1in\Downloads\bizerte_mateur_transport.xlsx",
+                    help="the Google Places Bizerte/Mateur workbook, if present")
     ap.add_argument("--api", default="http://localhost:8000")
     ap.add_argument("--skip-backend", action="store_true")
     args = ap.parse_args()
@@ -271,7 +273,141 @@ def main() -> None:
             check("SNCFT halts present", {"Ain Ghelal", "Mateur", "Tinja"} <= halts,
                   sorted(halts)[:8])
 
-        # 5. Backend ----------------------------------------------------------
+        # 5. Google Places workbook -------------------------------------------
+        print("google places workbook")
+        wb_path = Path(args.workbook) if args.workbook else None
+        if wb_path is None or not wb_path.is_file():
+            print(f"  (skipped: workbook not found at {wb_path})")
+        else:
+            gp_path = tmp / "gp.json"
+            proc = run("parse_google_places.py", "--xlsx", str(wb_path),
+                       "--out", str(gp_path))
+            check("parse exits 0", proc.returncode == 0,
+                  proc.stderr.strip()[-80:] if proc.returncode else "")
+            if proc.returncode == 0:
+                gp = json.loads(gp_path.read_text(encoding="utf-8"))
+                check("27 records read", len(gp) == 27, len(gp))
+                modes = collections.Counter(r["mode"] for r in gp)
+                check("  11 bus", modes.get("bus", 0) == 11, modes.get("bus", 0))
+                check("  7 louage", modes.get("louage", 0) == 7, modes.get("louage", 0))
+                check("  7 taxi", modes.get("taxi", 0) == 7, modes.get("taxi", 0))
+                check("  2 train", modes.get("train", 0) == 2, modes.get("train", 0))
+                check("every record has a Place ID",
+                      all(r["place_id"] for r in gp))
+                check("every record keeps its raw Type wording",
+                      all(r["type_raw"] for r in gp))
+                check("no record left unclassified",
+                      not [r for r in gp if r["mode"] == "unknown"])
+                check("all coordinates inside Tunisia",
+                      all(30.0 <= r["lat"] <= 38.0 and 6.5 <= r["lon"] <= 12.5
+                          for r in gp))
+                sheets = collections.Counter(r["source_sheet"] for r in gp)
+                check("  19 Bizerte, 6 Mateur, 2 Ras Jebel",
+                      (sheets.get("Bizerte"), sheets.get("Mateur"),
+                       sheets.get("Ras Jebel")) == (19, 6, 2), dict(sheets))
+
+                # Import must keep co-located siblings: the Zarzouna cluster
+                # has four distinct listings within 150 m of each other, and an
+                # earlier version of the importer dropped all but the first.
+                seed_now = json.loads(seed_path.read_text(encoding="utf-8"))
+                in_seed = [s for s in seed_now["stations"]
+                           if s.get("source") == "google-places-workbook"]
+                check("26 google records already in the seed", len(in_seed) == 26,
+                      len(in_seed))
+                check("  each keeps its Place ID",
+                      all(s.get("place_id") for s in in_seed))
+                check("  each keeps its raw Type", all(s.get("type_raw") for s in in_seed))
+                check("  all 27 workbook rows accounted for "
+                      "(26 imported, Gare SNCFT Mateur deduplicated)",
+                      len(in_seed) + 1 == len(gp), f"{len(in_seed)}+1 vs {len(gp)}")
+                modes_in = collections.Counter(s["mode"] for s in in_seed)
+                check("  louage and taxi both present on the map",
+                      modes_in.get("louage", 0) >= 7 and modes_in.get("taxi", 0) >= 7,
+                      dict(modes_in))
+
+                # To exercise the co-located-sibling fix, strip them out first:
+                # importing into a seed that already holds them is a no-op and
+                # would pass even if the dedup bug had returned.
+                before = {"stations": [s for s in seed_now["stations"]
+                                       if s.get("source") != "google-places-workbook"],
+                          "metadata": dict(seed_now.get("metadata", {}))}
+                n_before = len(before["stations"])
+                staged = tmp / "seed_gp.json"
+                staged.write_text(json.dumps(before, ensure_ascii=False, indent=2),
+                                  encoding="utf-8")
+                added_out = tmp / "added_gp.json"
+                proc = run("import_official_stops.py", "--seed", str(staged),
+                           "--official", str(gp_path), "--out", str(added_out))
+                check("import exits 0", proc.returncode == 0,
+                      proc.stderr.strip()[-80:] if proc.returncode else "")
+                if proc.returncode == 0:
+                    after = json.loads(added_out.read_text(encoding="utf-8"))
+                    added = after["stations"][n_before:]
+                    check("26 of 27 added (Gare SNCFT Mateur is 25 m from ours)",
+                          len(added) == 26, len(added))
+                    check("co-located siblings all survive",
+                          len({norm(r["name"]) for r in added}) == len(added),
+                          f"{len({norm(r['name']) for r in added})} distinct")
+                    check("Place IDs preserved through the import",
+                          all(r.get("place_id") for r in added))
+                    check("raw Type preserved through the import",
+                          all(r.get("type_raw") for r in added))
+                    check("source recorded as google-places-workbook",
+                          all(r["source"] == "google-places-workbook" for r in added))
+                    check("both louage and taxi imported",
+                          {r["mode"] for r in added} >= {"louage", "taxi"},
+                          sorted({r["mode"] for r in added}))
+                    check("existing stations untouched",
+                          all(before["stations"][i] == after["stations"][i]
+                              for i in range(n_before)))
+                    check("re-import reproduces the seed's own google set",
+                          {norm(r["name"]) for r in added}
+                          == {norm(s["name"]) for s in in_seed},
+                          f"{len(added)} vs {len(in_seed)}")
+                    # Idempotent.
+                    again_gp = tmp / "again_gp.json"
+                    run("import_official_stops.py", "--seed", str(added_out),
+                        "--official", str(gp_path), "--out", str(again_gp))
+                    pass2 = json.loads(again_gp.read_text(encoding="utf-8"))["stations"]
+                    check("google import is idempotent",
+                          len(pass2) == len(after["stations"]),
+                          f"{len(after['stations'])} -> {len(pass2)}")
+
+        # 6. Unknown-mode resolution -------------------------------------------
+        print("unknown mode resolution")
+        if not seed_path.is_file():
+            print("  (skipped: no seed)")
+        else:
+            seed_now = json.loads(seed_path.read_text(encoding="utf-8"))
+            n_train = sum(1 for s in seed_now["stations"] if s["mode"] == "train")
+            n_unknown = sum(1 for s in seed_now["stations"] if s["mode"] == "unknown")
+            resolved = [s for s in seed_now["stations"]
+                        if s.get("mode_source") == "official-sncft-rail-export"]
+            check("54 stations classified from the SNCFT rail export",
+                  len(resolved) == 54, len(resolved))
+            check("unknown reduced 130 -> 76", n_unknown == 76, n_unknown)
+            check("every resolved record cites its evidence",
+                  all(s.get("mode_evidence") for s in resolved))
+            check("every resolved record is now train",
+                  all(s["mode"] == "train" for s in resolved))
+            check("Mateur Sud resolved (SNCFT lists it as a rail halt)",
+                  any(s["name"] == "Mateur Sud" for s in resolved))
+
+            # Idempotent: a second resolution pass must change nothing.
+            res_out = tmp / "resolved.json"
+            proc = run("resolve_unknown_modes.py", "--seed", str(seed_path),
+                       "--out", str(res_out), "--src", str(src))
+            check("resolve exits 0", proc.returncode == 0,
+                  proc.stderr.strip()[-80:] if proc.returncode else "")
+            if proc.returncode == 0:
+                again = json.loads(res_out.read_text(encoding="utf-8"))
+                check("a second pass resolves nothing further",
+                      not [s for s in again["stations"]
+                           if s.get("mode_source") == "official-sncft-rail-export"
+                           and norm(s["name"]) not in {norm(r["name"]) for r in resolved}],
+                      "no new records classified")
+
+        # 7. Backend ----------------------------------------------------------
         if not args.skip_backend:
             print("backend")
             try:
