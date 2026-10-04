@@ -34,7 +34,7 @@ from typing import Any
 
 import numpy as np
 
-from .road_routing import EARTH_R, GRID_CELL_DEG, _build_grid, _dist_to, haversine_m
+from .road_routing import GRID_CELL_DEG, _build_grid, _dist_to, haversine_m
 
 MODE_RAIL, MODE_LIGHT, MODE_TRAM = 1, 2, 4
 
