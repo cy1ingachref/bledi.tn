@@ -33,11 +33,21 @@ class AppTheme {
   static const Color trainColor = Color(0xFF845EF7);
   static const Color rfrColor = Color(0xFFFF922B);
 
+  /// Tram (TGM). Distinct from metro so the two are told apart on the map.
+  static const Color tramColor = Color(0xFF37B24D);
+
   /// Colour for a transport category.
+  ///
+  /// metro / tram / rail get distinct colours because the enum does: they used
+  /// to collapse into one rail colour, which made a metro leg look identical
+  /// to an intercity train on the map.
   static Color modeColor(TransportMode mode) => switch (mode) {
+    TransportMode.metro => metroColor,
+    TransportMode.tram => tramColor,
     TransportMode.rail => railColor,
     TransportMode.bus => busColor,
     TransportMode.louage => louageColor,
+    TransportMode.walk => walkColor,
     TransportMode.unknown => unknownColor,
   };
 

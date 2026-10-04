@@ -38,6 +38,49 @@ class RoutingDataSource {
     return RouteResponse.fromJson(data);
   }
 
+  /// `GET /api/v1/route/plan` -- multi-objective, mode-filtered routing.
+  ///
+  /// [include] / [exclude] are the user's transport selection. They are sent
+  /// straight through to the backend, which applies them INSIDE the search, so
+  /// an excluded mode cannot appear in any leg. Both are comma-separated lists
+  /// of user-facing mode names (`bus`, `metro`, `tram`, `train`, `louaj`).
+  ///
+  /// Returns [RoutePlan.fromJson]-shaped data. Throws [ApiException] on HTTP
+  /// 400, which the backend returns for an unknown mode name -- the detail
+  /// message lists the valid modes so the UI can show it.
+  Future<Map<String, dynamic>> fetchRoutePlan({
+    required double startLat,
+    required double startLon,
+    required double endLat,
+    required double endLon,
+    List<String>? include,
+    List<String>? exclude,
+    String objective = 'fastest',
+    int? maxTransfers,
+    double? maxWalkM,
+    int maxItineraries = 3,
+  }) async {
+    final query = <String, dynamic>{
+      'start_lat': startLat,
+      'start_lon': startLon,
+      'end_lat': endLat,
+      'end_lon': endLon,
+      'objective': objective,
+      'max_itineraries': maxItineraries,
+      if (include case final List<String> v? when v.isNotEmpty)
+        'modes_include': v.join(','),
+      if (exclude case final List<String> v? when v.isNotEmpty)
+        'modes_exclude': v.join(','),
+      if (maxTransfers case final int v?) 'max_transfers': v,
+      if (maxWalkM case final double v?) 'max_walk_m': v,
+    };
+    final data = await _client.getJson('/api/v1/route/plan', query: query);
+    if (data is! Map<String, dynamic>) {
+      throw const ApiException('Unexpected route plan response shape');
+    }
+    return data;
+  }
+
   /// `GET /api/v1/stations/near`.
   Future<List<NearbyStation>> fetchNearbyStations({
     required double lat,

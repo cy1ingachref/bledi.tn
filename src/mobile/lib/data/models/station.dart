@@ -117,23 +117,61 @@ abstract class StationLineRef with _$StationLineRef {
 ///  * taxi/louage → yellow
 ///  * unknown → grey (shown only when the user enables it)
 enum TransportMode {
-  /// train, metro, rail (RFR)
+  /// Intercity train: seed mode `train` or `rail` (SNCFT / RFR).
+  ///
+  /// Previously this also covered `metro`, which made "no metro but trains are
+  /// fine" impossible to express. The backend flattens the taxonomy the same
+  /// way (see MODE_ALIASES in routing.py), so the two agree.
   rail,
 
-  /// bus
+  /// Metro (TGM). Distinct from rail so it can be excluded on its own.
+  metro,
+
+  /// Tram. Tunisian users treat tram as urban rail, not as a bus.
+  tram,
+
+  /// bus (includes regional `rfr`)
   bus,
 
   /// taxi, louage, louage_red/blue/green
   louage,
 
+  /// walking
+  walk,
+
   /// mode absent or unrecognised
   unknown;
+
+  /// The wire value used by `modes_include` / `modes_exclude`.
+  String get apiValue => switch (this) {
+    TransportMode.rail => 'train',
+    TransportMode.metro => 'metro',
+    TransportMode.tram => 'tram',
+    TransportMode.bus => 'bus',
+    TransportMode.louage => 'louaj',
+    TransportMode.walk => 'walk',
+    TransportMode.unknown => 'bus',
+  };
+
+  /// Modes the user can toggle in the transport selector. `walk` is absent on
+  /// purpose: walking is always available for access and egress and is never a
+  /// selectable transport family.
+  static const selectable = <TransportMode>[
+    TransportMode.bus,
+    TransportMode.metro,
+    TransportMode.tram,
+    TransportMode.rail,
+    TransportMode.louage,
+  ];
 
   /// Maps a backend mode string onto a category.
   ///
   /// Unknown input deliberately becomes [TransportMode.unknown] rather than
   /// throwing, so a seed with a new mode degrades to grey instead of breaking
   /// the map.
+  /// Parse a backend mode string. Metro and tram are separate cases: they used
+  /// to collapse into [TransportMode.rail], which made "no metro but trains are
+  /// fine" impossible to ask for.
   static TransportMode fromName(String? name) {
     if (name == null) return TransportMode.unknown;
     final value = name.trim().toLowerCase();
@@ -145,25 +183,23 @@ enum TransportMode {
         value == 'grand_taxi') {
       return TransportMode.louage;
     }
-    if (value == 'bus' || value == 'autobus' || value == 'bibus') {
-      return TransportMode.bus;
+    switch (value) {
+      case 'metro':
+      case 'subway':
+        return TransportMode.metro;
+      case 'tram':
+        return TransportMode.tram;
+      case 'walk':
+        return TransportMode.walk;
+      case 'bus':
+      case 'rfr':
+        return TransportMode.bus;
+      case 'train':
+      case 'rail':
+        return TransportMode.rail;
+      default:
+        return TransportMode.unknown;
     }
-    if (value == 'train' ||
-        value == 'metro' ||
-        value == 'rail' ||
-        value == 'rfr' ||
-        value == 'tramway' ||
-        value == 'light_rail') {
-      return TransportMode.rail;
-    }
-
-    // Line ids from the seed: bus_705_12, train_1_sncft, metro_56_tgm, rail_19_a.
-    if (value.startsWith('bus_')) return TransportMode.bus;
-    if (value.startsWith('train_')) return TransportMode.rail;
-    if (value.startsWith('metro_')) return TransportMode.rail;
-    if (value.startsWith('rail_')) return TransportMode.rail;
-
-    return TransportMode.unknown;
   }
 
   /// All categories, in the order the filter UI lists them.

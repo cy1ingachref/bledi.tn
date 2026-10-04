@@ -235,6 +235,45 @@ class RoutingResult {
   }
 }
 
+/// Which transports the user allows.
+///
+/// The set is a whitelist of the [TransportMode.selectable] modes. Empty is not
+/// a valid state -- "no transport at all" is not a trip -- so
+/// [TransportSelectionNotifier.toggle] refuses to remove the last one.
+///
+/// This is sent to the backend as `modes_include`, which is applied inside the
+/// Dijkstra edge expansion, so a deselected transport cannot reappear in a leg.
+/// A client-side filter would only hide it while the router still priced it.
+class TransportSelectionNotifier extends Notifier<Set<TransportMode>> {
+  @override
+  Set<TransportMode> build() => TransportMode.selectable.toSet();
+
+  /// Add or remove one mode. Refuses to empty the selection.
+  bool toggle(TransportMode mode) {
+    if (!TransportMode.selectable.contains(mode)) return false;
+    final next = Set<TransportMode>.from(state);
+    if (next.contains(mode)) {
+      if (next.length <= 1) return false; // never leave the user with no modes
+      next.remove(mode);
+    } else {
+      next.add(mode);
+    }
+    state = next;
+    return true;
+  }
+
+  void selectOnly(TransportMode mode) {
+    state = {mode};
+  }
+
+  void selectAll() => state = TransportMode.selectable.toSet();
+}
+
+final transportSelectionProvider =
+    NotifierProvider<TransportSelectionNotifier, Set<TransportMode>>(
+  TransportSelectionNotifier.new,
+);
+
 /// Drives `/api/v1/route/transit` for the selected origin/destination.
 class RoutingNotifier extends Notifier<RoutingResult> {
   @override
