@@ -191,8 +191,19 @@ def build(pairs: list[tuple[list[float], list[float]]]) -> int:
                 }
                 stats["failed"] += 1
                 continue
-        pts = snap(pts, a, b)
-        good, reason = validate(pts, a, b)
+        # The cache stores min -> max on the key, like the transit cache, so
+        # the polyline is REVERSED (not re-snapped) when the request runs the
+        # other way. Re-snapping to the key's endpoints would leave the middle
+        # of the path pointing the wrong way and double the measured length:
+        # observed 267 km -> 738 km on Tunis->Sfax.
+        ka, kb = key_for(a, b).split("|")
+        pa_key = [float(x) for x in ka.split(",")]
+        pb_key = [float(x) for x in kb.split(",")]
+        if [round(a[0], KEY_DP), round(a[1], KEY_DP)] != [round(pa_key[0], KEY_DP),
+                                                          round(pa_key[1], KEY_DP)]:
+            pts = list(reversed(pts))
+        pts = snap(pts, pa_key, pb_key)
+        good, reason = validate(pts, pa_key, pb_key)
         if not good:
             stats["rejected"] += 1
             cache[key] = {"mode": "taxi", "source": src, "geometry": [],

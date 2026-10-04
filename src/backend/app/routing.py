@@ -312,7 +312,8 @@ def road_geometry_for(
     if len(pts) < 2:
         return []
     # The stored polyline runs min -> max on the key, so flip it when the rider
-    # travels the other way.
+    # travels the other way. Comparing the key's first endpoint against the
+    # request origin is exactly the stored order.
     forward = taxi_key(a_lat, a_lon, b_lat, b_lon).split("|")[0] == (
         f"{round(a_lat, 5)},{round(a_lon, 5)}"
     )
