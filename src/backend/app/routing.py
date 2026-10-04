@@ -396,6 +396,12 @@ def _load_seed() -> dict[str, Any]:
         return json.load(f)
 
 
+# A straight line is visually indistinguishable from a real path below this
+# length, so a missing polyline is harmless there. Above it, the client must not
+# draw a straight line: that is the off-road line being reported.
+GEOMETRY_REQUIRED_M = float(os.environ.get("GEOMETRY_REQUIRED_M", "300"))
+
+
 @dataclass(slots=True)
 class Edge:
     """One directed graph edge.
@@ -403,6 +409,10 @@ class Edge:
     distance_m is the REAL along-geometry distance, not the straight line, so
     the cost model and the drawn line agree. straight_m is kept only for the
     A* heuristic and for auditing how much the real path detours.
+
+    `geometry` empty means "no real path was found". `needs_geometry` records
+    whether that absence is visible enough to matter, so the API can refuse to
+    draw a straight line instead of silently producing an off-road one.
     """
     to_id: str
     line: str
@@ -412,6 +422,10 @@ class Edge:
     time_s: float
     geometry: list[list[float]]
     straight_m: float
+
+    @property
+    def needs_geometry(self) -> bool:
+        return not self.geometry and self.straight_m >= GEOMETRY_REQUIRED_M
 
 
 # Mode families for the three user-facing options. The user picks a transport
@@ -433,6 +447,46 @@ OPTION_MODES: dict[str, frozenset[str]] = {
     "louaj": TAXI_MODES,
     "train": RAIL_MODES,
 }
+
+# The three user-facing families, in a stable order. A request names any
+# SUBSET of these and gets exactly the itineraries that respect it, which is the
+# difference between "three fixed options" and "pick your modes".
+FAMILIES: tuple[str, ...] = ("bus", "louaj", "train")
+
+# Every non-empty subset of FAMILIES, precomputed. Seven combinations for three
+# families; enumerated rather than hand-listed so a fourth family cannot be
+# added without this staying correct.
+from itertools import combinations as _combinations  # noqa: E402
+
+COMBINATIONS: dict[frozenset[str], frozenset[str]] = {}
+for _n in range(1, len(FAMILIES) + 1):
+    for _combo in _combinations(FAMILIES, _n):
+        _key = frozenset(_combo)
+        _modes: frozenset[str] = frozenset()
+        for _fam in _key:
+            _modes = _modes | OPTION_MODES[_fam]
+        COMBINATIONS[_key] = _modes
+
+
+def modes_for(families: frozenset[str] | list[str] | set[str]) -> frozenset[str] | None:
+    """Mode set for a selection of families, or None when the selection is empty.
+
+    None means "no restriction", which is what an empty selection maps to: the
+    caller decides whether an empty selection is an error or means everything.
+    """
+    if not families:
+        return None
+    key = frozenset(families)
+    if key not in COMBINATIONS:
+        unknown = key - set(FAMILIES)
+        raise ValueError(f"unknown transport families: {sorted(unknown)}")
+    return COMBINATIONS[key]
+
+
+def label_for(families: frozenset[str]) -> str:
+    """Human label for a mode selection, e.g. "Bus + Train / Metro"."""
+    names = {"bus": "Bus", "louaj": "Louaj / Taxi", "train": "Train / Metro"}
+    return " + ".join(names[f] for f in FAMILIES if f in families)
 
 
 def build_graph() -> tuple[dict[str, Any], "Router"]:
@@ -1064,6 +1118,12 @@ class Router:
                 "time_seconds": round(display_ride_min * 60, 1),
                 "geometry": seg_geom,
                 "straight_m": round(straight_m),
+                # No polyline on a leg long enough for the omission to be
+                # visible. The client uses this to refuse a straight line
+                # rather than draw one across open country.
+                "needs_geometry": bool(
+                    not seg_geom and straight_m >= GEOMETRY_REQUIRED_M
+                ),
                 "label": f"{mode} — {a.get('name', '')} → {b.get('name', '')}{wait_label}",
             })
             total_min += display_ride_min
