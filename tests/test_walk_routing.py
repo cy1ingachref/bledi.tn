@@ -54,7 +54,7 @@ class TestWalkEdgesExist:
             e
             for edges in router.adj.values()
             for e in edges
-            if e[2] == "walk"
+            if e.mode == "walk"
         ]
         assert walk, "graph has no walk edges; destination stops off the network are unreachable"
         assert len(walk) > 1000, f"implausibly few walk edges: {len(walk)}"
@@ -62,15 +62,27 @@ class TestWalkEdgesExist:
     def test_walk_edges_are_bidirectional_and_bounded(self, router):
         by_pair: dict[tuple[str, str], float] = {}
         for src, edges in router.adj.items():
-            for dst, line_id, mode, _wait, dist_m in edges:
+            for e in edges:
+                dst, line_id, mode = e.to_id, e.line, e.mode
                 if mode != "walk":
                     continue
                 assert line_id == WALK_EDGE
                 # 0 m is legitimate: the seed holds several same-place
                 # duplicates (a bus stop and its rail counterpart sharing
                 # identical coordinates), and walking between them is free.
-                assert 0 <= dist_m <= MAX_WALK_EDGE_METERS
-                by_pair[(src, dst)] = dist_m
+                #
+                # The walkable-radius gate applies to the STRAIGHT-line
+                # separation, which is what decides whether two stops are
+                # linked at all. distance_m is the real footpath and is
+                # legitimately longer -- a stop 880 m away as the crow flies
+                # can be a 1 340 m walk around a river or a motorway. Bounding
+                # distance_m by the radius would reject real geometry; the
+                # physics check below is the one that must hold.
+                assert 0 <= e.straight_m <= MAX_WALK_EDGE_METERS
+                # A path along a network cannot be shorter than the straight
+                # line it replaces.
+                assert e.distance_m >= 0.95 * e.straight_m - 1e-6
+                by_pair[(src, dst)] = e.distance_m
         assert by_pair
         # Every directed walk edge must have its reverse.
         missing = [p for p in by_pair if (p[1], p[0]) not in by_pair]
@@ -83,7 +95,7 @@ class TestWalkEdgesExist:
             for s in router.stations.values()
             if s.get("lat")
             and s.get("lon")
-            and any(e[2] != "walk" for e in router.adj.get(s["id"], ()))
+            and any(e.mode != "walk" for e in router.adj.get(s["id"], ()))
         ]
         assert served
         kairouan = min(
@@ -257,7 +269,8 @@ class TestCostModelIntegrity:
         Dijkstra pay one leg's cost while the map draws two."""
         seen: dict[tuple[str, str, str], int] = {}
         for src, edges in router.adj.items():
-            for dst, line_id, mode, _wait, _d in edges:
+            for e in edges:
+                dst, mode = e.to_id, e.mode
                 key = (src, dst, mode)
                 seen[key] = seen.get(key, 0) + 1
         dupes = [k for k, v in seen.items() if v > 1 and k[2] == "walk"]
@@ -285,7 +298,7 @@ class TestCostModelIntegrity:
         served = [
             s for s in router.stations.values()
             if s.get("lat") and s.get("lon")
-            and any(e[2] != "walk" for e in router.adj.get(s["id"], ()))
+            and any(e.mode != "walk" for e in router.adj.get(s["id"], ()))
         ]
         assert served
         nearest = min(
@@ -375,7 +388,7 @@ class TestCostModelIntegrity:
         wide = r._nearest_stations(dest_lat, dest_lon, R.DROPOFF_SEARCH_METERS)
         served = [
             s for s in wide
-            if any(e[2] != "walk" for e in r.adj.get(s["id"], ()))
+            if any(e.mode != "walk" for e in r.adj.get(s["id"], ()))
         ]
         assert len(served) > R.DROP_OFF_CANDIDATES, "fixture does not exercise the cap"
 
@@ -427,7 +440,7 @@ class TestCostModelIntegrity:
         served = [
             s for s in router.stations.values()
             if s.get("lat") and s.get("lon")
-            and any(e[2] != "walk" for e in router.adj.get(s["id"], ()))
+            and any(e.mode != "walk" for e in router.adj.get(s["id"], ()))
         ]
         gaps = [
             haversine(34.0622, 11.35, s["lat"], s["lon"]) for s in served

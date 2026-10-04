@@ -29,7 +29,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field
 
 # Local transit router (physical-cost Dijkstra).
-from src.backend.app.routing import Router
+from src.backend.app.routing import OPTION_MODES, Router
 
 log = logging.getLogger("bledi")
 
@@ -778,6 +778,108 @@ def _mode_color(mode: str) -> str:
     }.get(mode, "#8b949e")
 
 
+def _haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    import math
+
+    r = 6371000.0
+    p1, p2 = math.radians(lat1), math.radians(lat2)
+    h = math.sin((p2 - p1) / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(
+        math.radians(lon2 - lon1) / 2
+    ) ** 2
+    return 2 * r * math.asin(math.sqrt(h))
+
+
+def _steps_to_legs(steps: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Flatten steps into one entry per movement, in travel order.
+
+    A leg is a movement the rider actually performs: walk, a ride on one line,
+    a transfer, or a taxi hop. Consecutive ride steps on the SAME line are
+    merged into one leg so the list reads as "board, ride, alight" rather than
+    one entry per intermediate stop, but every leg keeps its own real geometry
+    so the drawn polyline is still continuous.
+    """
+    legs: list[dict[str, Any]] = []
+    for s in steps:
+        kind = s.get("type")
+        mode = s.get("mode") or ("walk" if kind == "walk" else kind)
+        line = s.get("line")
+        geom = s.get("geometry") or []
+        prev = legs[-1] if legs else None
+        mergeable = (
+            kind == "ride"
+            and prev is not None
+            and prev.get("type") == "ride"
+            and prev.get("mode") == mode
+            and (prev.get("line") or None) == (line or None)
+        )
+        if mergeable:
+            # Same ride continuing: extend it, keeping the geometry contiguous.
+            if geom:
+                prev["geometry"] = (prev.get("geometry") or []) + geom
+                # Re-derive the flag: the merged leg now has a real polyline
+                # even when this particular step did not, and a stale False made
+                # the map fall back to drawing a straight line for a leg that had
+                # geometry all along.
+                prev["has_geometry"] = len(prev["geometry"]) >= 2
+            if s.get("to_id"):
+                prev["to_id"] = s.get("to_id")
+            prev["to"] = s.get("end")
+            prev["to_name"] = s.get("to_name")
+            # The merged leg is a new object: its endpoints and polyline no
+            # longer match the first step it absorbed, so the missing/gap
+            # fields have to be re-derived too. Leaving the first step's values
+            # in place reported a leg with 137 real points as "missing" because
+            # its first sub-step had none.
+            prev["has_geometry"] = len(prev.get("geometry") or []) >= 2
+            prev["geometry_missing"] = not prev["has_geometry"]
+            prev["geometry_gap_m"] = (
+                None
+                if prev["has_geometry"] or not (prev.get("from") and prev.get("to"))
+                else round(_haversine(
+                    prev["from"][0], prev["from"][1],
+                    prev["to"][0], prev["to"][1],
+                ))
+            )
+            prev["distance_m"] = round(
+                (prev.get("distance_m") or 0) + (s.get("distance_m") or 0)
+            )
+            continue
+            prev["to_name"] = s.get("to_name")
+            prev["time_seconds"] = round(
+                (prev.get("time_seconds") or 0) + (s.get("time_seconds") or 0), 1
+            )
+        # A leg that cannot draw its real path must not look like one that can.
+        # The map draws a straight line whenever geometry is absent, which is
+        # exactly the off-road purple line this data exists to prevent, so the
+        # client is told explicitly that the path is missing rather than being
+        # handed a two-point fallback. `geometry_gap_m` says how far the rider
+        # would be cutting across, so the UI can decide whether to draw a dashed
+        # "approximate" line or nothing.
+        gap_m = None
+        if len(geom) < 2 and s.get("start") and s.get("end"):
+            gap_m = _haversine(s["start"][0], s["start"][1], s["end"][0], s["end"][1])
+        legs.append({
+            "mode": mode,
+            "type": kind,
+            "line": line,
+            "from": s.get("start"),
+            "to": s.get("end"),
+            "from_name": s.get("from_name"),
+            "to_name": s.get("to_name"),
+            "from_id": s.get("from_id"),
+            "to_id": s.get("to_id"),
+            "geometry": geom,
+            "has_geometry": len(geom) >= 2,
+            "geometry_missing": len(geom) < 2,
+            "geometry_gap_m": None if gap_m is None else round(gap_m),
+            "distance_m": s.get("distance_m"),
+            "straight_m": s.get("straight_m"),
+            "time_seconds": s.get("time_seconds"),
+            "duration": s.get("time_seconds"),
+        })
+    return legs
+
+
 def _router_to_option(router_out: dict[str, Any]) -> dict[str, Any]:
     """Convert a Router.route() dict into the frontend 3-alternative envelope."""
     mode = router_out.get("mode")
@@ -796,6 +898,10 @@ def _router_to_option(router_out: dict[str, Any]) -> dict[str, Any]:
                     "end": [s["to"]["lat"], s["to"]["lon"]],
                     "color": "#8E8E93",
                     "stop_name": s.get("label", ""),
+                    "to_name": s.get("to_name"),
+                    "from_name": s.get("from_name"),
+                    "geometry": [],
+                    "has_geometry": False,
                     "mode": "walk",
                     "line": None,
                 }
@@ -843,8 +949,11 @@ def _router_to_option(router_out: dict[str, Any]) -> dict[str, Any]:
         # deliberately left straight: footways are absent from the OSRM driving
         # profile used to build the cache, and walk legs are <= 900 m where the
         # straight line is visually indistinguishable.
-        geom: list[list[float]] = []
-        if t == "ride":
+        # Real geometry now travels with the step itself: the graph edge the
+        # search traversed carries the polyline it priced. _geometry_for remains
+        # as a fallback for a step that somehow arrives without one.
+        geom: list[list[float]] = s.get("geometry") or []
+        if not geom and t == "ride":
             geom = _geometry_for(s.get("from_id"), s.get("to_id"))
         steps_out.append({
             "type": t,
@@ -852,10 +961,26 @@ def _router_to_option(router_out: dict[str, Any]) -> dict[str, Any]:
             "end": [to_lat, to_lon],
             "color": _mode_color(st_mode if t == "ride" else "walk"),
             "stop_name": (s.get("to_name") or s.get("label") or "").strip(),
+            # to_name / from_name are the station names. They are sent
+            # separately because stop_name falls back to the human-readable
+            # label, which for a walk or taxi leg is instructional text
+            # ("Marcher 869 m jusqu'a destination"). Without these the client
+            # cannot tell a place name from an instruction and labels the
+            # numbered milestones with the instruction instead.
+            "to_name": s.get("to_name"),
+            "from_name": s.get("from_name"),
             "mode": st_mode,
             "line": line if t == "ride" else None,
             "geometry": geom,
             "has_geometry": len(geom) >= 2,
+            # Real per-leg metrics, straight from the graph edge.
+            "distance_m": s.get("distance_m"),
+            "time_seconds": s.get("time_seconds"),
+            # Station ids. The map needs these to show only the stations this
+            # itinerary touches, and the geometry lookup falls back to them.
+            "from_id": s.get("from_id"),
+            "to_id": s.get("to_id"),
+            "straight_m": s.get("straight_m"),
         })
         prev_mode = st_mode if t == "ride" else prev_mode
 
@@ -894,6 +1019,119 @@ def route_transit(
         "best_fastest": option,
         "best_less_walk": None,
         "alternatives": [],
+        # Explicit multi-modal leg list: one entry per movement, each with its
+        # own real geometry. `steps` above is kept byte-identical for the
+        # existing frontend renderer, so nothing that already consumes this
+        # endpoint changes shape.
+        "legs": _steps_to_legs(option.get("steps", [])),
+        "source": "local-router",
+    }
+
+
+# ── Three distinct transport options ───────────────────────────────────────
+# The user picks a transport option; each is searched SEPARATELY with its own
+# mode restriction rather than being sliced out of one combined answer. A
+# combined search minimises total time and will return a train when the user
+# asked for a bus, so deriving per-option results from it produces confidently
+# wrong options. Each option reports whether it is available, so the frontend
+# can grey out "Train" on a trip with no rail rather than showing an empty card.
+OPTION_LABELS: dict[str, str] = {
+    "bus": "Bus",
+    "louaj": "Louaj / Taxi",
+    "train": "Train / Metro",
+}
+
+
+def _station_ids_used(steps: list[dict[str, Any]]) -> list[str]:
+    """Station ids the itinerary actually touches, in travel order.
+
+    Only the stations the rider boards, alights or transfers at. The map uses
+    this to hide every other marker once a route is drawn.
+    """
+    used: list[str] = []
+    for s in steps:
+        for key in ("from_id", "to_id"):
+            sid = s.get(key)
+            if sid and sid not in used:
+                used.append(sid)
+    return used
+
+
+@app.get("/api/v1/route/options", tags=["Routing"])
+def route_options(
+    start_lat: float = Query(..., description="Start latitude"),
+    start_lon: float = Query(..., description="Start longitude"),
+    end_lat: float = Query(..., description="End latitude"),
+    end_lon: float = Query(..., description="End longitude"),
+) -> dict[str, Any]:
+    """Three separately-computed transport options for one origin/destination.
+
+    Returns one entry per option (bus, louaj/taxi, train/metro). Each is its own
+    mode-restricted search, so "Bus" contains only bus-family legs and "Train"
+    only rail-family legs. An option that cannot be served is returned with
+    `available: false` and a reason rather than being omitted, so the UI can
+    show it as unavailable instead of silently hiding it.
+
+    The envelope keeps `best_fastest` / `legs` / `stations_used` so a caller
+    already using /route/transit can migrate without a flag day.
+    """
+    options: list[dict[str, Any]] = []
+    for key in ("bus", "louaj", "train"):
+        modes = OPTION_MODES.get(key)
+        res = ROUTER.route(start_lat, start_lon, end_lat, end_lon, allowed_modes=modes)
+        entry: dict[str, Any] = {
+            "id": key,
+            "label": OPTION_LABELS[key],
+            "modes": sorted(m for m in modes if m != "walk"),
+        }
+        if res.get("error") or not res.get("steps"):
+            entry.update({
+                "available": False,
+                "reason": res.get("error") or "no route with these modes",
+                "duration_min": None,
+                "legs": [],
+                "stations_used": [],
+            })
+            options.append(entry)
+            continue
+        opt = _router_to_option(res)
+        steps = opt.get("steps", [])
+        legs = _steps_to_legs(steps)
+        # A taxi/louaj answer is a single direct leg by construction; anything
+        # longer means the restricted search fell through to something else and
+        # the label would be a lie.
+        if key == "louaj" and not any(l["mode"] in ("taxi", "louaj") for l in legs):
+            entry.update({
+                "available": False,
+                "reason": "no louaj/taxi option for this trip",
+                "duration_min": None,
+                "legs": [],
+                "stations_used": [],
+            })
+            options.append(entry)
+            continue
+        entry.update({
+            "available": True,
+            "reason": None,
+            "duration_min": opt.get("duration_min"),
+            "duration_seconds": opt.get("duration"),
+            "transfers": opt.get("transfers"),
+            "has_walk_transfer": opt.get("has_walk_transfer"),
+            "fare_dinars": opt.get("fare_dinars"),
+            "legs": legs,
+            "steps": steps,
+            "stations_used": _station_ids_used(steps),
+            "geometry_complete": all(l.get("has_geometry") for l in legs
+                                    if l["mode"] not in ("walk", "transfer")),
+        })
+        options.append(entry)
+
+    available = [o for o in options if o.get("available")]
+    fastest = min(available, key=lambda o: o["duration_min"]) if available else None
+    return {
+        "options": options,
+        "best_id": fastest["id"] if fastest else None,
+        "stations_used": fastest["stations_used"] if fastest else [],
         "source": "local-router",
     }
 

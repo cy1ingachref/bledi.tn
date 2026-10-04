@@ -48,3 +48,6 @@ android/app/release
 # a rebuild after a rule change does not re-request ~1580 routes; it is not
 # product data and data/route_geometry.json is the committed artefact.
 data/.osrm_raw_cache.json
+data/.road_network_cache.json
+data/taxi_pairs_sample.json
+src/backend/tool/_bytesedit.py

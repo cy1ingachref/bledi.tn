@@ -43,6 +43,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import os
 import sys
 import time
 import urllib.parse
@@ -64,16 +65,54 @@ USER_AGENT = "bledi-geometry/1.0 (Tunisia transit routing; github.com/cy1ingachr
 # OSM route= values that correspond to fixed-rail track, per mode.
 RAIL_ROUTE_VALUES = ("rail", "train", "light_rail", "tram", "monorail", "subway")
 
+# OSM railway= values to include as track geometry.
+#
+# In-service track only. Deliberately excluded: disused, abandoned,
+# construction, proposed -- a train drawn onto a lifted or unbuilt track would be
+# a lie, and those ways are numerous enough (244 disused + 218 abandoned + 66
+# construction measured) to distort the network if included.
+WAY_RAILWAY_VALUES = ("rail", "light_rail", "tram", "narrow_gauge", "funicular")
+
 # Overpass bbox covering Tunisia.
 BBOX = "30.2,7.4,37.6,12.2"
 
+# Optional local OSM road network (HOTOSM GeoPackage), used to fill gaps that
+# OSRM could not resolve. Offline and deterministic once present, which also
+# removes ~1580 network calls from a full build. Point at the extracted
+# roads.gpkg, or set BLEDI_ROADS_GPKG. Absent means OSRM-only, as before.
+ROADS_GPKG = os.environ.get(
+    "BLEDI_ROADS_GPKG", r"C:\Users\cy1in\Downloads\roads\roads.gpkg"
+)
+
+# highway= values a bus or taxi can use. Ordered by preference so the first
+# match wins when several classes serve the same pair.
+ROAD_DRIVE_CLASSES = (
+    "residential", "unclassified", "tertiary", "tertiary_link", "secondary",
+    "secondary_link", "primary", "primary_link", "trunk", "trunk_link",
+    "motorway", "motorway_link", "living_street", "service", "track",
+    "pedestrian", "footway", "path",
+)
+
+# A path along a network cannot be shorter than the straight line between its
+# endpoints, so anything under this is a projection mistake rather than a route.
+# Not optional: an early prototype without it reported 619 of 1210 walk legs
+# "filled", including a 203 m hop that produced a 1 m stub, because two nearby
+# stops projected onto adjacent vertices of the same cul-de-sac.
+MIN_PATH_RATIO = 0.95
+
 # A geometry is only trusted if it stays near the two stops it connects.
-# 2.0 rather than a looser bound: measured across the full build, real rail and
-# road paths top out around 1.7x the straight line (a rail curve through open
-# country), so anything past 2x is OSRM walking a detour or OSM matching the
-# wrong line. Those read as absurd on a map -- 2541 m of road for a 113 m hop --
-# and are worse than an honest straight line.
+# The bound is split by mode because a single value rejected ~250 real bus
+# segments. Measured on the rejected set (parsed from the stored reason
+# strings): road/bus detours have min 2.01x, MEDIAN 3.05x, and 67% are within
+# 4x. That is not a matcher failure -- a city bus on a one-way grid genuinely
+# drives three times the crow-flies distance to serve two stops on opposite
+# sides of a block. Rejecting them left those legs drawn as straight lines,
+# which is the exact symptom this work exists to remove.
+#
+# Rail keeps the tight bound: measured rail rejections run 6.4x to 193x, so
+# those really are OSM matching the wrong line, not a detour.
 MAX_DETOUR_FACTOR = 2.0
+MAX_DETOUR_FACTOR_ROAD = float(os.environ.get("MAX_DETOUR_FACTOR_ROAD", "4.0"))
 
 
 def load_seed() -> dict:
@@ -129,7 +168,14 @@ def overpass(query: str, timeout: int = 180) -> list[dict] | None:
                     },
                 )
                 with urllib.request.urlopen(req, timeout=timeout) as resp:
-                    return json.load(resp).get("elements", [])
+                    # Read the body first. These responses run to tens of MB and
+                    # streaming them through json.load can fail part-way on a
+                    # truncated chunk; catching that here used to look like a dead
+                    # mirror, and the caller read None as "zero ways fetched" and
+                    # carried on with relations-only geometry.
+                    body = resp.read()
+                    payload = json.loads(body)
+                    return payload.get("elements", [])
             except urllib.error.HTTPError as exc:
                 host = url.split("/")[2]
                 if exc.code in (429, 504):
@@ -207,45 +253,253 @@ def stitch(parts: list[list[tuple[float, float]]]) -> list[list[tuple[float, flo
     return chains
 
 
-def load_rail_network() -> tuple[list[list[tuple[float, float]]], list[tuple[float, float]]]:
-    """Fetch every OSM rail route in Tunisia as a list of polylines.
+def load_rail_network() -> list[list[tuple[float, float]]]:
+    """Build the Tunisian rail network as connected polylines.
 
-    Returns (polylines, node_coords). Polylines are the real track geometry;
-    node_coords lets a stop be matched to the nearest point on the track.
+    Two sources, and the second one is the important one. Route relations only
+    cover ways somebody grouped into a route, so they account for 34 of the
+    country's rail features. Querying plain `railway=*` ways returns 3,456 more
+    -- sidings, freight branches, station approaches and rural lines that belong
+    to no relation at all. Measured: median segment 47 m for the ways against
+    581 m for Natural Earth 10m, i.e. the ways are 12x finer, and they are what
+    makes a 400 m station hop resolvable at all.
+
+    Only in-service track is taken. disused/abandoned/construction ways are
+    excluded because drawing a train onto a lifted track would be a lie.
+
+    Returns the polylines; node coordinates are no longer needed.
     """
     values = "|".join(RAIL_ROUTE_VALUES)
-    query = (
+    parts: list[list[tuple[float, float]]] = []
+
+    print("fetching OSM rail route relations...")
+    rel_query = (
         f'[out:json][timeout:240];\n'
         f'rel["type"="route"]["route"~"^({values})$"]({BBOX});\n'
         f'out geom;'
     )
-    print("fetching OSM rail routes (this is the biggest single request)...")
-    elements = overpass(query, timeout=300)
-    if elements is None:
-        raise SystemExit("Overpass unavailable: cannot fetch rail geometry")
-
-    polylines: list[list[tuple[float, float]]] = []
-    for el in elements:
-        members = el.get("members") or []
-        if not members:
-            continue
-        parts: list[list[tuple[float, float]]] = []
-        for m in members:
+    rels = overpass(rel_query, timeout=300)
+    if rels is None:
+        print("  route relations unavailable; relying on plain ways", file=sys.stderr)
+        rels = []
+    for el in rels:
+        member_parts: list[list[tuple[float, float]]] = []
+        for m in el.get("members") or []:
             geom = m.get("geometry")
             if not geom:
                 continue
             part = [(g["lat"], g["lon"]) for g in geom if g.get("lat") is not None]
             if len(part) >= 2:
-                parts.append(part)
-        polylines.extend(stitch(parts))
+                member_parts.append(part)
+        parts.extend(stitch(member_parts))
+    rel_chains = sum(1 for _ in parts)
+    print(f"  {len(rels)} relations -> {rel_chains} chains")
 
-    nodes = [
-        (e["lat"], e["lon"])
-        for e in elements
-        if e.get("type") == "node" and e.get("lat") is not None
+    # The two queries hit the same shared Overpass service back to back.
+    # Measured: issuing them together returns HTTP 504 on the second, and only
+    # succeeds after a pause, so wait rather than hammer.
+    time.sleep(15)
+    print("fetching OSM railway ways (relations miss most of the network)...")
+    way_query = (
+        f'[out:json][timeout:300];\n'
+        f'way["railway"~"^({"|".join(WAY_RAILWAY_VALUES)})$"]({BBOX});\n'
+        f'out geom;'
+    )
+    ways = overpass(way_query, timeout=360)
+    if ways is None:
+        # Fatal on purpose. Returning relations-only here previously produced a
+        # 62-chain network instead of ~1800 and silently lost the ways that fix
+        # most rail gaps, so a fetch failure must stop the build.
+        raise SystemExit(
+            "Overpass unavailable: cannot fetch railway ways. "
+            "Refusing to build relations-only geometry."
+        )
+    if not ways:
+        raise SystemExit(
+            "Overpass returned zero railway ways for Tunisia, which cannot be "
+            "right (the count query alone reports 3456). Refusing to continue."
+        )
+    way_parts: list[list[tuple[float, float]]] = []
+    for w in ways:
+        geom = w.get("geometry")
+        if not geom or len(geom) < 2:
+            continue
+        part = [(g["lat"], g["lon"]) for g in geom if g.get("lat") is not None]
+        if len(part) >= 2:
+            way_parts.append(part)
+    print(f"  {len(way_parts)} ways")
+
+    # Relations first so a route's own geometry wins a shared endpoint; then the
+    # loose ways extend the network outwards from it.
+    polylines = stitch(parts + way_parts)
+    print(f"  total: {len(polylines)} chains, "
+          f"{sum(len(c) for c in polylines):,} vertices")
+    return polylines
+
+
+ROAD_NET_CACHE = BASE / "data" / ".road_network_cache.json"
+
+
+def load_road_network() -> list[list[tuple[float, float]]]:
+    """Load the local OSM road network from the HOTOSM GeoPackage.
+
+    The decoded network is memoised to data/.road_network_cache.json. Decoding
+    the 232 MB GeoPackage and stitching it takes over four minutes, and both
+    the transit build and the taxi build need it; without the cache a pair of
+    concurrent runs each pay that cost and thrash on the same file.
+    """
+    if ROAD_NET_CACHE.exists():
+        try:
+            t = time.time()
+            raw = json.loads(ROAD_NET_CACHE.read_text(encoding="utf-8"))
+            src_mtime = (
+                Path(ROADS_GPKG).stat().st_mtime if Path(ROADS_GPKG).exists() else 0
+            )
+            # Rebuild only when the source GeoPackage is newer than the cache.
+            if raw.get("source_mtime") == src_mtime:
+                chains = [[(p[0], p[1]) for p in c] for c in raw["chains"]]
+                print(
+                    f"  road network from cache: {len(chains):,} chains "
+                    f"({time.time() - t:.1f}s)"
+                )
+                return chains
+        except Exception as exc:  # pragma: no cover - defensive
+            print(f"  road cache unreadable ({exc}); decoding GeoPackage")
+
+    chains = _decode_road_network()
+    try:
+        src_mtime = (
+            Path(ROADS_GPKG).stat().st_mtime if Path(ROADS_GPKG).exists() else 0
+        )
+        ROAD_NET_CACHE.write_text(
+            json.dumps(
+                {
+                    "source_mtime": src_mtime,
+                    "chains": [[[p[0], p[1]] for p in c] for c in chains],
+                },
+                separators=(",", ":"),
+            ),
+            encoding="utf-8",
+        )
+        print(f"  wrote {ROAD_NET_CACHE.name}")
+    except Exception as exc:  # pragma: no cover - defensive
+        print(f"  could not write road cache: {exc}")
+    return chains
+
+
+def _decode_road_network() -> list[list[tuple[float, float]]]:
+    """Decode and stitch the HOTOSM GeoPackage road network.
+
+    Offline and deterministic: the same file always yields the same chains,
+    which also removes roughly 1580 OSRM calls from a full build. Returns [] when
+    the file is absent, and the caller then falls back to OSRM alone.
+
+    The GeoPackage geometry blob is a small header followed by standard WKB:
+    magic "GP", version, flags, srs_id, then an envelope whose length the flags
+    encode, then the WKB. Decoding it directly avoids needing GDAL/ogr, which is
+    not installed here.
+    """
+    if not ROADS_GPKG or not Path(ROADS_GPKG).exists():
+        print(f"  no local road file at {ROADS_GPKG}; OSRM only")
+        return []
+    print(f"loading local road network from {Path(ROADS_GPKG).name}...")
+    import sqlite3
+    import struct
+
+    allowed = set(ROAD_DRIVE_CLASSES)
+    parts: list[list[tuple[float, float]]] = []
+    con = sqlite3.connect(f"file:{ROADS_GPKG}?mode=ro", uri=True)
+    for geom, highway in con.execute(
+        "SELECT geom, highway FROM roads WHERE geom IS NOT NULL"
+    ):
+        if highway not in allowed:
+            continue
+        try:
+            pts = _decode_gpkg_line(geom, struct)
+        except Exception:  # noqa: BLE001 - one bad feature must not stop a build
+            continue
+        if pts and len(pts) >= 2:
+            parts.append(pts)
+    con.close()
+    chains = stitch(parts)
+    print(f"  {len(parts):,} ways -> {len(chains):,} chains, "
+          f"{sum(len(c) for c in chains):,} vertices")
+    return chains
+
+
+def _decode_gpkg_line(blob: bytes, struct_mod) -> list[tuple[float, float]] | None:
+    """Decode a GeoPackage LineString blob into [(lat, lon), ...]."""
+    if not blob or blob[:2] != b"GP":
+        return None
+    flags = blob[3]
+    order = "<" if flags & 0x01 else ">"
+    # flags bits 1-3 encode the envelope: 0 none, 1 xy(32B), 2 xyz(48B), 3 xym,
+    # 4 xyzm(64B).
+    env_code = (flags >> 1) & 0x07
+    env_len = {0: 0, 1: 32, 2: 48, 3: 48, 4: 64}.get(env_code)
+    if env_len is None:
+        return None
+    wkb = blob[8 + env_len:]
+    if len(wkb) < 5:
+        return None
+    bo = "<" if wkb[0] == 1 else ">"
+    if struct_mod.unpack(bo + "I", wkb[1:5])[0] % 1000 != 2:
+        return None  # only LineString carries walkable/roadable geometry
+    (n,) = struct_mod.unpack(bo + "I", wkb[5:9])
+    return [
+        struct_mod.unpack(bo + "dd", wkb[9 + i * 16: 25 + i * 16])
+        for i in range(n)
     ]
-    print(f"  {len(polylines)} rail polylines, {len(nodes)} nodes")
-    return polylines, nodes
+
+
+def path_on_network(
+    lines: list[list[tuple[float, float]]],
+    cell_grid: dict[tuple[int, int], list[int]],
+    cell_deg: float,
+    a: tuple[float, float],
+    b: tuple[float, float],
+    snap_m: float = 400.0,
+) -> list[tuple[float, float]] | None:
+    """Slice of one network line between the two projections, or None.
+
+    Both endpoints must project within `snap_m` of the line, and the caller must
+    still check the result against MIN_PATH_RATIO -- two nearby stops can
+    project onto adjacent vertices of the same dead-end, which yields a stub that
+    is not a path between them.
+    """
+    gx, gy = int(a[0] / cell_deg), int(a[1] / cell_deg)
+    hx, hy = int(b[0] / cell_deg), int(b[1] / cell_deg)
+    cand: set[int] = set()
+    for dx in (-1, 0, 1):
+        for dy in (-1, 0, 1):
+            cand.update(cell_grid.get((gx + dx, gy + dy), ()))
+            cand.update(cell_grid.get((hx + dx, hy + dy), ()))
+    best: tuple[float, list, int, int] | None = None
+    for ci in cand:
+        line = lines[ci]
+        ia, da = project(line, a)
+        ib, db = project(line, b)
+        if da > snap_m or db > snap_m:
+            continue
+        if best is None or da + db < best[0]:
+            best = (da + db, line, ia, ib)
+    if best is None:
+        return None
+    _, line, ia, ib = best
+    lo, hi = (ia, ib) if ia <= ib else (ib, ia)
+    if hi - lo < 1:
+        return None
+    return list(line[lo: hi + 1])
+
+
+def build_grid(
+    lines: list[list[tuple[float, float]]], cell_deg: float
+) -> dict[tuple[int, int], list[int]]:
+    grid: dict[tuple[int, int], list[int]] = defaultdict(list)
+    for ci, line in enumerate(lines):
+        for lat, lon in line:
+            grid[(int(lat / cell_deg), int(lon / cell_deg))].append(ci)
+    return grid
 
 
 def project(
@@ -408,6 +662,17 @@ def main() -> int:
     ap.add_argument("--limit", type=int, help="only fetch N segments (smoke test)")
     ap.add_argument("--resume", action="store_true", help="keep existing entries")
     ap.add_argument("--force", action="store_true", help="rebuild from scratch")
+    ap.add_argument(
+        "--retry-rejected",
+        action="store_true",
+        help=(
+            "re-evaluate only segments that already have a cache entry but were "
+            "rejected (entry['reason'] set, no geometry). Uses the cached raw "
+            "OSRM responses and the cached OSM rail network, so it needs no "
+            "network for those and exists to apply a changed MAX_DETOUR_FACTOR "
+            "to data already fetched."
+        ),
+    )
     args = ap.parse_args()
 
     _load_osrm_cache()
@@ -421,11 +686,25 @@ def main() -> int:
         existing = json.loads(OUT_PATH.read_text(encoding="utf-8")).get("segments", {})
         print(f"resuming with {len(existing)} cached segments")
 
-    todo = [s for s in segs if f"{s[0]}|{s[1]}" not in existing]
+    if args.retry_rejected:
+        # A rejected segment already has a key, so the "not in existing" filter
+        # below would skip it forever and a rule change could never be applied
+        # to data already fetched. Rebuild the todo list from the entries that
+        # carry a reason instead.
+        todo = [
+            s
+            for s in segs
+            if f"{s[0]}|{s[1]}" in existing
+            and not existing[f"{s[0]}|{s[1]}"].get("geometry")
+            and existing[f"{s[0]}|{s[1]}"].get("reason")
+        ]
+        print(f"retry-rejected: {len(todo)} segments carry a rejection reason")
+    else:
+        todo = [s for s in segs if f"{s[0]}|{s[1]}" not in existing]
     total_missing = len(todo)
     if args.limit:
         todo = todo[: args.limit]
-        if not args.force:
+        if not args.force and not args.retry_rejected:
             # Refuse before spending the fetches, not after. This has already
             # gone wrong three times in one session: `--limit 40` over a
             # complete 1885-segment cache wrote 40 segments back with no
@@ -457,7 +736,28 @@ def main() -> int:
 
     polylines: list[list[tuple[float, float]]] = []
     if rail_segs:
-        polylines, _ = load_rail_network()
+        polylines = load_rail_network()
+
+    # Local road network, used for any segment the cache has no answer for. It
+    # is offline and deterministic, and a full build otherwise spends ~9 min in
+    # OSRM requests.
+    # Decoding the 232 MB GeoPackage and stitching it takes over ten minutes on
+    # this machine, and it is not always needed: a segment whose raw OSRM
+    # response is already cached can be re-derived with no network and no local
+    # file at all. BLEDI_SKIP_ROADS=1 skips the decode when every remaining
+    # segment can be answered from the OSRM cache, which turns a 15-minute run
+    # into seconds. Set BLEDI_FORCE_ROADS=1 to always decode it regardless.
+    road_lines: list[list[tuple[float, float]]] = []
+    force_roads = os.environ.get("BLEDI_FORCE_ROADS", "").strip() not in ("", "0", "false")
+    skip_roads = os.environ.get("BLEDI_SKIP_ROADS", "").strip() not in ("", "0", "false")
+    if ROADS_GPKG and Path(ROADS_GPKG).exists() and (force_roads or not skip_roads):
+        road_lines = load_road_network()
+    elif skip_roads:
+        print(
+            "  BLEDI_SKIP_ROADS set: using cached OSRM responses only "
+            "(segments the cache cannot answer stay straight)"
+        )
+    road_grid = build_grid(road_lines, 0.02) if road_lines else {}
 
     by_id = {s["id"]: s for s in stations if s.get("lat") and s.get("lon")}
     out: dict[str, dict] = dict(existing)
@@ -481,24 +781,48 @@ def main() -> int:
             else:
                 entry["reason"] = "no OSM rail track joins these stops"
         else:
-            route = osrm(a, b)
-            coords = (
-                [(lat, lon) for lon, lat in route["geometry"]["coordinates"]]
-                if route
-                else []
-            )
+            # Try the local network first: offline, deterministic, and it
+            # resolves short urban hops OSRM detours around. OSRM remains the
+            # fallback for anything the local file cannot snap to.
+            coords: list[tuple[float, float]] = []
+            if road_lines:
+                local = path_on_network(
+                    road_lines, road_grid, 0.02,
+                    (a["lat"], a["lon"]), (b["lat"], b["lon"]),
+                )
+                if local:
+                    local_len = sum(
+                        haversine(*p_, *q_) for p_, q_ in zip(local, local[1:])
+                    )
+                    # Reject a stub. Two nearby stops can project onto adjacent
+                    # vertices of one dead-end, giving a fragment that is not a
+                    # route between them; the ratio is the only cheap way to see
+                    # it, since a real path is never shorter than the crow
+                    # flight.
+                    if straight <= 1 or local_len >= straight * MIN_PATH_RATIO:
+                        coords = local
+                    else:
+                        entry["reason"] = (
+                            f"local path {local_len:.0f} m shorter than straight "
+                            f"{straight:.0f} m"
+                        )
+            if not coords and not entry["reason"]:
+                route = osrm(a, b)
+                coords = (
+                    [(lat, lon) for lon, lat in route["geometry"]["coordinates"]]
+                    if route
+                    else []
+                )
             length = (
                 sum(haversine(*p_, *q_) for p_, q_ in zip(coords, coords[1:]))
                 if len(coords) >= 2
                 else 0.0
             )
-            # Same plausibility bound as the rail path. Measured on the first
-            # full build: 80 bus segments came back at up to 23x the straight
-            # line (cit_el_khadhra|montplaisir: 2541 m of road for a 113 m hop),
-            # which is OSRM routing around a one-way system or a mapping
-            # error. Those are worse than an honest straight line, so they are
-            # dropped rather than drawn.
-            if coords and straight > 0 and length <= straight * MAX_DETOUR_FACTOR:
+            # Road/bus uses the looser bound: a bus on a one-way grid really
+            # does drive ~3x the crow-flies distance between two stops, and
+            # rejecting those left 250+ legs drawn as straight lines. Anything
+            # past MAX_DETOUR_FACTOR_ROAD is still dropped as a mapping error.
+            if coords and straight > 0 and length <= straight * MAX_DETOUR_FACTOR_ROAD:
                 entry["source"] = "osrm-driving"
                 entry["geometry"] = simplify(coords)
             elif not coords:
