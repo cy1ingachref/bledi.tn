@@ -51,3 +51,11 @@ data/.osrm_raw_cache.json
 data/.road_network_cache.json
 data/taxi_pairs_sample.json
 src/backend/tool/_bytesedit.py
+
+# Derived routing graphs. Rebuilt from the local OSM extracts by
+#   python src/backend/tool/build_road_graph.py   (needs ~/Downloads/roads/roads.gpkg)
+#   python src/backend/tool/build_rail_graph.py   (needs ~/Downloads/rails/export.geojson)
+# road_graph.npz alone is 153 MB, rail_graph.npz 0.6 MB. Neither belongs in git;
+# the BUILD SCRIPTS are committed so the graphs are reproducible.
+data/road_graph.npz
+data/rail_graph.npz

@@ -196,17 +196,48 @@ class TestApiNeverFallsBackToAStraightLine:
     """
 
     def test_flagged_leg_never_yields_a_geometry_looking_leg(self, router):
+        """Invariant: a leg flagged needs_geometry must never carry a polyline.
+
+        This used to assert `flagged` was non-empty and failed with
+        "the test is vacuous" once real rail-track geometry landed -- there are
+        no longer any geometry-less ride legs on this trip. The invariant is
+        still the thing worth protecting, so it is now asserted
+        unconditionally over every ride leg, and the flag is also checked for
+        self-consistency (needs_geometry exactly when there is no polyline).
+        """
         res = router.route(*TUNIS, *SFAX)
-        flagged = [
-            s for s in res.get("steps", [])
-            if s.get("type") == "ride"
-            and not s.get("geometry")
-            and (s.get("straight_m") or 0) >= GEOMETRY_REQUIRED_M
-        ]
-        assert flagged, "no flagged leg on this trip; the test is vacuous"
-        for s in flagged:
-            assert s.get("needs_geometry") is True
-            assert not s.get("geometry"), "flagged leg must not carry a polyline"
+        rides = [s for s in res.get("steps", []) if s.get("type") == "ride"]
+        assert rides, "no ride legs at all; the trip should not be pure walk"
+
+        for s in rides:
+            has_geom = bool(s.get("geometry"))
+            if s.get("needs_geometry"):
+                assert not has_geom, "flagged leg must not carry a polyline"
+            # needs_geometry must agree with reality, both ways.
+            long_leg = (s.get("straight_m") or 0) >= GEOMETRY_REQUIRED_M
+            assert bool(s.get("needs_geometry")) == (long_leg and not has_geom), (
+                f"needs_geometry disagrees with geometry presence: {s.get('line')}"
+            )
+
+    def test_no_ride_leg_is_a_bare_straight_line(self, router):
+        """Regression guard for the zigzag: a long ride must follow real track.
+
+        Before rail-track geometry, rail legs with no cached segment rendered as
+        two points joined by a straight line, which is what made the map appear
+        to jump to the next station and come back.
+        """
+        res = router.route(*TUNIS, *SFAX)
+        for s in res.get("steps", []):
+            if s.get("type") != "ride":
+                continue
+            straight_m = s.get("straight_m") or 0
+            if straight_m < GEOMETRY_REQUIRED_M:
+                continue
+            geom = s.get("geometry") or []
+            assert len(geom) > 2, (
+                f"long {s.get('mode')} leg on {s.get('line')} is a bare "
+                f"{len(geom)}-point straight line over {straight_m} m"
+            )
 
     def test_steps_helper_respects_the_flag(self):
         """The API conversion must not resurrect a straight line for a flagged step."""

@@ -1,0 +1,47 @@
+{
+  "id": "chaouat",
+  "name": "Chaouat",
+  "lat": 36.8894814,
+  "lon": 9.944471,
+  "city": "Manouba",
+  "modes": [
+    "bus",
+    "train"
+  ],
+  "lines": [
+    {
+      "line_id": "bus_771_98",
+      "number": "98",
+      "name": "Ligne 98: Rabattement Khaireddine Mannouba - Café Jallou Terminus",
+      "mode": "bus",
+      "mode_label": "Bus",
+      "operator": "Transtu",
+      "color": null,
+      "direction": "Rabattement Khaireddine Mannouba - Café Jallou Terminus",
+      "stops_count": 23
+    },
+    {
+      "line_id": "bus_791_16d",
+      "number": "16D",
+      "name": "Ligne 16D: Ali Balahouan - Terminus Sidi Othman",
+      "mode": "bus",
+      "mode_label": "Bus",
+      "operator": "Transtu",
+      "color": null,
+      "direction": "Ali Balahouan - Terminus Sidi Othman",
+      "stops_count": 41
+    },
+    {
+      "line_id": "train_4_sncft",
+      "number": "SNCFT",
+      "name": "Ligne SNCFT: Tunis Ville - Bizerte",
+      "mode": "train",
+      "mode_label": "Train",
+      "operator": "SNCFT",
+      "color": null,
+      "direction": "Tunis Ville - Bizerte",
+      "stops_count": 11
+    }
+  ],
+  "count": 3
+}

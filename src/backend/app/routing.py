@@ -30,6 +30,35 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Sequence
 
+try:
+    # Real-road routing (app/road_routing.py). Optional so the transit router
+    # still works on a machine with no road graph built; legs then fall back to
+    # the legacy cache/straight-line behaviour instead of failing to import.
+    from .road_routing import load_graph as load_road_graph
+    from .road_routing import road_route_cached as road_route_cached
+except ImportError:  # pragma: no cover - direct-script execution
+    try:
+        from road_routing import load_graph as load_road_graph
+        from road_routing import road_route_cached as road_route_cached
+    except ImportError:
+        load_road_graph = None  # type: ignore[assignment]
+        road_route_cached = None  # type: ignore[assignment]
+
+try:
+    # Real-track geometry for train/metro/tram legs (app/rail_geometry.py).
+    # Deliberately separate from the road graph: a train does not follow the
+    # highway, and reusing road geometry for rail is what made legs look like
+    # they cut across the country instead of following the line.
+    from .rail_geometry import load_rail_graph
+    from .rail_geometry import track_between_cached as rail_track_cached
+except ImportError:  # pragma: no cover - direct-script execution
+    try:
+        from rail_geometry import load_rail_graph
+        from rail_geometry import track_between_cached as rail_track_cached
+    except ImportError:
+        load_rail_graph = None  # type: ignore[assignment]
+        rail_track_cached = None  # type: ignore[assignment]
+
 log = logging.getLogger("bledi.routing")
 if not log.handlers:
     logging.basicConfig(level=logging.INFO)
@@ -98,6 +127,13 @@ DEFAULT_WAIT_BY_MODE: dict[str, float] = {
 
 # Transfer penalty (seconds) applied each time the rider changes lines.
 TRANSFER_PENALTY_SEC = float(os.environ.get("TRANSFER_PENALTY_SEC", "180.0"))
+# Transfer penalty used by the fewest_transfers objective (B2). Far larger than
+# TRANSFER_PENALTY_SEC so a second search with this weight genuinely prefers a
+# direct bus over a faster two-leg train+bust, which is what the user asking
+# "I hate transfers" means. Documented here per the spec's "document which".
+FEWEST_TRANSFERS_PENALTY_SEC = float(
+    os.environ.get("FEWEST_TRANSFERS_PENALTY_SEC", "5400.0")
+)
 
 # Max walk distances (meters).
 MAX_START_WALK_METERS = int(os.environ.get("MAX_START_WALK_METERS", "2000"))
@@ -245,6 +281,99 @@ def load_walk_geometry_cache() -> dict[str, dict[str, Any]]:
         "line. Build it with: python src/backend/tool/build_walk_geometry.py"
     )
     return {}
+
+
+def rail_leg(
+    router: "Router",
+    a_lat: float,
+    a_lon: float,
+    b_lat: float,
+    b_lon: float,
+) -> tuple[list[list[float]], float] | None:
+    """Real-track polyline between two points on the rail network, or None.
+
+    The answer comes from the TRACK, not from line numbers: both points are
+    snapped onto the nearest OSM rail and A* runs along the rails. Two stops on
+    the same corridor get the polyline that actually connects them whether or
+    not any seed line claims they are consecutive.
+
+    None means the two points are not on the same connected track. The caller
+    must then fall back to cached geometry, and must not substitute a straight
+    line: that is exactly the artefact this replaces.
+    """
+    g = getattr(router, "rail_graph", None)
+    if g is None or rail_track_cached is None:
+        return None
+    try:
+        t = rail_track_cached(g, a_lat, a_lon, b_lat, b_lon)
+    except Exception as exc:  # pragma: no cover - defensive
+        log.warning("rail geometry failed for %s -> %s: %s", (a_lat, a_lon), (b_lat, b_lon), exc)
+        return None
+    if t is None or len(t.geometry) < 2:
+        return None
+    return t.geometry, t.distance_m
+
+
+def resolve_walk_geometry(
+    router: "Router",
+    a_lat: float,
+    a_lon: float,
+    b_lat: float,
+    b_lon: float,
+    fallback: list[list[float]] | None = None,
+) -> tuple[list[list[float]], float]:
+    """Real pedestrian geometry for one walk leg, computed on demand.
+
+    Returns (geometry, distance_m). Falls back, in order: the live foot graph,
+    any precomputed cache polyline, then the straight line. The distance is the
+    real along-geometry length whenever a real path was found, so the number in
+    the itinerary matches the line the user sees.
+
+    Called per leg from _expand_path rather than for all 12 736 station pairs at
+    startup: a live A* per pair would cost minutes of process start-up time, and
+    a user only ever sees a handful of walks.
+    """
+    straight = haversine(a_lat, a_lon, b_lat, b_lon)
+    live = road_leg(router, a_lat, a_lon, b_lat, b_lon, "foot")
+    if live is not None and live[1] >= 0.95 * straight:
+        return live[0], live[1]
+    if fallback and len(fallback) >= 2:
+        cached_m = polyline_length(fallback)
+        if cached_m >= 0.95 * straight:
+            return list(fallback), cached_m
+    return [[a_lat, a_lon], [b_lat, b_lon]], straight
+
+
+def road_leg(
+    router: "Router",
+    a_lat: float,
+    a_lon: float,
+    b_lat: float,
+    b_lon: float,
+    mode: str,
+) -> tuple[list[list[float]], float] | None:
+    """Real-road polyline between two arbitrary points, or None.
+
+    Wraps the OSM graph so callers get one answer: the polyline and its true
+    along-road length in metres, or None when the road network cannot serve the
+    pair. None is meaningful -- it means "no real path is known", and the caller
+    must fall back rather than draw the straight line and present it as a route.
+
+    The straight line is never returned here. It is a lower bound on any real
+    path, so returning it would both draw an off-road line and understate the
+    distance the user is quoted.
+    """
+    g = getattr(router, "road_graph", None)
+    if g is None or road_route_cached is None:
+        return None
+    try:
+        r = road_route_cached(g, a_lat, a_lon, b_lat, b_lon, mode)
+    except Exception as exc:  # pragma: no cover - defensive
+        log.warning("road routing failed for %s -> %s: %s", (a_lat, a_lon), (b_lat, b_lon), exc)
+        return None
+    if r is None or len(r.geometry) < 2:
+        return None
+    return r.geometry, r.distance_m
 
 
 def load_taxi_geometry_cache() -> dict[str, list[list[float]]]:
@@ -437,25 +566,133 @@ class Edge:
 # "louaj" is the Tunisian shared-taxi: a car, so it follows the road network
 # and is priced at taxi speed. It is distinct from a scheduled bus only in that
 # it needs no timetable.
+# ── Fare model (C5) ──────────────────────────────────────────────────────
+# Approximate, DOCUMENTED, and deliberately not a fare oracle: this is what
+# objective=cheapest ranks by, so it must be monotone and defensible rather
+# than accurate. Real Tunisian fares are a flat ticket per mode (bus/metro/tram
+# ~0.5 DT, train ~5-8 DT by distance, louage shared per seat), so the model is
+# "base + per-km" with a mode-dependent base.
+#
+# Never returns None (Part B2.4): an unknown mode falls back to the bus
+# constant rather than yielding an unrankable itinerary.
+#
+# Constants live ONLY here, per the spec's "put constants in one place".
+FARE_DINARS: dict[str, tuple[float, float]] = {
+    #  mode        base DT   DT per km
+    "bus":        (0.500,   0.000),
+    "tram":       (0.500,   0.000),
+    "metro":      (0.600,   0.000),
+    "train":      (4.000,   0.090),
+    "louaj":      (1.000,   0.150),
+    "taxi":       (0.600,   0.520),   # matches TAXI_FARE_* below
+    "walk":       (0.000,   0.000),
+}
+FARE_FALLBACK: tuple[float, float] = FARE_DINARS["bus"]
+
+
+def fare_for_leg(mode: str, distance_m: float) -> float:
+    """Estimated fare in dinars for one leg. Never negative, never None."""
+    base, per_km = FARE_DINARS.get(canonical_mode(mode), FARE_FALLBACK)
+    km = max(0.0, float(distance_m)) / 1000.0
+    return round(base + per_km * km, 4)
+
+
+def fare_for_itinerary(legs: Sequence[dict[str, Any]]) -> float:
+    """Total estimated fare for an itinerary, charged once per BOARDED LINE.
+
+    Charging per leg was wrong and measurably so: an itinerary is expanded one
+    step per stop, so a 30-edge train ride arrived as 30 legs and was quoted at
+    ~122 DT instead of ~7. Real Tunisian practice is a ticket per boarding, so
+    consecutive legs on the SAME line are merged into one charge, and only a
+    change of line adds another.
+
+    Walks and transfers are free. Never returns None (Part B2.4).
+    """
+    total = 0.0
+    current_line: str | None = None
+    current_mode: str | None = None
+    current_m = 0.0
+    for leg in legs or ():
+        kind = (leg.get("type") or leg.get("mode") or "").lower()
+        if kind in ("walk", "transfer", ""):
+            continue
+        line = leg.get("line") or ""
+        mode = leg.get("mode") or kind
+        if line != current_line or mode != current_mode:
+            if current_line is not None:
+                total += fare_for_leg(current_mode or "", current_m)
+            current_line, current_mode, current_m = line, mode, 0.0
+        current_m += float(leg.get("distance_m") or 0.0)
+    if current_line is not None:
+        total += fare_for_leg(current_mode or "", current_m)
+    return round(total, 2)
+
+
+# ── User-facing mode taxonomy (B1) ────────────────────────────────────────
+# Previously metro was folded into RAIL_MODES with train, which made
+# "no metro but train is fine" inexpressible: a user could not exclude one
+# without excluding both. Modes are now flat and each is independently
+# includable/excludable. FAMILIES survives as a grouping layer for the older
+# family-based API, but nothing hides one mode inside another any more.
+#
+# User-facing mode -> seed line.mode values that map onto it.
+MODE_ALIASES: dict[str, frozenset[str]] = {
+    "bus": frozenset({"bus", "rfr"}),
+    "tram": frozenset({"tram"}),
+    "metro": frozenset({"metro"}),
+    "train": frozenset({"train", "rail"}),
+    "louaj": frozenset({"louaj", "louage"}),
+    "taxi": frozenset({"taxi"}),
+    "walk": frozenset({"walk"}),
+}
+
+# Canonical user-facing modes, in the display order used by labels and by the
+# station/line listings. Order is deliberate: urban modes first, intercity
+# rail last, road-for-hire after.
+USER_MODES: tuple[str, ...] = (
+    "bus",
+    "tram",
+    "metro",
+    "train",
+    "louaj",
+    "taxi",
+    "walk",
+)
+
+# Modes that actually appear as scheduled lines in the network. walk is always
+# permitted for access/egress and is never a selectable transport family on
+# its own (Part E: it is not a "transport family" unless the trip is short).
+TRANSIT_MODES: tuple[str, ...] = ("bus", "tram", "metro", "train", "louaj", "taxi")
+
+# French labels. The API and the UI are already French; mixing English in here
+# would be a regression, so en/ar are deliberately NOT added (Part B5).
+MODE_LABELS_FR: dict[str, str] = {
+    "bus": "Bus",
+    "tram": "Tramway",
+    "metro": "Metro",
+    "train": "Train",
+    "louaj": "Louage",
+    "taxi": "Taxi",
+    "walk": "Marche",
+}
+
+# Legacy family groupings, kept so /api/v1/route/modes and
+# /api/v1/route/options keep working unchanged. These are groupings, NOT the
+# unit of exclusion any more.
 BUS_MODES: frozenset[str] = frozenset({"bus", "rfr", "tram"})
 RAIL_MODES: frozenset[str] = frozenset({"train", "rail", "metro"})
 TAXI_MODES: frozenset[str] = frozenset({"taxi", "louaj"})
 
-# Default per-option mode sets. Overridable so a test or an env var can pin them.
+# The old family -> raw-mode map. Note the family layer can no longer express
+# "metro without train"; use include/exclude on USER_MODES for that.
 OPTION_MODES: dict[str, frozenset[str]] = {
     "bus": BUS_MODES,
     "louaj": TAXI_MODES,
     "train": RAIL_MODES,
 }
 
-# The three user-facing families, in a stable order. A request names any
-# SUBSET of these and gets exactly the itineraries that respect it, which is the
-# difference between "three fixed options" and "pick your modes".
 FAMILIES: tuple[str, ...] = ("bus", "louaj", "train")
 
-# Every non-empty subset of FAMILIES, precomputed. Seven combinations for three
-# families; enumerated rather than hand-listed so a fourth family cannot be
-# added without this staying correct.
 from itertools import combinations as _combinations  # noqa: E402
 
 COMBINATIONS: dict[frozenset[str], frozenset[str]] = {}
@@ -468,11 +705,90 @@ for _n in range(1, len(FAMILIES) + 1):
         COMBINATIONS[_key] = _modes
 
 
+def canonical_mode(raw: str | None) -> str:
+    """Map a seed line.mode onto one of USER_MODES. Unknown -> "bus".
+
+    Unknown modes must not vanish silently: they fall back to bus because a
+    scheduled line with an unrecognised tag is still a scheduled line, and
+    dropping it would delete real services from the network.
+    """
+    if not raw:
+        return "bus"
+    r = str(raw).strip().lower()
+    for mode, aliases in MODE_ALIASES.items():
+        if r in aliases:
+            return mode
+    return "bus"
+
+
+def resolve_allowed_modes(
+    include: list[str] | set[str] | tuple[str, ...] | None,
+    exclude: list[str] | set[str] | tuple[str, ...] | None,
+) -> frozenset[str] | None:
+    """Raw edge-mode set for an include/exclude request.
+
+    Returns None for "no restriction". Raises ValueError when the request can
+    never be satisfied (unknown mode name, or include-minus-exclude empty), so
+    the API can answer 400 instead of silently returning "no route".
+
+    The returned set contains RAW seed modes (bus, rfr, tram, train, rail,
+    metro, taxi, louaj) because that is what Edge.mode holds. Exclusion is
+    resolved through MODE_ALIASES, so excluding "train" also removes the seed
+    mode "rail", and excluding "bus" also removes "rfr".
+    """
+    known_raw: set[str] = set()
+    for aliases in MODE_ALIASES.values():
+        known_raw |= set(aliases)
+
+    def expand(names: set[str], what: str) -> set[str]:
+        out: set[str] = set()
+        unknown: set[str] = set()
+        for n in names:
+            key = str(n).strip().lower()
+            if not key:
+                continue
+            if key in MODE_ALIASES:
+                out |= set(MODE_ALIASES[key])
+            elif key in known_raw:
+                # Accept a raw seed mode too (e.g. "rfr").
+                out.add(key)
+            else:
+                unknown.add(key)
+        if unknown:
+            raise ValueError(
+                f"unknown {what}: {sorted(unknown)}; available: {list(USER_MODES)}"
+            )
+        return out
+
+    inc = expand(set(include or ()), "modes_include")
+    exc = expand(set(exclude or ()), "modes_exclude")
+    if inc:
+        allowed = inc - exc
+        if not allowed:
+            raise ValueError(
+                "modes_exclude removed every requested mode; "
+                f"available: {list(USER_MODES)}"
+            )
+        return frozenset(allowed)
+    if exc:
+        # Exclude-only: everything except the excluded modes. walk stays in, it
+        # is never a selectable transport but always needed for access.
+        allowed = known_raw - exc
+        if not allowed:
+            raise ValueError(
+                "modes_exclude removed every available mode; "
+                f"available: {list(USER_MODES)}"
+            )
+        return frozenset(allowed | {"walk"})
+    return None
+
+
 def modes_for(families: frozenset[str] | list[str] | set[str]) -> frozenset[str] | None:
     """Mode set for a selection of families, or None when the selection is empty.
 
-    None means "no restriction", which is what an empty selection maps to: the
-    caller decides whether an empty selection is an error or means everything.
+    Legacy family-based helper, retained for /api/v1/route/modes. It cannot
+    express "metro but not train"; callers needing that must use
+    resolve_allowed_modes() with include/exclude.
     """
     if not families:
         return None
@@ -484,9 +800,24 @@ def modes_for(families: frozenset[str] | list[str] | set[str]) -> frozenset[str]
 
 
 def label_for(families: frozenset[str]) -> str:
-    """Human label for a mode selection, e.g. "Bus + Train / Metro"."""
+    """Human label for a legacy family selection."""
     names = {"bus": "Bus", "louaj": "Louaj / Taxi", "train": "Train / Metro"}
     return " + ".join(names[f] for f in FAMILIES if f in families)
+
+
+def mode_label_fr(mode: str) -> str:
+    """French label for one user-facing mode."""
+    return MODE_LABELS_FR.get(canonical_mode(mode), mode)
+
+
+def label_modes_fr(modes: object) -> str:
+    """'Bus + Metro' style label for an iterable of modes, in USER_MODES order."""
+    seen: set[str] = set()
+    if isinstance(modes, str):
+        modes = [modes]
+    for m in modes or ():
+        seen.add(canonical_mode(m))
+    return " + ".join(MODE_LABELS_FR[m] for m in USER_MODES if m in seen)
 
 
 def build_graph() -> tuple[dict[str, Any], "Router"]:
@@ -505,11 +836,17 @@ class Router:
         self.stations = stations
         self.lines = lines
         self.mode_of_line: dict[str, str] = {}
+        # User-facing mode per line (B1). mode_of_line keeps the RAW seed value
+        # because Edge.mode must stay comparable against allowed_modes, which
+        # resolve_allowed_modes() returns as raw seed modes. The canonical form
+        # is what labels, fares and the API report.
+        self.user_mode_of_line: dict[str, str] = {}
         self.line_wait: dict[str, float] = {}  # line_id -> boarding wait (s)
         for ln in lines:
             ln_id = ln.get("id", "") or ""
             mode = ln.get("mode", "bus") or "bus"
             self.mode_of_line[ln_id] = mode
+            self.user_mode_of_line[ln_id] = canonical_mode(mode)
             deps = ln.get("departures")
             self.line_wait[ln_id] = min(
                 expected_wait(deps, mode), BOARDING_WAIT_CAP
@@ -524,6 +861,28 @@ class Router:
         self.geometry: dict[str, dict[str, Any]] = load_geometry_cache()
         self.walk_geometry: dict[str, dict[str, Any]] = load_walk_geometry_cache()
         self.taxi_geometry: dict[str, Any] = load_taxi_geometry_cache()
+        # The OSM road graph. Real source of truth for any leg whose endpoints
+        # are not two stations joined by a transit line (access walk, final walk,
+        # taxi/louaj). The geometry caches above stay as a fast path and as a
+        # fallback for stops far from any drivable road.
+        self.road_graph = load_road_graph(log=log) if load_road_graph else None
+        # Rail track, for train/metro/tram legs. Without it the cached
+        # geometry covers only 1 776 of ~3 900 station pairs and the rest
+        # were drawn as straight lines -- the jump-to-next-station zigzag.
+        self.rail_graph = load_rail_graph(log=log) if load_rail_graph else None
+        # station_id -> ordered list of line ids serving it (B3). Built from
+        # the line -> stops index, NOT from the station's own lines_served
+        # fragments, which are direction-oriented and often lack route_short_name.
+        # This is the authoritative "what passes here" source.
+        self.lines_by_station: dict[str, list[str]] = defaultdict(list)
+        for ln in lines:
+            ln_id = ln.get("id", "") or ""
+            if not ln_id:
+                continue
+            stops = ln.get("stations") or ln.get("stops") or []
+            for sid in stops:
+                if isinstance(sid, str):
+                    self.lines_by_station[sid].append(ln_id)
         self.adj: dict[str, list[Edge]] = defaultdict(list)
         for ln in lines:
             stops = ln.get("stations") or ln.get("stops") or []
@@ -629,10 +988,17 @@ class Router:
                             wentry = self.walk_geometry.get(wkey)
                             wgeom: list[list[float]] = []
                             wlen = d
+                            # Geometry here is deliberately NOT live-routed.
+                            # This loop builds every station pair within 900 m
+                            # (12 736 of them in the current seed) and a live
+                            # A* per pair would add minutes to process startup.
+                            # The precomputed walk cache is used if present; the
+                            # road graph fills in the real pedestrian path
+                            # lazily, per leg, in _expand_path -- see
+                            # resolve_walk_geometry -- which is memoised and only
+                            # ever pays for a walk the user actually sees.
                             if wentry and wentry.get("geometry"):
                                 cand = oriented_geometry(wentry, sid, other)
-                                # Same lower bound as transit: a footpath
-                                # cannot be shorter than the crow-flies line.
                                 cand_m = polyline_length(cand)
                                 if cand_m >= 0.95 * d:
                                     wgeom = cand
@@ -669,6 +1035,8 @@ class Router:
         end_lat: float,
         end_lon: float,
         allowed_modes: frozenset[str] | None = None,
+        transfer_penalty_sec: float | None = None,
+        max_walk_m: float | None = None,
     ) -> dict[str, Any]:
         """Find multi-modal paths and return a ranked list of itineraries.
 
@@ -683,8 +1051,15 @@ class Router:
         walk-to-station cost as the initial label) so one pass covers every
         (start, end) pair instead of N*M separate Dijkstras.
         """
-        start_candidates = self._nearest_stations(start_lat, start_lon, MAX_START_WALK_METERS)
-        end_candidates = self._nearest_stations(end_lat, end_lon, MAX_END_WALK_METERS)
+        transfer_penalty = (
+            TRANSFER_PENALTY_SEC
+            if transfer_penalty_sec is None
+            else float(transfer_penalty_sec)
+        )
+        start_cap = MAX_START_WALK_METERS if max_walk_m is None else float(max_walk_m)
+        end_cap = MAX_END_WALK_METERS if max_walk_m is None else float(max_walk_m)
+        start_candidates = self._nearest_stations(start_lat, start_lon, start_cap)
+        end_candidates = self._nearest_stations(end_lat, end_lon, end_cap)
         # No stop to walk to: widen the search so a town with no station of its
         # own still gets ride-then-final-gap instead of one taxi line across the
         # country. Only stops a line actually serves are useful -- walking to an
@@ -697,7 +1072,7 @@ class Router:
         # got this wrong: Mahdia has a stop inside 2 km yet its drop-off is 90.8
         # km out, so the flag priced the gap as a walk while the label called
         # it a taxi hop.
-        if not end_candidates:
+        if not end_candidates and end_cap >= MAX_END_WALK_METERS:
             served = [
                 s
                 for s in self._nearest_stations(end_lat, end_lon, DROPOFF_SEARCH_METERS)
@@ -827,7 +1202,7 @@ class Router:
                             segment_cost += edge.wait_s
                         # Transfer penalty when switching lines.
                         if cur_line is not None and cur_line != edge.line:
-                            segment_cost += TRANSFER_PENALTY_SEC
+                            segment_cost += transfer_penalty
                     new_cost = cost + segment_cost
                     new_state: tuple[str, str | None] = (edge.to_id, arrived_line)
                     if new_cost < dist.get(new_state, float("inf")):
@@ -865,26 +1240,40 @@ class Router:
             # Cost the trip on the same real road distance the leg is drawn
             # with. Pricing the straight line and drawing the road would make
             # the option look faster than the polyline the user sees.
-            taxi_geom_pre = road_geometry_for(
-                self.taxi_geometry, start_lat, start_lon, end_lat, end_lon
-            )
-            taxi_road_m = (
-                polyline_length(taxi_geom_pre)
-                if taxi_geom_pre and polyline_length(taxi_geom_pre) >= 0.95 * direct_m
-                else direct_m
-            )
+            # Live road graph first, precomputed taxi cache second. The graph is
+            # authoritative: it covers the whole country and knows one-way
+            # restrictions, so the fare is computed on the road the taxi drives,
+            # not on a straight line through fields.
+            live_taxi = road_leg(self, start_lat, start_lon, end_lat, end_lon, "car")
+            if live_taxi is not None and live_taxi[1] >= 0.95 * direct_m:
+                taxi_road_m = live_taxi[1]
+            else:
+                taxi_geom_pre = road_geometry_for(
+                    self.taxi_geometry, start_lat, start_lon, end_lat, end_lon
+                )
+                taxi_road_m = (
+                    polyline_length(taxi_geom_pre)
+                    if taxi_geom_pre and polyline_length(taxi_geom_pre) >= 0.95 * direct_m
+                    else direct_m
+                )
             taxi_s = taxi_road_m / TAXI_SPEED_MS
             taxi_fare = TAXI_FARE_BASE + TAXI_FARE_PER_KM * direct_km
             if taxi_s < best_cost:
                 # Real road geometry when the taxi cache has this pair. The
                 # straight line is a lower bound, so using it here both draws a
                 # line through fields and under-prices the trip.
-                taxi_geom = road_geometry_for(
-                    self.taxi_geometry, start_lat, start_lon, end_lat, end_lon
-                )
-                road_m = polyline_length(taxi_geom) if taxi_geom else direct_m
-                if road_m < 0.95 * direct_m:
-                    taxi_geom, road_m = [], direct_m
+                taxi_geom: list[list[float]] = []
+                if live_taxi is not None and live_taxi[1] >= 0.95 * direct_m:
+                    taxi_geom, road_m = live_taxi[0], live_taxi[1]
+                else:
+                    cached = road_geometry_for(
+                        self.taxi_geometry, start_lat, start_lon, end_lat, end_lon
+                    )
+                    road_m = polyline_length(cached) if cached else direct_m
+                    if cached and road_m >= 0.95 * direct_m:
+                        taxi_geom = cached
+                    else:
+                        road_m = direct_m
                 road_s = road_m / TAXI_SPEED_MS
                 road_fare = TAXI_FARE_BASE + TAXI_FARE_PER_KM * (road_m / 1000.0)
                 taxi_step = {
@@ -960,6 +1349,328 @@ class Router:
         out.sort(key=lambda x: x["_dist_m"])
         return out
 
+    # ── B2: multi-objective planner ─────────────────────────────────────
+    OBJECTIVES: tuple[str, ...] = ("fastest", "cheapest", "fewest_transfers")
+
+    @staticmethod
+    def _itinerary_signature(result: dict[str, Any]) -> tuple:
+        """Distinctness key: the ordered (mode, line_id) of every ride leg.
+
+        Walks are excluded on purpose. Two itineraries that differ only in how
+        far the rider walks on the same bus are the same journey as far as a
+        choice list is concerned, and offering both is the "messy options"
+        complaint (A3).
+        """
+        sig: list[tuple[str, str]] = []
+        for step in result.get("steps") or ():
+            if step.get("type") != "ride":
+                continue
+            entry = (step.get("mode") or "", step.get("line") or "")
+            # Collapse consecutive legs on the same line. An itinerary is
+            # expanded per STOP, so without this every stop looked like a
+            # distinct itinerary and dedup never fired -- which is why all
+            # three objectives returned exactly one option.
+            if sig and sig[-1] == entry:
+                continue
+            sig.append(entry)
+        if not sig:
+            # No rides at all (pure walk / pure taxi): fall back on mode+shape.
+            sig = [
+                (step.get("type") or "", "")
+                for step in result.get("steps") or ()
+                if step.get("type") in ("taxi", "walk")
+            ]
+        return tuple(sig)
+
+    @staticmethod
+    def _count_transfers(steps: Sequence[dict[str, Any]]) -> int:
+        """Number of line changes across ride legs."""
+        lines = [
+            s.get("line") or "" for s in (steps or ()) if s.get("type") == "ride"
+        ]
+        changes = 0
+        for i in range(1, len(lines)):
+            if lines[i] != lines[i - 1]:
+                changes += 1
+        return changes
+
+    @staticmethod
+    def _modes_used(steps: Sequence[dict[str, Any]]) -> list[str]:
+        used: set[str] = set()
+        for step in steps or ():
+            if step.get("type") in ("walk", "transfer"):
+                continue
+            m = canonical_mode(step.get("mode") or step.get("type") or "")
+            if m != "walk":
+                used.add(m)
+        return [m for m in USER_MODES if m in used]
+
+    @staticmethod
+    def _geometry_report(steps: Sequence[dict[str, Any]]) -> tuple[bool, list[dict[str, Any]]]:
+        """(geometry_complete, gaps[]) — geometry honesty (C6).
+
+        A leg is a GAP when it moves a meaningful distance and carries no
+        polyline. Those are exactly the legs the client must render dashed
+        rather than silently joining two points with a straight line.
+        """
+        gaps: list[dict[str, Any]] = []
+        for step in steps or ():
+            dist = float(step.get("distance_m") or 0.0)
+            has = bool(step.get("geometry"))
+            if has or dist < GEOMETRY_REQUIRED_M:
+                continue
+            gaps.append(
+                {
+                    "type": step.get("type"),
+                    "mode": step.get("mode"),
+                    "line": step.get("line"),
+                    "from": step.get("from"),
+                    "to": step.get("to"),
+                    "distance_m": round(dist),
+                    "straight_m": step.get("straight_m"),
+                    "reason": "no_cached_geometry",
+                }
+            )
+        return (not gaps), gaps
+
+    def route_plan(
+        self,
+        start_lat: float,
+        start_lon: float,
+        end_lat: float,
+        end_lon: float,
+        include: Sequence[str] | None = None,
+        exclude: Sequence[str] | None = None,
+        objective: str = "fastest",
+        max_transfers: int | None = None,
+        max_walk_m: float | None = None,
+        max_itineraries: int = 3,
+    ) -> dict[str, Any]:
+        """Return distinct, labelled itineraries for a filtered request.
+
+        Several strategies are run and their best results merged, deduplicated
+        and ranked. Strategies, not just weights, is the point: a single
+        Dijkstra with a bigger transfer penalty does NOT produce a different
+        journey when one itinerary dominates on every axis, which is exactly
+        the Tunis->Sousse case (the single rail journey is fastest, has the
+        fewest transfers and is the only rail option, so re-ranking it three
+        times yields three copies of itself).
+
+          fastest             unfiltered search, time-optimal
+          fewest_transfers    a very high transfer penalty
+          cheapest            unfiltered search (the fare model is a post-hoc
+                              ranking over candidates, not a search cost, so
+                              this does not change the journey found)
+          bus_preferred       bus/rfr/tram only
+          rail_preferred      train/rail/metro only
+          metro_preferred     metro only
+          train_only          train/rail only
+
+        Include/exclude is a HARD filter applied inside edge expansion for
+        every strategy, so an excluded mode can never appear in a leg (D1).
+        """
+        if objective not in self.OBJECTIVES:
+            raise ValueError(
+                f"unknown objective {objective!r}; expected one of {list(self.OBJECTIVES)}"
+            )
+        try:
+            max_itineraries = int(max_itineraries)
+        except (TypeError, ValueError):
+            max_itineraries = 3
+        max_itineraries = max(1, min(8, max_itineraries))
+        if max_transfers is not None:
+            max_transfers = int(max_transfers)
+            if max_transfers < 0:
+                raise ValueError("max_transfers must be >= 0")
+
+        user_allowed = resolve_allowed_modes(include, exclude)
+
+        # Translate the user's filter into per-strategy raw-mode sets.
+        bus_only = frozenset({"bus", "rfr", "tram"})
+        rail_only = frozenset({"train", "rail", "metro"})
+        metro_only = frozenset({"metro"})
+        train_only = frozenset({"train", "rail"})
+
+        # The two unfiltered strategies still have to respect the user's
+        # filter: "fastest" with allowed=None would happily return the metro
+        # journey the user just excluded. user_allowed is therefore the BASE
+        # for every strategy, never None when a filter was given.
+        strategies: list[tuple[str, float, frozenset[str] | None]] = [
+            ("fastest", TRANSFER_PENALTY_SEC, user_allowed),
+            ("fewest_transfers", FEWEST_TRANSFERS_PENALTY_SEC, user_allowed),
+        ]
+        for name, subset in (
+            ("bus_preferred", bus_only),
+            ("rail_preferred", rail_only),
+            ("metro_preferred", metro_only),
+            ("train_only", train_only),
+        ):
+            inter = subset if user_allowed is None else (user_allowed & subset)
+            if not inter:
+                continue
+            strategies.append((name, TRANSFER_PENALTY_SEC, inter))
+
+        candidates: list[dict[str, Any]] = []
+        for name, penalty, allowed in strategies:
+            raw = self.route(
+                start_lat,
+                start_lon,
+                end_lat,
+                end_lon,
+                allowed_modes=allowed,
+                transfer_penalty_sec=penalty,
+                max_walk_m=max_walk_m,
+            )
+            steps = raw.get("steps") or []
+            if not steps or raw.get("mode") == "walk" and len(steps) <= 1:
+                # Skip the degenerate pure-straight-line walk unless nothing
+                # else was found; it is offered as a last resort below.
+                continue
+            transfers = self._count_transfers(steps)
+            if max_transfers is not None and transfers > max_transfers:
+                continue
+            duration_s = float(raw.get("duration_min") or 0.0) * 60.0
+            fare = fare_for_itinerary(steps)
+            complete, gaps = self._geometry_report(steps)
+            candidates.append(
+                {
+                    "searched_for": name,
+                    "raw": raw,
+                    "steps": steps,
+                    "signature": self._itinerary_signature(raw),
+                    "duration_s": duration_s,
+                    "transfers": transfers,
+                    "fare_estimate": fare,
+                    "modes_used": self._modes_used(steps),
+                    "geometry_complete": complete,
+                    "gaps": gaps,
+                }
+            )
+
+        # Last resort: the direct walk, only if the search produced nothing.
+        if not candidates:
+            direct_m = haversine(start_lat, start_lon, end_lat, end_lon)
+            if direct_m <= MAX_START_WALK_METERS * 2:
+                walk_s = direct_m / WALK_SPEED_MS
+                steps = [
+                    {
+                        "type": "walk",
+                        "from": {"lat": start_lat, "lon": start_lon},
+                        "to": {"lat": end_lat, "lon": end_lon},
+                        "distance_m": round(direct_m),
+                        "duration_min": round(walk_s / 60, 1),
+                        "time_seconds": round(walk_s, 1),
+                        "label": f"Marcher {round(direct_m)} m (~{round(walk_s / 60)} min)",
+                    }
+                ]
+                candidates.append(
+                    {
+                        "searched_for": "walk",
+                        "raw": {"mode": "walk", "duration_min": round(walk_s / 60, 1), "steps": steps},
+                        "steps": steps,
+                        "signature": self._itinerary_signature({"steps": steps}),
+                        "duration_s": walk_s,
+                        "transfers": 0,
+                        "fare_estimate": 0.0,
+                        "modes_used": ["walk"],
+                        "geometry_complete": False,
+                        "gaps": [],
+                    }
+                )
+
+        if not candidates:
+            return {
+                "query": self._query_echo(start_lat, start_lon, end_lat, end_lon,
+                                          include, exclude, objective,
+                                          max_transfers, max_walk_m, max_itineraries),
+                "itineraries": [],
+                "available_modes": list(USER_MODES),
+                "message": _no_route_message(include, exclude),
+            }
+
+        # Rank by the requested objective (B2.4). Ties fall through to the
+        # secondary axis so the order is total and deterministic.
+        if objective == "cheapest":
+            candidates.sort(key=lambda c: (c["fare_estimate"], c["duration_s"]))
+        elif objective == "fewest_transfers":
+            candidates.sort(key=lambda c: (c["transfers"], c["duration_s"]))
+        else:
+            candidates.sort(key=lambda c: (c["duration_s"], c["transfers"]))
+
+        out: list[dict[str, Any]] = []
+        seen: set[tuple] = set()
+        for c in candidates:
+            if c["signature"] in seen:
+                continue
+            seen.add(c["signature"])
+            out.append(c)
+            if len(out) >= max_itineraries:
+                break
+
+        return {
+            "query": self._query_echo(start_lat, start_lon, end_lat, end_lon,
+                                      include, exclude, objective,
+                                      max_transfers, max_walk_m, max_itineraries),
+            "itineraries": [self._present(c, i + 1, objective) for i, c in enumerate(out)],
+            "available_modes": list(USER_MODES),
+            "message": None,
+        }
+
+    @staticmethod
+    def _query_echo(
+        start_lat: float,
+        start_lon: float,
+        end_lat: float,
+        end_lon: float,
+        include: Sequence[str] | None,
+        exclude: Sequence[str] | None,
+        objective: str,
+        max_transfers: int | None,
+        max_walk_m: float | None,
+        max_itineraries: int,
+    ) -> dict[str, Any]:
+        return {
+            "start": {"lat": start_lat, "lon": start_lon},
+            "end": {"lat": end_lat, "lon": end_lon},
+            "modes_include": list(include) if include else [],
+            "modes_exclude": list(exclude) if exclude else [],
+            "objective": objective,
+            "max_transfers": max_transfers,
+            "max_walk_m": max_walk_m,
+            "max_itineraries": max_itineraries,
+        }
+
+    @staticmethod
+    def _present(c: dict[str, Any], n: int, objective: str) -> dict[str, Any]:
+        """One client-facing itinerary card (B5)."""
+        raw = c["raw"]
+        modes = c["modes_used"]
+        duration_min = round(c["duration_s"] / 60.0, 1)
+        tr = c["transfers"]
+        bits = [label_modes_fr(modes) or "Marche"]
+        bits.append(_fmt_dur_fr(duration_min))
+        if tr:
+            bits.append(f"{tr} correspondance{'s' if tr > 1 else ''}")
+        else:
+            bits.append("direct")
+        return {
+            "id": f"opt_{n}",
+            "label": " · ".join(bits),
+            "rank_reason": _rank_reason_fr(c, objective, n),
+            "mode": raw.get("mode"),
+            "duration_min": duration_min,
+            "duration_s": round(c["duration_s"], 1),
+            "transfers": tr,
+            "fare_estimate_dinars": c["fare_estimate"],
+            "modes_used": modes,
+            "legs": c["steps"],
+            "steps": c["steps"],
+            "geometry_complete": c["geometry_complete"],
+            "gaps": c["gaps"],
+            "searched_for": c["searched_for"],
+        }
+
+
     def _expand_path(
         self,
         path_stations: list[str],
@@ -990,13 +1701,23 @@ class Router:
         # Start walk (only if the Dijkstra source station differs from the actual
         # start point — i.e. the walk was non-zero).
         if s_start and first and first.get("lat") and first.get("lon"):
-            walk_m = haversine(start_lat, start_lon, first["lat"], first["lon"])
+            straight_walk_m = haversine(start_lat, start_lon, first["lat"], first["lon"])
+            # Real pedestrian route when the road graph can serve the pair. The
+            # straight line is kept as the distance floor, so a graph miss costs
+            # the polyline but never invents a shorter-than-impossible walk.
+            live = road_leg(self, start_lat, start_lon, first["lat"], first["lon"], "foot")
+            walk_m = straight_walk_m
+            walk_geom: list[list[float]] = []
+            if live is not None and live[1] >= 0.95 * straight_walk_m:
+                walk_geom, walk_m = live[0], live[1]
             if walk_m > 1:
                 walk_min = walk_m / 1000 / WALK_SPEED_KMH * 60
                 steps.append({
                     "type": "walk",
                     "from": {"lat": start_lat, "lon": start_lon},
                     "to": {"lat": first["lat"], "lon": first["lon"]},
+                    "geometry": walk_geom,
+                    "straight_m": round(straight_walk_m),
                     # The access walk runs from the rider's point to the first
                     # station, so it has no station object at its end and no
                     # to_name. It does walk *to* that station, so name it --
@@ -1030,6 +1751,14 @@ class Router:
             # own walk step so the itinerary reads "walk, ride, walk" instead of
             # silently absorbing the transfer into the following ride.
             if line_used is None and seg_m > 1:
+                # Upgrade a straight-lined transfer walk to the real pedestrian
+                # path now that we know this leg is on the itinerary. The edge's
+                # own polyline is the fallback, so a graph miss degrades to
+                # exactly what it showed before this change.
+                wg, seg_m = resolve_walk_geometry(
+                    self, a["lat"], a["lon"], b["lat"], b["lon"], seg_geom or None
+                )
+                seg_geom = wg
                 walk_min = seg_m / 1000 / WALK_SPEED_KMH * 60
                 steps.append({
                     "type": "walk",
@@ -1062,9 +1791,44 @@ class Router:
             if line_used is None:
                 continue
 
-            mode = self.mode_of_line.get(line_used or "", "bus") or "bus"
+            # Report the USER-FACING mode (B1). Raw seed mode was "rail" for a
+            # metro-tagged line in some records; the client must not have to
+            # know that mapping.
+            mode = self.user_mode_of_line.get(line_used or "", "bus") or "bus"
             ride_m = seg_m
-            ride_min = (edge.time_s / 60.0) if edge else (ride_m / 1000 / transit_speed_kmh(mode) * 60)
+            # Speed lookup must use the RAW seed mode, not the user-facing one.
+            # canonical_mode() folds seed "rail" into "train", but SPEED_BY_MODE
+            # rates them differently (train 60 km/h, rail 55 km/h), so passing
+            # the canonical name silently re-timed every regional-rail leg and
+            # changed which route the search picked (measured: Tunis->Sfax went
+            # 344.7 -> 352.3 min and the walk/no-walk ordering test broke).
+            # Prefer REAL TRACK over cached geometry for rail modes.
+            # The cache covers only 1 776 of ~3 900 station pairs and the gaps
+            # are almost all rail, so a missing cached segment rendered as a
+            # straight line -- the "jumps to the next station then comes back"
+            # artefact. Snapping to the rail network fixes it at the source: the
+            # polyline is whatever the rails physically do between the two
+            # points, independent of any line number.
+            #
+            # The cached geometry is NOT discarded. It stays the fallback when
+            # the two points are not on one connected track, and the result is
+            # length-checked against the crow-flies distance so no impossible
+            # sub-straight-line path can be accepted.
+            if mode in ("train", "metro", "tram"):
+                live_rail = rail_leg(
+                    self, a["lat"], a["lon"], b["lat"], b["lon"]
+                )
+                if live_rail is not None and live_rail[1] >= 0.95 * straight_m:
+                    seg_geom = live_rail[0]
+                    seg_m = live_rail[1]
+                    edge = None  # force re-timing from the real track distance
+
+            raw_mode = self.mode_of_line.get(line_used or "", "bus") or "bus"
+            ride_min = (
+                (edge.time_s / 60.0)
+                if edge
+                else (ride_m / 1000 / transit_speed_kmh(raw_mode) * 60)
+            )
 
             prev_line = path_lines[i]  # line arrived on at a
             # Boarding wait is paid when starting a new line (first boarding or
@@ -1135,7 +1899,18 @@ class Router:
         # destination is visible to the user instead of being hidden behind one
         # straight line across the map.
         if s_end and s_end.get("lat") and s_end.get("lon"):
-            walk_m = haversine(prev_lat, prev_lon, end_lat, end_lon)
+            straight_walk_m = haversine(prev_lat, prev_lon, end_lat, end_lon)
+            # Route the gap in the mode it will actually be travelled: a short
+            # gap is walked (pedestrian ways, steps, footways), while a gap past
+            # MAX_END_WALK_METERS is a local taxi hop and must follow drivable
+            # roads. Routing a 40 km taxi hop on the foot network would send it
+            # down footpaths and stairs.
+            leg_mode = "foot" if straight_walk_m <= MAX_END_WALK_METERS else "car"
+            live = road_leg(self, prev_lat, prev_lon, end_lat, end_lon, leg_mode)
+            walk_m = straight_walk_m
+            walk_geom: list[list[float]] = []
+            if live is not None and live[1] >= 0.95 * straight_walk_m:
+                walk_geom, walk_m = live[0], live[1]
             if walk_m > 1:
                 # Same rule as the cost branch in route(): distance decides,
                 # not the used_dropoff flag, so the rendered leg and the
@@ -1147,6 +1922,8 @@ class Router:
                         "from": {"lat": prev_lat, "lon": prev_lon},
                         "to": {"lat": end_lat, "lon": end_lon},
                         "from_name": prev_name,
+                        "geometry": walk_geom,
+                        "straight_m": round(straight_walk_m),
                         "distance_m": round(walk_m),
                         "distance_km": round(walk_m / 1000, 1),
                         "duration_min": round(hop_min, 1),
@@ -1164,6 +1941,8 @@ class Router:
                         "type": "walk",
                         "from": {"lat": prev_lat, "lon": prev_lon},
                         "to": {"lat": end_lat, "lon": end_lon},
+                        "geometry": walk_geom,
+                        "straight_m": round(straight_walk_m),
                         "distance_m": round(walk_m),
                         "duration_min": round(walk_min, 1),
                         "time_seconds": round(walk_min * 60, 1),
@@ -1184,3 +1963,43 @@ if __name__ == "__main__":
         lat1, lon1, lat2, lon2 = 36.806, 10.184, 36.914, 9.866  # Tunis Centre -> Bizerte
     res = r.route(lat1, lon1, lat2, lon2)
     print(json.dumps(res, indent=2, ensure_ascii=False))
+
+
+def _fmt_dur_fr(minutes: float) -> str:
+    m = int(round(minutes))
+    if m < 60:
+        return f"{m} min"
+    h, rem = divmod(m, 60)
+    return f"{h} h {rem:02d}" if rem else f"{h} h"
+
+
+def _rank_reason_fr(c: dict[str, Any], objective: str, n: int) -> str:
+    modes = label_modes_fr(c["modes_used"]) or "Marche"
+    tr = c["transfers"]
+    dur = _fmt_dur_fr(c["duration_s"] / 60.0)
+    if n == 1:
+        if objective == "cheapest":
+            return f"le moins cher · {c['fare_estimate']:.2f} DT · {dur}"
+        if objective == "fewest_transfers":
+            return f"le moins de correspondances · {tr} · {dur}"
+        return f"le plus rapide · {dur}"
+    return f"{modes} · {dur} · {tr} correspondance{'s' if tr > 1 else ''}"
+
+
+def _no_route_message(
+    include: Sequence[str] | None,
+    exclude: Sequence[str] | None,
+) -> str:
+    """Actionable French message when filters leave no journey (B5.message)."""
+    if exclude:
+        return (
+            "Aucun itineraire avec les modes selectionnes; essayez d'activer "
+            + ", ".join(sorted(set(USER_MODES) - {canonical_mode(m) for m in exclude}))
+            + "."
+        )
+    if include:
+        return (
+            "Aucun itineraire pour ces modes; essayez d'en ajouter un autre "
+            f"({', '.join(USER_MODES)})."
+        )
+    return "Aucun itineraire trouve entre ces deux points."

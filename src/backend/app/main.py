@@ -33,8 +33,12 @@ from src.backend.app.routing import (
     COMBINATIONS,
     FAMILIES,
     OPTION_MODES,
+    USER_MODES,
     Router,
+    canonical_mode,
     label_for,
+    label_modes_fr,
+    mode_label_fr,
     modes_for,
 )
 
@@ -359,6 +363,13 @@ class LineDetail(BaseModel):
     line: dict[str, Any]
     stops: list[StopInfo]
     count: int
+    # ── B4 additions: geometry honesty ────────────────────────────────
+    mode: str | None = None
+    mode_label: str | None = None
+    geometry: dict[str, Any] | None = None      # GeoJSON LineString, [[lon,lat]]
+    geometry_complete: bool = False
+    geometry_segments: list[dict[str, Any]] = []
+    gaps: list[dict[str, Any]] = []
 
 
 # ── Pydantic models for the local transit-router endpoint ─────────────────
@@ -652,6 +663,169 @@ def stations_near(
     )
 
 
+# ── B3: station detail (what passes here) ─────────────────────────────────
+class StationLineInfo(BaseModel):
+    line_id: str
+    number: str | None = None
+    name: str | None = None
+    mode: str
+    mode_label: str
+    operator: str | None = None
+    color: str | None = None
+    direction: str | None = None
+    stops_count: int = 0
+
+
+class StationDetail(BaseModel):
+    id: str
+    name: str | None = None
+    lat: float | None = None
+    lon: float | None = None
+    city: str | None = None
+    modes: list[str]
+    lines: list[StationLineInfo]
+    count: int
+
+
+@app.get("/api/v1/stations/{station_id}", response_model=StationDetail, tags=["Stations"])
+def station_detail(station_id: str) -> StationDetail:
+    """Every line that serves this stop, built from the line -> stops index.
+
+    B3 rule: lines come from ROUTER.lines_by_station, i.e. from the lines that
+    actually list this station_id in their stops. The station's own
+    `lines_served` fragments are NOT used as the source, because they are
+    direction-oriented and routinely have a null route_short_name and no
+    stable id -- which is exactly why "what passes here" used to be unusable.
+    """
+    st = STATION_BY_ID.get(station_id)
+    if st is None:
+        raise HTTPException(status_code=404, detail=f"Station '{station_id}' not found")
+
+    line_ids = list(dict.fromkeys(ROUTER.lines_by_station.get(station_id, [])))
+    infos: list[StationLineInfo] = []
+    for lid in line_ids:
+        ln = LINE_BY_ID.get(lid)
+        if ln is None:
+            continue
+        stops = ln.get("stations") or ln.get("stops") or []
+        raw_mode = ln.get("mode") or "bus"
+        mode = canonical_mode(raw_mode)
+        # Direction/terminus: the end of the stop list, which is the only
+        # direction information the seed actually carries.
+        direction = None
+        termini = ln.get("terminus") or ln.get("ends")
+        if isinstance(termini, list) and len(termini) >= 2:
+            direction = f"{termini[0]} - {termini[1]}"
+        else:
+            tail = stops[-1] if stops else None
+            tail_st = STATION_BY_ID.get(tail) if isinstance(tail, str) else None
+            if tail_st is not None and tail_st.get("name"):
+                head_st = STATION_BY_ID.get(stops[0]) if stops else None
+                head_name = (head_st or {}).get("name") or "?"
+                direction = f"{head_name} - {tail_st['name']}"
+        infos.append(
+            StationLineInfo(
+                line_id=lid,
+                number=ln.get("number") or ln.get("route_id") or None,
+                name=ln.get("name") or None,
+                mode=mode,
+                mode_label=mode_label_fr(mode),
+                operator=ln.get("operator") or None,
+                color=ln.get("color") or ln.get("route_color") or None,
+                direction=direction,
+                stops_count=len(stops),
+            )
+        )
+
+    # Sort by mode in USER_MODES display order, then number, then name.
+    order = {m: i for i, m in enumerate(USER_MODES)}
+    infos.sort(
+        key=lambda li: (
+            order.get(li.mode, 99),
+            (li.number or "").zfill(4),
+            (li.name or ""),
+        )
+    )
+    modes = [m for m in USER_MODES if any(li.mode == m for li in infos)]
+    return StationDetail(
+        id=st.get("id") or station_id,
+        name=st.get("name"),
+        lat=st.get("lat"),
+        lon=st.get("lon"),
+        city=st.get("city") or nearest_city(st["lat"], st["lon"]) if st.get("lat") and st.get("lon") else None,
+        modes=modes,
+        lines=infos,
+        count=len(infos),
+    )
+
+
+def _line_detail_with_geometry(line: dict[str, Any], stops: list[StopInfo]) -> LineDetail:
+    """Assemble LineDetail plus B4's geometry contract.
+
+    Geometry honesty (C6 / A5): NEVER stitch a single straight line from the
+    first stop to the last when intermediate track is missing. Each consecutive
+    stop pair is reported on its own and flagged; missing ones also land in
+    `gaps` with their straight-line length, so the client draws a dashed
+    placeholder instead of a line crossing the country.
+    """
+    raw_mode = line.get("mode") or "bus"
+    mode = canonical_mode(raw_mode)
+    segs: list[dict[str, Any]] = []
+    gaps: list[dict[str, Any]] = []
+    stitched: list[list[float]] = []
+    complete = True
+
+    for a, b in zip(stops, stops[1:]):
+        if a.lat is None or a.lon is None or b.lat is None or b.lon is None:
+            continue
+        pts = _geometry_for(a.stop_id, b.stop_id)
+        gap_m = _haversine_km(a.lat, a.lon, b.lat, b.lon) * 1000.0
+        segs.append(
+            {
+                "from_stop_id": a.stop_id,
+                "to_stop_id": b.stop_id,
+                "from_name": a.name,
+                "to_name": b.name,
+                "has_geometry": bool(pts),
+                "needs_geometry": (not pts) and gap_m >= 300.0,
+                "gap_m": round(gap_m),
+                "geometry": pts,
+            }
+        )
+        if pts:
+            # Cache polylines are [[lat, lon]]; stitch in that order.
+            stitched.extend(pts if not stitched else pts[1:])
+        elif gap_m >= 300.0:
+            complete = False
+            gaps.append(
+                {
+                    "from_stop_id": a.stop_id,
+                    "to_stop_id": b.stop_id,
+                    "from_name": a.name,
+                    "to_name": b.name,
+                    "gap_m": round(gap_m),
+                    "reason": "no_cached_geometry",
+                }
+            )
+
+    geometry: dict[str, Any] | None = None
+    if complete and len(stitched) >= 2:
+        # GeoJSON wants [[lon, lat]].
+        geometry = {"type": "LineString", "coordinates": [[p[1], p[0]] for p in stitched]}
+
+    return LineDetail(
+        line=line,
+        stops=stops,
+        count=len(stops),
+        mode=mode,
+        mode_label=mode_label_fr(mode),
+        geometry=geometry,
+        geometry_complete=complete,
+        geometry_segments=segs,
+        gaps=gaps,
+    )
+
+
 @app.get("/api/v1/lines", response_model=LinesResponse, tags=["Lines"])
 def get_lines() -> LinesResponse:
     """All transport lines (keyed by unique id; number is filterable)."""
@@ -729,7 +903,62 @@ def get_line(line_identifier: str) -> LineDetail:
                     stop_id=s.get("stop_id"),
                 )
             )
-    return LineDetail(line=line, stops=stops, count=len(stops))
+    return _line_detail_with_geometry(line, stops)
+
+
+@app.get("/api/v1/route/plan", tags=["Routing"])
+def route_plan_endpoint(
+    start_lat: float = Query(..., description="Start latitude"),
+    start_lon: float = Query(..., description="Start longitude"),
+    end_lat: float = Query(..., description="End latitude"),
+    end_lon: float = Query(..., description="End longitude"),
+    modes_include: str | None = Query(
+        None, description="Comma-separated modes to allow, e.g. bus,metro,walk"
+    ),
+    modes_exclude: str | None = Query(
+        None, description="Comma-separated modes to forbid, e.g. train,metro"
+    ),
+    objective: str = Query("fastest", description="fastest | cheapest | fewest_transfers"),
+    max_transfers: int | None = Query(None, ge=0, description="Cap on line changes"),
+    max_walk_m: float | None = Query(None, gt=0, description="Cap access+egress walk (m)"),
+    max_itineraries: int = Query(3, ge=1, le=8),
+) -> dict[str, Any]:
+    """Multi-objective, mode-filtered routing (B2 / B5).
+
+    This is THE routing endpoint. /api/v1/route/transit and
+    /api/v1/route/options are kept working for existing clients and are now
+    thin wrappers over the same planner, so there is one ranking implementation
+    rather than three half-working ones (C3, B2).
+
+    Filters are HARD: modes_exclude is applied inside Dijkstra edge expansion,
+    so an excluded mode cannot appear in any leg (D1).
+
+    Example:
+      curl "http://127.0.0.1:8000/api/v1/route/plan?start_lat=36.8065&start_lon=10.1815\
+&end_lat=36.7598&end_lon=10.1906&modes_exclude=metro&objective=fewest_transfers"
+    """
+    def _split(raw: str | None) -> list[str]:
+        if not raw:
+            return []
+        return [p.strip() for p in raw.split(",") if p.strip()]
+
+    try:
+        return ROUTER.route_plan(
+            start_lat,
+            start_lon,
+            end_lat,
+            end_lon,
+            include=_split(modes_include),
+            exclude=_split(modes_exclude),
+            objective=objective,
+            max_transfers=max_transfers,
+            max_walk_m=max_walk_m,
+            max_itineraries=max_itineraries,
+        )
+    except ValueError as exc:
+        # Unknown mode, impossible filter, bad objective -> 400 with the
+        # available modes, never a silent empty result (B1).
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
 @app.get("/api/v1/route", tags=["Routing"])
