@@ -55,11 +55,16 @@ class AppTheme {
   static Color stepColor(String? mode, {Color fallback = walkColor}) {
     return switch (mode) {
       'metro' => metroColor,
+      'tram' => tramColor,
       'train' => trainColor,
+      // The backend reports seed mode `rail` on regional lines, distinct from
+      // `train`. Both are rail, so both take the rail colour.
+      'rail' => railColor,
       'rfr' => rfrColor,
       'bus' => busColor,
       'walk' => walkColor,
       'taxi' => louageColor,
+      'louaj' => louageColor,
       _ => fallback,
     };
   }

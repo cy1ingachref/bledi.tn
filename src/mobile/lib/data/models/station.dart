@@ -172,10 +172,21 @@ enum TransportMode {
   /// Parse a backend mode string. Metro and tram are separate cases: they used
   /// to collapse into [TransportMode.rail], which made "no metro but trains are
   /// fine" impossible to ask for.
+  ///
+  /// Also accepts a seed LINE ID, because callers infer a mode from references
+  /// like `bus_705_12`, `train_1_sncft`, `metro_56_tgm`, `rail_19_a` when the
+  /// backend omits `mode`. Matching whole words only meant a station with no
+  /// declared mode resolved to [unknown] and lost its glyph entirely.
   static TransportMode fromName(String? name) {
     if (name == null) return TransportMode.unknown;
     final value = name.trim().toLowerCase();
     if (value.isEmpty) return TransportMode.unknown;
+
+    // A line id carries the mode as its leading segment.
+    if (value.contains('_')) {
+      final head = fromName(value.split('_').first);
+      if (head != TransportMode.unknown) return head;
+    }
 
     // Louage variants first: "louage_red" must not match a bare "rail" test.
     if (value == 'taxi' ||
@@ -194,6 +205,11 @@ enum TransportMode {
       case 'bus':
       case 'rfr':
         return TransportMode.bus;
+      case 'louaj':
+        // The backend's canonical name for the shared taxi, and what
+        // apiValue emits. Without this, a round-trip through the wire format
+        // (selector -> modes_include -> response) turned louage into unknown.
+        return TransportMode.louage;
       case 'train':
       case 'rail':
         return TransportMode.rail;
