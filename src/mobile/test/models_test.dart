@@ -322,7 +322,10 @@ void main() {
     test('maps backend mode names to categories', () {
       expect(TransportMode.fromName('bus'), TransportMode.bus);
       expect(TransportMode.fromName('train'), TransportMode.rail);
-      expect(TransportMode.fromName('metro'), TransportMode.rail);
+      // metro and tram are distinct from rail: collapsing them is what
+      // stopped a user asking for 'no metro, trains are fine'.
+      expect(TransportMode.fromName('metro'), TransportMode.metro);
+      expect(TransportMode.fromName('tram'), TransportMode.tram);
       expect(TransportMode.fromName('rail'), TransportMode.rail);
       expect(TransportMode.fromName('taxi'), TransportMode.louage);
       expect(TransportMode.fromName('louage'), TransportMode.louage);
@@ -353,7 +356,7 @@ void main() {
           {'route_short_name': 'metro_56_tgm', 'direction': 'TGM'},
         ],
       });
-      expect(metro.transportMode, TransportMode.rail);
+      expect(metro.transportMode, TransportMode.metro);
     });
 
     test('prefers the declared mode over the line-id fallback', () {
@@ -367,7 +370,7 @@ void main() {
           {'route_short_name': 'bus_705_12', 'direction': 'bus'},
         ],
       });
-      expect(station.transportMode, TransportMode.rail);
+      expect(station.transportMode, TransportMode.metro);
       expect(station.hasDeclaredMode, isTrue);
     });
 

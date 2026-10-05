@@ -98,6 +98,43 @@ class _StationIconPainter extends CustomPainter {
     )
     ..addRect(Rect.fromLTWH(-s * 0.19, -s * 0.28, s * 0.38, s * 0.24));
 
+  /// Metro: a rounded tunnel-arch profile -- an arch over a squared body, so it
+  /// reads as "underground" without borrowing the train silhouette.
+  static Path _metroPath(double s) => Path()
+    ..addArc(
+      Rect.fromCenter(center: Offset.zero, width: s * 0.62, height: s * 0.62),
+      -3.14159 / 2,
+      3.14159,
+    )
+    ..addRect(Rect.fromLTWH(-s * 0.31, 0, s * 0.62, s * 0.34))
+    ..addOval(Rect.fromCenter(
+      center: Offset(0, -s * 0.3),
+      width: s * 0.2,
+      height: s * 0.2,
+    ));
+
+  /// Tram: a tram body with a pantograph bar overhead, distinguishing it from
+  /// both the train and the metro at the same icon size.
+  static Path _tramPath(double s) => Path()
+    ..addRRect(
+      RRect.fromRectAndRadius(
+        Rect.fromCenter(center: Offset(0, s * 0.08), width: s * 0.5, height: s * 0.62),
+        Radius.circular(s * 0.16),
+      ),
+    )
+    // pantograph: the overhead pickup that only a tram draws
+    ..addRect(Rect.fromLTWH(-s * 0.01, -s * 0.44, s * 0.03, s * 0.28))
+    ..addRect(Rect.fromLTWH(-s * 0.2, -s * 0.46, s * 0.4, s * 0.04));
+
+  /// Walk: a single footprint, the only asymmetric glyph in the set.
+  static Path _walkPath(double s) => Path()
+    ..addOval(Rect.fromCenter(
+      center: Offset(-s * 0.02, -s * 0.26),
+      width: s * 0.34,
+      height: s * 0.44,
+    ))
+    ..addRect(Rect.fromLTWH(-s * 0.02, s * 0.04, s * 0.32, s * 0.16));
+
   /// Louage / taxi: a car seen side-on, with a roof sign above the cabin.
   ///
   /// Deliberately the widest, lowest silhouette of the three, plus the roof
@@ -136,6 +173,12 @@ class _StationIconPainter extends CustomPainter {
       TransportMode.bus: _busPath(s),
       TransportMode.louage: _taxiPath(s),
       TransportMode.rail: _trainPath(s),
+      // metro/tram/walk need their own paths: with no entry they fell through
+      // to the unknown glyph, so metro, tram and walk all painted identically
+      // and a stop's mode was unreadable on the map.
+      TransportMode.metro: _metroPath(s),
+      TransportMode.tram: _tramPath(s),
+      TransportMode.walk: _walkPath(s),
       TransportMode.unknown: _otherPath(s),
     };
   }
