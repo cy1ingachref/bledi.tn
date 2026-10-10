@@ -128,12 +128,12 @@ pub async fn list_stations(
             .filter_map(|m| TransportMode::parse(m))
             .collect();
         stations.push(Station {
-            id: row.try_get("id")?,
-            name: row.try_get("name")?,
-            lat: row.try_get("lat")?,
-            lon: row.try_get("lon")?,
+            id: row.try_get("id").map_err(err)?,
+            name: row.try_get("name").map_err(err)?,
+            lat: row.try_get("lat").map_err(err)?,
+            lon: row.try_get("lon").map_err(err)?,
             modes,
-            city: row.try_get("city")?,
+            city: row.try_get("city").map_err(err)?,
         });
     }
 
@@ -169,12 +169,12 @@ pub async fn nearby_stations(
             .filter_map(|m| TransportMode::parse(m))
             .collect();
         stations.push(Station {
-            id: row.try_get("id")?,
-            name: row.try_get("name")?,
-            lat: row.try_get("lat")?,
-            lon: row.try_get("lon")?,
+            id: row.try_get("id").map_err(err)?,
+            name: row.try_get("name").map_err(err)?,
+            lat: row.try_get("lat").map_err(err)?,
+            lon: row.try_get("lon").map_err(err)?,
             modes,
-            city: row.try_get("city")?,
+            city: row.try_get("city").map_err(err)?,
         });
     }
 
@@ -200,12 +200,12 @@ pub async fn get_station(
         .collect();
 
     Ok(Json(Station {
-        id: row.try_get("id")?,
-        name: row.try_get("name")?,
-        lat: row.try_get("lat")?,
-        lon: row.try_get("lon")?,
+        id: row.try_get("id").map_err(err)?,
+        name: row.try_get("name").map_err(err)?,
+        lat: row.try_get("lat").map_err(err)?,
+        lon: row.try_get("lon").map_err(err)?,
         modes,
-        city: row.try_get("city")?,
+        city: row.try_get("city").map_err(err)?,
     }))
 }
 
@@ -224,12 +224,12 @@ pub async fn list_lines(
         use sqlx::Row;
         let station_ids: Vec<String> = row.try_get("station_ids").unwrap_or_default();
         lines.push(Line {
-            id: row.try_get("id")?,
-            number: row.try_get("number")?,
-            name: row.try_get("name")?,
+            id: row.try_get("id").map_err(err)?,
+            number: row.try_get("number").map_err(err)?,
+            name: row.try_get("name").map_err(err)?,
             mode: TransportMode::parse(&row.try_get::<String, _>("mode")?).unwrap_or(TransportMode::Bus),
-            operator: row.try_get("operator")?,
-            color: row.try_get("color")?,
+            operator: row.try_get("operator").map_err(err)?,
+            color: row.try_get("color").map_err(err)?,
             station_ids,
         });
     }
@@ -252,12 +252,12 @@ pub async fn get_line(
     let station_ids: Vec<String> = row.try_get("station_ids").unwrap_or_default();
 
     Ok(Json(Line {
-        id: row.try_get("id")?,
-        number: row.try_get("number")?,
-        name: row.try_get("name")?,
+        id: row.try_get("id").map_err(err)?,
+        number: row.try_get("number").map_err(err)?,
+        name: row.try_get("name").map_err(err)?,
         mode: TransportMode::parse(&row.try_get::<String, _>("mode")?).unwrap_or(TransportMode::Bus),
-        operator: row.try_get("operator")?,
-        color: row.try_get("color")?,
+        operator: row.try_get("operator").map_err(err)?,
+        color: row.try_get("color").map_err(err)?,
         station_ids,
     }))
 }
@@ -266,16 +266,16 @@ pub async fn get_line(
 
 fn memory_from_row(row: sqlx::postgres::PgRow) -> Result<Memory, sqlx::Error> {
     use sqlx::Row;
-    let mode_str: String = row.try_get("media_type")?;
-    let vis_str: String = row.try_get("visibility")?;
+    let mode_str: String = row.try_get("media_type").map_err(err)?;
+    let vis_str: String = row.try_get("visibility").map_err(err)?;
     Ok(Memory {
-        id: row.try_get("id")?,
-        user_id: row.try_get("user_id")?,
-        lat: row.try_get("lat")?,
-        lon: row.try_get("lon")?,
-        title: row.try_get("title")?,
-        description: row.try_get("description")?,
-        media_url: row.try_get("media_url")?,
+        id: row.try_get("id").map_err(err)?,
+        user_id: row.try_get("user_id").map_err(err)?,
+        lat: row.try_get("lat").map_err(err)?,
+        lon: row.try_get("lon").map_err(err)?,
+        title: row.try_get("title").map_err(err)?,
+        description: row.try_get("description").map_err(err)?,
+        media_url: row.try_get("media_url").map_err(err)?,
         media_type: match mode_str.as_str() {
             "image" => MediaType::Image,
             "video" => MediaType::Video,
@@ -287,9 +287,9 @@ fn memory_from_row(row: sqlx::postgres::PgRow) -> Result<Memory, sqlx::Error> {
             "private" => Visibility::Private,
             _ => Visibility::Public,
         },
-        unlock_radius_m: row.try_get("unlock_radius_m")?,
-        created_at: row.try_get("created_at")?,
-        updated_at: row.try_get("updated_at")?,
+        unlock_radius_m: row.try_get("unlock_radius_m").map_err(err)?,
+        created_at: row.try_get("created_at").map_err(err)?,
+        updated_at: row.try_get("updated_at").map_err(err)?,
     })
 }
 
@@ -485,19 +485,19 @@ pub async fn delete_memory(
 
 fn favorite_from_row(row: sqlx::postgres::PgRow) -> Result<Favorite, sqlx::Error> {
     use sqlx::Row;
-    let kind_str: String = row.try_get("kind")?;
+    let kind_str: String = row.try_get("kind").map_err(err)?;
     Ok(Favorite {
-        id: row.try_get("id")?,
-        user_id: row.try_get("user_id")?,
+        id: row.try_get("id").map_err(err)?,
+        user_id: row.try_get("user_id").map_err(err)?,
         kind: match kind_str.as_str() {
             "station" => FavoriteKind::Station,
             "line" => FavoriteKind::Line,
             "place" => FavoriteKind::Place,
             _ => FavoriteKind::Place,
         },
-        ref_id: row.try_get("ref_id")?,
-        label: row.try_get("label")?,
-        created_at: row.try_get("created_at")?,
+        ref_id: row.try_get("ref_id").map_err(err)?,
+        label: row.try_get("label").map_err(err)?,
+        created_at: row.try_get("created_at").map_err(err)?,
     })
 }
 
@@ -576,16 +576,16 @@ pub async fn delete_favorite(
 fn share_from_row(row: sqlx::postgres::PgRow) -> Result<LocationShare, sqlx::Error> {
     use sqlx::Row;
     Ok(LocationShare {
-        id: row.try_get("id")?,
-        user_id: row.try_get("user_id")?,
-        lat: row.try_get("lat")?,
-        lon: row.try_get("lon")?,
-        accuracy_m: row.try_get("accuracy_m")?,
-        note: row.try_get("note")?,
-        is_active: row.try_get("is_active")?,
-        expires_at: row.try_get("expires_at")?,
-        created_at: row.try_get("created_at")?,
-        updated_at: row.try_get("updated_at")?,
+        id: row.try_get("id").map_err(err)?,
+        user_id: row.try_get("user_id").map_err(err)?,
+        lat: row.try_get("lat").map_err(err)?,
+        lon: row.try_get("lon").map_err(err)?,
+        accuracy_m: row.try_get("accuracy_m").map_err(err)?,
+        note: row.try_get("note").map_err(err)?,
+        is_active: row.try_get("is_active").map_err(err)?,
+        expires_at: row.try_get("expires_at").map_err(err)?,
+        created_at: row.try_get("created_at").map_err(err)?,
+        updated_at: row.try_get("updated_at").map_err(err)?,
     })
 }
 
