@@ -5,10 +5,7 @@ use tracing_subscriber::fmt;
 
 #[tokio::main]
 async fn main() {
-    fmt()
-        .with_target(false)
-        .with_level(true)
-        .init();
+    fmt().with_target(false).with_level(true).init();
 
     let database_url = std::env::var("DATABASE_URL")
         .unwrap_or_else(|_| "postgres://postgres:postgres@localhost:5432/bledi".to_string());
