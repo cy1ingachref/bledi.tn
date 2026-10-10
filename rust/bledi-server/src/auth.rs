@@ -52,14 +52,14 @@ pub struct AuthUser {
     pub email: String,
 }
 
-impl<S> FromRequestParts<S> for AuthUser
-where
-    S: Send + Sync,
-    crate::state::AppState: std::convert::From<S>,
-{
+#[async_trait::async_trait]
+impl FromRequestParts<crate::state::AppState> for AuthUser {
     type Rejection = AuthError;
 
-    async fn from_request_parts(parts: &mut Parts, _state: &S) -> Result<Self, Self::Rejection> {
+    async fn from_request_parts(
+        parts: &mut Parts,
+        _state: &crate::state::AppState,
+    ) -> Result<Self, Self::Rejection> {
         let header = parts
             .headers
             .get(axum::http::header::AUTHORIZATION)
