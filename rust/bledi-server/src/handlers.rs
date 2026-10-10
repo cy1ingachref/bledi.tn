@@ -20,6 +20,13 @@ fn err(e: sqlx::Error) -> (StatusCode, Json<Value>) {
     (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.to_string() })))
 }
 
+fn db_err(e: sqlx::Error) -> (StatusCode, Json<Value>) {
+    (
+        StatusCode::INTERNAL_SERVER_ERROR,
+        Json(json!({ "error": format!("db error: {e}") })),
+    )
+}
+
 fn hash_password(pw: &str) -> Result<String, AuthError> {
     bcrypt::hash(pw, bcrypt::DEFAULT_COST).map_err(|e| AuthError(e.to_string()))
 }
@@ -125,7 +132,7 @@ pub async fn list_stations(
         let modes: Vec<String> = row.try_get("modes").unwrap_or_default();
         let modes: Vec<TransportMode> = modes
             .iter()
-            .filter_map(|m| TransportMode::parse(m))
+            .filter_map(|m| TransportMode::parse(m.as_str()))
             .collect();
         stations.push(Station {
             id: row.try_get("id").map_err(err)?,
@@ -166,7 +173,7 @@ pub async fn nearby_stations(
         let modes: Vec<String> = row.try_get("modes").unwrap_or_default();
         let modes: Vec<TransportMode> = modes
             .iter()
-            .filter_map(|m| TransportMode::parse(m))
+            .filter_map(|m| TransportMode::parse(m.as_str()))
             .collect();
         stations.push(Station {
             id: row.try_get("id").map_err(err)?,
@@ -196,7 +203,7 @@ pub async fn get_station(
     let modes: Vec<String> = row.try_get("modes").unwrap_or_default();
     let modes: Vec<TransportMode> = modes
         .iter()
-        .filter_map(|m| TransportMode::parse(m))
+        .filter_map(|m| TransportMode::parse(m.as_str()))
         .collect();
 
     Ok(Json(Station {
@@ -227,7 +234,12 @@ pub async fn list_lines(
             id: row.try_get("id").map_err(err)?,
             number: row.try_get("number").map_err(err)?,
             name: row.try_get("name").map_err(err)?,
-            mode: TransportMode::parse(row.try_get::<String, _>("mode")?.as_str()).unwrap_or(TransportMode::Bus),
+            mode: TransportMode::parse(
+                row.try_get::<String, _>("mode")
+                    .map_err(db_err)?
+                    .as_str(),
+            )
+            .unwrap_or(TransportMode::Bus),
             operator: row.try_get("operator").map_err(err)?,
             color: row.try_get("color").map_err(err)?,
             station_ids,
@@ -255,7 +267,11 @@ pub async fn get_line(
         id: row.try_get("id").map_err(err)?,
         number: row.try_get("number").map_err(err)?,
         name: row.try_get("name").map_err(err)?,
-        mode: TransportMode::parse(&row.try_get::<String, _>("mode")?).unwrap_or(TransportMode::Bus),
+        mode: TransportMode::parse(
+            &row.try_get::<String, _>("mode")
+                .map_err(db_err)?,
+        )
+        .unwrap_or(TransportMode::Bus),
         operator: row.try_get("operator").map_err(err)?,
         color: row.try_get("color").map_err(err)?,
         station_ids,
