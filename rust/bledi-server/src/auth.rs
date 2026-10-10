@@ -3,10 +3,10 @@ use axum::http::request::Parts;
 use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
 use axum::Json;
+use bledi_core::User;
 use jsonwebtoken::{decode, encode, DecodingKey, EncodingKey, Header, Validation};
 use serde::{Deserialize, Serialize};
 use std::time::{SystemTime, UNIX_EPOCH};
-use bledi_core::User;
 use uuid::Uuid;
 
 const JWT_SECRET: &[u8] = b"REDACTED_DEV_SECRET";
@@ -14,7 +14,7 @@ const TOKEN_EXPIRY_SECS: u64 = 60 * 60 * 24 * 7; // 7 days
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Claims {
-    pub sub: String,       // user id
+    pub sub: String, // user id
     pub email: String,
     pub exp: u64,
     pub iat: u64,
@@ -25,26 +25,41 @@ pub struct AuthError(pub String);
 
 impl IntoResponse for AuthError {
     fn into_response(self) -> Response {
-        (StatusCode::UNAUTHORIZED, Json(serde_json::json!({ "error": self.0 }))).into_response()
+        (
+            StatusCode::UNAUTHORIZED,
+            Json(serde_json::json!({ "error": self.0 })),
+        )
+            .into_response()
     }
 }
 
 pub fn generate_token(user: &User) -> Result<String, AuthError> {
-    let now = SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_secs();
+    let now = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap()
+        .as_secs();
     let claims = Claims {
         sub: user.id.to_string(),
         email: user.email.clone(),
         exp: now + TOKEN_EXPIRY_SECS,
         iat: now,
     };
-    encode(&Header::default(), &claims, &EncodingKey::from_secret(JWT_SECRET))
-        .map_err(|e| AuthError(e.to_string()))
+    encode(
+        &Header::default(),
+        &claims,
+        &EncodingKey::from_secret(JWT_SECRET),
+    )
+    .map_err(|e| AuthError(e.to_string()))
 }
 
 pub fn decode_token(token: &str) -> Result<Claims, AuthError> {
-    decode::<Claims>(token, &DecodingKey::from_secret(JWT_SECRET), &Validation::default())
-        .map(|d| d.claims)
-        .map_err(|e| AuthError(e.to_string()))
+    decode::<Claims>(
+        token,
+        &DecodingKey::from_secret(JWT_SECRET),
+        &Validation::default(),
+    )
+    .map(|d| d.claims)
+    .map_err(|e| AuthError(e.to_string()))
 }
 
 pub struct AuthUser {

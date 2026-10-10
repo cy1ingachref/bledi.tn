@@ -26,14 +26,18 @@ async fn setup_db() -> AppState {
         .execute(&pool)
         .await
         .unwrap();
-    sqlx::query("DELETE FROM favorites WHERE user_id IN (SELECT id FROM users WHERE email LIKE '%test%')")
-        .execute(&pool)
-        .await
-        .unwrap();
-    sqlx::query("DELETE FROM memories WHERE user_id IN (SELECT id FROM users WHERE email LIKE '%test%')")
-        .execute(&pool)
-        .await
-        .unwrap();
+    sqlx::query(
+        "DELETE FROM favorites WHERE user_id IN (SELECT id FROM users WHERE email LIKE '%test%')",
+    )
+    .execute(&pool)
+    .await
+    .unwrap();
+    sqlx::query(
+        "DELETE FROM memories WHERE user_id IN (SELECT id FROM users WHERE email LIKE '%test%')",
+    )
+    .execute(&pool)
+    .await
+    .unwrap();
     sqlx::query("DELETE FROM friendships WHERE user_id IN (SELECT id FROM users WHERE email LIKE '%test%') OR friend_id IN (SELECT id FROM users WHERE email LIKE '%test%')")
         .execute(&pool)
         .await

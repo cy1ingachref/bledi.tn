@@ -17,7 +17,10 @@ pub async fn health() -> Json<Value> {
 // ── Auth helpers ────────────────────────────────────────────────────────────
 
 fn err(e: sqlx::Error) -> (StatusCode, Json<Value>) {
-    (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.to_string() })))
+    (
+        StatusCode::INTERNAL_SERVER_ERROR,
+        Json(json!({ "error": e.to_string() })),
+    )
 }
 
 fn db_err(e: sqlx::Error) -> (StatusCode, Json<Value>) {
@@ -42,7 +45,10 @@ pub async fn register(
     Json(req): Json<RegisterRequest>,
 ) -> Result<(StatusCode, Json<AuthResponse>), (StatusCode, Json<Value>)> {
     let hash = hash_password(&req.password).map_err(|e| {
-        (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 })))
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            Json(json!({ "error": e.0 })),
+        )
     })?;
     let user = sqlx::query_as::<_, User>(
         r#"INSERT INTO users (email, password_hash, display_name)
@@ -56,16 +62,28 @@ pub async fn register(
     .await
     .map_err(|e| {
         if e.to_string().contains("duplicate key") {
-            (StatusCode::CONFLICT, Json(json!({ "error": "Email already registered" })))
+            (
+                StatusCode::CONFLICT,
+                Json(json!({ "error": "Email already registered" })),
+            )
         } else {
             err(e)
         }
     })?;
 
     let token = crate::auth::generate_token(&user).map_err(|e| {
-        (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 })))
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            Json(json!({ "error": e.0 })),
+        )
     })?;
-    Ok((StatusCode::CREATED, Json(AuthResponse { token, user: user.into() })))
+    Ok((
+        StatusCode::CREATED,
+        Json(AuthResponse {
+            token,
+            user: user.into(),
+        }),
+    ))
 }
 
 pub async fn login(
@@ -79,18 +97,35 @@ pub async fn login(
     .fetch_optional(&state.pool)
     .await
     .map_err(err)?
-    .ok_or_else(|| (StatusCode::UNAUTHORIZED, Json(json!({ "error": "Invalid credentials" }))))?;
+    .ok_or_else(|| {
+        (
+            StatusCode::UNAUTHORIZED,
+            Json(json!({ "error": "Invalid credentials" })),
+        )
+    })?;
 
     if !verify_password(&req.password, &user.password_hash).map_err(|e| {
-        (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 })))
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            Json(json!({ "error": e.0 })),
+        )
     })? {
-        return Err((StatusCode::UNAUTHORIZED, Json(json!({ "error": "Invalid credentials" }))));
+        return Err((
+            StatusCode::UNAUTHORIZED,
+            Json(json!({ "error": "Invalid credentials" })),
+        ));
     }
 
     let token = crate::auth::generate_token(&user).map_err(|e| {
-        (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 })))
+        (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            Json(json!({ "error": e.0 })),
+        )
     })?;
-    Ok(Json(AuthResponse { token, user: user.into() }))
+    Ok(Json(AuthResponse {
+        token,
+        user: user.into(),
+    }))
 }
 
 pub async fn get_me(
@@ -104,7 +139,12 @@ pub async fn get_me(
     .fetch_optional(&state.pool)
     .await
     .map_err(err)?
-    .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "User not found" }))))?;
+    .ok_or_else(|| {
+        (
+            StatusCode::NOT_FOUND,
+            Json(json!({ "error": "User not found" })),
+        )
+    })?;
 
     Ok(Json(user.into()))
 }
@@ -197,7 +237,12 @@ pub async fn get_station(
         .fetch_optional(&state.pool)
         .await
         .map_err(err)?
-        .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "Station not found" }))))?;
+        .ok_or_else(|| {
+            (
+                StatusCode::NOT_FOUND,
+                Json(json!({ "error": "Station not found" })),
+            )
+        })?;
 
     use sqlx::Row;
     let modes: Vec<String> = row.try_get("modes").unwrap_or_default();
@@ -221,10 +266,11 @@ pub async fn get_station(
 pub async fn list_lines(
     State(state): State<AppState>,
 ) -> Result<Json<Vec<Line>>, (StatusCode, Json<Value>)> {
-    let rows = sqlx::query("SELECT id, number, name, mode, operator, color, station_ids FROM lines")
-        .fetch_all(&state.pool)
-        .await
-        .map_err(err)?;
+    let rows =
+        sqlx::query("SELECT id, number, name, mode, operator, color, station_ids FROM lines")
+            .fetch_all(&state.pool)
+            .await
+            .map_err(err)?;
 
     let mut lines = Vec::new();
     for row in rows {
@@ -234,12 +280,8 @@ pub async fn list_lines(
             id: row.try_get("id").map_err(err)?,
             number: row.try_get("number").map_err(err)?,
             name: row.try_get("name").map_err(err)?,
-            mode: TransportMode::parse(
-                row.try_get::<String, _>("mode")
-                    .map_err(db_err)?
-                    .as_str(),
-            )
-            .unwrap_or(TransportMode::Bus),
+            mode: TransportMode::parse(row.try_get::<String, _>("mode").map_err(db_err)?.as_str())
+                .unwrap_or(TransportMode::Bus),
             operator: row.try_get("operator").map_err(err)?,
             color: row.try_get("color").map_err(err)?,
             station_ids,
@@ -253,12 +295,19 @@ pub async fn get_line(
     State(state): State<AppState>,
     Path(id): Path<String>,
 ) -> Result<Json<Line>, (StatusCode, Json<Value>)> {
-    let row = sqlx::query("SELECT id, number, name, mode, operator, color, station_ids FROM lines WHERE id = $1")
-        .bind(&id)
-        .fetch_optional(&state.pool)
-        .await
-        .map_err(err)?
-        .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "Line not found" }))))?;
+    let row = sqlx::query(
+        "SELECT id, number, name, mode, operator, color, station_ids FROM lines WHERE id = $1",
+    )
+    .bind(&id)
+    .fetch_optional(&state.pool)
+    .await
+    .map_err(err)?
+    .ok_or_else(|| {
+        (
+            StatusCode::NOT_FOUND,
+            Json(json!({ "error": "Line not found" })),
+        )
+    })?;
 
     use sqlx::Row;
     let station_ids: Vec<String> = row.try_get("station_ids").unwrap_or_default();
@@ -267,11 +316,8 @@ pub async fn get_line(
         id: row.try_get("id").map_err(err)?,
         number: row.try_get("number").map_err(err)?,
         name: row.try_get("name").map_err(err)?,
-        mode: TransportMode::parse(
-            &row.try_get::<String, _>("mode")
-                .map_err(db_err)?,
-        )
-        .unwrap_or(TransportMode::Bus),
+        mode: TransportMode::parse(&row.try_get::<String, _>("mode").map_err(db_err)?)
+            .unwrap_or(TransportMode::Bus),
         operator: row.try_get("operator").map_err(err)?,
         color: row.try_get("color").map_err(err)?,
         station_ids,
@@ -409,12 +455,20 @@ pub async fn get_memory(
         .fetch_optional(&state.pool)
         .await
         .map_err(err)?
-        .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "Memory not found" }))))?;
+        .ok_or_else(|| {
+            (
+                StatusCode::NOT_FOUND,
+                Json(json!({ "error": "Memory not found" })),
+            )
+        })?;
 
     let memory = memory_from_row(row).map_err(err)?;
 
     if memory.visibility == Visibility::Private && memory.user_id != auth.user_id {
-        return Err((StatusCode::FORBIDDEN, Json(json!({ "error": "Access denied" }))));
+        return Err((
+            StatusCode::FORBIDDEN,
+            Json(json!({ "error": "Access denied" })),
+        ));
     }
 
     Ok(Json(memory_to_json(&memory)))
@@ -431,12 +485,20 @@ pub async fn update_memory(
         .fetch_optional(&state.pool)
         .await
         .map_err(err)?
-        .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "Memory not found" }))))?;
+        .ok_or_else(|| {
+            (
+                StatusCode::NOT_FOUND,
+                Json(json!({ "error": "Memory not found" })),
+            )
+        })?;
 
     use sqlx::Row;
     let owner_id: Uuid = existing.try_get("user_id").map_err(err)?;
     if owner_id != auth.user_id {
-        return Err((StatusCode::FORBIDDEN, Json(json!({ "error": "Access denied" }))));
+        return Err((
+            StatusCode::FORBIDDEN,
+            Json(json!({ "error": "Access denied" })),
+        ));
     }
 
     let row = sqlx::query("SELECT * FROM memories WHERE id = $1")
@@ -481,7 +543,10 @@ pub async fn delete_memory(
         .map_err(err)?;
 
     if result.rows_affected() == 0 {
-        return Err((StatusCode::NOT_FOUND, Json(json!({ "error": "Memory not found" }))));
+        return Err((
+            StatusCode::NOT_FOUND,
+            Json(json!({ "error": "Memory not found" })),
+        ));
     }
     Ok(StatusCode::NO_CONTENT)
 }
@@ -565,7 +630,10 @@ pub async fn delete_favorite(
         .map_err(err)?;
 
     if result.rows_affected() == 0 {
-        return Err((StatusCode::NOT_FOUND, Json(json!({ "error": "Favorite not found" }))));
+        return Err((
+            StatusCode::NOT_FOUND,
+            Json(json!({ "error": "Favorite not found" })),
+        ));
     }
     Ok(StatusCode::NO_CONTENT)
 }
@@ -607,11 +675,12 @@ pub async fn list_location_shares(
     State(state): State<AppState>,
     auth: AuthUser,
 ) -> Result<Json<Vec<serde_json::Value>>, (StatusCode, Json<Value>)> {
-    let rows = sqlx::query("SELECT * FROM location_shares WHERE user_id = $1 ORDER BY updated_at DESC")
-        .bind(auth.user_id)
-        .fetch_all(&state.pool)
-        .await
-        .map_err(err)?;
+    let rows =
+        sqlx::query("SELECT * FROM location_shares WHERE user_id = $1 ORDER BY updated_at DESC")
+            .bind(auth.user_id)
+            .fetch_all(&state.pool)
+            .await
+            .map_err(err)?;
 
     let mut shares = Vec::new();
     for row in rows {
@@ -690,12 +759,20 @@ pub async fn update_location_share(
         .fetch_optional(&state.pool)
         .await
         .map_err(err)?
-        .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "Location share not found" }))))?;
+        .ok_or_else(|| {
+            (
+                StatusCode::NOT_FOUND,
+                Json(json!({ "error": "Location share not found" })),
+            )
+        })?;
 
     use sqlx::Row;
     let owner_id: Uuid = existing.try_get("user_id").map_err(err)?;
     if owner_id != auth.user_id {
-        return Err((StatusCode::FORBIDDEN, Json(json!({ "error": "Access denied" }))));
+        return Err((
+            StatusCode::FORBIDDEN,
+            Json(json!({ "error": "Access denied" })),
+        ));
     }
 
     let row = sqlx::query(
@@ -731,7 +808,10 @@ pub async fn delete_location_share(
         .map_err(err)?;
 
     if result.rows_affected() == 0 {
-        return Err((StatusCode::NOT_FOUND, Json(json!({ "error": "Location share not found" }))));
+        return Err((
+            StatusCode::NOT_FOUND,
+            Json(json!({ "error": "Location share not found" })),
+        ));
     }
     Ok(StatusCode::NO_CONTENT)
 }
