@@ -1,6 +1,7 @@
 mod auth;
 mod handlers;
-pub mod state;
+
+use bledi_server::state::AppState;
 
 use axum::routing::{delete, get, post, put};
 use axum::Router;
