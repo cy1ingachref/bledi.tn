@@ -65,7 +65,7 @@ jobs:
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/bledi
         run: |
-          cd bledi-server && psql $DATABASE_URL -c "CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSION IF NOT EXISTS earthdistance;"
+          cd bledi-server && psql $DATABASE_URL -c "CREATE EXTENSION IF NOT EXISTS cube; CREATE EXTENSION IF NOT EXISTS earthdistance;"
 
       - name: Run migrations
         working-directory: rust
