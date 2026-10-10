@@ -8,11 +8,11 @@ use sqlx::postgres::PgPoolOptions;
 use std::net::SocketAddr;
 use tower_http::cors::{Any, CorsLayer};
 use tower_http::trace::TraceLayer;
-use tracing_subscriber;
+use tracing_subscriber::fmt;
 
 #[tokio::main]
 async fn main() {
-    tracing_subscriber::fmt()
+    fmt()
         .with_target(false)
         .with_level(true)
         .init();
