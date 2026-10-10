@@ -1,6 +1,6 @@
 mod auth;
 mod handlers;
-mod state;
+pub mod state;
 
 use axum::routing::{delete, get, post, put};
 use axum::Router;
