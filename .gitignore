@@ -59,3 +59,7 @@ src/backend/tool/_bytesedit.py
 # the BUILD SCRIPTS are committed so the graphs are reproducible.
 data/road_graph.npz
 data/rail_graph.npz
+
+# Rust
+rust/target/
+**/*.rs.bk
