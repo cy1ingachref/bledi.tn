@@ -213,7 +213,7 @@ async fn test_memories_crud() {
 
     assert_eq!(res.status(), StatusCode::OK);
     let body: serde_json::Value = res.json().await.unwrap();
-    assert!(body.as_array().unwrap().len() >= 1);
+    assert!(!body.as_array().unwrap().is_empty());
 }
 
 #[tokio::test]
