@@ -60,6 +60,7 @@ interface Api {
     endLon: number;
     modesInclude?: string;
     modesExclude?: string;
+    objective?: string;
   }): Promise<RoutePlan>;
 }
 
@@ -100,6 +101,7 @@ export const api: Api = {
     });
     if (params.modesInclude) q.set("modes_include", params.modesInclude);
     if (params.modesExclude) q.set("modes_exclude", params.modesExclude);
+    if (params.objective) q.set("objective", params.objective);
     const res = await fetch(`${BASE}/route/plan?${q.toString()}`);
     if (!res.ok) throw new Error(`GET /api/v1/route/plan -> ${res.status}`);
     return res.json() as Promise<RoutePlan>;

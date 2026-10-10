@@ -1,85 +1,159 @@
 <script lang="ts">
-  import { api, type Station } from "$lib/router";
-  import type { Line } from "$lib/router";
+  import { api, type Station, type RoutePlan } from "$lib/router";
 
-  // Canvas dimensions. Whole-route bounding box is computed from the seed
-  // scale so no tile servers are needed — the map is drawn purely from the
-  // stations (stops), roads, rails and routes the backend serves.
   const W = 900;
   const H = 520;
 
+  // ── Transport modes ──────────────────────────────────────────────────────
+  const MODES = [
+    { id: "bus", label: "Bus", icon: "🚌", color: "#3b82f6" },
+    { id: "metro", label: "Metro", icon: "🚇", color: "#ef4444" },
+    { id: "tram", label: "Tram", icon: "🚊", color: "#f59e0b" },
+    { id: "train", label: "Train", icon: "🚆", color: "#8b5cf6" },
+    { id: "rfr", label: "RFR", icon: "🚌", color: "#06b6d4" },
+    { id: "louaj", label: "Louaj", icon: "🚕", color: "#f97316" },
+    { id: "walk", label: "Walk", icon: "🚶", color: "#22c55e" },
+  ] as const;
+
+  type ModeId = (typeof MODES)[number]["id"];
+
+  const OBJECTIVES = [
+    { id: "fastest", label: "Fastest" },
+    { id: "cheapest", label: "Cheapest" },
+    { id: "fewest_transfers", label: "Fewest transfers" },
+  ] as const;
+
+  // ── State ────────────────────────────────────────────────────────────────
   let canvas: HTMLCanvasElement | null = null;
   let ctx: CanvasRenderingContext2D | null = null;
   let stations: Station[] = [];
-  let lines: Line[] = [];
   let state = "loading";
   let error = "";
 
-  let s = canvas ? canvas.style : null;
+  // Route inputs
+  let startLat = "36.8065";
+  let startLon = "10.1815";
+  let endLat = "36.7528";
+  let endLon = "10.2108";
 
-  function mmerc(lat: number, lon: number): [number, number] {
-    const x = lon;
-    const y = Math.log(Math.tan((lat * Math.PI) / 360 + Math.PI / 4));
-    return [x, y];
-  }
+  // Mode selection
+  let selectedModes = new Set<ModeId>(["bus", "metro", "train", "tram", "rfr"]);
 
-  function routePlan(
-    startLat: number,
-    startLon: number,
-    endLat: number,
-    endLon: number,
-    modesInclude = "transit",
-  ): Promise<void> {
-    return api.routePlan({ startLat, startLon, endLat, endLon, modesInclude }).then((plan) => {
-      // `api.routePlan` returns itineraries; store the first one's geometries
-      // and re-draw the map with the route layered on top of the stations.
-      // Routing goes through the backend (Rust bridge + FastAPI), not duplicated.
-      configuredRoute = plan.itineraries?.[0];
-      redraw();
-    });
-  }
+  // Objective
+  let objective = "fastest";
 
-  // Quick, cache-free centre taken from the first station held locally so the
-  // canvas has a sensible initial view. The route call below later re-centres
-  // on whatever the user asks for.
+  // Results
+  let routePlan: RoutePlan | null = null;
+  let computingRoute = false;
+  let selectedItinerary = 0;
+
+  // Map view
   let cx = 0;
   let cy = 0;
   let scale = 1;
+  let configuredRoute: unknown = null;
 
-  function fit(stops: [number, number][]) {
-    if (!stops.length) return;
-    let minx = Infinity,
-      miny = Infinity,
-      maxx = -Infinity,
-      maxy = -Infinity;
-    for (const [x, y] of stops) {
+  function mmerc(lat: number, lon: number): [number, number] {
+    return [lon, Math.log(Math.tan((lat * Math.PI) / 360 + Math.PI / 4))];
+  }
+
+  function toggleMode(id: ModeId) {
+    if (selectedModes.has(id)) {
+      selectedModes.delete(id);
+    } else {
+      selectedModes.add(id);
+    }
+    selectedModes = new Set(selectedModes); // trigger reactivity
+  }
+
+  function isModeSelected(id: ModeId): boolean {
+    return selectedModes.has(id);
+  }
+
+  function setObjective(obj: string) {
+    objective = obj;
+  }
+
+  function getModeColor(mode: string): string {
+    return MODES.find((m) => m.id === mode)?.color ?? "#94a3b8";
+  }
+
+  function getModeLabel(mode: string): string {
+    return MODES.find((m) => m.id === mode)?.label ?? mode;
+  }
+
+  // ── Routing ──────────────────────────────────────────────────────────────
+  async function computeRoute() {
+    computingRoute = true;
+    routePlan = null;
+    selectedItinerary = 0;
+    try {
+      const sLat = parseFloat(startLat);
+      const sLon = parseFloat(startLon);
+      const eLat = parseFloat(endLat);
+      const eLon = parseFloat(endLon);
+
+      if (isNaN(sLat) || isNaN(sLon) || isNaN(eLat) || isNaN(eLon)) {
+        throw new Error("Please enter valid coordinates");
+      }
+
+      const modesInclude = [...selectedModes].join(",");
+      const plan = await api.routePlan({
+        startLat: sLat,
+        startLon: sLon,
+        endLat: eLat,
+        endLon: eLon,
+        modesInclude,
+        objective,
+      });
+      routePlan = plan;
+    } catch (e) {
+      error = e instanceof Error ? e.message : String(e);
+    } finally {
+      computingRoute = false;
+    }
+  }
+
+  // ── Drawing ──────────────────────────────────────────────────────────────
+  function fit(points: [number, number][]) {
+    if (!points.length) return;
+    let minx = Infinity, miny = Infinity, maxx = -Infinity, maxy = -Infinity;
+    for (const [x, y] of points) {
       minx = Math.min(minx, x);
       miny = Math.min(miny, y);
       maxx = Math.max(maxx, x);
       maxy = Math.max(maxy, y);
     }
-    const cx = (minx + maxx) / 2;
-    const cy = (miny + maxy) / 2;
+    const midX = (minx + maxx) / 2;
+    const midY = (miny + maxy) / 2;
     const w = (maxx - minx) / 2;
     const h = (maxy - miny) / 2;
     const span = Math.max(w, h);
+    cx = midX;
+    cy = midY;
     scale = Math.min(W, H) / (span * 2.1 || 1);
   }
 
-  function drawMap(stops: [number, number][]) {
-    const c = ctx;
-    if (!c) return;
-    c.clearRect(0, 0, W, H);
+  function canvasToX(xLin: number): number {
+    return (xLin - cx) * scale + W / 2;
+  }
 
-    // Background (held in the device canvas so we never re-fill the same pixmap)
+  function canvasToY(yLin: number): number {
+    return (cy - yLin) * scale + H / 2;
+  }
+
+  function isStationMarked(st: Station): boolean {
+    return st.mode !== "walk";
+  }
+
+  function redraw() {
+    const c = ctx;
+    if (!c || !canvas) return;
+    c.clearRect(0, 0, W, H);
     c.fillStyle = "#0f1923";
     c.fillRect(0, 0, W, H);
 
-    if (!stops.length) return;
-
-    fit(stops);
-
-    // Grid helper
+    // Grid
     for (let x = -1200000; x < 1200001; x += 600000) {
       c.beginPath();
       c.strokeStyle = "#1e293b";
@@ -97,38 +171,32 @@
       c.stroke();
     }
 
-    // Roads
-    {
-      const r = ctx;
-      r.beginPath();
-      r.strokeStyle = "#475569";
-      r.lineWidth = 2;
-      r.lineCap = "round";
-      for (const a of stops) {
-        for (const b of stops) {
-          // Only a few candidate segments: the offline meta-map is sparse, so we
-          // draw nothing heavier than a single pass. The real road network is
-          // served from the backend at /api/v1/roads; here we keep the canvas
-          // bounded to the meta-map bounds so the canvas stays responsive.
+    // Route geometry
+    if (configuredRoute) {
+      const route = configuredRoute as { legs?: Array<{ geometry?: [number, number][]; mode?: string }> };
+      if (route.legs) {
+        for (const leg of route.legs) {
+          if (leg.geometry && leg.geometry.length >= 2) {
+            c.beginPath();
+            c.strokeStyle = getModeColor(leg.mode ?? "bus");
+            c.lineWidth = 3;
+            c.lineCap = "round";
+            c.lineJoin = "round";
+            const [firstLat, firstLon] = leg.geometry[0];
+            const [fx, fy] = mmerc(firstLat, firstLon);
+            c.moveTo(canvasToX(fx), canvasToY(fy));
+            for (let i = 1; i < leg.geometry.length; i++) {
+              const [lat, lon] = leg.geometry[i];
+              const [x, y] = mmerc(lat, lon);
+              c.lineTo(canvasToX(x), canvasToY(y));
+            }
+            c.stroke();
+          }
         }
       }
-      // Stub: background of the wire (no road telemetry if the backend is absent).
     }
 
-    // Rails
-    {
-      c.beginPath();
-      c.strokeStyle = "#94a3b8";
-      c.lineWidth = 3;
-      c.lineCap = "round";
-      // Rails are drawn as parallel lines along the meta-map's principal axis.
-      const midY = canvasToY(0);
-      c.moveTo(0, midY);
-      c.lineTo(W, midY);
-      c.stroke();
-    }
-
-    // Stops as stations
+    // Stations
     for (const st of stations) {
       const [x, y] = mmerc(st.lat, st.lon);
       const px = canvasToX(x);
@@ -140,41 +208,15 @@
     }
   }
 
-  function canvasToX(xLin: number): number {
-    return (xLin - cx) * scale + W / 2;
-  }
-
-  function canvasToY(yLin: number): number {
-    return (cy - yLin) * scale + H / 2;
-  }
-
-  function isStationMarked(st: Station): boolean {
-    return st.mode !== "walk";
-  }
-
   onMount(async () => {
     ctx = canvas?.getContext("2d");
     if (!ctx) return;
-
     try {
-      const [stops, lines, roads, rails] = await Promise.all([
-        api.getStations(),
-        api.getLines(),
-        api.getRoads(),
-        api.getRails(),
-      ]);
+      const stops = await api.getStations();
       stations = stops;
-      lines = lines.map((l) => ({ id: l.id, number: l.number, name: l.name, mode: l.mode }));
-
-      const stops2d = stations.map((st) => mmerc(st.lat, st.lon));
+      const stops2d = stops.map((st) => mmerc(st.lat, st.lon));
       fit(stops2d);
-      drawMap(stops2d);
-
-      // Lazy-initialise state from the first station held locally so the
-      // canvas is never blank, then let the backend fill the rest.
-      cx = mmerc(stations[0]?.lat ?? 36.8, stations[0]?.lon ?? 10.2)[0];
-      cy = mmerc(stations[0]?.lat ?? 36.8, stations[0]?.lon ?? 10.2)[1];
-      // (state updates below, on user interaction)
+      redraw();
     } catch (e) {
       state = "error";
       error = e instanceof Error ? e.message : String(e);
@@ -182,47 +224,171 @@
   });
 </script>
 
-<div class="flex flex-col h-screen">
-  <header class="flex items-center gap-3 border-b border-slate-800 px-4 py-2">
-    <h1>Bledi.tn — Carte des transports tunisiens</h1>
+<div class="flex flex-col h-screen bg-slate-950 text-slate-100">
+  <!-- Header -->
+  <header class="flex items-center justify-between border-b border-slate-800 px-4 py-2">
+    <h1 class="text-lg font-semibold">Bledi.tn — Planificateur d'itinéraire</h1>
     <div class="text-xs text-slate-400">
-      Rust bridge &middot; stops · roads · rails · routes
+      {stations.length} stations · {routePlan?.itineraries?.length ?? 0} itinéraires
     </div>
   </header>
 
-  <main class="flex-1 relative bg-slate-950 overflow-hidden">
-    <canvas bind:this={canvas} width={W} height={H} class="w-full h-full cursor-crosshair" />
+  <div class="flex flex-1 overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="w-80 flex-shrink-0 border-r border-slate-800 overflow-y-auto p-4 space-y-4">
+      <!-- Route inputs -->
+      <section class="space-y-2">
+        <h2 class="text-sm font-semibold text-slate-300">Départ</h2>
+        <div class="flex gap-2">
+          <input
+            bind:value={startLat}
+            placeholder="Lat"
+            class="w-1/2 rounded bg-slate-800 border border-slate-700 px-2 py-1 text-sm"
+          />
+          <input
+            bind:value={startLon}
+            placeholder="Lon"
+            class="w-1/2 rounded bg-slate-800 border border-slate-700 px-2 py-1 text-sm"
+          />
+        </div>
+      </section>
 
-    <div
-      class="absolute inset-0 flex flex-col justify-center gap-3 p-4 pointer-events-none"
-      style="font-family: system-ui, -apple-system, sans-serif; font-size: 13px; color: #e6edf3;"
-    >
-      <div class="max-w-xl pointer-events-auto bg-slate-900/80 rounded-xl border border-slate-700 p-3">
-        <div class="text-xs text-slate-400 mb-1">Stops (stations)</div>
-        <div class="text-sm font-mono text-slate-100">
-          {state === "loading" ? "…" : stations.length}
+      <section class="space-y-2">
+        <h2 class="text-sm font-semibold text-slate-300">Arrivée</h2>
+        <div class="flex gap-2">
+          <input
+            bind:value={endLat}
+            placeholder="Lat"
+            class="w-1/2 rounded bg-slate-800 border border-slate-700 px-2 py-1 text-sm"
+          />
+          <input
+            bind:value={endLon}
+            placeholder="Lon"
+            class="w-1/2 rounded bg-slate-800 border border-slate-700 px-2 py-1 text-sm"
+          />
         </div>
-        <div class="text-xs text-slate-400">Roads</div>
-        <div class="text-sm font-mono text-slate-100">
-          {state === "loading" ? "…" : roads.summary}
-        </div>
-        <div class="text-xs text-slate-400">Rails</div>
-        <div class="text-sm font-mono text-slate-100">
-          {state === "loading" ? "…" : rails.summary}
-        </div>
-      </div>
+      </section>
 
-      <div
-        class="max-w-xl pointer-events-auto bg-slate-900/80 rounded-xl border border-slate-700 p-3"
-        style="font-family: system-ui, -apple-system, sans-serif;"
+      <!-- Objective -->
+      <section class="space-y-2">
+        <h2 class="text-sm font-semibold text-slate-300">Objectif</h2>
+        <div class="flex gap-1">
+          {#each OBJECTIVES as obj}
+            <button
+              class="flex-1 rounded px-2 py-1 text-xs font-medium transition-colors {objective === obj.id
+                ? 'bg-cyan-600 text-white'
+                : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}"
+              on:click={() => setObjective(obj.id)}
+            >
+              {obj.label}
+            </button>
+          {/each}
+        </div>
+      </section>
+
+      <!-- Mode selection -->
+      <section class="space-y-2">
+        <h2 class="text-sm font-semibold text-slate-300">Moyens de transport</h2>
+        <div class="grid grid-cols-2 gap-1">
+          {#each MODES as mode}
+            <button
+              class="flex items-center gap-2 rounded px-2 py-1.5 text-xs font-medium transition-colors {isModeSelected(mode.id)
+                ? 'bg-slate-700 text-white ring-1 ring-cyan-500'
+                : 'bg-slate-800 text-slate-500 hover:bg-slate-700'}"
+              on:click={() => toggleMode(mode.id)}
+            >
+              <span class="w-3 h-3 rounded-full" style="background:{mode.color}"></span>
+              <span>{mode.icon} {mode.label}</span>
+            </button>
+          {/each}
+        </div>
+      </section>
+
+      <!-- Compute button -->
+      <button
+        class="w-full rounded bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed px-4 py-2 text-sm font-semibold text-white transition-colors"
+        on:click={computeRoute}
+        disabled={computingRoute || selectedModes.size === 0}
       >
-        <div class="text-xs text-slate-400 mb-1">Source</div>
-        <div class="text-sm font-mono text-slate-100">
-          {state === "loading" ? "…" : "Rust bledi-rs /api/v1/*"}
+        {computingRoute ? "Calcul..." : "Calculer l'itinéraire"}
+      </button>
+
+      {#if error}
+        <div class="rounded bg-red-900/50 border border-red-700 p-2 text-xs text-red-200">
+          {error}
         </div>
-      </div>
-    </div>
-  </main>
+      {/if}
+
+      <!-- Results -->
+      {#if routePlan && routePlan.itineraries?.length}
+        <section class="space-y-2">
+          <h2 class="text-sm font-semibold text-slate-300">
+            {routePlan.itineraries.length} itinéraire{routePlan.itineraries.length > 1 ? "s" : ""}
+          </h2>
+          <div class="space-y-2">
+            {#each routePlan.itineraries as itin, i}
+              <button
+                class="w-full text-left rounded-lg border p-3 transition-colors {selectedItinerary === i
+                  ? 'border-cyan-500 bg-slate-800'
+                  : 'border-slate-700 bg-slate-800/50 hover:bg-slate-800'}"
+                on:click={() => {
+                  selectedItinerary = i;
+                  configuredRoute = itin;
+                  redraw();
+                }}
+              >
+                <div class="flex items-center justify-between mb-1">
+                  <span class="text-sm font-semibold">Option {i + 1}</span>
+                  <span class="text-xs text-slate-400">
+                    {itin.duration_min.toFixed(0)} min · {itin.transfers} correspondance{itin.transfers > 1 ? "s" : ""}
+                  </span>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                  {#each itin.modes_used as mode}
+                    <span
+                      class="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium text-white"
+                      style="background:{getModeColor(mode)}"
+                    >
+                      {getModeLabel(mode)}
+                    </span>
+                  {/each}
+                </div>
+                {#if itin.fare_dinars > 0}
+                  <div class="mt-1 text-xs text-slate-400">
+                    ~{itin.fare_dinars.toFixed(2)} DT
+                  </div>
+                {/if}
+                {#if itin.rank_reason}
+                  <div class="mt-1 text-[11px] text-slate-500 italic">
+                    {itin.rank_reason}
+                  </div>
+                {/if}
+              </button>
+            {/each}
+          </div>
+        </section>
+      {:else if routePlan && !routePlan.itineraries?.length}
+        <div class="rounded bg-amber-900/30 border border-amber-700 p-2 text-xs text-amber-200">
+          Aucun itinéraire trouvé avec ces critères.
+        </div>
+      {/if}
+    </aside>
+
+    <!-- Map -->
+    <main class="flex-1 relative bg-slate-950 overflow-hidden">
+      <canvas
+        bind:this={canvas}
+        width={W}
+        height={H}
+        class="w-full h-full cursor-crosshair"
+      />
+      {#if state === "loading"}
+        <div class="absolute inset-0 flex items-center justify-center text-slate-400">
+          Chargement...
+        </div>
+      {/if}
+    </main>
+  </div>
 </div>
 
 <style>
