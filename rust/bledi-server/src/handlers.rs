@@ -530,7 +530,10 @@ pub async fn update_location_share(
     use sqlx::Row;
     let owner_id: Uuid = existing.try_get("user_id").map_err(err)?;
     if owner_id != auth.user_id {
-        return Err((StatusCode::FORBIDDEN, Json(json!({ "error": "Access denied" }))));
+        return Err((
+            StatusCode::FORBIDDEN,
+            Json(json!({ "error": "Access denied" })),
+        ));
     }
 
     let row = sqlx::query(
@@ -538,8 +541,16 @@ pub async fn update_location_share(
            SET lat=$1, lon=$2, accuracy_m=$3, note=$4, is_active=$5, expires_at=$6, updated_at=now()
            WHERE id=$7 RETURNING *"#,
     )
-    .bind(req.lat).bind(req.lon).bind(req.accuracy_m).bind(req.note).bind(req.is_active).bind(req.expires_at).bind(id)
-    .fetch_one(&state.pool).await.map_err(err)?;
+    .bind(req.lat)
+    .bind(req.lon)
+    .bind(req.accuracy_m)
+    .bind(req.note)
+    .bind(req.is_active)
+    .bind(req.expires_at)
+    .bind(id)
+    .fetch_one(&state.pool)
+    .await
+    .map_err(err)?;
 
     let share = share_from_row(row).map_err(err)?;
     Ok(Json(share_to_json(&share)))
@@ -551,7 +562,11 @@ pub async fn delete_location_share(
     Path(id): Path<Uuid>,
 ) -> Result<StatusCode, (StatusCode, Json<Value>)> {
     let result = sqlx::query("DELETE FROM location_shares WHERE id = $1 AND user_id = $2")
-        .bind(id).bind(auth.user_id).execute(&state.pool).await.map_err(err)?;
+        .bind(id)
+        .bind(auth.user_id)
+        .execute(&state.pool)
+        .await
+        .map_err(err)?;
 
     if result.rows_affected() == 0 {
         return Err((StatusCode::NOT_FOUND, Json(json!({ "error": "Location share not found" }))));

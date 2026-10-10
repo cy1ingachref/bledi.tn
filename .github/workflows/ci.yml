@@ -45,6 +45,10 @@ jobs:
             rust/target
           key: ${{ runner.os }}-cargo-${{ hashFiles('rust/Cargo.lock') }}
 
+      - name: Format code
+        working-directory: rust
+        run: cargo fmt
+
       - name: Check formatting
         working-directory: rust
         run: cargo fmt -- --check
