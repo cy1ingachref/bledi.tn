@@ -17,21 +17,6 @@ jobs:
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/bledi
       RUST_LOG: debug
 
-    services:
-      postgres:
-        image: postgis/postgis:16-3.4
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: bledi
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U postgres -d bledi"
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries: 5
-
     steps:
       - uses: actions/checkout@v4
 
@@ -39,6 +24,15 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy, rustfmt
+
+      - name: Install PostgreSQL + PostGIS
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-14 postgresql-14-postgis-3 postgresql-client-14
+          sudo service postgresql start
+          sudo -u postgres psql -c "CREATE DATABASE bledi;" || true
+          sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
+          sudo -u postgres psql -d bledi -c "CREATE EXTENSION IF NOT EXISTS cube; CREATE EXTENSION IF NOT EXISTS earthdistance;"
 
       - name: Cache cargo
         uses: actions/cache@v4
@@ -70,27 +64,6 @@ jobs:
         run: cargo test -- --nocapture
 
       # ── Runtime smoke test ──
-
-      - name: Install PostgreSQL client
-        run: sudo apt-get update && sudo apt-get install -y postgresql-client curl
-
-      - name: Install sqlx-cli
-        working-directory: rust
-        run: cargo install sqlx-cli --no-default-features --features postgres
-
-      - name: Create PostGIS extensions
-        working-directory: rust
-        env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/bledi
-        run: |
-          cd bledi-server && psql $DATABASE_URL -c "CREATE EXTENSION IF NOT EXISTS cube; CREATE EXTENSION IF NOT EXISTS earthdistance;"
-
-      - name: Run migrations
-        working-directory: rust
-        env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/bledi
-        run: |
-          cd bledi-server && sqlx migrate run
 
       - name: Start bledi-server
         working-directory: rust
