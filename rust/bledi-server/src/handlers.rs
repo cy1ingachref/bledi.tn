@@ -391,7 +391,7 @@ pub async fn create_memory(
     };
     let row = sqlx::query(
         r#"INSERT INTO memories (user_id, lat, lon, title, description, media_url, media_type, visibility, unlock_radius_m)
-           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *"#,
+           VALUES ($1, $2, $3, $4, $5, $6, $7::media_type, $8::visibility, $9) RETURNING *"#,
     )
     .bind(auth.user_id)
     .bind(req.lat)
@@ -553,7 +553,7 @@ pub async fn create_favorite(
     let kind_str = req.kind.as_str();
     let row = sqlx::query(
         r#"INSERT INTO favorites (user_id, kind, ref_id, label)
-           VALUES ($1, $2, $3, $4)
+           VALUES ($1, $2::favorite_kind, $3, $4)
            ON CONFLICT (user_id, kind, ref_id) DO UPDATE SET label = EXCLUDED.label
            RETURNING *"#,
     )
