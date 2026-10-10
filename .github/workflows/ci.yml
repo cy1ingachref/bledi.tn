@@ -53,9 +53,19 @@ jobs:
         working-directory: rust
         run: cargo fmt
 
+      - name: Install PostgreSQL client
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
       - name: Install sqlx-cli
         working-directory: rust
         run: cargo install sqlx-cli --no-default-features --features postgres
+
+      - name: Create PostGIS extensions
+        working-directory: rust
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/bledi
+        run: |
+          cd bledi-server && psql $DATABASE_URL -c "CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSION IF NOT EXISTS earthdistance;"
 
       - name: Run migrations
         working-directory: rust
