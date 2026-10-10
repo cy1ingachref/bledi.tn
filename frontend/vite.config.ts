@@ -1,11 +1,11 @@
 import { defineConfig } from "vite";
-import { svelte } from "@sveltejs/vite-plugin-svelte";
+import { sveltekit } from "@sveltejs/kit/vite";
 import adapter from "@sveltejs/adapter-static";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
   plugins: [
-    svelte({ preprocess: null }),
+    sveltekit(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
@@ -52,6 +52,12 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    host: "127.0.0.1"
+    host: "127.0.0.1",
+    proxy: {
+      "/api": {
+        target: "http://localhost:8000",
+        changeOrigin: true
+      }
+    }
   }
 });
