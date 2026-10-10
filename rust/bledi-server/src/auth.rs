@@ -53,12 +53,12 @@ pub struct AuthUser {
 }
 
 #[async_trait::async_trait]
-impl FromRequestParts<bledi_server::state::AppState> for AuthUser {
+impl FromRequestParts<crate::state::AppState> for AuthUser {
     type Rejection = AuthError;
 
     async fn from_request_parts(
         parts: &mut Parts,
-        _state: &bledi_server::state::AppState,
+        _state: &crate::state::AppState,
     ) -> Result<Self, Self::Rejection> {
         let header = parts
             .headers
