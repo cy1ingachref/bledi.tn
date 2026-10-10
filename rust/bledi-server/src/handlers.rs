@@ -282,8 +282,6 @@ pub async fn get_line(
 
 fn memory_from_row(row: sqlx::postgres::PgRow) -> Result<Memory, sqlx::Error> {
     use sqlx::Row;
-    let mode_str: String = row.try_get("media_type")?;
-    let vis_str: String = row.try_get("visibility")?;
     Ok(Memory {
         id: row.try_get("id")?,
         user_id: row.try_get("user_id")?,
@@ -292,17 +290,8 @@ fn memory_from_row(row: sqlx::postgres::PgRow) -> Result<Memory, sqlx::Error> {
         title: row.try_get("title")?,
         description: row.try_get("description")?,
         media_url: row.try_get("media_url")?,
-        media_type: match mode_str.as_str() {
-            "image" => MediaType::Image,
-            "video" => MediaType::Video,
-            _ => MediaType::Image,
-        },
-        visibility: match vis_str.as_str() {
-            "public" => Visibility::Public,
-            "friends" => Visibility::Friends,
-            "private" => Visibility::Private,
-            _ => Visibility::Public,
-        },
+        media_type: row.try_get("media_type")?,
+        visibility: row.try_get("visibility")?,
         unlock_radius_m: row.try_get("unlock_radius_m")?,
         created_at: row.try_get("created_at")?,
         updated_at: row.try_get("updated_at")?,
@@ -501,16 +490,10 @@ pub async fn delete_memory(
 
 fn favorite_from_row(row: sqlx::postgres::PgRow) -> Result<Favorite, sqlx::Error> {
     use sqlx::Row;
-    let kind_str: String = row.try_get("kind")?;
     Ok(Favorite {
         id: row.try_get("id")?,
         user_id: row.try_get("user_id")?,
-        kind: match kind_str.as_str() {
-            "station" => FavoriteKind::Station,
-            "line" => FavoriteKind::Line,
-            "place" => FavoriteKind::Place,
-            _ => FavoriteKind::Place,
-        },
+        kind: row.try_get("kind")?,
         ref_id: row.try_get("ref_id")?,
         label: row.try_get("label")?,
         created_at: row.try_get("created_at")?,
