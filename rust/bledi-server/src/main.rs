@@ -32,7 +32,7 @@ async fn main() {
         .await
         .expect("Failed to run migrations");
 
-    let state = state::AppState { pool };
+    let state = AppState { pool };
 
     let cors = CorsLayer::new()
         .allow_origin(Any)
