@@ -190,7 +190,10 @@ async fn test_memories_crud() {
         .await
         .unwrap();
 
-    assert_eq!(res.status(), StatusCode::CREATED);
+    if res.status() != StatusCode::CREATED {
+        let body = res.text().await.unwrap();
+        panic!("Expected 201, got {}: {}", res.status(), body);
+    }
     let body: serde_json::Value = res.json().await.unwrap();
     assert_eq!(body["title"], "Test memory");
     assert_eq!(body["visibility"], "public");
@@ -241,7 +244,10 @@ async fn test_favorites_crud() {
         .await
         .unwrap();
 
-    assert_eq!(res.status(), StatusCode::CREATED);
+    if res.status() != StatusCode::CREATED {
+        let body = res.text().await.unwrap();
+        panic!("Expected 201, got {}: {}", res.status(), body);
+    }
     let body: serde_json::Value = res.json().await.unwrap();
     assert_eq!(body["kind"], "station");
     assert_eq!(body["label"], "Test Station");
