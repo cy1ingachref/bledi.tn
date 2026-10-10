@@ -25,21 +25,6 @@ jobs:
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/bledi
       RUST_LOG: info
 
-    services:
-      postgres:
-        image: postgis/postgis:16-3.4
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: bledi
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U postgres -d bledi"
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries: 10
-
     steps:
       - uses: actions/checkout@v4
 
@@ -47,6 +32,15 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy, rustfmt
+
+      - name: Install PostgreSQL + PostGIS
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql postgresql-contrib postgis
+          sudo service postgresql start
+          sudo -u postgres psql -c "CREATE DATABASE bledi;" || true
+          sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
+          sudo -u postgres psql -d bledi -c "CREATE EXTENSION IF NOT EXISTS cube; CREATE EXTENSION IF NOT EXISTS earthdistance;"
 
       - name: Cache cargo
         uses: actions/cache@v4
@@ -314,7 +308,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trivy filesystem scan
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@master
         with:
           scan-type: fs
           scan-ref: .
