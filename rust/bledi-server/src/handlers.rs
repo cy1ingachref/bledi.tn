@@ -40,7 +40,7 @@ fn verify_password(pw: &str, hash: &str) -> Result<bool, AuthError> {
 pub async fn register(
     State(state): State<AppState>,
     Json(req): Json<RegisterRequest>,
-) -> Result<Json<AuthResponse>, (StatusCode, Json<Value>)> {
+) -> Result<(StatusCode, Json<AuthResponse>), (StatusCode, Json<Value>)> {
     let hash = hash_password(&req.password).map_err(|e| {
         (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 })))
     })?;
@@ -65,7 +65,7 @@ pub async fn register(
     let token = crate::auth::generate_token(&user).map_err(|e| {
         (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 })))
     })?;
-    Ok(Json(AuthResponse { token, user: user.into() }))
+    Ok((StatusCode::CREATED, Json(AuthResponse { token, user: user.into() })))
 }
 
 pub async fn login(
