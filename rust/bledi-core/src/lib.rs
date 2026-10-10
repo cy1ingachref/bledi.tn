@@ -7,6 +7,7 @@ use uuid::Uuid;
 // ── Transport modes ──────────────────────────────────────────────────────────
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, sqlx::Type)]
+#[serde(rename_all = "lowercase")]
 #[sqlx(type_name = "transport_mode", rename_all = "lowercase")]
 pub enum TransportMode {
     Bus,
@@ -107,6 +108,7 @@ impl From<User> for PublicUser {
 // ── Memory (geo-pinned) ─────────────────────────────────────────────────────
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, sqlx::Type)]
+#[serde(rename_all = "lowercase")]
 #[sqlx(type_name = "visibility", rename_all = "lowercase")]
 pub enum Visibility {
     Public,
@@ -141,6 +143,7 @@ pub struct Memory {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, sqlx::Type)]
+#[serde(rename_all = "lowercase")]
 #[sqlx(type_name = "media_type", rename_all = "lowercase")]
 pub enum MediaType {
     Image,
@@ -169,6 +172,7 @@ pub struct Favorite {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, sqlx::Type)]
+#[serde(rename_all = "lowercase")]
 #[sqlx(type_name = "favorite_kind", rename_all = "lowercase")]
 pub enum FavoriteKind {
     Station,
