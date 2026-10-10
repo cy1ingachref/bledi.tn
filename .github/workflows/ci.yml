@@ -53,6 +53,17 @@ jobs:
         working-directory: rust
         run: cargo fmt
 
+      - name: Install sqlx-cli
+        working-directory: rust
+        run: cargo install sqlx-cli --no-default-features --features postgres
+
+      - name: Run migrations
+        working-directory: rust
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/bledi
+        run: |
+          cd bledi-server && sqlx migrate run
+
       - name: Check formatting
         working-directory: rust
         run: cargo fmt -- --check
