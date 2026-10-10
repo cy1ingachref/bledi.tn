@@ -120,7 +120,7 @@ pub async fn list_stations(
                 .modes
                 .unwrap_or_default()
                 .into_iter()
-                .filter_map(|m| TransportMode::from_str(&m))
+                .filter_map(|m| TransportMode::parse(&m))
                 .collect();
             Station { id: r.id, name: r.name, lat: r.lat, lon: r.lon, modes, city: r.city }
         })
@@ -155,7 +155,7 @@ pub async fn nearby_stations(
                 .modes
                 .unwrap_or_default()
                 .into_iter()
-                .filter_map(|m| TransportMode::from_str(&m))
+                .filter_map(|m| TransportMode::parse(&m))
                 .collect();
             Station { id: r.id, name: r.name, lat: r.lat, lon: r.lon, modes, city: r.city }
         })
@@ -174,7 +174,7 @@ pub async fn get_station(
         .map_err(err)?
         .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "Station not found" }))))?;
 
-    let modes: Vec<TransportMode> = row.modes.unwrap_or_default().into_iter().filter_map(|m| TransportMode::from_str(&m)).collect();
+    let modes: Vec<TransportMode> = row.modes.unwrap_or_default().into_iter().filter_map(|m| TransportMode::parse(&m)).collect();
     Ok(Json(Station { id: row.id, name: row.name, lat: row.lat, lon: row.lon, modes, city: row.city }))
 }
 
@@ -190,7 +190,7 @@ pub async fn list_lines(
 
     let lines = rows.into_iter().map(|r| Line {
         id: r.id, number: r.number, name: r.name,
-        mode: TransportMode::from_str(r.mode.as_str()).unwrap_or(TransportMode::Bus),
+        mode: TransportMode::parse(r.mode.as_str()).unwrap_or(TransportMode::Bus),
         operator: r.operator, color: r.color, station_ids: r.station_ids.unwrap_or_default(),
     }).collect();
 
@@ -209,7 +209,7 @@ pub async fn get_line(
 
     Ok(Json(Line {
         id: row.id, number: row.number, name: row.name,
-        mode: TransportMode::from_str(row.mode.as_str()).unwrap_or(TransportMode::Bus),
+        mode: TransportMode::parse(row.mode.as_str()).unwrap_or(TransportMode::Bus),
         operator: row.operator, color: row.color, station_ids: row.station_ids.unwrap_or_default(),
     }))
 }
