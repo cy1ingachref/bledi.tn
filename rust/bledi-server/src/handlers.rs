@@ -162,7 +162,7 @@ pub async fn nearby_stations(
                 .modes
                 .unwrap_or_default()
                 .into_iter()
-                .filter_map(|m| TransportMode::parse(&m))
+                .filter_map(|m| TransportMode::parse(m.as_str()))
                 .collect();
             Station { id: r.id, name: r.name, lat: r.lat, lon: r.lon, modes, city: r.city }
         })
@@ -185,7 +185,7 @@ pub async fn get_station(
         .modes
         .unwrap_or_default()
         .into_iter()
-        .filter_map(|m| TransportMode::parse(&m))
+        .filter_map(|m| TransportMode::parse(m.as_str()))
         .collect();
 
     Ok(Json(Station { id: row.id, name: row.name, lat: row.lat, lon: row.lon, modes, city: row.city }))
@@ -231,7 +231,7 @@ pub async fn get_line(
         id: row.id,
         number: row.number,
         name: row.name,
-        mode: TransportMode::parse(row.mode.as_str()).unwrap_or(TransportMode::Bus),
+        mode: TransportMode::parse(r.mode.as_str()).unwrap_or(TransportMode::Bus),
         operator: row.operator,
         color: row.color,
         station_ids: row.station_ids.unwrap_or_default(),
