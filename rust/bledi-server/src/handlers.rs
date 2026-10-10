@@ -37,13 +37,14 @@ pub async fn register(
     let hash = hash_password(&req.password).map_err(|e| {
         (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 })))
     })?;
-    let user = sqlx::query_as!(
-        User,
+    let user = sqlx::query_as::<_, User>(
         r#"INSERT INTO users (email, password_hash, display_name)
            VALUES ($1, $2, $3)
            RETURNING id, email, password_hash, display_name, created_at"#,
-        req.email, hash, req.display_name,
     )
+    .bind(&req.email)
+    .bind(&hash)
+    .bind(&req.display_name)
     .fetch_one(&state.pool)
     .await
     .map_err(|e| {
@@ -64,11 +65,10 @@ pub async fn login(
     State(state): State<AppState>,
     Json(req): Json<LoginRequest>,
 ) -> Result<Json<AuthResponse>, (StatusCode, Json<Value>)> {
-    let user = sqlx::query_as!(
-        User,
+    let user = sqlx::query_as::<_, User>(
         "SELECT id, email, password_hash, display_name, created_at FROM users WHERE email = $1",
-        req.email,
     )
+    .bind(&req.email)
     .fetch_optional(&state.pool)
     .await
     .map_err(err)?
@@ -90,11 +90,10 @@ pub async fn get_me(
     State(state): State<AppState>,
     auth: AuthUser,
 ) -> Result<Json<PublicUser>, (StatusCode, Json<Value>)> {
-    let user = sqlx::query_as!(
-        User,
+    let user = sqlx::query_as::<_, User>(
         "SELECT id, email, password_hash, display_name, created_at FROM users WHERE id = $1",
-        auth.user_id,
     )
+    .bind(auth.user_id)
     .fetch_optional(&state.pool)
     .await
     .map_err(err)?
@@ -115,23 +114,28 @@ pub struct StationNearQuery {
 pub async fn list_stations(
     State(state): State<AppState>,
 ) -> Result<Json<Vec<Station>>, (StatusCode, Json<Value>)> {
-    let rows = sqlx::query!("SELECT id, name, lat, lon, modes, city FROM stations")
+    let rows = sqlx::query("SELECT id, name, lat, lon, modes, city FROM stations")
         .fetch_all(&state.pool)
         .await
         .map_err(err)?;
 
-    let stations = rows
-        .into_iter()
-        .map(|r| {
-            let modes: Vec<TransportMode> = r
-                .modes
-                .unwrap_or_default()
-                .into_iter()
-                .filter_map(|m| TransportMode::parse(m.as_str()))
-                .collect();
-            Station { id: r.id, name: r.name, lat: r.lat, lon: r.lon, modes, city: r.city }
-        })
-        .collect();
+    let mut stations = Vec::new();
+    for row in rows {
+        use sqlx::Row;
+        let modes: Vec<String> = row.try_get("modes").unwrap_or_default();
+        let modes: Vec<TransportMode> = modes
+            .iter()
+            .filter_map(|m| TransportMode::parse(m))
+            .collect();
+        stations.push(Station {
+            id: row.try_get("id")?,
+            name: row.try_get("name")?,
+            lat: row.try_get("lat")?,
+            lon: row.try_get("lon")?,
+            modes,
+            city: row.try_get("city")?,
+        });
+    }
 
     Ok(Json(stations))
 }
@@ -141,32 +145,38 @@ pub async fn nearby_stations(
     Query(query): Query<StationNearQuery>,
 ) -> Result<Json<Vec<Station>>, (StatusCode, Json<Value>)> {
     let radius = query.radius_m.unwrap_or(2000.0);
-    let rows = sqlx::query!(
-        r#"SELECT id, name, lat, lon, modes, city,
-                  earth_distance(ll_to_earth(lat, lon), ll_to_earth($1, $2)) AS dist_m
+    let rows = sqlx::query(
+        r#"SELECT id, name, lat, lon, modes, city
            FROM stations
            WHERE earth_box(ll_to_earth($1, $2), $3) @> ll_to_earth(lat, lon)
              AND earth_distance(ll_to_earth(lat, lon), ll_to_earth($1, $2)) <= $3
-           ORDER BY dist_m
+           ORDER BY earth_distance(ll_to_earth(lat, lon), ll_to_earth($1, $2))
            LIMIT 100"#,
-        query.lat, query.lon, radius,
     )
+    .bind(query.lat)
+    .bind(query.lon)
+    .bind(radius)
     .fetch_all(&state.pool)
     .await
     .map_err(err)?;
 
-    let stations = rows
-        .into_iter()
-        .map(|r| {
-            let modes: Vec<TransportMode> = r
-                .modes
-                .unwrap_or_default()
-                .into_iter()
-                .filter_map(|m| TransportMode::parse(m.as_str()))
-                .collect();
-            Station { id: r.id, name: r.name, lat: r.lat, lon: r.lon, modes, city: r.city }
-        })
-        .collect();
+    let mut stations = Vec::new();
+    for row in rows {
+        use sqlx::Row;
+        let modes: Vec<String> = row.try_get("modes").unwrap_or_default();
+        let modes: Vec<TransportMode> = modes
+            .iter()
+            .filter_map(|m| TransportMode::parse(m))
+            .collect();
+        stations.push(Station {
+            id: row.try_get("id")?,
+            name: row.try_get("name")?,
+            lat: row.try_get("lat")?,
+            lon: row.try_get("lon")?,
+            modes,
+            city: row.try_get("city")?,
+        });
+    }
 
     Ok(Json(stations))
 }
@@ -175,20 +185,28 @@ pub async fn get_station(
     State(state): State<AppState>,
     Path(id): Path<String>,
 ) -> Result<Json<Station>, (StatusCode, Json<Value>)> {
-    let row = sqlx::query!("SELECT id, name, lat, lon, modes, city FROM stations WHERE id = $1", id)
+    let row = sqlx::query("SELECT id, name, lat, lon, modes, city FROM stations WHERE id = $1")
+        .bind(&id)
         .fetch_optional(&state.pool)
         .await
         .map_err(err)?
         .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "Station not found" }))))?;
 
-    let modes: Vec<TransportMode> = row
-        .modes
-        .unwrap_or_default()
-        .into_iter()
-        .filter_map(|m| TransportMode::parse(m.as_str()))
+    use sqlx::Row;
+    let modes: Vec<String> = row.try_get("modes").unwrap_or_default();
+    let modes: Vec<TransportMode> = modes
+        .iter()
+        .filter_map(|m| TransportMode::parse(m))
         .collect();
 
-    Ok(Json(Station { id: row.id, name: row.name, lat: row.lat, lon: row.lon, modes, city: row.city }))
+    Ok(Json(Station {
+        id: row.try_get("id")?,
+        name: row.try_get("name")?,
+        lat: row.try_get("lat")?,
+        lon: row.try_get("lon")?,
+        modes,
+        city: row.try_get("city")?,
+    }))
 }
 
 // ── Line handlers ───────────────────────────────────────────────────────────
@@ -196,23 +214,25 @@ pub async fn get_station(
 pub async fn list_lines(
     State(state): State<AppState>,
 ) -> Result<Json<Vec<Line>>, (StatusCode, Json<Value>)> {
-    let rows = sqlx::query!("SELECT id, number, name, mode, operator, color, station_ids FROM lines")
+    let rows = sqlx::query("SELECT id, number, name, mode, operator, color, station_ids FROM lines")
         .fetch_all(&state.pool)
         .await
         .map_err(err)?;
 
-    let lines = rows
-        .into_iter()
-        .map(|r| Line {
-            id: r.id,
-            number: r.number,
-            name: r.name,
-            mode: TransportMode::parse(r.mode.as_str()).unwrap_or(TransportMode::Bus),
-            operator: r.operator,
-            color: r.color,
-            station_ids: r.station_ids.unwrap_or_default(),
-        })
-        .collect();
+    let mut lines = Vec::new();
+    for row in rows {
+        use sqlx::Row;
+        let station_ids: Vec<String> = row.try_get("station_ids").unwrap_or_default();
+        lines.push(Line {
+            id: row.try_get("id")?,
+            number: row.try_get("number")?,
+            name: row.try_get("name")?,
+            mode: TransportMode::parse(&row.try_get::<String, _>("mode")?).unwrap_or(TransportMode::Bus),
+            operator: row.try_get("operator")?,
+            color: row.try_get("color")?,
+            station_ids,
+        });
+    }
 
     Ok(Json(lines))
 }
@@ -221,20 +241,24 @@ pub async fn get_line(
     State(state): State<AppState>,
     Path(id): Path<String>,
 ) -> Result<Json<Line>, (StatusCode, Json<Value>)> {
-    let row = sqlx::query!("SELECT id, number, name, mode, operator, color, station_ids FROM lines WHERE id = $1", id)
+    let row = sqlx::query("SELECT id, number, name, mode, operator, color, station_ids FROM lines WHERE id = $1")
+        .bind(&id)
         .fetch_optional(&state.pool)
         .await
         .map_err(err)?
         .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "Line not found" }))))?;
 
+    use sqlx::Row;
+    let station_ids: Vec<String> = row.try_get("station_ids").unwrap_or_default();
+
     Ok(Json(Line {
-        id: row.id,
-        number: row.number,
-        name: row.name,
-        mode: TransportMode::parse(row.mode.as_str()).unwrap_or(TransportMode::Bus),
-        operator: row.operator,
-        color: row.color,
-        station_ids: row.station_ids.unwrap_or_default(),
+        id: row.try_get("id")?,
+        number: row.try_get("number")?,
+        name: row.try_get("name")?,
+        mode: TransportMode::parse(&row.try_get::<String, _>("mode")?).unwrap_or(TransportMode::Bus),
+        operator: row.try_get("operator")?,
+        color: row.try_get("color")?,
+        station_ids,
     }))
 }
 
@@ -519,8 +543,8 @@ pub async fn create_favorite(
     )
     .bind(auth.user_id)
     .bind(kind_str)
-    .bind(req.ref_id)
-    .bind(req.label)
+    .bind(&req.ref_id)
+    .bind(&req.label)
     .fetch_one(&state.pool)
     .await
     .map_err(err)?;
