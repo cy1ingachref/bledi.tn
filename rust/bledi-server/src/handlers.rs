@@ -1,5 +1,4 @@
 use axum::extract::{Path, Query, State};
-use axum::extract::{Path, Query, State};
 use axum::http::StatusCode;
 use axum::Json;
 use bledi_core::*;
@@ -35,9 +34,11 @@ pub async fn register(
     State(state): State<AppState>,
     Json(req): Json<RegisterRequest>,
 ) -> Result<Json<AuthResponse>, (StatusCode, Json<Value>)> {
-    let hash = hash_password(&req.password).map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 }))))?;
+    let hash = hash_password(&req.password).map_err(|e| {
+        (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 })))
+    })?;
     let user = sqlx::query_as!(
-        crate::auth::User,
+        User,
         r#"INSERT INTO users (email, password_hash, display_name)
            VALUES ($1, $2, $3)
            RETURNING id, email, password_hash, display_name, created_at"#,
@@ -53,7 +54,9 @@ pub async fn register(
         }
     })?;
 
-    let token = crate::auth::generate_token(&user).map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 }))))?;
+    let token = crate::auth::generate_token(&user).map_err(|e| {
+        (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 })))
+    })?;
     Ok(Json(AuthResponse { token, user: user.into() }))
 }
 
@@ -62,7 +65,7 @@ pub async fn login(
     Json(req): Json<LoginRequest>,
 ) -> Result<Json<AuthResponse>, (StatusCode, Json<Value>)> {
     let user = sqlx::query_as!(
-        crate::auth::User,
+        User,
         "SELECT id, email, password_hash, display_name, created_at FROM users WHERE email = $1",
         req.email,
     )
@@ -71,11 +74,15 @@ pub async fn login(
     .map_err(err)?
     .ok_or_else(|| (StatusCode::UNAUTHORIZED, Json(json!({ "error": "Invalid credentials" }))))?;
 
-    if !verify_password(&req.password, &user.password_hash).map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 }))))? {
+    if !verify_password(&req.password, &user.password_hash).map_err(|e| {
+        (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 })))
+    })? {
         return Err((StatusCode::UNAUTHORIZED, Json(json!({ "error": "Invalid credentials" }))));
     }
 
-    let token = crate::auth::generate_token(&user).map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 }))))?;
+    let token = crate::auth::generate_token(&user).map_err(|e| {
+        (StatusCode::INTERNAL_SERVER_ERROR, Json(json!({ "error": e.0 })))
+    })?;
     Ok(Json(AuthResponse { token, user: user.into() }))
 }
 
@@ -84,7 +91,7 @@ pub async fn get_me(
     auth: AuthUser,
 ) -> Result<Json<PublicUser>, (StatusCode, Json<Value>)> {
     let user = sqlx::query_as!(
-        crate::auth::User,
+        User,
         "SELECT id, email, password_hash, display_name, created_at FROM users WHERE id = $1",
         auth.user_id,
     )
@@ -174,7 +181,13 @@ pub async fn get_station(
         .map_err(err)?
         .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "Station not found" }))))?;
 
-    let modes: Vec<TransportMode> = row.modes.unwrap_or_default().into_iter().filter_map(|m| TransportMode::parse(&m)).collect();
+    let modes: Vec<TransportMode> = row
+        .modes
+        .unwrap_or_default()
+        .into_iter()
+        .filter_map(|m| TransportMode::parse(&m))
+        .collect();
+
     Ok(Json(Station { id: row.id, name: row.name, lat: row.lat, lon: row.lon, modes, city: row.city }))
 }
 
@@ -188,11 +201,18 @@ pub async fn list_lines(
         .await
         .map_err(err)?;
 
-    let lines = rows.into_iter().map(|r| Line {
-        id: r.id, number: r.number, name: r.name,
-        mode: TransportMode::parse(r.mode.as_str()).unwrap_or(TransportMode::Bus),
-        operator: r.operator, color: r.color, station_ids: r.station_ids.unwrap_or_default(),
-    }).collect();
+    let lines = rows
+        .into_iter()
+        .map(|r| Line {
+            id: r.id,
+            number: r.number,
+            name: r.name,
+            mode: TransportMode::parse(r.mode.as_str()).unwrap_or(TransportMode::Bus),
+            operator: r.operator,
+            color: r.color,
+            station_ids: r.station_ids.unwrap_or_default(),
+        })
+        .collect();
 
     Ok(Json(lines))
 }
@@ -208,9 +228,13 @@ pub async fn get_line(
         .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "Line not found" }))))?;
 
     Ok(Json(Line {
-        id: row.id, number: row.number, name: row.name,
+        id: row.id,
+        number: row.number,
+        name: row.name,
         mode: TransportMode::parse(row.mode.as_str()).unwrap_or(TransportMode::Bus),
-        operator: row.operator, color: row.color, station_ids: row.station_ids.unwrap_or_default(),
+        operator: row.operator,
+        color: row.color,
+        station_ids: row.station_ids.unwrap_or_default(),
     }))
 }
 
@@ -221,25 +245,44 @@ fn memory_from_row(row: sqlx::postgres::PgRow) -> Result<Memory, sqlx::Error> {
     let mode_str: String = row.try_get("media_type")?;
     let vis_str: String = row.try_get("visibility")?;
     Ok(Memory {
-        id: row.try_get("id")?, user_id: row.try_get("user_id")?,
-        lat: row.try_get("lat")?, lon: row.try_get("lon")?,
-        title: row.try_get("title")?, description: row.try_get("description")?,
+        id: row.try_get("id")?,
+        user_id: row.try_get("user_id")?,
+        lat: row.try_get("lat")?,
+        lon: row.try_get("lon")?,
+        title: row.try_get("title")?,
+        description: row.try_get("description")?,
         media_url: row.try_get("media_url")?,
-        media_type: match mode_str.as_str() { "image" => MediaType::Image, "video" => MediaType::Video, _ => MediaType::Image },
-        visibility: match vis_str.as_str() { "public" => Visibility::Public, "friends" => Visibility::Friends, "private" => Visibility::Private, _ => Visibility::Public },
+        media_type: match mode_str.as_str() {
+            "image" => MediaType::Image,
+            "video" => MediaType::Video,
+            _ => MediaType::Image,
+        },
+        visibility: match vis_str.as_str() {
+            "public" => Visibility::Public,
+            "friends" => Visibility::Friends,
+            "private" => Visibility::Private,
+            _ => Visibility::Public,
+        },
         unlock_radius_m: row.try_get("unlock_radius_m")?,
-        created_at: row.try_get("created_at")?, updated_at: row.try_get("updated_at")?,
+        created_at: row.try_get("created_at")?,
+        updated_at: row.try_get("updated_at")?,
     })
 }
 
 fn memory_to_json(m: &Memory) -> serde_json::Value {
     json!({
-        "id": m.id, "user_id": m.user_id, "lat": m.lat, "lon": m.lon,
-        "title": m.title, "description": m.description,
-        "media_url": m.media_url, "media_type": m.media_type.as_str(),
-        "visibility": match m.visibility { Visibility::Public => "public", Visibility::Friends => "friends", Visibility::Private => "private" },
+        "id": m.id,
+        "user_id": m.user_id,
+        "lat": m.lat,
+        "lon": m.lon,
+        "title": m.title,
+        "description": m.description,
+        "media_url": m.media_url,
+        "media_type": m.media_type.as_str(),
+        "visibility": m.visibility.as_str(),
         "unlock_radius_m": m.unlock_radius_m,
-        "created_at": m.created_at, "updated_at": m.updated_at,
+        "created_at": m.created_at,
+        "updated_at": m.updated_at,
     })
 }
 
@@ -250,10 +293,15 @@ pub async fn list_memories(
     auth: AuthUser,
 ) -> Result<Json<Vec<serde_json::Value>>, (StatusCode, Json<Value>)> {
     let rows = sqlx::query("SELECT * FROM memories WHERE user_id = $1 ORDER BY created_at DESC")
-        .bind(auth.user_id).fetch_all(&state.pool).await.map_err(err)?;
+        .bind(auth.user_id)
+        .fetch_all(&state.pool)
+        .await
+        .map_err(err)?;
 
     let mut memories = Vec::new();
-    for row in rows { memories.push(memory_to_json(&memory_from_row(row).map_err(err)?)); }
+    for row in rows {
+        memories.push(memory_to_json(&memory_from_row(row).map_err(err)?));
+    }
     Ok(Json(memories))
 }
 
@@ -276,11 +324,18 @@ pub async fn nearby_memories(
            ORDER BY earth_distance(ll_to_earth(lat, lon), ll_to_earth($1, $2))
            LIMIT 200"#,
     )
-    .bind(query.lat).bind(query.lon).bind(radius).bind(auth.user_id)
-    .fetch_all(&state.pool).await.map_err(err)?;
+    .bind(query.lat)
+    .bind(query.lon)
+    .bind(radius)
+    .bind(auth.user_id)
+    .fetch_all(&state.pool)
+    .await
+    .map_err(err)?;
 
     let mut memories = Vec::new();
-    for row in rows { memories.push(memory_to_json(&memory_from_row(row).map_err(err)?)); }
+    for row in rows {
+        memories.push(memory_to_json(&memory_from_row(row).map_err(err)?));
+    }
     Ok(Json(memories))
 }
 
@@ -289,14 +344,27 @@ pub async fn create_memory(
     auth: AuthUser,
     Json(req): Json<CreateMemoryRequest>,
 ) -> Result<(StatusCode, Json<serde_json::Value>), (StatusCode, Json<Value>)> {
-    let vis_str = match req.visibility { Visibility::Public => "public", Visibility::Friends => "friends", Visibility::Private => "private" };
+    let vis_str = match req.visibility {
+        Visibility::Public => "public",
+        Visibility::Friends => "friends",
+        Visibility::Private => "private",
+    };
     let row = sqlx::query(
         r#"INSERT INTO memories (user_id, lat, lon, title, description, media_url, media_type, visibility, unlock_radius_m)
            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *"#,
     )
-    .bind(auth.user_id).bind(req.lat).bind(req.lon).bind(req.title).bind(req.description)
-    .bind(req.media_url).bind(req.media_type.as_str()).bind(vis_str).bind(req.unlock_radius_m)
-    .fetch_one(&state.pool).await.map_err(err)?;
+    .bind(auth.user_id)
+    .bind(req.lat)
+    .bind(req.lon)
+    .bind(req.title)
+    .bind(req.description)
+    .bind(req.media_url)
+    .bind(req.media_type.as_str())
+    .bind(vis_str)
+    .bind(req.unlock_radius_m)
+    .fetch_one(&state.pool)
+    .await
+    .map_err(err)?;
 
     let memory = memory_from_row(row).map_err(err)?;
     Ok((StatusCode::CREATED, Json(memory_to_json(&memory))))
@@ -307,8 +375,11 @@ pub async fn get_memory(
     auth: AuthUser,
     Path(id): Path<Uuid>,
 ) -> Result<Json<serde_json::Value>, (StatusCode, Json<Value>)> {
-    let row = sqlx::query("SELECT * FROM memories WHERE id = $1").bind(id)
-        .fetch_optional(&state.pool).await.map_err(err)?
+    let row = sqlx::query("SELECT * FROM memories WHERE id = $1")
+        .bind(id)
+        .fetch_optional(&state.pool)
+        .await
+        .map_err(err)?
         .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "Memory not found" }))))?;
 
     let memory = memory_from_row(row).map_err(err)?;
@@ -326,8 +397,11 @@ pub async fn update_memory(
     Path(id): Path<Uuid>,
     Json(req): Json<UpdateMemoryRequest>,
 ) -> Result<Json<serde_json::Value>, (StatusCode, Json<Value>)> {
-    let existing = sqlx::query("SELECT user_id FROM memories WHERE id = $1").bind(id)
-        .fetch_optional(&state.pool).await.map_err(err)?
+    let existing = sqlx::query("SELECT user_id FROM memories WHERE id = $1")
+        .bind(id)
+        .fetch_optional(&state.pool)
+        .await
+        .map_err(err)?
         .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "Memory not found" }))))?;
 
     use sqlx::Row;
@@ -336,13 +410,15 @@ pub async fn update_memory(
         return Err((StatusCode::FORBIDDEN, Json(json!({ "error": "Access denied" }))));
     }
 
-    // Fetch current and apply updates
-    let row = sqlx::query("SELECT * FROM memories WHERE id = $1").bind(id)
-        .fetch_one(&state.pool).await.map_err(err)?;
+    let row = sqlx::query("SELECT * FROM memories WHERE id = $1")
+        .bind(id)
+        .fetch_one(&state.pool)
+        .await
+        .map_err(err)?;
     let current = memory_from_row(row).map_err(err)?;
 
-    let title = req.title.unwrap_or(current.title);
-    let description = req.description.unwrap_or(current.description);
+    let title = req.title.or(current.title);
+    let description = req.description.or(current.description);
     let visibility = req.visibility.unwrap_or(current.visibility);
     let unlock_radius_m = req.unlock_radius_m.unwrap_or(current.unlock_radius_m);
 
@@ -350,10 +426,14 @@ pub async fn update_memory(
         r#"UPDATE memories SET title=$1, description=$2, visibility=$3, unlock_radius_m=$4, updated_at=now()
            WHERE id=$5 RETURNING *"#,
     )
-    .bind(title).bind(description)
-    .bind(match visibility { Visibility::Public => "public", Visibility::Friends => "friends", Visibility::Private => "private" })
-    .bind(unlock_radius_m).bind(id)
-    .fetch_one(&state.pool).await.map_err(err)?;
+    .bind(title)
+    .bind(description)
+    .bind(visibility.as_str())
+    .bind(unlock_radius_m)
+    .bind(id)
+    .fetch_one(&state.pool)
+    .await
+    .map_err(err)?;
 
     let updated = memory_from_row(row).map_err(err)?;
     Ok(Json(memory_to_json(&updated)))
@@ -365,7 +445,11 @@ pub async fn delete_memory(
     Path(id): Path<Uuid>,
 ) -> Result<StatusCode, (StatusCode, Json<Value>)> {
     let result = sqlx::query("DELETE FROM memories WHERE id = $1 AND user_id = $2")
-        .bind(id).bind(auth.user_id).execute(&state.pool).await.map_err(err)?;
+        .bind(id)
+        .bind(auth.user_id)
+        .execute(&state.pool)
+        .await
+        .map_err(err)?;
 
     if result.rows_affected() == 0 {
         return Err((StatusCode::NOT_FOUND, Json(json!({ "error": "Memory not found" }))));
@@ -379,18 +463,28 @@ fn favorite_from_row(row: sqlx::postgres::PgRow) -> Result<Favorite, sqlx::Error
     use sqlx::Row;
     let kind_str: String = row.try_get("kind")?;
     Ok(Favorite {
-        id: row.try_get("id")?, user_id: row.try_get("user_id")?,
-        kind: match kind_str.as_str() { "station" => FavoriteKind::Station, "line" => FavoriteKind::Line, "place" => FavoriteKind::Place, _ => FavoriteKind::Place },
-        ref_id: row.try_get("ref_id")?, label: row.try_get("label")?,
+        id: row.try_get("id")?,
+        user_id: row.try_get("user_id")?,
+        kind: match kind_str.as_str() {
+            "station" => FavoriteKind::Station,
+            "line" => FavoriteKind::Line,
+            "place" => FavoriteKind::Place,
+            _ => FavoriteKind::Place,
+        },
+        ref_id: row.try_get("ref_id")?,
+        label: row.try_get("label")?,
         created_at: row.try_get("created_at")?,
     })
 }
 
 fn favorite_to_json(f: &Favorite) -> serde_json::Value {
     json!({
-        "id": f.id, "user_id": f.user_id,
-        "kind": match f.kind { FavoriteKind::Station => "station", FavoriteKind::Line => "line", FavoriteKind::Place => "place" },
-        "ref_id": f.ref_id, "label": f.label, "created_at": f.created_at,
+        "id": f.id,
+        "user_id": f.user_id,
+        "kind": f.kind.as_str(),
+        "ref_id": f.ref_id,
+        "label": f.label,
+        "created_at": f.created_at,
     })
 }
 
@@ -399,10 +493,15 @@ pub async fn list_favorites(
     auth: AuthUser,
 ) -> Result<Json<Vec<serde_json::Value>>, (StatusCode, Json<Value>)> {
     let rows = sqlx::query("SELECT * FROM favorites WHERE user_id = $1 ORDER BY created_at DESC")
-        .bind(auth.user_id).fetch_all(&state.pool).await.map_err(err)?;
+        .bind(auth.user_id)
+        .fetch_all(&state.pool)
+        .await
+        .map_err(err)?;
 
     let mut favorites = Vec::new();
-    for row in rows { favorites.push(favorite_to_json(&favorite_from_row(row).map_err(err)?)); }
+    for row in rows {
+        favorites.push(favorite_to_json(&favorite_from_row(row).map_err(err)?));
+    }
     Ok(Json(favorites))
 }
 
@@ -411,15 +510,20 @@ pub async fn create_favorite(
     auth: AuthUser,
     Json(req): Json<CreateFavoriteRequest>,
 ) -> Result<(StatusCode, Json<serde_json::Value>), (StatusCode, Json<Value>)> {
-    let kind_str = match req.kind { FavoriteKind::Station => "station", FavoriteKind::Line => "line", FavoriteKind::Place => "place" };
+    let kind_str = req.kind.as_str();
     let row = sqlx::query(
         r#"INSERT INTO favorites (user_id, kind, ref_id, label)
            VALUES ($1, $2, $3, $4)
            ON CONFLICT (user_id, kind, ref_id) DO UPDATE SET label = EXCLUDED.label
            RETURNING *"#,
     )
-    .bind(auth.user_id).bind(kind_str).bind(req.ref_id).bind(req.label)
-    .fetch_one(&state.pool).await.map_err(err)?;
+    .bind(auth.user_id)
+    .bind(kind_str)
+    .bind(req.ref_id)
+    .bind(req.label)
+    .fetch_one(&state.pool)
+    .await
+    .map_err(err)?;
 
     let fav = favorite_from_row(row).map_err(err)?;
     Ok((StatusCode::CREATED, Json(favorite_to_json(&fav))))
@@ -431,7 +535,11 @@ pub async fn delete_favorite(
     Path(id): Path<Uuid>,
 ) -> Result<StatusCode, (StatusCode, Json<Value>)> {
     let result = sqlx::query("DELETE FROM favorites WHERE id = $1 AND user_id = $2")
-        .bind(id).bind(auth.user_id).execute(&state.pool).await.map_err(err)?;
+        .bind(id)
+        .bind(auth.user_id)
+        .execute(&state.pool)
+        .await
+        .map_err(err)?;
 
     if result.rows_affected() == 0 {
         return Err((StatusCode::NOT_FOUND, Json(json!({ "error": "Favorite not found" }))));
@@ -444,20 +552,31 @@ pub async fn delete_favorite(
 fn share_from_row(row: sqlx::postgres::PgRow) -> Result<LocationShare, sqlx::Error> {
     use sqlx::Row;
     Ok(LocationShare {
-        id: row.try_get("id")?, user_id: row.try_get("user_id")?,
-        lat: row.try_get("lat")?, lon: row.try_get("lon")?,
-        accuracy_m: row.try_get("accuracy_m")?, note: row.try_get("note")?,
-        is_active: row.try_get("is_active")?, expires_at: row.try_get("expires_at")?,
-        created_at: row.try_get("created_at")?, updated_at: row.try_get("updated_at")?,
+        id: row.try_get("id")?,
+        user_id: row.try_get("user_id")?,
+        lat: row.try_get("lat")?,
+        lon: row.try_get("lon")?,
+        accuracy_m: row.try_get("accuracy_m")?,
+        note: row.try_get("note")?,
+        is_active: row.try_get("is_active")?,
+        expires_at: row.try_get("expires_at")?,
+        created_at: row.try_get("created_at")?,
+        updated_at: row.try_get("updated_at")?,
     })
 }
 
 fn share_to_json(s: &LocationShare) -> serde_json::Value {
     json!({
-        "id": s.id, "user_id": s.user_id,
-        "lat": s.lat, "lon": s.lon, "accuracy_m": s.accuracy_m,
-        "note": s.note, "is_active": s.is_active, "expires_at": s.expires_at,
-        "created_at": s.created_at, "updated_at": s.updated_at,
+        "id": s.id,
+        "user_id": s.user_id,
+        "lat": s.lat,
+        "lon": s.lon,
+        "accuracy_m": s.accuracy_m,
+        "note": s.note,
+        "is_active": s.is_active,
+        "expires_at": s.expires_at,
+        "created_at": s.created_at,
+        "updated_at": s.updated_at,
     })
 }
 
@@ -466,10 +585,15 @@ pub async fn list_location_shares(
     auth: AuthUser,
 ) -> Result<Json<Vec<serde_json::Value>>, (StatusCode, Json<Value>)> {
     let rows = sqlx::query("SELECT * FROM location_shares WHERE user_id = $1 ORDER BY updated_at DESC")
-        .bind(auth.user_id).fetch_all(&state.pool).await.map_err(err)?;
+        .bind(auth.user_id)
+        .fetch_all(&state.pool)
+        .await
+        .map_err(err)?;
 
     let mut shares = Vec::new();
-    for row in rows { shares.push(share_to_json(&share_from_row(row).map_err(err)?)); }
+    for row in rows {
+        shares.push(share_to_json(&share_from_row(row).map_err(err)?));
+    }
     Ok(Json(shares))
 }
 
@@ -493,11 +617,18 @@ pub async fn nearby_location_shares(
            ORDER BY earth_distance(ll_to_earth(lat, lon), ll_to_earth($1, $2))
            LIMIT 100"#,
     )
-    .bind(query.lat).bind(query.lon).bind(radius).bind(auth.user_id)
-    .fetch_all(&state.pool).await.map_err(err)?;
+    .bind(query.lat)
+    .bind(query.lon)
+    .bind(radius)
+    .bind(auth.user_id)
+    .fetch_all(&state.pool)
+    .await
+    .map_err(err)?;
 
     let mut shares = Vec::new();
-    for row in rows { shares.push(share_to_json(&share_from_row(row).map_err(err)?)); }
+    for row in rows {
+        shares.push(share_to_json(&share_from_row(row).map_err(err)?));
+    }
     Ok(Json(shares))
 }
 
@@ -510,8 +641,16 @@ pub async fn create_location_share(
         r#"INSERT INTO location_shares (user_id, lat, lon, accuracy_m, note, is_active, expires_at)
            VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *"#,
     )
-    .bind(auth.user_id).bind(req.lat).bind(req.lon).bind(req.accuracy_m).bind(req.note).bind(req.is_active).bind(req.expires_at)
-    .fetch_one(&state.pool).await.map_err(err)?;
+    .bind(auth.user_id)
+    .bind(req.lat)
+    .bind(req.lon)
+    .bind(req.accuracy_m)
+    .bind(req.note)
+    .bind(req.is_active)
+    .bind(req.expires_at)
+    .fetch_one(&state.pool)
+    .await
+    .map_err(err)?;
 
     let share = share_from_row(row).map_err(err)?;
     Ok((StatusCode::CREATED, Json(share_to_json(&share))))
@@ -523,17 +662,17 @@ pub async fn update_location_share(
     Path(id): Path<Uuid>,
     Json(req): Json<UpdateLocationShareRequest>,
 ) -> Result<Json<serde_json::Value>, (StatusCode, Json<Value>)> {
-    let existing = sqlx::query("SELECT user_id FROM location_shares WHERE id = $1").bind(id)
-        .fetch_optional(&state.pool).await.map_err(err)?
+    let existing = sqlx::query("SELECT user_id FROM location_shares WHERE id = $1")
+        .bind(id)
+        .fetch_optional(&state.pool)
+        .await
+        .map_err(err)?
         .ok_or_else(|| (StatusCode::NOT_FOUND, Json(json!({ "error": "Location share not found" }))))?;
 
     use sqlx::Row;
     let owner_id: Uuid = existing.try_get("user_id").map_err(err)?;
     if owner_id != auth.user_id {
-        return Err((
-            StatusCode::FORBIDDEN,
-            Json(json!({ "error": "Access denied" })),
-        ));
+        return Err((StatusCode::FORBIDDEN, Json(json!({ "error": "Access denied" }))));
     }
 
     let row = sqlx::query(
