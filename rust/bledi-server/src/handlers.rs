@@ -227,7 +227,7 @@ pub async fn list_lines(
             id: row.try_get("id").map_err(err)?,
             number: row.try_get("number").map_err(err)?,
             name: row.try_get("name").map_err(err)?,
-            mode: TransportMode::parse(&row.try_get::<String, _>("mode")?).unwrap_or(TransportMode::Bus),
+            mode: TransportMode::parse(row.try_get::<String, _>("mode")?.as_str()).unwrap_or(TransportMode::Bus),
             operator: row.try_get("operator").map_err(err)?,
             color: row.try_get("color").map_err(err)?,
             station_ids,
