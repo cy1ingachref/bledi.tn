@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { api, type Station, type RoutePlan } from "$lib/router";
 
   const W = 900;
@@ -212,13 +213,31 @@
     ctx = canvas?.getContext("2d");
     if (!ctx) return;
     try {
-      const stops = await api.getStations();
-      stations = stops;
-      const stops2d = stops.map((st) => mmerc(st.lat, st.lon));
+      const geojson = await api.getStations();
+      const features = (geojson as { features?: unknown[] }).features ?? [];
+      stations = (features as Array<{ properties?: Record<string, unknown>; geometry?: { coordinates?: [number, number] } }>).map((f) => {
+        const p = f.properties ?? {};
+        return {
+          id: String(p.id ?? ""),
+          name: String(p.name ?? ""),
+          name_en: String(p.name_en ?? p.name ?? ""),
+          lat: f.geometry?.coordinates?.[1] ?? 0,
+          lon: f.geometry?.coordinates?.[0] ?? 0,
+          mode: String(p.mode ?? "walk"),
+          operator: String(p.operator ?? ""),
+          route_type: Number(p.route_type ?? 0),
+          license_status: String(p.license_status ?? ""),
+          city: String(p.city ?? ""),
+          source: String(p.source ?? ""),
+        };
+      });
+      const stops2d = stations.map((st) => mmerc(st.lat, st.lon));
       fit(stops2d);
       redraw();
+      state = "ready";
     } catch (e) {
-      state = "error";
+      // Don't block the UI if stations fail to load — user can still pick modes and route
+      state = "ready";
       error = e instanceof Error ? e.message : String(e);
     }
   });
@@ -289,14 +308,17 @@
       <!-- Mode selection -->
       <section class="space-y-2">
         <h2 class="text-sm font-semibold text-slate-300">Moyens de transport</h2>
-        <div class="grid grid-cols-2 gap-1">
+        <div class="space-y-1">
           {#each MODES as mode}
             <button
-              class="flex items-center gap-2 rounded px-2 py-1.5 text-xs font-medium transition-colors {isModeSelected(mode.id)
-                ? 'bg-slate-700 text-white ring-1 ring-cyan-500'
-                : 'bg-slate-800 text-slate-500 hover:bg-slate-700'}"
+              class="w-full flex items-center gap-2 rounded px-2 py-1.5 text-xs font-medium transition-all {isModeSelected(mode.id)
+                ? 'bg-cyan-900/50 text-cyan-200 ring-1 ring-cyan-500'
+                : 'bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-300'}"
               on:click={() => toggleMode(mode.id)}
             >
+              <span class="w-4 h-4 rounded border-2 flex items-center justify-center text-[10px] font-bold {isModeSelected(mode.id) ? 'bg-cyan-500 border-cyan-500 text-white' : 'border-slate-600 text-transparent'}">
+                ✓
+              </span>
               <span class="w-3 h-3 rounded-full" style="background:{mode.color}"></span>
               <span>{mode.icon} {mode.label}</span>
             </button>
