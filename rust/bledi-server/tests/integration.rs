@@ -1,5 +1,5 @@
 use axum::http::StatusCode;
-use axum::routing::Router;
+use bledi_server::router;
 use bledi_server::state::AppState;
 use serde_json::json;
 use sqlx::postgres::PgPoolOptions;
@@ -49,11 +49,7 @@ async fn setup_db() -> AppState {
 async fn spawn_server() -> SocketAddr {
     let state = setup_db().await;
 
-    let app = Router::new()
-        .route("/api/v1/health", axum::routing::get(|| async {
-            axum::Json(json!({ "status": "ok", "service": "bledi-server", "version": "0.1.0" }))
-        }))
-        .with_state(state);
+    let app = router(state);
 
     let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
     let addr = listener.local_addr().unwrap();
