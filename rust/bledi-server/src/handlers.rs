@@ -6,7 +6,7 @@ use serde_json::{json, Value};
 use uuid::Uuid;
 
 use crate::auth::{AuthError, AuthUser};
-use bledi_server::state::AppState;
+use crate::state::AppState;
 
 // ── Health ──────────────────────────────────────────────────────────────────
 
