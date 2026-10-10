@@ -6,6 +6,13 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   CARGO_TERM_COLOR: always
 
@@ -13,9 +20,25 @@ jobs:
   rust-test:
     name: Rust Build, Test & Runtime Smoke
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     env:
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/bledi
-      RUST_LOG: debug
+      RUST_LOG: info
+
+    services:
+      postgres:
+        image: postgis/postgis:16-3.4
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: bledi
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d bledi"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries: 10
 
     steps:
       - uses: actions/checkout@v4
@@ -25,35 +48,23 @@ jobs:
         with:
           components: clippy, rustfmt
 
-      - name: Install PostgreSQL + PostGIS
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y postgresql postgresql-contrib postgis
-          sudo service postgresql start
-          sudo -u postgres psql -c "CREATE DATABASE bledi;" || true
-          sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
-          sudo -u postgres psql -d bledi -c "CREATE EXTENSION IF NOT EXISTS cube; CREATE EXTENSION IF NOT EXISTS earthdistance;"
-
       - name: Cache cargo
         uses: actions/cache@v4
         with:
           path: |
             ~/.cargo/registry
             ~/.cargo/git
+            ~/.cargo/bin
             rust/target
           key: ${{ runner.os }}-cargo-${{ hashFiles('rust/Cargo.lock') }}
 
-      - name: Format code
-        working-directory: rust
-        run: cargo fmt
-
       - name: Check formatting
         working-directory: rust
-        run: cargo fmt -- --check
+        run: cargo fmt --all -- --check
 
       - name: Clippy
         working-directory: rust
-        run: cargo clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
 
       - name: Build
         working-directory: rust
@@ -70,7 +81,7 @@ jobs:
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/bledi
         run: |
-          cd bledi-server && ./../target/release/bledi-server &
+          ./target/release/bledi-server &
           echo $! > /tmp/bledi-server.pid
           echo "Server PID: $(cat /tmp/bledi-server.pid)"
 
@@ -82,6 +93,10 @@ jobs:
               echo "Server is up!"
               break
             fi
+            if ! kill -0 $(cat /tmp/bledi-server.pid) 2>/dev/null; then
+              echo "ERROR: Server process died"
+              exit 1
+            fi
             echo "Attempt $i: not ready yet..."
             sleep 1
           done
@@ -89,111 +104,147 @@ jobs:
       - name: Smoke test - health
         run: |
           echo "=== GET /api/v1/health ==="
-          curl -s http://localhost:3000/api/v1/health | python3 -m json.tool
+          STATUS=$(curl -s -o /tmp/health.json -w "%{http_code}" http://localhost:3000/api/v1/health)
+          cat /tmp/health.json | python3 -m json.tool
+          if [ "$STATUS" != "200" ]; then
+            echo "FAIL: Expected 200, got $STATUS"
+            exit 1
+          fi
 
       - name: Smoke test - stations (empty)
         run: |
           echo "=== GET /api/v1/stations ==="
-          curl -s http://localhost:3000/api/v1/stations | python3 -m json.tool
+          STATUS=$(curl -s -o /tmp/stations.json -w "%{http_code}" http://localhost:3000/api/v1/stations)
+          cat /tmp/stations.json | python3 -m json.tool
+          if [ "$STATUS" != "200" ]; then
+            echo "FAIL: Expected 200, got $STATUS"
+            exit 1
+          fi
 
       - name: Smoke test - lines (empty)
         run: |
           echo "=== GET /api/v1/lines ==="
-          curl -s http://localhost:3000/api/v1/lines | python3 -m json.tool
+          STATUS=$(curl -s -o /tmp/lines.json -w "%{http_code}" http://localhost:3000/api/v1/lines)
+          cat /tmp/lines.json | python3 -m json.tool
+          if [ "$STATUS" != "200" ]; then
+            echo "FAIL: Expected 200, got $STATUS"
+            exit 1
+          fi
 
       - name: Smoke test - register
         run: |
           echo "=== POST /api/v1/auth/register ==="
-          curl -s -X POST http://localhost:3000/api/v1/auth/register \
+          STATUS=$(curl -s -o /tmp/register.json -w "%{http_code}" \
+            -X POST http://localhost:3000/api/v1/auth/register \
             -H "Content-Type: application/json" \
-            -d '{"email":"smoke@test.com","password":"test123456","display_name":"Smoke Test"}' \
-            | python3 -m json.tool
+            -d '{"email":"smoke@test.com","password":"test123456","display_name":"Smoke Test"}')
+          cat /tmp/register.json | python3 -m json.tool
+          if [ "$STATUS" != "201" ]; then
+            echo "FAIL: Expected 201, got $STATUS"
+            cat /tmp/register.json
+            exit 1
+          fi
 
-      - name: Smoke test - login
+      - name: Login and export token
+        id: auth
         run: |
-          echo "=== POST /api/v1/auth/login ==="
           RESPONSE=$(curl -s -X POST http://localhost:3000/api/v1/auth/login \
             -H "Content-Type: application/json" \
             -d '{"email":"smoke@test.com","password":"test123456"}')
           echo "$RESPONSE" | python3 -m json.tool
           TOKEN=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['token'])")
+          echo "token=$TOKEN" >> $GITHUB_OUTPUT
           echo "Token: ${TOKEN:0:20}..."
 
       - name: Smoke test - get_me (authenticated)
         run: |
           echo "=== GET /api/v1/users/me ==="
-          TOKEN=$(curl -s -X POST http://localhost:3000/api/v1/auth/login \
-            -H "Content-Type: application/json" \
-            -d '{"email":"smoke@test.com","password":"test123456"}' \
-            | python3 -c "import sys,json; print(json.load(sys.stdin)['token'])")
-          curl -s http://localhost:3000/api/v1/users/me \
-            -H "Authorization: Bearer $TOKEN" \
-            | python3 -m json.tool
+          STATUS=$(curl -s -o /tmp/me.json -w "%{http_code}" \
+            http://localhost:3000/api/v1/users/me \
+            -H "Authorization: Bearer ${{ steps.auth.outputs.token }}")
+          cat /tmp/me.json | python3 -m json.tool
+          if [ "$STATUS" != "200" ]; then
+            echo "FAIL: Expected 200, got $STATUS"
+            exit 1
+          fi
 
       - name: Smoke test - memories (authenticated)
         run: |
           echo "=== GET /api/v1/memories ==="
-          TOKEN=$(curl -s -X POST http://localhost:3000/api/v1/auth/login \
-            -H "Content-Type: application/json" \
-            -d '{"email":"smoke@test.com","password":"test123456"}' \
-            | python3 -c "import sys,json; print(json.load(sys.stdin)['token'])")
-          curl -s http://localhost:3000/api/v1/memories \
-            -H "Authorization: Bearer $TOKEN" \
-            | python3 -m json.tool
+          STATUS=$(curl -s -o /tmp/memories.json -w "%{http_code}" \
+            http://localhost:3000/api/v1/memories \
+            -H "Authorization: Bearer ${{ steps.auth.outputs.token }}")
+          cat /tmp/memories.json | python3 -m json.tool
+          if [ "$STATUS" != "200" ]; then
+            echo "FAIL: Expected 200, got $STATUS"
+            exit 1
+          fi
 
       - name: Smoke test - create memory
         run: |
           echo "=== POST /api/v1/memories ==="
-          TOKEN=$(curl -s -X POST http://localhost:3000/api/v1/auth/login \
+          STATUS=$(curl -s -o /tmp/create_mem.json -w "%{http_code}" \
+            -X POST http://localhost:3000/api/v1/memories \
+            -H "Authorization: Bearer ${{ steps.auth.outputs.token }}" \
             -H "Content-Type: application/json" \
-            -d '{"email":"smoke@test.com","password":"test123456"}' \
-            | python3 -c "import sys,json; print(json.load(sys.stdin)['token'])")
-          curl -s -X POST http://localhost:3000/api/v1/memories \
-            -H "Authorization: Bearer $TOKEN" \
-            -H "Content-Type: application/json" \
-            -d '{"lat":36.8,"lon":10.2,"title":"Test memory","description":"Smoke test","media_url":"https://example.com/img.jpg","media_type":"image","visibility":"public","unlock_radius_m":200}' \
-            | python3 -m json.tool
+            -d '{"lat":36.8,"lon":10.2,"title":"Test memory","description":"Smoke test","media_url":"https://example.com/img.jpg","media_type":"image","visibility":"public","unlock_radius_m":200}')
+          cat /tmp/create_mem.json | python3 -m json.tool
+          if [ "$STATUS" != "201" ]; then
+            echo "FAIL: Expected 201, got $STATUS"
+            cat /tmp/create_mem.json
+            exit 1
+          fi
 
       - name: Smoke test - nearby memories
         run: |
           echo "=== GET /api/v1/memories/nearby ==="
-          TOKEN=$(curl -s -X POST http://localhost:3000/api/v1/auth/login \
-            -H "Content-Type: application/json" \
-            -d '{"email":"smoke@test.com","password":"test123456"}' \
-            | python3 -c "import sys,json; print(json.load(sys.stdin)['token'])")
-          curl -s "http://localhost:3000/api/v1/memories/nearby?lat=36.8&lon=10.2&radius_m=1000" \
-            -H "Authorization: Bearer $TOKEN" \
-            | python3 -m json.tool
+          STATUS=$(curl -s -o /tmp/nearby_mem.json -w "%{http_code}" \
+            "http://localhost:3000/api/v1/memories/nearby?lat=36.8&lon=10.2&radius_m=1000" \
+            -H "Authorization: Bearer ${{ steps.auth.outputs.token }}")
+          cat /tmp/nearby_mem.json | python3 -m json.tool
+          if [ "$STATUS" != "200" ]; then
+            echo "FAIL: Expected 200, got $STATUS"
+            exit 1
+          fi
 
       - name: Smoke test - favorites
         run: |
           echo "=== POST /api/v1/favorites ==="
-          TOKEN=$(curl -s -X POST http://localhost:3000/api/v1/auth/login \
+          STATUS=$(curl -s -o /tmp/create_fav.json -w "%{http_code}" \
+            -X POST http://localhost:3000/api/v1/favorites \
+            -H "Authorization: Bearer ${{ steps.auth.outputs.token }}" \
             -H "Content-Type: application/json" \
-            -d '{"email":"smoke@test.com","password":"test123456"}' \
-            | python3 -c "import sys,json; print(json.load(sys.stdin)['token'])")
-          curl -s -X POST http://localhost:3000/api/v1/favorites \
-            -H "Authorization: Bearer $TOKEN" \
-            -H "Content-Type: application/json" \
-            -d '{"kind":"station","ref_id":"test_station","label":"Test Station"}' \
-            | python3 -m json.tool
+            -d '{"kind":"station","ref_id":"test_station","label":"Test Station"}')
+          cat /tmp/create_fav.json | python3 -m json.tool
+          if [ "$STATUS" != "201" ]; then
+            echo "FAIL: Expected 201, got $STATUS"
+            cat /tmp/create_fav.json
+            exit 1
+          fi
           echo "=== GET /api/v1/favorites ==="
-          curl -s http://localhost:3000/api/v1/favorites \
-            -H "Authorization: Bearer $TOKEN" \
-            | python3 -m json.tool
+          STATUS=$(curl -s -o /tmp/favs.json -w "%{http_code}" \
+            http://localhost:3000/api/v1/favorites \
+            -H "Authorization: Bearer ${{ steps.auth.outputs.token }}")
+          cat /tmp/favs.json | python3 -m json.tool
+          if [ "$STATUS" != "200" ]; then
+            echo "FAIL: Expected 200, got $STATUS"
+            exit 1
+          fi
 
       - name: Smoke test - location share
         run: |
           echo "=== POST /api/v1/location-shares ==="
-          TOKEN=$(curl -s -X POST http://localhost:3000/api/v1/auth/login \
+          STATUS=$(curl -s -o /tmp/share.json -w "%{http_code}" \
+            -X POST http://localhost:3000/api/v1/location-shares \
+            -H "Authorization: Bearer ${{ steps.auth.outputs.token }}" \
             -H "Content-Type: application/json" \
-            -d '{"email":"smoke@test.com","password":"test123456"}' \
-            | python3 -c "import sys,json; print(json.load(sys.stdin)['token'])")
-          curl -s -X POST http://localhost:3000/api/v1/location-shares \
-            -H "Authorization: Bearer $TOKEN" \
-            -H "Content-Type: application/json" \
-            -d '{"lat":36.8,"lon":10.2,"accuracy_m":10.0,"note":"Smoke test","is_active":true}' \
-            | python3 -m json.tool
+            -d '{"lat":36.8,"lon":10.2,"accuracy_m":10.0,"note":"Smoke test","is_active":true}')
+          cat /tmp/share.json | python3 -m json.tool
+          if [ "$STATUS" != "201" ]; then
+            echo "FAIL: Expected 201, got $STATUS"
+            cat /tmp/share.json
+            exit 1
+          fi
 
       - name: Smoke test - unauthenticated request fails
         run: |
@@ -206,6 +257,7 @@ jobs:
           fi
 
       - name: Stop server
+        if: always()
         run: |
           if [ -f /tmp/bledi-server.pid ]; then
             kill $(cat /tmp/bledi-server.pid) || true
@@ -215,6 +267,7 @@ jobs:
   frontend-test:
     name: Frontend Build & Test
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -229,6 +282,10 @@ jobs:
         working-directory: frontend
         run: npm ci
 
+      - name: Audit dependencies
+        working-directory: frontend
+        run: npm audit --audit-level=high || true
+
       - name: Typecheck
         working-directory: frontend
         run: npx tsc --noEmit
@@ -240,6 +297,7 @@ jobs:
   security-scan:
     name: Security Scan
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 
@@ -256,7 +314,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Trivy filesystem scan
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           scan-type: fs
           scan-ref: .
