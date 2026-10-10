@@ -75,7 +75,7 @@ pub struct Line {
 
 // ── User ────────────────────────────────────────────────────────────────────
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, sqlx::FromRow)]
 pub struct User {
     pub id: Uuid,
     pub email: String,
@@ -114,6 +114,16 @@ pub enum Visibility {
     Private,
 }
 
+impl Visibility {
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::Public => "public",
+            Self::Friends => "friends",
+            Self::Private => "private",
+        }
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Memory {
     pub id: Uuid,
@@ -137,6 +147,15 @@ pub enum MediaType {
     Video,
 }
 
+impl MediaType {
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::Image => "image",
+            Self::Video => "video",
+        }
+    }
+}
+
 // ── Favorite ────────────────────────────────────────────────────────────────
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -155,6 +174,16 @@ pub enum FavoriteKind {
     Station,
     Line,
     Place,
+}
+
+impl FavoriteKind {
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            Self::Station => "station",
+            Self::Line => "line",
+            Self::Place => "place",
+        }
+    }
 }
 
 // ── Location sharing ────────────────────────────────────────────────────────

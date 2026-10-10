@@ -21,7 +21,7 @@ pub struct Claims {
 }
 
 #[derive(Debug)]
-pub struct AuthError(String);
+pub struct AuthError(pub String);
 
 impl IntoResponse for AuthError {
     fn into_response(self) -> Response {
@@ -52,10 +52,14 @@ pub struct AuthUser {
     pub email: String,
 }
 
-impl FromRequestParts<crate::state::AppState> for AuthUser {
+impl<S> FromRequestParts<S> for AuthUser
+where
+    S: Send + Sync,
+    crate::state::AppState: std::convert::From<S>,
+{
     type Rejection = AuthError;
 
-    async fn from_request_parts(parts: &mut Parts, _state: &crate::state::AppState) -> Result<Self, Self::Rejection> {
+    async fn from_request_parts(parts: &mut Parts, _state: &S) -> Result<Self, Self::Rejection> {
         let header = parts
             .headers
             .get(axum::http::header::AUTHORIZATION)
