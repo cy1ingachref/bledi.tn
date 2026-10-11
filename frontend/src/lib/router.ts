@@ -48,11 +48,19 @@ export interface RoutePlan {
   available_modes: string[];
 }
 
+interface GeocodeResult {
+  lat: number;
+  lon: number;
+  display_name: string;
+  type?: string;
+}
+
 interface Api {
   getStations(): Promise<Station[]>;
   getLines(): Promise<Line[]>;
   getRoads(): Promise<RoadSummary>;
   getRails(): Promise<RailSummary>;
+  geocode(q: string): Promise<GeocodeResult[]>;
   routePlan(params: {
     startLat: number;
     startLon: number;
@@ -90,6 +98,13 @@ export const api: Api = {
     const res = await fetch(`${BASE}/rails`);
     if (!res.ok) throw new Error(`GET /api/v1/rails -> ${res.status}`);
     return res.json() as Promise<RailSummary>;
+  },
+
+  async geocode(q) {
+    const res = await fetch(`${BASE}/geocode?q=${encodeURIComponent(q)}`);
+    if (!res.ok) throw new Error(`GET /api/v1/geocode -> ${res.status}`);
+    const j = await res.json();
+    return (j.results ?? []) as GeocodeResult[];
   },
 
   async routePlan(params) {
