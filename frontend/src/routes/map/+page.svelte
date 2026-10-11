@@ -387,6 +387,8 @@
   </header>
 
   <div class="body">
+    <!-- ── Panel column: scrollable content + pinned action footer ── -->
+    <div class="panel-col">
     <!-- ── Panel ─────────────────────────────────────────────────────────── -->
     <aside class="side">
       <!-- Search -->
@@ -498,14 +500,6 @@
         {/if}
       </section>
 
-      <button class="cta" onclick={computeRoute} disabled={computing || count === 0}>
-        {#if computing}
-          <span class="spin dark" aria-hidden="true"></span> {t("action.calculating")}
-        {:else}
-          <Icon name="search" size={17} /> {t("action.calculate")}
-        {/if}
-      </button>
-
       {#if error}
         <div class="alert" role="alert">
           <Icon name="alert" size={15} /><span>{error}</span>
@@ -570,6 +564,20 @@
         </div>
       {/if}
     </aside>
+
+    <!-- Primary action: a footer of the panel column, OUTSIDE the scroll
+         container so it can never scroll out of reach. -->
+    <div class="cta-bar">
+      <button class="cta" onclick={computeRoute} disabled={computing || count === 0}>
+        {#if computing}
+          <span class="spin dark" aria-hidden="true"></span> {t("action.calculating")}
+        {:else}
+          <Icon name="search" size={17} /> {t("action.calculate")}
+        {/if}
+      </button>
+    </div>
+
+    </div><!-- /.panel-col -->
 
     <!-- ── Map ────────────────────────────────────────────────────────────── -->
     <main class="map-wrap">
@@ -656,12 +664,22 @@
 
   /* ── Layout ─────────────────────────────────────────────────────────────── */
   .body { display: flex; flex: 1; min-height: 0; }
-  .side {
+  /* Panel column: the scrollable content and the pinned action footer are
+     SIBLINGS in a flex column, so the footer is laid out after the scroll area
+     rather than inside it and cannot scroll out of reach. */
+  .panel-col {
+    display: flex;
+    flex-direction: column;
     width: 340px; flex-shrink: 0;
-    overflow-y: auto; overflow-x: hidden;
-    padding: 12px;
+    min-height: 0;
     background: var(--panel);
     border-inline-end: 1px solid var(--line);
+  }
+  .side {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto; overflow-x: hidden;
+    padding: 12px;
     display: flex; flex-direction: column; gap: 12px;
   }
 
@@ -875,6 +893,18 @@
     box-shadow: 0 6px 20px rgba(34, 211, 238, 0.2);
     transition: transform 0.12s ease, box-shadow 0.16s ease, filter 0.16s ease;
   }
+  /* The CTA lives in a bar pinned to the bottom of the panel, outside the
+     scrolling area. `position: sticky` was tried first and failed: once the
+     panel scrolls past the button's own offset the sticky element leaves the
+     viewport entirely (measured ctaTop = -3 after auto-scroll to results),
+     so the primary action became unreachable exactly when results arrived.
+     A separate non-scrolling bar cannot have that failure mode. */
+  .cta-bar {
+    flex-shrink: 0;
+    padding: 10px 12px 12px;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+  }
   .cta:hover:not(:disabled) { filter: brightness(1.07); box-shadow: 0 8px 26px rgba(34, 211, 238, 0.28); }
   .cta:active:not(:disabled) { transform: scale(0.985); }
   .cta:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
@@ -1022,13 +1052,16 @@
   /* ── Responsive: mobile-first, panel above map on small screens ─────────── */
   @media (max-width: 860px) {
     .body { flex-direction: column; }
-    .side {
+    /* Mobile: the panel column takes the top slice, the map fills the rest.
+       The CTA bar stays a footer of the column, so it remains tappable. */
+    .panel-col {
       width: 100%;
-      max-height: 54vh;
+      max-height: 62vh;
       border-inline-end: 0;
       border-bottom: 1px solid var(--line);
     }
-    .map-wrap { flex: 1; min-height: 38vh; }
+    .side { padding: 10px; }
+    .map-wrap { flex: 1; min-height: 34vh; }
   }
   @media (max-width: 400px) {
     .grid3 { grid-template-columns: 1fr; }
