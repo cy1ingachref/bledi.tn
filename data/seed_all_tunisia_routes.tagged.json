@@ -3,7 +3,7 @@
   "source": "Tunismapper (tunismapper.com ligne_details.php)",
   "extracted_date": "2026-09-19",
   "total_lines": 262,
-  "total_stations": 7450,
+  "total_stations": 7452,
   "by_mode": {
    "Train": 29,
    "RFR": 3,
@@ -68,26 +68,23 @@
   },
   "downloads_transport_import": {
    "source_dir": "C:\\Users\\cy1in\\Downloads\\transport",
-   "added": 3124,
+   "added": 2,
    "by_mode": {
-    "bus": 3106,
-    "taxi": 6,
-    "louage": 9,
-    "train": 2,
-    "metro": 1
+    "bus": 1,
+    "train": 1
    },
    "tolerance_m": 150.0,
    "per_source": {
     "TNRP national bus-stop registry": {
      "rows": 16296,
-     "new": 2969
+     "new": 1
     },
     "TRANSTU stops referentiel": {
      "rows": 5234,
      "new": 0
     },
     "TRANSTU stop positions": {
-     "rows": 5075,
+     "rows": 3382,
      "new": 0
     },
     "TRANSTU line-stop itineraries": {
@@ -95,11 +92,11 @@
      "new": 0
     },
     "SRTM stations (Medenine)": {
-     "rows": 447,
+     "rows": 293,
      "new": 0
     },
     "SORETRAS stops": {
-     "rows": 2032,
+     "rows": 1948,
      "new": 0
     },
     "SRTGN stations": {
@@ -107,16 +104,56 @@
      "new": 0
     },
     "TGM tramway positions": {
-     "rows": 56,
+     "rows": 36,
      "new": 0
     },
     "SNTRI stops": {
-     "rows": 1080,
-     "new": 5
+     "rows": 638,
+     "new": 0
     },
     "BLEDI curated workbook": {
      "rows": 9668,
-     "new": 147
+     "new": 0
+    },
+    "SNCFT Banlieue Sud stations": {
+     "rows": 14,
+     "new": 0
+    },
+    "SNCFT Banlieue Sahel stations": {
+     "rows": 32,
+     "new": 1
+    },
+    "RFR rapid-rail stations": {
+     "rows": 46,
+     "new": 0
+    },
+    "SNCFT national rail stations": {
+     "rows": 207,
+     "new": 0
+    },
+    "Transtu metro stations": {
+     "rows": 124,
+     "new": 0
+    },
+    "Transtu metro line-stops": {
+     "rows": 182,
+     "new": 0
+    },
+    "TGM tramway itinerary": {
+     "rows": 36,
+     "new": 0
+    },
+    "TGM tramway timetable": {
+     "rows": 260,
+     "new": 0
+    },
+    "SRTJ station positions": {
+     "rows": 191,
+     "new": 0
+    },
+    "GTFS stops (SNTRI feed)": {
+     "rows": 167,
+     "new": 0
     },
     "GTFS Horaires des bus de la SNTRI - GTF": {
      "rows": 157,
@@ -124,11 +161,11 @@
     },
     "GTFS Horaires des bus de la SORETRAK - ": {
      "rows": 192,
-     "new": 2
+     "new": 0
     },
     "GTFS Horaires des voyages de la société": {
      "rows": 119,
-     "new": 1
+     "new": 0
     },
     "GTFS Horaires des voyages de la TRANSTU": {
      "rows": 92,
@@ -152462,6 +152499,32 @@
    "lines_served": [],
    "route_type": 3,
    "source": "downloads:GTFS Horaires des voyages de la société",
+   "license_status": "official-open-data"
+  },
+  {
+   "id": "dl_tnrp_national_bus_stop_registry_boubakri_1_1",
+   "name": "BOUBAKRI 1",
+   "name_en": "BOUBAKRI 1",
+   "lat": 33.152322861,
+   "lon": 10.447596073,
+   "mode": "bus",
+   "operator": "TATAOUIN",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "downloads:TNRP national bus-stop registry",
+   "license_status": "official-open-data"
+  },
+  {
+   "id": "dl_sncft_banlieue_sahel_stations_mahdia",
+   "name": "Mahdia",
+   "name_en": "Mahdia",
+   "lat": 35.4991937181188,
+   "lon": 11.0628611953142,
+   "mode": "train",
+   "operator": "SNCFT BANLIEUE SAHEL STA",
+   "lines_served": [],
+   "route_type": 2,
+   "source": "downloads:SNCFT Banlieue Sahel stations",
    "license_status": "official-open-data"
   }
  ],
