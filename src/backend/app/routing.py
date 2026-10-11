@@ -1106,6 +1106,12 @@ class Router:
         }
         best_cost = direct_walk_s
 
+        # Walking-only request: the user asked for directions on foot, so no
+        # transit search and no vehicle fallback should run. Return the direct
+        # walk outright.
+        if allowed_modes is not None and not (allowed_modes - {"walk"}):
+            return best
+
         # Multi-source Dijkstra.
         if start_candidates and end_candidates:
             dist: dict[tuple[str, str | None], float] = {}
@@ -1162,6 +1168,7 @@ class Router:
                                 end_lat, end_lon,
                                 self.stations.get(path_stations[0]) if path_stations else None,
                                 ec,
+                                allowed_modes,
                             )
                             best = {
                                 "mode": "transit",
@@ -1222,21 +1229,43 @@ class Router:
         # line was drawn across the whole map whenever it beat a multi-leg
         # transit path on time -- exactly the "long distance is one straight
         # line" behaviour being fixed. A real transit route must win outright.
+        #
+        # It must ALSO respect the caller's mode selection: a taxi/louaj answer
+        # is only legitimate when taxi or louaj is actually allowed. Without
+        # this gate, selecting "walk only" returned a taxi (walk is slow, taxi
+        # is fast, so the comparison below always fired), and selecting
+        # bus+metro+tram+train+rfr silently appended a taxi leg.
         have_transit = best is not None and best.get("mode") == "transit"
         direct_km = direct_m / 1000.0
+        taxi_permitted = allowed_modes is None or bool(
+            allowed_modes & TAXI_MODES
+        )
+        # Which road-based mode answers this request. Louage and taxi are both
+        # shared/private car modes but are priced differently (shared per seat
+        # vs metered private hire), so the leg must be labelled and costed as
+        # whichever the user actually selected. When both are allowed, taxi is
+        # the more general answer and keeps its own label.
+        road_mode = "taxi"
+        if allowed_modes is not None and "taxi" not in allowed_modes and "louaj" in allowed_modes:
+            road_mode = "louaj"
+        road_speed_ms = TAXI_SPEED_MS
+        def road_fare_for(km: float) -> float:
+            base, per_km = FARE_DINARS[road_mode]
+            return base + per_km * km
         if have_transit:
             # Record taxi as an alternative rather than as the answer.
             taxi_s = direct_m / TAXI_SPEED_MS
             if direct_km * 1000 >= TAXI_MIN_DISTANCE_M:
-                taxi_fare = TAXI_FARE_BASE + TAXI_FARE_PER_KM * direct_km
+                taxi_fare = road_fare_for(direct_km)
+                road_label = MODE_LABELS_FR.get(road_mode, road_mode.capitalize())
                 best["alternatives"] = best.get("alternatives", []) + [{
-                    "mode": "taxi",
+                    "mode": road_mode,
                     "duration_min": round(taxi_s / 60, 1),
                     "distance_km": round(direct_km, 1),
                     "fare_dinars": round(taxi_fare, 2),
-                    "label": f"Taxi direct - {round(direct_km, 1)} km (~{round(taxi_s / 60)} min, {round(taxi_fare, 2)} DT)",
+                    "label": f"{road_label} direct - {round(direct_km, 1)} km (~{round(taxi_s / 60)} min, {round(taxi_fare, 2)} DT)",
                 }]
-        elif direct_km * 1000 >= TAXI_MIN_DISTANCE_M:
+        elif taxi_permitted and direct_km * 1000 >= TAXI_MIN_DISTANCE_M:
             # Cost the trip on the same real road distance the leg is drawn
             # with. Pricing the straight line and drawing the road would make
             # the option look faster than the polyline the user sees.
@@ -1256,8 +1285,8 @@ class Router:
                     if taxi_geom_pre and polyline_length(taxi_geom_pre) >= 0.95 * direct_m
                     else direct_m
                 )
-            taxi_s = taxi_road_m / TAXI_SPEED_MS
-            taxi_fare = TAXI_FARE_BASE + TAXI_FARE_PER_KM * direct_km
+            taxi_s = taxi_road_m / road_speed_ms
+            taxi_fare = road_fare_for(direct_km)
             if taxi_s < best_cost:
                 # Real road geometry when the taxi cache has this pair. The
                 # straight line is a lower bound, so using it here both draws a
@@ -1274,11 +1303,11 @@ class Router:
                         taxi_geom = cached
                     else:
                         road_m = direct_m
-                road_s = road_m / TAXI_SPEED_MS
-                road_fare = TAXI_FARE_BASE + TAXI_FARE_PER_KM * (road_m / 1000.0)
+                road_s = road_m / road_speed_ms
+                road_fare = road_fare_for(road_m / 1000.0)
                 taxi_step = {
-                    "type": "taxi",
-                    "mode": "taxi",
+                    "type": road_mode,
+                    "mode": road_mode,
                     "from": {"lat": start_lat, "lon": start_lon},
                     "to": {"lat": end_lat, "lon": end_lon},
                     "from_id": None,
@@ -1290,10 +1319,13 @@ class Router:
                     "time_seconds": round(road_s, 1),
                     "geometry": taxi_geom,
                     "fare_dinars": round(road_fare, 2),
-                    "label": f"Taxi — {round(road_m / 1000, 1)} km (~{round(road_s / 60)} min, {round(road_fare, 2)} DT)",
+                    "label": (
+                        f"{MODE_LABELS_FR.get(road_mode, road_mode.capitalize())} — "
+                        f"{round(road_m / 1000, 1)} km (~{round(road_s / 60)} min, {round(road_fare, 2)} DT)"
+                    ),
                 }
                 best = {
-                    "mode": "taxi",
+                    "mode": road_mode,
                     "duration_min": round(taxi_s / 60, 1),
                     "steps": [taxi_step],
                     "fare_dinars": round(taxi_fare, 2),
@@ -1484,6 +1516,43 @@ class Router:
                 raise ValueError("max_transfers must be >= 0")
 
         user_allowed = resolve_allowed_modes(include, exclude)
+
+        # Walking-only request: the user explicitly asked for directions on
+        # foot. Emit the direct walk as the single itinerary and skip the
+        # transit strategies entirely (they cannot match a walk-only filter,
+        # so they would only produce an empty result).
+        if user_allowed is not None and not (user_allowed - {"walk"}):
+            direct_m = haversine(start_lat, start_lon, end_lat, end_lon)
+            walk_s = direct_m / WALK_SPEED_MS
+            walk_step = {
+                "type": "walk",
+                "from": {"lat": start_lat, "lon": start_lon},
+                "to": {"lat": end_lat, "lon": end_lon},
+                "distance_m": round(direct_m),
+                "duration_min": round(walk_s / 60, 1),
+                "time_seconds": round(walk_s, 1),
+                "label": f"Marcher {round(direct_m)} m (~{round(walk_s / 60)} min)",
+            }
+            walk_candidate = {
+                "searched_for": "walk",
+                "raw": {"mode": "walk", "duration_min": round(walk_s / 60, 1), "steps": [walk_step]},
+                "steps": [walk_step],
+                "signature": self._itinerary_signature({"steps": [walk_step]}),
+                "duration_s": walk_s,
+                "transfers": 0,
+                "fare_estimate": 0.0,
+                "modes_used": ["walk"],
+                "geometry_complete": False,
+                "gaps": [],
+            }
+            return {
+                "query": self._query_echo(start_lat, start_lon, end_lat, end_lon,
+                                          include, exclude, objective,
+                                          max_transfers, max_walk_m, max_itineraries),
+                "itineraries": [self._present(walk_candidate, 1, objective)],
+                "available_modes": list(USER_MODES),
+                "message": None,
+            }
 
         # Translate the user's filter into per-strategy raw-mode sets.
         bus_only = frozenset({"bus", "rfr", "tram"})
@@ -1681,6 +1750,7 @@ class Router:
         end_lon: float,
         s_start: dict[str, Any] | None,
         s_end: dict[str, Any] | None,
+        allowed_modes: frozenset[str] | None = None,
     ) -> tuple[float, list[dict[str, Any]]]:
         """Convert a Dijkstra path (stations + lines arrived-on) into timed steps.
 
@@ -1915,7 +1985,12 @@ class Router:
                 # Same rule as the cost branch in route(): distance decides,
                 # not the used_dropoff flag, so the rendered leg and the
                 # optimised cost can never disagree about what this leg is.
-                if walk_m > MAX_END_WALK_METERS:
+                # A long final gap is only a taxi hop when a car-based mode is
+                # actually selected. Otherwise (e.g. bus-only, or walking-only)
+                # it must stay a walk -- emitting a taxi leg the user did not
+                # select is what made "bus only" return a bus+taxi itinerary.
+                hop_permitted = allowed_modes is None or bool(allowed_modes & TAXI_MODES)
+                if walk_m > MAX_END_WALK_METERS and hop_permitted:
                     hop_min = walk_m / 1000 / TAXI_SPEED_KMH * 60
                     steps.append({
                         "type": "taxi",
