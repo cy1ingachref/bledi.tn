@@ -2,8 +2,8 @@
  "metadata": {
   "source": "Tunismapper (tunismapper.com ligne_details.php)",
   "extracted_date": "2026-09-19",
-  "total_lines": 232,
-  "total_stations": 4313,
+  "total_lines": 262,
+  "total_stations": 4326,
   "by_mode": {
    "Train": 29,
    "RFR": 3,
@@ -59,6 +59,12 @@
    },
    "tolerance_m": 150.0,
    "note": "Only stops >150 m from any existing station were added."
+  },
+  "louage_import": {
+   "source": "C:\\Users\\cy1in\\Downloads\\tunisia_louage_network.csv",
+   "stations_added": 13,
+   "lines_added": 30,
+   "note": "National louage network from tunisia_louage_network.csv"
   }
  },
  "stations": [
@@ -111497,6 +111503,283 @@
    "source": "downloads-transport-export",
    "license_status": "official-public",
    "governorate": ""
+  },
+  {
+   "id": "louage_tunis_moncef_bey",
+   "name": "Tunis - Moncef Bey",
+   "name_en": "Tunis - Moncef Bey",
+   "lat": 36.7905,
+   "lon": 10.1915,
+   "mode": "louage",
+   "operator": "louage",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "destinations_served": [
+    "Sousse",
+    "Monastir",
+    "Mahdia",
+    "Sfax",
+    "Gabès",
+    "Gafsa",
+    "Kairouan",
+    "Sidi Bouzid",
+    "Tozeur",
+    "Djerba"
+   ],
+   "corridor": "A1 Highway (Southbound)"
+  },
+  {
+   "id": "louage_tunis_bab_saadoun",
+   "name": "Tunis - Bab Saadoun",
+   "name_en": "Tunis - Bab Saadoun",
+   "lat": 36.809,
+   "lon": 10.1575,
+   "mode": "louage",
+   "operator": "louage",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "destinations_served": [
+    "Bizerte",
+    "Tabarka",
+    "Béja",
+    "Jendouba",
+    "Le Kef",
+    "Siliana",
+    "Maktar",
+    "Teboursouk (Dougga)"
+   ],
+   "corridor": "A4 Highway (North) & P5/P6 Highways (Northwest)"
+  },
+  {
+   "id": "louage_tunis_bab_alioua",
+   "name": "Tunis - Bab Alioua",
+   "name_en": "Tunis - Bab Alioua",
+   "lat": 36.7865,
+   "lon": 10.1825,
+   "mode": "louage",
+   "operator": "louage",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "destinations_served": [
+    "Hammamet",
+    "Nabeul",
+    "Kelibia",
+    "El Haouaria",
+    "Zaghouan"
+   ],
+   "corridor": "C27 / P1 Highway (Cap Bon Peninsula)"
+  },
+  {
+   "id": "louage_sousse_al_lawajat_taffala",
+   "name": "Sousse - Al Lawajat (Taffala)",
+   "name_en": "Sousse - Al Lawajat (Taffala)",
+   "lat": 35.8093,
+   "lon": 10.6363,
+   "mode": "louage",
+   "operator": "louage",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "destinations_served": [
+    "Tunis (Moncef Bey)",
+    "Kairouan",
+    "Monastir",
+    "Sfax",
+    "El Jem",
+    "Mahdia",
+    "Gabès"
+   ],
+   "corridor": "P12 (Inland to Kairouan) & A1/P1 (South Spine)"
+  },
+  {
+   "id": "louage_sousse_bab_bhar_local",
+   "name": "Sousse - Bab Bhar (Local)",
+   "name_en": "Sousse - Bab Bhar (Local)",
+   "lat": 35.829,
+   "lon": 10.6435,
+   "mode": "louage",
+   "operator": "louage",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "destinations_served": [
+    "Hammam Sousse",
+    "Hergla",
+    "Chott Meriem (Short local hops)"
+   ],
+   "corridor": "Local Coastal Routes"
+  },
+  {
+   "id": "louage_monastir_central_station",
+   "name": "Monastir - Central Station",
+   "name_en": "Monastir - Central Station",
+   "lat": 35.7725,
+   "lon": 10.825,
+   "mode": "louage",
+   "operator": "louage",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "destinations_served": [
+    "Sousse",
+    "Mahdia",
+    "Sfax",
+    "Tunis"
+   ],
+   "corridor": "C82 Coastal Link"
+  },
+  {
+   "id": "louage_mahdia_central_station",
+   "name": "Mahdia - Central Station",
+   "name_en": "Mahdia - Central Station",
+   "lat": 35.505,
+   "lon": 11.0485,
+   "mode": "louage",
+   "operator": "louage",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "destinations_served": [
+    "Sousse",
+    "Monastir",
+    "Sfax",
+    "El Jem"
+   ],
+   "corridor": "C82 & P9 Highway"
+  },
+  {
+   "id": "louage_kairouan_gare_des_louages",
+   "name": "Kairouan - Gare des Louages",
+   "name_en": "Kairouan - Gare des Louages",
+   "lat": 35.6885,
+   "lon": 10.0965,
+   "mode": "louage",
+   "operator": "louage",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "destinations_served": [
+    "Tunis (Moncef Bey)",
+    "Sousse",
+    "Sfax",
+    "Hammamet",
+    "Sidi Bouzid"
+   ],
+   "corridor": "P2 & P12 Corridors (East-West Bridge)"
+  },
+  {
+   "id": "louage_sfax_gare_routière",
+   "name": "Sfax - Gare Routière",
+   "name_en": "Sfax - Gare Routière",
+   "lat": 34.7315,
+   "lon": 10.7545,
+   "mode": "louage",
+   "operator": "louage",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "destinations_served": [
+    "Tunis",
+    "Sousse",
+    "El Jem",
+    "Gabès",
+    "Gafsa",
+    "Tataouine"
+   ],
+   "corridor": "P1 Highway / A1 Southern Extension"
+  },
+  {
+   "id": "louage_gabès_central_station",
+   "name": "Gabès - Central Station",
+   "name_en": "Gabès - Central Station",
+   "lat": 33.882,
+   "lon": 10.0935,
+   "mode": "louage",
+   "operator": "louage",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "destinations_served": [
+    "Sfax",
+    "Matmata",
+    "Douz",
+    "Kebili",
+    "Djerba",
+    "Tunis"
+   ],
+   "corridor": "P16 (Inland Desert Line) & P1 (Coastal South)"
+  },
+  {
+   "id": "louage_bizerte_central_station",
+   "name": "Bizerte - Central Station",
+   "name_en": "Bizerte - Central Station",
+   "lat": 37.2675,
+   "lon": 9.8722566,
+   "mode": "louage",
+   "operator": "louage",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "destinations_served": [
+    "Tunis (Bab Saadoun)",
+    "Mateur",
+    "Tabarka"
+   ],
+   "corridor": "A4 Highway (Southbound to Capital)"
+  },
+  {
+   "id": "louage_tataouine_intercity_hub",
+   "name": "Tataouine - Intercity Hub",
+   "name_en": "Tataouine - Intercity Hub",
+   "lat": 32.935,
+   "lon": 10.4485,
+   "mode": "louage",
+   "operator": "louage",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "destinations_served": [
+    "Tunis",
+    "Sfax",
+    "Gabès",
+    "Djerba (Houmt Souk)"
+   ],
+   "corridor": "P19 Highway connecting north to P1"
+  },
+  {
+   "id": "louage_djerba_houmt_souk_station",
+   "name": "Djerba - Houmt Souk Station",
+   "name_en": "Djerba - Houmt Souk Station",
+   "lat": 33.8765,
+   "lon": 10.8565,
+   "mode": "louage",
+   "operator": "louage",
+   "lines_served": [],
+   "route_type": 3,
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "destinations_served": [
+    "Gabès",
+    "Tataouine",
+    "Medenine",
+    "Tunis"
+   ],
+   "corridor": "Jorf Ferry (Bac) or El Kantara Roman Causeway"
   }
  ],
  "lines": [
@@ -125369,6 +125652,529 @@
    },
    "source": "transtu.com.tn PDF (Tebourba.pdf)",
    "license_status": "unknown-third-party"
+  },
+  {
+   "id": "louage_001_tunis_moncef_kairouan_gare",
+   "number": "L1",
+   "name": "Louage: Tunis - Moncef Bey → Kairouan - Gare des Louages",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "1",
+   "stations": [
+    "louage_tunis_moncef_bey",
+    "louage_kairouan_gare_des_louages"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "A1 Highway (Southbound)"
+  },
+  {
+   "id": "louage_002_tunis_moncef_sousse_al_law",
+   "number": "L2",
+   "name": "Louage: Tunis - Moncef Bey → Sousse - Al Lawajat (Taffala)",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "2",
+   "stations": [
+    "louage_tunis_moncef_bey",
+    "louage_sousse_al_lawajat_taffala"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "A1 Highway (Southbound)"
+  },
+  {
+   "id": "louage_003_tunis_moncef_sfax_gare_rou",
+   "number": "L3",
+   "name": "Louage: Tunis - Moncef Bey → Sfax - Gare Routière",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "3",
+   "stations": [
+    "louage_tunis_moncef_bey",
+    "louage_sfax_gare_routière"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "A1 Highway (Southbound)"
+  },
+  {
+   "id": "louage_004_tunis_moncef_gabès_central",
+   "number": "L4",
+   "name": "Louage: Tunis - Moncef Bey → Gabès - Central Station",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "4",
+   "stations": [
+    "louage_tunis_moncef_bey",
+    "louage_gabès_central_station"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "A1 Highway (Southbound)"
+  },
+  {
+   "id": "louage_005_tunis_bab_saa_bizerte_centr",
+   "number": "L5",
+   "name": "Louage: Tunis - Bab Saadoun → Bizerte - Central Station",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "5",
+   "stations": [
+    "louage_tunis_bab_saadoun",
+    "louage_bizerte_central_station"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "A4 Highway (North) & P5/P6 Highways (Northwest)"
+  },
+  {
+   "id": "louage_006_tunis_bab_ali_kairouan_gare",
+   "number": "L6",
+   "name": "Louage: Tunis - Bab Alioua → Kairouan - Gare des Louages",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "6",
+   "stations": [
+    "louage_tunis_bab_alioua",
+    "louage_kairouan_gare_des_louages"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "C27 / P1 Highway (Cap Bon Peninsula)"
+  },
+  {
+   "id": "louage_007_sousse_al_law_kairouan_gare",
+   "number": "L7",
+   "name": "Louage: Sousse - Al Lawajat (Taffala) → Kairouan - Gare des Louages",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "7",
+   "stations": [
+    "louage_sousse_al_lawajat_taffala",
+    "louage_kairouan_gare_des_louages"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P12 (Inland to Kairouan) & A1/P1 (South Spine)"
+  },
+  {
+   "id": "louage_008_sousse_al_law_mahdia_centra",
+   "number": "L8",
+   "name": "Louage: Sousse - Al Lawajat (Taffala) → Mahdia - Central Station",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "8",
+   "stations": [
+    "louage_sousse_al_lawajat_taffala",
+    "louage_mahdia_central_station"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P12 (Inland to Kairouan) & A1/P1 (South Spine)"
+  },
+  {
+   "id": "louage_009_sousse_al_law_monastir_cent",
+   "number": "L9",
+   "name": "Louage: Sousse - Al Lawajat (Taffala) → Monastir - Central Station",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "9",
+   "stations": [
+    "louage_sousse_al_lawajat_taffala",
+    "louage_monastir_central_station"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P12 (Inland to Kairouan) & A1/P1 (South Spine)"
+  },
+  {
+   "id": "louage_010_monastir_cent_mahdia_centra",
+   "number": "L10",
+   "name": "Louage: Monastir - Central Station → Mahdia - Central Station",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "10",
+   "stations": [
+    "louage_monastir_central_station",
+    "louage_mahdia_central_station"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "C82 Coastal Link"
+  },
+  {
+   "id": "louage_011_monastir_cent_sfax_gare_rou",
+   "number": "L11",
+   "name": "Louage: Monastir - Central Station → Sfax - Gare Routière",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "11",
+   "stations": [
+    "louage_monastir_central_station",
+    "louage_sfax_gare_routière"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "C82 Coastal Link"
+  },
+  {
+   "id": "louage_012_kairouan_gare_monastir_cent",
+   "number": "L12",
+   "name": "Louage: Kairouan - Gare des Louages → Monastir - Central Station",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "12",
+   "stations": [
+    "louage_kairouan_gare_des_louages",
+    "louage_monastir_central_station"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P2 & P12 Corridors (East-West Bridge)"
+  },
+  {
+   "id": "louage_013_sfax_gare_rou_djerba_houmt",
+   "number": "L13",
+   "name": "Louage: Sfax - Gare Routière → Djerba - Houmt Souk Station",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "13",
+   "stations": [
+    "louage_sfax_gare_routière",
+    "louage_djerba_houmt_souk_station"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P1 Highway / A1 Southern Extension"
+  },
+  {
+   "id": "louage_014_sfax_gare_rou_mahdia_centra",
+   "number": "L14",
+   "name": "Louage: Sfax - Gare Routière → Mahdia - Central Station",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "14",
+   "stations": [
+    "louage_sfax_gare_routière",
+    "louage_mahdia_central_station"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P1 Highway / A1 Southern Extension"
+  },
+  {
+   "id": "louage_015_gabès_central_tataouine_int",
+   "number": "L15",
+   "name": "Louage: Gabès - Central Station → Tataouine - Intercity Hub",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "15",
+   "stations": [
+    "louage_gabès_central_station",
+    "louage_tataouine_intercity_hub"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P16 (Inland Desert Line) & P1 (Coastal South)"
+  },
+  {
+   "id": "louage_016_gabès_central_djerba_houmt",
+   "number": "L16",
+   "name": "Louage: Gabès - Central Station → Djerba - Houmt Souk Station",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "16",
+   "stations": [
+    "louage_gabès_central_station",
+    "louage_djerba_houmt_souk_station"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P16 (Inland Desert Line) & P1 (Coastal South)"
+  },
+  {
+   "id": "louage_017_tataouine_int_djerba_houmt",
+   "number": "L17",
+   "name": "Louage: Tataouine - Intercity Hub → Djerba - Houmt Souk Station",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "intercity",
+   "route_id": "17",
+   "stations": [
+    "louage_tataouine_intercity_hub",
+    "louage_djerba_houmt_souk_station"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P19 Highway connecting north to P1"
+  },
+  {
+   "id": "louage_access_018_tunis_moncef_bey",
+   "number": "LA18",
+   "name": "Louage access: Tunis - Moncef Bey → STIL",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "access",
+   "route_id": "18",
+   "stations": [
+    "louage_tunis_moncef_bey",
+    "stil_7364"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "A1 Highway (Southbound)",
+   "note": "Access connection to nearest transit station (STIL, 250m)"
+  },
+  {
+   "id": "louage_access_019_tunis_bab_saadoun",
+   "number": "LA19",
+   "name": "Louage access: Tunis - Bab Saadoun → Bab Saadoun ",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "access",
+   "route_id": "19",
+   "stations": [
+    "louage_tunis_bab_saadoun",
+    "bab_saadoun_7348"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "A4 Highway (North) & P5/P6 Highways (Northwest)",
+   "note": "Access connection to nearest transit station (Bab Saadoun , 88m)"
+  },
+  {
+   "id": "louage_access_020_tunis_bab_alioua",
+   "number": "LA20",
+   "name": "Louage access: Tunis - Bab Alioua → Cimetiere Jallez",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "access",
+   "route_id": "20",
+   "stations": [
+    "louage_tunis_bab_alioua",
+    "cimetiere_jallez"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "C27 / P1 Highway (Cap Bon Peninsula)",
+   "note": "Access connection to nearest transit station (Cimetiere Jallez, 188m)"
+  },
+  {
+   "id": "louage_access_021_sousse_al_lawajat",
+   "number": "LA21",
+   "name": "Louage access: Sousse - Al Lawajat (Taffala) → Sousse",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "access",
+   "route_id": "21",
+   "stations": [
+    "louage_sousse_al_lawajat_taffala",
+    "srtj_sousse_75d069d341"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P12 (Inland to Kairouan) & A1/P1 (South Spine)",
+   "note": "Access connection to nearest transit station (Sousse, 820m)"
+  },
+  {
+   "id": "louage_access_022_sousse_bab_bhar_l",
+   "number": "LA22",
+   "name": "Louage access: Sousse - Bab Bhar (Local) → Sousse Voyageurs",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "access",
+   "route_id": "22",
+   "stations": [
+    "louage_sousse_bab_bhar_local",
+    "sousse_voyageurs"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "Local Coastal Routes",
+   "note": "Access connection to nearest transit station (Sousse Voyageurs, 516m)"
+  },
+  {
+   "id": "louage_access_023_monastir_central_s",
+   "number": "LA23",
+   "name": "Louage access: Monastir - Central Station → Monastir",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "access",
+   "route_id": "23",
+   "stations": [
+    "louage_monastir_central_station",
+    "dl_srtj_monastir_07506"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "C82 Coastal Link",
+   "note": "Access connection to nearest transit station (Monastir, 139m)"
+  },
+  {
+   "id": "louage_access_024_mahdia_central_sta",
+   "number": "LA24",
+   "name": "Louage access: Mahdia - Central Station → Gare transport terrestre Mahdia",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "access",
+   "route_id": "24",
+   "stations": [
+    "louage_mahdia_central_station",
+    "soretras_gare_transport_terrestre_mah_475ca858f8"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "C82 & P9 Highway",
+   "note": "Access connection to nearest transit station (Gare transport terrestre Mahdia, 511m)"
+  },
+  {
+   "id": "louage_access_025_kairouan_gare_des",
+   "number": "LA25",
+   "name": "Louage access: Kairouan - Gare des Louages → HOPITAL-Urgences",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "access",
+   "route_id": "25",
+   "stations": [
+    "louage_kairouan_gare_des_louages",
+    "transtu_hopital_urgences_3ed063910b"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P2 & P12 Corridors (East-West Bridge)",
+   "note": "Access connection to nearest transit station (HOPITAL-Urgences, 361m)"
+  },
+  {
+   "id": "louage_access_026_sfax_gare_routière",
+   "number": "LA26",
+   "name": "Louage access: Sfax - Gare Routière → Simka",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "access",
+   "route_id": "26",
+   "stations": [
+    "louage_sfax_gare_routière",
+    "soretras_simka_999463fcf7"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P1 Highway / A1 Southern Extension",
+   "note": "Access connection to nearest transit station (Simka, 220m)"
+  },
+  {
+   "id": "louage_access_027_gabès_central_stat",
+   "number": "LA27",
+   "name": "Louage access: Gabès - Central Station → Gabes",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "access",
+   "route_id": "27",
+   "stations": [
+    "louage_gabès_central_station",
+    "gabes"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P16 (Inland Desert Line) & P1 (Coastal South)",
+   "note": "Access connection to nearest transit station (Gabes, 581m)"
+  },
+  {
+   "id": "louage_access_028_bizerte_central_st",
+   "number": "LA28",
+   "name": "Louage access: Bizerte - Central Station → Gare routière de Bizerte (Tarek Ibn Ziad)",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "access",
+   "route_id": "28",
+   "stations": [
+    "louage_bizerte_central_station",
+    "google_places_gare_routiere_de_bizerte__ta_dedad51ee6"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "A4 Highway (Southbound to Capital)",
+   "note": "Access connection to nearest transit station (Gare routière de Bizerte (Tarek Ibn Ziad), 177m)"
+  },
+  {
+   "id": "louage_access_029_tataouine_intercit",
+   "number": "LA29",
+   "name": "Louage access: Tataouine - Intercity Hub → TATOUINE",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "access",
+   "route_id": "29",
+   "stations": [
+    "louage_tataouine_intercity_hub",
+    "srtm_tatouine_4b2e67da9a"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "P19 Highway connecting north to P1",
+   "note": "Access connection to nearest transit station (TATOUINE, 618m)"
+  },
+  {
+   "id": "louage_access_030_djerba_houmt_souk",
+   "number": "LA30",
+   "name": "Louage access: Djerba - Houmt Souk Station → Gare transport terrestre djerba",
+   "operator": "louage",
+   "mode": "louage",
+   "type": "access",
+   "route_id": "30",
+   "stations": [
+    "louage_djerba_houmt_souk_station",
+    "soretras_gare_transport_terrestre_dje_0b821da1ad"
+   ],
+   "departures": [],
+   "source": "tunisia_louage_network.csv",
+   "license_status": "user-compiled",
+   "corridor": "Jorf Ferry (Bac) or El Kantara Roman Causeway",
+   "note": "Access connection to nearest transit station (Gare transport terrestre djerba, 493m)"
   }
  ]
 }
