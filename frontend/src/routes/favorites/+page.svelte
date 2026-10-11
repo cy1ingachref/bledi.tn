@@ -1,13 +1,15 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import { isAuthenticated } from '$lib/stores/auth.js';
+  import { isAuthenticated } from '$lib/stores/auth.ts';
   import type { Favorite } from '$lib/types.js';
 
-  let favorites: Favorite[] = [];
-  let loading = true;
-
-  $: if (!$isAuthenticated) goto('/auth');
+  let favorites = $state<Favorite[]>([]);
+  let loading = $state(true);
+  let error = $state('');
+  $effect(() => {
+    if (!$isAuthenticated) goto('/auth');
+  });
 
   onMount(loadFavorites);
 
@@ -72,7 +74,7 @@
               </div>
             </div>
             <button
-              on:click={() => removeFavorite(f.id)}
+              onclick={() => removeFavorite(f.id)}
               class="text-slate-600 hover:text-red-400 text-sm"
             >Remove</button>
           </div>

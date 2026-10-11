@@ -1,78 +1,83 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { api, type Station, type RoutePlan } from "$lib/router";
+  import L from "leaflet";
+  import { api, type RoutePlan, type Station } from "$lib/router";
 
-  const W = 900;
-  const H = 520;
-
-  // ── Transport modes ──────────────────────────────────────────────────────
+  // ── Transport modes ───────────────────────────────────────────────────────
   const MODES = [
     { id: "bus", label: "Bus", icon: "🚌", color: "#3b82f6" },
-    { id: "metro", label: "Metro", icon: "🚇", color: "#ef4444" },
+    { id: "metro", label: "Métro", icon: "🚇", color: "#ef4444" },
     { id: "tram", label: "Tram", icon: "🚊", color: "#f59e0b" },
     { id: "train", label: "Train", icon: "🚆", color: "#8b5cf6" },
-    { id: "rfr", label: "RFR", icon: "🚌", color: "#06b6d4" },
+    { id: "rfr", label: "RFR", icon: "🚈", color: "#06b6d4" },
     { id: "louaj", label: "Louaj", icon: "🚕", color: "#f97316" },
-    { id: "walk", label: "Walk", icon: "🚶", color: "#22c55e" },
+    { id: "walk", label: "Marche", icon: "🚶", color: "#22c55e" },
   ] as const;
 
   type ModeId = (typeof MODES)[number]["id"];
 
   const OBJECTIVES = [
-    { id: "fastest", label: "Fastest" },
-    { id: "cheapest", label: "Cheapest" },
-    { id: "fewest_transfers", label: "Fewest transfers" },
+    { id: "fastest", label: "Le plus rapide", icon: "⚡" },
+    { id: "cheapest", label: "Le moins cher", icon: "💰" },
+    { id: "fewest_transfers", label: "Moins de changements", icon: "🔁" },
   ] as const;
 
-  // ── State ────────────────────────────────────────────────────────────────
-  let canvas: HTMLCanvasElement | null = null;
-  let ctx: CanvasRenderingContext2D | null = null;
-  let stations: Station[] = [];
-  let state = "loading";
-  let error = "";
+  // ── State ─────────────────────────────────────────────────────────────────
+  let mapEl: HTMLDivElement | null = $state(null);
+  let map: L.Map | null = null;
+  let stationLayer: L.LayerGroup | null = null;
+  let routeLayer: L.LayerGroup | null = null;
+  let startMarker: L.Marker | null = null;
+  let endMarker: L.Marker | null = null;
 
-  // Route inputs
-  let startLat = "36.8065";
-  let startLon = "10.1815";
-  let endLat = "36.7528";
-  let endLon = "10.2108";
+  let stations: Station[] = $state([]);
+  let loadingStations = $state(true);
+  let error = $state("");
 
-  // Mode selection
-  let selectedModes = new Set<ModeId>(["bus", "metro", "train", "tram", "rfr"]);
+  let startLat = $state("36.8065");
+  let startLon = $state("10.1815");
+  let endLat = $state("36.7528");
+  let endLon = $state("10.2108");
 
-  // Objective
-  let objective = "fastest";
+  let busSelected = $state(true);
+  let metroSelected = $state(true);
+  let tramSelected = $state(true);
+  let trainSelected = $state(true);
+  let rfrSelected = $state(true);
+  let louajSelected = $state(false);
+  let walkSelected = $state(false);
 
-  // Results
-  let routePlan: RoutePlan | null = null;
-  let computingRoute = false;
-  let selectedItinerary = 0;
+  let objective = $state<string>("fastest");
+  let routePlan: RoutePlan | null = $state(null);
+  let computing = $state(false);
+  let selectedItinerary = $state(0);
 
-  // Map view
-  let cx = 0;
-  let cy = 0;
-  let scale = 1;
-  let configuredRoute: unknown = null;
+  const modeGetters: Record<string, () => boolean> = {
+    bus: () => busSelected,
+    metro: () => metroSelected,
+    tram: () => tramSelected,
+    train: () => trainSelected,
+    rfr: () => rfrSelected,
+    louaj: () => louajSelected,
+    walk: () => walkSelected,
+  };
 
-  function mmerc(lat: number, lon: number): [number, number] {
-    return [lon, Math.log(Math.tan((lat * Math.PI) / 360 + Math.PI / 4))];
+  function isModeSelected(id: string): boolean {
+    const getter = modeGetters[id];
+    return typeof getter === "function" ? getter() : false;
   }
 
   function toggleMode(id: ModeId) {
-    if (selectedModes.has(id)) {
-      selectedModes.delete(id);
-    } else {
-      selectedModes.add(id);
+    switch (id) {
+      case "bus": busSelected = !busSelected; break;
+      case "metro": metroSelected = !metroSelected; break;
+      case "tram": tramSelected = !tramSelected; break;
+      case "train": trainSelected = !trainSelected; break;
+      case "rfr": rfrSelected = !rfrSelected; break;
+      case "louaj": louajSelected = !louajSelected; break;
+      case "walk": walkSelected = !walkSelected; break;
     }
-    selectedModes = new Set(selectedModes); // trigger reactivity
-  }
-
-  function isModeSelected(id: ModeId): boolean {
-    return selectedModes.has(id);
-  }
-
-  function setObjective(obj: string) {
-    objective = obj;
+    refreshStations();
   }
 
   function getModeColor(mode: string): string {
@@ -83,339 +88,432 @@
     return MODES.find((m) => m.id === mode)?.label ?? mode;
   }
 
-  // ── Routing ──────────────────────────────────────────────────────────────
-  async function computeRoute() {
-    computingRoute = true;
-    routePlan = null;
-    selectedItinerary = 0;
-    try {
-      const sLat = parseFloat(startLat);
-      const sLon = parseFloat(startLon);
-      const eLat = parseFloat(endLat);
-      const eLon = parseFloat(endLon);
+  function getModeIcon(mode: string): string {
+    return MODES.find((m) => m.id === mode)?.icon ?? "📍";
+  }
 
-      if (isNaN(sLat) || isNaN(sLon) || isNaN(eLat) || isNaN(eLon)) {
-        throw new Error("Please enter valid coordinates");
+  // ── Map ───────────────────────────────────────────────────────────────────
+  function initMap() {
+    if (!mapEl) return;
+    map = L.map(mapEl, {
+      center: [36.8065, 10.1815],
+      zoom: 12,
+      zoomControl: true,
+      attributionControl: true,
+    });
+
+    // Free OSM tiles, darkened via CSS filter (CARTO now requires an API key)
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 19,
+      className: "map-tiles-dark",
+    }).addTo(map);
+
+    stationLayer = L.layerGroup().addTo(map);
+    routeLayer = L.layerGroup().addTo(map);
+  }
+
+  function markerIcon(mode: string) {
+    const color = getModeColor(mode);
+    return L.divIcon({
+      className: "",
+      html: `<div style="
+        width:14px;height:14px;border-radius:50%;
+        background:${color};border:2px solid #0b1220;
+        box-shadow:0 0 0 2px ${color}55;"></div>`,
+      iconSize: [14, 14],
+      iconAnchor: [7, 7],
+    });
+  }
+
+  function endpointIcon(label: string, color: string) {
+    return L.divIcon({
+      className: "",
+      html: `<div style="
+        width:26px;height:26px;border-radius:50%;
+        background:${color};color:#04121c;font-weight:800;font-size:12px;
+        display:flex;align-items:center;justify-content:center;
+        border:3px solid #e2e8f0;box-shadow:0 2px 10px #000a;">${label}</div>`,
+      iconSize: [26, 26],
+      iconAnchor: [13, 13],
+    });
+  }
+
+  function refreshStations() {
+    if (!map || !stationLayer) return;
+    stationLayer.clearLayers();
+    const visible = stations.filter((s) => isModeSelected(s.mode as ModeId));
+    // Cap markers for performance; keep a representative sample
+    const MAX = 1200;
+    const step = Math.max(1, Math.ceil(visible.length / MAX));
+    for (let i = 0; i < visible.length; i += step) {
+      const s = visible[i];
+      L.marker([s.lat, s.lon], { icon: markerIcon(s.mode), title: s.name })
+        .bindTooltip(
+          `<b>${s.name}</b><br/><span style="opacity:.7">${getModeLabel(s.mode)}</span>`,
+          { direction: "top", offset: [0, -8] }
+        )
+        .addTo(stationLayer);
+    }
+  }
+
+  function placeEndpoints() {
+    if (!map) return;
+    const sLat = parseFloat(startLat), sLon = parseFloat(startLon);
+    const eLat = parseFloat(endLat), eLon = parseFloat(endLon);
+    if (startMarker) map.removeLayer(startMarker);
+    if (endMarker) map.removeLayer(endMarker);
+    if (!isNaN(sLat) && !isNaN(sLon)) {
+      startMarker = L.marker([sLat, sLon], { icon: endpointIcon("A", "#22d3ee") })
+        .bindTooltip("Départ", { direction: "top" })
+        .addTo(map);
+    }
+    if (!isNaN(eLat) && !isNaN(eLon)) {
+      endMarker = L.marker([eLat, eLon], { icon: endpointIcon("B", "#f472b6") })
+        .bindTooltip("Arrivée", { direction: "top" })
+        .addTo(map);
+    }
+  }
+
+  function drawItinerary(itin: RoutePlan["itineraries"][number]) {
+    if (!map || !routeLayer) return;
+    routeLayer.clearLayers();
+
+    type Leg = { geometry?: [number, number][]; mode?: string; from?: string; to?: string };
+    const legs = (itin.legs ?? []) as Leg[];
+
+    for (const leg of legs) {
+      const geom = leg.geometry;
+      if (geom && geom.length >= 2) {
+        L.polyline(
+          geom.map(([lat, lon]) => [lat, lon] as [number, number]),
+          {
+            color: getModeColor(leg.mode ?? "bus"),
+            weight: 5,
+            opacity: 0.9,
+            lineCap: "round",
+          }
+        ).addTo(routeLayer);
       }
+    }
 
-      const modesInclude = [...selectedModes].join(",");
+    // Fallback straight line if API returned no geometry
+    const hasGeom = legs.some((l) => l.geometry && l.geometry.length >= 2);
+    if (!hasGeom) {
+      const sLat = parseFloat(startLat), sLon = parseFloat(startLon);
+      const eLat = parseFloat(endLat), eLon = parseFloat(endLon);
+      if (![sLat, sLon, eLat, eLon].some(isNaN)) {
+        L.polyline([[sLat, sLon], [eLat, eLon]], {
+          color: "#22d3ee",
+          weight: 4,
+          dashArray: "8 8",
+          opacity: 0.85,
+        }).addTo(routeLayer);
+      }
+    }
+
+    const pts: [number, number][] = [];
+    for (const leg of legs) if (leg.geometry) pts.push(...leg.geometry);
+    if (pts.length) map.fitBounds(L.latLngBounds(pts).pad(0.2));
+    else {
+      const sLat = parseFloat(startLat), sLon = parseFloat(startLon);
+      const eLat = parseFloat(endLat), eLon = parseFloat(endLon);
+      if (![sLat, sLon, eLat, eLon].some(isNaN))
+        map.fitBounds(L.latLngBounds([[sLat, sLon], [eLat, eLon]]).pad(0.3));
+    }
+  }
+
+  async function computeRoute() {
+    computing = true;
+    routePlan = null;
+    error = "";
+    try {
+      const sLat = parseFloat(startLat), sLon = parseFloat(startLon);
+      const eLat = parseFloat(endLat), eLon = parseFloat(endLon);
+      if ([sLat, sLon, eLat, eLon].some(isNaN)) throw new Error("Coordonnées invalides.");
+
+      const modesInclude = MODES.filter((m) => isModeSelected(m.id)).map((m) => m.id).join(",");
+      if (!modesInclude) throw new Error("Sélectionnez au moins un moyen de transport.");
+
+      placeEndpoints();
       const plan = await api.routePlan({
-        startLat: sLat,
-        startLon: sLon,
-        endLat: eLat,
-        endLon: eLon,
-        modesInclude,
-        objective,
+        startLat: sLat, startLon: sLon, endLat: eLat, endLon: eLon,
+        modesInclude, objective,
       });
       routePlan = plan;
+      selectedItinerary = 0;
+      if (plan.itineraries?.length) drawItinerary(plan.itineraries[0]);
     } catch (e) {
       error = e instanceof Error ? e.message : String(e);
     } finally {
-      computingRoute = false;
+      computing = false;
     }
   }
 
-  // ── Drawing ──────────────────────────────────────────────────────────────
-  function fit(points: [number, number][]) {
-    if (!points.length) return;
-    let minx = Infinity, miny = Infinity, maxx = -Infinity, maxy = -Infinity;
-    for (const [x, y] of points) {
-      minx = Math.min(minx, x);
-      miny = Math.min(miny, y);
-      maxx = Math.max(maxx, x);
-      maxy = Math.max(maxy, y);
+  function useMyLocation() {
+    if (!navigator.geolocation) {
+      error = "Géolocalisation non supportée par ce navigateur.";
+      return;
     }
-    const midX = (minx + maxx) / 2;
-    const midY = (miny + maxy) / 2;
-    const w = (maxx - minx) / 2;
-    const h = (maxy - miny) / 2;
-    const span = Math.max(w, h);
-    cx = midX;
-    cy = midY;
-    scale = Math.min(W, H) / (span * 2.1 || 1);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        startLat = pos.coords.latitude.toFixed(5);
+        startLon = pos.coords.longitude.toFixed(5);
+        placeEndpoints();
+        map?.setView([pos.coords.latitude, pos.coords.longitude], 14);
+      },
+      () => { error = "Impossible d'obtenir votre position."; }
+    );
   }
 
-  function canvasToX(xLin: number): number {
-    return (xLin - cx) * scale + W / 2;
-  }
-
-  function canvasToY(yLin: number): number {
-    return (cy - yLin) * scale + H / 2;
-  }
-
-  function isStationMarked(st: Station): boolean {
-    return st.mode !== "walk";
-  }
-
-  function redraw() {
-    const c = ctx;
-    if (!c || !canvas) return;
-    c.clearRect(0, 0, W, H);
-    c.fillStyle = "#0f1923";
-    c.fillRect(0, 0, W, H);
-
-    // Grid
-    for (let x = -1200000; x < 1200001; x += 600000) {
-      c.beginPath();
-      c.strokeStyle = "#1e293b";
-      c.lineWidth = 1;
-      c.moveTo(canvasToX(x), 0);
-      c.lineTo(canvasToX(x), H);
-      c.stroke();
-    }
-    for (let y = -850000; y < 850001; y += 425000) {
-      c.beginPath();
-      c.strokeStyle = "#1e293b";
-      c.lineWidth = 1;
-      c.moveTo(0, canvasToY(y));
-      c.lineTo(W, canvasToY(y));
-      c.stroke();
-    }
-
-    // Route geometry
-    if (configuredRoute) {
-      const route = configuredRoute as { legs?: Array<{ geometry?: [number, number][]; mode?: string }> };
-      if (route.legs) {
-        for (const leg of route.legs) {
-          if (leg.geometry && leg.geometry.length >= 2) {
-            c.beginPath();
-            c.strokeStyle = getModeColor(leg.mode ?? "bus");
-            c.lineWidth = 3;
-            c.lineCap = "round";
-            c.lineJoin = "round";
-            const [firstLat, firstLon] = leg.geometry[0];
-            const [fx, fy] = mmerc(firstLat, firstLon);
-            c.moveTo(canvasToX(fx), canvasToY(fy));
-            for (let i = 1; i < leg.geometry.length; i++) {
-              const [lat, lon] = leg.geometry[i];
-              const [x, y] = mmerc(lat, lon);
-              c.lineTo(canvasToX(x), canvasToY(y));
-            }
-            c.stroke();
-          }
-        }
+  onMount(() => {
+    initMap();
+    placeEndpoints();
+    (async () => {
+      try {
+        const gj = await api.getStations();
+        const features = (gj as unknown as { features?: unknown[] }).features ?? [];
+        stations = (features as Array<{
+          properties?: Record<string, unknown>;
+          geometry?: { coordinates?: [number, number] };
+        }>).map((f) => {
+          const p = f.properties ?? {};
+          return {
+            id: String(p.id ?? ""),
+            name: String(p.name ?? "Sans nom"),
+            lat: f.geometry?.coordinates?.[1] ?? 0,
+            lon: f.geometry?.coordinates?.[0] ?? 0,
+            mode: String(p.mode ?? "walk"),
+          };
+        }).filter((s) => s.lat !== 0 && s.lon !== 0);
+        refreshStations();
+      } catch (e) {
+        error = "Impossible de charger les stations: " + (e instanceof Error ? e.message : String(e));
+      } finally {
+        loadingStations = false;
       }
-    }
+    })();
 
-    // Stations
-    for (const st of stations) {
-      const [x, y] = mmerc(st.lat, st.lon);
-      const px = canvasToX(x);
-      const py = canvasToY(y);
-      c.beginPath();
-      c.fillStyle = isStationMarked(st) ? "#22d3ee" : "#f8fafc";
-      c.arc(px, py, isStationMarked(st) ? 4 : 2, 0, Math.PI * 2);
-      c.fill();
-    }
-  }
-
-  onMount(async () => {
-    ctx = canvas?.getContext("2d");
-    if (!ctx) return;
-    try {
-      const geojson = await api.getStations();
-      const features = (geojson as { features?: unknown[] }).features ?? [];
-      stations = (features as Array<{ properties?: Record<string, unknown>; geometry?: { coordinates?: [number, number] } }>).map((f) => {
-        const p = f.properties ?? {};
-        return {
-          id: String(p.id ?? ""),
-          name: String(p.name ?? ""),
-          name_en: String(p.name_en ?? p.name ?? ""),
-          lat: f.geometry?.coordinates?.[1] ?? 0,
-          lon: f.geometry?.coordinates?.[0] ?? 0,
-          mode: String(p.mode ?? "walk"),
-          operator: String(p.operator ?? ""),
-          route_type: Number(p.route_type ?? 0),
-          license_status: String(p.license_status ?? ""),
-          city: String(p.city ?? ""),
-          source: String(p.source ?? ""),
-        };
-      });
-      const stops2d = stations.map((st) => mmerc(st.lat, st.lon));
-      fit(stops2d);
-      redraw();
-      state = "ready";
-    } catch (e) {
-      // Don't block the UI if stations fail to load — user can still pick modes and route
-      state = "ready";
-      error = e instanceof Error ? e.message : String(e);
-    }
+    return () => { map?.remove(); map = null; };
   });
 </script>
 
-<div class="flex flex-col h-screen bg-slate-950 text-slate-100">
-  <!-- Header -->
-  <header class="flex items-center justify-between border-b border-slate-800 px-4 py-2">
-    <h1 class="text-lg font-semibold">Bledi.tn — Planificateur d'itinéraire</h1>
-    <div class="text-xs text-slate-400">
-      {stations.length} stations · {routePlan?.itineraries?.length ?? 0} itinéraires
+<div class="flex h-screen flex-col bg-[#070d18] text-slate-200">
+  <!-- ── Header ─────────────────────────────────────────────────────────── -->
+  <header class="z-20 flex items-center justify-between border-b border-slate-800/80 bg-[#0b1220]/90 px-5 py-3 backdrop-blur">
+    <div class="flex items-center gap-3">
+      <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 text-lg shadow-lg shadow-cyan-500/20">
+        🚌
+      </div>
+      <div>
+        <h1 class="text-[15px] font-bold leading-tight tracking-tight text-white">Bledi.tn</h1>
+        <p class="text-[11px] leading-tight text-slate-500">Planificateur de transport · Tunisie</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 text-[11px]">
+      <span class="rounded-full border border-slate-700/60 bg-slate-800/60 px-2.5 py-1 text-slate-400">
+        {stations.length.toLocaleString("fr-FR")} arrêts
+      </span>
+      {#if routePlan?.itineraries?.length}
+        <span class="rounded-full border border-cyan-700/50 bg-cyan-950/60 px-2.5 py-1 font-medium text-cyan-300">
+          {routePlan.itineraries.length} itinéraire{routePlan.itineraries.length > 1 ? "s" : ""}
+        </span>
+      {/if}
     </div>
   </header>
 
-  <div class="flex flex-1 overflow-hidden">
-    <!-- Sidebar -->
-    <aside class="w-80 flex-shrink-0 border-r border-slate-800 overflow-y-auto p-4 space-y-4">
-      <!-- Route inputs -->
-      <section class="space-y-2">
-        <h2 class="text-sm font-semibold text-slate-300">Départ</h2>
-        <div class="flex gap-2">
-          <input
-            bind:value={startLat}
-            placeholder="Lat"
-            class="w-1/2 rounded bg-slate-800 border border-slate-700 px-2 py-1 text-sm"
-          />
-          <input
-            bind:value={startLon}
-            placeholder="Lon"
-            class="w-1/2 rounded bg-slate-800 border border-slate-700 px-2 py-1 text-sm"
-          />
-        </div>
-      </section>
-
-      <section class="space-y-2">
-        <h2 class="text-sm font-semibold text-slate-300">Arrivée</h2>
-        <div class="flex gap-2">
-          <input
-            bind:value={endLat}
-            placeholder="Lat"
-            class="w-1/2 rounded bg-slate-800 border border-slate-700 px-2 py-1 text-sm"
-          />
-          <input
-            bind:value={endLon}
-            placeholder="Lon"
-            class="w-1/2 rounded bg-slate-800 border border-slate-700 px-2 py-1 text-sm"
-          />
-        </div>
-      </section>
-
-      <!-- Objective -->
-      <section class="space-y-2">
-        <h2 class="text-sm font-semibold text-slate-300">Objectif</h2>
-        <div class="flex gap-1">
-          {#each OBJECTIVES as obj}
+  <div class="flex min-h-0 flex-1">
+    <!-- ── Sidebar ──────────────────────────────────────────────────────── -->
+    <aside class="z-10 flex w-[340px] flex-shrink-0 flex-col overflow-y-auto border-r border-slate-800/80 bg-[#0b1220]">
+      <div class="space-y-5 p-4">
+        <!-- Trip endpoints -->
+        <section class="space-y-2.5">
+          <div class="flex items-center justify-between">
+            <h2 class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Votre trajet</h2>
             <button
-              class="flex-1 rounded px-2 py-1 text-xs font-medium transition-colors {objective === obj.id
-                ? 'bg-cyan-600 text-white'
-                : 'bg-slate-800 text-slate-400 hover:bg-slate-700'}"
-              on:click={() => setObjective(obj.id)}
+              onclick={useMyLocation}
+              class="flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium text-cyan-400 transition-colors hover:bg-cyan-950/50"
             >
-              {obj.label}
+              📍 Ma position
             </button>
-          {/each}
-        </div>
-      </section>
+          </div>
 
-      <!-- Mode selection -->
-      <section class="space-y-2">
-        <h2 class="text-sm font-semibold text-slate-300">Moyens de transport</h2>
-        <div class="space-y-1">
-          {#each MODES as mode}
-            <button
-              class="w-full flex items-center gap-2 rounded px-2 py-1.5 text-xs font-medium transition-all {isModeSelected(mode.id)
-                ? 'bg-cyan-900/50 text-cyan-200 ring-1 ring-cyan-500'
-                : 'bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-300'}"
-              on:click={() => toggleMode(mode.id)}
-            >
-              <span class="w-4 h-4 rounded border-2 flex items-center justify-center text-[10px] font-bold {isModeSelected(mode.id) ? 'bg-cyan-500 border-cyan-500 text-white' : 'border-slate-600 text-transparent'}">
-                ✓
-              </span>
-              <span class="w-3 h-3 rounded-full" style="background:{mode.color}"></span>
-              <span>{mode.icon} {mode.label}</span>
-            </button>
-          {/each}
-        </div>
-      </section>
-
-      <!-- Compute button -->
-      <button
-        class="w-full rounded bg-cyan-600 hover:bg-cyan-500 disabled:opacity-50 disabled:cursor-not-allowed px-4 py-2 text-sm font-semibold text-white transition-colors"
-        on:click={computeRoute}
-        disabled={computingRoute || selectedModes.size === 0}
-      >
-        {computingRoute ? "Calcul..." : "Calculer l'itinéraire"}
-      </button>
-
-      {#if error}
-        <div class="rounded bg-red-900/50 border border-red-700 p-2 text-xs text-red-200">
-          {error}
-        </div>
-      {/if}
-
-      <!-- Results -->
-      {#if routePlan && routePlan.itineraries?.length}
-        <section class="space-y-2">
-          <h2 class="text-sm font-semibold text-slate-300">
-            {routePlan.itineraries.length} itinéraire{routePlan.itineraries.length > 1 ? "s" : ""}
-          </h2>
           <div class="space-y-2">
-            {#each routePlan.itineraries as itin, i}
+            <div class="flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-900/60 p-2">
+              <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-cyan-500 text-[10px] font-bold text-cyan-950">A</span>
+              <input
+                bind:value={startLat}
+                onchange={placeEndpoints}
+                placeholder="Lat"
+                class="w-[72px] rounded border border-slate-800 bg-slate-950 px-2 py-1 text-xs text-slate-200 outline-none focus:border-cyan-600"
+              />
+              <input
+                bind:value={startLon}
+                onchange={placeEndpoints}
+                placeholder="Lon"
+                class="w-[72px] rounded border border-slate-800 bg-slate-950 px-2 py-1 text-xs text-slate-200 outline-none focus:border-cyan-600"
+              />
+            </div>
+
+            <div class="flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-900/60 p-2">
+              <span class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-pink-400 text-[10px] font-bold text-pink-950">B</span>
+              <input
+                bind:value={endLat}
+                onchange={placeEndpoints}
+                placeholder="Lat"
+                class="w-[72px] rounded border border-slate-800 bg-slate-950 px-2 py-1 text-xs text-slate-200 outline-none focus:border-cyan-600"
+              />
+              <input
+                bind:value={endLon}
+                onchange={placeEndpoints}
+                placeholder="Lon"
+                class="w-[72px] rounded border border-slate-800 bg-slate-950 px-2 py-1 text-xs text-slate-200 outline-none focus:border-cyan-600"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Objective -->
+        <section class="space-y-2">
+          <h2 class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Priorité</h2>
+          <div class="grid grid-cols-3 gap-1.5">
+            {#each OBJECTIVES as obj}
               <button
-                class="w-full text-left rounded-lg border p-3 transition-colors {selectedItinerary === i
-                  ? 'border-cyan-500 bg-slate-800'
-                  : 'border-slate-700 bg-slate-800/50 hover:bg-slate-800'}"
-                on:click={() => {
-                  selectedItinerary = i;
-                  configuredRoute = itin;
-                  redraw();
-                }}
+                onclick={() => (objective = obj.id)}
+                class="flex flex-col items-center gap-1 rounded-lg border px-1 py-2 text-[10px] font-medium transition-all {objective === obj.id
+                  ? 'border-cyan-500/70 bg-cyan-950/60 text-cyan-300'
+                  : 'border-slate-800 bg-slate-900/60 text-slate-400 hover:border-slate-700 hover:text-slate-300'}"
               >
-                <div class="flex items-center justify-between mb-1">
-                  <span class="text-sm font-semibold">Option {i + 1}</span>
-                  <span class="text-xs text-slate-400">
-                    {itin.duration_min.toFixed(0)} min · {itin.transfers} correspondance{itin.transfers > 1 ? "s" : ""}
-                  </span>
-                </div>
-                <div class="flex flex-wrap gap-1">
-                  {#each itin.modes_used as mode}
-                    <span
-                      class="inline-block rounded px-1.5 py-0.5 text-[10px] font-medium text-white"
-                      style="background:{getModeColor(mode)}"
-                    >
-                      {getModeLabel(mode)}
-                    </span>
-                  {/each}
-                </div>
-                {#if itin.fare_dinars > 0}
-                  <div class="mt-1 text-xs text-slate-400">
-                    ~{itin.fare_dinars.toFixed(2)} DT
-                  </div>
-                {/if}
-                {#if itin.rank_reason}
-                  <div class="mt-1 text-[11px] text-slate-500 italic">
-                    {itin.rank_reason}
-                  </div>
-                {/if}
+                <span class="text-sm">{obj.icon}</span>
+                <span class="text-center leading-tight">{obj.label}</span>
               </button>
             {/each}
           </div>
         </section>
-      {:else if routePlan && !routePlan.itineraries?.length}
-        <div class="rounded bg-amber-900/30 border border-amber-700 p-2 text-xs text-amber-200">
-          Aucun itinéraire trouvé avec ces critères.
-        </div>
-      {/if}
+
+        <!-- Modes -->
+        <section class="space-y-2">
+          <h2 class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+            Moyens de transport
+          </h2>
+          <div class="grid grid-cols-2 gap-1.5">
+            {#each MODES as mode}
+              <button
+                onclick={() => toggleMode(mode.id)}
+                aria-pressed={isModeSelected(mode.id)}
+                class="group flex items-center gap-2 rounded-lg border px-2 py-2 text-xs font-medium transition-all {isModeSelected(mode.id)
+                  ? 'border-slate-700 bg-slate-800 text-white'
+                  : 'border-slate-800/70 bg-slate-900/40 text-slate-500 hover:border-slate-700'}"
+              >
+                <span
+                  class="flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-[5px] border text-[9px] font-bold transition-all {isModeSelected(mode.id)
+                    ? 'border-transparent text-slate-950'
+                    : 'border-slate-700 text-transparent'}"
+                  style={isModeSelected(mode.id) ? `background:${mode.color}` : ""}
+                >
+                  ✓
+                </span>
+                <span class="text-sm leading-none">{mode.icon}</span>
+                <span class="truncate">{mode.label}</span>
+              </button>
+            {/each}
+          </div>
+        </section>
+
+        <!-- Compute -->
+        <button
+          onclick={computeRoute}
+          disabled={computing}
+          class="w-full rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-600 px-4 py-3 text-sm font-bold text-cyan-950 shadow-lg shadow-cyan-500/20 transition-all hover:from-cyan-400 hover:to-cyan-500 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {computing ? "Calcul en cours…" : "Calculer l'itinéraire"}
+        </button>
+
+        {#if error}
+          <div class="rounded-lg border border-red-800/60 bg-red-950/40 p-2.5 text-[11px] leading-snug text-red-300">
+            {error}
+          </div>
+        {/if}
+
+        <!-- Results -->
+        {#if routePlan?.itineraries?.length}
+          <section class="space-y-2">
+            <h2 class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+              Options · du plus rapide au plus économique
+            </h2>
+            <div class="space-y-2">
+              {#each routePlan.itineraries as itin, i}
+                <button
+                  onclick={() => {
+                    selectedItinerary = i;
+                    drawItinerary(itin);
+                  }}
+                  class="w-full rounded-xl border p-3 text-left transition-all {selectedItinerary === i
+                    ? 'border-cyan-500/70 bg-slate-800/90 shadow-lg shadow-cyan-500/10'
+                    : 'border-slate-800 bg-slate-900/50 hover:border-slate-700'}"
+                >
+                  <div class="mb-2 flex items-center justify-between">
+                    <span class="text-xs font-bold text-white">Option {i + 1}</span>
+                    <span class="text-[11px] font-medium text-cyan-300">
+                      {itin.duration_min.toFixed(0)} min
+                    </span>
+                  </div>
+                  <div class="mb-2 flex flex-wrap items-center gap-1">
+                    {#each itin.modes_used as m}
+                      <span
+                        class="rounded px-1.5 py-0.5 text-[10px] font-semibold text-slate-950"
+                        style="background:{getModeColor(m)}"
+                      >
+                        {getModeIcon(m)} {getModeLabel(m)}
+                      </span>
+                    {/each}
+                  </div>
+                  <div class="flex items-center gap-3 text-[11px] text-slate-400">
+                    <span>🔁 {itin.transfers} changement{itin.transfers > 1 ? "s" : ""}</span>
+                    {#if itin.fare_dinars > 0}
+                      <span>💵 {itin.fare_dinars.toFixed(2)} DT</span>
+                    {/if}
+                  </div>
+                  {#if itin.rank_reason}
+                    <p class="mt-1.5 text-[10px] italic leading-snug text-slate-500">{itin.rank_reason}</p>
+                  {/if}
+                </button>
+              {/each}
+            </div>
+          </section>
+        {:else if routePlan}
+          <div class="rounded-lg border border-amber-800/60 bg-amber-950/30 p-2.5 text-[11px] text-amber-300">
+            Aucun itinéraire trouvé avec ces critères. Essayez d'activer plus de moyens de transport.
+          </div>
+        {/if}
+      </div>
     </aside>
 
-    <!-- Map -->
-    <main class="flex-1 relative bg-slate-950 overflow-hidden">
-      <canvas
-        bind:this={canvas}
-        width={W}
-        height={H}
-        class="w-full h-full cursor-crosshair"
-      />
-      {#if state === "loading"}
-        <div class="absolute inset-0 flex items-center justify-center text-slate-400">
-          Chargement...
+    <!-- ── Map ──────────────────────────────────────────────────────────── -->
+    <main class="relative min-w-0 flex-1">
+      <div bind:this={mapEl} class="absolute inset-0"></div>
+
+      {#if loadingStations}
+        <div class="pointer-events-none absolute left-1/2 top-4 z-[500] -translate-x-1/2">
+          <div class="flex items-center gap-2 rounded-full border border-slate-700/60 bg-[#0b1220]/90 px-3 py-1.5 text-[11px] text-slate-300 shadow-xl backdrop-blur">
+            <span class="h-3 w-3 animate-spin rounded-full border-2 border-cyan-500 border-t-transparent"></span>
+            Chargement des arrêts…
+          </div>
         </div>
       {/if}
+
+      <!-- Legend -->
+      <div class="absolute bottom-6 right-3 z-[500] rounded-xl border border-slate-800/80 bg-[#0b1220]/90 p-2.5 shadow-2xl backdrop-blur">
+        <p class="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-slate-500">Légende</p>
+        <div class="grid grid-cols-2 gap-x-3 gap-y-1">
+          {#each MODES as mode}
+            <div class="flex items-center gap-1.5 text-[10px] {isModeSelected(mode.id) ? 'text-slate-300' : 'text-slate-600 line-through'}">
+              <span class="h-2.5 w-2.5 rounded-full" style="background:{mode.color}"></span>
+              {mode.label}
+            </div>
+          {/each}
+        </div>
+      </div>
     </main>
   </div>
 </div>
-
-<style>
-  :global(body) {
-    margin: 0;
-    background: #0f1923;
-  }
-</style>

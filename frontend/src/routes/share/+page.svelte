@@ -1,18 +1,20 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import { isAuthenticated } from '$lib/stores/auth.js';
-  import { userLocation } from '$lib/stores/location.js';
+  import { isAuthenticated } from '$lib/stores/auth.ts';
+  import { userLocation } from '$lib/stores/location.ts';
   import type { LocationShare } from '$lib/types.js';
 
-  let shares: LocationShare[] = [];
-  let nearbyShares: LocationShare[] = [];
-  let loading = true;
-  let sharing = false;
-  let note = '';
-  let shareError = '';
+  let shares = $state<LocationShare[]>([]);
+  let nearbyShares = $state<LocationShare[]>([]);
+  let loading = $state(true);
+  let sharing = $state(false);
+  let note = $state('');
+  let shareError = $state('');
 
-  $: if (!$isAuthenticated) goto('/auth');
+  $effect(() => {
+    if (!$isAuthenticated) goto('/auth');
+  });
 
   onMount(async () => {
     await loadShares();
@@ -136,7 +138,7 @@
           <div class="text-red-400 text-sm">{shareError}</div>
         {/if}
         <button
-          on:click={startSharing}
+          onclick={startSharing}
           class="w-full py-2.5 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold rounded-xl transition"
         >
           Start Sharing
@@ -149,7 +151,7 @@
           <div class="text-green-400 font-medium">Sharing active</div>
           <div class="text-slate-500 text-sm mt-1">Friends can see your location</div>
           <button
-            on:click={stopSharing}
+            onclick={stopSharing}
             class="mt-4 px-6 py-2 bg-red-500/20 text-red-400 border border-red-500/50 rounded-xl text-sm font-medium"
           >Stop Sharing</button>
         </div>
