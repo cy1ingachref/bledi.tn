@@ -536,7 +536,7 @@
               <span class="m-ic" style={isOn(m.id) ? `color:${m.color}` : ""}>
                 <Icon name={m.icon} size={16} />
               </span>
-              <span class="m-lbl">{t("modes." + m.id)}</span>
+              <span class="m-lbl">{modeLabel(t, m.id)}</span>
             </button>
           {/each}
         </div>
@@ -643,7 +643,7 @@
           {#each MODES as m}
             <span class="lg-i" class:off={!isOn(m.id)}>
               <i style="background:{m.color}"></i>
-              {t("modes." + m.id)}
+              {modeLabel(t, m.id)}
             </span>
           {/each}
         </div>
