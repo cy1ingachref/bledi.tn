@@ -42,7 +42,9 @@ warnings.filterwarnings("ignore")
 
 ROOT = Path(__file__).resolve().parent.parent
 SEED = ROOT / "data" / "seed_all_tunisia_routes.tagged.json"
-DUMP = Path.home() / "Downloads" / "transport"
+# Consolidated 2026-10-11: the operator exports moved from
+# ~/Downloads/transport to the organised resource folder.
+DUMP = Path.home() / "Downloads" / "tunisia-transport-data" / "01-bus-network" / "operator-exports"
 TOLERANCE_M = 150.0
 CELL = 0.002  # ~220 m grid cell
 

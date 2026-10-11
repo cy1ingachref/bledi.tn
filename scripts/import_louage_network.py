@@ -30,7 +30,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SEED = ROOT / "data" / "seed_all_tunisia_routes.tagged.json"
-CSV_PATH = Path.home() / "Downloads" / "tunisia_louage_network.csv"
+# Consolidated 2026-10-11: moved into the organised resource folder.
+CSV_PATH = (Path.home() / "Downloads" / "tunisia-transport-data"
+            / "01-bus-network" / "tunisia_louage_network.csv")
 
 # Known Bizerte longitude from the Google Places export
 BIZERTE_LON = 9.8722566
