@@ -176,6 +176,24 @@ def main() -> int:
     check("mode:not(.on)" in src, "unchecked modes greyed entirely")
     check("showToast" in src, "toast implemented")
 
+    print("\n=== CTA REACHABILITY (regression: 'not working') ===")
+    # The CTA must live OUTSIDE the scroll container, as a sibling footer.
+    # When it lived inside, a short viewport pushed it past the fold and the
+    # button was unclickable -- reported as "not working".
+    check(".panel-col" in src, "panel is a flex column")
+    check(".cta-bar" in src, "CTA lives in its own bar")
+    # Match the CSS *declaration*, not the word appearing in a comment (the
+    # comment above .cta-bar explains why sticky was rejected).
+    sticky_decl = re.search(r"^\s*position:\s*sticky\s*;", src, re.M)
+    check(sticky_decl is None, "no sticky CTA declaration (leaves viewport on scroll)")
+    # the CTA element must not be inside the <aside class="side"> block
+    aside = re.search(r'<aside class="side"[^>]*>(.*?)</aside>', src, re.S)
+    check(
+        aside is not None and 'class="cta"' not in aside.group(1),
+        "CTA is not inside the scrolling panel",
+    )
+    check(".cta-bar" in src and "flex-shrink: 0" in src, "CTA bar is a non-shrinking footer")
+
     print("\n=== RESULT CORRECTNESS ===")
     check("fare_estimate_dinars" in src, "reads fare_estimate_dinars")
     check("legLabel" in src, "leg label humanised")
