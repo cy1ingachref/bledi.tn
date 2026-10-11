@@ -96,6 +96,17 @@ SOURCES: list[tuple[str, str, str]] = [
     ("3debcd31", "TGM tramway positions", "xlsx"),
     ("6b25abd2", "SNTRI stops", "xlsx"),
     ("BLEDI_transport.xlsx", "BLEDI curated workbook", "xlsx"),
+    # Rail / metro station cartography (GTFS-format or Label/Lat/Lon)
+    ("90805137", "SNCFT Banlieue Sud stations", "csv"),
+    ("4c7c7cef", "SNCFT Banlieue Sahel stations", "csv"),
+    ("245e848e", "RFR rapid-rail stations", "csv"),
+    ("bac19c8e", "SNCFT national rail stations", "csv"),
+    ("56db3909", "Transtu metro stations", "xlsx"),
+    ("e739131c", "Transtu metro line-stops", "xlsx"),
+    ("4b860131", "TGM tramway itinerary", "xlsx"),
+    ("57f3d316", "TGM tramway timetable", "xlsx"),
+    ("df46ae89", "SRTJ station positions", "csv"),
+    ("cf2741e2", "GTFS stops (SNTRI feed)", "csv"),
 ]
 
 # explicit exclusions, checked against the full relative path
@@ -111,6 +122,9 @@ LON_KEYS = ("stop_lon", "lon", "longitude", "x", "longitude (x)", "label_lon")
 NAME_KEYS = (
     "stop_name", "nom de la station", "nom de station", "name", "nom",
     "nom français", "label_fr", "etablissement", "delstation",
+    # RFR cartography puts the station name in "Trajet"; "Itinéraire" holds the
+    # line label on the header row only, so it is tried last.
+    "trajet", "itineraire",
 )
 MODE_HINTS = (
     ("metro", "metro"), ("tram", "tram"), ("tgm", "tram"),
@@ -125,6 +139,23 @@ def guess_mode(label: str, name: str = "") -> str:
         if needle in blob:
             return mode
     return "bus"
+
+
+def pick_nonempty(d: dict, keys: tuple[str, ...]):
+    """First candidate column that holds a non-blank value.
+
+    Column-shifted exports (the RFR cartography) have every candidate column
+    present but empty on data rows, so a plain key lookup returns "" and
+    shadows the column that actually holds the name.
+    """
+    low = {str(k).strip().lower(): k for k in d}
+    for want in keys:
+        for lk, orig in low.items():
+            if lk == want or want in lk:
+                v = d[orig]
+                if v is not None and str(v).strip():
+                    return v
+    return None
 
 
 def pick(d: dict, keys: tuple[str, ...]):
@@ -157,13 +188,29 @@ def iter_xlsx_rows(path: Path):
 
 
 def iter_csv_rows(path: Path):
-    for enc in ("utf-8-sig", "utf-8", "latin-1"):
+    """Read a CSV, tolerating UTF-16 (with BOM) and ';' delimiters.
+
+    Several operator exports are UTF-16LE tab/semicolon files; a plain
+    utf-8 read raises and the whole file used to be skipped silently.
+    """
+    raw = path.read_bytes()
+    for enc in ("utf-16", "utf-8-sig", "utf-8", "latin-1"):
         try:
-            with open(path, encoding=enc, newline="") as fh:
-                yield from csv.DictReader(fh)
-            return
-        except (UnicodeDecodeError, csv.Error):
+            text = raw.decode(enc)
+        except (UnicodeDecodeError, UnicodeError):
             continue
+        # strip a stray BOM that survived
+        text = text.lstrip("\ufeff")
+        first = text.split("\n", 1)[0]
+        delim = ";" if first.count(";") > first.count(",") else ","
+        try:
+            rdr = csv.DictReader(io.StringIO(text), delimiter=delim)
+            rows = list(rdr)
+        except csv.Error:
+            continue
+        if rows:
+            yield from rows
+            return
 
 
 def iter_gtfs_rows(path: Path):
@@ -335,9 +382,14 @@ def _consider(rec, label, mode, grid, known, added, existing_ids, seen_names) ->
         return 0
     if known(la, lo):
         return 0
-    nm = str(pick(rec, NAME_KEYS) or "").strip()
-    if not nm:
-        nm = "Arrêt sans nom"
+    nm = str(pick_nonempty(rec, NAME_KEYS) or "").strip()
+    # Drop repeated line-label rows (the RFR file repeats "Ligne F"), numeric
+    # leftovers from misaligned columns, and anything unnamed -- an unnamed
+    # marker is worse than no marker.
+    if not nm or re.match(r"^(ligne|line)\b", nm, re.I):
+        return 0
+    if re.match(r"^[\d.,\s]+(km|m)?$", nm, re.I):
+        return 0
     sid = f"dl_{slug(label)}_{slug(nm)}"
     n = seen_names.get(sid, 0)
     seen_names[sid] = n + 1

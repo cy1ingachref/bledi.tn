@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import L from "leaflet";
+  import "leaflet.markercluster";
   import Icon from "$lib/Icon.svelte";
   import { api, type RoutePlan, type Station } from "$lib/router";
   import { LANGS, translator, dirOf, formatDuration, modeLabel, type Lang } from "$lib/i18n";
@@ -164,14 +165,29 @@
     if (!map || !stationLayer) return;
     stationLayer.clearLayers();
     const visible = stations.filter((s) => selected.has(s.mode as ModeId));
-    const MAX = 700;
-    const step = Math.max(1, Math.ceil(visible.length / MAX));
-    for (let i = 0; i < visible.length; i += step) {
-      const s = visible[i];
-      L.marker([s.lat, s.lon], { icon: stationIcon(s.mode), title: s.name })
-        .bindTooltip(`<b>${s.name}</b>`, { direction: "top", offset: [0, -6] })
-        .addTo(stationLayer);
+
+    // Every stop is added to a marker cluster. Previously this subsampled --
+    // `step = ceil(visible / 700)` -- so with 7 004 bus stops only every 10th
+    // marker was drawn. The data was there; the map just hid 90% of it, which
+    // made the Downloads import look like it had done nothing. Clustering keeps
+    // all of them reachable (they expand as you zoom) without the DOM cost of
+    // 7 000 simultaneous markers.
+    const cluster = L.markerClusterGroup({
+      maxClusterRadius: 55,
+      disableClusteringAtZoom: 15,   // show individual stops once zoomed in
+      showCoverageOnHover: false,
+      chunkedLoading: true,          // keeps the UI responsive while adding
+      chunkInterval: 120,
+    });
+    const markers: L.Marker[] = [];
+    for (const s of visible) {
+      markers.push(
+        L.marker([s.lat, s.lon], { icon: stationIcon(s.mode), title: s.name })
+          .bindTooltip(`<b>${s.name}</b>`, { direction: "top", offset: [0, -6] })
+      );
     }
+    cluster.addLayers(markers);
+    stationLayer.addLayer(cluster);
   }
 
   function placeEndpoints() {
@@ -1040,6 +1056,35 @@
   }
   .lg-i i { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
   .lg-i.off { opacity: 0.3; text-decoration: line-through; }
+
+  /* ── Marker clusters ────────────────────────────────────────────────────── */
+  /* Override the plugin's default bright-green bubbles with the app palette.
+     Counts are the point here: a "12" bubble means 12 stops behind it, so the
+     density of the imported dataset is legible instead of hidden. */
+  .app :global(.marker-cluster) {
+    background: rgba(34, 211, 238, 0.22);
+    border-radius: 50%;
+    color: var(--tx);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .app :global(.marker-cluster div) {
+    width: 34px; height: 34px; margin: 3px;
+    display: grid; place-items: center;
+    border: 1px solid rgba(34, 211, 238, 0.5);
+    border-radius: 50%;
+    background: rgba(7, 11, 20, 0.82);
+    font-size: 11px;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.55);
+  }
+  .app :global(.marker-cluster-small),
+  .app :global(.marker-cluster-medium),
+  .app :global(.marker-cluster-large) {
+    background: rgba(34, 211, 238, 0.22);
+  }
+  .app :global(.marker-cluster-small div) { color: var(--accent); }
+  .app :global(.marker-cluster-medium div) { color: #fcd34d; border-color: rgba(251,191,36,.5); }
+  .app :global(.marker-cluster-large div) { color: #fca5a5; border-color: rgba(248,113,113,.5); }
 
   /* ── Scrollbar / focus ──────────────────────────────────────────────────── */
   .side::-webkit-scrollbar { width: 8px; }
