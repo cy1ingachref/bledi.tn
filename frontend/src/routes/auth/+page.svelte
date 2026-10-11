@@ -1,13 +1,13 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
-  import { login, register } from '$lib/stores/auth.js';
+  import { login, register } from '$lib/stores/auth.ts';
 
-  let mode: 'login' | 'register' = 'login';
-  let email = '';
-  let password = '';
-  let displayName = '';
-  let error = '';
-  let loading = false;
+  let mode = $state<'login' | 'register'>('login');
+  let email = $state('');
+  let password = $state('');
+  let displayName = $state('');
+  let error = $state('');
+  let loading = $state(false);
 
   async function submit() {
     error = '';
@@ -38,15 +38,15 @@
       <div class="flex mb-6 bg-slate-800 rounded-lg p-1">
         <button
           class="flex-1 py-2 rounded-md text-sm font-medium transition {mode === 'login' ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-slate-200'}"
-          on:click={() => (mode = 'login')}
+          onclick={() => (mode = 'login')}
         >Login</button>
         <button
           class="flex-1 py-2 rounded-md text-sm font-medium transition {mode === 'register' ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-slate-200'}"
-          on:click={() => (mode = 'register')}
+          onclick={() => (mode = 'register')}
         >Register</button>
       </div>
 
-      <form on:submit|preventDefault={submit} class="space-y-4">
+      <form onsubmit={(e) => { e.preventDefault(); submit(); }} class="space-y-4">
         {#if mode === 'register'}
           <div>
             <label class="block text-sm text-slate-400 mb-1">Display name</label>

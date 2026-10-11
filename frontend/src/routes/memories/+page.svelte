@@ -1,18 +1,18 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import { isAuthenticated } from '$lib/stores/auth.js';
-  import { userLocation } from '$lib/stores/location.js';
+  import { isAuthenticated } from '$lib/stores/auth.ts';
+  import { userLocation } from '$lib/stores/location.ts';
   import type { Memory, CreateMemoryRequest } from '$lib/types.js';
 
-  let memories: Memory[] = [];
-  let loading = true;
-  let error = '';
-  let captureMode = false;
-  let captureLat = 0;
-  let captureLon = 0;
-  let mediaFile: File | null = null;
-  let mediaPreview = '';
+  let memories = $state<Memory[]>([]);
+  let loading = $state(true);
+  let error = $state('');
+  let captureMode = $state(false);
+  let captureLat = $state(0);
+  let captureLon = $state(0);
+  let mediaFile = $state<File | null>(null);
+  let mediaPreview = $state('');
   let title = '';
   let description = '';
   let visibility: 'public' | 'friends' | 'private' = 'public';
@@ -21,7 +21,9 @@
   let nearbyMemories: Memory[] = [];
   let showUnlocked = false;
 
-  $: if (!$isAuthenticated) goto('/auth');
+  $effect(() => {
+    if (!$isAuthenticated) goto('/auth');
+  });
 
   onMount(async () => {
     await loadMemories();
@@ -145,7 +147,7 @@
     {#if nearbyMemories.length > 0}
       <div class="bg-cyan-950/50 border border-cyan-800 rounded-xl p-3">
         <div class="text-cyan-400 text-sm font-medium mb-2">
-          {nearbyMemories.length} memor{y near you}
+          {nearbyMemories.length} memories near you
         </div>
         <div class="flex gap-2 overflow-x-auto">
           {#each nearbyMemories.slice(0, 5) as m}
@@ -162,7 +164,7 @@
 
     {#if !captureMode}
       <button
-        on:click={startCapture}
+        onclick={startCapture}
         class="w-full py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold rounded-xl transition"
       >
         + Capture Memory
@@ -183,7 +185,7 @@
           </div>
         {:else}
           <label class="block border-2 border-dashed border-slate-700 rounded-xl p-6 text-center cursor-pointer hover:border-cyan-500 transition">
-            <input type="file" accept="image/*,video/*" class="hidden" on:change={onFileChange} />
+            <input type="file" accept="image/*,video/*" class="hidden" onchange={onFileChange} />
             <div class="text-slate-400 text-sm">Tap to select photo or video</div>
           </label>
         {/if}
@@ -205,7 +207,7 @@
           {#each ['public', 'friends', 'private'] as v}
             <button
               class="flex-1 py-2 rounded-lg text-sm font-medium transition {visibility === v ? 'bg-cyan-500 text-slate-950' : 'bg-slate-800 text-slate-400'}"
-              on:click={() => (visibility = v as any)}
+              onclick={() => (visibility = v as any)}
             >{v}</button>
           {/each}
         </div>
@@ -221,11 +223,11 @@
 
         <div class="flex gap-2">
           <button
-            on:click={() => (captureMode = false)}
+            onclick={() => (captureMode = false)}
             class="flex-1 py-2 bg-slate-800 text-slate-300 rounded-lg text-sm"
           >Cancel</button>
           <button
-            on:click={createMemory}
+            onclick={createMemory}
             disabled={creating}
             class="flex-1 py-2 bg-cyan-500 disabled:bg-slate-700 text-slate-950 rounded-lg text-sm font-medium"
           >{creating ? 'Saving...' : 'Save Memory'}</button>
@@ -256,7 +258,7 @@
                       <div class="text-slate-400 text-xs mt-0.5 line-clamp-2">{m.description}</div>
                     {/if}
                   </div>
-                  <button on:click={() => deleteMemory(m.id)} class="text-slate-600 hover:text-red-400 text-xs ml-2">Delete</button>
+                  <button onclick={() => deleteMemory(m.id)} class="text-slate-600 hover:text-red-400 text-xs ml-2">Delete</button>
                 </div>
                 <div class="flex items-center gap-2 mt-1.5">
                   <span class="text-xs px-1.5 py-0.5 rounded bg-slate-800 text-slate-400">{m.visibility}</span>
