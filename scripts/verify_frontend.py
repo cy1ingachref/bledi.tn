@@ -116,6 +116,18 @@ def main() -> int:
         lf, tf = fare("louaj"), fare("taxi")
         check(lf > 0 and lf != tf, "louage fare differs from taxi", f"{lf} vs {tf} DT")
 
+        # 2b. louage network routes (the CSV import).
+        print("\n=== ROUTING: louage network ===")
+        try:
+            d = get(f"{API}/route/plan?start_lat=36.7905&start_lon=10.1915&end_lat=35.8093&end_lon=10.6363&modes_include=louaj&objective=fastest")
+            its = d.get("itineraries") or []
+            check(len(its) > 0, "louage network returns a route", f"{len(its)} itineraries")
+            if its:
+                m = its[0].get("modes_used") or []
+                check("louaj" in m, "louage route uses louaj mode", ",".join(m))
+        except (urllib.error.URLError, OSError, json.JSONDecodeError):
+            check(False, "louage network route query", "unreachable")
+
     # 3. build
     print("\n=== BUILD ===")
     if args.skip_build:
