@@ -128,6 +128,37 @@ def main() -> int:
         except (urllib.error.URLError, OSError, json.JSONDecodeError):
             check(False, "louage network route query", "unreachable")
 
+    print("\n=== DATA SOURCES (Downloads import) ===")
+    try:
+        with urllib.request.urlopen(f"{API}/health", timeout=8) as r:
+            h = json.loads(r.read().decode())
+        n = h.get("stations_count") or 0
+        check(n >= 7450, "stations imported from Downloads dump", f"{n}")
+    except (urllib.error.URLError, OSError, json.JSONDecodeError):
+        print("SKIP  backend unreachable")
+    seed = json.loads((ROOT / "data/seed_all_tunisia_routes.tagged.json").read_text(encoding="utf-8"))
+    md = seed.get("metadata", {})
+    check("downloads_transport_import" in md, "dump import provenance recorded")
+    check("louage_import" in md, "louage CSV import provenance recorded")
+    nlou = sum(1 for s in seed["stations"] if s.get("mode") == "louage")
+    check(nlou >= 29, "louage stations present", str(nlou))
+    # The SNCFT level crossings must NOT have been imported as stations.
+    # Guard on the SOURCE, not on the word "passage": several genuine bus
+    # stops are named "Passage Tkaya" / "Passage Jeans Jaures" and matching
+    # the substring would flag them as leaks.
+    pn = [
+        s for s in seed["stations"]
+        if "sncft-pn" in str(s.get("source", "")).lower()
+        or "passages a niveau" in str(s.get("source", "")).lower()
+        or "downloads:resau ferre" in str(s.get("source", "")).lower()
+    ]
+    check(not pn, "level crossings excluded (by source)", f"{len(pn)} leaked")
+    # and the import must record the exclusion explicitly
+    check(
+        "level crossing" in str(md.get("downloads_transport_import", {}).get("excluded", "")).lower(),
+        "exclusion documented in metadata",
+    )
+
     # 3. build
     print("\n=== BUILD ===")
     if args.skip_build:
