@@ -59,5 +59,15 @@ export default defineConfig({
         changeOrigin: true
       }
     }
+  },
+  preview: {
+    port: 8080,
+    host: "127.0.0.1",
+    proxy: {
+      "/api": {
+        target: "http://localhost:8000",
+        changeOrigin: true
+      }
+    }
   }
 });
