@@ -21,6 +21,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import os
 import csv
 import json
 import math
@@ -31,8 +32,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SEED = ROOT / "data" / "seed_all_tunisia_routes.tagged.json"
 # Consolidated 2026-10-11: moved into the organised resource folder.
-CSV_PATH = (Path.home() / "Downloads" / "tunisia-transport-data"
-            / "01-bus-network" / "tunisia_louage_network.csv")
+CSV_PATH = Path(
+    os.environ.get(
+        "BLEDI_LOUAGE_CSV",
+        str(Path.home() / "Downloads" / "tunisia-transport-data"
+            / "01-bus-network" / "tunisia_louage_network.csv"),
+    )
+)
 
 # Known Bizerte longitude from the Google Places export
 BIZERTE_LON = 9.8722566

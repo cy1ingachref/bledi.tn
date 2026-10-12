@@ -115,11 +115,20 @@ def run(script: str, *args: str, timeout: int = 550) -> subprocess.CompletedProc
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--src", default=r"C:\Users\cy1in\Downloads\transport",
+    ap.add_argument(
+        "--src",
+        default=os.environ.get(
+            "BLEDI_TRANSPORT_DUMP", str(Path.home() / "Downloads" / "transport")
+        ),
                     help="root of the portal export")
     ap.add_argument("--seed", default=None,
                     help="defaults to the seed above src/mobile in this repo")
-    ap.add_argument("--workbook", default=r"C:\Users\cy1in\Downloads\bizerte_mateur_transport.xlsx",
+    ap.add_argument(
+        "--workbook",
+        default=os.environ.get(
+            "BLEDI_BIZERTE_WORKBOOK",
+            str(Path.home() / "Downloads" / "bizerte_mateur_transport.xlsx"),
+        ),
                     help="the Google Places Bizerte/Mateur workbook, if present")
     ap.add_argument("--api", default="http://localhost:8000")
     ap.add_argument("--skip-backend", action="store_true")
@@ -409,7 +418,9 @@ def main() -> None:
 
         # 7. OSM export audit (only when the export is present) --------------
         print("osm export audit")
-        maps_dir = Path(r"C:\Users\cy1in\Downloads\maps")
+        maps_dir = Path(
+            os.environ.get("BLEDI_MAPS_DIR", str(Path.home() / "Downloads" / "maps"))
+        )
         audit = HERE / "audit_osm_export.py"
         if not maps_dir.is_dir():
             print("  (skipped: no Downloads/maps folder)")

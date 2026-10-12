@@ -22,23 +22,53 @@ with a README explaining every subfolder. Layout:
 
 | File | Built by | Contents |
 |---|---|---|
-| `seed_all_tunisia_routes.tagged.json` | `scripts/import_downloads_transport.py`, `scripts/import_louage_network.py`, `scripts/scrape_bizerteconnect.py` | 7,452 stations, 379 lines |
+| `seed_all_tunisia_routes.tagged.json` | `scripts/import_downloads_transport.py`, `scripts/import_louage_network.py`, `scripts/scrape_bizerteconnect.py`, `scripts/tag_provenance.py` | 7,452 stations, 379 lines |
 | `bizerteconnect_network.json` | `scripts/scrape_bizerteconnect.py` | Raw BizerteConnect API scrape |
-| `road_graph.npz` (153 MB) | `src/backend/tool/build_road_graph.py` | From the `.osm.pbf` |
-| `rail_graph.npz` | `src/backend/tool/build_rail_graph.py` | From the `.osm.pbf` |
 | `route_geometry.json`, `taxi_geometry.json` | `src/backend/tool/build_*_geometry.py` | Per-line geometry caches |
+| `rail_graph.npz` (641 KB) | `src/backend/tool/build_rail_graph.py` | Rail graph; **committed** because the test suite asserts long rail legs carry real geometry |
+
+**Not committed** (regenerable, large, or upstream third-party content):
+
+| File | Why not committed | Rebuilt by |
+|---|---|---|
+| `road_graph.npz` (153 MB) | Size; derived from the OSM extract | `src/backend/tool/build_road_graph.py` |
+| `scripts/tunismapper_all_routes_stops.json` (21 MB) | Upstream third-party scrape, size | `scripts/scrape_all_routes.py` |
+| `scripts/tunismapper_station_details.json` (1.7 MB) | Upstream third-party scrape | `scripts/scrape_station_details.py` |
+| `src/mobile/tool/osm_nodes_cache.json` (1.2 MB) | Derived cache | re-run the tool that wrote it |
+
+`road_graph.npz` is ignored via `.gitignore`; `rail_graph.npz` is committed.
+Build the road graph before running the backend:
+
+```bash
+# Needs a local OSM extract (default: ~/Downloads/roads/roads.gpkg,
+# override with BLEDI_ROADS_GPKG)
+python src/backend/tool/build_road_graph.py
+```
+
+Without the road graph the backend still starts, but road legs are drawn as
+straight lines between two stops instead of following the real road. Rail legs
+are unaffected, because `rail_graph.npz` ships with the repo — the test suite
+asserts that a long rail leg is never a bare straight line, and that assertion
+cannot hold if the graph is missing.
 
 ## Regenerating
 
+All paths below default to `~/Downloads/...` and can be overridden with the
+environment variable named in parentheses.
+
 ```bash
 # Stations + lines from the operator exports and the louage CSV
+# (BLEDI_OPERATOR_EXPORTS, BLEDI_LOUAGE_CSV)
 python scripts/import_downloads_transport.py --write
 python scripts/import_louage_network.py --write
 
 # BizerteConnect bus network (live scrape, ~2 min)
 python scripts/scrape_bizerteconnect.py --write
 
-# Routing graphs from the OSM extract
+# Provenance tags on every record
+python scripts/tag_provenance.py
+
+# Routing graphs from the OSM extract (BLEDI_ROADS_GPKG, BLEDI_RAILS_GEOJSON)
 python src/backend/tool/build_road_graph.py
 python src/backend/tool/build_rail_graph.py
 ```

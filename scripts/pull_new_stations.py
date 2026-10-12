@@ -5,11 +5,13 @@ Queries station_details.php?id=X for each new ID and merges into
 the existing enriched station details file.
 """
 import json
+import os
 import time
 import urllib.request
 from pathlib import Path
 
-BASE = Path("C:/Users/cy1in/Downloads/TunisiaTransport")
+BASE = Path(os.environ.get("BLEDI_TUNISIA_TRANSPORT",
+                        Path.home() / "Downloads" / "TunisiaTransport"))
 API = "https://www.tunismapper.com/backend/api/station_details.php"
 OUT = BASE / "scripts/tunismapper_station_details.json"
 

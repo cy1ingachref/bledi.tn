@@ -52,13 +52,21 @@ data/.road_network_cache.json
 data/taxi_pairs_sample.json
 src/backend/tool/_bytesedit.py
 
-# Derived routing graphs. Rebuilt from the local OSM extracts by
+# Derived routing graphs.
 #   python src/backend/tool/build_road_graph.py   (needs ~/Downloads/roads/roads.gpkg)
 #   python src/backend/tool/build_rail_graph.py   (needs ~/Downloads/rails/export.geojson)
-# road_graph.npz alone is 153 MB, rail_graph.npz 0.6 MB. Neither belongs in git;
-# the BUILD SCRIPTS are committed so the graphs are reproducible.
+#
+# road_graph.npz is 153 MB and is NOT committed: the build script is committed
+# instead, so the graph is reproducible. Without it, road legs degrade to
+# straight lines, which is a visible quality loss but not a failure.
 data/road_graph.npz
-data/rail_graph.npz
+#
+# rail_graph.npz IS committed (641 KB). It is small, and the test suite asserts
+# that a long rail leg is never returned as a bare straight line -- an assertion
+# that cannot hold without rail geometry. Keeping it out of git made the Python
+# suite pass locally and fail in CI purely because CI had no rail graph, which
+# is the worst kind of difference between environments. The build script is
+# committed too, so it can still be regenerated.
 
 # Rust
 rust/target/
@@ -67,3 +75,22 @@ rust/target/
 # SvelteKit
 frontend/.svelte-kit/
 data/bizerteconnect_cache.json
+
+# Raw upstream scrapes. These are INPUTS to the committed converters
+# (scripts/convert_all_routes.py, scripts/scrape_station_details.py) and are
+# regenerable by re-running the scrapers. They are large (21 MB / 1.7 MB) and
+# are upstream third-party content, so they are not redistributed here.
+scripts/tunismapper_all_routes_stops.json
+scripts/tunismapper_station_details.json
+src/mobile/tool/osm_nodes_cache.json
+
+# Claude Code local project state (may hold personal settings)
+.claude/
+
+# Ad-hoc debugging scripts written at the repo root during investigation.
+# These are scratch files, not part of the build.
+tmp_*.py
+/tmp_*.json
+
+# Local environment files for docker compose
+.env

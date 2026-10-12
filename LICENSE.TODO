@@ -2,15 +2,48 @@ LICENSE STATUS — UNDECIDED (pending provenance audit, see docs/provenance.md)
 
 This repository intentionally does NOT claim any license yet.
 
-Most of the routing data in data/seed_all_tunisia_routes.json is derived from
-Tunismapper (see docs/provenance.md). The license and redistribution terms of
-that source have not been verified. Until that is resolved, no license is
-asserted for the dataset or for the repository as a whole.
+## Data sources that are NOT licensed for redistribution
 
-Decisions needed before a license can be chosen:
+The routing data in `data/seed_all_tunisia_routes.json` and
+`data/seed_all_tunisia_routes.tagged.json` is derived from more than one
+third-party source. None of their terms have been verified:
+
+1. **Tunismapper** (tunismapper.com) — the majority of the data.
+   227 of 232 lines, and most stations. See docs/provenance.md.
+
+2. **BizerteConnect API** — the 117 `bc_bus_*` lines and their schedules in
+   `data/bizerteconnect_network.json`, plus the `bizerteconnect_import` block in
+   the seed metadata. Scraped from a private-sector operator's undocumented
+   JSON API (`scripts/scrape_bizerteconnect.py`). Terms unknown.
+   NOTE: this source publishes no stops endpoint, so these lines carry named
+   endpoints and schedules but no intermediate stops and no coordinates. They
+   are therefore not routable. See "BizerteConnect" in docs/provenance.md.
+
+3. **Raw upstream scrapes** — `scripts/tunismapper_all_routes_stops.json`,
+   `scripts/tunismapper_station_details.json` and
+   `src/mobile/tool/osm_nodes_cache.json` are inputs to the committed
+   converters. They are no longer committed (see .gitignore) but they were
+   present in earlier history.
+
+## What IS redistributable
+
+- The **code** (this is a separate question from the data, and is answered
+  below).
+- Data explicitly marked `official-public` in the tagged seed: the Transtu PDF
+  lines, and the official public station lists. See docs/provenance.md for the
+  per-record breakdown.
+- Anything derived from **OpenStreetMap**, which is ODbL and requires
+  attribution. The routing graphs (`data/road_graph.npz`, `data/rail_graph.npz`)
+  and the geometry caches are derived from OSM extracts. If this repository ever
+  ships OSM-derived artifacts, it must carry ODbL attribution.
+
+## Decisions needed before a license can be chosen
+
 - Contact Tunismapper to clarify terms, or replace that data with licensable
   sources (Transtu PDFs, SNCFT, OSM under ODbL, or own field data).
-- Choose a license for the code (for example MIT, Apache-2.0, or GPL) once the
-  data provenance is settled.
+- Contact BizerteConnect, or drop the 117 non-routable `bc_bus_*` lines.
+- Choose a license for the **code** (for example MIT, Apache-2.0, or GPL) once
+  the data provenance is settled. The code and the data can carry different
+  licenses, and they should be stated separately.
 
 See docs/provenance.md for the current provenance audit.

@@ -37,7 +37,7 @@ from pathlib import Path
 BASE = Path(__file__).resolve().parents[3]
 OUT = BASE / "data" / "taxi_geometry.json"
 ROADS_GPKG = os.environ.get(
-    "BLEDI_ROADS_GPKG", r"C:\Users\cy1in\Downloads\roads\roads.gpkg"
+    "BLEDI_ROADS_GPKG", str(Path.home() / "Downloads" / "roads" / "roads.gpkg")
 )
 OSRM = "https://router.project-osrm.org/route/v1/driving"
 

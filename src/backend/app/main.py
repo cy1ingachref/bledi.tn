@@ -1610,8 +1610,33 @@ def favicon_svg() -> FileResponse | JSONResponse:
 
 
 @app.get("/", tags=["System"], response_model=None)
-def index() -> FileResponse:
-    return FileResponse(BASE / "frontend" / "index.html")
+def index() -> FileResponse | JSONResponse:
+    """Serve the built frontend, if it has been built.
+
+    This used to return `FileResponse(BASE / "frontend" / "index.html")`, which
+    was the Flutter-web output directory. That file does not exist any more, so
+    the route raised `RuntimeError: File at path ... does not exist` and every
+    request to `/` produced a 500 traceback. SvelteKit builds to
+    `frontend/build/`, so that is what we serve now.
+
+    When nothing has been built, return 503 with the command to fix it, rather
+    than a 500 with a stack trace -- an unbuilt frontend is a setup state, not a
+    server fault, and the person hitting it is usually the developer who can act
+    on the hint.
+    """
+    built = BASE / "frontend" / "build" / "index.html"
+    if built.exists():
+        return FileResponse(built)
+    return JSONResponse(
+        {
+            "error": "frontend has not been built",
+            "hint": (
+                "cd frontend && npm run build   "
+                "(or run the dev server: cd frontend && npm run dev, then use :5173)"
+            ),
+        },
+        status_code=503,
+    )
 
 
 if __name__ == "__main__":
