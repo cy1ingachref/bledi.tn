@@ -329,6 +329,12 @@ def resolve_walk_geometry(
     real along-geometry length whenever a real path was found, so the number in
     the itinerary matches the line the user sees.
 
+    When the foot graph cannot serve the pair (disconnected components), try
+    routing through a nearby connected foot node instead of giving up and
+    drawing a straight line. This fixes the 125 m central-Tunis walk where
+    both endpoints sit in genuinely disconnected foot components but a nearby
+    through-street node can bridge them.
+
     Called per leg from _expand_path rather than for all 12 736 station pairs at
     startup: a live A* per pair would cost minutes of process start-up time, and
     a user only ever sees a handful of walks.
@@ -341,6 +347,48 @@ def resolve_walk_geometry(
         cached_m = polyline_length(fallback)
         if cached_m >= 0.95 * straight:
             return list(fallback), cached_m
+    # Try to repair through a nearby connected foot node.
+    # When both endpoints are in disconnected foot components, find the nearest
+    # foot-usable node to each endpoint and route through it.
+    g = getattr(router, "road_graph", None)
+    if g is not None and road_route_cached is not None and straight <= 2000:
+        try:
+            # Find nearest foot-usable nodes for both endpoints
+            from .road_routing import _snap_candidates
+            a_candidates = _snap_candidates(g, "foot", a_lat, a_lon, max_m=250.0, want=3)
+            b_candidates = _snap_candidates(g, "foot", b_lat, b_lon, max_m=250.0, want=3)
+            # Try routing through each combination, preferring the shortest
+            best_repair = None
+            best_repair_dist = float("inf")
+            for a_node, a_dist in a_candidates:
+                for b_node, b_dist in b_candidates:
+                    if a_node == b_node:
+                        continue
+                    # Check if these two nodes are connected by routing between them
+                    r = road_route_cached(g, float(g.lat[a_node]), float(g.lon[a_node]),
+                                         float(g.lat[b_node]), float(g.lon[b_node]), "foot",
+                                         max_snap_m=1.0)
+                    if r is not None and len(r.geometry) >= 2:
+                        # Build the full path: a -> a_node -> ... -> b_node -> b
+                        full_geom = [[a_lat, a_lon]]
+                        # Walk from a to a_node (short straight hop)
+                        full_geom.append([float(g.lat[a_node]), float(g.lon[a_node])])
+                        full_geom.extend(r.geometry)
+                        full_geom.append([float(g.lat[b_node]), float(g.lon[b_node])])
+                        full_geom.append([b_lat, b_lon])
+                        # Remove consecutive duplicates
+                        deduped = [full_geom[0]]
+                        for pt in full_geom[1:]:
+                            if pt != deduped[-1]:
+                                deduped.append(pt)
+                        total_m = polyline_length(deduped)
+                        if total_m < best_repair_dist and total_m >= 0.5 * straight:
+                            best_repair = deduped
+                            best_repair_dist = total_m
+            if best_repair is not None and best_repair_dist >= 0.95 * straight:
+                return best_repair, best_repair_dist
+        except Exception:
+            pass
     return [[a_lat, a_lon], [b_lat, b_lon]], straight
 
 
@@ -1058,8 +1106,25 @@ class Router:
         )
         start_cap = MAX_START_WALK_METERS if max_walk_m is None else float(max_walk_m)
         end_cap = MAX_END_WALK_METERS if max_walk_m is None else float(max_walk_m)
+        # Expand START walk radius for bus-restricted searches to ensure the origin
+        # can reach a bus stop. Do NOT expand end_cap unconditionally - that would
+        # make stations near the origin become end candidates, producing fake
+        # "bus then taxi" paths when the destination has no bus service.
+        if allowed_modes is not None and (allowed_modes & BUS_MODES):
+            start_cap = max(start_cap, MAX_START_WALK_METERS * 20)
+        # Initial candidate search.
         start_candidates = self._nearest_stations(start_lat, start_lon, start_cap)
         end_candidates = self._nearest_stations(end_lat, end_lon, end_cap)
+        # Ensure for bus-restricted searches we have at least one start station with a bus-family edge.
+        if allowed_modes is not None and (allowed_modes & BUS_MODES):
+            def has_bus_edge(st_id):
+                return any(e.mode in BUS_MODES for e in self.adj.get(st_id, []))
+            if not any(has_bus_edge(sc['id']) for sc in start_candidates):
+                # dramatically expand start walk radius and recompute
+                start_cap = MAX_START_WALK_METERS * 500
+                start_candidates = self._nearest_stations(start_lat, start_lon, start_cap)
+
+
         # No stop to walk to: widen the search so a town with no station of its
         # own still gets ride-then-final-gap instead of one taxi line across the
         # country. Only stops a line actually serves are useful -- walking to an
@@ -1084,27 +1149,33 @@ class Router:
 
         best: dict[str, Any] | None = None
         best_cost = float("inf")
+        best_transit: dict[str, Any] | None = None
+        best_transit_cost = float("inf")
 
-        # Direct walk (always available).
+        # Direct walk (always available) – only used if walking is allowed.
         direct_m = haversine(start_lat, start_lon, end_lat, end_lon)
         direct_walk_s = direct_m / WALK_SPEED_MS
-        best = {
-            "mode": "walk",
-            "duration_min": round(direct_walk_s / 60, 1),
-            "walk_m": round(direct_m),
-            "fare_dinars": None,
-            "steps": [
-                {
-                    "type": "walk",
-                    "from": {"lat": start_lat, "lon": start_lon},
-                    "to": {"lat": end_lat, "lon": end_lon},
-                    "distance_m": round(direct_m),
-                    "duration_min": round(direct_walk_s / 60, 1),
-                    "label": f"Marcher {round(direct_m)} m (~{round(direct_walk_s / 60)} min)",
-                }
-            ],
-        }
-        best_cost = direct_walk_s
+        if allowed_modes is None or "walk" in allowed_modes:
+            best = {
+                "mode": "walk",
+                "duration_min": round(direct_walk_s / 60, 1),
+                "walk_m": round(direct_m),
+                "fare_dinars": None,
+                "steps": [
+                    {
+                        "type": "walk",
+                        "from": {"lat": start_lat, "lon": start_lon},
+                        "to": {"lat": end_lat, "lon": end_lon},
+                        "distance_m": round(direct_m),
+                        "duration_min": round(direct_walk_s / 60, 1),
+                        "label": f"Marcher {round(direct_m)} m (~{round(direct_walk_s / 60)} min)",
+                    }
+                ],
+            }
+            best_cost = direct_walk_s
+        else:
+            best = None
+            best_cost = float("inf")
 
         # Walking-only request: the user asked for directions on foot, so no
         # transit search and no vehicle fallback should run. Return the direct
@@ -1894,6 +1965,15 @@ class Router:
                     edge = None  # force re-timing from the real track distance
 
             raw_mode = self.mode_of_line.get(line_used or "", "bus") or "bus"
+            # For bus legs with no cached geometry, try the road graph as a
+            # fallback. Buses follow roads, so the road network can provide
+            # real geometry when the precomputed cache is missing a segment.
+            if not seg_geom and mode == "bus" and straight_m >= GEOMETRY_REQUIRED_M:
+                live_bus = road_leg(self, a["lat"], a["lon"], b["lat"], b["lon"], "car")
+                if live_bus is not None and live_bus[1] >= 0.95 * straight_m:
+                    seg_geom = live_bus[0]
+                    seg_m = live_bus[1]
+                    edge = None  # force re-timing from the real road distance
             ride_min = (
                 (edge.time_s / 60.0)
                 if edge

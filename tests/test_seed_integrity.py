@@ -75,14 +75,94 @@ class TestSeedIntegrity:
                 print(f"  {sid}: ({lat:.4f}, {lon:.4f})")
 
     def test_no_line_with_fewer_than_two_valid_stops(self, seed):
+        """Nothing may be unroutable *silently*.
+
+        A line with fewer than 2 resolvable stops is not a graph edge, so it can
+        never appear in a route. That is fine when it is known and recorded --
+        the 117 BizerteConnect lines have no stops because that API publishes no
+        stops endpoint -- but it is a data bug when it is not.
+
+        So this test does two things, and the second is what stops the first
+        from being a loophole:
+
+        1. every line with <2 valid stops must be explicitly ``routable: false``;
+        2. every line that is explicitly ``routable: false`` must actually have
+           <2 valid stops.
+
+        Without (2), marking a perfectly good line ``routable: false`` would
+        hide it from (1) and the test would pass while the line silently
+        vanished from routing. Without (1), a new import could add unroutable
+        lines and nothing would notice.
+        """
         stations = {s["id"] for s in seed.get("stations", []) if s.get("id")}
-        short_lines: list[tuple[str, int]] = []
+
+        unmarked_short: list[tuple[str, int]] = []
+        wrongly_marked: list[str] = []
+
         for ln in seed.get("lines", []):
             stops = ln.get("stations") or ln.get("stops") or []
             valid = [s for s in stops if s in stations]
-            if len(valid) < 2:
-                short_lines.append((ln.get("id", ln.get("number", "?")), len(valid)))
-        assert not short_lines, f"Lines with <2 valid stops: {short_lines[:20]}"
+            lid = ln.get("id", ln.get("number", "?"))
+            marked_unroutable = ln.get("routable") is False
+
+            if len(valid) < 2 and not marked_unroutable:
+                # Unroutable but silent: this is the failure mode.
+                unmarked_short.append((lid, len(valid)))
+
+            if marked_unroutable and len(valid) >= 2:
+                # Marked unroutable but demonstrably routable: the marker is
+                # hiding a working line from the graph.
+                wrongly_marked.append(lid)
+
+        assert not unmarked_short, (
+            "Lines with <2 valid stops that are NOT marked routable=false "
+            f"(mark them with scripts/mark_unroutable_lines.py): {unmarked_short[:20]}"
+        )
+        assert not wrongly_marked, (
+            "Lines marked routable=false that actually have >=2 valid stops, "
+            f"so the marker is hiding them from routing: {wrongly_marked[:20]}"
+        )
+
+    def test_known_unroutable_lines_keep_their_data(self, seed):
+        """The unroutable lines must stay, with their data intact.
+
+        The cheapest way to make the test above pass is to delete the 117
+        BizerteConnect lines. That would throw away the destination names and
+        the departure times the UI uses. This pins that the data survives the
+        marker.
+
+        Note the schedule assertion is about the KEYS still being present, not
+        about them being non-empty: 2 of the 117 lines came back from the
+        BizerteConnect API with genuinely empty departure arrays. That is a gap
+        in the upstream data, not something the marking script caused, so the
+        test must not pretend otherwise.
+        """
+        unroutable = [ln for ln in seed.get("lines", []) if ln.get("routable") is False]
+        assert unroutable, "expected the known unroutable lines to be present"
+
+        for ln in unroutable:
+            lid = ln.get("id", "?")
+            # Identity: what the UI needs to show the line at all.
+            for field in ("origin", "destination", "name", "number"):
+                assert ln.get(field), f"{lid}: lost its {field}"
+            # Schedule keys must survive, even where upstream had no times.
+            assert "departures" in ln, f"{lid}: lost the departures key"
+            assert "return_departures" in ln, f"{lid}: lost the return_departures key"
+
+        # The overwhelming majority do carry real times; if a future change
+        # wiped them, this catches it while tolerating the two known gaps.
+        with_times = [ln for ln in unroutable if ln.get("departures")]
+        assert len(with_times) >= 100, (
+            f"only {len(with_times)} of {len(unroutable)} unroutable lines still "
+            "carry departure times; the schedules look wiped"
+        )
+
+        # The count is recorded in metadata, so it cannot drift unnoticed.
+        meta_count = seed.get("metadata", {}).get("unroutable_lines", {}).get("count")
+        assert meta_count == len(unroutable), (
+            f"metadata says {meta_count} unroutable lines but the rows say "
+            f"{len(unroutable)}"
+        )
 
     def test_report_unknown_mode_stations(self, seed):
         stations = seed.get("stations", [])

@@ -5,12 +5,14 @@ Takes the 295 SNTRI station names and queries Nominatim for GPS coordinates.
 Respects rate limit (1 request/sec). Saves results to JSON.
 """
 import json
+import os
 import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
-BASE = Path("C:/Users/cy1in/Downloads/TunisiaTransport")
+BASE = Path(os.environ.get("BLEDI_TUNISIA_TRANSPORT",
+                        Path.home() / "Downloads" / "TunisiaTransport"))
 IN = BASE / "scripts/sntri_stations.json"
 OUT = BASE / "scripts/sntri_stations_geocoded.json"
 

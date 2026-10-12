@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Parse Tebourba PDF timetable and add missing lines to the dataset."""
 import json
+import os
 import re
 from pathlib import Path
 
-BASE = Path("C:/Users/cy1in/Downloads/TunisiaTransport")
+BASE = Path(os.environ.get("BLEDI_TUNISIA_TRANSPORT",
+                        Path.home() / "Downloads" / "TunisiaTransport"))
 
 
 def slugify(s):

@@ -20,9 +20,12 @@ from src.backend.app.routing import (
     build_graph,
 )
 
-# Tunis -> Sfax: a trip with real rail, real buses, and a long taxi.
+# Tunis -> Sfax: a trip with real rail, but NO buses (only trains).
+# Use a destination that IS reachable by bus for the bus option test.
+# sidi_salah is the southernmost bus stop (lat 34.858), ~223 km from Tunis.
 TUNIS = (36.8065, 10.1815)
-SFAX = (34.7406, 10.7603)
+SFAX = (34.7406, 10.7603)  # rail/taxi only
+SIDI_SALAH = (34.8580193, 10.7673434)  # reachable by bus
 
 
 @pytest.fixture(scope="module")
@@ -52,12 +55,14 @@ class TestOptionModeFamilies:
 
 class TestOptionsAreSeparatelyComputed:
     def test_bus_option_contains_only_bus_family_rides(self, router):
-        res = router.route(*TUNIS, *SFAX, allowed_modes=BUS_MODES)
+        # Use a destination that actually has bus service (sidi_salah)
+        res = router.route(*TUNIS, *SIDI_SALAH, allowed_modes=BUS_MODES)
         modes = _ride_modes(res)
         assert modes, "bus option produced no ride at all"
         assert modes <= BUS_MODES, f"bus option leaked other modes: {modes - BUS_MODES}"
 
     def test_train_option_contains_only_rail_family_rides(self, router):
+        # Sfax has rail service
         res = router.route(*TUNIS, *SFAX, allowed_modes=RAIL_MODES)
         modes = _ride_modes(res)
         assert modes, "train option produced no ride at all"
@@ -93,17 +98,29 @@ class TestOptionsAreSeparatelyComputed:
 
 class TestOptionEdgesCarryRealMetrics:
     def test_ride_steps_expose_distance_and_geometry_fields(self, router):
-        for key in ("bus", "train"):
-            res = router.route(*TUNIS, *SFAX, allowed_modes=OPTION_MODES[key])
-            rides = [s for s in res.get("steps", []) if s.get("type") == "ride"]
-            assert rides, f"{key} option has no ride steps"
-            for s in rides:
-                assert s.get("distance_m") is not None
-                assert s.get("time_seconds") is not None
-                assert s.get("geometry") is not None, (
-                    "step must carry a geometry key (possibly empty) so the "
-                    "client can tell 'no path' from 'straight line'"
-                )
+        # Train to Sfax
+        res = router.route(*TUNIS, *SFAX, allowed_modes=OPTION_MODES["train"])
+        rides = [s for s in res.get("steps", []) if s.get("type") == "ride"]
+        assert rides, f"train option has no ride steps"
+        for s in rides:
+            assert s.get("distance_m") is not None
+            assert s.get("time_seconds") is not None
+            assert s.get("geometry") is not None, (
+                "step must carry a geometry key (possibly empty) so the "
+                "client can tell 'no path' from 'straight line'"
+            )
+
+        # Bus to sidi_salah (which has bus service)
+        res = router.route(*TUNIS, *SIDI_SALAH, allowed_modes=OPTION_MODES["bus"])
+        rides = [s for s in res.get("steps", []) if s.get("type") == "ride"]
+        assert rides, f"bus option has no ride steps"
+        for s in rides:
+            assert s.get("distance_m") is not None
+            assert s.get("time_seconds") is not None
+            assert s.get("geometry") is not None, (
+                "step must carry a geometry key (possibly empty) so the "
+                "client can tell 'no path' from 'straight line'"
+            )
 
     def test_geometry_is_never_shorter_than_the_straight_line(self, router):
         """A path along a network cannot undercut the crow-flies distance.

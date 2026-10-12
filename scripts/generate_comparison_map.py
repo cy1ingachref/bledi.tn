@@ -7,9 +7,11 @@ Creates a Leaflet.js map with:
 - Overlapping names highlighted in green
 """
 import json
+import os
 from pathlib import Path
 
-BASE = Path("C:/Users/cy1in/Downloads/TunisiaTransport")
+BASE = Path(os.environ.get("BLEDI_TUNISIA_TRANSPORT",
+                        Path.home() / "Downloads" / "TunisiaTransport"))
 
 # Load SNTRI geocoded stations
 with open(BASE / "scripts/sntri_stations_geocoded.json", encoding="utf-8") as f:

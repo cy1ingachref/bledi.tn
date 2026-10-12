@@ -6,9 +6,11 @@ Enriches each station with:
   - route_type: transport mode (0=RFR, 1=Metro, 2=Train, 3=Bus)
 """
 import json
+import os
 from pathlib import Path
 
-BASE = Path("C:/Users/cy1in/Downloads/TunisiaTransport")
+BASE = Path(os.environ.get("BLEDI_TUNISIA_TRANSPORT",
+                        Path.home() / "Downloads" / "TunisiaTransport"))
 
 def main():
     # Load station details

@@ -67,3 +67,22 @@ rust/target/
 # SvelteKit
 frontend/.svelte-kit/
 data/bizerteconnect_cache.json
+
+# Raw upstream scrapes. These are INPUTS to the committed converters
+# (scripts/convert_all_routes.py, scripts/scrape_station_details.py) and are
+# regenerable by re-running the scrapers. They are large (21 MB / 1.7 MB) and
+# are upstream third-party content, so they are not redistributed here.
+scripts/tunismapper_all_routes_stops.json
+scripts/tunismapper_station_details.json
+src/mobile/tool/osm_nodes_cache.json
+
+# Claude Code local project state (may hold personal settings)
+.claude/
+
+# Ad-hoc debugging scripts written at the repo root during investigation.
+# These are scratch files, not part of the build.
+tmp_*.py
+/tmp_*.json
+
+# Local environment files for docker compose
+.env

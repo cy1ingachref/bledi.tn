@@ -5,6 +5,9 @@ use serde_json::json;
 use sqlx::postgres::PgPoolOptions;
 use std::net::SocketAddr;
 
+/// A secret long enough for the >= 32 byte rule.
+const TEST_JWT_SECRET: &[u8] = b"integration-test-secret-long-enough-0123456789";
+
 async fn setup_db() -> AppState {
     let database_url = std::env::var("DATABASE_URL")
         .unwrap_or_else(|_| "postgres://postgres:postgres@localhost:5432/bledi".to_string());
@@ -21,7 +24,7 @@ async fn setup_db() -> AppState {
         .await
         .expect("Failed to run migrations");
 
-    // Clean up test data
+    // Clean up test data. Order matters: dependents before users.
     sqlx::query("DELETE FROM location_shares WHERE user_id IN (SELECT id FROM users WHERE email LIKE '%test%')")
         .execute(&pool)
         .await
@@ -47,7 +50,11 @@ async fn setup_db() -> AppState {
         .await
         .unwrap();
 
-    AppState { pool }
+    AppState::new(
+        pool,
+        TEST_JWT_SECRET.to_vec(),
+        bledi_server::allowed_origins_from_env(),
+    )
 }
 
 async fn spawn_server() -> SocketAddr {
@@ -59,7 +66,12 @@ async fn spawn_server() -> SocketAddr {
     let addr = listener.local_addr().unwrap();
 
     tokio::spawn(async move {
-        axum::serve(listener, app).await.unwrap();
+        axum::serve(
+            listener,
+            app.into_make_service_with_connect_info::<SocketAddr>(),
+        )
+        .await
+        .unwrap();
     });
 
     // Wait for server to be ready
@@ -71,6 +83,30 @@ async fn spawn_server() -> SocketAddr {
     }
 
     addr
+}
+
+/// Register a user and return (token, user_id).
+async fn register_user(client: &reqwest::Client, base: &str, email: &str) -> (String, String) {
+    let res = client
+        .post(format!("{base}/api/v1/auth/register"))
+        .json(&json!({
+            "email": email,
+            "password": "test123456",
+            "display_name": "Test User"
+        }))
+        .send()
+        .await
+        .unwrap();
+
+    assert_eq!(
+        res.status(),
+        StatusCode::CREATED,
+        "registration of {email} should succeed"
+    );
+    let body: serde_json::Value = res.json().await.unwrap();
+    let token = body["token"].as_str().unwrap().to_string();
+    let user_id = body["user"]["id"].as_str().unwrap().to_string();
+    (token, user_id)
 }
 
 #[tokio::test]
@@ -95,7 +131,6 @@ async fn test_register_and_login() {
     let client = reqwest::Client::new();
     let base = format!("http://{addr}");
 
-    // Register
     let res = client
         .post(format!("{base}/api/v1/auth/register"))
         .json(&json!({
@@ -162,21 +197,8 @@ async fn test_memories_crud() {
     let client = reqwest::Client::new();
     let base = format!("http://{addr}");
 
-    // Register and get token
-    let res = client
-        .post(format!("{base}/api/v1/auth/register"))
-        .json(&json!({
-            "email": "memory@test.com",
-            "password": "test123456",
-            "display_name": "Memory Test"
-        }))
-        .send()
-        .await
-        .unwrap();
-    let body: serde_json::Value = res.json().await.unwrap();
-    let token = body["token"].as_str().unwrap().to_string();
+    let (token, _uid) = register_user(&client, &base, "memory@test.com").await;
 
-    // Create memory
     let res = client
         .post(format!("{base}/api/v1/memories"))
         .header("Authorization", format!("Bearer {token}"))
@@ -203,7 +225,6 @@ async fn test_memories_crud() {
     assert_eq!(body["title"], "Test memory");
     assert_eq!(body["visibility"], "public");
 
-    // List memories
     let res = client
         .get(format!("{base}/api/v1/memories"))
         .header("Authorization", format!("Bearer {token}"))
@@ -222,21 +243,8 @@ async fn test_favorites_crud() {
     let client = reqwest::Client::new();
     let base = format!("http://{addr}");
 
-    // Register and get token
-    let res = client
-        .post(format!("{base}/api/v1/auth/register"))
-        .json(&json!({
-            "email": "fav@test.com",
-            "password": "test123456",
-            "display_name": "Fav Test"
-        }))
-        .send()
-        .await
-        .unwrap();
-    let body: serde_json::Value = res.json().await.unwrap();
-    let token = body["token"].as_str().unwrap().to_string();
+    let (token, _uid) = register_user(&client, &base, "fav@test.com").await;
 
-    // Create favorite
     let res = client
         .post(format!("{base}/api/v1/favorites"))
         .header("Authorization", format!("Bearer {token}"))
@@ -260,26 +268,14 @@ async fn test_favorites_crud() {
 }
 
 #[tokio::test]
-async fn test_location_shares() {
+async fn test_location_share_requires_expiry() {
     let addr = spawn_server().await;
     let client = reqwest::Client::new();
     let base = format!("http://{addr}");
 
-    // Register and get token
-    let res = client
-        .post(format!("{base}/api/v1/auth/register"))
-        .json(&json!({
-            "email": "share@test.com",
-            "password": "test123456",
-            "display_name": "Share Test"
-        }))
-        .send()
-        .await
-        .unwrap();
-    let body: serde_json::Value = res.json().await.unwrap();
-    let token = body["token"].as_str().unwrap().to_string();
+    let (token, _uid) = register_user(&client, &base, "share@test.com").await;
 
-    // Create location share
+    // Missing expires_at must be rejected: the README promises shares expire.
     let res = client
         .post(format!("{base}/api/v1/location-shares"))
         .header("Authorization", format!("Bearer {token}"))
@@ -293,9 +289,382 @@ async fn test_location_shares() {
         .send()
         .await
         .unwrap();
+    assert_eq!(
+        res.status(),
+        StatusCode::BAD_REQUEST,
+        "a location share without expires_at must be a 400"
+    );
 
+    // An expiry beyond the horizon must also be rejected.
+    let far = chrono::Utc::now() + chrono::Duration::hours(48);
+    let res = client
+        .post(format!("{base}/api/v1/location-shares"))
+        .header("Authorization", format!("Bearer {token}"))
+        .json(&json!({
+            "lat": 36.8, "lon": 10.2, "accuracy_m": 10.0,
+            "note": "too long", "is_active": true,
+            "expires_at": far.to_rfc3339()
+        }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::BAD_REQUEST);
+
+    // A valid expiry is accepted.
+    let soon = chrono::Utc::now() + chrono::Duration::hours(1);
+    let res = client
+        .post(format!("{base}/api/v1/location-shares"))
+        .header("Authorization", format!("Bearer {token}"))
+        .json(&json!({
+            "lat": 36.8, "lon": 10.2, "accuracy_m": 10.0,
+            "note": "Test share", "is_active": true,
+            "expires_at": soon.to_rfc3339()
+        }))
+        .send()
+        .await
+        .unwrap();
     assert_eq!(res.status(), StatusCode::CREATED);
     let body: serde_json::Value = res.json().await.unwrap();
     assert_eq!(body["note"], "Test share");
     assert_eq!(body["is_active"], true);
+}
+
+#[tokio::test]
+async fn test_validation_rejects_out_of_range_coordinates() {
+    let addr = spawn_server().await;
+    let client = reqwest::Client::new();
+    let base = format!("http://{addr}");
+    let (token, _uid) = register_user(&client, &base, "validate@test.com").await;
+
+    // Paris is outside Tunisia's bounding box.
+    let res = client
+        .post(format!("{base}/api/v1/memories"))
+        .header("Authorization", format!("Bearer {token}"))
+        .json(&json!({
+            "lat": 48.8566, "lon": 2.3522,
+            "media_url": "https://example.com/img.jpg",
+            "media_type": "image", "visibility": "public",
+            "unlock_radius_m": 200
+        }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::BAD_REQUEST);
+    let body: serde_json::Value = res.json().await.unwrap();
+    assert!(
+        body["error"].as_str().unwrap().contains("lat"),
+        "the error should name the offending field: {body}"
+    );
+
+    // An out-of-range unlock radius is rejected, not clamped.
+    let res = client
+        .post(format!("{base}/api/v1/memories"))
+        .header("Authorization", format!("Bearer {token}"))
+        .json(&json!({
+            "lat": 36.8, "lon": 10.2,
+            "media_url": "https://example.com/img.jpg",
+            "media_type": "image", "visibility": "public",
+            "unlock_radius_m": -5
+        }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::BAD_REQUEST);
+}
+
+#[tokio::test]
+async fn test_nearby_memories_never_return_media_url() {
+    let addr = spawn_server().await;
+    let client = reqwest::Client::new();
+    let base = format!("http://{addr}");
+    let (token, _uid) = register_user(&client, &base, "nearby@test.com").await;
+
+    let res = client
+        .post(format!("{base}/api/v1/memories"))
+        .header("Authorization", format!("Bearer {token}"))
+        .json(&json!({
+            "lat": 36.8, "lon": 10.2, "title": "Nearby",
+            "media_url": "https://example.com/secret.jpg",
+            "media_type": "image", "visibility": "public",
+            "unlock_radius_m": 200
+        }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::CREATED);
+
+    let res = client
+        .get(format!(
+            "{base}/api/v1/memories/nearby?lat=36.8&lon=10.2&radius_m=1000"
+        ))
+        .header("Authorization", format!("Bearer {token}"))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::OK);
+    let body: serde_json::Value = res.json().await.unwrap();
+    let arr = body.as_array().expect("array");
+    assert!(!arr.is_empty(), "the memory just created should be nearby");
+    for item in arr {
+        assert!(
+            item.get("media_url").is_none(),
+            "nearby must not expose media_url: {item}"
+        );
+        assert_eq!(item["locked"], true);
+    }
+
+    // An uncapped radius is a 400, not a silently-widened search.
+    let res = client
+        .get(format!(
+            "{base}/api/v1/memories/nearby?lat=36.8&lon=10.2&radius_m=999999"
+        ))
+        .header("Authorization", format!("Bearer {token}"))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::BAD_REQUEST);
+}
+
+#[tokio::test]
+async fn test_unlock_radius_is_enforced() {
+    let addr = spawn_server().await;
+    let client = reqwest::Client::new();
+    let base = format!("http://{addr}");
+    let (token, _uid) = register_user(&client, &base, "unlock@test.com").await;
+
+    let res = client
+        .post(format!("{base}/api/v1/memories"))
+        .header("Authorization", format!("Bearer {token}"))
+        .json(&json!({
+            "lat": 36.8000, "lon": 10.1800, "title": "Pinned",
+            "media_url": "https://example.com/media.jpg",
+            "media_type": "image", "visibility": "public",
+            "unlock_radius_m": 200
+        }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::CREATED);
+    let created: serde_json::Value = res.json().await.unwrap();
+    let id = created["id"].as_str().unwrap();
+
+    // Far away (~1.1 km north): denied, and the body must not carry the media.
+    let res = client
+        .post(format!("{base}/api/v1/memories/{id}/unlock"))
+        .header("Authorization", format!("Bearer {token}"))
+        .json(&json!({ "lat": 36.8100, "lon": 10.1800 }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::FORBIDDEN);
+    let body: serde_json::Value = res.json().await.unwrap();
+    assert!(
+        body.get("media_url").is_none(),
+        "a denied unlock must not leak media_url: {body}"
+    );
+    assert!(body["distance_m"].as_f64().unwrap() > 200.0);
+
+    // On the pin: allowed, with media.
+    let res = client
+        .post(format!("{base}/api/v1/memories/{id}/unlock"))
+        .header("Authorization", format!("Bearer {token}"))
+        .json(&json!({ "lat": 36.8000, "lon": 10.1800 }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::OK);
+    let body: serde_json::Value = res.json().await.unwrap();
+    assert_eq!(
+        body["media_url"].as_str(),
+        Some("https://example.com/media.jpg")
+    );
+    assert_eq!(body["locked"], false);
+}
+
+#[tokio::test]
+async fn test_friends_only_memory_visibility() {
+    let addr = spawn_server().await;
+    let client = reqwest::Client::new();
+    let base = format!("http://{addr}");
+
+    let (owner_token, _owner_id) = register_user(&client, &base, "owner@test.com").await;
+    let (stranger_token, _s) = register_user(&client, &base, "stranger@test.com").await;
+    let (friend_token, _f) = register_user(&client, &base, "friend@test.com").await;
+
+    // Owner creates a friends-only memory.
+    let res = client
+        .post(format!("{base}/api/v1/memories"))
+        .header("Authorization", format!("Bearer {owner_token}"))
+        .json(&json!({
+            "lat": 36.8, "lon": 10.2, "title": "Friends only",
+            "media_url": "https://example.com/private.jpg",
+            "media_type": "image", "visibility": "friends",
+            "unlock_radius_m": 200
+        }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::CREATED);
+    let created: serde_json::Value = res.json().await.unwrap();
+    let id = created["id"].as_str().unwrap();
+
+    // A stranger must NOT be able to read it. This is the bug that made the
+    // friends level decorative.
+    let res = client
+        .get(format!("{base}/api/v1/memories/{id}"))
+        .header("Authorization", format!("Bearer {stranger_token}"))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(
+        res.status(),
+        StatusCode::FORBIDDEN,
+        "a stranger must not read a friends-only memory"
+    );
+
+    // Establish the friendship: request, then accept.
+    let res = client
+        .post(format!("{base}/api/v1/friendships/request"))
+        .header("Authorization", format!("Bearer {owner_token}"))
+        .json(&json!({ "friend_email": "friend@test.com" }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::CREATED);
+
+    let res = client
+        .post(format!("{base}/api/v1/friendships/accept"))
+        .header("Authorization", format!("Bearer {friend_token}"))
+        .json(&json!({ "friend_email": "owner@test.com" }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::OK);
+
+    // Now the friend can read it.
+    let res = client
+        .get(format!("{base}/api/v1/memories/{id}"))
+        .header("Authorization", format!("Bearer {friend_token}"))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(
+        res.status(),
+        StatusCode::OK,
+        "an accepted friend must be able to read a friends-only memory"
+    );
+
+    // The stranger still cannot.
+    let res = client
+        .get(format!("{base}/api/v1/memories/{id}"))
+        .header("Authorization", format!("Bearer {stranger_token}"))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::FORBIDDEN);
+}
+
+#[tokio::test]
+async fn test_friendship_endpoints() {
+    let addr = spawn_server().await;
+    let client = reqwest::Client::new();
+    let base = format!("http://{addr}");
+
+    let (a_token, _a) = register_user(&client, &base, "alice@test.com").await;
+    let (b_token, b_id) = register_user(&client, &base, "bob@test.com").await;
+
+    // Cannot friend yourself.
+    let res = client
+        .post(format!("{base}/api/v1/friendships/request"))
+        .header("Authorization", format!("Bearer {a_token}"))
+        .json(&json!({ "friend_email": "alice@test.com" }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::BAD_REQUEST);
+
+    // Unknown user is a 404.
+    let res = client
+        .post(format!("{base}/api/v1/friendships/request"))
+        .header("Authorization", format!("Bearer {a_token}"))
+        .json(&json!({ "friend_email": "nobody@test.com" }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::NOT_FOUND);
+
+    // Alice requests Bob.
+    let res = client
+        .post(format!("{base}/api/v1/friendships/request"))
+        .header("Authorization", format!("Bearer {a_token}"))
+        .json(&json!({ "friend_email": "bob@test.com" }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::CREATED);
+
+    // Bob sees it in his incoming requests.
+    let res = client
+        .get(format!("{base}/api/v1/friendships/requests"))
+        .header("Authorization", format!("Bearer {b_token}"))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::OK);
+    let body: serde_json::Value = res.json().await.unwrap();
+    assert_eq!(body.as_array().unwrap().len(), 1);
+    assert_eq!(body[0]["email"], "alice@test.com");
+
+    // Duplicate request is a conflict.
+    let res = client
+        .post(format!("{base}/api/v1/friendships/request"))
+        .header("Authorization", format!("Bearer {a_token}"))
+        .json(&json!({ "friend_email": "bob@test.com" }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::CONFLICT);
+
+    // Bob accepts.
+    let res = client
+        .post(format!("{base}/api/v1/friendships/accept"))
+        .header("Authorization", format!("Bearer {b_token}"))
+        .json(&json!({ "friend_email": "alice@test.com" }))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::OK);
+
+    // Both sides now list each other.
+    for (tok, other) in [(&a_token, "bob@test.com"), (&b_token, "alice@test.com")] {
+        let res = client
+            .get(format!("{base}/api/v1/friendships"))
+            .header("Authorization", format!("Bearer {tok}"))
+            .send()
+            .await
+            .unwrap();
+        assert_eq!(res.status(), StatusCode::OK);
+        let body: serde_json::Value = res.json().await.unwrap();
+        assert_eq!(body.as_array().unwrap().len(), 1);
+        assert_eq!(body[0]["email"], other);
+        assert_eq!(body[0]["status"], "accepted");
+    }
+
+    // Unfriend.
+    let res = client
+        .delete(format!("{base}/api/v1/friendships/{b_id}"))
+        .header("Authorization", format!("Bearer {a_token}"))
+        .send()
+        .await
+        .unwrap();
+    assert_eq!(res.status(), StatusCode::NO_CONTENT);
+
+    let res = client
+        .get(format!("{base}/api/v1/friendships"))
+        .header("Authorization", format!("Bearer {a_token}"))
+        .send()
+        .await
+        .unwrap();
+    let body: serde_json::Value = res.json().await.unwrap();
+    assert!(body.as_array().unwrap().is_empty());
 }
