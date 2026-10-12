@@ -1,13 +1,20 @@
-# Python backend requirements — input pins
+# Python backend requirements
 #
-# These are the DIRECT dependencies with loose constraints. The fully pinned,
-# reproducible set (including transitive deps and hashes) lives in
-# requirements.lock.txt, generated with:
+# Two files, deliberately:
 #
-#     pip-compile --generate-hashes --output-file requirements.lock.txt requirements.txt
+#   requirements.txt       direct runtime dependencies, loose constraints
+#   requirements-dev.txt   test-only dependencies (in addition to the above)
+#   requirements.lock.txt  fully pinned + hashed, for reproducible installs
 #
-# Install for development:  pip install -r requirements.txt
-# Install reproducibly:     pip install -r requirements.lock.txt
+# Install for development:
+#     pip install -r requirements.txt -r requirements-dev.txt
+#
+# Install reproducibly (production):
+#     pip install -r requirements.lock.txt
+#
+# Regenerate the lockfile after changing this file:
+#     pip-compile --generate-hashes --output-file requirements.lock.txt \
+#         requirements.txt requirements-dev.txt
 
 fastapi>=0.104.0
 uvicorn>=0.24.0

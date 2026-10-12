@@ -31,6 +31,45 @@ pub const LOGIN: Limit = Limit::new(10, Duration::from_secs(60));
 pub const REGISTER: Limit = Limit::new(5, Duration::from_secs(300));
 pub const UNLOCK: Limit = Limit::new(30, Duration::from_secs(60));
 
+/// The limits an instance runs with.
+///
+/// These are configuration rather than constants baked into the handlers for a
+/// practical reason: the integration tests drive many registrations from a
+/// single loopback address in parallel, which trips the production register
+/// limit and produces 429s that look like unrelated failures. Tests inject
+/// generous limits via [`RateLimits::for_tests`] instead of the limiter being
+/// disabled, so the code path is still exercised.
+#[derive(Debug, Clone, Copy)]
+pub struct RateLimits {
+    pub login: Limit,
+    pub register: Limit,
+    pub unlock: Limit,
+}
+
+impl Default for RateLimits {
+    fn default() -> Self {
+        Self {
+            login: LOGIN,
+            register: REGISTER,
+            unlock: UNLOCK,
+        }
+    }
+}
+
+impl RateLimits {
+    /// Wide limits for integration tests that share one loopback IP.
+    ///
+    /// The limiter's own behaviour is covered by unit tests in this module, so
+    /// relaxing it here does not leave it untested.
+    pub fn for_tests() -> Self {
+        Self {
+            login: Limit::new(100_000, Duration::from_secs(1)),
+            register: Limit::new(100_000, Duration::from_secs(1)),
+            unlock: Limit::new(100_000, Duration::from_secs(1)),
+        }
+    }
+}
+
 #[derive(Debug)]
 struct Window {
     count: u32,

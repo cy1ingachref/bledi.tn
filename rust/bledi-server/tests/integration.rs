@@ -1,4 +1,5 @@
 use axum::http::StatusCode;
+use bledi_server::ratelimit::RateLimits;
 use bledi_server::router;
 use bledi_server::state::AppState;
 use serde_json::json;
@@ -7,6 +8,20 @@ use std::net::SocketAddr;
 
 /// A secret long enough for the >= 32 byte rule.
 const TEST_JWT_SECRET: &[u8] = b"integration-test-secret-long-enough-0123456789";
+
+/// A unique-per-test email domain.
+///
+/// Every test used to register `something@test.com` and cleanup deleted
+/// `email LIKE '%test%'`. `cargo test` runs these concurrently against ONE
+/// database, so each test's cleanup wiped the other tests' users mid-run,
+/// producing 404s and foreign-key 500s that had nothing to do with the code
+/// under test. Scoping both the domain and the cleanup to this test binary
+/// removes the cross-test interference.
+const EMAIL_DOMAIN: &str = "itest.invalid";
+
+fn email_for(name: &str) -> String {
+    format!("{name}@{EMAIL_DOMAIN}")
+}
 
 async fn setup_db() -> AppState {
     let database_url = std::env::var("DATABASE_URL")
@@ -24,36 +39,46 @@ async fn setup_db() -> AppState {
         .await
         .expect("Failed to run migrations");
 
-    // Clean up test data. Order matters: dependents before users.
-    sqlx::query("DELETE FROM location_shares WHERE user_id IN (SELECT id FROM users WHERE email LIKE '%test%')")
-        .execute(&pool)
-        .await
-        .unwrap();
+    // Clean up only THIS binary's rows. Order matters: dependents before users.
+    let like = format!("%@{EMAIL_DOMAIN}");
     sqlx::query(
-        "DELETE FROM favorites WHERE user_id IN (SELECT id FROM users WHERE email LIKE '%test%')",
+        "DELETE FROM location_shares WHERE user_id IN (SELECT id FROM users WHERE email LIKE $1)",
     )
+    .bind(&like)
     .execute(&pool)
     .await
     .unwrap();
     sqlx::query(
-        "DELETE FROM memories WHERE user_id IN (SELECT id FROM users WHERE email LIKE '%test%')",
+        "DELETE FROM favorites WHERE user_id IN (SELECT id FROM users WHERE email LIKE $1)",
     )
+    .bind(&like)
     .execute(&pool)
     .await
     .unwrap();
-    sqlx::query("DELETE FROM friendships WHERE user_id IN (SELECT id FROM users WHERE email LIKE '%test%') OR friend_id IN (SELECT id FROM users WHERE email LIKE '%test%')")
+    sqlx::query("DELETE FROM memories WHERE user_id IN (SELECT id FROM users WHERE email LIKE $1)")
+        .bind(&like)
         .execute(&pool)
         .await
         .unwrap();
-    sqlx::query("DELETE FROM users WHERE email LIKE '%test%'")
+    sqlx::query("DELETE FROM friendships WHERE user_id IN (SELECT id FROM users WHERE email LIKE $1) OR friend_id IN (SELECT id FROM users WHERE email LIKE $1)")
+        .bind(&like)
+        .execute(&pool)
+        .await
+        .unwrap();
+    sqlx::query("DELETE FROM users WHERE email LIKE $1")
+        .bind(&like)
         .execute(&pool)
         .await
         .unwrap();
 
-    AppState::new(
+    // `for_tests()` rather than the production limits: 11 tests registering
+    // users from one loopback IP would otherwise trip the 5-per-5-minutes
+    // register limit and fail with 429s. The limiter itself is unit-tested.
+    AppState::with_limits(
         pool,
         TEST_JWT_SECRET.to_vec(),
         bledi_server::allowed_origins_from_env(),
+        RateLimits::for_tests(),
     )
 }
 
@@ -134,7 +159,7 @@ async fn test_register_and_login() {
     let res = client
         .post(format!("{base}/api/v1/auth/register"))
         .json(&json!({
-            "email": "integration@test.com",
+            "email": email_for("integration"),
             "password": "test123456",
             "display_name": "Integration Test"
         }))
@@ -145,13 +170,13 @@ async fn test_register_and_login() {
     assert_eq!(res.status(), StatusCode::CREATED);
     let body: serde_json::Value = res.json().await.unwrap();
     assert!(body["token"].as_str().is_some());
-    assert_eq!(body["user"]["email"], "integration@test.com");
+    assert_eq!(body["user"]["email"], email_for("integration"));
 
     // Login
     let res = client
         .post(format!("{base}/api/v1/auth/login"))
         .json(&json!({
-            "email": "integration@test.com",
+            "email": email_for("integration"),
             "password": "test123456"
         }))
         .send()
@@ -166,7 +191,7 @@ async fn test_register_and_login() {
     let res = client
         .post(format!("{base}/api/v1/auth/login"))
         .json(&json!({
-            "email": "integration@test.com",
+            "email": email_for("integration"),
             "password": "wrong"
         }))
         .send()
@@ -197,7 +222,7 @@ async fn test_memories_crud() {
     let client = reqwest::Client::new();
     let base = format!("http://{addr}");
 
-    let (token, _uid) = register_user(&client, &base, "memory@test.com").await;
+    let (token, _uid) = register_user(&client, &base, &email_for("memory")).await;
 
     let res = client
         .post(format!("{base}/api/v1/memories"))
@@ -243,7 +268,7 @@ async fn test_favorites_crud() {
     let client = reqwest::Client::new();
     let base = format!("http://{addr}");
 
-    let (token, _uid) = register_user(&client, &base, "fav@test.com").await;
+    let (token, _uid) = register_user(&client, &base, &email_for("fav")).await;
 
     let res = client
         .post(format!("{base}/api/v1/favorites"))
@@ -273,7 +298,7 @@ async fn test_location_share_requires_expiry() {
     let client = reqwest::Client::new();
     let base = format!("http://{addr}");
 
-    let (token, _uid) = register_user(&client, &base, "share@test.com").await;
+    let (token, _uid) = register_user(&client, &base, &email_for("share")).await;
 
     // Missing expires_at must be rejected: the README promises shares expire.
     let res = client
@@ -334,7 +359,7 @@ async fn test_validation_rejects_out_of_range_coordinates() {
     let addr = spawn_server().await;
     let client = reqwest::Client::new();
     let base = format!("http://{addr}");
-    let (token, _uid) = register_user(&client, &base, "validate@test.com").await;
+    let (token, _uid) = register_user(&client, &base, &email_for("validate")).await;
 
     // Paris is outside Tunisia's bounding box.
     let res = client
@@ -377,7 +402,7 @@ async fn test_nearby_memories_never_return_media_url() {
     let addr = spawn_server().await;
     let client = reqwest::Client::new();
     let base = format!("http://{addr}");
-    let (token, _uid) = register_user(&client, &base, "nearby@test.com").await;
+    let (token, _uid) = register_user(&client, &base, &email_for("nearby")).await;
 
     let res = client
         .post(format!("{base}/api/v1/memories"))
@@ -430,7 +455,7 @@ async fn test_unlock_radius_is_enforced() {
     let addr = spawn_server().await;
     let client = reqwest::Client::new();
     let base = format!("http://{addr}");
-    let (token, _uid) = register_user(&client, &base, "unlock@test.com").await;
+    let (token, _uid) = register_user(&client, &base, &email_for("unlock")).await;
 
     let res = client
         .post(format!("{base}/api/v1/memories"))
@@ -487,9 +512,9 @@ async fn test_friends_only_memory_visibility() {
     let client = reqwest::Client::new();
     let base = format!("http://{addr}");
 
-    let (owner_token, _owner_id) = register_user(&client, &base, "owner@test.com").await;
-    let (stranger_token, _s) = register_user(&client, &base, "stranger@test.com").await;
-    let (friend_token, _f) = register_user(&client, &base, "friend@test.com").await;
+    let (owner_token, _owner_id) = register_user(&client, &base, &email_for("owner")).await;
+    let (stranger_token, _s) = register_user(&client, &base, &email_for("stranger")).await;
+    let (friend_token, _f) = register_user(&client, &base, &email_for("friend")).await;
 
     // Owner creates a friends-only memory.
     let res = client
@@ -526,7 +551,7 @@ async fn test_friends_only_memory_visibility() {
     let res = client
         .post(format!("{base}/api/v1/friendships/request"))
         .header("Authorization", format!("Bearer {owner_token}"))
-        .json(&json!({ "friend_email": "friend@test.com" }))
+        .json(&json!({ "friend_email": email_for("friend") }))
         .send()
         .await
         .unwrap();
@@ -535,7 +560,7 @@ async fn test_friends_only_memory_visibility() {
     let res = client
         .post(format!("{base}/api/v1/friendships/accept"))
         .header("Authorization", format!("Bearer {friend_token}"))
-        .json(&json!({ "friend_email": "owner@test.com" }))
+        .json(&json!({ "friend_email": email_for("owner") }))
         .send()
         .await
         .unwrap();
@@ -570,14 +595,14 @@ async fn test_friendship_endpoints() {
     let client = reqwest::Client::new();
     let base = format!("http://{addr}");
 
-    let (a_token, _a) = register_user(&client, &base, "alice@test.com").await;
-    let (b_token, b_id) = register_user(&client, &base, "bob@test.com").await;
+    let (a_token, _a) = register_user(&client, &base, &email_for("alice")).await;
+    let (b_token, b_id) = register_user(&client, &base, &email_for("bob")).await;
 
     // Cannot friend yourself.
     let res = client
         .post(format!("{base}/api/v1/friendships/request"))
         .header("Authorization", format!("Bearer {a_token}"))
-        .json(&json!({ "friend_email": "alice@test.com" }))
+        .json(&json!({ "friend_email": email_for("alice") }))
         .send()
         .await
         .unwrap();
@@ -587,7 +612,7 @@ async fn test_friendship_endpoints() {
     let res = client
         .post(format!("{base}/api/v1/friendships/request"))
         .header("Authorization", format!("Bearer {a_token}"))
-        .json(&json!({ "friend_email": "nobody@test.com" }))
+        .json(&json!({ "friend_email": email_for("nobody") }))
         .send()
         .await
         .unwrap();
@@ -597,7 +622,7 @@ async fn test_friendship_endpoints() {
     let res = client
         .post(format!("{base}/api/v1/friendships/request"))
         .header("Authorization", format!("Bearer {a_token}"))
-        .json(&json!({ "friend_email": "bob@test.com" }))
+        .json(&json!({ "friend_email": email_for("bob") }))
         .send()
         .await
         .unwrap();
@@ -613,13 +638,13 @@ async fn test_friendship_endpoints() {
     assert_eq!(res.status(), StatusCode::OK);
     let body: serde_json::Value = res.json().await.unwrap();
     assert_eq!(body.as_array().unwrap().len(), 1);
-    assert_eq!(body[0]["email"], "alice@test.com");
+    assert_eq!(body[0]["email"], email_for("alice"));
 
     // Duplicate request is a conflict.
     let res = client
         .post(format!("{base}/api/v1/friendships/request"))
         .header("Authorization", format!("Bearer {a_token}"))
-        .json(&json!({ "friend_email": "bob@test.com" }))
+        .json(&json!({ "friend_email": email_for("bob") }))
         .send()
         .await
         .unwrap();
@@ -629,14 +654,14 @@ async fn test_friendship_endpoints() {
     let res = client
         .post(format!("{base}/api/v1/friendships/accept"))
         .header("Authorization", format!("Bearer {b_token}"))
-        .json(&json!({ "friend_email": "alice@test.com" }))
+        .json(&json!({ "friend_email": email_for("alice") }))
         .send()
         .await
         .unwrap();
     assert_eq!(res.status(), StatusCode::OK);
 
     // Both sides now list each other.
-    for (tok, other) in [(&a_token, "bob@test.com"), (&b_token, "alice@test.com")] {
+    for (tok, other) in [(&a_token, email_for("bob")), (&b_token, email_for("alice"))] {
         let res = client
             .get(format!("{base}/api/v1/friendships"))
             .header("Authorization", format!("Bearer {tok}"))

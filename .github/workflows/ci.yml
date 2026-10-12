@@ -283,8 +283,10 @@ jobs:
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r requirements.txt
-          python -m pip install pytest
+          # Dev requirements include pytest and httpx (starlette's test client).
+          # Without httpx, tests/test_api_endpoints.py fails to COLLECT and takes
+          # the whole run down with it.
+          python -m pip install -r requirements.txt -r requirements-dev.txt
 
       - name: Run backend tests
         # This job exists because the Python suite is where the seed-integrity
