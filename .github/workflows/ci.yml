@@ -237,15 +237,96 @@ jobs:
       - name: Smoke test - location share
         run: |
           echo "=== POST /api/v1/location-shares ==="
+          # expires_at is required (and must be in the future, within 24h):
+          # the API refuses a share that would never lapse.
+          EXPIRES=$(date -u -d '+1 hour' +%Y-%m-%dT%H:%M:%SZ)
+          echo "Using expires_at=$EXPIRES"
           STATUS=$(curl -s -o /tmp/share.json -w "%{http_code}" \
             -X POST http://localhost:3000/api/v1/location-shares \
             -H "Authorization: Bearer ${{ steps.auth.outputs.token }}" \
             -H "Content-Type: application/json" \
-            -d '{"lat":36.8,"lon":10.2,"accuracy_m":10.0,"note":"Smoke test","is_active":true}')
+            -d "{\"lat\":36.8,\"lon\":10.2,\"accuracy_m\":10.0,\"note\":\"Smoke test\",\"is_active\":true,\"expires_at\":\"$EXPIRES\"}")
           cat /tmp/share.json | python3 -m json.tool
           if [ "$STATUS" != "201" ]; then
             echo "FAIL: Expected 201, got $STATUS"
             cat /tmp/share.json
+            exit 1
+          fi
+
+      - name: Smoke test - location share without expiry is rejected
+        run: |
+          echo "=== POST /api/v1/location-shares with no expires_at (should 400) ==="
+          STATUS=$(curl -s -o /tmp/share_bad.json -w "%{http_code}" \
+            -X POST http://localhost:3000/api/v1/location-shares \
+            -H "Authorization: Bearer ${{ steps.auth.outputs.token }}" \
+            -H "Content-Type: application/json" \
+            -d '{"lat":36.8,"lon":10.2,"accuracy_m":10.0,"note":"No expiry","is_active":true}')
+          cat /tmp/share_bad.json | python3 -m json.tool
+          if [ "$STATUS" != "400" ]; then
+            echo "FAIL: Expected 400, got $STATUS"
+            exit 1
+          fi
+
+      - name: Smoke test - unlock radius is enforced
+        run: |
+          echo "=== POST /api/v1/memories/:id/unlock from far away (should 403) ==="
+          MEM_ID=$(curl -s -X POST http://localhost:3000/api/v1/memories \
+            -H "Authorization: Bearer ${{ steps.auth.outputs.token }}" \
+            -H "Content-Type: application/json" \
+            -d '{"lat":36.8,"lon":10.2,"title":"Radius smoke","media_url":"https://example.com/smoke.jpg","media_type":"image","visibility":"public","unlock_radius_m":200}' \
+            | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+          echo "Created memory $MEM_ID"
+          # ~1.1 km north of the pin, outside the 200 m radius.
+          STATUS=$(curl -s -o /tmp/unlock.json -w "%{http_code}" \
+            -X POST "http://localhost:3000/api/v1/memories/$MEM_ID/unlock" \
+            -H "Authorization: Bearer ${{ steps.auth.outputs.token }}" \
+            -H "Content-Type: application/json" \
+            -d '{"lat":36.81,"lon":10.2}')
+          cat /tmp/unlock.json | python3 -m json.tool
+          if [ "$STATUS" != "403" ]; then
+            echo "FAIL: Expected 403, got $STATUS"
+            exit 1
+          fi
+          # And the denial must not leak the media URL.
+          if grep -q "media_url" /tmp/unlock.json; then
+            echo "FAIL: a denied unlock leaked media_url"
+            exit 1
+          fi
+
+      - name: Smoke test - nearby never returns media_url
+        run: |
+          echo "=== GET /api/v1/memories/nearby must not expose media_url ==="
+          curl -s "http://localhost:3000/api/v1/memories/nearby?lat=36.8&lon=10.2&radius_m=1000" \
+            -H "Authorization: Bearer ${{ steps.auth.outputs.token }}" > /tmp/nearby.json
+          cat /tmp/nearby.json | python3 -m json.tool | head -30
+          if grep -q "media_url" /tmp/nearby.json; then
+            echo "FAIL: nearby exposed media_url"
+            exit 1
+          fi
+
+      - name: Smoke test - uncapped radius is rejected
+        run: |
+          echo "=== GET /api/v1/memories/nearby with radius_m=999999 (should 400) ==="
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            "http://localhost:3000/api/v1/memories/nearby?lat=36.8&lon=10.2&radius_m=999999" \
+            -H "Authorization: Bearer ${{ steps.auth.outputs.token }}")
+          echo "Status code: $STATUS"
+          if [ "$STATUS" != "400" ]; then
+            echo "FAIL: Expected 400, got $STATUS"
+            exit 1
+          fi
+
+      - name: Smoke test - validation rejects out-of-range coordinates
+        run: |
+          echo "=== POST /api/v1/memories with Paris coordinates (should 400) ==="
+          STATUS=$(curl -s -o /tmp/bad_lat.json -w "%{http_code}" \
+            -X POST http://localhost:3000/api/v1/memories \
+            -H "Authorization: Bearer ${{ steps.auth.outputs.token }}" \
+            -H "Content-Type: application/json" \
+            -d '{"lat":48.8566,"lon":2.3522,"media_url":"https://example.com/x.jpg","media_type":"image","visibility":"public","unlock_radius_m":200}')
+          cat /tmp/bad_lat.json | python3 -m json.tool
+          if [ "$STATUS" != "400" ]; then
+            echo "FAIL: Expected 400, got $STATUS"
             exit 1
           fi
 
