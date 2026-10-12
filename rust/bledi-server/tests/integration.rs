@@ -9,18 +9,29 @@ use std::net::SocketAddr;
 /// A secret long enough for the >= 32 byte rule.
 const TEST_JWT_SECRET: &[u8] = b"integration-test-secret-long-enough-0123456789";
 
-/// A unique-per-test email domain.
+/// A namespace unique to this test PROCESS, used to isolate test data.
 ///
-/// Every test used to register `something@test.com` and cleanup deleted
-/// `email LIKE '%test%'`. `cargo test` runs these concurrently against ONE
-/// database, so each test's cleanup wiped the other tests' users mid-run,
-/// producing 404s and foreign-key 500s that had nothing to do with the code
-/// under test. Scoping both the domain and the cleanup to this test binary
-/// removes the cross-test interference.
-const EMAIL_DOMAIN: &str = "itest.invalid";
+/// `cargo test` runs these tests concurrently against ONE database. Every test
+/// calls `setup_db()` at its start, so any destructive cleanup there races: a
+/// test that is mid-flight has its users deleted by the next test's setup. That
+/// produced a 404 on "cannot friend yourself" (the user lookup found nothing,
+/// because the user had just been deleted) and a 500 creating a memory
+/// (foreign-key violation against a vanished user) -- neither of which had
+/// anything to do with friendships.
+///
+/// Scoping cleanup to this file was not enough, because every test in the file
+/// shares the domain. The fix is to stop deleting altogether and instead give
+/// every test run data that cannot collide with anything else. Each process
+/// gets a fresh token, so parallel tests cannot see each other's rows and
+/// re-running the binary against the same database cannot either.
+fn namespace() -> &'static str {
+    static NS: std::sync::OnceLock<String> = std::sync::OnceLock::new();
+    NS.get_or_init(|| uuid::Uuid::new_v4().simple().to_string()[..12].to_string())
+}
 
+/// An email unique to this test process. `name` distinguishes users within it.
 fn email_for(name: &str) -> String {
-    format!("{name}@{EMAIL_DOMAIN}")
+    format!("{name}.{}@itest.invalid", namespace())
 }
 
 async fn setup_db() -> AppState {
@@ -39,37 +50,10 @@ async fn setup_db() -> AppState {
         .await
         .expect("Failed to run migrations");
 
-    // Clean up only THIS binary's rows. Order matters: dependents before users.
-    let like = format!("%@{EMAIL_DOMAIN}");
-    sqlx::query(
-        "DELETE FROM location_shares WHERE user_id IN (SELECT id FROM users WHERE email LIKE $1)",
-    )
-    .bind(&like)
-    .execute(&pool)
-    .await
-    .unwrap();
-    sqlx::query(
-        "DELETE FROM favorites WHERE user_id IN (SELECT id FROM users WHERE email LIKE $1)",
-    )
-    .bind(&like)
-    .execute(&pool)
-    .await
-    .unwrap();
-    sqlx::query("DELETE FROM memories WHERE user_id IN (SELECT id FROM users WHERE email LIKE $1)")
-        .bind(&like)
-        .execute(&pool)
-        .await
-        .unwrap();
-    sqlx::query("DELETE FROM friendships WHERE user_id IN (SELECT id FROM users WHERE email LIKE $1) OR friend_id IN (SELECT id FROM users WHERE email LIKE $1)")
-        .bind(&like)
-        .execute(&pool)
-        .await
-        .unwrap();
-    sqlx::query("DELETE FROM users WHERE email LIKE $1")
-        .bind(&like)
-        .execute(&pool)
-        .await
-        .unwrap();
+    // Deliberately NO cleanup here. See `namespace()`: rows are namespaced per
+    // process, so there is nothing to delete and deleting would reintroduce the
+    // race. The CI database is an ephemeral container, so leftover rows are
+    // free; locally, `DROP DATABASE` is the way to reset.
 
     // `for_tests()` rather than the production limits: 11 tests registering
     // users from one loopback IP would otherwise trip the 5-per-5-minutes
