@@ -7,7 +7,7 @@ use std::sync::OnceLock;
 use uuid::Uuid;
 
 use crate::auth::{AuthError, AuthUser};
-use crate::ratelimit::{Decision, UNLOCK};
+use crate::ratelimit::Decision;
 use crate::state::AppState;
 use crate::validate;
 
@@ -158,7 +158,7 @@ pub async fn register(
     let ip = client_ip(&headers, connect_info.map(|c| c.0));
     if let Decision::Deny { retry_after_secs } = state
         .rate_limiter
-        .check(&format!("register:{ip}"), crate::ratelimit::REGISTER)
+        .check(&format!("register:{ip}"), state.rate_limits.register)
     {
         return Err(too_many_requests(retry_after_secs));
     }
@@ -208,7 +208,7 @@ pub async fn login(
     let ip = client_ip(&headers, connect_info.map(|c| c.0));
     if let Decision::Deny { retry_after_secs } = state
         .rate_limiter
-        .check(&format!("login:{ip}"), crate::ratelimit::LOGIN)
+        .check(&format!("login:{ip}"), state.rate_limits.login)
     {
         return Err(too_many_requests(retry_after_secs));
     }
@@ -758,7 +758,10 @@ pub async fn unlock_memory(
     // Keyed by user, not by IP: unlocking is a per-user resource, and IPs are
     // shared behind NAT.
     let limit_key = format!("unlock:{}", auth.user_id);
-    if let Decision::Deny { retry_after_secs } = state.rate_limiter.check(&limit_key, UNLOCK) {
+    if let Decision::Deny { retry_after_secs } = state
+        .rate_limiter
+        .check(&limit_key, state.rate_limits.unlock)
+    {
         return Err(too_many_requests(retry_after_secs));
     }
 
@@ -1384,11 +1387,12 @@ mod tests {
     #[test]
     fn rate_limiter_denies_after_the_unlock_allowance() {
         let rl = RateLimiter::new();
-        for _ in 0..UNLOCK.max_hits {
-            assert_eq!(rl.check("unlock:x", UNLOCK), Decision::Allow);
+        let unlock = crate::ratelimit::UNLOCK;
+        for _ in 0..unlock.max_hits {
+            assert_eq!(rl.check("unlock:x", unlock), Decision::Allow);
         }
         assert!(matches!(
-            rl.check("unlock:x", UNLOCK),
+            rl.check("unlock:x", unlock),
             Decision::Deny { .. }
         ));
     }

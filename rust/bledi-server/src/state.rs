@@ -1,4 +1,4 @@
-use crate::ratelimit::RateLimiter;
+use crate::ratelimit::{RateLimiter, RateLimits};
 use sqlx::PgPool;
 use std::sync::Arc;
 
@@ -12,6 +12,8 @@ pub struct AppState {
     pub allowed_origins: Arc<Vec<axum::http::HeaderValue>>,
     /// Shared counters for login / register / unlock.
     pub rate_limiter: Arc<RateLimiter>,
+    /// The limits `rate_limiter` is checked against.
+    pub rate_limits: RateLimits,
 }
 
 impl AppState {
@@ -20,11 +22,21 @@ impl AppState {
         jwt_secret: Vec<u8>,
         allowed_origins: Vec<axum::http::HeaderValue>,
     ) -> Self {
+        Self::with_limits(pool, jwt_secret, allowed_origins, RateLimits::default())
+    }
+
+    pub fn with_limits(
+        pool: PgPool,
+        jwt_secret: Vec<u8>,
+        allowed_origins: Vec<axum::http::HeaderValue>,
+        rate_limits: RateLimits,
+    ) -> Self {
         Self {
             pool,
             jwt_secret: Arc::from(jwt_secret),
             allowed_origins: Arc::new(allowed_origins),
             rate_limiter: Arc::new(RateLimiter::new()),
+            rate_limits,
         }
     }
 }
