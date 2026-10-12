@@ -298,6 +298,11 @@ Raw upstream scrapes (`scripts/tunismapper_all_routes_stops.json`,
 are **not committed** — they are large, regenerable inputs to the committed
 converters.
 
+`data/rail_graph.npz` (641 KB) **is** committed, because the test suite
+asserts that a long rail leg is never returned as a bare straight line, which
+cannot hold without rail geometry. `data/road_graph.npz` (153 MB) is not —
+build it with `src/backend/tool/build_road_graph.py`.
+
 The `/api/v1/itinerary` Tunismapper proxy is disabled by default.
 
 `LICENSE.TODO` records that the license is undecided. No MIT or other license is claimed for the dataset.
