@@ -25,7 +25,7 @@ Map<String, dynamic> ride({
   'stop_name': to,
   'mode': mode,
   'line': line,
-  if (geometry != null) 'geometry': geometry,
+  'geometry': ?geometry,
   if (geometry != null) 'has_geometry': geometry.length >= 2,
 };
 

@@ -29,6 +29,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+from pathlib import Path
 import math
 import os
 import sys
@@ -137,7 +138,12 @@ def label_components(
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--gpkg", default=r"C:\Users\cy1in\Downloads\roads\roads.gpkg")
+    ap.add_argument(
+        "--gpkg",
+        default=os.environ.get(
+            "BLEDI_ROADS_GPKG", str(Path.home() / "Downloads" / "roads" / "roads.gpkg")
+        ),
+    )
     ap.add_argument(
         "--out",
         default=os.path.join(

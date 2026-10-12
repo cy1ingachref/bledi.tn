@@ -121,11 +121,18 @@ abstract class RouteStep with _$RouteStep {
   bool get isTransfer => type == 'transfer';
 
   /// Best available label for where this step ends.
+  ///
+  /// `toName` is the station name and wins; `stopName` is the backend's
+  /// human-readable label, which for a walk or taxi leg is instructional text
+  /// ("Marcher 869 m jusqu'a destination"). Milestones use this to name a
+  /// place, so a step that arrives at a known station must show that station
+  /// rather than the instruction.
   String get endLabel {
     if (toName != null && toName!.trim().isNotEmpty) return toName!.trim();
     if (stopName != null && stopName!.trim().isNotEmpty) return stopName!.trim();
     return '';
   }
+
 
   /// Label for where this step starts, falling back to [endLabel].
   String get startLabel {

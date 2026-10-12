@@ -25,6 +25,7 @@ wrongly classified is not.
 from __future__ import annotations
 
 import argparse
+import os
 import collections
 import csv
 import io
@@ -60,7 +61,11 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--seed", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--src", default=r"C:\Users\cy1in\Downloads\transport",
+    ap.add_argument(
+        "--src",
+        default=os.environ.get(
+            "BLEDI_TRANSPORT_DUMP", str(Path.home() / "Downloads" / "transport")
+        ),
                     help="root of the portal export, for the SNCFT rail file")
     ap.add_argument("--tolerance", type=float, default=150.0)
     ap.add_argument("--exact-metres", type=float, default=25.0,

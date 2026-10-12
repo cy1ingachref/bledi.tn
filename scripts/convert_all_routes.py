@@ -6,10 +6,12 @@ schedules, and stop metadata), builds unified station registry with coordinates,
 and writes seed_all_tunisia_routes.json for bledi.tn import.
 """
 import json, re, time
+import os
 from pathlib import Path
 from collections import Counter
 
-BASE = Path("C:/Users/cy1in/Downloads/TunisiaTransport")
+BASE = Path(os.environ.get("BLEDI_TUNISIA_TRANSPORT",
+                        Path.home() / "Downloads" / "TunisiaTransport"))
 
 MODE_TO_TYPE = {
     "Bus": "bus",

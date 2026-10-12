@@ -20,6 +20,7 @@ Output: data/rail_graph.npz
 from __future__ import annotations
 
 import argparse
+from pathlib import Path
 import json
 import math
 import os
@@ -139,7 +140,12 @@ def stitch_endpoints(pts: list[tuple[float, float]]) -> list[int]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--rails", default=r"C:\Users\cy1in\Downloads\rails\export.geojson")
+    ap.add_argument(
+        "--rails",
+        default=os.environ.get(
+            "BLEDI_RAILS_GEOJSON", str(Path.home() / "Downloads" / "rails" / "export.geojson")
+        ),
+    )
     ap.add_argument(
         "--out",
         default=os.path.join(

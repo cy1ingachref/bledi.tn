@@ -8,11 +8,13 @@ alternatives, taxi).
 This is the same calculator used by Tunismapper — same data, same results.
 """
 import json
+import os
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
-BASE = Path("C:/Users/cy1in/Downloads/TunisiaTransport")
+BASE = Path(os.environ.get("BLEDI_TUNISIA_TRANSPORT",
+                        Path.home() / "Downloads" / "TunisiaTransport"))
 API = "https://www.tunismapper.com/backend/api/itinerary.php"
 
 # Speed constants (km/h) — used only for map rendering, not for API calls

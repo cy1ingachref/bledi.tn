@@ -4,9 +4,11 @@
 Takes routing engine output and renders it on an OpenStreetMap tile layer.
 """
 import json
+import os
 from pathlib import Path
 
-BASE = Path("C:/Users/cy1in/Downloads/TunisiaTransport")
+BASE = Path(os.environ.get("BLEDI_TUNISIA_TRANSPORT",
+                        Path.home() / "Downloads" / "TunisiaTransport"))
 
 
 def generate_route_map(route_data, output_path):

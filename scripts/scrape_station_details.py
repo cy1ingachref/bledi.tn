@@ -6,9 +6,11 @@ queries backend/api/station_details.php?id=X for each, and saves
 enriched station data (GPS, lines served, colors, directions).
 """
 import urllib.request, json, time, sys
+import os
 from pathlib import Path
 
-BASE = Path("C:/Users/cy1in/Downloads/TunisiaTransport")
+BASE = Path(os.environ.get("BLEDI_TUNISIA_TRANSPORT",
+                        Path.home() / "Downloads" / "TunisiaTransport"))
 API = "https://www.tunismapper.com/backend/api/station_details.php"
 
 def fetch(url, retries=3):

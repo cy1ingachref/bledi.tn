@@ -73,6 +73,34 @@ By mode:
 - **unknown** — no source field on the record and no mode that maps to a known
   source. 130 stations have `mode: "unknown"` and are tagged `unknown`.
 
+## BizerteConnect (NOT covered by the tables above)
+
+The runtime seed `data/seed_all_tunisia_routes.tagged.json` is larger than the
+232-line audit above, because a later import added a second third-party source:
+
+| source | count | license_status |
+|---|---|---|
+| bizerteconnect-api | 117 lines | third-party-public-api |
+
+These are the `bc_bus_*` lines. They came from an undocumented JSON API behind
+`BizerteConnect` (`scripts/scrape_bizerteconnect.py`), a private bus operator.
+The raw response is committed as `data/bizerteconnect_network.json`.
+
+**They are not routable.** That API publishes no stops endpoint — `bus-stops/`,
+`bus-stations/`, `stops/`, `stations/` and `bus-trips/` all 404, and `/trips/`
+and `/season-schedules/` require admin auth. Each line therefore carries named
+endpoints (`origin` / `destination`, in Latin and Arabic script), outbound and
+return departure times, and an `external_id` — but an empty `stations` array and
+no coordinates.
+
+They are marked `"routable": false` in the seed so that no consumer mistakes
+them for usable graph edges. `tests/test_seed_integrity.py` asserts that every
+line with fewer than 2 valid stops carries that marker, and that the marker is
+never applied to a line that is actually routable.
+
+Their redistribution terms are also unverified, which is why `LICENSE.TODO`
+names BizerteConnect alongside Tunismapper.
+
 ## What is NOT in this dataset
 
 - **Louage routes.** `data/all_tunisia_bus_registry.json` holds louage operator

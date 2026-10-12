@@ -7,19 +7,55 @@ A Tunisia public-transport routing web app with geo-pinned memories, favorites, 
 | Layer       | Tech                                                        |
 |-------------|-------------------------------------------------------------|
 | Frontend    | SvelteKit + TypeScript + Vite + PWA (service worker)        |
+| Mobile app  | Flutter (`src/mobile/`) — legacy, superseded by the web UI  |
 | Map         | Leaflet + OpenStreetMap tiles                               |
-| Backend     | Rust (axum + sqlx) — in development; Python FastAPI — legacy |
+| Routing     | Python FastAPI (`src/backend/app/`) — owns all routing      |
+| Social      | Rust axum + sqlx (`rust/`) — auth, memories, favorites, shares |
 | Database    | PostgreSQL + PostGIS (earthdistance extension)              |
 | Auth        | JWT (bcrypt password hashing)                               |
-| CI/CD       | GitHub Actions (fmt, clippy, build, test, security scan)    |
+| CI/CD       | GitHub Actions (Rust + Python + frontend + security scan)   |
 | Containers  | Docker + docker-compose                                      |
+
+## Backend split (read this before changing either backend)
+
+There are two backends, and the split is deliberate. Do not "consolidate" them
+without reading this first.
+
+| Concern | Owner | Why |
+|---|---|---|
+| Transit routing (Dijkstra, graphs, OSRM, geocoding) | **Python** (`src/backend/app/`) | Holds the real routing engine, the transit graph, and the geometry caches. This is the product. |
+| Auth, memories, favorites, location shares | **Rust** (`rust/`) | Newer code, axum + sqlx. |
+
+**Known gap:** the two backends do not yet share an auth scheme. The Rust
+server issues JWTs that the Python server does not validate, and the Flutter /
+web clients talk to the Python backend for routing. Before either backend is
+deployed, one of these must happen:
+
+1. **Shared JWT** — the Python side validates the same `JWT_SECRET` and claims
+   the Rust side issues (or a gateway sits in front and terminates auth), or
+2. **Port routing to Rust** — a large job, but the Python test suite and the
+   seed fixtures make it feasible.
+
+Until then, treat the Rust server as a standalone service. Its `stations` and
+`lines` tables are **empty** (CI smoke-tests them as empty) — all station and
+line data lives in the Python backend's seed files.
+
+The Flutter app (`src/mobile/`) needs a single base URL and a single contract;
+it currently points at the Python backend. Do not point it at both.
 
 ## Features
 
 ### Transport routing (Python FastAPI backend — working)
-- Multi-modal Dijkstra over the transit graph (bus, metro, tram, train, RFR, taxi, walk)
-- 232 lines and 1,711 stations across Tunisia
-- Real road/rail geometry, multi-objective routing (fastest, fewest transfers, least walking)
+- Multi-modal Dijkstra over the transit graph (bus, metro, tram, train, RFR, taxi, louage, walk)
+- **379 lines and 7,452 stations** across Tunisia (loaded from `data/seed_all_tunisia_routes.tagged.json`)
+  - The untagged `data/seed_all_tunisia_routes.json` holds the original 232-line /
+    1,711-station Tunismapper subset. The tagged file is the runtime dataset; the
+    backend prefers it whenever it is present.
+  - Of the 379 lines, 117 are `bc_bus_*` BizerteConnect lines that carry no stops
+    and no coordinates (that source publishes no stops endpoint) and are therefore
+    **not routable**. See `data/SOURCES.md`.
+- Real road/rail geometry via the OSRM proxy and the locally built road graph
+- Multi-objective routing (fastest, fewest transfers, least walking)
 - OSRM (driving) + Nominatim (geocoding) proxy with TTL caching
 - Endpoints: `/api/v1/stations`, `/api/v1/lines`, `/api/v1/route/transit`, `/api/v1/geocode`, `/api/v1/itinerary`
 
@@ -70,8 +106,13 @@ open http://localhost:8000
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+# Required. The server REFUSES TO START without a >=32 byte JWT_SECRET.
+export JWT_SECRET="$(openssl rand -hex 32)"
+
+# Required. There is no default connection string.
+export DATABASE_URL="postgres://USER:PASSWORD@localhost:5432/bledi"
+
 # Run migrations (requires PostgreSQL + PostGIS)
-export DATABASE_URL=postgres://postgres:postgres@localhost:5432/bledi
 cd rust/bledi-server && sqlx migrate run
 
 # Build and run
@@ -80,11 +121,26 @@ cargo run --release
 
 ### Docker (full stack)
 
+Docker Compose reads its credentials from the environment and has **no
+defaults** — it fails fast rather than starting with a known password. Create a
+`.env` next to `docker-compose.yml`:
+
 ```bash
-docker-compose up --build
+# .env  — never commit this file
+POSTGRES_USER=bledi
+POSTGRES_PASSWORD=<a real password>
+POSTGRES_DB=bledi
+JWT_SECRET=<openssl rand -hex 32>
 ```
 
-This starts PostgreSQL + PostGIS, the Rust backend on port 3000, and the frontend on port 5173.
+```bash
+docker compose up --build
+```
+
+This starts PostgreSQL + PostGIS, the Rust backend on port 3000, and the
+frontend on port 5173. Postgres is **not** published to the host — it is only
+reachable from the compose network. The backend container runs as an
+unprivileged user.
 
 ### Frontend (standalone)
 
@@ -121,10 +177,16 @@ npm run preview
 - `GET /api/v1/lines/{id}`
 - `GET /api/v1/memories` (auth)
 - `POST /api/v1/memories` (auth)
-- `GET /api/v1/memories/nearby` (auth)
-- `GET /api/v1/memories/{id}` (auth)
+- `GET /api/v1/memories/nearby` (auth — metadata only, no `media_url`)
+- `GET /api/v1/memories/{id}` (auth — visibility enforced)
+- `POST /api/v1/memories/{id}/unlock` (auth — position checked against `unlock_radius_m`, returns the media)
 - `PUT /api/v1/memories/{id}` (auth)
 - `DELETE /api/v1/memories/{id}` (auth)
+- `GET /api/v1/friendships` (auth)
+- `GET /api/v1/friendships/requests` (auth)
+- `POST /api/v1/friendships/request` (auth)
+- `POST /api/v1/friendships/accept` (auth)
+- `DELETE /api/v1/friendships/{user_id}` (auth)
 - `GET /api/v1/favorites` (auth)
 - `POST /api/v1/favorites` (auth)
 - `DELETE /api/v1/favorites/{id}` (auth)
@@ -143,8 +205,23 @@ npm run preview
 - `ENABLE_TUNISMAPPER_PROXY` — set to `1`/`true`/`yes` to re-enable the Tunismapper itinerary proxy
 
 ### Rust backend
-- `DATABASE_URL` — PostgreSQL connection string (required)
+- `DATABASE_URL` — PostgreSQL connection string (**required**, no default)
+- `JWT_SECRET` — HMAC secret for signing tokens (**required**, >= 32 bytes, no
+  default; the server refuses to start without it)
+- `ALLOWED_ORIGINS` — comma-separated CORS origins (default localhost only)
 - `RUST_LOG` — logging level (default `info`)
+
+### Data-build tools
+These override the `~/Downloads/...` defaults used by the data pipeline scripts.
+See `data/SOURCES.md` for what each one feeds.
+
+- `BLEDI_TUNISIA_TRANSPORT` — consolidated raw-resource folder
+- `BLEDI_TRANSPORT_DUMP` — operator export dump
+- `BLEDI_OPERATOR_EXPORTS` — per-operator exports folder
+- `BLEDI_LOUAGE_CSV` — louage network CSV
+- `BLEDI_ROADS_GPKG` — HotOSM roads GeoPackage (road graph + geometry)
+- `BLEDI_RAILS_GEOJSON` — OSM rail export (rail graph)
+- `BLEDI_MAPS_DIR`, `BLEDI_BIZERTE_WORKBOOK` — legacy Flutter import tooling
 
 ## Project structure
 
@@ -182,6 +259,7 @@ bledi.tn/
 │   │       ├── favorites/     #   Saved places
 │   │       └── share/         #   Location sharing
 │   └── vite.config.ts         #   Vite + PWA config
+├── src/mobile/                # Flutter mobile app (legacy, not main frontend)
 ├── data/                      # Seed data (GTFS-like JSON)
 ├── tests/                     # Python backend tests
 ├── scripts/                   # Data processing scripts
@@ -194,18 +272,38 @@ bledi.tn/
 
 The GitHub Actions workflow runs on every push to `main`:
 
-1. **Rust Build & Test** — `cargo fmt`, `cargo clippy`, `cargo build --release`, `cargo test`
-2. **Frontend Build & Test** — `npm ci`, `npx tsc --noEmit`, `npm run build`
-3. **Security Scan** — Semgrep, Gitleaks, Trivy
+1. **Rust Build, Test & Runtime Smoke** — `cargo fmt`, `cargo clippy`, `cargo build --release`, `cargo test`, then boots the server against PostGIS and exercises the API
+2. **Python Backend Tests** — `pytest tests/` (150 tests)
+3. **Frontend Build & Test** — `npm ci`, `npx tsc --noEmit`, `npm run build`
+4. **Security Scan** — Semgrep, Gitleaks, Trivy
 
 ## Data sources and licensing status
 
-Most of the routing data is derived from **Tunismapper**. The terms of that source have not been verified for redistribution. For that reason this repository does **not** yet claim a license for the dataset.
+The routing data is derived from **more than one** third-party source and none of
+their redistribution terms have been verified. This repository therefore does
+**not** claim a license for the dataset. `LICENSE.TODO` records that, and
+`docs/provenance.md` holds the full audit.
 
-See `docs/provenance.md` for the full audit:
-- Lines: 227 tunismapper + 4 transtu PDF + 1 tunismapper URL
-- Stations: 1,315 tunismapper + 266 official-public (by mode) + 130 unknown
-- The `/api/v1/itinerary` Tunismapper proxy is disabled by default
+| Source | What came from it | Status |
+|---|---|---|
+| Tunismapper (tunismapper.com) | 227 lines, most stations | unknown-third-party |
+| Transtu PDF (Tebourba.pdf) | 4 lines | official-public |
+| Tunismapper URL (route_id=885) | 1 line | unknown-third-party |
+| BizerteConnect API | 117 `bc_bus_*` lines + schedules, `data/bizerteconnect_network.json` | unknown-third-party, **not routable** |
+| OpenStreetMap (ODbL) | road/rail graphs, geometry caches | ODbL — attribution required |
+| Official public station lists | 266 stations | official-public |
+
+Raw upstream scrapes (`scripts/tunismapper_all_routes_stops.json`,
+`scripts/tunismapper_station_details.json`, `src/mobile/tool/osm_nodes_cache.json`)
+are **not committed** — they are large, regenerable inputs to the committed
+converters.
+
+`data/rail_graph.npz` (641 KB) **is** committed, because the test suite
+asserts that a long rail leg is never returned as a bare straight line, which
+cannot hold without rail geometry. `data/road_graph.npz` (153 MB) is not —
+build it with `src/backend/tool/build_road_graph.py`.
+
+The `/api/v1/itinerary` Tunismapper proxy is disabled by default.
 
 `LICENSE.TODO` records that the license is undecided. No MIT or other license is claimed for the dataset.
 
@@ -230,15 +328,22 @@ npm run build
 
 | Component | Status | Notes |
 |-----------|--------|-------|
-| Python FastAPI backend | Working | Running, tested, all endpoints functional |
-| Rust axum backend | CI green | Compiles, clippy clean, migrations pass |
-| SvelteKit frontend | Working | Builds, PWA service worker generated |
-| Docker | Configured | docker-compose.yml with full stack |
+| Python FastAPI backend | Working | Owns all routing. Running, tested (150 tests) |
+| Rust axum backend | Working | Compiles, clippy clean, migrations pass. Auth/memories/favorites/shares only; `stations`/`lines` tables empty |
+| SvelteKit frontend | Working | Builds, PWA service worker generated. Talks to the Python backend |
+| Flutter app (`src/mobile/`) | Legacy | Superseded by the web UI |
+| Docker | Configured | Compose requires a `.env`; no default credentials |
 | Deployment | Not deployed | No live server yet |
 
 ## TODO / known issues
 
-- Media upload: memories accept a URL but there is no actual file upload to S3/R2/MinIO yet
+- **Two backends, no shared auth.** See "Backend split" above. This must be
+  resolved before deployment.
+- Media upload: memories accept a URL but there is no actual file upload to
+  S3/R2/MinIO yet, and no upload endpoint. The `media_url` a client submits is
+  validated as an http(s) URL, but until uploads are first-party the frontend
+  should not render an arbitrary remote URL.
+- 117 `bc_bus_*` BizerteConnect lines carry no stops and cannot be routed.
 - Google OAuth: only email/password auth exists
 - Integration testing: no end-to-end tests between frontend and Rust backend
 - i18n: no Arabic/French/English translation yet
