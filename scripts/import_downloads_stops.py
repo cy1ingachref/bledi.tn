@@ -23,6 +23,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import os
 import json
 import math
 import sys
@@ -30,7 +31,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SEED = ROOT / "data" / "seed_all_tunisia_routes.tagged.json"
-DOWNLOADS = Path.home() / "Downloads" / "transport"
+DOWNLOADS = Path(os.environ.get("BLEDI_TRANSPORT_DUMP",
+                              Path.home() / "Downloads" / "transport"))
 GEOLOCATED = DOWNLOADS / "_geolocated.json"
 
 TOLERANCE_M = 150.0

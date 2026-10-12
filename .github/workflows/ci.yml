@@ -22,7 +22,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      DATABASE_URL: postgres://postgres:postgres@localhost:5432/bledi
+      # Throwaway CI-only Postgres credentials. Not secrets: this database is an
+      # ephemeral container that exists only for the duration of the job, and no
+      # default superuser password is configured.
+      PGUSER: bledi_ci
+      PGPASSWORD: bledi_ci_local_only
+      PGDATABASE: bledi
+      DATABASE_URL: postgres://bledi_ci:bledi_ci_local_only@localhost:5432/bledi
+      # The server refuses to start without this. CI value only.
+      JWT_SECRET: ci-only-jwt-secret-not-used-anywhere-real
       RUST_LOG: info
 
     steps:
@@ -38,9 +46,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y postgresql postgresql-contrib postgis
           sudo service postgresql start
-          sudo -u postgres psql -c "CREATE DATABASE bledi;" || true
-          sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'postgres';"
-          sudo -u postgres psql -d bledi -c "CREATE EXTENSION IF NOT EXISTS cube; CREATE EXTENSION IF NOT EXISTS earthdistance;"
+          sudo -u postgres psql -c "CREATE ROLE $PGUSER LOGIN PASSWORD '$PGPASSWORD';" || true
+          sudo -u postgres psql -c "CREATE DATABASE $PGDATABASE OWNER $PGUSER;" || true
+          sudo -u postgres psql -d $PGDATABASE -c "CREATE EXTENSION IF NOT EXISTS cube; CREATE EXTENSION IF NOT EXISTS earthdistance;"
 
       - name: Cache cargo
         uses: actions/cache@v4
@@ -73,7 +81,8 @@ jobs:
       - name: Start bledi-server
         working-directory: rust
         env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/bledi
+          DATABASE_URL: postgres://bledi_ci:bledi_ci_local_only@localhost:5432/bledi
+          JWT_SECRET: ci-only-jwt-secret-not-used-anywhere-real
         run: |
           ./target/release/bledi-server &
           echo $! > /tmp/bledi-server.pid
@@ -257,6 +266,31 @@ jobs:
             kill $(cat /tmp/bledi-server.pid) || true
             rm /tmp/bledi-server.pid
           fi
+
+  python-test:
+    name: Python Backend Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install pytest
+
+      - name: Run backend tests
+        # This job exists because the Python suite is where the seed-integrity
+        # and mode-selection regressions live. Rust-only CI stayed green while
+        # those two tests failed.
+        run: python -m pytest tests/ -q
 
   frontend-test:
     name: Frontend Build & Test

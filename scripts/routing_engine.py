@@ -11,12 +11,14 @@ route using Dijkstra's algorithm. Supports:
 Output: JSON with route legs, total duration, distance, transfers.
 """
 import heapq
+import os
 import json
 import math
 from collections import defaultdict
 from pathlib import Path
 
-BASE = Path("C:/Users/cy1in/Downloads/TunisiaTransport")
+BASE = Path(os.environ.get("BLEDI_TUNISIA_TRANSPORT",
+                        Path.home() / "Downloads" / "TunisiaTransport"))
 
 # Speed constants (km/h)
 WALK_SPEED = 5.0

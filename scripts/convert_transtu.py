@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Convert Tunismapper Transtu bus routes to bledi.tn seed format."""
 import json, re, hashlib
+import os
 from pathlib import Path
 
-BASE = Path("C:/Users/cy1in/Downloads/TunisiaTransport")
+BASE = Path(os.environ.get("BLEDI_TUNISIA_TRANSPORT",
+                        Path.home() / "Downloads" / "TunisiaTransport"))
 
 def slugify(s):
     s = s.lower().strip()

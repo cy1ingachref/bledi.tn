@@ -81,7 +81,7 @@ BBOX = "30.2,7.4,37.6,12.2"
 # removes ~1580 network calls from a full build. Point at the extracted
 # roads.gpkg, or set BLEDI_ROADS_GPKG. Absent means OSRM-only, as before.
 ROADS_GPKG = os.environ.get(
-    "BLEDI_ROADS_GPKG", r"C:\Users\cy1in\Downloads\roads\roads.gpkg"
+    "BLEDI_ROADS_GPKG", str(Path.home() / "Downloads" / "roads" / "roads.gpkg")
 )
 
 # highway= values a bus or taxi can use. Ordered by preference so the first

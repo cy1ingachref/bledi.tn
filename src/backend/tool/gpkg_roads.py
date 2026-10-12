@@ -11,6 +11,7 @@ Yields RoadFeature(highway, name, oneway, coords) with coords as
 from __future__ import annotations
 
 import sqlite3
+import os
 import struct
 from dataclasses import dataclass
 from typing import Iterator, Sequence
@@ -198,7 +199,16 @@ if __name__ == "__main__":
     import collections
     import sys
 
-    path = sys.argv[1] if len(sys.argv) > 1 else r"C:\Users\cy1in\Downloads\roads\roads.gpkg"
+    import os
+    from pathlib import Path
+
+    path = (
+        sys.argv[1]
+        if len(sys.argv) > 1
+        else os.environ.get(
+            "BLEDI_ROADS_GPKG", str(Path.home() / "Downloads" / "roads" / "roads.gpkg")
+        )
+    )
     counts: collections.Counter[str] = collections.Counter()
     verts = 0
     named = 0

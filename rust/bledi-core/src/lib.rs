@@ -278,6 +278,40 @@ pub struct NearbySharesQuery {
     pub radius_m: Option<f64>,
 }
 
+// ── Friendship request/response types ───────────────────────────────────────
+
+/// Ask for a friendship by email rather than by UUID.
+///
+/// The API never exposes a "look up user by email" endpoint, so this is the only
+/// way to name another user — which is what stops the friend graph from being
+/// enumerable from the outside.
+#[derive(Debug, Deserialize)]
+pub struct FriendEmailRequest {
+    pub friend_email: String,
+}
+
+/// One friendship, as seen by the caller.
+#[derive(Debug, Serialize)]
+pub struct FriendView {
+    pub user_id: Uuid,
+    pub email: String,
+    pub display_name: Option<String>,
+    /// `pending` or `accepted`.
+    pub status: String,
+}
+
+// ── Unlock ──────────────────────────────────────────────────────────────────
+
+/// A client-claimed position, sent to `POST /memories/:id/unlock`.
+///
+/// The position is CLAIMED, not proven. GPS can be spoofed; see
+/// `handlers::unlock_memory`.
+#[derive(Debug, Deserialize)]
+pub struct UnlockRequest {
+    pub lat: f64,
+    pub lon: f64,
+}
+
 // ── Geo helpers ─────────────────────────────────────────────────────────────
 
 /// Haversine distance in meters.
