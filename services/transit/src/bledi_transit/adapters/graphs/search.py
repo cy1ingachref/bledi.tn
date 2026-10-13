@@ -138,16 +138,17 @@ def astar(g: Graph, profile: str, src: int, dst: int, max_expand: int) -> tuple[
     off = g.csr_off[profile]
     eu, ev, elen, spd = g.eu, g.ev, g.elen, g.speed_mps[profile]
 
-    lat0, lon0 = float(g.lat[src]), float(g.lon[src])
-    dlat = (g.lat - lat0) * M_PER_DEG
-    dlon = (g.lon - lon0) * M_PER_DEG * max(math.cos(math.radians(lat0)), 1e-6)
+    lat_d, lon_d = float(g.lat[dst]), float(g.lon[dst])
+    lon_scale = M_PER_DEG * max(math.cos(math.radians(lat_d)), 1e-6)
 
-    # Straight line over the fastest speed anywhere cannot overestimate, so A*
-    # stays optimal.
+    def to_dst_m(node: int) -> float:
+        return math.hypot((float(g.lat[node]) - lat_d) * M_PER_DEG, (float(g.lon[node]) - lon_d) * lon_scale)
+
+    # Straight line to the destination over the fastest speed anywhere cannot
+    # overestimate, so A* stays optimal.
     max_spd = max(float(spd[edge_ids].max()) if edge_ids.size else 1.0, 0.1)
     min_spd = max(float(spd[edge_ids].min()) if edge_ids.size else 0.1, 0.1)
-    crow = math.hypot(float(dlat[dst]), float(dlon[dst]))
-    cost_cap = (crow / min_spd) * UNREACHABLE_COST_FACTOR
+    cost_cap = (to_dst_m(src) / min_spd) * UNREACHABLE_COST_FACTOR
 
     n = g.n_nodes
     g_score = np.full(n, np.inf, dtype=np.float64)
@@ -189,6 +190,5 @@ def astar(g: Graph, profile: str, src: int, dst: int, max_expand: int) -> tuple[
             if cost < g_score[nxt]:
                 g_score[nxt] = cost
                 came_edge[nxt] = eid
-                h = math.hypot(float(dlat[nxt]), float(dlon[nxt])) / max_spd
-                heapq.heappush(heap, (cost + h, nxt))
+                heapq.heappush(heap, (cost + to_dst_m(nxt) / max_spd, nxt))
     return None
