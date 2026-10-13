@@ -23,7 +23,6 @@ from __future__ import annotations
 import heapq
 import json
 import logging
-import os
 from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
@@ -34,6 +33,7 @@ from bledi_transit.adapters.graphs.rail_graph import track_between_cached as rai
 from bledi_transit.adapters.graphs.road_graph import load_graph as load_road_graph
 from bledi_transit.adapters.graphs.road_graph import road_route_cached
 from bledi_transit.adapters.graphs.search import snap_candidates
+from bledi_transit.adapters.seed_files import SeedFileNetwork
 from bledi_transit.domain.fares import FARE_DINARS, fare_for_itinerary
 from bledi_transit.domain.geo import haversine_m, oriented_geometry, polyline_length
 from bledi_transit.domain.modes import (
@@ -68,11 +68,7 @@ log = logging.getLogger("bledi.routing")
 if not log.handlers:
     logging.basicConfig(level=logging.INFO)
 
-# ── Config ──────────────────────────────────────────────────────────────
-BASE = Path(__file__).resolve().parents[6]  # repo root
-SEED_PATH = BASE / "data" / "seed_all_tunisia_routes.json"
-SEED_TAGED_PATH = BASE / "data" / "seed_all_tunisia_routes.tagged.json"
-_SEED_PATH = SEED_TAGED_PATH if SEED_TAGED_PATH.exists() else SEED_PATH
+_DATA = SeedFileNetwork(Path(__file__).resolve().parents[6] / "data")
 
 # A walk edge resets the line context: after walking you have not "arrived on"
 # any line, so the next boarding is a fresh boarding (wait paid again) rather
@@ -86,99 +82,6 @@ def transit_speed_kmh(mode: str) -> float:
 
 def transit_speed_ms(mode: str) -> float:
     return transit_speed_kmh(mode) / 3.6
-
-
-# ── Real path geometry ─────────────────────────────────────────────────────
-# Straight-line distance is a lower bound on the real path, never the path
-# itself. Using it as an edge COST under-rides every leg, so a multi-leg transit
-# itinerary loses to a single straight taxi estimate. Measured on this seed's
-# cache (3 938 edges): real/straight median 1.06 but TOTAL length inflation
-# 8 988 km -> 12 631 km (+41%), because the long intercity hops are the ones
-# that detour hardest (up to 3.1x). So haversine stays as the A* heuristic and
-# as a fallback where no cached polyline exists, and the polyline length is what
-# the cost model uses.
-#
-# The cache is keyed on an UNORDERED station-id pair and the stored polyline
-# always runs min -> max, so reads must orient it to the travel direction.
-#
-# The JSON cache is read at most once per process. Re-reading it per Router
-# instantiation cost 162 parses during a single import in one measurement,
-# because build_graph() and the module-level Router in main.py each construct a
-# router over the same file. Keyed by path so tests can point at another file.
-_GEOMETRY_CACHE_MEMO: dict[str, dict[str, dict[str, Any]]] = {}
-
-
-def load_geometry_cache() -> dict[str, dict[str, Any]]:
-    path = os.environ.get("GEOMETRY_CACHE_PATH")
-    candidates = [path] if path else []
-    # src/backend/app/routing.py -> repo root is three levels up.
-    here = os.path.dirname(os.path.abspath(__file__))
-    root = os.path.abspath(os.path.join(here, "..", "..", "..", "..", "..", ".."))
-    candidates.append(os.path.join(root, "data", "route_geometry.json"))
-    for cand in candidates:
-        if not cand or not os.path.exists(cand):
-            continue
-        key = os.path.abspath(cand)
-        if key in _GEOMETRY_CACHE_MEMO:
-            return _GEOMETRY_CACHE_MEMO[key]
-        try:
-            with open(cand, encoding="utf-8") as f:
-                segs = json.load(f).get("segments", {})
-        except Exception as exc:  # pragma: no cover - defensive
-            log.warning("routing: geometry cache unreadable at %s: %s", cand, exc)
-            continue
-        log.info(
-            "routing: loaded %d geometry segments (%d with a polyline) from %s",
-            len(segs),
-            sum(1 for v in segs.values() if v.get("geometry")),
-            os.path.basename(cand),
-        )
-        _GEOMETRY_CACHE_MEMO[key] = segs
-        return segs
-    log.warning(
-        "routing: no geometry cache found; transit edges fall back to "
-        "straight-line distance (cost understated, legs drawn straight)"
-    )
-    return {}
-
-
-def load_walk_geometry_cache() -> dict[str, dict[str, Any]]:
-    """Real pedestrian polylines for walk legs, keyed "a|b" unordered.
-
-    Built by tool/build_walk_geometry.py against Valhalla's pedestrian costing.
-    The public OSRM demo cannot serve this: measured on this project, foot,
-    walking, bike, cycling and a nonsense profile all return byte-identical
-    results, because that server ignores the profile segment and serves a single
-    car dataset.
-    """
-    path = os.environ.get("WALK_GEOMETRY_CACHE_PATH")
-    here = os.path.dirname(os.path.abspath(__file__))
-    root = os.path.abspath(os.path.join(here, "..", "..", "..", "..", "..", ".."))
-    default = os.path.join(root, "data", "walk_geometry.json")
-    for cand in ([path] if path else []) + [default]:
-        if not cand or not os.path.exists(cand):
-            continue
-        key = os.path.abspath(cand)
-        if key in _GEOMETRY_CACHE_MEMO:
-            return _GEOMETRY_CACHE_MEMO[key]
-        try:
-            with open(cand, encoding="utf-8") as f:
-                segs = json.load(f).get("segments", {})
-        except Exception as exc:  # pragma: no cover - defensive
-            log.warning("routing: walk geometry unreadable at %s: %s", cand, exc)
-            continue
-        log.info(
-            "routing: loaded %d walk-geometry segments (%d with a polyline)",
-            len(segs),
-            sum(1 for v in segs.values() if v.get("geometry")),
-        )
-        _GEOMETRY_CACHE_MEMO[key] = segs
-        return segs
-    log.info(
-        "routing: no walk-geometry cache; walk legs fall back to a straight "
-        "line. Build it with: python src/backend/tool/build_walk_geometry.py"
-    )
-    return {}
 
 
 def rail_leg(
@@ -320,39 +223,6 @@ def road_leg(
     return r.geometry, r.distance_m
 
 
-def load_taxi_geometry_cache() -> dict[str, list[list[float]]]:
-    """Road polylines for direct taxi/louaj legs, keyed "lat,lon|lat,lon".
-
-    Built by tool/build_taxi_geometry.py. These are the only place a path
-    connects two points that are NOT both stations -- the access walk and the
-    final drop-off -- so there is no station pair to key on, hence the
-    coordinate key.
-    """
-    path = os.environ.get("TAXI_GEOMETRY_CACHE_PATH")
-    here = os.path.dirname(os.path.abspath(__file__))
-    root = os.path.abspath(os.path.join(here, "..", "..", "..", "..", "..", ".."))
-    default = os.path.join(root, "data", "taxi_geometry.json")
-    for cand in ([path] if path else []) + [default]:
-        if not cand or not os.path.exists(cand):
-            continue
-        key = os.path.abspath(cand)
-        if key in _GEOMETRY_CACHE_MEMO:
-            return _GEOMETRY_CACHE_MEMO[key]
-        try:
-            with open(cand, encoding="utf-8") as f:
-                segs = json.load(f).get("segments", {})
-        except Exception as exc:  # pragma: no cover - defensive
-            log.warning("routing: taxi geometry unreadable at %s: %s", cand, exc)
-            continue
-        log.info(
-            "routing: loaded %d taxi/louaj road segments",
-            sum(1 for v in segs.values() if v.get("geometry")),
-        )
-        _GEOMETRY_CACHE_MEMO[key] = segs
-        return segs
-    return {}
-
-
 def taxi_key(a_lat: float, a_lon: float, b_lat: float, b_lon: float) -> str:
     """Coordinate-pair cache key, direction-independent (min first).
 
@@ -393,11 +263,6 @@ def road_geometry_for(
     return list(pts) if forward else list(reversed(pts))
 
 
-def _load_seed() -> dict[str, Any]:
-    with _SEED_PATH.open(encoding="utf-8") as f:
-        return json.load(f)
-
-
 @dataclass(slots=True)
 class Edge:
     """One directed graph edge.
@@ -424,10 +289,15 @@ class Edge:
         return not self.geometry and self.straight_m >= GEOMETRY_REQUIRED_M
 
 
+def _load_seed() -> dict[str, Any]:
+    network = _DATA.load()
+    return {"stations": network.stations, "lines": network.lines}
+
+
 def build_graph() -> tuple[dict[str, Any], "Router"]:
     seed = _load_seed()
-    stations = seed.get("stations", [])
-    lines = seed.get("lines", [])
+    stations = seed["stations"]
+    lines = seed["lines"]
     sidx: dict[str, dict[str, Any]] = {}
     for s in stations:
         sidx[s["id"]] = s
@@ -462,9 +332,9 @@ class Router:
         # can hand the frontend something it can actually draw. Straight-line
         # survives only as the A* heuristic and as a fallback for the edges the
         # cache has no polyline for.
-        self.geometry: dict[str, dict[str, Any]] = load_geometry_cache()
-        self.walk_geometry: dict[str, dict[str, Any]] = load_walk_geometry_cache()
-        self.taxi_geometry: dict[str, Any] = load_taxi_geometry_cache()
+        self.geometry: dict[str, dict[str, Any]] = _DATA.route_segments()
+        self.walk_geometry: dict[str, dict[str, Any]] = _DATA.walk_segments()
+        self.taxi_geometry: dict[str, Any] = _DATA.taxi_segments()
         # The OSM road graph. Real source of truth for any leg whose endpoints
         # are not two stations joined by a transit line (access walk, final walk,
         # taxi/louaj). The geometry caches above stay as a fast path and as a
