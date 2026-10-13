@@ -23,7 +23,7 @@ python -m uvicorn src.backend.app.main:app --port 8000
 Then run the app:
 
 ```bash
-cd src/mobile
+cd apps/mobile
 flutter pub get
 flutter run --dart-define=BLED_API_BASE=http://localhost:8000
 ```

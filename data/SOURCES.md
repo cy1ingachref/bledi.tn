@@ -34,7 +34,7 @@ with a README explaining every subfolder. Layout:
 | `road_graph.npz` (153 MB) | Size; derived from the OSM extract | `src/backend/tool/build_road_graph.py` |
 | `scripts/tunismapper_all_routes_stops.json` (21 MB) | Upstream third-party scrape, size | `scripts/scrape_all_routes.py` |
 | `scripts/tunismapper_station_details.json` (1.7 MB) | Upstream third-party scrape | `scripts/scrape_station_details.py` |
-| `src/mobile/tool/osm_nodes_cache.json` (1.2 MB) | Derived cache | re-run the tool that wrote it |
+| `apps/mobile/tool/osm_nodes_cache.json` (1.2 MB) | Derived cache | re-run the tool that wrote it |
 
 `road_graph.npz` is ignored via `.gitignore`; `rail_graph.npz` is committed.
 Build the road graph before running the backend:

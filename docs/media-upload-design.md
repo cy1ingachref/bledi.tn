@@ -17,7 +17,7 @@ IP address, User-Agent and Referer of every viewer who scrolls past it. It also
 means the app can be used to host arbitrary content under a bledi.tn page.
 
 Validation of `media_url` (absolute http/https, max 2048 chars, no `data:` URLs —
-see `rust/bledi-server/src/validate.rs`) reduces the blast radius but does not fix
+see `services/accounts/bledi-server/src/validate.rs`) reduces the blast radius but does not fix
 it: a valid https URL on an attacker's server is exactly the attack.
 
 The fix is to stop accepting third-party URLs entirely and serve media from a
