@@ -13,17 +13,11 @@ from __future__ import annotations
 
 import pytest
 
-from bledi_transit.application.routing.router import build_graph
 from bledi_transit.domain.modes import BUS_MODES, RAIL_MODES, TAXI_MODES
 from bledi_transit.domain.tunables import GEOMETRY_REQUIRED_M
 
 TUNIS = (36.8065, 10.1815)
 SFAX = (34.7406, 10.7603)
-
-
-@pytest.fixture(scope="module")
-def router():
-    return build_graph()[1]
 
 
 def _ride_modes(result):
@@ -103,7 +97,7 @@ class TestNoStraightLinesForVisibleLegs:
 
 
 class TestSeedDataQualityIsVisible:
-    def test_seed_has_implausible_consecutive_stops(self):
+    def test_seed_has_implausible_consecutive_stops(self, router):
         """Documents WHY flagged legs exist rather than pretending they cannot.
 
         The SNCFT train lines are not stop sequences: train_24_sncft lists
@@ -115,9 +109,6 @@ class TestSeedDataQualityIsVisible:
         above should shrink -- that is a good day, and this assertion is the
         reminder to re-run the geometry build.
         """
-        from bledi_transit.application.routing.router import build_graph as _bg
-
-        graph, router = _bg()
         implausible = [
             (sid, e) for sid, edges in router.adj.items() for e in edges
             if e.mode == "train" and not e.geometry and e.straight_m > 100_000

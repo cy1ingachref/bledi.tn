@@ -20,12 +20,10 @@ from __future__ import annotations
 
 import pytest
 
-from bledi_transit.application.routing.router import (
-    MAX_WALK_EDGE_METERS,
-    WALK_EDGE,
-    Router,
-    _load_seed,
-)
+from support import fresh_router
+
+from bledi_transit.application.routing.graph import WALK_EDGE
+from bledi_transit.domain.tunables import DROP_OFF_CANDIDATES, DROPOFF_SEARCH_METERS, MAX_WALK_EDGE_METERS
 
 # Long-distance OD pairs that used to return a single taxi leg.
 LONG_TRIPS = {
@@ -33,12 +31,6 @@ LONG_TRIPS = {
     "Tunis->Bizerte": (36.8078, 10.1815, 37.2744, 9.8739),
     "Sousse->Nabeul": (35.8256, 10.6360, 36.4560, 10.7376),
 }
-
-
-@pytest.fixture(scope="module")
-def router() -> Router:
-    seed = _load_seed()
-    return Router({s["id"]: s for s in seed["stations"]}, seed["lines"])
 
 
 class TestWalkEdgesExist:
@@ -219,7 +211,7 @@ class TestCostModelIntegrity:
             f"types={[s.get('type') for s in steps]}"
         )
 
-    def test_walk_transfer_costs_more_than_staying_on_one_line(self, monkeypatch):
+    def test_walk_transfer_costs_more_than_staying_on_one_line(self, router):
         """Differential test for the line-context reset.
 
         Tunis -> Sfax needs a bus-then-walk-then-train handover. If a walk did
@@ -233,19 +225,11 @@ class TestCostModelIntegrity:
         expressions, which is what the earlier version of this test did and why
         the mutation harness caught it as useless.
         """
-        import bledi_transit.application.routing.router as R
-
-        seed = R._load_seed()
-        stations = {s["id"]: s for s in seed["stations"]}
-        lines = seed["lines"]
-
-        with_walk = R.Router(stations, lines)
-        cost_with = with_walk.route(36.8078, 10.1815, 34.7406, 10.7603)
+        cost_with = router.route(36.8078, 10.1815, 34.7406, 10.7603)
         assert cost_with.get("mode") == "transit"
         with_walk_steps = cost_with.get("steps") or []
 
-        monkeypatch.setattr(R, "MAX_WALK_EDGE_METERS", 0)
-        no_walk = R.Router(stations, lines)
+        no_walk = fresh_router(max_walk_edge_m=0)
         cost_without = no_walk.route(36.8078, 10.1815, 34.7406, 10.7603)
 
         # Either the walk handover is unavailable without walk edges, or it is
@@ -346,7 +330,7 @@ class TestCostModelIntegrity:
         """Pin the branch itself, not just the rendered output.
 
         Mutating "charged at taxi speed" to walk speed passed every rendered-output
-        assertion because the final-leg label is built in _expand_path while the
+        assertion because the final-leg label is built in expand_path while the
         *cost* is computed earlier in route(). This compares the cost the router
         optimises against the rendered leg, so the two cannot drift apart.
         """
@@ -396,7 +380,7 @@ class TestCostModelIntegrity:
             assert implied < 80.0, f"implausible local hop speed: {h}"
 
 
-    def test_dropoff_search_returns_only_the_nearest_served_station(self, monkeypatch):
+    def test_dropoff_search_returns_only_the_nearest_served_station(self, router):
         """Pin the candidate cap where it is observable: in the search result.
 
         With cap=1 the Mahdia drop-off is the nearest served station (90.8 km);
@@ -405,29 +389,24 @@ class TestCostModelIntegrity:
         assertion could not see this -- both hops sit inside the 1.15x bound.
         So assert on the candidate list the router actually searches.
         """
-        import bledi_transit.application.routing.router as R
-
-        seed = R._load_seed()
-        r = R.Router({s["id"]: s for s in seed["stations"]}, seed["lines"])
-
         dest_lat, dest_lon = 34.0622, 11.35
-        wide = r._nearest_stations(dest_lat, dest_lon, R.DROPOFF_SEARCH_METERS)
+        wide = router._nearest_stations(dest_lat, dest_lon, DROPOFF_SEARCH_METERS)
         served = [
             s for s in wide
-            if any(e.mode != "walk" for e in r.adj.get(s["id"], ()))
+            if any(e.mode != "walk" for e in router.adj.get(s["id"], ()))
         ]
-        assert len(served) > R.DROP_OFF_CANDIDATES, "fixture does not exercise the cap"
+        assert len(served) > DROP_OFF_CANDIDATES, "fixture does not exercise the cap"
 
         # The router must search only the closest DROP_OFF_CANDIDATES.
-        candidates = served[: R.DROP_OFF_CANDIDATES]
-        assert len(candidates) == R.DROP_OFF_CANDIDATES
+        candidates = served[:DROP_OFF_CANDIDATES]
+        assert len(candidates) == DROP_OFF_CANDIDATES
         # And the closest one really is the closest.
         assert candidates[0]["_dist_m"] == min(s["_dist_m"] for s in served)
 
         # Guard the specific regression: a wider set must not change which stop
         # is nearest, and the config must be the value that makes that true.
-        assert R.DROP_OFF_CANDIDATES == 1, (
-            f"DROP_OFF_CANDIDATES is {R.DROP_OFF_CANDIDATES}; measured 6 and "
+        assert DROP_OFF_CANDIDATES == 1, (
+            f"DROP_OFF_CANDIDATES is {DROP_OFF_CANDIDATES}; measured 6 and "
             f"100000 both pick a station 98.3 km out instead of the nearest "
             f"90.8 km one"
         )
