@@ -310,7 +310,7 @@ class TestCostModelIntegrity:
         a distant-but-well-connected station, the final hop grows, and the ratio
         below fails.
         """
-        from bledi_transit.application.routing.router import haversine
+        from bledi_transit.domain.geo import haversine_m as haversine
 
         dest_lat, dest_lon = 34.0622, 11.35  # Mahdia
         res = router.route(36.8078, 10.1815, dest_lat, dest_lon)
@@ -350,7 +350,7 @@ class TestCostModelIntegrity:
         *cost* is computed earlier in route(). This compares the cost the router
         optimises against the rendered leg, so the two cannot drift apart.
         """
-        from bledi_transit.application.routing.router import TAXI_SPEED_MS, WALK_SPEED_MS, haversine
+        from bledi_transit.domain.tunables import TAXI_SPEED_MS, WALK_SPEED_MS
 
         dest_lat, dest_lon = 34.0622, 11.35
         res = router.route(36.8078, 10.1815, dest_lat, dest_lon)
@@ -447,11 +447,11 @@ class TestCostModelIntegrity:
         walking is cheap. Assert the two speeds differ in the expected direction
         and that the branch is selected by distance alone.
         """
-        from bledi_transit.application.routing.router import (
+        from bledi_transit.domain.geo import haversine_m as haversine
+        from bledi_transit.domain.tunables import (
             MAX_END_WALK_METERS,
             TAXI_SPEED_MS,
             WALK_SPEED_MS,
-            haversine,
         )
 
         # The branch must trigger strictly beyond a walkable gap.

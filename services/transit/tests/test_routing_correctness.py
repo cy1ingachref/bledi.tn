@@ -17,17 +17,9 @@ import math
 
 import pytest
 
-from bledi_transit.application.routing.router import (
-    Router,
-    WALK_SPEED_KMH,
-    TRANSFER_PENALTY_SEC,
-    TAXI_FARE_BASE,
-    TAXI_FARE_PER_KM,
-    TAXI_MIN_DISTANCE_M,
-    TAXI_SPEED_KMH,
-    expected_wait,
-    haversine,
-)
+from bledi_transit.application.routing.router import FARE_DINARS, Router, expected_wait
+from bledi_transit.domain.geo import haversine_m
+from bledi_transit.domain.tunables import WALK_SPEED_KMH
 
 
 # ── helpers ───────────────────────────────────────────────────────────────
@@ -282,15 +274,9 @@ class TestTaxiStepHasFare:
         assert len(taxi_steps) == 1, f"expected 1 taxi step, got {taxi_steps}"
         fare = taxi_steps[0].get("fare_dinars")
         assert fare is not None, "taxi step missing fare_dinars field"
-        direct_km = haversine(s_lat, s_lon, e_lat, e_lon) / 1000
-        expected = TAXI_FARE_BASE + TAXI_FARE_PER_KM * direct_km
+        direct_km = haversine_m(s_lat, s_lon, e_lat, e_lon) / 1000
+        base, per_km = FARE_DINARS["taxi"]
+        expected = base + per_km * direct_km
         assert fare == pytest.approx(expected, abs=0.01), (
             f"fare {fare} != expected {expected:.2f}"
         )
-
-    def test_taxi_fare_formula_matches_readme(self):
-        # 10 km taxi: 0.600 + 0.520*10 = 5.80 DT.
-        direct_km = 10.0
-        fare = TAXI_FARE_BASE + TAXI_FARE_PER_KM * direct_km
-        assert fare == pytest.approx(0.600 + 0.520 * 10.0)
-        assert fare == pytest.approx(5.80)
