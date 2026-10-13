@@ -1,6 +1,7 @@
 <script lang="ts">
   // Vector icon set (stroke-based, single family, consistent 1.75 stroke).
-  // No emoji used as structural icons.
+  // No emoji used as structural icons anywhere in the app: they are
+  // font-dependent, unthemeable, and render as tofu boxes on a bare install.
   let { name, size = 20, stroke = 1.75, cls = "" }: {
     name: string;
     size?: number;
@@ -20,6 +21,7 @@
     pin: '<path d="M12 21.2s-7-5.6-7-11.1a7 7 0 1 1 14 0c0 5.5-7 11.1-7 11.1z"/><circle cx="12" cy="10" r="2.6"/>',
     check: '<path d="M5 12.6l4.6 4.6L19 7.4"/>',
     locate: '<circle cx="12" cy="12" r="6.5"/><path d="M12 2.2v3.1M12 18.7v3.1M2.2 12h3.1M18.7 12h3.1"/><circle cx="12" cy="12" r="2.1"/>',
+    crosshair: '<circle cx="12" cy="12" r="8.4"/><path d="M12 1.6v4.2M12 18.2v4.2M1.6 12h4.2M18.2 12h4.2"/><circle cx="12" cy="12" r="1.6"/>',
     clock: '<circle cx="12" cy="12" r="9"/><path d="M12 6.8v5.4l3.2 1.9"/>',
     coin: '<rect x="2.4" y="6.2" width="19.2" height="11.6" rx="2.2"/><circle cx="12" cy="12" r="2.5"/><path d="M6.2 12h.02M17.8 12h.02"/>',
     transfer: '<path d="M6.5 3.6L3.4 6.7l3.1 3.1"/><path d="M3.4 6.7h11.2a4.1 4.1 0 0 1 0 8.2H9.2"/><path d="M11.8 18.3l3.1-3.1"/>',
@@ -29,7 +31,17 @@
     search: '<circle cx="11" cy="11" r="6.8"/><path d="M20.2 20.2l-4.4-4.4"/>',
     alert: '<circle cx="12" cy="12" r="9"/><path d="M12 7.6v5.2M12 16.4h.02"/>',
     layers: '<path d="M12 3.2l9 4.6-9 4.6-9-4.6 9-4.6z"/><path d="M3 12.4l9 4.6 9-4.6"/><path d="M3 16.6l9 4.6 9-4.6"/>',
-    route: '<circle cx="6.2" cy="5.6" r="2.4"/><circle cx="17.8" cy="18.4" r="2.4"/><path d="M6.2 8v5.2a3.2 3.2 0 0 0 3.2 3.2h5.6"/>'
+    network: '<circle cx="5.5" cy="5.5" r="2.4"/><circle cx="18.5" cy="8" r="2.4"/><circle cx="8" cy="18" r="2.4"/><path d="M7.7 6.4l8.6 1.1M6.4 7.7l1.1 8.1M16.7 9.7l-6.9 6.7"/>',
+    eye: '<path d="M2.2 12S5.8 5.6 12 5.6 21.8 12 21.8 12 18.2 18.4 12 18.4 2.2 12 2.2 12z"/><circle cx="12" cy="12" r="2.9"/>',
+    eyeOff: '<path d="M10.6 6a9.6 9.6 0 0 1 1.4-.1c6.2 0 9.8 6.1 9.8 6.1a17 17 0 0 1-2.9 3.6"/><path d="M6.3 7.6A17 17 0 0 0 2.2 12s3.6 6.1 9.8 6.1a9.4 9.4 0 0 0 4-.9"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/><path d="M3.2 3.2l17.6 17.6"/>',
+    arrowUp: '<path d="M12 19.5V5M6 11l6-6 6 6"/>',
+    arrowDown: '<path d="M12 4.5V19M6 13l6 6 6-6"/>',
+    arrowRight: '<path d="M4.5 12h15M13 6l6 6-6 6"/>',
+    info: '<circle cx="12" cy="12" r="9"/><path d="M12 11.2v5.2M12 7.9h.02"/>',
+    target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="1"/>',
+    rail: '<path d="M8 3.5h8M7 3.5l-2 4v11M17 3.5l2 4v11"/><path d="M5 12h14M5 18.5h14"/><path d="M9.5 8h5M9.5 15h5"/>',
+    // The design's brand glyph: an S-curve route between two stops.
+    route: '<circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6H14a3 3 0 010 6h-4a3 3 0 000 6h5.5"/>'
   };
 
   const d = $derived(PATHS[name] ?? PATHS.pin);

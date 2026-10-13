@@ -15,6 +15,19 @@
   --color-brand-800: #155e75;
   --color-brand-900: #164e63;
   --color-brand-950: #083344;
+
+  /* Dusk palette — warm sunset on a deep violet night. */
+  --color-dusk-bg: #0f0b1a;
+  --color-dusk-sea: #0a1230;
+  --color-dusk-land: #1a1430;
+  --color-dusk-tx: #f6ead6;
+  --color-dusk-mu: #a597b8;
+  --color-dusk-a1: #ffa95c;
+  --color-dusk-a2: #ff4f8b;
+  --color-dusk-glow: #3df2c9;
+
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 html,
@@ -24,41 +37,112 @@ body {
 }
 
 body {
-  background: #070d18;
-  color: #e2e8f0;
-  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--g-bg, #0f0b1a);
+  color: var(--g-tx, #f6ead6);
+  font-family: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Leaflet dark-mode tweaks */
+/* ── Global surface tokens ──────────────────────────────────────────────────
+   The map chrome (Leaflet controls, tooltips, attribution, clusters) lives
+   OUTSIDE the Svelte component, so it cannot read the component's scoped
+   variables. These mirror the neon-Dusk tokens on :root and flip with
+   data-theme, which the inline script in app.html sets before first paint.
+
+   The --n-<mode> hues are declared here as well as in the component because
+   the network glow rules in the component read them from a :global() scope
+   that resolves against :root, not against .app. */
+:root,
+:root[data-theme="dark"] {
+  --g-bg: #05030c;
+  --g-sea: #0a0620;
+  --g-tx: #ece7f7;
+  --g-mu: #8b83a8;
+  --g-mu-2: #635d7d;
+  --g-line: rgba(150, 120, 255, 0.18);
+  --g-surf: rgba(13, 9, 26, 0.95);
+  --g-surf-hover: rgba(30, 20, 58, 0.96);
+  --g-a1: #ff8ad4;
+  --g-glow: #3df2c9;
+  --g-shadow: rgba(0, 0, 0, 0.6);
+
+  --n-bus: #ff3d81;
+  --n-tram: #ffc400;
+  --n-metro: #2f7bff;
+  --n-train: #a855f7;
+  --n-louaj: #00e5c0;
+  --n-walk: #8b83a8;
+  --n-unk: #5a5473;
+}
+
+:root[data-theme="light"] {
+  --g-bg: #f6f3ff;
+  --g-sea: #e2e8ff;
+  --g-tx: #1a1330;
+  --g-mu: #635a80;
+  --g-mu-2: #8b83a8;
+  --g-line: rgba(50, 30, 100, 0.16);
+  --g-surf: rgba(255, 255, 255, 0.96);
+  --g-surf-hover: rgba(255, 255, 255, 0.99);
+  --g-a1: #b81f7a;
+  --g-glow: #0a7a62;
+  --g-shadow: rgba(60, 30, 110, 0.2);
+
+  --n-bus: #c4135b;
+  --n-tram: #8a6400;
+  --n-metro: #1b53c4;
+  --n-train: #6d28c9;
+  --n-louaj: #046b5c;
+  --n-walk: #6b7280;
+  --n-unk: #7a7392;
+}
+
+/* Leaflet chrome follows the theme */
 .leaflet-container {
-  background: #0b1220;
+  background: var(--g-sea);
   font-family: inherit;
 }
 
-/* Darken standard OSM tiles to match the theme */
-.map-tiles-dark {
-  filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.88) saturate(0.7);
-}
-
 .leaflet-control-attribution {
-  background: rgba(7, 13, 24, 0.75) !important;
-  color: #64748b !important;
+  background: var(--g-surf) !important;
+  color: var(--g-mu-2) !important;
   font-size: 10px !important;
 }
 
 .leaflet-control-attribution a {
-  color: #94a3b8 !important;
+  color: var(--g-mu) !important;
 }
 
 .leaflet-bar a {
-  background: #111c2e !important;
-  color: #cbd5e1 !important;
-  border-color: #1e293b !important;
+  background: var(--g-surf) !important;
+  color: var(--g-tx) !important;
+  border-color: var(--g-line) !important;
+  backdrop-filter: blur(16px);
 }
 
 .leaflet-bar a:hover {
-  background: #1e293b !important;
+  background: var(--g-surf-hover) !important;
+  border-color: var(--g-a1) !important;
+}
+
+/* Tooltips follow the glass language */
+.leaflet-tooltip {
+  background: var(--g-surf) !important;
+  border: 1px solid var(--g-line) !important;
+  color: var(--g-tx) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 26px var(--g-shadow) !important;
+  font-size: 11.5px !important;
+  padding: 5px 9px !important;
+  backdrop-filter: blur(10px);
+}
+
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+  border-top-color: var(--g-surf) !important;
+  border-bottom-color: var(--g-surf) !important;
 }
 
 /* Custom scrollbar */
@@ -68,14 +152,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b1220;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: var(--g-line);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: var(--g-mu-2);
 }

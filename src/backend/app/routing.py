@@ -684,12 +684,18 @@ def fare_for_itinerary(legs: Sequence[dict[str, Any]]) -> float:
 # family-based API, but nothing hides one mode inside another any more.
 #
 # User-facing mode -> seed line.mode values that map onto it.
+# The louage_red|blue|green tags come from the secondary louage seed
+# (seed_routes_destination_tunis.json), which classifies shared taxis by route
+# colour. They are all louage and must not fall through to the "unknown -> bus"
+# default in canonical_mode, which would mislabel them as scheduled buses.
 MODE_ALIASES: dict[str, frozenset[str]] = {
     "bus": frozenset({"bus", "rfr"}),
     "tram": frozenset({"tram"}),
     "metro": frozenset({"metro"}),
     "train": frozenset({"train", "rail"}),
-    "louaj": frozenset({"louaj", "louage"}),
+    "louaj": frozenset({
+        "louaj", "louage", "louage_red", "louage_blue", "louage_green",
+    }),
     "taxi": frozenset({"taxi"}),
     "walk": frozenset({"walk"}),
 }
@@ -719,9 +725,14 @@ MODE_LABELS_FR: dict[str, str] = {
     "tram": "Tramway",
     "metro": "Metro",
     "train": "Train",
-    "louaj": "Louage",
-    "taxi": "Taxi",
+    # Taxi and louage are one rider-facing category (road for hire); the UI
+    # presents them as a single chip, so the label matches that.
+    "louaj": "Taxi / Louage",
+    "taxi": "Taxi / Louage",
     "walk": "Marche",
+    # Station-only tag: a geocoded stop whose operator export carried no mode.
+    # It is not routable, so it is deliberately absent from USER_MODES.
+    "unclassified": "Non classé",
 }
 
 # Legacy family groupings, kept so /api/v1/route/modes and
@@ -849,12 +860,21 @@ def modes_for(families: frozenset[str] | list[str] | set[str]) -> frozenset[str]
 
 def label_for(families: frozenset[str]) -> str:
     """Human label for a legacy family selection."""
-    names = {"bus": "Bus", "louaj": "Louaj / Taxi", "train": "Train / Metro"}
+    names = {"bus": "Bus", "louaj": "Taxi / Louage", "train": "Train / Metro"}
     return " + ".join(names[f] for f in FAMILIES if f in families)
 
 
 def mode_label_fr(mode: str) -> str:
-    """French label for one user-facing mode."""
+    """French label for one user-facing mode.
+
+    The label table is consulted with the RAW value first, before
+    canonicalisation. Otherwise a station-only tag such as `unclassified`
+    would be absorbed by canonical_mode's "unknown -> bus" fallback and the
+    76 untagged sweep stops would be labelled as scheduled buses.
+    """
+    raw = str(mode or "").strip().lower()
+    if raw in MODE_LABELS_FR:
+        return MODE_LABELS_FR[raw]
     return MODE_LABELS_FR.get(canonical_mode(mode), mode)
 
 
