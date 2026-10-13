@@ -1,18 +1,20 @@
 //! In-memory fakes of every port, for use case and HTTP tests.
 
 use std::sync::atomic::{AtomicUsize, Ordering};
-use std::sync::Mutex;
+use std::sync::{Arc, Mutex};
 
 use async_trait::async_trait;
+use bledi_domain::favorite::Favorite;
 use bledi_domain::friendship::{Friendship, FriendshipStatus};
 use bledi_domain::geo::SearchArea;
+use bledi_domain::location_share::LocationShare;
 use bledi_domain::memory::Memory;
 use bledi_domain::user::User;
 use chrono::{DateTime, Utc};
 use uuid::Uuid;
 
 use crate::ports::*;
-use crate::AppError;
+use crate::{AppError, Ports};
 
 fn nearest<T>(
     rows: Vec<T>,
@@ -259,5 +261,185 @@ impl FriendshipStore for InMemoryFriendshipStore {
         let before = rows.len();
         rows.retain(|f| !links(f, a, b));
         Ok(rows.len() < before)
+    }
+}
+
+#[derive(Default)]
+pub struct InMemoryFavoriteStore(Mutex<Vec<Favorite>>);
+
+#[async_trait]
+impl FavoriteStore for InMemoryFavoriteStore {
+    async fn owned_by(&self, user_id: Uuid) -> Result<Vec<Favorite>> {
+        let favorites = self.0.lock().unwrap();
+        Ok(favorites
+            .iter()
+            .rev()
+            .filter(|f| f.user_id == user_id)
+            .cloned()
+            .collect())
+    }
+
+    async fn upsert(&self, new: NewFavorite) -> Result<Favorite> {
+        let mut favorites = self.0.lock().unwrap();
+        let same = |f: &&mut Favorite| {
+            f.user_id == new.user_id && f.kind == new.kind && f.ref_id == new.ref_id
+        };
+        if let Some(existing) = favorites.iter_mut().find(same) {
+            existing.label = new.label;
+            return Ok(existing.clone());
+        }
+        let favorite = Favorite {
+            id: Uuid::new_v4(),
+            user_id: new.user_id,
+            kind: new.kind,
+            ref_id: new.ref_id,
+            label: new.label,
+            created_at: Utc::now(),
+        };
+        favorites.push(favorite.clone());
+        Ok(favorite)
+    }
+
+    async fn delete(&self, id: Uuid, user_id: Uuid) -> Result<bool> {
+        let mut favorites = self.0.lock().unwrap();
+        let before = favorites.len();
+        favorites.retain(|f| !(f.id == id && f.user_id == user_id));
+        Ok(favorites.len() < before)
+    }
+}
+
+#[derive(Default)]
+pub struct InMemoryLocationShareStore(Mutex<Vec<LocationShare>>);
+
+#[async_trait]
+impl LocationShareStore for InMemoryLocationShareStore {
+    async fn owned_by(&self, user_id: Uuid) -> Result<Vec<LocationShare>> {
+        let shares = self.0.lock().unwrap();
+        let mut mine: Vec<_> = shares
+            .iter()
+            .rev()
+            .filter(|s| s.user_id == user_id)
+            .cloned()
+            .collect();
+        mine.sort_by_key(|s| std::cmp::Reverse(s.updated_at));
+        Ok(mine)
+    }
+
+    async fn nearby(
+        &self,
+        owners: &[Uuid],
+        area: &SearchArea,
+        now: DateTime<Utc>,
+        limit: usize,
+    ) -> Result<Vec<LocationShare>> {
+        let live = self
+            .0
+            .lock()
+            .unwrap()
+            .iter()
+            .filter(|s| owners.contains(&s.user_id) && s.is_live(now))
+            .cloned()
+            .collect();
+        Ok(nearest(live, area, |s| (s.lat, s.lon), limit))
+    }
+
+    async fn insert(&self, new: NewLocationShare) -> Result<LocationShare> {
+        let now = Utc::now();
+        let share = LocationShare {
+            id: Uuid::new_v4(),
+            user_id: new.user_id,
+            lat: new.location.lat(),
+            lon: new.location.lon(),
+            accuracy_m: new.accuracy_m,
+            note: new.note,
+            is_active: new.is_active,
+            expires_at: Some(new.expires_at),
+            created_at: now,
+            updated_at: now,
+        };
+        self.0.lock().unwrap().push(share.clone());
+        Ok(share)
+    }
+
+    async fn get(&self, id: Uuid) -> Result<Option<LocationShare>> {
+        Ok(self.0.lock().unwrap().iter().find(|s| s.id == id).cloned())
+    }
+
+    async fn update(&self, share: &LocationShare) -> Result<()> {
+        let mut shares = self.0.lock().unwrap();
+        if let Some(stored) = shares.iter_mut().find(|s| s.id == share.id) {
+            *stored = share.clone();
+        }
+        Ok(())
+    }
+
+    async fn delete(&self, id: Uuid, user_id: Uuid) -> Result<bool> {
+        let mut shares = self.0.lock().unwrap();
+        let before = shares.len();
+        shares.retain(|s| !(s.id == id && s.user_id == user_id));
+        Ok(shares.len() < before)
+    }
+}
+
+/// One fake per port, shared by everything built from `ports()` so a test can seed and inspect state.
+pub struct Fakes {
+    pub users: Arc<InMemoryUserStore>,
+    pub memories: Arc<InMemoryMemoryStore>,
+    pub friendships: Arc<InMemoryFriendshipStore>,
+    pub favorites: Arc<InMemoryFavoriteStore>,
+    pub location_shares: Arc<InMemoryLocationShareStore>,
+    pub hasher: Arc<FakePasswordHasher>,
+    pub clock: Arc<FixedClock>,
+}
+
+impl Default for Fakes {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Fakes {
+    pub fn new() -> Self {
+        Self {
+            users: Arc::default(),
+            memories: Arc::default(),
+            friendships: Arc::default(),
+            favorites: Arc::default(),
+            location_shares: Arc::default(),
+            hasher: Arc::default(),
+            clock: Arc::new(FixedClock(Utc::now())),
+        }
+    }
+
+    pub fn ports(&self) -> Ports {
+        Ports {
+            users: self.users.clone(),
+            memories: self.memories.clone(),
+            friendships: self.friendships.clone(),
+            favorites: self.favorites.clone(),
+            location_shares: self.location_shares.clone(),
+            hasher: self.hasher.clone(),
+            tokens: Arc::new(FakeTokenIssuer),
+            clock: self.clock.clone(),
+        }
+    }
+
+    pub fn now(&self) -> DateTime<Utc> {
+        self.clock.0
+    }
+
+    /// Registers a user whose password is `test123456`.
+    pub async fn user(&self, email: &str) -> Uuid {
+        let new = NewUser {
+            email: email.into(),
+            password_hash: self.hasher.hash("test123456").await.unwrap(),
+            display_name: None,
+        };
+        self.users.insert(new).await.unwrap().id
+    }
+
+    pub async fn befriend(&self, a: Uuid, b: Uuid) {
+        self.friendships.request(a, b).await.unwrap();
+        self.friendships.accept(a, b).await.unwrap();
     }
 }
