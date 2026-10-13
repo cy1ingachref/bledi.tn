@@ -1,8 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { provideServices } from "$lib/app/services";
   import "../app.css";
 
   let { children } = $props();
+
+  provideServices();
 
   // Service worker registration. SvelteKit's adapter-static writes index.html
   // AFTER vite-plugin-pwa's HTML transform runs, so the plugin's injected

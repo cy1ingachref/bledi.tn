@@ -1,35 +1,27 @@
 import type { LouageLink, MapOverlayFeature } from "$lib/domain/transit";
 import type { TransitService } from "./transitService";
 
-function message(e: unknown): string {
-  return e instanceof Error ? e.message : String(e);
-}
-
 /**
- * Rail and road base layers. A failure is reported as a problem rather than
- * thrown, so a missing overlay never takes the rest of the map down.
+ * Rail and road base layers, and the louage links, are context around the
+ * route. Each one that fails or was never built comes back empty instead of
+ * throwing, so it never takes the rest of the map down.
  */
 export async function loadBaseLayers(
   transit: TransitService
-): Promise<{ rail: MapOverlayFeature[]; roads: MapOverlayFeature[]; problems: string[] }> {
+): Promise<{ rail: MapOverlayFeature[]; roads: MapOverlayFeature[] }> {
   try {
     const [rail, roads] = await Promise.all([transit.railOverlay(), transit.roadOverlay()]);
-    const problems: string[] = [];
-    if (rail.error) problems.push(`rail: ${rail.error}`);
-    if (roads.error) problems.push(`roads: ${roads.error}`);
-    return { rail: rail.features ?? [], roads: roads.features ?? [], problems };
-  } catch (e) {
-    return { rail: [], roads: [], problems: [message(e)] };
+    return { rail: rail.features ?? [], roads: roads.features ?? [] };
+  } catch {
+    return { rail: [], roads: [] };
   }
 }
 
-export async function loadLouageLinks(
-  transit: TransitService
-): Promise<{ links: LouageLink[]; problems: string[] }> {
+export async function loadLouageLinks(transit: TransitService): Promise<LouageLink[]> {
   try {
-    return { links: await transit.louageLinks(), problems: [] };
-  } catch (e) {
-    return { links: [], problems: [`louage: ${message(e)}`] };
+    return await transit.louageLinks();
+  } catch {
+    return [];
   }
 }
 

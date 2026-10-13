@@ -152,8 +152,6 @@ export interface LouageLink {
 
 export type Objective = "fastest" | "cheapest" | "fewest_transfers";
 
-export const OBJECTIVES: Objective[] = ["fastest", "cheapest", "fewest_transfers"];
-
 /** A named place the rider picked; latitude and longitude are never typed in. */
 export interface Endpoint {
   kind: "stop" | "city" | "map" | "gps";
