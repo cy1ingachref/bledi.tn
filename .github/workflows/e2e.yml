@@ -40,3 +40,32 @@ jobs:
 
       - name: Smoke test
         run: services/accounts/docker/smoke-test.sh "$LOCAL_IMAGE"
+
+  stack:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (contains(github.event.pull_request.labels.*.name, 'e2e') &&
+       (github.event.action != 'labeled' || github.event.label.name == 'e2e'))
+    concurrency:
+      group: ${{ github.workflow }}-stack-${{ github.ref }}
+      cancel-in-progress: true
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Start the stack
+        run: |
+          {
+            echo "POSTGRES_PASSWORD=$(openssl rand -hex 16)"
+            echo "ACCOUNTS_DB_PASSWORD=$(openssl rand -hex 16)"
+            echo "JWT_SECRET=$(openssl rand -hex 32)"
+          } > .env
+          docker compose up -d --build
+
+      - name: Check it through the gateway
+        run: e2e/stack-check.sh
+
+      - name: Logs
+        if: failure()
+        run: docker compose logs --tail 100
