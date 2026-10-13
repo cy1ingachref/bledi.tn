@@ -1,11 +1,12 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import Icon from "$lib/ui/Icon.svelte";
+  import Alert from "$lib/ui/Alert.svelte";
+  import Spinner from "$lib/ui/Spinner.svelte";
   import type {
     Endpoint,
     NetworkSegment,
     Objective,
-    RouteLeg,
     RoutePlan,
     Station,
     StationDetail,
@@ -14,46 +15,31 @@
     MapOverlayFeature,
     LouageLink,
   } from "$lib/domain/transit";
-  import {
-    DEFAULT_MODES,
-    defaultSelection,
-    isStationShown,
-    servedModes,
-    uniqueModes,
-  } from "$lib/domain/modes";
-  import { fareOf, isWalkLeg, mergeLegs } from "$lib/domain/itinerary";
+  import { DEFAULT_MODES, defaultSelection, isStationShown, servedModes } from "$lib/domain/modes";
   import { planTrip, tripProblem } from "$lib/application/planTrip";
-  import { loadBaseLayers, loadLouageLinks, louageDestinations } from "$lib/application/mapData";
-  import {
-    translator,
-    dirOf,
-    formatDuration,
-    legLabel,
-    modeLabelFor,
-    type Lang,
-  } from "$lib/application/i18n";
+  import { loadBaseLayers, loadLouageLinks } from "$lib/application/mapData";
+  import { translator, dirOf, modeLabelFor, type Lang } from "$lib/application/i18n";
   import { useTransit } from "$lib/ui/context";
-  import { MODE_STYLE, modeColor, modeIcon } from "$lib/ui/modeStyle";
+  import { MODE_STYLE } from "$lib/ui/modeStyle";
   import { initTheme, resolvedTheme } from "$lib/ui/theme";
   import { TransitMap } from "./transitMap";
   import AppHeader from "./AppHeader.svelte";
-  import MapLegend from "./MapLegend.svelte";
   import PlaceSearch from "./PlaceSearch.svelte";
   import TripOptions from "./TripOptions.svelte";
+  import RouteResults from "./RouteResults.svelte";
+  import StationInspector from "./StationInspector.svelte";
+  import MapLegend from "./MapLegend.svelte";
 
   const transit = useTransit();
 
-  // ── State ─────────────────────────────────────────────────────────────────
   let mapEl: HTMLDivElement | null = $state(null);
   let tmap: TransitMap | null = null;
 
   let lang = $state<Lang>("fr");
   const t = $derived(translator(lang));
   const dir = $derived(dirOf(lang));
-
   const dark = $derived($resolvedTheme);
 
-  // ── Data ──────────────────────────────────────────────────────────────────
   let stations = $state<Station[]>([]);
   let stationMeta = $state<StationsMeta>({ count: 0, total: 0, by_mode: {} });
   let loadingStations = $state(true);
@@ -61,7 +47,6 @@
   let loadingNetwork = $state(true);
   let error = $state("");
 
-  // Physical rail/road base layers, plus the louage connection graph.
   let baseRail = $state<MapOverlayFeature[]>([]);
   let baseRoads = $state<MapOverlayFeature[]>([]);
   let louageLinks = $state<LouageLink[]>([]);
@@ -81,7 +66,6 @@
   let toast = $state("");
   let toastTimer: ReturnType<typeof setTimeout> | null = null;
 
-  // Map layer visibility
   let showRoads = $state(true);
   let showRails = $state(true);
   let showUnclassified = $state(false);
@@ -89,7 +73,6 @@
   // rider asks to see the rest of the network again.
   let focusRoute = $state(true);
 
-  // Station inspector
   let inspected = $state<StationDetail | null>(null);
   let inspectLoading = $state(false);
   let inspectError = $state("");
@@ -238,7 +221,6 @@
     pickMode = null;
   }
 
-  // ── Routing ───────────────────────────────────────────────────────────────
   async function computeRoute() {
     const problem = tripProblem(selected, from, to);
     if (problem || !from || !to) {
@@ -267,17 +249,13 @@
     }
   }
 
-  function legColor(leg: RouteLeg): string {
-    return isWalkLeg(leg) ? "#8b83a8" : modeColor(leg.mode ?? "bus");
+  function selectItinerary(i: number) {
+    selectedItinerary = i;
+    const itin = routePlan?.itineraries[i];
+    if (itin) tmap?.route.draw(itin, dark);
+    focusRoute = true;
   }
 
-  /** Steps for the selected itinerary, with same-line hops collapsed. */
-  const steps = $derived.by(() => {
-    const itin = routePlan?.itineraries?.[selectedItinerary];
-    return itin ? mergeLegs(itin.legs ?? []) : [];
-  });
-
-  // ── Lifecycle ─────────────────────────────────────────────────────────────
   onMount(() => {
     // The inline script in app.html already set data-theme before first paint,
     // so this only syncs the store and wires OS-change following.
@@ -358,7 +336,6 @@
   <AppHeader bind:lang {t} />
 
   <div class="body">
-    <!-- ── Panel column: scrollable content + pinned action footer ── -->
     <div class="panel-col">
       <aside class="side">
         <PlaceSearch
@@ -388,92 +365,19 @@
         />
 
         {#if error}
-          <div class="alert" role="alert">
-            <Icon name="alert" size={15} /><span>{error}</span>
-          </div>
+          <Alert message={error} />
         {/if}
 
-        <!-- ── Results ──────────────────────────────────────────────────── -->
-        {#if routePlan?.itineraries?.length}
-          <section class="sec results" bind:this={resultsEl}>
-            <div class="sec-head">
-              <h2>{t("results.title")}</h2>
-              <span class="sub">{t("results.subtitle")}</span>
-            </div>
-
-            {#each routePlan.itineraries as itin, i}
-              {@const fare = fareOf(itin)}
-              <button
-                class="itin"
-                class:on={selectedItinerary === i}
-                onclick={() => { selectedItinerary = i; tmap?.route.draw(itin, dark); focusRoute = true; }}
-                aria-pressed={selectedItinerary === i}
-              >
-                <div class="it-top">
-                  <span class="it-n">{t("results.option")} {i + 1}</span>
-                  <span class="it-dur">{formatDuration(itin.duration_min, t)}</span>
-                </div>
-                <div class="it-fare">
-                  {#if fare > 0}<span class="it-price">{fare.toFixed(2)} DT</span>{/if}
-                  <span class="it-mode">
-                    {uniqueModes(itin.modes_used).map((mu) => modeLabelFor(t, mu)).join(" + ")}
-                  </span>
-                </div>
-                <!-- Leg bar: one neon segment per transport type. -->
-                <div class="legs" aria-hidden="true">
-                  {#each uniqueModes(itin.modes_used) as mu}
-                    <span class="leg" style="--c:{modeColor(mu)}"></span>
-                  {/each}
-                </div>
-                <div class="it-meta">
-                  <span>
-                    <Icon name="transfer" size={12} />
-                    {itin.transfers === 0
-                      ? t("results.direct")
-                      : `${itin.transfers} ${t(itin.transfers > 1 ? "results.transfersPlural" : "results.transfers")}`}
-                  </span>
-                  {#if i === 0}<span class="tag">{t("results.best")}</span>{/if}
-                </div>
-                {#if selectedItinerary === i && steps.length > 0}
-                  <ol class="steps">
-                    {#each steps as leg}
-                      <li class="step" style="--c:{legColor(leg)}">
-                        <span class="s-ic">
-                          <Icon
-                            name={isWalkLeg(leg) ? "walk" : modeIcon(leg.mode ?? "bus")}
-                            size={12}
-                          />
-                        </span>
-                        <span class="s-tx">{legLabel(t, leg)}</span>
-                        {#if leg.duration_min}<span class="s-d">{Math.round(leg.duration_min)}′</span>{/if}
-                      </li>
-                    {/each}
-                  </ol>
-                {/if}
-              </button>
-            {/each}
-
-            <!-- Focus control: show the route alone, or bring the whole
-                 network back. The rider decides; the default is the route. -->
-            <button
-              class="focus-btn"
-              class:on={focused}
-              onclick={() => (focusRoute = !focusRoute)}
-              aria-pressed={focused}
-            >
-              <Icon name={focused ? "eyeOff" : "network"} size={14} />
-              {focused ? t("results.showNetwork") : t("results.hideNetwork")}
-            </button>
-            {#if focused}
-              <p class="focus-note" role="status">
-                <Icon name="info" size={12} /> {t("results.focused")}
-              </p>
-            {/if}
-          </section>
-        {:else if routePlan}
-          <div class="alert warn" role="status">
-            <Icon name="alert" size={15} /><span>{t("results.none")}</span>
-          </div>
+        {#if routePlan}
+          <RouteResults
+            {t}
+            plan={routePlan}
+            selectedIndex={selectedItinerary}
+            {focused}
+            bind:el={resultsEl}
+            onSelect={selectItinerary}
+            onToggleFocus={() => (focusRoute = !focusRoute)}
+          />
         {/if}
       </aside>
 
@@ -482,21 +386,20 @@
       <div class="cta-bar">
         <button class="cta" onclick={computeRoute} disabled={computing || count === 0}>
           {#if computing}
-            <span class="spin dark" aria-hidden="true"></span> {t("action.calculating")}
+            <Spinner /> {t("action.calculating")}
           {:else}
             {t("action.calculate")}
           {/if}
         </button>
       </div>
-    </div><!-- /.panel-col -->
+    </div>
 
-    <!-- ── Map ────────────────────────────────────────────────────────────── -->
     <main class="map-wrap" class:focused>
       <div bind:this={mapEl} class="map"></div>
 
       {#if loadingStations || loadingNetwork}
         <div class="float">
-          <span class="spin dark"></span>
+          <Spinner />
           {loadingStations ? t("loading.stations") : t("loading.network")}
         </div>
       {/if}
@@ -508,124 +411,17 @@
         </div>
       {/if}
 
-      <!-- ── Station inspector ──────────────────────────────────────────────
-           What actually calls at this stop: every line, the direction it runs
-           in, and whether it starts, ends or passes here. -->
       {#if inspected || inspectLoading}
-        <aside class="inspector" aria-live="polite">
-          <div class="ins-head">
-            <div class="ins-title">
-              <span class="ins-eyebrow">{t("station.title")}</span>
-              <h3>{inspected?.name ?? ""}</h3>
-              {#if inspected?.city}<span class="ins-city">{inspected.city}</span>{/if}
-            </div>
-            <button class="ins-close" onclick={() => (inspected = null)} aria-label={t("results.steps")}>
-              <Icon name="close" size={15} />
-            </button>
-          </div>
-
-          {#if inspectLoading}
-            <p class="ins-loading"><span class="spin dark"></span> {t("loading.station")}</p>
-          {:else if inspectError}
-            <div class="alert" role="alert"><Icon name="alert" size={14} /><span>{inspectError}</span></div>
-          {:else if inspected}
-            <div class="ins-modes">
-              {#if inspected.modes.length}
-                {#each inspected.modes as m}
-                  <span class="ins-mode" style="--c:{modeColor(m)}">
-                    <Icon name={modeIcon(m)} size={12} />{modeLabelFor(t, m)}
-                  </span>
-                {/each}
-              {:else}
-                <span class="ins-mode none"><Icon name="pin" size={12} />{t("modes.unclassified")}</span>
-              {/if}
-              <span class="ins-count">{inspected.count} {t("station.count")}</span>
-            </div>
-
-            <div class="ins-actions">
-              <button
-                class="ins-act"
-                onclick={() => {
-                  if (inspected?.lat && inspected?.lon)
-                    setEndpoint("from", {
-                      kind: "stop", id: inspected.id, name: inspected.name ?? "",
-                      lat: inspected.lat, lon: inspected.lon, modes: inspected.modes,
-                    });
-                }}
-                disabled={!inspected.lat}
-              >
-                <span class="badge a sm">A</span>{t("station.setFrom")}
-              </button>
-              <button
-                class="ins-act"
-                onclick={() => {
-                  if (inspected?.lat && inspected?.lon)
-                    setEndpoint("to", {
-                      kind: "stop", id: inspected.id, name: inspected.name ?? "",
-                      lat: inspected.lat, lon: inspected.lon, modes: inspected.modes,
-                    });
-                }}
-                disabled={!inspected.lat}
-              >
-                <span class="badge b sm">B</span>{t("station.setTo")}
-              </button>
-            </div>
-
-            <h4>{t("station.lines")}</h4>
-            {#if inspected.lines.length}
-              <ul class="lines">
-                {#each inspected.lines as ln}
-                  <li class="line" style="--c:{modeColor(ln.mode)}">
-                    <span class="ln-ic"><Icon name={modeIcon(ln.mode)} size={13} /></span>
-                    <span class="ln-body">
-                      <span class="ln-top">
-                        <b>{modeLabelFor(t, ln.mode)}{ln.number ? ` ${ln.number}` : ""}</b>
-                        <span class="ln-role">
-                          {ln.role === "origin"
-                            ? t("station.from")
-                            : ln.role === "terminus"
-                              ? t("station.to")
-                              : t("station.through")}
-                        </span>
-                      </span>
-                      {#if ln.direction}<span class="ln-dir">{ln.direction}</span>{/if}
-                      <span class="ln-meta">
-                        {#if ln.operator}{ln.operator} · {/if}{ln.stops_count} {t("status.stops")}
-                      </span>
-                    </span>
-                  </li>
-                {/each}
-              </ul>
-            {:else}
-              <p class="ins-none">
-                {inspected.lines_known ? t("station.none") : t("station.unlisted")}
-              </p>
-            {/if}
-
-            <!-- Louage connections: which places this louage station serves,
-                 resolved from its own destination list against real station
-                 records. Only shown for stops that ARE a louage terminal. -->
-            {#if louageDestinations(louageLinks, inspected.id).length}
-              <h4 class="ins-sub">{t("station.louage_links")}</h4>
-              <ul class="ins-lines">
-                {#each louageDestinations(louageLinks, inspected.id) as l}
-                  <li>
-                    <button
-                      class="ln-btn"
-                      onclick={() => focusStation(l.to, l.to_name)}
-                      title={l.destination_raw}
-                    >
-                      <span class="ln-top">
-                        <b>{l.to_name}</b>
-                        <span class="ln-role">{t("station.serves")}</span>
-                      </span>
-                    </button>
-                  </li>
-                {/each}
-              </ul>
-            {/if}
-          {/if}
-        </aside>
+        <StationInspector
+          {t}
+          station={inspected}
+          loading={inspectLoading}
+          error={inspectError}
+          {louageLinks}
+          onClose={() => (inspected = null)}
+          onSetEndpoint={setEndpoint}
+          onFocusStation={focusStation}
+        />
       {/if}
 
       <MapLegend {t} {chips} {selected} />
@@ -734,36 +530,6 @@
     display: flex; flex-direction: column; gap: 18px;
   }
 
-  /* ── Sections ───────────────────────────────────────────────────────────── */
-  .sec { display: flex; flex-direction: column; gap: 10px; }
-  .sec-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  h2 {
-    display: flex; align-items: center; gap: 6px;
-    margin: 0;
-    font-family: "Sora", system-ui, sans-serif;
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--mu);
-  }
-  h4 {
-    margin: 0;
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--mu-2);
-  }
-  .sub { font-size: 10px; color: var(--mu-2); }
-
-  .badge {
-    display: grid; place-items: center;
-    width: 20px; height: 20px; flex-shrink: 0;
-    border-radius: 50%;
-    font-size: 10px; font-weight: 800;
-    color: #05020e;
-  }
-  .badge.sm { width: 17px; height: 17px; font-size: 9px; }
-  .badge.a { background: #22d3ee; }
-  .badge.b { background: #f472b6; }
-
   /* ── CTA ────────────────────────────────────────────────────────────────── */
   .cta {
     position: relative; overflow: hidden;
@@ -803,29 +569,6 @@
   .cta:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
   .cta:disabled::after { animation: none; }
 
-  .spin {
-    width: 14px; height: 14px; flex-shrink: 0;
-    border: 2px solid color-mix(in srgb, var(--mu) 35%, transparent);
-    border-top-color: var(--mu);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-  }
-  .spin.dark { border-color: color-mix(in srgb, var(--on-accent) 35%, transparent); border-top-color: var(--on-accent); }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* ── Alerts / toast ─────────────────────────────────────────────────────── */
-  .alert {
-    display: flex; align-items: flex-start; gap: 8px;
-    padding: 10px 13px;
-    border: 1px solid rgba(255, 61, 129, 0.32);
-    border-radius: 14px;
-    background: rgba(255, 61, 129, 0.1);
-    color: #ffb3cc;
-    font-size: 12px; line-height: 1.45;
-  }
-  .alert.warn { border-color: rgba(255, 196, 0, 0.32); background: rgba(255, 196, 0, 0.1); color: #ffd98a; }
-  .alert :global(svg) { flex-shrink: 0; margin-top: 1px; }
-
   .toast {
     position: fixed;
     bottom: 26px; left: 50%;
@@ -843,96 +586,6 @@
     animation: rise 0.35s cubic-bezier(.2,.9,.2,1);
   }
   @keyframes rise { from { opacity: 0; transform: translate(-50%, 12px); } }
-
-  /* ── Results ────────────────────────────────────────────────────────────── */
-  .results { gap: 10px; }
-  .itin {
-    display: flex; flex-direction: column; gap: 8px;
-    width: 100%; padding: 14px;
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    background: var(--surf-2);
-    color: inherit;
-    font: inherit; text-align: start;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .itin:hover { border-color: rgba(200, 180, 255, 0.28); transform: translateX(3px); }
-  .itin.on {
-    border-color: var(--glow);
-    background: rgba(61, 242, 201, 0.06);
-    box-shadow: 0 0 22px rgba(61, 242, 201, 0.16);
-    transform: translateX(4px);
-  }
-  .it-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
-  .it-n { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mu-2); }
-  .it-dur {
-    font-family: "Sora", system-ui, sans-serif;
-    font-size: 22px; font-weight: 700; color: var(--tx);
-    font-variant-numeric: tabular-nums; letter-spacing: -0.4px;
-  }
-  .itin.on .it-dur { color: var(--glow); }
-
-  .it-fare { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-  .it-price { font-size: 13px; font-weight: 700; color: var(--a1); font-variant-numeric: tabular-nums; }
-  .it-mode { font-size: 11.5px; color: var(--mu); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-
-  /* Leg bar: proportional neon segments, one per transport type. */
-  .legs { display: flex; align-items: center; gap: 4px; }
-  .leg {
-    height: 8px; border-radius: 9px; flex: 1 1 0;
-    background: var(--c);
-    box-shadow: 0 0 10px color-mix(in srgb, var(--c) 70%, transparent);
-    transform-origin: left;
-    animation: grow 0.7s cubic-bezier(.2,.9,.2,1) both;
-  }
-  @keyframes grow { from { transform: scaleX(0); } }
-
-  .it-meta { display: flex; align-items: center; gap: 10px; color: var(--mu); font-size: 11.5px; }
-  .it-meta span { display: inline-flex; align-items: center; gap: 4px; }
-  .tag {
-    font-size: 10.5px; font-weight: 700;
-    padding: 3px 9px;
-    border-radius: 99px;
-    background: rgba(61, 242, 201, 0.14);
-    color: var(--glow);
-    margin-inline-start: auto;
-  }
-
-  .steps {
-    list-style: none; margin: 3px 0 0; padding: 9px 0 0;
-    border-top: 1px dashed rgba(200, 180, 255, 0.16);
-    display: flex; flex-direction: column; gap: 7px;
-  }
-  .step { display: flex; align-items: center; gap: 9px; font-size: 11.5px; color: var(--mu); }
-  .s-ic {
-    display: grid; place-items: center;
-    width: 22px; height: 22px; flex-shrink: 0;
-    border-radius: 7px;
-    background: color-mix(in srgb, var(--c) 20%, transparent);
-    color: var(--c);
-  }
-  .s-tx { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .s-d { color: var(--mu-2); font-variant-numeric: tabular-nums; }
-
-  /* Focus control: dim the rest of the network, or bring it back. */
-  .focus-btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    width: 100%; padding: 11px;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    background: var(--surf-2);
-    color: var(--mu);
-    font: 600 12px "DM Sans", system-ui, sans-serif;
-    cursor: pointer;
-    transition: all 0.25s ease;
-  }
-  .focus-btn:hover { border-color: var(--a1); color: var(--tx); }
-  .focus-btn.on { border-color: var(--glow); color: var(--glow); background: rgba(61, 242, 201, 0.08); }
-  .focus-note {
-    display: flex; align-items: center; gap: 6px;
-    margin: 0; font-size: 11px; color: var(--mu-2);
-  }
 
   /* ── Map ────────────────────────────────────────────────────────────────── */
   .map-wrap { position: relative; flex: 1; min-width: 0; }
@@ -1015,118 +668,6 @@
     z-index: 700;
   }
 
-  /* ── Station inspector ──────────────────────────────────────────────────── */
-  .inspector {
-    position: absolute;
-    top: 16px; inset-inline-end: 16px;
-    width: min(340px, calc(100% - 32px));
-    max-height: calc(100% - 32px);
-    overflow-y: auto;
-    z-index: 720;
-    padding: 15px;
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    background: var(--surf);
-    backdrop-filter: blur(22px) saturate(1.4);
-    box-shadow: 0 0 30px rgba(123, 92, 255, 0.18), 0 18px 50px rgba(0, 0, 0, 0.65);
-    display: flex; flex-direction: column; gap: 12px;
-    animation: slideIn 0.32s cubic-bezier(.2,.9,.2,1);
-  }
-  @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } }
-
-  .ins-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-  .ins-title { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-  .ins-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--glow); }
-  .ins-title h3 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: -0.2px; }
-  .ins-city { font-size: 11.5px; color: var(--mu); }
-  .ins-close {
-    display: grid; place-items: center;
-    width: 30px; height: 30px; flex-shrink: 0;
-    border-radius: 50%;
-    border: 1px solid var(--line);
-    background: var(--surf-2); color: var(--mu);
-    cursor: pointer;
-    transition: all 0.25s ease;
-  }
-  .ins-close:hover { border-color: var(--a1); color: var(--a1); transform: rotate(90deg); }
-  .ins-loading { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--mu); font-size: 12px; }
-
-  .ins-modes { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-  .ins-mode {
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 4px 9px;
-    border-radius: 99px;
-    border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
-    background: color-mix(in srgb, var(--c) 14%, transparent);
-    color: var(--c);
-    font-size: 11px; font-weight: 600;
-  }
-  .ins-mode.none { --c: var(--n-unk); }
-  .ins-count { margin-inline-start: auto; font-size: 10.5px; color: var(--mu-2); font-variant-numeric: tabular-nums; }
-
-  .ins-actions { display: flex; gap: 7px; }
-  .ins-act {
-    display: inline-flex; align-items: center; gap: 6px;
-    flex: 1; justify-content: center;
-    padding: 9px 8px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: var(--surf-2);
-    color: var(--tx);
-    font: 600 11.5px "DM Sans", system-ui, sans-serif;
-    cursor: pointer;
-    transition: all 0.25s ease;
-  }
-  .ins-act:hover:not(:disabled) { border-color: var(--glow); color: var(--glow); }
-  .ins-act:disabled { opacity: 0.45; cursor: not-allowed; }
-
-  .lines { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
-  .line {
-    display: flex; gap: 9px;
-    padding: 9px;
-    border: 1px solid var(--line);
-    border-inline-start: 3px solid var(--c);
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.025);
-  }
-  .ln-ic {
-    display: grid; place-items: center;
-    width: 24px; height: 24px; flex-shrink: 0;
-    border-radius: 8px;
-    background: color-mix(in srgb, var(--c) 18%, transparent);
-    color: var(--c);
-  }
-  .ln-body { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1; }
-  .ln-top { display: flex; align-items: baseline; gap: 7px; flex-wrap: wrap; }
-  .ln-top b { font-size: 12.5px; color: var(--tx); }
-  .ln-role { font-size: 10px; font-weight: 600; color: var(--c); }
-  .ln-dir { font-size: 11px; color: var(--mu); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .ln-meta { font-size: 10.5px; color: var(--mu-2); }
-  .ins-none { margin: 0; font-size: 11.5px; color: var(--mu-2); }
-  /* Louage connections: a sub-heading under the line list, and a button row per
-     destination so a rider can jump to the place the terminal serves. */
-  .ins-sub {
-    margin: 12px 0 6px;
-    font-size: 10.5px;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    color: var(--mu-2);
-    font-weight: 700;
-  }
-  .ln-btn {
-    display: block;
-    width: 100%;
-    text-align: start;
-    background: var(--surf-2);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 7px 9px;
-    cursor: pointer;
-    transition: border-color .15s, background .15s;
-  }
-  .ln-btn:hover { border-color: var(--n-louaj); background: rgba(0, 229, 192, .08); }
-  .ln-btn:focus-visible { outline: 2px solid var(--n-louaj); outline-offset: 2px; }
-
   /* ── Route animation ─────────────────────────────────────────────────────
      The draw-in is applied imperatively (see RouteDrawing) so it re-runs on
      every itinerary change; the flowing dash is pure CSS on a second polyline. */
@@ -1176,13 +717,13 @@
   .map-wrap :global(.tt-sub) { display: block; font-size: 10px; opacity: 0.7; }
 
   /* ── Scrollbar / focus ──────────────────────────────────────────────────── */
-  .side::-webkit-scrollbar, .inspector::-webkit-scrollbar { width: 8px; }
-  .side::-webkit-scrollbar-track, .inspector::-webkit-scrollbar-track { background: transparent; }
-  .side::-webkit-scrollbar-thumb, .inspector::-webkit-scrollbar-thumb {
+  .side::-webkit-scrollbar { width: 8px; }
+  .side::-webkit-scrollbar-track { background: transparent; }
+  .side::-webkit-scrollbar-thumb {
     background: rgba(200, 180, 255, 0.16); border-radius: 4px;
     border: 2px solid transparent; background-clip: content-box;
   }
-  .side::-webkit-scrollbar-thumb:hover, .inspector::-webkit-scrollbar-thumb:hover {
+  .side::-webkit-scrollbar-thumb:hover {
     background: rgba(200, 180, 255, 0.32); background-clip: content-box;
   }
 
@@ -1201,10 +742,6 @@
     }
     .side { padding: 14px; }
     .map-wrap { flex: 1; min-height: 36vh; }
-    .inspector {
-      top: auto; bottom: 12px; inset-inline: 12px;
-      width: auto; max-height: 52%;
-    }
   }
   @media (max-width: 420px) {
     .side { padding: 13px; }
