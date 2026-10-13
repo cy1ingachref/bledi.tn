@@ -4,7 +4,11 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+bledi-application = { path = "../bledi-application" }
 bledi-core = { path = "../bledi-core" }
+bledi-domain = { path = "../bledi-domain" }
+bledi-http = { path = "../bledi-http" }
+bledi-postgres = { path = "../bledi-postgres" }
 tokio = { workspace = true }
 axum = { workspace = true }
 async-trait = { workspace = true }
