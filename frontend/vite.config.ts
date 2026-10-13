@@ -9,11 +9,15 @@ export default defineConfig({
     sveltekit(),
     VitePWA({
       registerType: "autoUpdate",
+      // SvelteKit owns the built HTML, so the default 'auto' injection never
+      // lands a <script> in the output and the service worker is silently
+      // never registered. 'script' emits the registerSW.js tag explicitly.
+      injectRegister: "script",
       includeAssets: ["favicon.svg"],
       manifest: {
         name: "bledi.tn — Tunisia Transit",
         short_name: "bledi",
-        description: "Tunisia public transport routing with geo-pinned memories",
+        description: "Tunisia public transport routing: bus, metro, train, RFR, louage.",
         theme_color: "#070d18",
         background_color: "#070d18",
         display: "standalone",
@@ -26,10 +30,10 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/\{s\}\.tile\.openstreetmap\.org\/.*/i,
+            urlPattern: /^https:\/\/server\.arcgisonline\.com\/.*/i,
             handler: "CacheFirst",
             options: {
-              cacheName: "osm-tiles",
+              cacheName: "esri-tiles",
               expiration: { maxEntries: 800, maxAgeSeconds: 60 * 60 * 24 * 30 }
             }
           },

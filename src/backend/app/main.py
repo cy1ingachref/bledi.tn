@@ -21,7 +21,9 @@ import urllib.parse
 from collections import defaultdict
 from functools import lru_cache
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
+
+import numpy as np
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -56,6 +58,12 @@ GEOMETRY_PATH = BASE / "data" / "route_geometry.json"
 
 # Prefer the tagged file if it exists, else fall back to the original.
 _SEED_PATH = SEED_TAGED_PATH if SEED_TAGED_PATH.exists() else SEED_PATH
+
+# Physical track geometry (rail / metro alignments from OSM relations, road
+# alignments from OSRM) keyed by "<stop_a>|<stop_b>". Built by
+# scripts/build_route_geometry.py and committed, so the network layer has real
+# track to draw instead of straight lines between stops.
+_ROUTE_GEOMETRY_PATH = BASE / "data" / "route_geometry.json"
 
 # ── Config ──────────────────────────────────────────────────────────────
 OSRM_URL = os.environ.get(
@@ -207,6 +215,48 @@ def _haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return 2 * _EARTH_R_KM * math.asin(math.sqrt(a))
 
 
+def _simplify_path(pts: list[list[float]], tol: float) -> list[list[float]]:
+    """Douglas-Peucker on [[lat, lon]] pairs.
+
+    Long OSRM polylines are hundreds of vertices for a shape that reads the
+    same at city zoom. Simplifying server-side keeps the network payload small
+    without changing the drawn line, and the tolerance is a request parameter
+    so a client that needs full fidelity can ask for `simplify=0`.
+    """
+    if len(pts) < 3 or tol <= 0:
+        return pts
+
+    arr = np.asarray(pts, dtype="float64")
+    keep = np.zeros(len(arr), dtype=bool)
+    keep[0] = keep[-1] = True
+    stack: list[tuple[int, int]] = [(0, len(arr) - 1)]
+
+    while stack:
+        i, j = stack.pop()
+        if j <= i + 1:
+            continue
+        a, b = arr[i], arr[j]
+        seg = b - a
+        seg_len = float(np.hypot(seg[0], seg[1]))
+        chunk = arr[i + 1 : j]
+        if seg_len == 0:
+            d = np.hypot(chunk[:, 0] - a[0], chunk[:, 1] - a[1])
+        else:
+            # Perpendicular distance to the chord (degrees; the tolerance is
+            # in degrees too, so no metric conversion is needed).
+            d = np.abs(
+                seg[1] * (chunk[:, 0] - a[0]) - seg[0] * (chunk[:, 1] - a[1])
+            ) / seg_len
+        k = int(np.argmax(d))
+        if float(d[k]) > tol:
+            m = i + 1 + k
+            keep[m] = True
+            stack.append((i, m))
+            stack.append((m, j))
+
+    return [pts[i] for i in range(len(pts)) if keep[i]]
+
+
 def nearest_city(lat: float, lon: float) -> str:
     """Nearest governorate seat, or [UNASSIGNED_CITY] if too remote.
 
@@ -254,6 +304,74 @@ for _s in _stations:
     if _sid:
         STATION_BY_ID[_sid] = _s
 
+
+# ── Mode normalisation for station features ────────────────────────────────
+# The seed keeps raw provenance tags in `mode` (rail, louage_red, unknown...).
+# Those are meaningful in the seed but they are NOT selectable modes: the UI
+# filter and the neon network palette both key off the canonical vocabulary.
+# The seed's own audit records why the odd tags exist:
+#   * unknown_mode_resolution -> 76 stops whose operator export carried no mode
+#     at all (kiosks, roundabouts, school stops). They are still real, geocoded
+#     points, so they stay on the map -- as "unclassified", never as a
+#     scheduled bus, which is what the old "unknown -> bus" default did.
+#   * `rail` is a Transtu suburban-rail stop: same family as train.
+#   * louage_red|blue|green are colour-coded louage terminals: all louage.
+# Mode tags that reach the API as "unknown"/"rail"/"louage_*" are therefore
+# canonicalised here so a client never has to re-derive the mapping.
+_UNCLASSIFIED = "unclassified"
+
+# Station-level extra tags the UI understands but that are not routable modes.
+_STATION_ONLY_MODES: dict[str, frozenset[str]] = {
+    _UNCLASSIFIED: frozenset({"unknown", "unclassified", ""}),
+}
+
+
+def station_modes(s: dict[str, Any]) -> list[str]:
+    """Canonical, de-duplicated modes for a station row.
+
+    Returns the rider-facing categories the stop actually serves, in
+    USER_MODES display order, with `unclassified` last. A stop tagged
+    `rail` yields `["train"]`; one tagged `louage_red` yields `["louaj"]`;
+    an untagged sweep stop yields `["unclassified"]`.
+    """
+    raw: list[str] = []
+    primary = s.get("mode")
+    if primary:
+        raw.append(str(primary))
+    for extra in s.get("modes") or []:
+        if extra:
+            raw.append(str(extra))
+
+    seen: set[str] = set()
+    for r in raw:
+        rl = r.strip().lower()
+        if not rl:
+            continue
+        for station_only, aliases in _STATION_ONLY_MODES.items():
+            if rl in aliases:
+                seen.add(station_only)
+                break
+        else:
+            seen.add(canonical_mode(rl))
+
+    ordered = [m for m in USER_MODES if m in seen]
+    if _UNCLASSIFIED in seen:
+        ordered.append(_UNCLASSIFIED)
+    return ordered
+
+
+def primary_station_mode(s: dict[str, Any]) -> str:
+    """The single mode used to colour a station dot.
+
+    Prefers a routable mode over `unclassified` so a stop that is served by
+    real lines is never painted as an unclassified point.
+    """
+    modes = station_modes(s)
+    for m in modes:
+        if m != _UNCLASSIFIED:
+            return m
+    return modes[0] if modes else _UNCLASSIFIED
+
 LINE_BY_ID: dict[str, dict[str, Any]] = {}
 # Also index by number for the /lines/{line_number} endpoint (number is not unique).
 LINES_BY_NUMBER: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -296,6 +414,9 @@ class StationGeoJSON(BaseModel):
 class StationsMeta(BaseModel):
     count: int
     total: int
+    # Canonical mode -> number of features serving it. Lets the client show a
+    # real inventory per mode without counting the feature list itself.
+    by_mode: dict[str, int] = Field(default_factory=dict)
 
 
 class StationsResponse(BaseModel):
@@ -526,6 +647,7 @@ def list_stations() -> StationsResponse:
             missing_coords += 1
             log.warning("Station %s has no/zero coordinates: %s", s.get("id"), s.get("name"))
             continue
+        modes = station_modes(s)
         features.append(
             StationGeoJSON(
                 geometry={"type": "Point", "coordinates": [lon, lat]},
@@ -533,7 +655,11 @@ def list_stations() -> StationsResponse:
                     "id": s.get("id"),
                     "name": s.get("name"),
                     "name_en": s.get("name_en"),
-                    "mode": s.get("mode"),
+                    # Canonical rider-facing mode: what the client colours and
+                    # filters by. `mode_raw` keeps the seed tag for audit.
+                    "mode": primary_station_mode(s),
+                    "modes": modes,
+                    "mode_raw": s.get("mode"),
                     "operator": s.get("operator"),
                     "route_type": s.get("route_type"),
                     "license_status": s.get("license_status"),
@@ -551,7 +677,9 @@ def list_stations() -> StationsResponse:
         if not lat or not lon:
             continue
         routes = _LOUAGE_ROUTES_BY_STOP.get(s.get("id", ""), [])
-        modes = {r.get("mode") for r in routes if r.get("mode")}
+        raw_modes = sorted({r.get("mode") for r in routes if r.get("mode")})
+        # Every louage colour variant collapses onto the single louage mode.
+        canon = sorted({canonical_mode(m) for m in raw_modes}) or ["louaj"]
         lines_served: list[dict[str, Any]] = [
             {
                 "route_short_name": r.get("mode"),
@@ -568,10 +696,11 @@ def list_stations() -> StationsResponse:
                     "id": f"louage_{s.get('id')}",
                     "name": s.get("name_fr") or s.get("name_en") or s.get("id"),
                     "name_en": s.get("name_en"),
-                    # A stop can serve several louage types; report them all and
-                    # let the client treat any of them as the yellow category.
-                    "mode": next(iter(modes)) if len(modes) == 1 else "louage",
-                    "modes": sorted(modes) or ["louage"],
+                    # A stop can serve several louage colours; report them all
+                    # and let the client treat any of them as the louage mode.
+                    "mode": canon[0],
+                    "modes": canon,
+                    "mode_raw": raw_modes[0] if len(raw_modes) == 1 else "louage",
                     "operator": "Louage",
                     "route_type": s.get("type"),
                     "license_status": "unknown-third-party",
@@ -584,10 +713,161 @@ def list_stations() -> StationsResponse:
             )
         )
 
+    # Per-mode tallies so a client can show real inventory without counting.
+    by_mode: dict[str, int] = defaultdict(int)
+    for f in features:
+        for m in f.properties.get("modes") or [f.properties.get("mode")]:
+            if m:
+                by_mode[m] += 1
+
     return StationsResponse(
         features=features,
-        metadata=StationsMeta(count=len(features), total=len(_stations)),
+        metadata=StationsMeta(
+            count=len(features),
+            total=len(_stations),
+            by_mode=dict(sorted(by_mode.items(), key=lambda kv: -kv[1])),
+        ),
     )
+
+
+@app.get("/api/v1/network", tags=["Network"])
+def network_geometry(
+    modes: str | None = Query(
+        None,
+        description="Comma-separated modes to include (default: all track modes)",
+    ),
+    bbox: str | None = Query(
+        None,
+        description="min_lon,min_lat,max_lon,max_lat — only return segments overlapping it",
+    ),
+    simplify: float = Query(
+        0.0,
+        ge=0.0,
+        le=0.01,
+        description="Douglas-Peucker tolerance in degrees (0 = no simplification)",
+    ),
+) -> dict[str, Any]:
+    """Physical track geometry for the network, keyed by transport mode.
+
+    This is what the map draws underneath the stops: rail and metro alignments
+    traced from OSM route relations, and the road alignments the bus and louage
+    lines actually follow. Each segment carries `mode` plus `source`, so a
+    client can paint rail and road differently instead of inferring track type
+    from a stop colour.
+
+    Honesty contract (same as /lines/{id}): a segment with no cached geometry
+    is NOT stitched into a straight line across the country. It is returned
+    with `has_geometry: false` and a `gap_m` so the client can dash it or drop
+    it. `metadata.missing` counts them.
+
+    Geometry is returned as [[lat, lon]] pairs — Leaflet's native order, which
+    is also how the routing legs are already delivered, so the client has one
+    coordinate convention rather than two.
+    """
+    wanted: set[str] | None = None
+    if modes:
+        wanted = set()
+        for raw in modes.split(","):
+            m = raw.strip().lower()
+            if m:
+                wanted.add(canonical_mode(m))
+        if not wanted:
+            wanted = None
+
+    box: tuple[float, float, float, float] | None = None
+    if bbox:
+        parts = bbox.split(",")
+        if len(parts) != 4:
+            raise HTTPException(
+                status_code=400,
+                detail="bbox must be min_lon,min_lat,max_lon,max_lat",
+            )
+        try:
+            box = (float(parts[0]), float(parts[1]), float(parts[2]), float(parts[3]))
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail="bbox values must be numbers") from exc
+
+    if not _ROUTE_GEOMETRY_PATH.exists():
+        return JSONResponse(
+            {
+                "error": "network geometry not built",
+                "detail": f"{_ROUTE_GEOMETRY_PATH.name} is missing; run scripts/build_route_geometry.py",
+                "segments": [],
+            },
+            status_code=503,
+        )
+
+    with _ROUTE_GEOMETRY_PATH.open(encoding="utf-8") as fh:
+        raw_segments = json.load(fh).get("segments", {})
+
+    out: list[dict[str, Any]] = []
+    by_mode: dict[str, int] = defaultdict(int)
+    missing = 0
+    min_lon, min_lat, max_lon, max_lat = box if box is not None else (0.0, 0.0, 0.0, 0.0)
+
+    def _in_box(la: float, lo: float) -> bool:
+        return box is None or (min_lat <= la <= max_lat and min_lon <= lo <= max_lon)
+
+    for key, seg in raw_segments.items():
+        seg_mode = canonical_mode(seg.get("mode"))
+        if wanted is not None and seg_mode not in wanted:
+            continue
+        pts = seg.get("geometry") or []
+        if simplify > 0 and len(pts) > 2:
+            pts = _simplify_path(pts, simplify)
+        if len(pts) < 2:
+            # Reported, not stitched: the client must know a link exists but
+            # has no traced track, so it can dash it rather than draw a
+            # straight line across the country. Bbox still applies, via the
+            # endpoints, or a city view would drag in every gap in the network.
+            a, b = key.split("|", 1) if "|" in key else (key, "")
+            pa = STATION_BY_ID.get(a) or {}
+            pb = STATION_BY_ID.get(b) or {}
+            if not (pa.get("lat") and pb.get("lat")):
+                continue
+            if not (_in_box(pa["lat"], pa["lon"]) or _in_box(pb["lat"], pb["lon"])):
+                continue
+            missing += 1
+            out.append(
+                {
+                    "id": key,
+                    "mode": seg_mode,
+                    "source": seg.get("source"),
+                    "has_geometry": False,
+                    "geometry": [],
+                    "from_stop_id": a,
+                    "to_stop_id": b,
+                    "straight_m": round(
+                        _haversine_km(pa["lat"], pa["lon"], pb["lat"], pb["lon"]) * 1000.0
+                    ),
+                }
+            )
+            continue
+
+        if not any(_in_box(la, lo) for la, lo in pts):
+            continue
+
+        by_mode[seg_mode] += 1
+        out.append(
+            {
+                "id": key,
+                "mode": seg_mode,
+                "source": seg.get("source"),
+                "has_geometry": True,
+                "geometry": pts,
+            }
+        )
+
+    return {
+        "segments": out,
+        "metadata": {
+            "count": len(out),
+            "by_mode": dict(sorted(by_mode.items(), key=lambda kv: -kv[1])),
+            "missing_geometry": missing,
+            "available_modes": sorted(by_mode),
+        },
+    }
+
 
 
 @app.get("/api/v1/cities", response_model=CityListResponse, tags=["Stations"])
@@ -674,6 +954,12 @@ class StationLineInfo(BaseModel):
     color: str | None = None
     direction: str | None = None
     stops_count: int = 0
+    # Where this station sits on the line, so a client can say whether the line
+    # departs FROM here, terminates HERE, or merely calls here en route. Without
+    # it "what passes this stop" cannot distinguish a terminus from a mid-line
+    # stop, which is the difference between a useful answer and a list.
+    stop_index: int | None = None
+    role: str = "through"  # origin | terminus | through
 
 
 class StationDetail(BaseModel):
@@ -685,6 +971,11 @@ class StationDetail(BaseModel):
     modes: list[str]
     lines: list[StationLineInfo]
     count: int
+    # False when no line's stop array references this stop. The mode is then
+    # the operator's own tag rather than a routable service, and the client
+    # should say so instead of rendering an empty "no lines" list as if the
+    # stop were unclassified.
+    lines_known: bool = False
 
 
 @app.get("/api/v1/stations/{station_id}", response_model=StationDetail, tags=["Stations"])
@@ -710,6 +1001,19 @@ def station_detail(station_id: str) -> StationDetail:
         stops = ln.get("stations") or ln.get("stops") or []
         raw_mode = ln.get("mode") or "bus"
         mode = canonical_mode(raw_mode)
+        # Where on the line this stop sits. A stop can appear more than once on
+        # a loop service; the first occurrence is the one a rider boards at.
+        idx: int | None = None
+        if isinstance(stops, list):
+            try:
+                idx = stops.index(station_id)
+            except ValueError:
+                idx = None
+        role = "through"
+        if idx == 0:
+            role = "origin"
+        elif idx is not None and idx == len(stops) - 1:
+            role = "terminus"
         # Direction/terminus: the end of the stop list, which is the only
         # direction information the seed actually carries.
         direction = None
@@ -734,6 +1038,8 @@ def station_detail(station_id: str) -> StationDetail:
                 color=ln.get("color") or ln.get("route_color") or None,
                 direction=direction,
                 stops_count=len(stops),
+                stop_index=idx,
+                role=role,
             )
         )
 
@@ -746,16 +1052,40 @@ def station_detail(station_id: str) -> StationDetail:
             (li.name or ""),
         )
     )
-    modes = [m for m in USER_MODES if any(li.mode == m for li in infos)]
+
+    # `modes` is the UNION of what the stop declares and what its lines say.
+    #
+    # Using the lines alone was a visible contradiction: /api/v1/stations
+    # colours a stop from its seed `mode` tag, so a Transtu bus stop came back
+    # as `bus` in the list, while this endpoint reported `modes: []` because no
+    # line's stop array lists it (only 1 562 of 7 452 stops are referenced by a
+    # line). Clicking a pink bus dot opened a panel reading "Non classé", which
+    # is worse than saying nothing.
+    #
+    # So: the declared mode is the baseline, and any mode contributed by a real
+    # line is added. The client can then trust `modes` to agree with the dot.
+    declared = station_modes(st)
+    from_lines = [m for m in USER_MODES if any(li.mode == m for li in infos)]
+    merged: list[str] = []
+    for m in USER_MODES:
+        if m in from_lines or m in declared:
+            merged.append(m)
+    if _UNCLASSIFIED in declared and not merged:
+        merged.append(_UNCLASSIFIED)
+
     return StationDetail(
         id=st.get("id") or station_id,
         name=st.get("name"),
         lat=st.get("lat"),
         lon=st.get("lon"),
         city=st.get("city") or nearest_city(st["lat"], st["lon"]) if st.get("lat") and st.get("lon") else None,
-        modes=modes,
+        modes=merged,
         lines=infos,
         count=len(infos),
+        # Tells the client whether the stop's mode is backed by a real line or
+        # only by the operator's own tag, so the empty-lines state can be
+        # phrased honestly instead of implying the stop is unclassified.
+        lines_known=len(infos) > 0,
     )
 
 
@@ -1296,7 +1626,7 @@ def route_transit(
 # can grey out "Train" on a trip with no rail rather than showing an empty card.
 OPTION_LABELS: dict[str, str] = {
     "bus": "Bus",
-    "louaj": "Louaj / Taxi",
+    "louaj": "Taxi / Louage",
     "train": "Train / Metro",
 }
 
@@ -1576,6 +1906,126 @@ def itinerary(
         return {"error": str(e), "source": "tunismapper"}
 
 
+@app.get("/api/v1/search", tags=["Stations"])
+def search_places(
+    q: str = Query(..., min_length=2, description="Free-text place or stop name"),
+    limit: int = Query(8, ge=1, le=25, description="Max results"),
+    near_lat: float | None = Query(None, description="Bias results toward this latitude"),
+    near_lon: float | None = Query(None, description="Bias results toward this longitude"),
+) -> dict[str, Any]:
+    """Search the network's own stops and cities by name.
+
+    This exists so a rider can pick an origin or destination by NAME, without
+    ever typing a latitude or longitude. The stops themselves are searched
+    first, because a stop hit is strictly better than a geocoder hit here: it
+    is a place a vehicle actually stops, and it comes back already tied to the
+    station id, so the client can show its lines immediately.
+
+    Ranking is exact match, then prefix, then substring, with a distance
+    tiebreak when the client supplies a reference point — so two stops both
+    named "20 Mars" resolve to the one actually near the rider.
+
+    `kind` is `stop` or `city` so the client can label and icon each hit.
+    """
+    needle = q.strip().lower()
+    if len(needle) < 2:
+        return {"results": [], "query": q, "count": 0}
+
+    def _score(name: str) -> int:
+        n = name.strip().lower()
+        if n == needle:
+            return 0
+        if n.startswith(needle):
+            return 1
+        return 2
+
+    results: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
+
+    for s in _stations:
+        lat, lon = s.get("lat"), s.get("lon")
+        if not lat or not lon:
+            continue
+        name = s.get("name") or ""
+        if needle not in name.lower():
+            continue
+        sid = s.get("id") or ""
+        if sid in seen_ids:
+            continue
+        seen_ids.add(sid)
+        city = nearest_city(lat, lon)
+        results.append(
+            {
+                "kind": "stop",
+                "id": sid,
+                "name": name.strip(),
+                "lat": lat,
+                "lon": lon,
+                "modes": station_modes(s),
+                "city": city,
+                "score": _score(name),
+                "display_name": f"{name.strip()} · {city}",
+            }
+        )
+
+    # Louage hubs are not in _stations but are real, pickable places.
+    for s in _LOUAGE_STATIONS:
+        loc = s.get("location") or {}
+        lat, lon = loc.get("lat"), loc.get("lon")
+        if not lat or not lon:
+            continue
+        name = s.get("name_fr") or s.get("name_en") or s.get("id") or ""
+        if needle not in name.lower():
+            continue
+        sid = f"louage_{s.get('id')}"
+        if sid in seen_ids:
+            continue
+        seen_ids.add(sid)
+        results.append(
+            {
+                "kind": "stop",
+                "id": sid,
+                "name": name.strip(),
+                "lat": lat,
+                "lon": lon,
+                "modes": ["louaj"],
+                "city": s.get("governorate") or nearest_city(lat, lon),
+                "score": _score(name),
+                "display_name": f"{name.strip()} · Taxi / Louage",
+            }
+        )
+
+    for name, slat, slon in CITY_SEATS:
+        if needle not in name.lower():
+            continue
+        results.append(
+            {
+                "kind": "city",
+                "id": f"city_{name}",
+                "name": name,
+                "lat": slat,
+                "lon": slon,
+                "modes": [],
+                "city": name,
+                "score": _score(name),
+                "display_name": name,
+            }
+        )
+
+    def _dist(r: dict[str, Any]) -> float:
+        if near_lat is None or near_lon is None:
+            return 0.0
+        return _haversine_km(near_lat, near_lon, r["lat"], r["lon"])
+
+    results.sort(key=lambda r: (r["score"], _dist(r), r["name"]))
+
+    return {
+        "results": [{k: v for k, v in r.items() if k != "score"} for r in results[:limit]],
+        "query": q,
+        "count": len(results),
+    }
+
+
 @app.get("/api/v1/geocode", tags=["Stations"])
 def geocode(
     q: str = Query(..., description="Place name to search in Tunisia"),
@@ -1589,6 +2039,7 @@ def geocode(
             {"error": "Geocoding service unreachable", "source": "nominatim"},
             status_code=503,
         )
+
     results = [
         {
             "lon": float(d["lon"]),
@@ -1603,9 +2054,16 @@ def geocode(
 
 @app.get("/favicon.svg", tags=["System"], response_model=None)
 def favicon_svg() -> FileResponse | JSONResponse:
-    icon = BASE / "frontend" / "favicon.svg"
-    if icon.exists():
-        return FileResponse(icon, media_type="image/svg+xml")
+    """Serve the app icon.
+
+    Lives in frontend/static/ (SvelteKit's static-asset root, copied verbatim
+    into frontend/build/) rather than the frontend root, which is not served.
+    Check both so a dev-server-only layout still resolves.
+    """
+    for rel in ("frontend/build/favicon.svg", "frontend/static/favicon.svg"):
+        icon = BASE / rel
+        if icon.exists():
+            return FileResponse(icon, media_type="image/svg+xml")
     return JSONResponse({"error": "no favicon"}, status_code=404)
 
 
