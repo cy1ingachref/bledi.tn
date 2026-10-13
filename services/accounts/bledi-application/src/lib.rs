@@ -2,6 +2,7 @@ pub mod accounts;
 mod error;
 pub mod favorites;
 pub mod friendships;
+pub mod location_shares;
 pub mod memories;
 pub mod ports;
 #[cfg(any(test, feature = "testing"))]
@@ -14,6 +15,11 @@ use serde::Deserialize;
 
 pub use error::{AppError, Missing};
 
+use accounts::Accounts;
+use favorites::Favorites;
+use friendships::Friendships;
+use location_shares::LocationShares;
+use memories::Memories;
 use ports::{
     Clock, FavoriteStore, FriendshipStore, LocationShareStore, MemoryStore, PasswordHasher,
     TokenIssuer, UserStore,
@@ -50,4 +56,25 @@ pub struct Ports {
     pub hasher: Arc<dyn PasswordHasher>,
     pub tokens: Arc<dyn TokenIssuer>,
     pub clock: Arc<dyn Clock>,
+}
+
+#[derive(Clone)]
+pub struct Services {
+    pub accounts: Accounts,
+    pub memories: Memories,
+    pub friendships: Friendships,
+    pub favorites: Favorites,
+    pub location_shares: LocationShares,
+}
+
+impl Services {
+    pub fn new(ports: &Ports) -> Self {
+        Self {
+            accounts: Accounts::new(ports),
+            memories: Memories::new(ports),
+            friendships: Friendships::new(ports),
+            favorites: Favorites::new(ports),
+            location_shares: LocationShares::new(ports),
+        }
+    }
 }
