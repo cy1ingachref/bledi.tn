@@ -46,7 +46,7 @@ pub enum Decision {
 #[derive(Debug)]
 struct Window {
     count: u32,
-    started: Instant,
+    expires: Instant,
 }
 
 #[derive(Debug, Default)]
@@ -59,18 +59,15 @@ impl RateLimiter {
         let now = Instant::now();
         // The counters are advisory: a panic elsewhere must not take the endpoints down with it.
         let mut windows = self.windows.lock().unwrap_or_else(|p| p.into_inner());
-        windows.retain(|_, w| now.duration_since(w.started) < limit.window);
+        windows.retain(|_, w| w.expires > now);
 
         let window = windows.entry(key.to_owned()).or_insert(Window {
             count: 0,
-            started: now,
+            expires: now + limit.window,
         });
         if window.count >= limit.max_hits {
-            let remaining = limit
-                .window
-                .saturating_sub(now.duration_since(window.started));
             return Decision::Deny {
-                retry_after_secs: remaining.as_secs().max(1),
+                retry_after_secs: window.expires.duration_since(now).as_secs().max(1),
             };
         }
         window.count += 1;
@@ -127,9 +124,18 @@ mod tests {
         assert_eq!(limiter.check("k", limit(1, 0)), Decision::Allow);
         assert_eq!(limiter.check("k", limit(1, 0)), Decision::Allow);
 
-        assert_eq!(limiter.check("old", limit(5, 3600)), Decision::Allow);
-        assert_eq!(limiter.check("new", limit(5, 0)), Decision::Allow);
-        assert_eq!(limiter.tracked_keys(), 1);
+        assert_eq!(limiter.check("long", limit(1, 3600)), Decision::Allow);
+        assert_eq!(limiter.check("short", limit(5, 0)), Decision::Allow);
+        assert_eq!(limiter.check("short", limit(5, 0)), Decision::Allow);
+        assert_eq!(
+            limiter.tracked_keys(),
+            2,
+            "k expired, long must outlive the short checks"
+        );
+        assert!(matches!(
+            limiter.check("long", limit(1, 3600)),
+            Decision::Deny { .. }
+        ));
     }
 
     #[test]
