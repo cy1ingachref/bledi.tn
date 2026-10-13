@@ -305,12 +305,15 @@ bledi.tn/
 
 ## CI pipeline
 
-Each workflow runs on pull requests and pushes to `main` that touch its paths:
+CI runs on pull requests only, and each workflow only when the PR touches its paths:
 
-- `backend.yml`: `cargo fmt`, `cargo clippy` and `cargo test` against PostGIS, then builds the Docker image and runs `rust/docker/smoke-test.sh` against it
+- `backend.yml`: `cargo fmt`, `cargo clippy` and `cargo test` against PostGIS
 - `python.yml`: `pytest tests/` with the hashed `requirements.lock.txt`
 - `frontend.yml`: `npm audit`, `npm run check` (svelte-check), `npm run build`
-- `security.yml`: Semgrep, Gitleaks and Trivy on every change, and weekly
+- `security.yml`: Gitleaks, Semgrep and Trivy on every PR
+- `e2e.yml`: builds the Docker image and runs `rust/docker/smoke-test.sh` against it, only on PRs labelled `e2e`
+
+Every workflow can also be started by hand from the Actions tab.
 
 ## Data sources and licensing status
 
