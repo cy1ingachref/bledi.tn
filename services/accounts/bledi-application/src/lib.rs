@@ -1,5 +1,7 @@
 mod error;
 pub mod ports;
+#[cfg(any(test, feature = "testing"))]
+pub mod testing;
 
 use std::sync::Arc;
 
