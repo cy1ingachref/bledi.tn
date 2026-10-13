@@ -50,11 +50,11 @@ android/app/release
 data/.osrm_raw_cache.json
 data/.road_network_cache.json
 data/taxi_pairs_sample.json
-src/backend/tool/_bytesedit.py
+services/transit/tools/_bytesedit.py
 
 # Derived routing graphs.
-#   python src/backend/tool/build_road_graph.py   (needs ~/Downloads/roads/roads.gpkg)
-#   python src/backend/tool/build_rail_graph.py   (needs ~/Downloads/rails/export.geojson)
+#   python services/transit/tools/build_road_graph.py   (needs ~/Downloads/roads/roads.gpkg)
+#   python services/transit/tools/build_rail_graph.py   (needs ~/Downloads/rails/export.geojson)
 #
 # road_graph.npz is 153 MB and is NOT committed: the build script is committed
 # instead, so the graph is reproducible. Without it, road legs degrade to

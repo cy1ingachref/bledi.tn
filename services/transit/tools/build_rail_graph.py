@@ -22,18 +22,15 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 import json
-import math
 import os
-import sys
 import time
 from typing import Any, Iterator
 
 import numpy as np
+from build_road_graph import label_components
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from build_road_graph import label_components  # noqa: E402
+from bledi_transit.domain.geo import haversine_m
 
-EARTH_R = 6371008.8
 QUANT = 6               # node identity precision (~11 cm)
 
 MODE_RAIL, MODE_LIGHT, MODE_TRAM = 1, 2, 4
@@ -60,13 +57,6 @@ MIN_SEG_M = 0.0
 # coordinate. Endpoints closer than this are stitched into one node; without it
 # the graph had 893 components with the largest holding only 8.4% of the nodes.
 JUNCTION_M = 60.0
-
-
-def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    p1, p2 = math.radians(lat1), math.radians(lat2)
-    dp, dl = p2 - p1, math.radians(lon2 - lon1)
-    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
-    return 2 * EARTH_R * math.asin(min(1.0, math.sqrt(a)))
 
 
 def iter_track(path: str) -> Iterator[tuple[str, list[tuple[float, float]]]]:

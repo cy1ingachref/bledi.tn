@@ -13,26 +13,28 @@ foot network plus turn-by-turn instructions, so walk legs can follow real
 footways instead of being drawn as a straight line.
 
 The cache is keyed on an unordered "a|b" station pair and stores the polyline in
-a -> b order; routing.oriented_geometry() flips it when a step runs the other
-way, exactly like the transit geometry cache.
+a -> b order; oriented_geometry() flips it when a step runs the other way,
+exactly like the transit geometry cache.
 
 Usage:
-  python src/backend/tool/build_walk_geometry.py            # all walk pairs
-  python src/backend/tool/build_walk_geometry.py --limit 200
-  python src/backend/tool/build_walk_geometry.py --workers 6
+  python services/transit/tools/build_walk_geometry.py            # all walk pairs
+  python services/transit/tools/build_walk_geometry.py --limit 200
+  python services/transit/tools/build_walk_geometry.py --workers 6
 """
 from __future__ import annotations
 
 import argparse
 import json
-import math
-import os
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+
+from bledi_transit.adapters.seed_files import SeedFileNetwork
+from bledi_transit.application.routing.router import Router
+from bledi_transit.domain.geo import haversine_m, polyline_length
 
 BASE = Path(__file__).resolve().parents[3]
 OUT = BASE / "data" / "walk_geometry.json"
@@ -53,21 +55,6 @@ MAX_DETOUR = 4.0
 MIN_WALK_M = 20.0
 
 USER_AGENT = "bledi-tn/0.2 (walk geometry builder; contact cy1ingachref@gmail.com)"
-
-
-def haversine(p: list[float], q: list[float]) -> float:
-    la1, lo1 = p[0], p[1]
-    la2, lo2 = q[0], q[1]
-    r = 6371000.0
-    p1, p2 = math.radians(la1), math.radians(la2)
-    h = math.sin((p2 - p1) / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(
-        math.radians(lo2 - lo1) / 2
-    ) ** 2
-    return 2 * r * math.asin(math.sqrt(h))
-
-
-def polyline_length(pts: list[list[float]]) -> float:
-    return sum(haversine(pts[i], pts[i + 1]) for i in range(len(pts) - 1))
 
 
 def decode_polyline(s: str) -> list[list[float]]:
@@ -140,7 +127,7 @@ def validate(pts: list[list[float]], a: list[float], b: list[float]) -> tuple[bo
     if len(pts) < 2:
         return False, "too_few_points"
     real = polyline_length(pts)
-    straight = haversine(a, b)
+    straight = haversine_m(a[0], a[1], b[0], b[1])
     if real < MIN_WALK_M:
         return False, "too_short"
     if straight <= 0:
@@ -156,9 +143,8 @@ def validate(pts: list[list[float]], a: list[float], b: list[float]) -> tuple[bo
 
 
 def build(limit: int | None, workers: int) -> int:
-    from app import routing  # noqa: E402  (needs src/backend on sys.path)
-
-    graph, router = routing.build_graph()
+    network = SeedFileNetwork(BASE / "data").load()
+    router = Router(network.station_by_id, network.lines)
 
     # Every unique station pair that has a walk edge. The graph stores both
     # directions, so collapse to the unordered pair.
@@ -243,9 +229,6 @@ def main() -> int:
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--workers", type=int, default=4)
     args = ap.parse_args()
-    sys_path = str(BASE / "src" / "backend")
-    if sys_path not in os.sys.path:
-        os.sys.path.insert(0, sys_path)
     return build(args.limit, args.workers)
 
 

@@ -13,7 +13,7 @@ A line with no stops is not a graph edge, so those 117 lines are permanently
 unroutable. They are still worth keeping: the schedules and the Arabic/Latin
 destination names are useful for the UI. What they must not be is *silently*
 unroutable, which is what
-`tests/test_seed_integrity.py::test_no_line_with_fewer_than_two_valid_stops`
+`services/transit/tests/test_seed_integrity.py::test_no_line_with_fewer_than_two_valid_stops`
 exists to catch.
 
 This script makes the distinction explicit and machine-checkable, so the test
