@@ -12,14 +12,9 @@ transfer is counted once. This file contains:
 """
 from __future__ import annotations
 
-import sys
-from pathlib import Path
-
-REPO_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO_ROOT))
-
 import pytest
-from src.backend.app.main import _router_to_option
+
+from bledi_transit.main import _router_to_option
 
 
 def _step(type_, mode, line, from_=None, to=None, label="", to_name="", from_name=""):
@@ -110,7 +105,7 @@ class TestTransferCountEndToEnd:
 
     @pytest.fixture(scope="class")
     def router(self):
-        from src.backend.app.routing import build_graph
+        from bledi_transit.application.routing.router import build_graph
         _, r = build_graph()
         return r
 
@@ -119,7 +114,7 @@ class TestTransferCountEndToEnd:
         resolves as a single line (no transfer) must report transfers == 0,
         and a path that genuinely transfers once must report transfers == 1,
         never 2."""
-        from src.backend.app.main import _router_to_option
+        from bledi_transit.main import _router_to_option
         res = router.route(36.806, 10.184, 36.914, 9.866)
         assert res.get("error") is None, res
         opt = _router_to_option(res)
@@ -145,7 +140,7 @@ class TestTransferCountEndToEnd:
         """A path that contains an intermediate walk (between lines) should
         have has_walk_transfer True and transfers reflecting only real line
         changes, not the walk."""
-        from src.backend.app.main import _router_to_option
+        from bledi_transit.main import _router_to_option
         # Tunis Centre -> Birsa (TGM) then walk to another line.
         # Use a pair close enough to get a transit path.
         res = router.route(36.806, 10.184, 36.816, 10.174)

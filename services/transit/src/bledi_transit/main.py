@@ -31,7 +31,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field
 
 # Local transit router (physical-cost Dijkstra).
-from src.backend.app.routing import (
+from bledi_transit.application.routing.router import (
     COMBINATIONS,
     FAMILIES,
     OPTION_MODES,
@@ -47,7 +47,7 @@ from src.backend.app.routing import (
 log = logging.getLogger("bledi")
 
 # ── Paths ──────────────────────────────────────────────────────────────
-BASE = Path(__file__).resolve().parents[3]  # repo root
+BASE = Path(__file__).resolve().parents[4]  # repo root
 SEED_PATH = BASE / "data" / "seed_all_tunisia_routes.json"
 SEED_TAGED_PATH = BASE / "data" / "seed_all_tunisia_routes.tagged.json"
 # Real route geometry, precomputed by tool/build_route_geometry.py. Without it

@@ -17,7 +17,7 @@ from itertools import combinations
 
 import pytest
 
-from src.backend.app.routing import (
+from bledi_transit.application.routing.router import (
     BUS_MODES,
     COMBINATIONS,
     FAMILIES,
@@ -161,7 +161,7 @@ class TestSeedDataQualityIsVisible:
         above should shrink -- that is a good day, and this assertion is the
         reminder to re-run the geometry build.
         """
-        from src.backend.app.routing import build_graph as _bg
+        from bledi_transit.application.routing.router import build_graph as _bg
 
         graph, router = _bg()
         implausible = [
@@ -175,7 +175,7 @@ class TestSeedDataQualityIsVisible:
 
     def test_families_cover_every_transit_mode_in_the_seed(self):
         """A mode with no family would be unreachable through /route/modes."""
-        from src.backend.app.routing import build_graph as _bg
+        from bledi_transit.application.routing.router import build_graph as _bg
 
         _graph, router = _bg()
         every = set().union(*COMBINATIONS.values())
@@ -241,7 +241,7 @@ class TestApiNeverFallsBackToAStraightLine:
 
     def test_steps_helper_respects_the_flag(self):
         """The API conversion must not resurrect a straight line for a flagged step."""
-        from src.backend.app.main import _steps_to_legs
+        from bledi_transit.main import _steps_to_legs
 
         flagged_step = {
             "type": "ride", "mode": "train", "line": "train_24_sncft",
@@ -262,7 +262,7 @@ class TestApiNeverFallsBackToAStraightLine:
 
     def test_unflagged_short_step_may_carry_geometry(self):
         """The normal case still works: an unflagged step is drawable."""
-        from src.backend.app.main import _steps_to_legs
+        from bledi_transit.main import _steps_to_legs
 
         ok_step = {
             "type": "ride", "mode": "bus", "line": "bus_1",
@@ -288,7 +288,7 @@ class TestRouterToOptionSuppressesTheFallback:
     """
 
     def test_flagged_leg_gets_no_geometry_even_when_the_pair_is_cached(self):
-        from src.backend.app import main as M
+        from bledi_transit import main as M
 
         pair = next(
             (k for k, v in M._GEOMETRY.items() if v.get("geometry")), None
@@ -320,7 +320,7 @@ class TestRouterToOptionSuppressesTheFallback:
         Guards against 'fixing' the false line by deleting the fallback, which
         would leave every unflagged leg drawn straight too.
         """
-        from src.backend.app import main as M
+        from bledi_transit import main as M
 
         pair = next(k for k, v in M._GEOMETRY.items() if v.get("geometry"))
         a_id, b_id = pair.split("|")
@@ -360,7 +360,7 @@ class TestMergeBreaksOnARealGap:
         }
 
     def test_gap_first_then_real_stays_two_legs(self):
-        from src.backend.app.main import _steps_to_legs
+        from bledi_transit.main import _steps_to_legs
 
         steps = [
             self._ride(("GAP_FROM", "GAP_TO"), [36.0, 10.0], [35.9, 10.1], [], True),
@@ -375,7 +375,7 @@ class TestMergeBreaksOnARealGap:
 
     def test_contiguous_ride_still_merges(self):
         """The complementary case: no gap means one leg, as before."""
-        from src.backend.app.main import _steps_to_legs
+        from bledi_transit.main import _steps_to_legs
 
         steps = [
             self._ride(("A", "B"), [35.9, 10.1], [35.8, 10.2],
@@ -388,7 +388,7 @@ class TestMergeBreaksOnARealGap:
         assert len(legs[0]["geometry"]) == 6
 
     def test_gap_in_the_middle_yields_three_legs(self):
-        from src.backend.app.main import _steps_to_legs
+        from bledi_transit.main import _steps_to_legs
 
         steps = [
             self._ride(("A", "B"), [35.9, 10.1], [35.8, 10.2],

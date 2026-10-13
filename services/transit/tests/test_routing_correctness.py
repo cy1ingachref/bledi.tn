@@ -14,15 +14,10 @@ independent of the seed's real station coordinates.
 from __future__ import annotations
 
 import math
-import sys
-from pathlib import Path
 
 import pytest
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO_ROOT))
-
-from src.backend.app.routing import (
+from bledi_transit.application.routing.router import (
     Router,
     WALK_SPEED_KMH,
     TRANSFER_PENALTY_SEC,
@@ -56,12 +51,12 @@ def _line(idv: str, mode: str, stops: list[str], departures: list[str] | None = 
 
 
 def _ride_s(meters: float) -> float:
-    from src.backend.app.routing import transit_speed_ms
+    from bledi_transit.application.routing.router import transit_speed_ms
     return meters / transit_speed_ms("bus")
 
 
 def _ride_min_display(meters: float) -> float:
-    from src.backend.app.routing import transit_speed_kmh
+    from bledi_transit.application.routing.router import transit_speed_kmh
     return meters / 1000 / transit_speed_kmh("bus") * 60
 
 

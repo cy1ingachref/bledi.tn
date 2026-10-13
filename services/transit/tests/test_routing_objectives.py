@@ -12,15 +12,9 @@ for them. That matters: the earlier "metro vs bus" OD inside Tunis has both
 
 from __future__ import annotations
 
-import os
-import sys
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.join(ROOT, "src", "backend"))
-sys.path.insert(0, os.path.join(ROOT, "src"))
-
-from backend.app import routing  # noqa: E402
+from bledi_transit.application.routing import router as routing
 
 # Intra-Tunis: a bus route AND a metro route both connect these two points.
 TUNIS_A = (36.7961, 10.18055)   # Place Barcelone Sud (metro)
