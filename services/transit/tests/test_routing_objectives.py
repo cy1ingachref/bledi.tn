@@ -15,6 +15,7 @@ from __future__ import annotations
 import unittest
 
 from bledi_transit.application.routing import router as routing
+from bledi_transit.domain import modes
 
 # Intra-Tunis: a bus route AND a metro route both connect these two points.
 TUNIS_A = (36.7961, 10.18055)   # Place Barcelone Sud (metro)
@@ -31,45 +32,45 @@ class ModeTaxonomyTests(unittest.TestCase):
     """B1: metro must be separable from train."""
 
     def test_metro_is_not_train(self):
-        self.assertNotIn("metro", routing.MODE_ALIASES["train"])
-        self.assertEqual(routing.canonical_mode("metro"), "metro")
-        self.assertEqual(routing.canonical_mode("train"), "train")
-        self.assertEqual(routing.canonical_mode("rail"), "train")
+        self.assertNotIn("metro", modes.MODE_ALIASES["train"])
+        self.assertEqual(modes.canonical_mode("metro"), "metro")
+        self.assertEqual(modes.canonical_mode("train"), "train")
+        self.assertEqual(modes.canonical_mode("rail"), "train")
 
     def test_seed_raw_modes_map_cleanly(self):
-        self.assertEqual(routing.canonical_mode("bus"), "bus")
-        self.assertEqual(routing.canonical_mode("rfr"), "bus")
-        self.assertEqual(routing.canonical_mode("tram"), "tram")
+        self.assertEqual(modes.canonical_mode("bus"), "bus")
+        self.assertEqual(modes.canonical_mode("rfr"), "bus")
+        self.assertEqual(modes.canonical_mode("tram"), "tram")
 
     def test_unknown_mode_does_not_vanish(self):
         # An unrecognised tag is still a scheduled line; it must not silently
         # delete real services from the network.
-        self.assertEqual(routing.canonical_mode("hovercraft"), "bus")
-        self.assertEqual(routing.canonical_mode(None), "bus")
+        self.assertEqual(modes.canonical_mode("hovercraft"), "bus")
+        self.assertEqual(modes.canonical_mode(None), "bus")
 
     def test_exclude_train_removes_raw_rail(self):
-        allowed = routing.resolve_allowed_modes(None, ["train"])
+        allowed = modes.resolve_allowed_modes(None, ["train"])
         self.assertNotIn("rail", allowed)
         self.assertNotIn("train", allowed)
 
     def test_exclude_bus_removes_rfr(self):
-        allowed = routing.resolve_allowed_modes(None, ["bus"])
+        allowed = modes.resolve_allowed_modes(None, ["bus"])
         self.assertNotIn("rfr", allowed)
         self.assertNotIn("bus", allowed)
 
     def test_walk_always_available_for_access(self):
-        allowed = routing.resolve_allowed_modes(["bus"], ["metro"])
+        allowed = modes.resolve_allowed_modes(["bus"], ["metro"])
         self.assertIn("bus", allowed)
         self.assertNotIn("metro", allowed)
 
     def test_unknown_mode_raises_with_available_list(self):
         with self.assertRaises(ValueError) as cm:
-            routing.resolve_allowed_modes(["hovercraft"], None)
+            modes.resolve_allowed_modes(["hovercraft"], None)
         self.assertIn("available", str(cm.exception))
 
     def test_impossible_filter_raises(self):
         with self.assertRaises(ValueError):
-            routing.resolve_allowed_modes(["metro"], ["metro"])
+            modes.resolve_allowed_modes(["metro"], ["metro"])
 
 
 class FareModelTests(unittest.TestCase):
@@ -155,7 +156,7 @@ class ExclusionHardFilterTests(unittest.TestCase):
             for step in it["legs"]:
                 if step.get("type") in ("walk", "transfer"):
                     continue
-                out.append(routing.canonical_mode(step.get("mode") or step.get("type")))
+                out.append(modes.canonical_mode(step.get("mode") or step.get("type")))
         return out
 
     def test_exclude_metro_yields_no_metro_leg(self):
