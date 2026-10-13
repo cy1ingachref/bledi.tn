@@ -104,12 +104,25 @@ pub async fn create(
     Ok((StatusCode::CREATED, Json(memory.into())))
 }
 
+#[derive(Serialize)]
+#[serde(untagged)]
+pub enum MemoryOrSummary {
+    Memory(MemoryView),
+    Summary(MemorySummary),
+}
+
+/// Only the owner gets the media here; anyone else goes through `unlock` and its radius.
 pub async fn get(
     State(state): State<AppState>,
     AuthUser(me): AuthUser,
     Path(id): Path<Uuid>,
-) -> Result<Json<MemoryView>, ApiError> {
-    Ok(Json(state.services.memories.get(me, id).await?.into()))
+) -> Result<Json<MemoryOrSummary>, ApiError> {
+    let memory = state.services.memories.get(me, id).await?;
+    Ok(Json(if memory.user_id == me {
+        MemoryOrSummary::Memory(memory.into())
+    } else {
+        MemoryOrSummary::Summary(memory.into())
+    }))
 }
 
 pub async fn update(

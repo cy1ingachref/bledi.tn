@@ -141,8 +141,15 @@ async fn friends_only_memories_need_an_accepted_friendship() {
     assert!(body.get("media_url").is_none());
 
     app.befriend((&owner, "owner"), (&friend, "friend")).await;
-    let (status, _) = app.get(&path, &friend).await;
+    let (status, body) = app.get(&path, &friend).await;
     assert_eq!(status, StatusCode::OK);
+    assert!(
+        body.get("media_url").is_none(),
+        "only unlock hands out the media: {body}"
+    );
+    assert_eq!(body["locked"], true);
+    let (_, body) = app.get(&path, &owner).await;
+    assert_eq!(body["media_url"], "https://example.com/media.jpg");
     let (status, _) = app.get(&path, &stranger).await;
     assert_eq!(status, StatusCode::FORBIDDEN);
 }
