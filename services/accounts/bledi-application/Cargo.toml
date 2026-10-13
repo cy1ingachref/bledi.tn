@@ -1,0 +1,17 @@
+[package]
+name = "bledi-application"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+testing = []
+
+[dependencies]
+async-trait = { workspace = true }
+bledi-domain = { path = "../bledi-domain" }
+chrono = { workspace = true }
+serde = { workspace = true }
+uuid = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true }
