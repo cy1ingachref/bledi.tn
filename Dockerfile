@@ -1,10 +1,10 @@
 # bledi.tn Rust backend Dockerfile
-FROM rust:1.80-slim-bookworm AS builder
+FROM rust:1.99-slim-bookworm AS builder
 
 WORKDIR /app
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     pkg-config libssl-dev libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
@@ -33,7 +33,7 @@ RUN touch bledi-core/src/lib.rs bledi-server/src/main.rs \
 # Runtime image
 FROM debian:bookworm-slim
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq5 ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
