@@ -3,12 +3,7 @@ name: Security
 on:
   pull_request:
     branches: [main]
-  push:
-    branches: [main]
-  merge_group:
   workflow_dispatch:
-  schedule:
-    - cron: '0 6 * * 1'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -18,33 +13,27 @@ permissions:
   contents: read
 
 jobs:
-  semgrep:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    container: semgrep/semgrep:1.179.0
-    steps:
-      - uses: actions/checkout@v7
-      # Blocks on ERROR severity only; the WARNING-level audit rules flag
-      # every urllib call in the offline data scripts.
-      - run: semgrep scan --config p/security-audit --config p/owasp-top-ten --severity ERROR --error --metrics=off
-
-  gitleaks:
+  scan:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
         with:
-          # gitleaks scans the pushed commit range, which a shallow clone lacks.
+          # gitleaks scans the PR's commit range, which a shallow clone lacks.
           fetch-depth: 0
+
       - uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  trivy:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v7
+      # Blocks on ERROR severity only; the WARNING-level audit rules flag
+      # every urllib call in the offline data scripts.
+      - name: Semgrep
+        run: >-
+          docker run --rm -v "$PWD:/src" -w /src semgrep/semgrep:1.179.0
+          semgrep scan --config p/security-audit --config p/owasp-top-ten
+          --severity ERROR --error --metrics=off
+
       # Pinned to a commit: trivy-action tags were rewritten in a 2026 supply chain attack.
       - uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:

@@ -9,15 +9,6 @@ on:
       - 'data/**'
       - 'requirements*.txt'
       - '.github/workflows/python.yml'
-  push:
-    branches: [main]
-    paths:
-      - 'src/**'
-      - 'tests/**'
-      - 'data/**'
-      - 'requirements*.txt'
-      - '.github/workflows/python.yml'
-  merge_group:
   workflow_dispatch:
 
 concurrency:
