@@ -194,7 +194,7 @@ CITY_SEATS: list[tuple[str, float, float]] = [
     ("Médenine", 33.3547, 10.5052),
     ("Tataouine", 32.9291, 10.4517),
     ("Ghorbel", 35.2292, 9.1789),
-    ("Tozeur", 33.9197, 6.9440),
+    ("Tozeur", 33.9197, 8.1339),
 ]
 
 # Beyond this distance from every seat a station is left unassigned.

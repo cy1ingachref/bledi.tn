@@ -34,12 +34,33 @@ python tool/inspect_louage_endpoints.py
 | with coordinates | 7 465 |
 | no coordinates (quarantined) | 5 |
 | outside Tunisia's geographic bounds | **0** |
-| inside a water polygon | **19** |
+| inside a water polygon | **23** |
 | duplicate rows (same name at the same point) | **40** |
 | shared point, different names (interchange pole — not a fault) | 1 |
 | rail stop >5 km from rail track | **5** |
 | isolated: no other stop within 250 m and no line serving it | **6** (brute-force confirmed) |
 | served by no line at all (orphan) | 5 903 |
+
+### Four hardcoded city seats are wrong, and they drive station→city assignment
+
+`CITY_SEATS` in `src/backend/app/main.py` is the governorate-seat list used by
+`nearest_city()`, which assigns **every** station to a city. Checked by
+comparing each seat to stops of the same name and to Nominatim:
+
+| seat | listed at | evidence | verdict |
+|---|---|---|---|
+| **Tozeur** | 33.9197, **6.9440** | the real town is 33.9197, **8.1339** (Nominatim 33.9239, 8.1371); a same-named stop sits 110 km away | **WRONG — ~110 km west, inside Algeria** |
+| **Ghorbel** | 35.2292, 9.1789 | Nominatim places Ghorbel at 34.7484, 10.7369, exactly where the same-named stop is (151.7 km from the listed seat) | **WRONG — 151.7 km** |
+| Siliana | 36.3667, 9.2167 | nearest same-named stop 34.1 km away; Nominatim returned only the governorate polygon, so this is unconfirmed | unverified |
+| Sidi Bouzid, Kébili | — | Nominatim returned governorate polygons, not towns; distances to a polygon centroid are not evidence | unverified |
+
+Kassab was flagged by the same test (192 km from "Kassas zorda") but Nominatim
+places Kassab 4.0 km from the listed coordinate, so **the seat is fine and the
+stop is wrong** — the opposite conclusion, which is why every flag needs its own
+check rather than a batch "fix".
+
+Tozeur matters beyond itself: with the seat 110 km off, every southern station
+was being assigned to the wrong governorate.
 
 ### The 5 quarantined stations are still live on the map
 
@@ -66,34 +87,27 @@ A second gap: `ajim` has a THIRD row, `dl_sntri_ajim_85358` at
 33.7249, 10.7483, which is the correct Ajim on Djerba. So the correct position
 was already in the seed while two wrong ones were being served.
 
-### The 19 stops inside a water polygon
+### The 23 stops inside a water polygon
 
-| station | lat, lon | mode | water body |
-|---|---|---|---|
-| Cité Commerciale | 36.77008, 10.23219 | bus | wetland |
-| Mc 33 | 36.81690, 10.29801 | bus | old port basin |
-| Chaaben | 34.80817, 10.75136 | bus | Oued (river) |
-| Sidi youssef | 34.65550, 10.97019 | bus | sea |
-| Kantra | 34.66459, 11.12753 | bus | sea |
-| Mosquée bonouma | 34.76474, 11.23322 | bus | sea |
-| ECHATT | 35.22110, 10.03350 | bus | saltmarsh |
-| Croisement ghorfa | 37.00331, 10.73375 | bus | sea |
-| محطة سيارات اجرة لواج خطوط داخلية | 33.86310, 10.99043 | bus | sea |
-| محطة خاصة السيارات النقل الريف | 33.50152, 11.54331 | bus | sea |
-| ARWAY | 33.87350, 10.91627 | bus | sea |
-| SIDI SMAAEN | 33.87331, 10.90874 | bus | sea |
-| RSIFAT | 33.55216, 10.94399 | bus | sea |
-| Ain Drahem (duplicate) | 36.82700, 10.35000 | bus | sea |
-| Ajim (duplicate) | 37.16200, 9.73500 | bus | GSHHG lake |
-| Bir Mouzaina (duplicate) | 37.16000, 9.72000 | bus | GSHHG lake |
-| Douane Bir Mouzaina (duplicate) | 37.15500, 9.70500 | bus | GSHHG lake |
-| chararda | 35.20649, 10.03590 | bus | saltmarsh |
-| ain soltane | 35.80778, 10.13380 | bus | wetland |
+4 are the live duplicates from the quarantine table above, so fixing the
+duplicates removes 4 of the 23. The rest cluster in the Gulf of Gabès /
+Médenine area (Sidi youssef, Kantra, Mosquée bonouma, Dahmanin, MASSRET KSSIBA,
+Port sidi daoued, ARWAY, LEBHERAT 2, SIDI SMAAEN, SIDI ZEYED, RESTAURENT
+CHOUROUK, RSIFAT) and along the coast (Cité Commerciale, Mc 33, Chaaben,
+ain soltane).
 
-Four of these are the live duplicates from the quarantine table above, so
-fixing the duplicates removes four of the nineteen. The rest cluster in the
-Gulf of Gabes / Medenine area (Sidi youssef, Kantra, Mosquée bonouma, ARWAY,
-SIDI SMAAEN, RSIFAT) and along the chott belt.
+Run `python tool/audit_station_placement.py` for the current list with
+coordinates; it is regenerated, not hand-maintained.
+
+An earlier version reported 19 and MISSED Dahmanin and SIDI ZEYED. The cause was
+a raster prefilter that skipped the exact test when its coarse mask said "land";
+the mask over-fills near the coast, so two genuinely-sea stops were dropped —
+while their neighbour 450 m away was flagged, so the audit contradicted itself.
+The prefilter is gone; the test is exact for every stop.
+
+A chott (dry salt flat) is classified as LAND, not water: the OSM `wetland_saltmarsh`
+polygon is seasonal, and bus stops at its edge (Tozeur, ECHATT, chararda) must
+not be flagged "in water" by a polygon that is flooded only part of the year.
 
 ### The 5 rail stops >5 km from track
 
@@ -222,5 +236,32 @@ Carthage as open sea, while Nominatim confirms all three are residential land.
 | land rings tested as water | La Marsa/Bizerte/Carthage as open sea | land and water kept separate |
 | `self.w` used for both west bound and raster width | mask all-zero, every point "dry" | renamed `west`/`ncols` |
 | polygons drawn unclipped | raster over-filled; 30 false "in water" | Sutherland-Hodgman clip + exact confirmation |
-| per-point ray casting on a 1.16 M-vertex ring | audit timed out at 590 s | raster prefilter (now 28 s) |
+| per-point ray casting on a 1.16 M-vertex ring | audit timed out at 590 s | clip rings to the window at BUILD time; exact test now runs in 8 s |
+| raster prefilter gating the exact test | missed 2 genuinely-sea stops (Dahmanin, SIDI ZEYED) | prefilter removed; the test is exact for every stop |
+| `wetland_saltmarsh` treated as water | Tozeur, ECHATT, chararda falsely flagged "in water" | chott reclassified as LAND (dry salt flat) |
 | louage endpoint ids compared to names | 104 bogus "unresolved endpoint" | resolve against station ids |
+
+## Known limits of this audit
+
+- The water window is lat 30.0–37.8, lon 7.0–12.0. A point outside it returns
+  "sea" rather than "unknown", which is wrong; no current stop falls outside, so
+  it does not affect today's numbers. The backend's `CITY_SEATS` **Tozeur**
+  entry (33.9197, 6.9440) does fall outside, which is how it was caught.
+- The "isolated" count (4 541) is the audit's own threshold — stops with no
+  other stop within 250 m and no line serving them. Only the 6 with no
+  neighbour at all were brute-force confirmed.
+- City-seat verdicts rest on Nominatim plus same-named stops, not on a
+  gazetteer. Siliana, Sidi Bouzid and Kébili could not be confirmed either way
+  because Nominatim returned governorate polygons, whose centroid is not a town.
+- Nothing here was mutated. Every finding is a report.
+
+## Verification
+
+- `tool/check_water_index.py`: 12/12 ground-truth points classified correctly
+- `tool/verify_nearest_ground_truth.py`: 6/6 "no neighbour" claims brute-force confirmed
+- `tool/crosscheck_water.py`: 0 raster artefacts remaining
+- `pytest tests/ -q`: 151 backend tests pass
+- Ad-hoc verifier (`hermes-verify-audit.py`): 43/43 checks pass
+- `svelte-check`: clean
+- The 7.1 MB `water_polys.json` is gitignored; the audit prints "water test SKIPPED"
+  when it is absent so a missing file cannot read as a clean result.
