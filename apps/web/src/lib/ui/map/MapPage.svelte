@@ -91,6 +91,7 @@
   );
 
   function toggleMode(id: string) {
+    // eslint-disable-next-line svelte/prefer-svelte-reactivity -- a local copy, reactivity comes from reassigning selected
     const next = new Set(selected);
     if (next.has(id)) next.delete(id);
     else next.add(id);
