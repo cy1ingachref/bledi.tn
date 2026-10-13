@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Boots the given bledi-server image next to a throwaway PostGIS and checks the
+# Boots the given bledi-server image next to a throwaway Postgres and checks the
 # API guarantees end to end. Usage: smoke-test.sh <image>
 set -euo pipefail
 
@@ -27,7 +27,7 @@ trap cleanup EXIT
 
 docker network create "$NAME" >/dev/null
 docker run -d --name "$NAME-db" --network "$NAME" \
-  -e POSTGRES_PASSWORD="$PGPASSWORD" postgis/postgis:16-3.4 >/dev/null
+  -e POSTGRES_PASSWORD="$PGPASSWORD" postgres:16-alpine >/dev/null
 
 for i in $(seq 1 60); do
   docker exec "$NAME-db" pg_isready -U postgres -h localhost >/dev/null 2>&1 && break
@@ -35,14 +35,10 @@ for i in $(seq 1 60); do
   sleep 1
 done
 
-# The app connects as a non-superuser, as in production, so the extensions the
-# schema needs are created up front by the superuser.
+# The app connects as a non-superuser that owns its database, as in production.
 docker exec -i "$NAME-db" psql -v ON_ERROR_STOP=1 -U postgres -h localhost >/dev/null <<SQL
 CREATE ROLE bledi LOGIN PASSWORD '$APP_PASSWORD';
 CREATE DATABASE bledi OWNER bledi;
-\c bledi
-CREATE EXTENSION cube;
-CREATE EXTENSION earthdistance;
 SQL
 
 docker run -d --name "$NAME-api" --network "$NAME" -p "$PORT:3000" \
@@ -77,8 +73,7 @@ expect() {
 
 expect 401 GET /memories
 expect 200 GET /health
-expect 200 GET /stations
-expect 200 GET /lines
+expect 404 GET /stations
 
 EMAIL=smoke@example.com
 PASSWORD=test123456

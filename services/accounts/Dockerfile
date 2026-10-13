@@ -10,25 +10,32 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Copy manifests
 COPY Cargo.toml Cargo.lock* ./
-COPY bledi-core/Cargo.toml bledi-core/
+COPY bledi-domain/Cargo.toml bledi-domain/
+COPY bledi-application/Cargo.toml bledi-application/
+COPY bledi-postgres/Cargo.toml bledi-postgres/
+COPY bledi-http/Cargo.toml bledi-http/
 COPY bledi-server/Cargo.toml bledi-server/
 
-# Create dummy main files to compile dependencies
-RUN mkdir -p bledi-core/src bledi-server/src \
-    && echo "pub fn placeholder() {}" > bledi-core/src/lib.rs \
-    && echo "fn main() {}" > bledi-server/src/main.rs
+# Create dummy sources to compile dependencies
+RUN for crate in bledi-domain bledi-application bledi-postgres bledi-http; do \
+        mkdir -p $crate/src && echo "pub fn placeholder() {}" > $crate/src/lib.rs; \
+    done \
+    && mkdir -p bledi-server/src && echo "fn main() {}" > bledi-server/src/main.rs
 
 # Build dependencies (cached layer)
 RUN cargo build --release || true
 
-# Copy actual source
-COPY bledi-core/src bledi-core/src
+# Copy actual source. The migrations are embedded into the binary at compile time.
+COPY bledi-domain/src bledi-domain/src
+COPY bledi-application/src bledi-application/src
+COPY bledi-postgres/src bledi-postgres/src
+COPY bledi-http/src bledi-http/src
 COPY bledi-server/src bledi-server/src
 COPY migrations migrations
 
 # Build
-RUN touch bledi-core/src/lib.rs bledi-server/src/main.rs \
-    && cargo build --release
+RUN touch */src/*.rs \
+    && cargo build --release -p bledi-server
 
 # Runtime image
 FROM debian:bookworm-slim
@@ -45,7 +52,6 @@ RUN groupadd --system --gid 10001 bledi \
 WORKDIR /app
 
 COPY --from=builder /app/target/release/bledi-server /usr/local/bin/bledi-server
-COPY migrations /app/migrations
 
 # NOTE: no DATABASE_URL default and no JWT_SECRET default are baked in.
 # Both are REQUIRED at runtime and the server refuses to start without them.
