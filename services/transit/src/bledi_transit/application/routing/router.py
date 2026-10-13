@@ -33,6 +33,7 @@ from bledi_transit.adapters.graphs.rail_graph import load_rail_graph
 from bledi_transit.adapters.graphs.rail_graph import track_between_cached as rail_track_cached
 from bledi_transit.adapters.graphs.road_graph import load_graph as load_road_graph
 from bledi_transit.adapters.graphs.road_graph import road_route_cached
+from bledi_transit.adapters.graphs.search import snap_candidates
 from bledi_transit.domain.fares import FARE_DINARS, fare_for_itinerary
 from bledi_transit.domain.geo import haversine_m, oriented_geometry, polyline_length
 from bledi_transit.domain.modes import (
@@ -250,10 +251,8 @@ def resolve_walk_geometry(
     g = getattr(router, "road_graph", None)
     if g is not None and road_route_cached is not None and straight <= 2000:
         try:
-            # Find nearest foot-usable nodes for both endpoints
-            from bledi_transit.adapters.graphs.road_graph import _snap_candidates
-            a_candidates = _snap_candidates(g, "foot", a_lat, a_lon, max_m=250.0, want=3)
-            b_candidates = _snap_candidates(g, "foot", b_lat, b_lon, max_m=250.0, want=3)
+            a_candidates = snap_candidates(g, "foot", a_lat, a_lon, max_m=250.0, want=3)
+            b_candidates = snap_candidates(g, "foot", b_lat, b_lon, max_m=250.0, want=3)
             # Try routing through each combination, preferring the shortest
             best_repair = None
             best_repair_dist = float("inf")
