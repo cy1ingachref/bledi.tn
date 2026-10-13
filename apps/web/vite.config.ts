@@ -9,10 +9,9 @@ export default defineConfig({
     sveltekit(),
     VitePWA({
       registerType: "autoUpdate",
-      // SvelteKit owns the built HTML, so the default 'auto' injection never
-      // lands a <script> in the output and the service worker is silently
-      // never registered. 'script' emits the registerSW.js tag explicitly.
-      injectRegister: "script",
+      // SvelteKit writes index.html after the plugin's HTML transform, so an
+      // injected registration never lands; +layout.svelte registers instead.
+      injectRegister: false,
       includeAssets: ["favicon.svg"],
       manifest: {
         name: "bledi.tn — Tunisia Transit",
