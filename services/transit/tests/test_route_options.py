@@ -14,10 +14,10 @@ import pytest
 
 from bledi_transit.application.routing.router import (
     BUS_MODES,
-    OPTION_MODES,
     RAIL_MODES,
     TAXI_MODES,
     build_graph,
+    polyline_length,
 )
 
 # Tunis -> Sfax: a trip with real rail, but NO buses (only trains).
@@ -43,14 +43,6 @@ class TestOptionModeFamilies:
         assert not (BUS_MODES & RAIL_MODES)
         assert not (BUS_MODES & TAXI_MODES)
         assert not (RAIL_MODES & TAXI_MODES)
-
-    def test_every_option_is_declared(self):
-        assert set(OPTION_MODES) == {"bus", "louaj", "train"}
-
-    def test_walk_is_not_an_option_family(self):
-        """Walking is always permitted inside a search, never a family itself."""
-        for modes in OPTION_MODES.values():
-            assert "walk" not in modes
 
 
 class TestOptionsAreSeparatelyComputed:
@@ -99,9 +91,9 @@ class TestOptionsAreSeparatelyComputed:
 class TestOptionEdgesCarryRealMetrics:
     def test_ride_steps_expose_distance_and_geometry_fields(self, router):
         # Train to Sfax
-        res = router.route(*TUNIS, *SFAX, allowed_modes=OPTION_MODES["train"])
+        res = router.route(*TUNIS, *SFAX, allowed_modes=RAIL_MODES)
         rides = [s for s in res.get("steps", []) if s.get("type") == "ride"]
-        assert rides, f"train option has no ride steps"
+        assert rides, "train option has no ride steps"
         for s in rides:
             assert s.get("distance_m") is not None
             assert s.get("time_seconds") is not None
@@ -111,9 +103,9 @@ class TestOptionEdgesCarryRealMetrics:
             )
 
         # Bus to sidi_salah (which has bus service)
-        res = router.route(*TUNIS, *SIDI_SALAH, allowed_modes=OPTION_MODES["bus"])
+        res = router.route(*TUNIS, *SIDI_SALAH, allowed_modes=BUS_MODES)
         rides = [s for s in res.get("steps", []) if s.get("type") == "ride"]
-        assert rides, f"bus option has no ride steps"
+        assert rides, "bus option has no ride steps"
         for s in rides:
             assert s.get("distance_m") is not None
             assert s.get("time_seconds") is not None
@@ -128,11 +120,9 @@ class TestOptionEdgesCarryRealMetrics:
         A shorter value means a mis-oriented or mis-stitched polyline, which
         draws a line that does not follow the infrastructure at all.
         """
-        from bledi_transit.application.routing.router import polyline_length
-
         checked = 0
-        for key in ("bus", "train"):
-            res = router.route(*TUNIS, *SFAX, allowed_modes=OPTION_MODES[key])
+        for key, allowed in (("bus", BUS_MODES), ("train", RAIL_MODES)):
+            res = router.route(*TUNIS, *SFAX, allowed_modes=allowed)
             for s in res.get("steps", []):
                 geom = s.get("geometry") or []
                 if len(geom) < 2:
