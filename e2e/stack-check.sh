@@ -8,9 +8,11 @@ API=$BASE/api/v1
 BODY=$(mktemp)
 trap 'rm -f "$BODY"' EXIT
 
+# Health goes to transit; an unauthenticated /users/me answering 401 shows accounts is up.
 for i in $(seq 1 90); do
-  curl -sf "$API/health" >/dev/null && break
-  [[ $i -lt 90 ]] || { echo "FAIL: gateway not healthy after 180s"; exit 1; }
+  curl -sf "$API/health" >/dev/null &&
+    [[ $(curl -s -o /dev/null -w '%{http_code}' "$API/users/me") == 401 ]] && break
+  [[ $i -lt 90 ]] || { echo "FAIL: stack not ready after 180s"; exit 1; }
   sleep 2
 done
 
