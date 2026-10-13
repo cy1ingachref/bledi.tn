@@ -193,7 +193,7 @@ CITY_SEATS: list[tuple[str, float, float]] = [
     ("Gabès", 33.8815, 10.0982),
     ("Médenine", 33.3547, 10.5052),
     ("Tataouine", 32.9291, 10.4517),
-    ("Ghorbel", 35.2292, 9.1789),
+    ("Ghorbel", 34.7484, 10.7369),
     ("Tozeur", 33.9197, 8.1339),
 ]
 
