@@ -20,6 +20,7 @@ python tool/check_water_index.py          # 12 ground-truth points must all pass
 python tool/audit_station_placement.py --json out/audit.json
 
 # 3. the checks that keep the audit honest
+python tool/verify_audit_claims.py           # the audit's own gate: 51 checks
 python tool/verify_nearest_ground_truth.py --report out/audit.json
 python tool/diagnose_rail_placement.py
 python tool/crosscheck_water.py --report out/audit.json
@@ -261,7 +262,7 @@ Carthage as open sea, while Nominatim confirms all three are residential land.
 - `tool/verify_nearest_ground_truth.py`: 6/6 "no neighbour" claims brute-force confirmed
 - `tool/crosscheck_water.py`: 0 raster artefacts remaining
 - `pytest tests/ -q`: 151 backend tests pass
-- Ad-hoc verifier (`hermes-verify-audit.py`): 43/43 checks pass
+- Ad-hoc verifier (`tool/verify_audit_claims.py`): 51/51 checks pass
 - `svelte-check`: clean
 - The 7.1 MB `water_polys.json` is gitignored; the audit prints "water test SKIPPED"
   when it is absent so a missing file cannot read as a clean result.
