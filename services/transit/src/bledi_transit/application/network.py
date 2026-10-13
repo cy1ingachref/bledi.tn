@@ -21,7 +21,8 @@ class Network:
     # (`location`, `governorate`, `routes` with from/to).
     louage_stations: list[dict[str, Any]] = field(default_factory=list)
     louage_routes: list[dict[str, Any]] = field(default_factory=list)
-    segments: Segments = field(default_factory=dict)
+    # None when route_geometry.json was never built, as opposed to built empty.
+    segments: Segments | None = None
 
     @cached_property
     def station_by_id(self) -> dict[str, Station]:
@@ -68,7 +69,7 @@ class Network:
 
     def segment_geometry(self, from_id: str | None, to_id: str | None) -> list[list[float]]:
         """Cached polyline between two stops in travel order, [] when there is none."""
-        if not from_id or not to_id:
+        if not from_id or not to_id or not self.segments:
             return []
         entry = self.segments.get(f"{min(from_id, to_id)}|{max(from_id, to_id)}")
         if not entry or not entry.get("geometry"):

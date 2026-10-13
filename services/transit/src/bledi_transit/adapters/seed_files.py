@@ -7,6 +7,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
+from bledi_transit.application.errors import AppError
 from bledi_transit.application.network import Network, Segments
 
 log = logging.getLogger("bledi.data")
@@ -40,7 +41,7 @@ class SeedFileNetwork:
             seed_name=seed_path.name,
             louage_stations=louage.get("stations", []),
             louage_routes=louage.get("routes", []),
-            segments=self.route_segments(),
+            segments=self.route_segments() if (self.data_dir / ROUTE_GEOMETRY_FILE).exists() else None,
         )
         log.info(
             "loaded seed: %d stations, %d lines, %d louage stops from %s",
@@ -64,17 +65,24 @@ class SeedFileNetwork:
     def taxi_segments(self) -> Segments:
         return self._segments(TAXI_GEOMETRY_FILE)
 
-    def has_route_segments(self) -> bool:
-        return (self.data_dir / ROUTE_GEOMETRY_FILE).exists()
+    def map_layer(self, name: str) -> dict[str, Any]:
+        data = self._optional(MAP_LAYER_FILES[name])
+        if data is None:
+            raise AppError(
+                "unavailable",
+                f"{MAP_LAYER_FILES[name]} is missing; run `python tool/build_map_overlays.py` "
+                "to build it from Downloads/tunisia-transport-data",
+            )
+        return data
 
-    def map_layer(self, name: str) -> dict[str, Any] | None:
-        return self._optional(MAP_LAYER_FILES[name])
-
-    def map_layer_file(self, name: str) -> str:
-        return MAP_LAYER_FILES[name]
-
-    def louage_links(self) -> dict[str, Any] | None:
-        return self._optional(LOUAGE_LINKS_FILE)
+    def louage_links(self) -> dict[str, Any]:
+        data = self._optional(LOUAGE_LINKS_FILE)
+        if data is None:
+            raise AppError(
+                "unavailable",
+                f"{LOUAGE_LINKS_FILE} is missing; run `python tool/build_station_index.py`",
+            )
+        return data
 
     def _segments(self, name: str) -> Segments:
         data = self._optional(name)
