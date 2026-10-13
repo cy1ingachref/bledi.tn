@@ -17,8 +17,10 @@ import math
 
 import pytest
 
-from bledi_transit.application.routing.router import FARE_DINARS, Router, expected_wait
+from bledi_transit.application.routing.router import Router
+from bledi_transit.domain.fares import FARE_DINARS
 from bledi_transit.domain.geo import haversine_m
+from bledi_transit.domain.timetable import expected_wait
 from bledi_transit.domain.tunables import WALK_SPEED_KMH
 
 
