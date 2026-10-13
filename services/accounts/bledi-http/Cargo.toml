@@ -1,0 +1,21 @@
+[package]
+name = "bledi-http"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = { workspace = true }
+bledi-application = { path = "../bledi-application" }
+bledi-domain = { path = "../bledi-domain" }
+chrono = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tower-http = { workspace = true }
+tracing = { workspace = true }
+uuid = { workspace = true }
+
+[dev-dependencies]
+bledi-application = { path = "../bledi-application", features = ["testing"] }
+http-body-util = "0.1"
+tokio = { workspace = true }
+tower = { version = "0.4", features = ["util"] }
