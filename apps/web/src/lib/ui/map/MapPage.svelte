@@ -1,8 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { get } from "svelte/store";
-  import L from "leaflet";
-  import "leaflet.markercluster";
   import Icon from "$lib/ui/Icon.svelte";
   import type {
     Endpoint,
@@ -21,7 +19,6 @@
     DEFAULT_MODES,
     defaultSelection,
     isStationShown,
-    modeKey,
     servedModes,
     uniqueModes,
   } from "$lib/domain/modes";
@@ -40,15 +37,8 @@
   } from "$lib/application/i18n";
   import { useTransit } from "$lib/ui/context";
   import { MODE_STYLE, modeColor, modeIcon } from "$lib/ui/modeStyle";
-  import { RouteDrawing } from "./routeDrawing";
-  import {
-    initTheme,
-    cycleTheme,
-    resolvedTheme,
-    themePref,
-    prefersReducedMotion,
-    type ThemePref,
-  } from "$lib/ui/theme";
+  import { TransitMap } from "./transitMap";
+  import { initTheme, cycleTheme, resolvedTheme, themePref, type ThemePref } from "$lib/ui/theme";
 
   const OBJECTIVES: { id: Objective; icon: string }[] = [
     { id: "fastest", icon: "clock" },
@@ -60,17 +50,7 @@
 
   // ── State ─────────────────────────────────────────────────────────────────
   let mapEl: HTMLDivElement | null = $state(null);
-  let map: L.Map | null = null;
-  let baseLayer: L.TileLayer | null = null;
-  let refLayer: L.TileLayer | null = null;
-  let stationLayer: L.LayerGroup | null = null;
-  let route: RouteDrawing | null = null;
-  // One canvas per network mode, so each transport type can carry its own
-  // neon glow (a CSS drop-shadow on that pane's canvas). A single canvas
-  // holding every mode could only take one glow colour.
-  const netLayers: Record<string, L.LayerGroup> = {};
-  let startMarker: L.Marker | null = null;
-  let endMarker: L.Marker | null = null;
+  let tmap: TransitMap | null = null;
 
   let lang = $state<Lang>("fr");
   const t = $derived(translator(lang));
@@ -98,7 +78,6 @@
   let error = $state("");
 
   // Physical rail/road base layers, plus the louage connection graph.
-  let baseLayers: Record<string, L.LayerGroup | null> = { roads: null, rail: null };
   let baseRail = $state<MapOverlayFeature[]>([]);
   let baseRoads = $state<MapOverlayFeature[]>([]);
   let louageLinks = $state<LouageLink[]>([]);
@@ -175,301 +154,44 @@
     toastTimer = setTimeout(() => (toast = ""), 4200);
   }
 
-  // ── Map ───────────────────────────────────────────────────────────────────
-  // Two real basemaps, swapped by theme. Both are Esri's no-key tile services:
-  // dark for the night theme, light for the day theme.
-  const TILES = {
-    dark: {
-      base: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
-      ref: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
-    },
-    light: {
-      base: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
-      ref: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
-    },
-  };
-  const TILE_ATTR = "Esri, HERE, Garmin, © OpenStreetMap contributors";
-
-  /** Network panes, ordered so rail sits above road. */
-  const NET_PANES: { mode: string; z: number }[] = [
-    { mode: "bus", z: 380 },
-    { mode: "taxi_louage", z: 381 },
-    { mode: "tram", z: 382 },
-    { mode: "metro", z: 383 },
-    { mode: "train", z: 384 },
-  ];
-
-  // The physical network, drawn UNDER the per-route network: every motorway,
-  // trunk and primary road, and every rail/light-rail alignment in the country.
-  // Built by tool/build_map_overlays.py from the official Overpass exports.
-  const BASE_PANES: { key: string; z: number }[] = [
-    { key: "roads", z: 360 },
-    { key: "rail", z: 370 },
-  ];
-
-  function initMap() {
-    if (!mapEl) return;
-    map = L.map(mapEl, {
-      center: [36.8065, 10.1815],
-      zoom: 12,
-      zoomControl: false,
-      attributionControl: true,
-      // Thousands of station markers as SVG would be thousands of DOM nodes.
-      preferCanvas: true,
-    });
-    L.control.zoom({ position: "bottomright" }).addTo(map);
-
-    baseLayer = L.tileLayer(TILES.dark.base, { maxZoom: 16, attribution: TILE_ATTR }).addTo(map);
-    refLayer = L.tileLayer(TILES.dark.ref, { maxZoom: 16, pane: "shadowPane" }).addTo(map);
-
-    // The A/B endpoints live above the station markers in their own pane, so
-    // dimming the rest of the network in focus mode never dims them.
-    map.createPane("endpointPane");
-    const ep = map.getPane("endpointPane");
-    if (ep) { ep.style.zIndex = "660"; ep.style.pointerEvents = "none"; }
-    route = new RouteDrawing(map);
-
-    for (const p of NET_PANES) {
-      const name = `net_${p.mode}`;
-      map.createPane(name);
-      const el = map.getPane(name);
-      if (el) { el.style.zIndex = String(p.z); el.style.pointerEvents = "none"; }
-      netLayers[p.mode] = L.layerGroup().addTo(map);
-    }
-
-    for (const p of BASE_PANES) {
-      const name = `base_${p.key}`;
-      map.createPane(name);
-      const el = map.getPane(name);
-      if (el) { el.style.zIndex = String(p.z); el.style.pointerEvents = "none"; }
-      baseLayers[p.key] = L.layerGroup().addTo(map);
-    }
-
-    stationLayer = L.layerGroup().addTo(map);
-
-    map.on("click", onMapClick);
-  }
-
-  function canvasRenderer(mode: string): L.Canvas {
-    return L.canvas({ padding: 0.5, pane: `net_${mode}` });
-  }
-
-  function applyBasemap(r?: "light" | "dark") {
-    if (!map || !baseLayer || !refLayer) return;
-    const which = (r ?? dark) === "light" ? "light" : "dark";
-    baseLayer.setUrl(TILES[which].base);
-    refLayer.setUrl(TILES[which].ref);
-  }
-
-  function stationIcon(mode: string) {
-    const c = modeColor(mode);
-    const dim = modeKey(mode) === "unclassified";
-    return L.divIcon({
-      className: "",
-      html: `<span style="display:block;width:9px;height:9px;border-radius:50%;
-        background:${c};border:1.5px solid rgba(3,1,10,.92);
-        box-shadow:0 0 0 2px ${c}2e${dim ? "" : `,0 0 7px ${c}99`};"></span>`,
-      iconSize: [9, 9],
-      iconAnchor: [4.5, 4.5],
-    });
-  }
-
-  function endpointIcon(label: string, color: string) {
-    return L.divIcon({
-      className: "",
-      html: `<span style="display:flex;width:30px;height:30px;border-radius:50%;
-        align-items:center;justify-content:center;
-        background:${color};color:#05020e;font-weight:800;font-size:13px;
-        border:2.5px solid #f4f0ff;box-shadow:0 0 14px ${color}cc,0 3px 16px rgba(0,0,0,.8);">${label}</span>`,
-      iconSize: [30, 30],
-      iconAnchor: [15, 15],
-    });
-  }
-
-  // ── Network layer (roads and rails, one neon canvas per mode) ─────────────
-  function buildNetwork() {
-    if (!map) return;
-    for (const p of NET_PANES) netLayers[p.mode]?.clearLayers();
-
-    const renderers: Record<string, L.Canvas> = {};
-    const byMode: Record<string, NetworkSegment[]> = {};
-
-    for (const seg of network) {
-      if (!seg.has_geometry || seg.geometry.length < 2) continue;
-      const k = modeKey(seg.mode) as string;
-      if (!(k in netLayers)) continue;
-      (byMode[k] ??= []).push(seg);
-    }
-
-    for (const [mode, segs] of Object.entries(byMode)) {
-      const layer = netLayers[mode];
-      if (!layer) continue;
-      renderers[mode] ??= canvasRenderer(mode);
-      const isRail = mode === "train" || mode === "metro" || mode === "tram";
-      for (const seg of segs) {
-        L.polyline(seg.geometry, {
-          color: modeColor(mode),
-          weight: isRail ? 2.4 : 1.7,
-          opacity: isRail ? 0.8 : 0.5,
-          lineCap: "round",
-          lineJoin: "round",
-          interactive: false,
-          renderer: renderers[mode],
-        }).addTo(layer);
-      }
-    }
-  }
-
-  /** Toggle which network families are drawn. */
   function applyNetworkVisibility() {
-    if (!map) return;
-    const railOn = showRails;
-    const roadOn = showRoads;
-    for (const p of NET_PANES) {
-      const el = map.getPane(`net_${p.mode}`);
-      if (!el) continue;
-      const isRail = p.mode === "train" || p.mode === "metro" || p.mode === "tram";
-      el.style.display = (isRail ? railOn : roadOn) ? "" : "none";
-    }
-    for (const p of BASE_PANES) {
-      const el = map.getPane(`base_${p.key}`);
-      if (!el) continue;
-      el.style.display = (p.key === "rail" ? railOn : roadOn) ? "" : "none";
-    }
+    tmap?.setNetworkVisibility(showRoads, showRails);
   }
 
-  // ── Physical base layers (rail + roads) ───────────────────────────────────
-  /**
-   * Draw the country's rail and road alignments beneath the per-route network.
-   *
-   * Styling is deliberately quieter than the route network: these are context,
-   * not the answer to "how do I get there". Rail is coloured by mode so light
-   * rail reads differently from mainline; roads are one muted grey so the
-   * road numbers stay legible without competing with the route.
-   */
+  function buildNetwork() {
+    tmap?.drawNetwork(network);
+  }
+
   function buildBaseLayers() {
-    if (!map) return;
-    for (const p of BASE_PANES) baseLayers[p.key]?.clearLayers();
-
-    const railLayer = baseLayers.rail;
-    if (railLayer) {
-      const railRenderer = L.canvas({ padding: 0.5, pane: "base_rail" });
-      for (const f of baseRail) {
-        if (!f.geometry || f.geometry.length < 2) continue;
-        const isMetro = (f.properties?.mode ?? "") === "metro";
-        L.polyline(f.geometry, {
-          color: isMetro ? modeColor("metro") : modeColor("train"),
-          weight: isMetro ? 1.9 : 2.3,
-          opacity: isMetro ? 0.6 : 0.72,
-          lineCap: "round",
-          lineJoin: "round",
-          interactive: false,
-          renderer: railRenderer,
-        }).addTo(railLayer);
-      }
-    }
-
-    const roadLayer = baseLayers.roads;
-    if (roadLayer) {
-      const roadRenderer = L.canvas({ padding: 0.5, pane: "base_roads" });
-      for (const f of baseRoads) {
-        if (!f.geometry || f.geometry.length < 2) continue;
-        const hw = f.properties?.highway ?? "";
-        // Motorways carry the most weight; primary the least.
-        const w = hw === "motorway" ? 1.9 : hw === "trunk" ? 1.5 : 1.1;
-        L.polyline(f.geometry, {
-          color: "#6b6f8a",
-          weight: w,
-          opacity: hw === "primary" ? 0.3 : 0.42,
-          lineCap: "round",
-          lineJoin: "round",
-          interactive: false,
-          renderer: roadRenderer,
-        }).addTo(roadLayer);
-      }
-    }
-    applyNetworkVisibility();
+    tmap?.drawBaseLayers(baseRail, baseRoads);
   }
 
   /** Centre the map on a station and open its inspector. */
   function focusStation(id: string, name: string) {
     const s = stations.find((x) => x.id === id);
-    if (s) map?.setView([s.lat, s.lon], Math.max(map.getZoom(), 13));
+    if (s) tmap?.focus(s.lat, s.lon, 13);
     inspectStation(id, name);
   }
 
-  // ── Stations ──────────────────────────────────────────────────────────────
   function refreshStations() {
-    if (!map || !stationLayer) return;
-    stationLayer.clearLayers();
-    const visible = stations.filter((s) => isStationShown(s, selected, showUnclassified));
-
-    // Every stop goes into a marker cluster. A silent stride (drawing every
-    // Nth marker) makes a large dataset render identically to a small one, so
-    // all of them are added and clustering keeps the DOM cost down.
-    const cluster = L.markerClusterGroup({
-      maxClusterRadius: 55,
-      disableClusteringAtZoom: 15,
-      showCoverageOnHover: false,
-      chunkedLoading: true,
-      chunkInterval: 120,
-      iconCreateFunction: (c) => {
-        const n = c.getChildCount();
-        const size = n < 10 ? "small" : n < 100 ? "medium" : "large";
-        const reduced = prefersReducedMotion();
-        return L.divIcon({
-          html: `<div class="bl-cluster ${reduced ? "no-pulse" : ""}"><span class="bl-halo"></span><span class="bl-n">${n}</span></div>`,
-          className: `marker-cluster marker-cluster-${size}`,
-          iconSize: L.point(40, 40),
-        });
-      },
-    });
-
-    const markers: L.Marker[] = [];
-    for (const s of visible) {
-      const mk = L.marker([s.lat, s.lon], { icon: stationIcon(s.mode), title: s.name })
-        .bindTooltip(
-          `<b>${s.name}</b><span class="tt-sub">${modeLabelFor(t, s.mode)}</span>`,
-          { direction: "top", offset: [0, -7] }
-        )
-        .on("click", () => inspectStation(s.id, s.name));
-      markers.push(mk);
-    }
-    cluster.addLayers(markers);
-    stationLayer.addLayer(cluster);
+    tmap?.drawStations(
+      stations.filter((s) => isStationShown(s, selected, showUnclassified)),
+      (mode) => modeLabelFor(t, mode),
+      (s) => inspectStation(s.id, s.name)
+    );
   }
 
   function placeEndpoints() {
-    if (!map) return;
-    if (startMarker) { map.removeLayer(startMarker); startMarker = null; }
-    if (endMarker) { map.removeLayer(endMarker); endMarker = null; }
-    if (from)
-      startMarker = L.marker([from.lat, from.lon], {
-        icon: endpointIcon("A", "#22d3ee"),
-        pane: "endpointPane",
-        interactive: false,
-      })
-        .bindTooltip(t("trip.from"), { direction: "top" })
-        .addTo(map);
-    if (to)
-      endMarker = L.marker([to.lat, to.lon], {
-        icon: endpointIcon("B", "#f472b6"),
-        pane: "endpointPane",
-        interactive: false,
-      })
-        .bindTooltip(t("trip.to"), { direction: "top" })
-        .addTo(map);
+    tmap?.placeEndpoints(from, to, { from: t("trip.from"), to: t("trip.to") });
   }
 
-  // ── Map interaction: pick a point, inspect a stop ─────────────────────────
-  function onMapClick(e: L.LeafletMouseEvent) {
+  function onMapClick(lat: number, lon: number) {
     if (!pickMode) return;
-    const { lat, lng } = e.latlng;
     setEndpoint(pickMode, {
       kind: "map",
-      name: `${lat.toFixed(4)}, ${lng.toFixed(4)}`,
+      name: `${lat.toFixed(4)}, ${lon.toFixed(4)}`,
       lat,
-      lon: lng,
+      lon,
     });
     pickMode = null;
   }
@@ -478,7 +200,7 @@
     if (which === "from") from = ep;
     else to = ep;
     placeEndpoints();
-    map?.setView([ep.lat, ep.lon], Math.max(map.getZoom(), 14));
+    tmap?.focus(ep.lat, ep.lon, 14);
   }
 
   function startPick(which: "from" | "to") {
@@ -577,7 +299,7 @@
       routePlan = plan;
       selectedItinerary = 0;
       if (plan.itineraries?.length) {
-        route?.draw(plan.itineraries[0], dark);
+        tmap?.route.draw(plan.itineraries[0], dark);
         focusRoute = true;
         requestAnimationFrame(() =>
           resultsEl?.scrollIntoView({ behavior: "smooth", block: "start" })
@@ -614,13 +336,13 @@
     initTheme();
     theme = get(themePref);
 
-    initMap();
-    applyBasemap();
+    if (mapEl) tmap = new TransitMap(mapEl, onMapClick);
+    tmap?.setBasemap(dark);
     placeEndpoints();
 
     const unsubTheme = resolvedTheme.subscribe((r) => {
-      applyBasemap(r);
-      route?.setShade(r);
+      tmap?.setBasemap(r);
+      tmap?.route.setShade(r);
       // Station dots and network strokes take literal colours, so they have to
       // be redrawn to follow the theme.
       refreshStations();
@@ -664,9 +386,8 @@
 
     return () => {
       unsubTheme();
-      route?.stopRider();
-      map?.remove();
-      map = null;
+      tmap?.destroy();
+      tmap = null;
     };
   });
 
@@ -930,7 +651,7 @@
               <button
                 class="itin"
                 class:on={selectedItinerary === i}
-                onclick={() => { selectedItinerary = i; route?.draw(itin, dark); focusRoute = true; }}
+                onclick={() => { selectedItinerary = i; tmap?.route.draw(itin, dark); focusRoute = true; }}
                 aria-pressed={selectedItinerary === i}
               >
                 <div class="it-top">
