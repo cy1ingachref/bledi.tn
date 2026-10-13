@@ -1,0 +1,73 @@
+name: Backend
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'rust/**'
+      - 'Dockerfile'
+      - '.dockerignore'
+      - '.github/workflows/backend.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgis/postgis:16-3.4
+        env:
+          POSTGRES_PASSWORD: ci-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      # Throwaway credentials for the ephemeral service container, not secrets.
+      DATABASE_URL: postgres://bledi_ci:bledi_ci_local_only@localhost:5432/bledi
+      CARGO_TERM_COLOR: always
+    defaults:
+      run:
+        working-directory: rust
+    steps:
+      - uses: actions/checkout@v7
+
+      # Same toolchain as the Dockerfile builder, so the checked compiler is the shipped one.
+      - uses: dtolnay/rust-toolchain@1.99
+        with:
+          components: clippy, rustfmt
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: rust
+
+      # The app connects as a non-superuser, as in production, so the
+      # extensions the schema needs are created up front by the superuser.
+      - name: Prepare database
+        env:
+          PGHOST: localhost
+          PGUSER: postgres
+          PGPASSWORD: ci-only
+        run: |
+          psql -v ON_ERROR_STOP=1 <<'SQL'
+          CREATE ROLE bledi_ci LOGIN PASSWORD 'bledi_ci_local_only';
+          CREATE DATABASE bledi OWNER bledi_ci;
+          \c bledi
+          CREATE EXTENSION cube;
+          CREATE EXTENSION earthdistance;
+          SQL
+
+      - run: cargo fmt --all -- --check
+      - run: cargo clippy --all-targets --all-features -- -D warnings
+      - run: cargo test

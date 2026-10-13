@@ -300,17 +300,20 @@ bledi.tn/
 ├── scripts/                   # Data processing scripts
 ├── Dockerfile                 # Multi-stage Rust build
 ├── docker-compose.yml         # Full stack orchestration
-└── .github/workflows/ci.yml # CI pipeline
+└── .github/workflows/         # CI pipeline
 ```
 
 ## CI pipeline
 
-The GitHub Actions workflow runs on every push to `main`:
+CI runs on pull requests only, and each workflow only when the PR touches its paths:
 
-1. **Rust Build, Test & Runtime Smoke** — `cargo fmt`, `cargo clippy`, `cargo build --release`, `cargo test`, then boots the server against PostGIS and exercises the API
-2. **Python Backend Tests** — `pytest tests/` (151 tests)
-3. **Frontend Build & Test** — `npm ci`, `npx tsc --noEmit`, `npm run build`
-4. **Security Scan** — Semgrep, Gitleaks, Trivy
+- `backend.yml`: `cargo fmt`, `cargo clippy` and `cargo test` against PostGIS
+- `python.yml`: `pytest tests/` with the hashed `requirements.lock.txt`
+- `frontend.yml`: `npm audit`, `npm run check` (svelte-check), `npm run build`
+- `security.yml`: Gitleaks, Semgrep and Trivy on every PR
+- `e2e.yml`: builds the Docker image and runs `rust/docker/smoke-test.sh` against it, only on PRs labelled `e2e`
+
+Every workflow can also be started by hand from the Actions tab.
 
 ## Data sources and licensing status
 
