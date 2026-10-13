@@ -163,7 +163,7 @@ npm run preview
 - `GET /api/v1/route/plan`
 - `GET /api/v1/route/transit`
 - `GET /api/v1/geocode`
-- `GET /api/v1/itinerary`
+- `GET /api/v1/itinerary` (disabled)
 
 ### Rust axum (port 3000)
 - `GET /api/v1/health`
