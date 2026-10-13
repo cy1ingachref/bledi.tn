@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["bledi-core", "bledi-domain", "bledi-server"]
+members = ["bledi-application", "bledi-core", "bledi-domain", "bledi-server"]
 
 [workspace.dependencies]
 tokio = { version = "1", features = ["full"] }
