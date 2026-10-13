@@ -3,6 +3,24 @@ import { sveltekit } from "@sveltejs/kit/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
 
+const ACCOUNTS_PREFIXES = [
+  "/api/v1/auth/",
+  "/api/v1/users/",
+  "/api/v1/memories",
+  "/api/v1/favorites",
+  "/api/v1/friendships",
+  "/api/v1/location-shares",
+];
+
+// Same prefix map as nginx.conf. Vite tries the keys in order, so the
+// accounts prefixes must come before the catch-all /api.
+const proxy = {
+  ...Object.fromEntries(
+    ACCOUNTS_PREFIXES.map((p) => [p, { target: "http://localhost:3000", changeOrigin: true }])
+  ),
+  "/api": { target: "http://localhost:8000", changeOrigin: true },
+};
+
 export default defineConfig({
   plugins: [
     tailwindcss(),
@@ -56,21 +74,11 @@ export default defineConfig({
   server: {
     port: 5173,
     host: "127.0.0.1",
-    proxy: {
-      "/api": {
-        target: "http://localhost:8000",
-        changeOrigin: true
-      }
-    }
+    proxy
   },
   preview: {
     port: 8080,
     host: "127.0.0.1",
-    proxy: {
-      "/api": {
-        target: "http://localhost:8000",
-        changeOrigin: true
-      }
-    }
+    proxy
   }
 });
