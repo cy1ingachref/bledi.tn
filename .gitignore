@@ -94,3 +94,14 @@ tmp_*.py
 
 # Local environment files for docker compose
 .env
+
+# Water polygons for the station audit (tool/build_water_polys.py).
+# 58 MB of derived geometry, rebuilt from GSHHG + a Geofabrik extract rather
+# than committed. The audit degrades to "water test SKIPPED" and says so when
+# this is absent, so a missing file can never be mistaken for a clean result.
+data/water_polys.json
+data/water_tiles/
+
+# Audit output. Regenerate with:
+#   python tool/audit_station_placement.py --json out/audit.json
+out/
