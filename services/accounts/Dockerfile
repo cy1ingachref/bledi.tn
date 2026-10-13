@@ -24,7 +24,7 @@ RUN cargo build --release || true
 # Copy actual source
 COPY bledi-core/src bledi-core/src
 COPY bledi-server/src bledi-server/src
-COPY bledi-server/migrations bledi-server/migrations
+COPY migrations migrations
 
 # Build
 RUN touch bledi-core/src/lib.rs bledi-server/src/main.rs \
@@ -45,7 +45,7 @@ RUN groupadd --system --gid 10001 bledi \
 WORKDIR /app
 
 COPY --from=builder /app/target/release/bledi-server /usr/local/bin/bledi-server
-COPY bledi-server/migrations /app/migrations
+COPY migrations /app/migrations
 
 # NOTE: no DATABASE_URL default and no JWT_SECRET default are baked in.
 # Both are REQUIRED at runtime and the server refuses to start without them.
