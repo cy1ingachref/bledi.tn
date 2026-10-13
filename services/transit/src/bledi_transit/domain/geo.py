@@ -22,6 +22,33 @@ def polyline_length(pts: Sequence[Sequence[float]]) -> float:
     return total
 
 
+def simplify(pts: list[list[float]], tol: float) -> list[list[float]]:
+    """Douglas-Peucker on [[lat, lon]] pairs, tolerance in degrees."""
+    if len(pts) < 3 or tol <= 0:
+        return pts
+    keep = [False] * len(pts)
+    keep[0] = keep[-1] = True
+    stack: list[tuple[int, int]] = [(0, len(pts) - 1)]
+    while stack:
+        i, j = stack.pop()
+        if j <= i + 1:
+            continue
+        a0, a1 = pts[i][0], pts[i][1]
+        s0, s1 = pts[j][0] - a0, pts[j][1] - a1
+        seg_len = math.hypot(s0, s1)
+        best_k, best_d = -1, -1.0
+        for k in range(i + 1, j):
+            p0, p1 = pts[k][0] - a0, pts[k][1] - a1
+            d = math.hypot(p0, p1) if seg_len == 0 else abs(s1 * p0 - s0 * p1) / seg_len
+            if d > best_d:
+                best_k, best_d = k, d
+        if best_d > tol:
+            keep[best_k] = True
+            stack.append((i, best_k))
+            stack.append((best_k, j))
+    return [p for p, k in zip(pts, keep) if k]
+
+
 def oriented_geometry(entry: dict[str, Any], from_id: str, to_id: str) -> list[list[float]]:
     """Cached polyline between two stations, in travel order.
 
