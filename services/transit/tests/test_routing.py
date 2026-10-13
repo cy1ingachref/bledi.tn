@@ -17,7 +17,6 @@ import math
 
 import pytest
 
-from bledi_transit.application.routing.router import build_graph
 from bledi_transit.domain.timetable import expected_wait
 from bledi_transit.domain.tunables import MAX_END_WALK_METERS, MAX_START_WALK_METERS
 
@@ -48,26 +47,21 @@ class TestExpectedWait:
 
 
 class TestRouterSanity:
-    @pytest.fixture(scope="class")
-    def graph_and_router(self):
-        g, r = build_graph()
-        return g, r
-
-    def test_finds_path_tunis_centre_to_bizerte(self, graph_and_router):
-        g, r = graph_and_router
+    def test_finds_path_tunis_centre_to_bizerte(self, router):
+        r = router
         res = r.route(36.806, 10.184, 36.914, 9.866)
         assert "error" not in res or res.get("error") is None
         assert res.get("duration_min", 0) > 0
 
-    def test_finds_path_same_station_walk(self, graph_and_router):
-        g, r = graph_and_router
+    def test_finds_path_same_station_walk(self, router):
+        r = router
         # Start and end very close: should produce a walk-only result.
         res = r.route(36.806, 10.184, 36.8065, 10.1845)
         assert "error" not in res or res.get("error") is None
         assert res.get("duration_min", 0) > 0
 
-    def test_no_negative_or_zero_legs(self, graph_and_router):
-        g, r = graph_and_router
+    def test_no_negative_or_zero_legs(self, router):
+        r = router
         pairs = [
             (36.806, 10.184, 36.914, 9.866),   # Tunis Centre -> Bizerte
             (36.806, 10.184, 36.806, 10.200),   # short east
@@ -85,8 +79,8 @@ class TestRouterSanity:
                 if dur and isinstance(dur, (int, float)):
                     assert dur >= 0, f"negative duration in step {step}"
 
-    def test_max_walk_respected_for_start(self, graph_and_router):
-        g, r = graph_and_router
+    def test_max_walk_respected_for_start(self, router):
+        r = router
         # Place the start far from any station so no transit leg is possible.
         far_lat = 30.0
         far_lon = 10.0
@@ -98,15 +92,15 @@ class TestRouterSanity:
                     f"walk step exceeds max budgets: {step}"
                 )
 
-    def test_deterministic_output(self, graph_and_router):
-        g, r = graph_and_router
+    def test_deterministic_output(self, router):
+        r = router
         res1 = r.route(36.806, 10.184, 36.914, 9.866)
         res2 = r.route(36.806, 10.184, 36.914, 9.866)
         assert res1.get("duration_min") == res2.get("duration_min")
         assert len(res1.get("steps", [])) == len(res2.get("steps", []))
 
-    def test_taxi_only_beyond_threshold(self, graph_and_router):
-        g, r = graph_and_router
+    def test_taxi_only_beyond_threshold(self, router):
+        r = router
         # Two points 4 km apart -> taxi should be offered (>= TAXI_MIN_DISTANCE_M).
         lat_off, lon_off = _hav(4000)
         res = r.route(36.806, 10.184, 36.806 + lat_off, 10.184 + lon_off)

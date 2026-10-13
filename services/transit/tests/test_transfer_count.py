@@ -12,8 +12,6 @@ transfer is counted once. This file contains:
 """
 from __future__ import annotations
 
-import pytest
-
 from support import to_option
 
 
@@ -102,12 +100,6 @@ class TestTransferCountEndToEnd:
     """Dynamic tests: run the real Router against the tagged seed, convert
     with router_to_option, and assert transfer counts are sane on
     multi-leg / multi-mode routes."""
-
-    @pytest.fixture(scope="class")
-    def router(self):
-        from bledi_transit.application.routing.router import build_graph
-        _, r = build_graph()
-        return r
 
     def test_real_transit_no_false_double_count(self, router):
         """A real transit path (Tunis Centre -> Bizerte) that the router

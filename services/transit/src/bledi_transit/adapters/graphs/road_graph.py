@@ -40,13 +40,6 @@ SNAP_CANDIDATES = 6
 FALLBACK_ASTAR_TRIES = 4
 
 
-def _default_graph_path() -> str:
-    here = os.path.dirname(os.path.abspath(__file__))
-    return os.path.abspath(
-        os.path.join(here, "..", "..", "..", "..", "..", "..", "data", "road_graph.npz")
-    )
-
-
 _CACHE: dict[str, Graph | None] = {}
 # An itinerary asks for the same access walk and taxi road on every re-render
 # of a trip, and a long A* costs seconds.
@@ -75,9 +68,9 @@ def road_route_cached(
     return r
 
 
-def load_graph(path: str | None = None, *, log: Any = None) -> Graph | None:
+def load_graph(path: str, *, log: Any = None) -> Graph | None:
     """Load and index the road graph. Returns None (and warns once) if absent."""
-    path = os.path.abspath(path or os.environ.get("ROAD_GRAPH_PATH") or _default_graph_path())
+    path = os.path.abspath(path)
     if path in _CACHE:
         return _CACHE[path]
     if not os.path.exists(path):

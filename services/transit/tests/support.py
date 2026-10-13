@@ -7,8 +7,10 @@ from typing import Any
 from fastapi.testclient import TestClient
 
 from bledi_transit.adapters.http.deps import Services
+from bledi_transit.adapters.seed_files import SeedFileNetwork
+from bledi_transit.application.routing.router import Router
 from bledi_transit.application.routing.transit import router_to_option
-from bledi_transit.main import Config, create_app
+from bledi_transit.main import Config, build_router, create_app
 
 
 @cache
@@ -20,6 +22,13 @@ def client() -> TestClient:
 
 def services() -> Services:
     return client().app.state.services
+
+
+def fresh_router(**options: Any) -> Router:
+    """A router on the real data with one build option changed."""
+    config = Config.from_env()
+    data = SeedFileNetwork(config.data_dir)
+    return build_router(config, data, data.load(), **options)
 
 
 def to_option(router_out: dict[str, Any]) -> dict[str, Any]:

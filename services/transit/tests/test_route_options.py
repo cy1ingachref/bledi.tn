@@ -10,9 +10,6 @@ endpoint actually performs, rather than on the HTTP envelope.
 """
 from __future__ import annotations
 
-import pytest
-
-from bledi_transit.application.routing.router import build_graph
 from bledi_transit.domain.geo import polyline_length
 from bledi_transit.domain.modes import BUS_MODES, RAIL_MODES, TAXI_MODES
 
@@ -22,12 +19,6 @@ from bledi_transit.domain.modes import BUS_MODES, RAIL_MODES, TAXI_MODES
 TUNIS = (36.8065, 10.1815)
 SFAX = (34.7406, 10.7603)  # rail/taxi only
 SIDI_SALAH = (34.8580193, 10.7673434)  # reachable by bus
-
-
-@pytest.fixture(scope="module")
-def router():
-    _graph, r = build_graph()
-    return r
 
 
 def _ride_modes(result):

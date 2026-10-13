@@ -10,10 +10,12 @@ from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from bledi_transit.adapters.graphs.path_geometry import GraphPathGeometry
 from bledi_transit.adapters.http import catalog as catalog_routes
 from bledi_transit.adapters.http import routing as routing_routes
 from bledi_transit.adapters.http.deps import Services
@@ -21,6 +23,7 @@ from bledi_transit.adapters.http.errors import install_error_handlers
 from bledi_transit.adapters.nominatim import NominatimGeocoder
 from bledi_transit.adapters.seed_files import SeedFileNetwork
 from bledi_transit.application.catalog import Catalog
+from bledi_transit.application.network import Network
 from bledi_transit.application.routing.router import Router
 
 REPO_DATA_DIR = Path(__file__).resolve().parents[4] / "data"
@@ -38,6 +41,8 @@ DEFAULT_ORIGINS = (
 @dataclass(frozen=True)
 class Config:
     data_dir: Path
+    road_graph: Path
+    rail_graph: Path
     allowed_origins: tuple[str, ...]
 
     @classmethod
@@ -46,7 +51,24 @@ class Config:
         if not data_dir.is_dir():
             raise RuntimeError(f"BLEDI_DATA_DIR {data_dir} is not a directory")
         raw = os.environ.get("ALLOWED_ORIGINS", ",".join(DEFAULT_ORIGINS))
-        return cls(data_dir=data_dir, allowed_origins=tuple(o.strip() for o in raw.split(",") if o.strip()))
+        return cls(
+            data_dir=data_dir,
+            road_graph=Path(os.environ.get("ROAD_GRAPH_PATH") or data_dir / "road_graph.npz"),
+            rail_graph=Path(os.environ.get("RAIL_GRAPH_PATH") or data_dir / "rail_graph.npz"),
+            allowed_origins=tuple(o.strip() for o in raw.split(",") if o.strip()),
+        )
+
+
+def build_router(config: Config, data: SeedFileNetwork, network: Network, **options: Any) -> Router:
+    return Router(
+        network.station_by_id,
+        network.lines,
+        segments=network.segments,
+        walk_segments=data.walk_segments(),
+        taxi_segments=data.taxi_segments(),
+        paths=GraphPathGeometry.load(config.road_graph, config.rail_graph),
+        **options,
+    )
 
 
 def build_services(config: Config) -> Services:
@@ -54,13 +76,14 @@ def build_services(config: Config) -> Services:
     network = data.load()
     return Services(
         catalog=Catalog(network, data),
-        router=Router(network.station_by_id, network.lines),
+        router=build_router(config, data, network),
         geocoder=NominatimGeocoder(),
     )
 
 
 def create_app(config: Config | None = None) -> FastAPI:
     config = config or Config.from_env()
+    logging.basicConfig(level=logging.INFO)
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:

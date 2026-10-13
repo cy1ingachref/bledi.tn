@@ -29,18 +29,11 @@ MAX_EXPAND_NODES = 4_000_000
 RAIL_SNAP_M = 900.0
 
 
-def _default_path() -> str:
-    here = os.path.dirname(os.path.abspath(__file__))
-    return os.path.abspath(
-        os.path.join(here, "..", "..", "..", "..", "..", "..", "data", "rail_graph.npz")
-    )
-
-
 _RAIL_CACHE: dict[str, Graph | None] = {}
 
 
-def load_rail_graph(path: str | None = None, *, log: Any = None) -> Graph | None:
-    path = os.path.abspath(path or os.environ.get("RAIL_GRAPH_PATH") or _default_path())
+def load_rail_graph(path: str, *, log: Any = None) -> Graph | None:
+    path = os.path.abspath(path)
     if path in _RAIL_CACHE:
         return _RAIL_CACHE[path]
     if not os.path.exists(path):
