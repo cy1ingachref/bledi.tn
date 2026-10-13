@@ -3,7 +3,6 @@
 
 -- ── Enum types ──────────────────────────────────────────────────────────────
 
-CREATE TYPE transport_mode AS ENUM ('bus', 'metro', 'tram', 'train', 'rfr', 'taxi', 'louaj', 'walk');
 CREATE TYPE visibility AS ENUM ('public', 'friends', 'private');
 CREATE TYPE media_type AS ENUM ('image', 'video');
 CREATE TYPE favorite_kind AS ENUM ('station', 'line', 'place');
@@ -16,33 +15,6 @@ CREATE TABLE IF NOT EXISTS users (
     password_hash TEXT NOT NULL,
     display_name  TEXT,
     created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
-);
-
--- ── Stations ───────────────────────────────────────────────────────────────
-
-CREATE TABLE IF NOT EXISTS stations (
-    id    TEXT PRIMARY KEY,
-    name  TEXT NOT NULL,
-    lat   DOUBLE PRECISION NOT NULL,
-    lon   DOUBLE PRECISION NOT NULL,
-    modes TEXT[] NOT NULL DEFAULT '{}',
-    city  TEXT
-);
-
-CREATE INDEX IF NOT EXISTS idx_stations_location ON stations USING gist (
-    ll_to_earth(lat, lon)
-);
-
--- ── Lines ──────────────────────────────────────────────────────────────────
-
-CREATE TABLE IF NOT EXISTS lines (
-    id          TEXT PRIMARY KEY,
-    number      TEXT NOT NULL,
-    name        TEXT NOT NULL,
-    mode        transport_mode NOT NULL,
-    operator    TEXT,
-    color       TEXT,
-    station_ids TEXT[] NOT NULL DEFAULT '{}'
 );
 
 -- ── Memories ───────────────────────────────────────────────────────────────
@@ -63,9 +35,8 @@ CREATE TABLE IF NOT EXISTS memories (
 );
 
 CREATE INDEX IF NOT EXISTS idx_memories_user ON memories(user_id);
-CREATE INDEX IF NOT EXISTS idx_memories_location ON memories USING gist (
-    ll_to_earth(lat, lon)
-);
+-- Nearby queries filter on a lat/lon box before computing distances, so no extension is needed.
+CREATE INDEX IF NOT EXISTS idx_memories_location ON memories(lat, lon);
 CREATE INDEX IF NOT EXISTS idx_memories_visibility ON memories(visibility);
 
 -- ── Favorites ──────────────────────────────────────────────────────────────
@@ -99,9 +70,7 @@ CREATE TABLE IF NOT EXISTS location_shares (
 
 CREATE INDEX IF NOT EXISTS idx_location_shares_user ON location_shares(user_id);
 CREATE INDEX IF NOT EXISTS idx_location_shares_active ON location_shares(is_active) WHERE is_active = true;
-CREATE INDEX IF NOT EXISTS idx_location_shares_location ON location_shares USING gist (
-    ll_to_earth(lat, lon)
-);
+CREATE INDEX IF NOT EXISTS idx_location_shares_location ON location_shares(lat, lon);
 
 -- ── Friendships (for friends-only visibility) ───────────────────────────────
 
