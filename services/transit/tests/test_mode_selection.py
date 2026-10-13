@@ -133,7 +133,7 @@ class TestApiNeverFallsBackToAStraightLine:
     two-point path for a leg the router flagged.
 
     An earlier mutation -- restoring the unconditional `_geometry_for()`
-    fallback in main.py -- passed the whole suite, because that fallback happens
+    fallback in the API layer -- passed the whole suite, because that fallback happens
     to return [] for these legs today. This asserts the invariant directly so it
     cannot pass for the wrong reason again.
     """
@@ -184,7 +184,7 @@ class TestApiNeverFallsBackToAStraightLine:
 
     def test_steps_helper_respects_the_flag(self):
         """The API conversion must not resurrect a straight line for a flagged step."""
-        from bledi_transit.main import _steps_to_legs
+        from bledi_transit.application.routing.transit import steps_to_legs
 
         flagged_step = {
             "type": "ride", "mode": "train", "line": "train_24_sncft",
@@ -193,7 +193,7 @@ class TestApiNeverFallsBackToAStraightLine:
             "geometry": [], "needs_geometry": True,
             "distance_m": 235576, "straight_m": 235576, "time_seconds": 12000.0,
         }
-        legs = _steps_to_legs([flagged_step])
+        legs = steps_to_legs([flagged_step])
         assert len(legs) == 1
         leg = legs[0]
         assert leg["has_geometry"] is False
@@ -205,7 +205,7 @@ class TestApiNeverFallsBackToAStraightLine:
 
     def test_unflagged_short_step_may_carry_geometry(self):
         """The normal case still works: an unflagged step is drawable."""
-        from bledi_transit.main import _steps_to_legs
+        from bledi_transit.application.routing.transit import steps_to_legs
 
         ok_step = {
             "type": "ride", "mode": "bus", "line": "bus_1",
@@ -214,27 +214,28 @@ class TestApiNeverFallsBackToAStraightLine:
             "geometry": [[36.8065, 10.1815], [36.8070, 10.1820], [36.8080, 10.1830]],
             "needs_geometry": False, "distance_m": 250, "time_seconds": 40.0,
         }
-        leg = _steps_to_legs([ok_step])[0]
+        leg = steps_to_legs([ok_step])[0]
         assert leg["has_geometry"] is True
         assert leg["needs_geometry"] is False
 
 
 class TestRouterToOptionSuppressesTheFallback:
-    """The straight-line fallback in _router_to_option must be unreachable for a
+    """The straight-line fallback in router_to_option must be unreachable for a
     flagged leg.
 
     The earlier mutation of this branch passed the suite because the test drove
-    _steps_to_legs(), which never calls _geometry_for(). These drive
-    _router_to_option(), where the branch actually lives, using a station pair
+    steps_to_legs(), which never reads the segment cache. These drive
+    router_to_option(), where the branch actually lives, using a station pair
     that genuinely HAS cached geometry -- so if the flag is ignored, the leg
     silently acquires a polyline (or would fall back to a straight one).
     """
 
     def test_flagged_leg_gets_no_geometry_even_when_the_pair_is_cached(self):
-        from bledi_transit import main as M
+        from support import services, to_option
 
         pair = next(
-            (k for k, v in M.NETWORK.segments.items() if v.get("geometry")), None
+            (k for k, v in services().catalog.network.segments.items() if v.get("geometry")),
+            None,
         )
         assert pair, "no cached geometry to test against"
         a_id, b_id = pair.split("|")
@@ -246,7 +247,7 @@ class TestRouterToOptionSuppressesTheFallback:
             "geometry": [], "needs_geometry": True,
             "distance_m": 1000, "straight_m": 1000, "time_seconds": 200.0,
         }
-        out = M._router_to_option(
+        out = to_option(
             {"mode": "transit", "duration_min": 5.0, "steps": [step]}
         )
         s = out["steps"][0]
@@ -263,9 +264,11 @@ class TestRouterToOptionSuppressesTheFallback:
         Guards against 'fixing' the false line by deleting the fallback, which
         would leave every unflagged leg drawn straight too.
         """
-        from bledi_transit import main as M
+        from support import services, to_option
 
-        pair = next(k for k, v in M.NETWORK.segments.items() if v.get("geometry"))
+        pair = next(
+            k for k, v in services().catalog.network.segments.items() if v.get("geometry")
+        )
         a_id, b_id = pair.split("|")
         step = {
             "type": "ride", "mode": "train", "line": "train_x",
@@ -275,7 +278,7 @@ class TestRouterToOptionSuppressesTheFallback:
             "geometry": [], "needs_geometry": False,
             "distance_m": 1000, "straight_m": 1000, "time_seconds": 200.0,
         }
-        out = M._router_to_option(
+        out = to_option(
             {"mode": "transit", "duration_min": 5.0, "steps": [step]}
         )
         s = out["steps"][0]
@@ -303,14 +306,14 @@ class TestMergeBreaksOnARealGap:
         }
 
     def test_gap_first_then_real_stays_two_legs(self):
-        from bledi_transit.main import _steps_to_legs
+        from bledi_transit.application.routing.transit import steps_to_legs
 
         steps = [
             self._ride(("GAP_FROM", "GAP_TO"), [36.0, 10.0], [35.9, 10.1], [], True),
             self._ride(("GAP_TO", "REAL_END"), [35.9, 10.1], [35.8, 10.2],
                        [[35.9, 10.1], [35.85, 10.15], [35.8, 10.2]], False),
         ]
-        legs = _steps_to_legs(steps)
+        legs = steps_to_legs(steps)
         assert len(legs) == 2, f"gap was stitched over: {len(legs)} leg(s)"
         assert legs[0]["needs_geometry"] is True
         assert legs[0]["geometry"] == []
@@ -318,7 +321,7 @@ class TestMergeBreaksOnARealGap:
 
     def test_contiguous_ride_still_merges(self):
         """The complementary case: no gap means one leg, as before."""
-        from bledi_transit.main import _steps_to_legs
+        from bledi_transit.application.routing.transit import steps_to_legs
 
         steps = [
             self._ride(("A", "B"), [35.9, 10.1], [35.8, 10.2],
@@ -326,12 +329,12 @@ class TestMergeBreaksOnARealGap:
             self._ride(("B", "C"), [35.8, 10.2], [35.7, 10.3],
                        [[35.8, 10.2], [35.75, 10.25], [35.7, 10.3]], False),
         ]
-        legs = _steps_to_legs(steps)
+        legs = steps_to_legs(steps)
         assert len(legs) == 1
         assert len(legs[0]["geometry"]) == 6
 
     def test_gap_in_the_middle_yields_three_legs(self):
-        from bledi_transit.main import _steps_to_legs
+        from bledi_transit.application.routing.transit import steps_to_legs
 
         steps = [
             self._ride(("A", "B"), [35.9, 10.1], [35.8, 10.2],
@@ -340,6 +343,6 @@ class TestMergeBreaksOnARealGap:
             self._ride(("GAP2", "D"), [35.9, 10.1], [35.7, 10.3],
                        [[35.9, 10.1], [35.8, 10.2], [35.7, 10.3]], False),
         ]
-        legs = _steps_to_legs(steps)
+        legs = steps_to_legs(steps)
         assert len(legs) == 3
         assert sum(1 for l in legs if l["needs_geometry"]) == 1
