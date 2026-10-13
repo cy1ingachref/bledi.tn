@@ -216,6 +216,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "bledi-postgres"
+version = "0.1.0"
+dependencies = [
+ "async-trait",
+ "bledi-application",
+ "bledi-domain",
+ "chrono",
+ "sqlx",
+ "tokio",
+ "uuid",
+]
+
+[[package]]
 name = "bledi-server"
 version = "0.1.0"
 dependencies = [
