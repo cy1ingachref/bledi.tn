@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 20
     services:
       postgres:
-        image: postgis/postgis:16-3.4
+        image: postgres:16-alpine
         env:
           POSTGRES_PASSWORD: ci-only
         ports:
@@ -50,8 +50,7 @@ jobs:
         with:
           workspaces: services/accounts
 
-      # The app connects as a non-superuser, as in production, so the
-      # extensions the schema needs are created up front by the superuser.
+      # The app connects as a non-superuser that owns its database, as in production.
       - name: Prepare database
         env:
           PGHOST: localhost
@@ -61,9 +60,6 @@ jobs:
           psql -v ON_ERROR_STOP=1 <<'SQL'
           CREATE ROLE bledi_ci LOGIN PASSWORD 'bledi_ci_local_only';
           CREATE DATABASE bledi OWNER bledi_ci;
-          \c bledi
-          CREATE EXTENSION cube;
-          CREATE EXTENSION earthdistance;
           SQL
 
       - run: cargo fmt --all -- --check
