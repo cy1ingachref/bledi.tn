@@ -33,6 +33,7 @@ from bledi_transit.adapters.graphs.rail_graph import load_rail_graph
 from bledi_transit.adapters.graphs.rail_graph import track_between_cached as rail_track_cached
 from bledi_transit.adapters.graphs.road_graph import load_graph as load_road_graph
 from bledi_transit.adapters.graphs.road_graph import road_route_cached
+from bledi_transit.domain.fares import FARE_DINARS, fare_for_itinerary
 from bledi_transit.domain.geo import haversine_m, oriented_geometry, polyline_length
 from bledi_transit.domain.modes import (
     BUS_MODES,
@@ -43,15 +44,14 @@ from bledi_transit.domain.modes import (
     label_modes_fr,
     resolve_allowed_modes,
 )
+from bledi_transit.domain.timetable import expected_wait
 from bledi_transit.domain.tunables import (
     BOARDING_WAIT_CAP,
-    DEFAULT_WAIT_BY_MODE,
     DROP_OFF_CANDIDATES,
     DROPOFF_SEARCH_METERS,
     FEWEST_TRANSFERS_PENALTY_SEC,
     GEOMETRY_REQUIRED_M,
     MAX_END_WALK_METERS,
-    MAX_HEADWAY_SEC,
     MAX_START_WALK_METERS,
     MAX_WALK_EDGE_METERS,
     SPEED_BY_MODE,
@@ -59,7 +59,6 @@ from bledi_transit.domain.tunables import (
     TAXI_SPEED_KMH,
     TAXI_SPEED_MS,
     TRANSFER_PENALTY_SEC,
-    WAIT_HEADWAY_FACTOR,
     WALK_SPEED_KMH,
     WALK_SPEED_MS,
 )
@@ -395,47 +394,6 @@ def road_geometry_for(
     return list(pts) if forward else list(reversed(pts))
 
 
-def expected_wait(departures: list[str] | None, mode: str) -> float:
-    """Expected wait in seconds.
-
-    When departures are available, use half the median headway (typical
-    assumption for a random arrival). Otherwise fall back to a per-mode default.
-
-    Midnight wrap: if the departures span more than MAX_HEADWAY_SEC (default
-    12 h), the overnight closure is treated as a service gap and excluded from
-    the headway median instead of being counted as one giant headway.
-    """
-    if not departures:
-        return DEFAULT_WAIT_BY_MODE.get(mode, DEFAULT_WAIT_BY_MODE["unknown"])
-    parsed: list[float] = []
-    for d in departures:
-        try:
-            parts = str(d).strip().split(":")
-            if len(parts) == 2:
-                h, m = int(parts[0]), int(parts[1])
-                parsed.append(h * 3600 + m * 60)
-        except (ValueError, TypeError):
-            continue
-    if len(parsed) < 2:
-        return DEFAULT_WAIT_BY_MODE.get(mode, DEFAULT_WAIT_BY_MODE["unknown"])
-    parsed.sort()
-    # Consecutive headways within the sorted day.
-    diffs = [parsed[i + 1] - parsed[i] for i in range(len(parsed) - 1)]
-    # If the service spans midnight (last - first > MAX_HEADWAY_SEC), the gap
-    # between the last departure of the day and the first departure of the next
-    # day is a real headway too (the overnight closure). Add it.
-    overnight_gap = 0.0
-    if parsed[-1] - parsed[0] > MAX_HEADWAY_SEC:
-        overnight_gap = 86400.0 - parsed[-1] + parsed[0]
-    all_headways = sorted(diffs + ([overnight_gap] if overnight_gap > 0 else []))
-    if not all_headways:
-        return DEFAULT_WAIT_BY_MODE.get(mode, DEFAULT_WAIT_BY_MODE["unknown"])
-    # Lower median (index (n-1)//2) so the wait estimate stays conservative
-    # and matches the test expectation for same-day pairs.
-    median_headway = all_headways[(len(all_headways) - 1) // 2]
-    return max(median_headway * WAIT_HEADWAY_FACTOR, 0.0)
-
-
 def _load_seed() -> dict[str, Any]:
     with _SEED_PATH.open(encoding="utf-8") as f:
         return json.load(f)
@@ -465,68 +423,6 @@ class Edge:
     @property
     def needs_geometry(self) -> bool:
         return not self.geometry and self.straight_m >= GEOMETRY_REQUIRED_M
-
-
-# ── Fare model (C5) ──────────────────────────────────────────────────────
-# Approximate, DOCUMENTED, and deliberately not a fare oracle: this is what
-# objective=cheapest ranks by, so it must be monotone and defensible rather
-# than accurate. Real Tunisian fares are a flat ticket per mode (bus/metro/tram
-# ~0.5 DT, train ~5-8 DT by distance, louage shared per seat), so the model is
-# "base + per-km" with a mode-dependent base.
-#
-# Never returns None (Part B2.4): an unknown mode falls back to the bus
-# constant rather than yielding an unrankable itinerary.
-#
-# Constants live ONLY here, per the spec's "put constants in one place".
-FARE_DINARS: dict[str, tuple[float, float]] = {
-    #  mode        base DT   DT per km
-    "bus":        (0.500,   0.000),
-    "tram":       (0.500,   0.000),
-    "metro":      (0.600,   0.000),
-    "train":      (4.000,   0.090),
-    "louaj":      (1.000,   0.150),
-    "taxi":       (0.600,   0.520),   # matches TAXI_FARE_* below
-    "walk":       (0.000,   0.000),
-}
-FARE_FALLBACK: tuple[float, float] = FARE_DINARS["bus"]
-
-
-def fare_for_leg(mode: str, distance_m: float) -> float:
-    """Estimated fare in dinars for one leg. Never negative, never None."""
-    base, per_km = FARE_DINARS.get(canonical_mode(mode), FARE_FALLBACK)
-    km = max(0.0, float(distance_m)) / 1000.0
-    return round(base + per_km * km, 4)
-
-
-def fare_for_itinerary(legs: Sequence[dict[str, Any]]) -> float:
-    """Total estimated fare for an itinerary, charged once per BOARDED LINE.
-
-    Charging per leg was wrong and measurably so: an itinerary is expanded one
-    step per stop, so a 30-edge train ride arrived as 30 legs and was quoted at
-    ~122 DT instead of ~7. Real Tunisian practice is a ticket per boarding, so
-    consecutive legs on the SAME line are merged into one charge, and only a
-    change of line adds another.
-
-    Walks and transfers are free. Never returns None (Part B2.4).
-    """
-    total = 0.0
-    current_line: str | None = None
-    current_mode: str | None = None
-    current_m = 0.0
-    for leg in legs or ():
-        kind = (leg.get("type") or leg.get("mode") or "").lower()
-        if kind in ("walk", "transfer", ""):
-            continue
-        line = leg.get("line") or ""
-        mode = leg.get("mode") or kind
-        if line != current_line or mode != current_mode:
-            if current_line is not None:
-                total += fare_for_leg(current_mode or "", current_m)
-            current_line, current_mode, current_m = line, mode, 0.0
-        current_m += float(leg.get("distance_m") or 0.0)
-    if current_line is not None:
-        total += fare_for_leg(current_mode or "", current_m)
-    return round(total, 2)
 
 
 def build_graph() -> tuple[dict[str, Any], "Router"]:

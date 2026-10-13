@@ -15,7 +15,7 @@ from __future__ import annotations
 import unittest
 
 from bledi_transit.application.routing import router as routing
-from bledi_transit.domain import modes
+from bledi_transit.domain import fares, modes
 
 # Intra-Tunis: a bus route AND a metro route both connect these two points.
 TUNIS_A = (36.7961, 10.18055)   # Place Barcelone Sud (metro)
@@ -77,47 +77,47 @@ class FareModelTests(unittest.TestCase):
     """C5: documented constants, ranking driven by fare."""
 
     def test_constants_are_documented_and_positive(self):
-        for mode, (base, per_km) in routing.FARE_DINARS.items():
+        for mode, (base, per_km) in fares.FARE_DINARS.items():
             self.assertGreaterEqual(base, 0.0, mode)
             self.assertGreaterEqual(per_km, 0.0, mode)
 
     def test_fare_never_none_and_monotonic_in_distance(self):
         # train has a per-km component, so distance must raise the fare.
-        a = routing.fare_for_leg("train", 0)
-        b = routing.fare_for_leg("train", 50_000)
+        a = fares.fare_for_leg("train", 0)
+        b = fares.fare_for_leg("train", 50_000)
         self.assertIsNotNone(a)
         self.assertLess(a, b)
         # bus is a flat ticket by design; equal is correct, not a bug.
         self.assertEqual(
-            routing.fare_for_leg("bus", 0), routing.fare_for_leg("bus", 50_000)
+            fares.fare_for_leg("bus", 0), fares.fare_for_leg("bus", 50_000)
         )
 
     def test_train_base_above_bus(self):
-        self.assertGreater(routing.fare_for_leg("train", 0), routing.fare_for_leg("bus", 0))
+        self.assertGreater(fares.fare_for_leg("train", 0), fares.fare_for_leg("bus", 0))
 
     def test_walk_is_free(self):
-        self.assertEqual(routing.fare_for_leg("walk", 10_000), 0.0)
+        self.assertEqual(fares.fare_for_leg("walk", 10_000), 0.0)
 
     def test_charged_once_per_boarded_line_not_per_edge(self):
         # An itinerary is expanded one step per STOP, so a 10-edge train ride
         # arrives as 10 legs. Charging per leg quoted ~122 DT for a bus+train
         # trip; charging per boarded line must be far less.
         legs = [{"type": "ride", "mode": "train", "line": "L1", "distance_m": 5000}] * 10
-        total = routing.fare_for_itinerary(legs)
-        self.assertAlmostEqual(total, routing.fare_for_leg("train", 50_000), places=2)
+        total = fares.fare_for_itinerary(legs)
+        self.assertAlmostEqual(total, fares.fare_for_leg("train", 50_000), places=2)
         self.assertLess(total, 30.0)
 
     def test_change_of_line_adds_a_charge(self):
         one = [{"type": "ride", "mode": "bus", "line": "A", "distance_m": 1000}] * 3
         two = one + [{"type": "ride", "mode": "bus", "line": "B", "distance_m": 1000}] * 3
-        self.assertGreater(routing.fare_for_itinerary(two), routing.fare_for_itinerary(one))
+        self.assertGreater(fares.fare_for_itinerary(two), fares.fare_for_itinerary(one))
 
     def test_walks_and_transfers_free(self):
         legs = [
             {"type": "walk", "mode": "walk", "distance_m": 900},
             {"type": "transfer", "mode": "transfer", "distance_m": 0},
         ]
-        self.assertEqual(routing.fare_for_itinerary(legs), 0.0)
+        self.assertEqual(fares.fare_for_itinerary(legs), 0.0)
 
     def test_cheapest_is_not_just_fastest_renamed(self):
         """D3: on an OD where metro is slower but cheaper, cheapest must win."""
