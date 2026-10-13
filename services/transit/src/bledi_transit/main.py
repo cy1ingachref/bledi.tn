@@ -12,17 +12,13 @@ from __future__ import annotations
 
 import json
 import logging
-import math
 import os
 import time
 import urllib.request
 import urllib.parse
 from collections import defaultdict
-from functools import lru_cache
 from pathlib import Path
-from typing import Any, Iterable
-
-import numpy as np
+from typing import Any
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -31,7 +27,11 @@ from pydantic import BaseModel, Field
 
 # Local transit router (physical-cost Dijkstra).
 from bledi_transit.application.routing.router import Router
+from bledi_transit.domain.cities import CITY_SEATS, nearest_city
+from bledi_transit.domain.geo import haversine_m
+from bledi_transit.domain.geo import simplify as simplify_path
 from bledi_transit.domain.modes import USER_MODES, canonical_mode, mode_label_fr
+from bledi_transit.domain.stations import UNCLASSIFIED, primary_station_mode, station_modes
 
 log = logging.getLogger("bledi")
 
@@ -158,116 +158,6 @@ def _geometry_for(from_id: str | None, to_id: str | None) -> list[list[float]]:
     pts = entry["geometry"]
     return list(reversed(pts)) if from_id > to_id else list(pts)
 
-# ── City (governorate) assignment ──────────────────────────────────────────
-# The seed has no governorate field, so each station is assigned to its nearest
-# governorate seat. Measured on the seed: 1 711 stations -> 21 groups with no
-# runaway cluster, and only 18 stations fall further than 60 km from any seat
-# (remote villages like Sened and Maknassy). Those get [UNASSIGNED_CITY] rather
-# than being forced into a wrong governorate.
-#
-# Reference points are the 24 governorate seats.
-CITY_SEATS: list[tuple[str, float, float]] = [
-    ("Tunis", 36.8065, 10.1815),
-    ("Ariana", 36.8628, 10.1957),
-    ("Ben Arous", 36.7520, 10.2220),
-    ("Manouba", 36.8161, 10.1011),
-    ("Nabeul", 36.4560, 10.7376),
-    ("Zaghouan", 36.4028, 10.1425),
-    ("Bizerte", 37.2744, 9.8739),
-    ("Béja", 36.7256, 9.1817),
-    ("Jendouba", 36.5008, 8.7806),
-    ("Le Kef", 36.1742, 8.7147),
-    ("Siliana", 36.3667, 9.2167),
-    ("Kairouan", 35.6781, 10.0963),
-    ("Kassab", 35.1833, 8.8000),
-    ("Sidi Bouzid", 36.4044, 9.4844),
-    ("Sousse", 35.8256, 10.6360),
-    ("Monastir", 35.7777, 10.8263),
-    ("Mahdia", 35.5047, 11.0622),
-    ("Sfax", 34.7406, 10.7603),
-    ("Kébili", 33.8814, 8.8742),
-    ("Gabès", 33.8815, 10.0982),
-    ("Médenine", 33.3547, 10.5052),
-    ("Tataouine", 32.9291, 10.4517),
-    ("Ghorbel", 34.7484, 10.7369),
-    ("Tozeur", 33.9197, 8.1339),
-]
-
-# Beyond this distance from every seat a station is left unassigned.
-MAX_CITY_DISTANCE_KM = 60.0
-
-# Bucket for stations too remote to belong to any governorate. Assigned
-# explicitly rather than left null so clients never have to invent a fallback.
-UNASSIGNED_CITY = "Other"
-
-_EARTH_R_KM = 6371.0
-
-
-def _haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    p1, p2 = math.radians(lat1), math.radians(lat2)
-    dphi = p2 - p1
-    dlam = math.radians(lon2 - lon1)
-    a = math.sin(dphi / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dlam / 2) ** 2
-    return 2 * _EARTH_R_KM * math.asin(math.sqrt(a))
-
-
-def _simplify_path(pts: list[list[float]], tol: float) -> list[list[float]]:
-    """Douglas-Peucker on [[lat, lon]] pairs.
-
-    Long OSRM polylines are hundreds of vertices for a shape that reads the
-    same at city zoom. Simplifying server-side keeps the network payload small
-    without changing the drawn line, and the tolerance is a request parameter
-    so a client that needs full fidelity can ask for `simplify=0`.
-    """
-    if len(pts) < 3 or tol <= 0:
-        return pts
-
-    arr = np.asarray(pts, dtype="float64")
-    keep = np.zeros(len(arr), dtype=bool)
-    keep[0] = keep[-1] = True
-    stack: list[tuple[int, int]] = [(0, len(arr) - 1)]
-
-    while stack:
-        i, j = stack.pop()
-        if j <= i + 1:
-            continue
-        a, b = arr[i], arr[j]
-        seg = b - a
-        seg_len = float(np.hypot(seg[0], seg[1]))
-        chunk = arr[i + 1 : j]
-        if seg_len == 0:
-            d = np.hypot(chunk[:, 0] - a[0], chunk[:, 1] - a[1])
-        else:
-            # Perpendicular distance to the chord (degrees; the tolerance is
-            # in degrees too, so no metric conversion is needed).
-            d = np.abs(
-                seg[1] * (chunk[:, 0] - a[0]) - seg[0] * (chunk[:, 1] - a[1])
-            ) / seg_len
-        k = int(np.argmax(d))
-        if float(d[k]) > tol:
-            m = i + 1 + k
-            keep[m] = True
-            stack.append((i, m))
-            stack.append((m, j))
-
-    return [pts[i] for i in range(len(pts)) if keep[i]]
-
-
-def nearest_city(lat: float, lon: float) -> str:
-    """Nearest governorate seat, or [UNASSIGNED_CITY] if too remote.
-
-    Always returns a value: callers get a stable string key rather than having
-    to handle None. The 18 stations beyond [MAX_CITY_DISTANCE_KM] fall into
-    [UNASSIGNED_CITY] instead of being forced into a wrong governorate.
-    """
-    best_name: str = UNASSIGNED_CITY
-    best_d = MAX_CITY_DISTANCE_KM
-    for name, slat, slon in CITY_SEATS:
-        d = _haversine_km(lat, lon, slat, slon)
-        if d < best_d:
-            best_d, best_name = d, name
-    return best_name
-
 
 # Louage / taxi stops come from separate seed files that the main transit seed
 # does not contain. Their modes are louage_red / louage_blue / louage_green /
@@ -300,73 +190,6 @@ for _s in _stations:
     if _sid:
         STATION_BY_ID[_sid] = _s
 
-
-# ── Mode normalisation for station features ────────────────────────────────
-# The seed keeps raw provenance tags in `mode` (rail, louage_red, unknown...).
-# Those are meaningful in the seed but they are NOT selectable modes: the UI
-# filter and the neon network palette both key off the canonical vocabulary.
-# The seed's own audit records why the odd tags exist:
-#   * unknown_mode_resolution -> 76 stops whose operator export carried no mode
-#     at all (kiosks, roundabouts, school stops). They are still real, geocoded
-#     points, so they stay on the map -- as "unclassified", never as a
-#     scheduled bus, which is what the old "unknown -> bus" default did.
-#   * `rail` is a Transtu suburban-rail stop: same family as train.
-#   * louage_red|blue|green are colour-coded louage terminals: all louage.
-# Mode tags that reach the API as "unknown"/"rail"/"louage_*" are therefore
-# canonicalised here so a client never has to re-derive the mapping.
-_UNCLASSIFIED = "unclassified"
-
-# Station-level extra tags the UI understands but that are not routable modes.
-_STATION_ONLY_MODES: dict[str, frozenset[str]] = {
-    _UNCLASSIFIED: frozenset({"unknown", "unclassified", ""}),
-}
-
-
-def station_modes(s: dict[str, Any]) -> list[str]:
-    """Canonical, de-duplicated modes for a station row.
-
-    Returns the rider-facing categories the stop actually serves, in
-    USER_MODES display order, with `unclassified` last. A stop tagged
-    `rail` yields `["train"]`; one tagged `louage_red` yields `["louaj"]`;
-    an untagged sweep stop yields `["unclassified"]`.
-    """
-    raw: list[str] = []
-    primary = s.get("mode")
-    if primary:
-        raw.append(str(primary))
-    for extra in s.get("modes") or []:
-        if extra:
-            raw.append(str(extra))
-
-    seen: set[str] = set()
-    for r in raw:
-        rl = r.strip().lower()
-        if not rl:
-            continue
-        for station_only, aliases in _STATION_ONLY_MODES.items():
-            if rl in aliases:
-                seen.add(station_only)
-                break
-        else:
-            seen.add(canonical_mode(rl))
-
-    ordered = [m for m in USER_MODES if m in seen]
-    if _UNCLASSIFIED in seen:
-        ordered.append(_UNCLASSIFIED)
-    return ordered
-
-
-def primary_station_mode(s: dict[str, Any]) -> str:
-    """The single mode used to colour a station dot.
-
-    Prefers a routable mode over `unclassified` so a stop that is served by
-    real lines is never painted as an unclassified point.
-    """
-    modes = station_modes(s)
-    for m in modes:
-        if m != _UNCLASSIFIED:
-            return m
-    return modes[0] if modes else _UNCLASSIFIED
 
 LINE_BY_ID: dict[str, dict[str, Any]] = {}
 # Also index by number for the /lines/{line_number} endpoint (number is not unique).
@@ -487,16 +310,6 @@ class LineDetail(BaseModel):
     geometry_complete: bool = False
     geometry_segments: list[dict[str, Any]] = []
     gaps: list[dict[str, Any]] = []
-
-
-# ── Helpers ──────────────────────────────────────────────────────────────
-def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    R = 6371000.0
-    phi1, phi2 = math.radians(lat1), math.radians(lat2)
-    dphi = math.radians(lat2 - lat1)
-    dl = math.radians(lon2 - lon1)
-    a = math.sin(dphi / 2) ** 2 + math.cos(phi1) * math.cos(phi2) * math.sin(dl / 2) ** 2
-    return 2 * R * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 
 # ── OSRM / Nominatim via backend with TTL cache + User-Agent ─────────────
@@ -757,7 +570,7 @@ def network_geometry(
             continue
         pts = seg.get("geometry") or []
         if simplify > 0 and len(pts) > 2:
-            pts = _simplify_path(pts, simplify)
+            pts = simplify_path(pts, simplify)
         if len(pts) < 2:
             # Reported, not stitched: the client must know a link exists but
             # has no traced track, so it can dash it rather than draw a
@@ -781,7 +594,7 @@ def network_geometry(
                     "from_stop_id": a,
                     "to_stop_id": b,
                     "straight_m": round(
-                        _haversine_km(pa["lat"], pa["lon"], pb["lat"], pb["lon"]) * 1000.0
+                        haversine_m(pa["lat"], pa["lon"], pb["lat"], pb["lon"])
                     ),
                 }
             )
@@ -968,7 +781,7 @@ def stations_near(
 ) -> NearResponse:
     """Nearest stations to a point."""
     candidates = [s for s in _stations if s.get("lat") and s.get("lon")]
-    ranked = sorted(candidates, key=lambda s: haversine(lat, lon, s["lat"], s["lon"]))
+    ranked = sorted(candidates, key=lambda s: haversine_m(lat, lon, s["lat"], s["lon"]))
     return NearResponse(
         near=[
             NearStation(
@@ -976,7 +789,7 @@ def stations_near(
                 name=s["name"],
                 lat=s["lat"],
                 lon=s["lon"],
-                dist_m=round(haversine(lat, lon, s["lat"], s["lon"])),
+                dist_m=round(haversine_m(lat, lon, s["lat"], s["lon"])),
                 lines=s.get("lines_served", []),
             )
             for s in ranked[:limit]
@@ -1112,8 +925,8 @@ def station_detail(station_id: str) -> StationDetail:
     for m in USER_MODES:
         if m in from_lines or m in declared:
             merged.append(m)
-    if _UNCLASSIFIED in declared and not merged:
-        merged.append(_UNCLASSIFIED)
+    if UNCLASSIFIED in declared and not merged:
+        merged.append(UNCLASSIFIED)
 
     return StationDetail(
         id=st.get("id") or station_id,
@@ -1151,7 +964,7 @@ def _line_detail_with_geometry(line: dict[str, Any], stops: list[StopInfo]) -> L
         if a.lat is None or a.lon is None or b.lat is None or b.lon is None:
             continue
         pts = _geometry_for(a.stop_id, b.stop_id)
-        gap_m = _haversine_km(a.lat, a.lon, b.lat, b.lon) * 1000.0
+        gap_m = haversine_m(a.lat, a.lon, b.lat, b.lon)
         segs.append(
             {
                 "from_stop_id": a.stop_id,
@@ -1354,17 +1167,6 @@ def _mode_color(mode: str) -> str:
     }.get(mode, "#8b949e")
 
 
-def _haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    import math
-
-    r = 6371000.0
-    p1, p2 = math.radians(lat1), math.radians(lat2)
-    h = math.sin((p2 - p1) / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(
-        math.radians(lon2 - lon1) / 2
-    ) ** 2
-    return 2 * r * math.asin(math.sqrt(h))
-
-
 def _leg_from_step(step: dict[str, Any], gap_breaks: bool = False) -> dict[str, Any]:
     """One leg from one step.
 
@@ -1377,7 +1179,7 @@ def _leg_from_step(step: dict[str, Any], gap_breaks: bool = False) -> dict[str, 
     frm, to = step.get("start"), step.get("end")
     gap_m = None
     if len(geom) < 2 and frm and to:
-        gap_m = round(_haversine(frm[0], frm[1], to[0], to[1]))
+        gap_m = round(haversine_m(frm[0], frm[1], to[0], to[1]))
     return {
         "mode": step.get("mode"),
         "type": step.get("type"),
@@ -1459,7 +1261,7 @@ def _steps_to_legs(steps: list[dict[str, Any]]) -> list[dict[str, Any]]:
             prev["geometry_gap_m"] = (
                 None
                 if prev["has_geometry"] or not (prev.get("from") and prev.get("to"))
-                else round(_haversine(
+                else round(haversine_m(
                     prev["from"][0], prev["from"][1],
                     prev["to"][0], prev["to"][1],
                 ))
@@ -1736,7 +1538,7 @@ def search_places(
     def _dist(r: dict[str, Any]) -> float:
         if near_lat is None or near_lon is None:
             return 0.0
-        return _haversine_km(near_lat, near_lon, r["lat"], r["lon"])
+        return haversine_m(near_lat, near_lon, r["lat"], r["lon"])
 
     results.sort(key=lambda r: (r["score"], _dist(r), r["name"]))
 
