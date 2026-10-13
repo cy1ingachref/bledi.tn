@@ -74,23 +74,10 @@ export class RouteDrawing {
   }
 
   /**
-   * Apply the draw-in to every route leg once Leaflet's SVG paths exist.
-   *
-   * Two things make this fiddly, and both fail SILENTLY:
-   *
-   * 1. The SVG renderer creates its paths lazily, so `_path` is undefined for
-   *    the early legs when the first animation frame fires. A per-leg
-   *    single-shot rAF therefore styled only the last legs drawn, so most of
-   *    the route appeared instantly while a few drew in.
-   * 2. `fitBounds` runs right after the legs are added and triggers a zoom,
-   *    which makes Leaflet re-render the paths. Applying the dash before the
-   *    map has settled races that re-render.
-   *
-   * So: wait for every path to exist, apply the dash in one pass, and then
-   * unconditionally clear the dash after the animation window. That last step
-   * matters because a draw-in that is interrupted (zoom, throttled tab) would
-   * otherwise leave the line stuck at `stroke-dashoffset: 100%`, invisible,
-   * with no error to explain why.
+   * Waits until every leg has its SVG path: the renderer creates them lazily,
+   * and the zoom from `fitBounds` re-renders them. The dash is then cleared
+   * unconditionally, because an interrupted draw-in (zoom, throttled tab)
+   * would leave the line stuck invisible at `stroke-dashoffset: 100%`.
    */
   private animateDrawIn(lines: L.Polyline[]): void {
     this.clearDrawTimers();
@@ -161,7 +148,6 @@ export class RouteDrawing {
         lineCap: "round",
         lineJoin: "round",
         interactive: false,
-        // A per-mode class is what lets CSS give each transport its own glow.
         className: `route-leg route-leg-${key}${reduced || isWalk ? "" : " route-draw"}`,
         renderer: this.svg(),
       }).addTo(this.layer);

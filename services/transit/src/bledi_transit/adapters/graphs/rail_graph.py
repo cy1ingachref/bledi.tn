@@ -1,7 +1,6 @@
 """Real-track geometry between any two points on the rail network.
 
-data/route_geometry.json misses station pairs exactly on the rail lines
-(train_23_sncft lacked 6 of 17), and each gap was drawn as a straight line.
+data/route_geometry.json misses station pairs mostly on the rail lines.
 Both endpoints are snapped onto the nearest OSM rail, light_rail or tram track
 and joined by A* along it. Line ids only caption the result: two stations on
 the same corridor get the track between them whether or not a seed line

@@ -61,7 +61,6 @@
             {uniqueModes(itin.modes_used).map((mu) => modeLabelFor(t, mu)).join(" + ")}
           </span>
         </div>
-        <!-- Leg bar: one neon segment per transport type. -->
         <div class="legs" aria-hidden="true">
           {#each uniqueModes(itin.modes_used) as mu}
             <span class="leg" style="--c:{modeColor(mu)}"></span>
@@ -95,8 +94,6 @@
       </button>
     {/each}
 
-    <!-- Focus control: show the route alone, or bring the whole
-         network back. The rider decides; the default is the route. -->
     <button
       class="focus-btn"
       class:on={focused}

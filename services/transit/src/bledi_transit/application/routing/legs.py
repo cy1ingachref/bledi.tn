@@ -32,17 +32,11 @@ def resolve_walk_geometry(
 
     Returns (geometry, distance_m). Falls back, in order: the live foot graph,
     any precomputed cache polyline, a bridge through nearby connected foot
-    nodes, then the straight line. The distance is the real along-geometry
-    length whenever a real path was found, so the number in the itinerary
-    matches the line the user sees.
+    nodes, then the straight line. The distance is the length of the returned
+    geometry, so the number in the itinerary matches the line the user sees.
 
-    The bridge fixes the 125 m central-Tunis walk where both endpoints sit in
-    genuinely disconnected foot components but a nearby through-street node
-    connects them.
-
-    Called per leg rather than for all 12 736 station pairs at startup: a live
-    A* per pair would cost minutes of process start-up time, and a user only
-    ever sees a handful of walks.
+    The bridge serves endpoints in disconnected foot components that a nearby
+    through street connects.
     """
     straight = haversine_m(a_lat, a_lon, b_lat, b_lon)
     live = paths.road(a_lat, a_lon, b_lat, b_lon, "foot")
@@ -95,9 +89,7 @@ def road_geometry_for(
     pts = entry.get("geometry") or []
     if len(pts) < 2:
         return []
-    # The stored polyline runs min -> max on the key, so flip it when the rider
-    # travels the other way. Comparing the key's first endpoint against the
-    # request origin is exactly the stored order.
+    # The stored polyline runs min -> max on the key.
     forward = taxi_key(a_lat, a_lon, b_lat, b_lon).split("|")[0] == (
         f"{round(a_lat, 5)},{round(a_lon, 5)}"
     )

@@ -111,9 +111,6 @@
       </p>
     {/if}
 
-    <!-- Louage connections: which places this louage station serves,
-         resolved from its own destination list against real station
-         records. Only shown for stops that ARE a louage terminal. -->
     {#if destinations.length}
       <h4 class="ins-sub">{t("station.louage_links")}</h4>
       <ul class="ins-lines">
@@ -231,8 +228,6 @@
   .ln-dir { font-size: 11px; color: var(--mu); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .ln-meta { font-size: 10.5px; color: var(--mu-2); }
   .ins-none { margin: 0; font-size: 11.5px; color: var(--mu-2); }
-  /* Louage connections: a sub-heading under the line list, and a button row per
-     destination so a rider can jump to the place the terminal serves. */
   .ins-sub {
     margin: 12px 0 6px;
     font-size: 10.5px;

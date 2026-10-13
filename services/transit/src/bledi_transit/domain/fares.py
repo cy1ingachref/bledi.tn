@@ -33,9 +33,8 @@ def fare_for_leg(mode: str, distance_m: float) -> float:
 def fare_for_itinerary(legs: Sequence[dict[str, Any]]) -> float:
     """Total estimated fare, charged once per boarded line.
 
-    An itinerary is expanded one step per stop, so charging per leg quoted a
-    30-stop train ride at ~122 DT instead of ~7. Consecutive legs on the same
-    line merge into one charge; walks and transfers are free.
+    Itineraries have one step per stop, so consecutive legs on the same line
+    are one charge. Walks and transfers are free.
     """
     total = 0.0
     current_line: str | None = None

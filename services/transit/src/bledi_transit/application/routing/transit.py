@@ -53,12 +53,10 @@ def _leg_from_step(step: dict[str, Any], gap_breaks: bool = False) -> dict[str, 
 def steps_to_legs(steps: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """One leg per movement, consecutive rides on the same line merged.
 
-    A sub-step with no polyline BREAKS the merge instead of being stitched over.
-    Concatenating across it produces one discontinuous line that jumps over open
-    country: measured 93 km of polyline for a 214 km journey, because the
-    125 km Borj Cedria -> Sidi Bou Goubrine gap in the seed has no rail geometry
-    and none can be invented for it. The gap becomes its own leg, flagged, so the
-    two real stretches stay real and the hole is reported rather than drawn.
+    A sub-step with no polyline breaks the merge and becomes its own flagged
+    leg. Stitching over it would draw one line jumping across open country,
+    such as the 125 km Borj Cedria to Sidi Bou Goubrine stretch with no rail
+    geometry in the seed.
     """
     legs: list[dict[str, Any]] = []
     for s in steps:
