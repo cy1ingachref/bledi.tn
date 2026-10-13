@@ -1,0 +1,15 @@
+*
+!services/transit/requirements.lock.txt
+!services/transit/pyproject.toml
+!services/transit/src
+!data/seed_all_tunisia_routes.tagged.json
+!data/seed_routes_destination_tunis.json
+!data/route_geometry.json
+!data/walk_geometry.json
+!data/taxi_geometry.json
+!data/map_rail.geojson
+!data/map_roads.geojson
+!data/louage_links.json
+!data/rail_graph.npz
+**/__pycache__
+**/*.egg-info
