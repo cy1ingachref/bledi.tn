@@ -11,6 +11,7 @@ from typing import Any
 log = logging.getLogger("bledi.geocode")
 
 USER_AGENT = "bledi.tn/0.2.0 (transport routing; contact: maintainer@bledi.tn)"
+CACHE_MAX_ENTRIES = 1024
 
 
 class NominatimGeocoder:
@@ -34,5 +35,7 @@ class NominatimGeocoder:
         except Exception as exc:
             log.warning("Nominatim unreachable: %s", exc)
             return None
+        if len(self._cache) >= CACHE_MAX_ENTRIES:
+            self._cache.clear()
         self._cache[key] = (time.time(), data)
         return data
