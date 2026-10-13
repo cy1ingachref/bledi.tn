@@ -26,6 +26,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import shutil
 import subprocess
 import sys
 import urllib.error
@@ -165,7 +166,8 @@ def main() -> int:
         print("SKIP  npm run build (--skip-build)")
     else:
         p = subprocess.run(
-            ["npm", "run", "build"], cwd=FE, capture_output=True, text=True, shell=True
+            [shutil.which("npm") or "npm", "run", "build"],
+            cwd=FE, capture_output=True, text=True,
         )
         check(p.returncode == 0, "npm run build exits 0", str(p.returncode))
         if p.returncode != 0:
