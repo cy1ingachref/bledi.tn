@@ -18,15 +18,9 @@ Run:  python -m pytest tests/test_walk_routing.py -q
 """
 from __future__ import annotations
 
-import sys
-from pathlib import Path
-
 import pytest
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO_ROOT))
-
-from src.backend.app.routing import (  # noqa: E402
+from bledi_transit.application.routing.router import (
     MAX_WALK_EDGE_METERS,
     WALK_EDGE,
     Router,
@@ -239,7 +233,7 @@ class TestCostModelIntegrity:
         expressions, which is what the earlier version of this test did and why
         the mutation harness caught it as useless.
         """
-        import src.backend.app.routing as R
+        import bledi_transit.application.routing.router as R
 
         seed = R._load_seed()
         stations = {s["id"]: s for s in seed["stations"]}
@@ -316,7 +310,7 @@ class TestCostModelIntegrity:
         a distant-but-well-connected station, the final hop grows, and the ratio
         below fails.
         """
-        from src.backend.app.routing import haversine
+        from bledi_transit.application.routing.router import haversine
 
         dest_lat, dest_lon = 34.0622, 11.35  # Mahdia
         res = router.route(36.8078, 10.1815, dest_lat, dest_lon)
@@ -356,7 +350,7 @@ class TestCostModelIntegrity:
         *cost* is computed earlier in route(). This compares the cost the router
         optimises against the rendered leg, so the two cannot drift apart.
         """
-        from src.backend.app.routing import TAXI_SPEED_MS, WALK_SPEED_MS, haversine
+        from bledi_transit.application.routing.router import TAXI_SPEED_MS, WALK_SPEED_MS, haversine
 
         dest_lat, dest_lon = 34.0622, 11.35
         res = router.route(36.8078, 10.1815, dest_lat, dest_lon)
@@ -411,7 +405,7 @@ class TestCostModelIntegrity:
         assertion could not see this -- both hops sit inside the 1.15x bound.
         So assert on the candidate list the router actually searches.
         """
-        import src.backend.app.routing as R
+        import bledi_transit.application.routing.router as R
 
         seed = R._load_seed()
         r = R.Router({s["id"]: s for s in seed["stations"]}, seed["lines"])
@@ -453,7 +447,7 @@ class TestCostModelIntegrity:
         walking is cheap. Assert the two speeds differ in the expected direction
         and that the branch is selected by distance alone.
         """
-        from src.backend.app.routing import (
+        from bledi_transit.application.routing.router import (
             MAX_END_WALK_METERS,
             TAXI_SPEED_MS,
             WALK_SPEED_MS,

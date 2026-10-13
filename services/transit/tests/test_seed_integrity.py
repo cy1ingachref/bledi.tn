@@ -14,15 +14,12 @@ it being reverted or half-applied.
 """
 from __future__ import annotations
 
-import math
-import sys
 from collections import Counter
 from pathlib import Path
 
 import pytest
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO_ROOT))
+REPO_ROOT = Path(__file__).resolve().parents[3]
 
 SEED_PATH = REPO_ROOT / "data" / "seed_all_tunisia_routes.json"
 SEED_TAGED_PATH = REPO_ROOT / "data" / "seed_all_tunisia_routes.tagged.json"

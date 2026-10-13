@@ -81,7 +81,7 @@ def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
 def _default_graph_path() -> str:
     here = os.path.dirname(os.path.abspath(__file__))
     return os.path.abspath(
-        os.path.join(here, "..", "..", "..", "data", "road_graph.npz")
+        os.path.join(here, "..", "..", "..", "..", "..", "..", "data", "road_graph.npz")
     )
 
 

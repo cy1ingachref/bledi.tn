@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import pytest
 
-from src.backend.app.routing import (
+from bledi_transit.application.routing.router import (
     BUS_MODES,
     OPTION_MODES,
     RAIL_MODES,
@@ -128,7 +128,7 @@ class TestOptionEdgesCarryRealMetrics:
         A shorter value means a mis-oriented or mis-stitched polyline, which
         draws a line that does not follow the infrastructure at all.
         """
-        from src.backend.app.routing import polyline_length
+        from bledi_transit.application.routing.router import polyline_length
 
         checked = 0
         for key in ("bus", "train"):
