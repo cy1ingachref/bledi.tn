@@ -45,6 +45,7 @@ _CACHE: dict[str, Graph | None] = {}
 # of a trip, and a long A* costs seconds.
 _ROUTE_MEMO: dict[tuple[str, str, str, int, str], "RoadRoute | None"] = {}
 _ROUTE_MEMO_MAX = 512
+_MISSING: Any = object()
 
 
 def road_route_cached(
@@ -59,8 +60,10 @@ def road_route_cached(
 ) -> RoadRoute | None:
     """Memoised road_route(). Coordinates quantised to 5dp (~1 m)."""
     key = (mode, f"{a_lat:.5f},{a_lon:.5f}", f"{b_lat:.5f},{b_lon:.5f}", int(max_snap_m), str(id(g)))
-    if key in _ROUTE_MEMO:
-        return _ROUTE_MEMO[key]
+    # One get, not `in` then `[]`: request threads may clear the memo in between.
+    hit = _ROUTE_MEMO.get(key, _MISSING)
+    if hit is not _MISSING:
+        return hit
     r = road_route(g, a_lat, a_lon, b_lat, b_lon, mode, max_snap_m=max_snap_m)
     if len(_ROUTE_MEMO) >= _ROUTE_MEMO_MAX:
         _ROUTE_MEMO.clear()
