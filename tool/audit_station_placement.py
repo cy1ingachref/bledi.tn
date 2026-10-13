@@ -293,7 +293,7 @@ class WaterIndex:
         n_water = n_land = 0
         for el in elements:
             tags = el.get("tags") or {}
-            kind = tags.get("natural") or tags.get("waterway") or tags.get("landuse") or "water"
+            kind = el.get("kind") or tags.get("natural") or tags.get("waterway") or tags.get("landuse") or "water"
             rings: list[list[tuple[float, float]]] = []
             if el.get("type") == "way":
                 geom = el.get("geometry") or []
@@ -336,7 +336,7 @@ class WaterIndex:
         self.land_rings: list[tuple[str, list[tuple[float, float]], tuple]] = []
         for el in elements:
             tags = el.get("tags") or {}
-            kind = tags.get("natural") or tags.get("waterway") or tags.get("landuse") or "water"
+            kind = el.get("kind") or tags.get("natural") or tags.get("waterway") or tags.get("landuse") or "water"
             name = str(tags.get("name") or kind)
             rings: list[list[tuple[float, float]]] = []
             if el.get("type") == "way":
@@ -399,24 +399,20 @@ class WaterIndex:
         return "sea (not mapped as land)"
 
     def contains(self, lat: float, lon: float) -> str | None:
-        """Water body name, or None if dry.
+        """Water body name, or None if dry. Exact, always.
 
-        Two stages: the raster prefilter answers the common case (a stop in the
-        middle of the country, nowhere near water) in constant time, and any
-        candidate it raises is confirmed by exact ray casting. The raster is
-        never allowed to be the final answer — it over-filled and produced 30
-        false "in water" stations.
+        There is deliberately NO raster shortcut here any more. An earlier
+        version gated on a PIL raster mask and skipped the exact test when the
+        raster said "land"; the mask over-fills near the coast, so Dahmanin
+        (34.7686, 11.2308) and SIDI ZEYED (33.8774, 10.8790) were skipped while
+        the exact test places both in the sea — and their neighbour 450 m away
+        WAS flagged, so the audit contradicted itself.
+
+        Exact testing is affordable because every ring is clipped to the window
+        at build time: the GSHHG Africa ring drops from 1 160 926 vertices to
+        just the Tunisian coastline, so the bbox rejection in _exact_in discards
+        almost everything without touching vertices.
         """
-        rc = self._idx(lat, lon)
-        if rc is None:
-            return None
-        row, col = rc
-        if not self.water_mask[row, col] and self.land_mask[row, col]:
-            # Raster says: not near inland water, and inside land. Nothing to
-            # confirm — but confirm anyway when the cell is near a boundary is
-            # not knowable here, so fall through to the exact test only when the
-            # raster is NOT confidently dry.
-            return None
         return self.contains_exact(lat, lon)
 
 

@@ -42,9 +42,57 @@ BBOX = (30.0, 7.0, 37.8, 12.0)
 
 WATER_FCLASSES = {
     "water", "reservoir", "wetland", "riverbank", "dock",
-    "wetland_saltmarsh", "wetland_marsh", "wetland_bog",
+    "wetland_marsh", "wetland_bog",
     "wetland_reedbed", "wetland_tidalflat", "wetland_swamp",
 }
+
+LAND_FCLASSES = {
+    # A chott is a dry salt flat for most of the year, so it is treated as LAND:
+    # Tozeur and its bus stops sit on its edge and must not be flagged "in
+    # water" by a wetland polygon that is flooded only seasonally.
+    "wetland_saltmarsh",
+}
+
+
+def _clip(ring: list[tuple[float, float]]) -> list[tuple[float, float]]:
+    """Clip a ring to the audit window (Sutherland-Hodgman).
+
+    Done at BUILD time, not per query. The GSHHG land polygon for continental
+    Africa is a single ring of 1 160 926 vertices; clipping it to Tunisia leaves
+    a few thousand. That is what makes the audit's exact water test affordable
+    without a raster shortcut — and the raster shortcut was lossy (it skipped
+    two stops that are genuinely in the sea).
+    """
+    xmin, ymin, xmax, ymax = BBOX[1], BBOX[0], BBOX[3], BBOX[2]
+    if len(ring) < 3:
+        return []
+
+    def clip_edge(pts, axis, limit, keep_greater):
+        if not pts:
+            return []
+        out = []
+        prev = pts[-1]
+        prev_in = (prev[axis] >= limit) if keep_greater else (prev[axis] <= limit)
+        for cur in pts:
+            cur_in = (cur[axis] >= limit) if keep_greater else (cur[axis] <= limit)
+            if cur_in != prev_in:
+                denom = cur[axis] - prev[axis]
+                if denom != 0:
+                    t = (limit - prev[axis]) / denom
+                    out.append((prev[0] + t * (cur[0] - prev[0]),
+                                prev[1] + t * (cur[1] - prev[1])))
+            if cur_in:
+                out.append(cur)
+            prev, prev_in = cur, cur_in
+        return out
+
+    pts = list(ring)
+    for axis, limit, greater in ((0, xmin, True), (0, xmax, False),
+                                 (1, ymin, True), (1, ymax, False)):
+        pts = clip_edge(pts, axis, limit, greater)
+        if len(pts) < 3:
+            return []
+    return pts
 
 
 def _rings(shape) -> list[list[tuple[float, float]]]:
@@ -54,7 +102,9 @@ def _rings(shape) -> list[list[tuple[float, float]]]:
     for i in range(len(parts) - 1):
         ring = pts[parts[i]:parts[i + 1]]
         if len(ring) >= 4:
-            out.append([(float(x), float(y)) for x, y in ring])
+            clipped = _clip([(float(x), float(y)) for x, y in ring])
+            if len(clipped) >= 3:
+                out.append(clipped)
     return out
 
 
@@ -105,7 +155,11 @@ def from_geofabrik(path: Path) -> list[dict]:
     out: list[dict] = []
     for sr in reader.shapeRecords():
         fclass = sr.record[fi]
-        if fclass not in WATER_FCLASSES:
+        if fclass in LAND_FCLASSES:
+            kind = "land"
+        elif fclass in WATER_FCLASSES:
+            kind = "water"
+        else:
             continue
         name = str(sr.record[ni] or fclass) if ni is not None else fclass
         for ring in _rings(sr.shape):
@@ -116,6 +170,7 @@ def from_geofabrik(path: Path) -> list[dict]:
                 "id": len(out) + 1,
                 "tags": {"natural": fclass, "name": name},
                 "geometry": [{"lon": lo, "lat": la} for lo, la in ring],
+                "kind": kind,
             })
     print(f"geofabrik {path.name}: {len(out)} rings")
     return out
@@ -159,7 +214,7 @@ def main() -> int:
     )
     kinds: dict[str, int] = {}
     for el in elements:
-        k = el["tags"]["natural"]
+        k = el.get("kind") or el["tags"]["natural"]
         kinds[k] = kinds.get(k, 0) + 1
     print(f"\nwrote {out} — {len(elements)} rings, {out.stat().st_size / 1e6:.1f} MB")
     for k, v in sorted(kinds.items(), key=lambda kv: -kv[1]):

@@ -29,7 +29,11 @@ CASES = [
     (35.8256, 10.6084, False, "Sousse city centre"),
     (34.7406, 10.7603, False, "Sfax city centre"),
     (37.2740, 9.8740, False, "Bizerte town (on land)"),
-    (33.9197, 6.9440, False, "Tozeur (near Chott el Djerid, on land)"),
+    # Tozeur: use the REAL town coordinate (33.9197, 8.1339), not the backend's
+    # CITY_SEATS entry (33.9197, 6.9440) which is ~110 km west in Algeria.
+    # The water window starts at lon 7.0, so the bad coordinate falls outside
+    # and the index correctly returns "sea" for a point it has no data for.
+    (33.9197, 8.1339, False, "Tozeur (real town, on land)"),
     # Sea points.
     (37.1000, 10.6000, True, "Gulf of Tunis (open sea)"),
     (36.9000, 10.4000, True, "Gulf of Tunis, north-east"),
