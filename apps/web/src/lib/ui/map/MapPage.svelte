@@ -40,6 +40,7 @@
   } from "$lib/application/i18n";
   import { useTransit } from "$lib/ui/context";
   import { MODE_STYLE, modeColor, modeIcon } from "$lib/ui/modeStyle";
+  import { RouteDrawing } from "./routeDrawing";
   import {
     initTheme,
     cycleTheme,
@@ -63,19 +64,13 @@
   let baseLayer: L.TileLayer | null = null;
   let refLayer: L.TileLayer | null = null;
   let stationLayer: L.LayerGroup | null = null;
-  let routeLayer: L.LayerGroup | null = null;
+  let route: RouteDrawing | null = null;
   // One canvas per network mode, so each transport type can carry its own
   // neon glow (a CSS drop-shadow on that pane's canvas). A single canvas
   // holding every mode could only take one glow colour.
   const netLayers: Record<string, L.LayerGroup> = {};
-  let routeSvgRenderer: L.SVG | null = null;
   let startMarker: L.Marker | null = null;
   let endMarker: L.Marker | null = null;
-  let riderMarker: L.CircleMarker | null = null;
-  let riderRaf = 0;
-  let riderStart = 0;
-  // Pending timeouts that clear the draw-in dash once the animation is over.
-  let drawTimers: number[] = [];
 
   let lang = $state<Lang>("fr");
   const t = $derived(translator(lang));
@@ -180,14 +175,6 @@
     toastTimer = setTimeout(() => (toast = ""), 4200);
   }
 
-  /** Theme-aware map colours. Leaflet takes literal colours, not CSS vars. */
-  function casingColor(): string {
-    return dark === "light" ? "rgba(255,252,248,0.92)" : "#04010c";
-  }
-  function walkColor(): string {
-    return dark === "light" ? "#6b7280" : "#8b83a8";
-  }
-
   // ── Map ───────────────────────────────────────────────────────────────────
   // Two real basemaps, swapped by theme. Both are Esri's no-key tile services:
   // dark for the night theme, light for the day theme.
@@ -235,22 +222,12 @@
     baseLayer = L.tileLayer(TILES.dark.base, { maxZoom: 16, attribution: TILE_ATTR }).addTo(map);
     refLayer = L.tileLayer(TILES.dark.ref, { maxZoom: 16, pane: "shadowPane" }).addTo(map);
 
-    // The traveller dot and the A/B endpoints live above the station markers
-    // in their own panes, so dimming the rest of the network in focus mode
-    // never dims the route's own endpoints.
-    map.createPane("riderPane");
-    const rp = map.getPane("riderPane");
-    if (rp) { rp.style.zIndex = "650"; rp.style.pointerEvents = "none"; }
+    // The A/B endpoints live above the station markers in their own pane, so
+    // dimming the rest of the network in focus mode never dims them.
     map.createPane("endpointPane");
     const ep = map.getPane("endpointPane");
     if (ep) { ep.style.zIndex = "660"; ep.style.pointerEvents = "none"; }
-
-    // Route lines get SVG (not canvas) so each leg can carry a per-mode class
-    // and therefore its own neon glow, and so the draw-in animation has a real
-    // path element to measure. See the pane/glow rules in the styles below.
-    map.createPane("routePane");
-    const rt = map.getPane("routePane");
-    if (rt) rt.style.zIndex = "420";
+    route = new RouteDrawing(map);
 
     for (const p of NET_PANES) {
       const name = `net_${p.mode}`;
@@ -269,15 +246,8 @@
     }
 
     stationLayer = L.layerGroup().addTo(map);
-    routeLayer = L.layerGroup().addTo(map);
 
     map.on("click", onMapClick);
-  }
-
-  /** SVG renderer for the route only (canvas has no per-path element). */
-  function routeRenderer(): L.SVG {
-    if (!routeSvgRenderer) routeSvgRenderer = L.svg({ padding: 0.5, pane: "routePane" });
-    return routeSvgRenderer;
   }
 
   function canvasRenderer(mode: string): L.Canvas {
@@ -491,196 +461,6 @@
         .addTo(map);
   }
 
-  // ── Route drawing ─────────────────────────────────────────────────────────
-  /** Perpendicular offset at vertex i, so the dot rides parallel to the line. */
-  function perpAt(pts: [number, number][], i: number): [number, number] {
-    const a = pts[Math.max(0, i - 1)];
-    const b = pts[Math.min(pts.length - 1, i + 1)];
-    const dLat = b[0] - a[0];
-    const dLng = (b[1] - a[1]) * Math.cos((a[0] * Math.PI) / 180);
-    const len = Math.hypot(dLat, dLng) || 1;
-    const m = 5 / 111320;
-    return [(-dLng / len) * m, (dLat / len) * m];
-  }
-
-  function stopRider() {
-    if (riderRaf) cancelAnimationFrame(riderRaf);
-    riderRaf = 0;
-    if (riderMarker && map) {
-      map.removeLayer(riderMarker);
-      riderMarker = null;
-    }
-  }
-
-  /**
-   * Apply the draw-in to every route leg once Leaflet's SVG paths exist.
-   *
-   * Two things make this fiddly, and both fail SILENTLY:
-   *
-   * 1. The SVG renderer creates its paths lazily, so `_path` is undefined for
-   *    the early legs when the first animation frame fires. A per-leg
-   *    single-shot rAF therefore styled only the last legs drawn — 7 of 32 —
-   *    so most of the route appeared instantly while a few drew in.
-   * 2. `fitBounds` runs right after the legs are added and triggers a zoom,
-   *    which makes Leaflet re-render the paths. Applying the dash before the
-   *    map has settled races that re-render.
-   *
-   * So: wait for every path to exist, apply the dash in one pass, and then
-   * unconditionally clear the dash after the animation window. That last step
-   * matters because a draw-in that is interrupted (zoom, throttled tab) would
-   * otherwise leave the line stuck at `stroke-dashoffset: 100%` — invisible,
-   * with no error to explain why.
-   */
-  function animateRouteDrawIn(lines: L.Polyline[]) {
-    clearDrawTimers();
-    let attempts = 0;
-    const apply = () => {
-      const els = lines
-        .map((l) => (l as unknown as { _path?: SVGPathElement })._path)
-        .filter((e): e is SVGPathElement => !!e);
-      if (els.length < lines.length && attempts < 40) {
-        attempts++;
-        requestAnimationFrame(apply);
-        return;
-      }
-      const drawn: SVGPathElement[] = [];
-      for (const el of els) {
-        const len = el.getTotalLength?.() ?? 0;
-        if (!len) continue;
-        el.style.strokeDasharray = String(len);
-        el.style.strokeDashoffset = String(len);
-        el.style.animation = "bledi-draw 1.1s cubic-bezier(.4,0,.2,1) forwards";
-        drawn.push(el);
-      }
-      if (!drawn.length) return;
-      drawTimers.push(
-        window.setTimeout(() => {
-          for (const el of drawn) {
-            el.style.strokeDasharray = "";
-            el.style.strokeDashoffset = "";
-            el.style.animation = "";
-          }
-        }, 1800)
-      );
-    };
-    requestAnimationFrame(apply);
-  }
-
-  function clearDrawTimers() {
-    for (const t of drawTimers) clearTimeout(t);
-    drawTimers = [];
-  }
-
-  /**
-   * Draw a route: each leg in its transport's neon colour, the line drawing
-   * itself in, a flowing highlight on top, and a traveller dot walking it.
-   * All three are skipped under prefers-reduced-motion.
-   */
-  function drawItinerary(itin: RoutePlan["itineraries"][number]) {
-    if (!map || !routeLayer) return;
-    stopRider();
-    clearDrawTimers();
-    routeLayer.clearLayers();
-
-    const reduced = prefersReducedMotion();
-    const legs = (itin.legs ?? []) as RouteLeg[];
-    const drawable: L.Polyline[] = [];
-
-    for (const leg of legs) {
-      if (!leg.geometry || leg.geometry.length < 2) continue;
-      const isWalk = isWalkLeg(leg);
-      const key = isWalk ? "walk" : (modeKey(leg.mode ?? "bus") as string);
-      const pts = leg.geometry.map(([a, b]) => [a, b] as [number, number]);
-      const color = isWalk ? walkColor() : modeColor(leg.mode ?? "bus");
-
-      // Casing keeps the leg legible over same-coloured station dots. It is
-      // theme-aware: a dark casing on a light basemap reads as a shadow.
-      if (!isWalk) {
-        L.polyline(pts, {
-          color: casingColor(), weight: 11, opacity: 0.9, lineCap: "round",
-          interactive: false, renderer: routeRenderer(),
-        }).addTo(routeLayer);
-      }
-      const main = L.polyline(pts, {
-        color,
-        weight: isWalk ? 3 : 5.5,
-        opacity: isWalk ? 0.85 : 1,
-        dashArray: isWalk ? "2 7" : undefined,
-        lineCap: "round",
-        lineJoin: "round",
-        interactive: false,
-        // A per-mode class is what lets CSS give each transport its own glow.
-        className: `route-leg route-leg-${key}${reduced || isWalk ? "" : " route-draw"}`,
-        renderer: routeRenderer(),
-      }).addTo(routeLayer);
-
-      // Flowing dash on top of the coloured stroke — the "route is live" cue.
-      if (!isWalk && !reduced) {
-        L.polyline(pts, {
-          color: "#ffffff",
-          weight: 2,
-          opacity: 0.9,
-          dashArray: "2 14",
-          lineCap: "round",
-          interactive: false,
-          className: "route-flow",
-          renderer: routeRenderer(),
-        }).addTo(routeLayer);
-      }
-
-      // The draw-in is applied to every leg in one pass, after fitBounds, so
-      // the dash is not racing Leaflet's lazy path creation or the zoom
-      // re-render. See animateRouteDrawIn.
-      if (!isWalk) drawable.push(main);
-    }
-
-    const all: [number, number][] = [];
-    for (const l of legs) if (l.geometry) all.push(...l.geometry);
-    if (!all.length) return;
-
-    map.fitBounds(L.latLngBounds(all).pad(0.18));
-    if (!reduced && drawable.length) animateRouteDrawIn(drawable);
-
-    if (reduced || all.length < 2) return;
-    const MAX_RIDER_POINTS = 220;
-    const stride = Math.max(1, Math.ceil(all.length / MAX_RIDER_POINTS));
-    const walk: [number, number][] = [];
-    for (let i = 0; i < all.length; i += stride) walk.push(all[i]);
-    if (walk[walk.length - 1] !== all[all.length - 1]) walk.push(all[all.length - 1]);
-
-    const startPerp = perpAt(walk, 0);
-    riderMarker = L.circleMarker([walk[0][0] + startPerp[0], walk[0][1] + startPerp[1]], {
-      pane: "riderPane",
-      radius: 6,
-      color: dark === "light" ? "#0a7a62" : "#3df2c9",
-      weight: 3,
-      fillColor: "#ffffff",
-      fillOpacity: 1,
-      interactive: false,
-    }).addTo(map);
-
-    const DURATION_MS = 4200;
-    riderStart = performance.now();
-    const step = (now: number) => {
-      if (!riderMarker || !map) return;
-      const p = Math.min(1, (now - riderStart) / DURATION_MS);
-      const e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
-      const f = e * (walk.length - 1);
-      const i = Math.min(walk.length - 2, Math.floor(f));
-      const frac = f - i;
-      const a = walk[i];
-      const b = walk[i + 1];
-      const off = perpAt(walk, i);
-      riderMarker.setLatLng([
-        a[0] + (b[0] - a[0]) * frac + off[0],
-        a[1] + (b[1] - a[1]) * frac + off[1],
-      ]);
-      if (p < 1) riderRaf = requestAnimationFrame(step);
-      else riderRaf = 0;
-    };
-    riderRaf = requestAnimationFrame(step);
-  }
-
   // ── Map interaction: pick a point, inspect a stop ─────────────────────────
   function onMapClick(e: L.LeafletMouseEvent) {
     if (!pickMode) return;
@@ -797,7 +577,7 @@
       routePlan = plan;
       selectedItinerary = 0;
       if (plan.itineraries?.length) {
-        drawItinerary(plan.itineraries[0]);
+        route?.draw(plan.itineraries[0], dark);
         focusRoute = true;
         requestAnimationFrame(() =>
           resultsEl?.scrollIntoView({ behavior: "smooth", block: "start" })
@@ -840,9 +620,7 @@
 
     const unsubTheme = resolvedTheme.subscribe((r) => {
       applyBasemap(r);
-      if (riderMarker) {
-        riderMarker.setStyle({ color: r === "light" ? "#0a7a62" : "#3df2c9" });
-      }
+      route?.setShade(r);
       // Station dots and network strokes take literal colours, so they have to
       // be redrawn to follow the theme.
       refreshStations();
@@ -886,7 +664,7 @@
 
     return () => {
       unsubTheme();
-      stopRider();
+      route?.stopRider();
       map?.remove();
       map = null;
     };
@@ -1152,7 +930,7 @@
               <button
                 class="itin"
                 class:on={selectedItinerary === i}
-                onclick={() => { selectedItinerary = i; drawItinerary(itin); focusRoute = true; }}
+                onclick={() => { selectedItinerary = i; route?.draw(itin, dark); focusRoute = true; }}
                 aria-pressed={selectedItinerary === i}
               >
                 <div class="it-top">
@@ -2219,7 +1997,7 @@
   .lg-i.off { opacity: 0.32; text-decoration: line-through; }
 
   /* ── Route animation ─────────────────────────────────────────────────────
-     The draw-in is applied imperatively (see drawItinerary) so it re-runs on
+     The draw-in is applied imperatively (see RouteDrawing) so it re-runs on
      every itinerary change; the flowing dash is pure CSS on a second polyline. */
   .map-wrap :global(.route-flow) { animation: bledi-flow 1s linear infinite; }
   @keyframes bledi-draw { to { stroke-dashoffset: 0; } }
