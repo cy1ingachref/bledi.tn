@@ -1,6 +1,6 @@
 name: End to end
 
-# Opt-in to save Actions minutes: runs on PRs labelled "e2e", and on demand.
+# Opt-in through the "e2e" label, to save Actions minutes.
 on:
   pull_request:
     branches: [main]
