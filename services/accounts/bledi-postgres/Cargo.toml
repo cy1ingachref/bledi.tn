@@ -1,0 +1,15 @@
+[package]
+name = "bledi-postgres"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-trait = { workspace = true }
+bledi-application = { path = "../bledi-application" }
+bledi-domain = { path = "../bledi-domain" }
+chrono = { workspace = true }
+sqlx = { workspace = true }
+uuid = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true }
