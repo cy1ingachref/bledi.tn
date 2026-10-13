@@ -12,7 +12,7 @@ import 'package:bledi_app/data/models/station.dart';
 /// Verifies the models parse the exact payloads the backend emits.
 ///
 /// Every fixture below is copied from a live `curl` against
-/// `src/backend/app/main.py` @ 1711 stations / 232 lines, so a backend contract
+/// the transit service @ 1711 stations / 232 lines, so a backend contract
 /// drift fails these tests instead of silently mis-placing the map.
 void main() {
   group('RouteResponse', () {

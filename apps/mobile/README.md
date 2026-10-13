@@ -4,7 +4,7 @@ Flutter client for the [BLEDI.TN](https://github.com/cy1ingachref/bledi.tn) Tuni
 public-transport backend. Renders the network on an interactive map and asks the
 backend's local multi-modal router for itineraries.
 
-The routing algorithm lives in the backend (`src/backend/app/routing.py`); this
+The routing algorithm lives in the transit service (`services/transit`); this
 app only requests and renders it.
 
 ## Requirements
@@ -14,10 +14,11 @@ app only requests and renders it.
 
 ## Run it
 
-Start the backend from the repository root:
+Start the transit service from the repository root:
 
 ```bash
-python -m uvicorn src.backend.app.main:app --port 8000
+pip install -e services/transit
+uvicorn --factory bledi_transit.main:create_app --port 8000
 ```
 
 Then run the app:
@@ -171,8 +172,8 @@ The integration tests hit a live backend and skip themselves when one is not
 reachable:
 
 ```bash
-# terminal 1 — from the repository root
-python -m uvicorn src.backend.app.main:app --port 8000
+# terminal 1, from the repository root
+uvicorn --factory bledi_transit.main:create_app --port 8000
 # terminal 2
 flutter test
 ```
