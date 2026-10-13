@@ -139,6 +139,7 @@ def track_between(
 
 
 _RAIL_MEMO: dict[tuple[str, str, str], RailTrack | None] = {}
+_MISSING: Any = object()
 
 
 def track_between_cached(
@@ -146,8 +147,10 @@ def track_between_cached(
     max_snap_m: float = RAIL_SNAP_M,
 ) -> RailTrack | None:
     key = (f"{a_lat:.5f},{a_lon:.5f}", f"{b_lat:.5f},{b_lon:.5f}", str(id(g)))
-    if key in _RAIL_MEMO:
-        return _RAIL_MEMO[key]
+    # One get, not `in` then `[]`: request threads may clear the memo in between.
+    hit = _RAIL_MEMO.get(key, _MISSING)
+    if hit is not _MISSING:
+        return hit
     t = track_between(g, a_lat, a_lon, b_lat, b_lon, max_snap_m)
     if len(_RAIL_MEMO) >= 4096:
         _RAIL_MEMO.clear()
