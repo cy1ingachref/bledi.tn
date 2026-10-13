@@ -3,7 +3,7 @@
   import { get } from "svelte/store";
   import L from "leaflet";
   import "leaflet.markercluster";
-  import Icon from "$lib/Icon.svelte";
+  import Icon from "$lib/ui/Icon.svelte";
   import {
     api,
     stationFromFeature,
@@ -17,7 +17,7 @@
     type MapOverlayFeature,
     type LouageLink,
   } from "$lib/router";
-  import { LANGS, translator, dirOf, formatDuration, modeLabel, type Lang } from "$lib/i18n";
+  import { LANGS, translator, dirOf, formatDuration, modeLabel, type Lang } from "$lib/application/i18n";
   import {
     initTheme,
     setTheme,
@@ -26,7 +26,7 @@
     themePref,
     prefersReducedMotion,
     type ThemePref,
-  } from "$lib/theme";
+  } from "$lib/ui/theme";
 
   // ── Transport modes ───────────────────────────────────────────────────────
   // One neon colour per rider-facing transport type. The same colour is used
