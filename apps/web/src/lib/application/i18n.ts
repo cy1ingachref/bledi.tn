@@ -4,7 +4,11 @@
 //
 // No emoji anywhere: they are font-dependent, unthemeable and render as
 // tofu boxes on a bare Windows install. Every icon in the UI is an inline SVG
-// from $lib/Icon.svelte.
+// from $lib/ui/Icon.svelte.
+
+import { isWalkLeg, lineNumber } from "$lib/domain/itinerary";
+import { modeKey } from "$lib/domain/modes";
+import type { RouteLeg } from "$lib/domain/transit";
 
 export type Lang = "fr" | "en" | "ar";
 
@@ -297,6 +301,19 @@ export function modeLabel(t: (k: string) => string, id: string): string {
   if (v !== key) return v;
   const words = id.replace(/_/g, " ");
   return words.charAt(0).toUpperCase() + words.slice(1);
+}
+
+/** Label for a raw backend mode, through its rider-facing category. */
+export function modeLabelFor(t: (k: string) => string, raw: string): string {
+  const k = modeKey(raw);
+  return k === "unclassified" ? t("modes.unclassified") : modeLabel(t, k);
+}
+
+export function legLabel(t: (k: string) => string, leg: RouteLeg): string {
+  if (isWalkLeg(leg)) return t("step.walk");
+  const base = modeLabelFor(t, leg.mode ?? "bus");
+  const n = lineNumber(leg.line);
+  return n ? `${base} ${n}` : base;
 }
 
 export function dirOf(lang: Lang): "rtl" | "ltr" {
