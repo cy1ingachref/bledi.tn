@@ -11,4 +11,5 @@ ENV ACCOUNTS_URL=http://accounts:3000 \
     NGINX_ENVSUBST_FILTER="^(ACCOUNTS_URL|TRANSIT_URL)$"
 COPY nginx.conf /etc/nginx/templates/default.conf.template
 COPY --from=build /app/build /usr/share/nginx/html
+USER nginx
 EXPOSE 8080
