@@ -73,7 +73,7 @@ class TestEveryCombinationIsLegal:
         assert label_for(frozenset({"bus"})) == "Bus"
         assert label_for(frozenset({"train", "bus"})) == "Bus + Train / Metro"
         assert label_for(frozenset({"louaj", "bus", "train"})) == (
-            "Bus + Louaj / Taxi + Train / Metro"
+            "Bus + Taxi / Louage + Train / Metro"
         )
 
 
