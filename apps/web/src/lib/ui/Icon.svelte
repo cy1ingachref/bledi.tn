@@ -51,5 +51,6 @@
   class={cls}
   aria-hidden="true"
 >
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -- d only ever comes from the constant PATHS table -->
   {@html d}
 </svg>
