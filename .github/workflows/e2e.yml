@@ -32,11 +32,11 @@ jobs:
       - name: Build
         uses: docker/build-push-action@v7
         with:
-          context: .
+          context: services/accounts
           tags: ${{ env.LOCAL_IMAGE }}
           load: true
           cache-from: type=gha,scope=backend
           cache-to: type=gha,mode=max,scope=backend
 
       - name: Smoke test
-        run: rust/docker/smoke-test.sh "$LOCAL_IMAGE"
+        run: services/accounts/docker/smoke-test.sh "$LOCAL_IMAGE"

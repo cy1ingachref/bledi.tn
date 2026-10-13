@@ -9,9 +9,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy manifests
-COPY rust/Cargo.toml rust/Cargo.lock* ./
-COPY rust/bledi-core/Cargo.toml bledi-core/
-COPY rust/bledi-server/Cargo.toml bledi-server/
+COPY Cargo.toml Cargo.lock* ./
+COPY bledi-core/Cargo.toml bledi-core/
+COPY bledi-server/Cargo.toml bledi-server/
 
 # Create dummy main files to compile dependencies
 RUN mkdir -p bledi-core/src bledi-server/src \
@@ -22,9 +22,9 @@ RUN mkdir -p bledi-core/src bledi-server/src \
 RUN cargo build --release || true
 
 # Copy actual source
-COPY rust/bledi-core/src bledi-core/src
-COPY rust/bledi-server/src bledi-server/src
-COPY rust/bledi-server/migrations bledi-server/migrations
+COPY bledi-core/src bledi-core/src
+COPY bledi-server/src bledi-server/src
+COPY bledi-server/migrations bledi-server/migrations
 
 # Build
 RUN touch bledi-core/src/lib.rs bledi-server/src/main.rs \
@@ -45,7 +45,7 @@ RUN groupadd --system --gid 10001 bledi \
 WORKDIR /app
 
 COPY --from=builder /app/target/release/bledi-server /usr/local/bin/bledi-server
-COPY rust/bledi-server/migrations /app/migrations
+COPY bledi-server/migrations /app/migrations
 
 # NOTE: no DATABASE_URL default and no JWT_SECRET default are baked in.
 # Both are REQUIRED at runtime and the server refuses to start without them.
