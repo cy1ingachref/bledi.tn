@@ -3,11 +3,10 @@
 BLEDI.TN — Tunisia Transport API
 FastAPI backend with embedded seed data + local Dijkstra router.
 
-Run: uvicorn src.backend.app.main:app --host 127.0.0.1 --port 8000
-Or, from repo root: python -m uvicorn src.backend.app.main:app --host 127.0.0.1 --port 8000
+Run: uvicorn bledi_transit.main:app --host 127.0.0.1 --port 8000
 
 Data provenance: see docs/provenance.md. Most routing data is derived from
-Tunismapper; the /api/v1/itinerary tunismapper proxy is disabled by default.
+Tunismapper.
 """
 from __future__ import annotations
 
@@ -27,21 +26,16 @@ import numpy as np
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 # Local transit router (physical-cost Dijkstra).
 from bledi_transit.application.routing.router import (
-    COMBINATIONS,
-    FAMILIES,
-    OPTION_MODES,
     USER_MODES,
     Router,
     canonical_mode,
-    label_for,
     label_modes_fr,
     mode_label_fr,
-    modes_for,
 )
 
 log = logging.getLogger("bledi")
@@ -81,11 +75,6 @@ _MAP_ROADS_PATH = BASE / "data" / "map_roads.geojson"
 _LOUAGE_LINKS_PATH = BASE / "data" / "louage_links.json"
 
 # ── Config ──────────────────────────────────────────────────────────────
-OSRM_URL = os.environ.get(
-    "OSRM_URL",
-    "https://router.project-osrm.org/route/v1/driving",
-)
-OSRM_TIMEOUT = int(os.environ.get("OSRM_TIMEOUT", "30"))
 # Local dev origins only. 8080 is the Flutter web dev server's default port
 # (see src/mobile/tool/serve_web.py); without it a browser build gets a CORS
 # failure instead of data. Override with ALLOWED_ORIGINS for other hosts.
@@ -103,9 +92,6 @@ ALLOWED_ORIGINS = [
     ).split(",")
     if o.strip()
 ]
-ENABLE_TUNISMAPPER_PROXY = os.environ.get("ENABLE_TUNISMAPPER_PROXY", "").strip().lower() in (
-    "1", "true", "yes",
-)
 
 # ── CORS ────────────────────────────────────────────────────────────────
 # Do NOT combine wildcard origins with allow_credentials=True.
@@ -508,39 +494,6 @@ class LineDetail(BaseModel):
     gaps: list[dict[str, Any]] = []
 
 
-# ── Pydantic models for the local transit-router endpoint ─────────────────
-#
-# Step shape is deliberately the same arrays the frontend computeTransit()
-# renderer reads (step.start[0]/[1], step.end[0]/[1]) so the existing safe-DOM
-# map plotter needs no new code path.
-class TransitStep(BaseModel):
-    type: str                     # walk | ride | transfer | taxi
-    start: list[float]            # [lat, lon]
-    end: list[float]              # [lat, lon]
-    color: str | None = None
-    stop_name: str | None = None
-    duration_min: float = 0.0
-    mode: str | None = None
-    line: str | None = None
-    from_name: str | None = None
-    to_name: str | None = None
-
-
-class TransitOption(BaseModel):
-    duration: float               # total seconds
-    duration_min: float
-    transfers: int = 0
-    has_walk_transfer: bool = False
-    steps: list[TransitStep] = Field(default_factory=list)
-    fare_dinars: float | None = None
-
-
-class TransitResponse(BaseModel):
-    best_fastest: TransitOption | None = None
-    best_less_walk: TransitOption | None = None
-    alternatives: list[TransitOption] = Field(default_factory=list)
-
-
 # ── Helpers ──────────────────────────────────────────────────────────────
 def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     R = 6371000.0
@@ -574,26 +527,8 @@ class _TTLCache:
         self._store[key] = (time.time(), value)
 
 
-_osrm_cache = _TTLCache(ttl_s=600.0)
 _nominatim_cache = _TTLCache(ttl_s=3600.0)
 _OSM_UA = "bledi.tn/0.2.0 (transport routing; contact: maintainer@bledi.tn)"
-
-
-def query_osrm(start: tuple[float, float], end: tuple[float, float]) -> dict[str, Any] | None:
-    key = f"{start[0]:.6f},{start[1]:.6f}|{end[0]:.6f},{end[1]:.6f}"
-    cached = _osrm_cache.get(key)
-    if cached is not None:
-        return cached
-    url = f"{OSRM_URL}/{start[1]},{start[0]};{end[1]},{end[0]}?overview=full&geometries=geojson"
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": _OSM_UA})
-        with urllib.request.urlopen(req, timeout=OSRM_TIMEOUT) as resp:
-            data = json.loads(resp.read().decode())
-            _osrm_cache.set(key, data)
-            return data
-    except Exception as exc:
-        log.warning("OSRM unreachable at %s: %s", OSRM_URL, exc)
-        return None
 
 
 def query_nominatim(query: str) -> list[dict[str, Any]] | None:
@@ -635,8 +570,6 @@ def root() -> dict[str, Any]:
             "stations/near": "/api/v1/stations/near",
             "lines": "/api/v1/lines",
             "lines-by-number": "/api/v1/lines/{line_number}",
-            "route": "/api/v1/route",
-            "itinerary": "/api/v1/itinerary",
             "geocode": "/api/v1/geocode",
         },
     }
@@ -1405,38 +1338,6 @@ def route_plan_endpoint(
         raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
-@app.get("/api/v1/route", tags=["Routing"])
-def route(
-    start_lat: float = Query(..., description="Start latitude"),
-    start_lon: float = Query(..., description="Start longitude"),
-    end_lat: float = Query(..., description="End latitude"),
-    end_lon: float = Query(..., description="End longitude"),
-) -> dict[str, Any]:
-    """Driving route from OSRM (car profile)."""
-    result = query_osrm((start_lat, start_lon), (end_lat, end_lon))
-    if not result or result.get("code") != "Ok" or not result.get("routes"):
-        if result is None:
-            return JSONResponse(
-                {
-                    "error": "OSRM is unreachable",
-                    "detail": f"Cannot reach {OSRM_URL}. Set OSRM_URL or start osrm-routed.",
-                    "source": "osrm",
-                },
-                status_code=503,
-            )
-        return {"error": "No route found", "source": "osrm"}
-    route_data = result["routes"][0]
-    return {
-        "start": {"lat": start_lat, "lon": start_lon},
-        "end": {"lat": end_lat, "lon": end_lon},
-        "distance_m": round(route_data["distance"]),
-        "duration_s": round(route_data["duration"]),
-        "waypoints": result.get("waypoints", []),
-        "geometry": route_data.get("geometry"),
-        "source": "osrm",
-    }
-
-
 # ── Local transit router endpoint ─────────────────────────────────────────
 #
 # Physical-cost multi-modal Dijkstra over the seed (stations + lines).
@@ -1731,295 +1632,6 @@ def route_transit(
     }
 
 
-# ── Three distinct transport options ───────────────────────────────────────
-# The user picks a transport option; each is searched SEPARATELY with its own
-# mode restriction rather than being sliced out of one combined answer. A
-# combined search minimises total time and will return a train when the user
-# asked for a bus, so deriving per-option results from it produces confidently
-# wrong options. Each option reports whether it is available, so the frontend
-# can grey out "Train" on a trip with no rail rather than showing an empty card.
-OPTION_LABELS: dict[str, str] = {
-    "bus": "Bus",
-    "louaj": "Taxi / Louage",
-    "train": "Train / Metro",
-}
-
-
-def _station_ids_used(steps: list[dict[str, Any]]) -> list[str]:
-    """Station ids the itinerary actually touches, in travel order.
-
-    Only the stations the rider boards, alights or transfers at. The map uses
-    this to hide every other marker once a route is drawn.
-    """
-    used: list[str] = []
-    for s in steps:
-        for key in ("from_id", "to_id"):
-            sid = s.get(key)
-            if sid and sid not in used:
-                used.append(sid)
-    return used
-
-
-@app.get("/api/v1/route/options", tags=["Routing"])
-def route_options(
-    start_lat: float = Query(..., description="Start latitude"),
-    start_lon: float = Query(..., description="Start longitude"),
-    end_lat: float = Query(..., description="End latitude"),
-    end_lon: float = Query(..., description="End longitude"),
-) -> dict[str, Any]:
-    """Three separately-computed transport options for one origin/destination.
-
-    Returns one entry per option (bus, louaj/taxi, train/metro). Each is its own
-    mode-restricted search, so "Bus" contains only bus-family legs and "Train"
-    only rail-family legs. An option that cannot be served is returned with
-    `available: false` and a reason rather than being omitted, so the UI can
-    show it as unavailable instead of silently hiding it.
-
-    The envelope keeps `best_fastest` / `legs` / `stations_used` so a caller
-    already using /route/transit can migrate without a flag day.
-    """
-    options: list[dict[str, Any]] = []
-    for key in ("bus", "louaj", "train"):
-        modes = OPTION_MODES.get(key)
-        res = ROUTER.route(start_lat, start_lon, end_lat, end_lon, allowed_modes=modes)
-        entry: dict[str, Any] = {
-            "id": key,
-            "label": OPTION_LABELS[key],
-            "modes": sorted(m for m in modes if m != "walk"),
-        }
-        if res.get("error") or not res.get("steps"):
-            entry.update({
-                "available": False,
-                "reason": res.get("error") or "no route with these modes",
-                "duration_min": None,
-                "legs": [],
-                "stations_used": [],
-            })
-            options.append(entry)
-            continue
-        opt = _router_to_option(res)
-        steps = opt.get("steps", [])
-        legs = _steps_to_legs(steps)
-        # A taxi/louaj answer is a single direct leg by construction; anything
-        # longer means the restricted search fell through to something else and
-        # the label would be a lie.
-        if key == "louaj" and not any(l["mode"] in ("taxi", "louaj") for l in legs):
-            entry.update({
-                "available": False,
-                "reason": "no louaj/taxi option for this trip",
-                "duration_min": None,
-                "legs": [],
-                "stations_used": [],
-            })
-            options.append(entry)
-            continue
-        entry.update({
-            "available": True,
-            "reason": None,
-            "duration_min": opt.get("duration_min"),
-            "duration_seconds": opt.get("duration"),
-            "transfers": opt.get("transfers"),
-            "has_walk_transfer": opt.get("has_walk_transfer"),
-            "fare_dinars": opt.get("fare_dinars"),
-            "legs": legs,
-            "steps": steps,
-            "stations_used": _station_ids_used(steps),
-            "geometry_complete": all(l.get("has_geometry") for l in legs
-                                    if l["mode"] not in ("walk", "transfer")),
-        })
-        options.append(entry)
-
-    available = [o for o in options if o.get("available")]
-    fastest = min(available, key=lambda o: o["duration_min"]) if available else None
-    return {
-        "options": options,
-        "best_id": fastest["id"] if fastest else None,
-        "stations_used": fastest["stations_used"] if fastest else [],
-        "source": "local-router",
-    }
-
-
-def _families_in_steps(steps: list[dict[str, Any]]) -> frozenset[str]:
-    """Which transport families an itinerary actually uses."""
-    out: set[str] = set()
-    for s in steps:
-        mode = s.get("mode")
-        if s.get("type") == "taxi" or mode in ("taxi", "louaj"):
-            out.add("louaj")
-        elif mode in ("bus", "rfr", "tram"):
-            out.add("bus")
-        elif mode in ("train", "rail", "metro"):
-            out.add("train")
-    return frozenset(out)
-
-
-def _itinerary_signature(steps: list[dict[str, Any]]) -> tuple:
-    """Identity of a path: the ordered movements that actually move the rider.
-
-    Walks and transfers do not change which service is used, so two paths that
-    differ only in where a walk happened are the same itinerary and must not
-    both be offered.
-    """
-    return tuple(
-        (s.get("type"), s.get("mode"), s.get("line") or "", s.get("from_id") or "",
-         s.get("to_id") or "")
-        for s in steps
-        if s.get("type") in ("ride", "taxi")
-    )
-
-
-@app.get("/api/v1/route/modes", tags=["Routing"])
-def route_modes(
-    start_lat: float = Query(..., description="Start latitude"),
-    start_lon: float = Query(..., description="Start longitude"),
-    end_lat: float = Query(..., description="End latitude"),
-    end_lon: float = Query(..., description="End longitude"),
-    modes: str = Query(
-        ...,
-        description=(
-            "Comma-separated transport families the user selected. Any "
-            "non-empty subset of: bus, louaj, train. e.g. 'bus', 'bus,train', "
-            "'bus,louaj,train'."
-        ),
-    ),
-    max_itineraries: int = Query(
-        3, ge=1, le=6, description="How many distinct itineraries to return"
-    ),
-) -> dict[str, Any]:
-    """Every distinct itinerary that respects the user's mode selection.
-
-    The selection is a set of transport FAMILIES and any non-empty subset is
-    legal: 'bus', 'train', 'louaj', 'bus,train', 'bus,louaj', 'train,louaj',
-    'bus,louaj,train'. Each itinerary is its own mode-restricted search over the
-    families actually used, so a "Bus + Train" answer that never touches a train
-    is filtered out rather than padded.
-
-    Geometry honesty: `geometry_complete` is true only when EVERY non-walk leg
-    carries a real polyline, and `straight_leg_count` says how many do not. A
-    leg with no real path is flagged `needs_geometry` and the client must not
-    draw it straight -- the seed's SNCFT lines list stops hundreds of km apart,
-    so those holes are permanent and are reported instead of invented.
-    """
-    selected = [m.strip().lower() for m in modes.split(",") if m.strip()]
-    try:
-        allowed = modes_for(selected)
-    except ValueError as exc:
-        return {"error": str(exc), "available_families": list(FAMILIES)}
-    if allowed is None:
-        return {
-            "error": "at least one transport family must be selected",
-            "available_families": list(FAMILIES),
-        }
-
-    sel = frozenset(selected)
-
-    # The unrestricted-within-selection search is what finds genuinely
-    # multi-modal paths (bus then train); the per-family searches then supply the
-    # single-mode alternatives. Restricting to one family at a time cannot.
-    results: list[dict[str, Any]] = []
-    res = ROUTER.route(start_lat, start_lon, end_lat, end_lon,
-                       allowed_modes=allowed)
-    if not res.get("error") and res.get("steps"):
-        results.append(res)
-    for fam in sorted(sel):
-        sub = ROUTER.route(start_lat, start_lon, end_lat, end_lon,
-                           allowed_modes=modes_for([fam]))
-        if not sub.get("error") and sub.get("steps"):
-            results.append(sub)
-
-    seen: set[tuple] = set()
-    itineraries: list[dict[str, Any]] = []
-    for r in results:
-        opt = _router_to_option(r)
-        steps = opt.get("steps", [])
-        if not steps:
-            continue
-        fams_used = _families_in_steps(steps)
-        # An itinerary that ignores part of the selection is not what was asked
-        # for: offering a "Train" journey for a bus-only request is the failure
-        # this guards against.
-        if not fams_used or not fams_used <= sel:
-            continue
-        sig = _itinerary_signature(steps)
-        if sig in seen:
-            continue
-        seen.add(sig)
-        legs = _steps_to_legs(steps)
-        rides = [l for l in legs if l["mode"] not in ("walk", "transfer")]
-        itineraries.append({
-            "label": label_for(fams_used),
-            "families": sorted(fams_used),
-            "duration_min": opt.get("duration_min"),
-            "duration_seconds": opt.get("duration"),
-            "transfers": opt.get("transfers"),
-            "fare_dinars": opt.get("fare_dinars"),
-            "legs": legs,
-            "steps": steps,
-            "stations_used": _station_ids_used(steps),
-            "geometry_complete": all(l.get("has_geometry") for l in rides),
-            "straight_leg_count": sum(1 for l in rides if not l.get("has_geometry")),
-            "gaps": [
-                {
-                    "from_name": l.get("from_name"),
-                    "to_name": l.get("to_name"),
-                    "gap_m": l.get("geometry_gap_m"),
-                }
-                for l in legs if l.get("needs_geometry")
-            ],
-        })
-
-    itineraries.sort(key=lambda i: i["duration_min"] or float("inf"))
-    return {
-        "selected_modes": sorted(sel),
-        "selected_label": label_for(sel),
-        "itineraries": itineraries[:max_itineraries],
-        "total_found": len(itineraries),
-        "available_families": list(FAMILIES),
-        "combinations_available": [
-            sorted(k) for k in sorted(COMBINATIONS, key=lambda s: (len(s), sorted(s)))
-        ],
-        "source": "local-router",
-    }
-
-
-@app.get("/api/v1/itinerary", tags=["Routing"])
-def itinerary(
-    start_lat: float = Query(..., description="Start latitude"),
-    start_lon: float = Query(..., description="Start longitude"),
-    end_lat: float = Query(..., description="End latitude"),
-    end_lon: float = Query(..., description="End longitude"),
-) -> dict[str, Any]:
-    """Transit itinerary endpoint.
-
-    Formerly proxied to tunismapper.com. Disabled by default pending provenance
-    review (docs/provenance.md). Set ENABLE_TUNISMAPPER_PROXY=true to re-enable.
-    """
-    if not ENABLE_TUNISMAPPER_PROXY:
-        return JSONResponse(
-            {
-                "error": "Transit itinerary service is disabled by default.",
-                "detail": (
-                    "The previous tunismapper.com proxy is off pending a provenance "
-                    "review (docs/provenance.md). Set ENABLE_TUNISMAPPER_PROXY=true to "
-                    "re-enable, or use the local transit router when it is available."
-                ),
-                "source": "disabled",
-            },
-            status_code=410,
-        )
-    url = (
-        "https://www.tunismapper.com/backend/api/itinerary.php"
-        f"?startLat={start_lat}&startLng={start_lon}"
-        f"&endLat={end_lat}&endLng={end_lon}"
-    )
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": _OSM_UA})
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            return json.loads(resp.read().decode())
-    except Exception as e:
-        return {"error": str(e), "source": "tunismapper"}
-
-
 @app.get("/api/v1/search", tags=["Stations"])
 def search_places(
     q: str = Query(..., min_length=2, description="Free-text place or stop name"),
@@ -2164,51 +1776,6 @@ def geocode(
         for d in data[:limit]
     ]
     return {"query": q, "results": results, "count": len(results)}
-
-
-@app.get("/favicon.svg", tags=["System"], response_model=None)
-def favicon_svg() -> FileResponse | JSONResponse:
-    """Serve the app icon.
-
-    Lives in frontend/static/ (SvelteKit's static-asset root, copied verbatim
-    into frontend/build/) rather than the frontend root, which is not served.
-    Check both so a dev-server-only layout still resolves.
-    """
-    for rel in ("frontend/build/favicon.svg", "frontend/static/favicon.svg"):
-        icon = BASE / rel
-        if icon.exists():
-            return FileResponse(icon, media_type="image/svg+xml")
-    return JSONResponse({"error": "no favicon"}, status_code=404)
-
-
-@app.get("/", tags=["System"], response_model=None)
-def index() -> FileResponse | JSONResponse:
-    """Serve the built frontend, if it has been built.
-
-    This used to return `FileResponse(BASE / "frontend" / "index.html")`, which
-    was the Flutter-web output directory. That file does not exist any more, so
-    the route raised `RuntimeError: File at path ... does not exist` and every
-    request to `/` produced a 500 traceback. SvelteKit builds to
-    `frontend/build/`, so that is what we serve now.
-
-    When nothing has been built, return 503 with the command to fix it, rather
-    than a 500 with a stack trace -- an unbuilt frontend is a setup state, not a
-    server fault, and the person hitting it is usually the developer who can act
-    on the hint.
-    """
-    built = BASE / "frontend" / "build" / "index.html"
-    if built.exists():
-        return FileResponse(built)
-    return JSONResponse(
-        {
-            "error": "frontend has not been built",
-            "hint": (
-                "cd frontend && npm run build   "
-                "(or run the dev server: cd frontend && npm run dev, then use :5173)"
-            ),
-        },
-        status_code=503,
-    )
 
 
 if __name__ == "__main__":
