@@ -30,13 +30,8 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 # Local transit router (physical-cost Dijkstra).
-from bledi_transit.application.routing.router import (
-    USER_MODES,
-    Router,
-    canonical_mode,
-    label_modes_fr,
-    mode_label_fr,
-)
+from bledi_transit.application.routing.router import Router
+from bledi_transit.domain.modes import USER_MODES, canonical_mode, mode_label_fr
 
 log = logging.getLogger("bledi")
 

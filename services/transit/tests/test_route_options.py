@@ -12,13 +12,9 @@ from __future__ import annotations
 
 import pytest
 
-from bledi_transit.application.routing.router import (
-    BUS_MODES,
-    RAIL_MODES,
-    TAXI_MODES,
-    build_graph,
-    polyline_length,
-)
+from bledi_transit.application.routing.router import build_graph
+from bledi_transit.domain.geo import polyline_length
+from bledi_transit.domain.modes import BUS_MODES, RAIL_MODES, TAXI_MODES
 
 # Tunis -> Sfax: a trip with real rail, but NO buses (only trains).
 # Use a destination that IS reachable by bus for the bus option test.

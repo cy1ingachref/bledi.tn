@@ -13,7 +13,7 @@ import unittest
 
 from fastapi.testclient import TestClient
 
-from bledi_transit.application.routing.router import canonical_mode
+from bledi_transit.domain.modes import canonical_mode
 from bledi_transit.main import app
 
 TUNIS_A = (36.7961, 10.18055)
@@ -133,7 +133,7 @@ class StationDetailTests(unittest.TestCase):
 
     def test_modes_sorted_in_display_order(self):
         """Find a real multi-mode stop and assert the ordering contract."""
-        from bledi_transit.application.routing.router import USER_MODES
+        from bledi_transit.domain.modes import USER_MODES
         from bledi_transit.main import ROUTER
 
         target = None
