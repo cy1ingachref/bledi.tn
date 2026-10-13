@@ -59,6 +59,16 @@ it currently points at the Python backend. Do not point it at both.
 - OSRM (driving) + Nominatim (geocoding) proxy with TTL caching
 - Endpoints: `/api/v1/stations`, `/api/v1/lines`, `/api/v1/route/transit`, `/api/v1/geocode`, `/api/v1/itinerary`
 
+### Map layers (frontend — working)
+- **Physical rail base layer** — every passenger rail and light-rail alignment in Tunisia, drawn under the per-route network in a dedicated Leaflet pane (`zIndex: 370`, `pointer-events: none`). Styled quieter than routes: mainlines in mode colour at 0.72 opacity, metro at 0.6.
+- **Physical road base layer** — motorway, trunk and primary roads only, in a muted grey (`zIndex: 360`). Motorways carry the most weight (1.9 px), primary the least (1.1 px, 0.3 opacity). Secondary/territorial roads omitted as visual noise.
+- Built by `tool/build_map_overlays.py` from official Overpass exports. Served as GeoJSON with coordinates converted from `[lon, lat]` to `[lat, lon]` so the client has one convention.
+- A missing overlay returns HTTP 503 with the build command in the detail, not an empty layer — so the map never claims "Tunisia has no railways".
+
+### Louage connections (frontend + backend — working)
+- Each national louage station's destinations resolved against the station list, shown in the station inspector as focusable buttons that centre the map and open the destination's inspector.
+- Unresolved destinations (names that match no station record) are listed in `data/louage_links.json` rather than dropped or guessed.
+
 ### Geo-pinned memories (Rust backend — in development)
 - Capture photo/video and pin to a location
 - Visibility controls: public / friends / private
@@ -160,10 +170,19 @@ npm run preview
 - `GET /api/v1/stations/{id}`
 - `GET /api/v1/lines`
 - `GET /api/v1/lines/{id}`
+- `GET /api/v1/network`
+- `GET /api/v1/map/rail` — physical rail alignments (GeoJSON)
+- `GET /api/v1/map/roads` — physical road alignments (GeoJSON)
+- `GET /api/v1/map/overlays` — both in one response
+- `GET /api/v1/louage/links` — resolved louage station connections
+- `GET /api/v1/cities`
 - `GET /api/v1/route/plan`
 - `GET /api/v1/route/transit`
+- `GET /api/v1/route/options`
+- `GET /api/v1/route/modes`
 - `GET /api/v1/geocode`
-- `GET /api/v1/itinerary` (disabled)
+- `GET /api/v1/search`
+- `GET /api/v1/itinerary` (Tunismapper proxy — disabled by default)
 
 ### Rust axum (port 3000)
 - `GET /api/v1/health`
@@ -261,7 +280,23 @@ bledi.tn/
 │   └── vite.config.ts         #   Vite + PWA config
 ├── src/mobile/                # Flutter mobile app (legacy, not main frontend)
 ├── data/                      # Seed data (GTFS-like JSON)
-├── tests/                     # Python backend tests
+│   ├── seed_all_tunisia_routes.tagged.json  # runtime dataset
+│   ├── map_rail.geojson      # physical rail alignments
+│   ├── map_roads.geojson     # physical road alignments
+│   ├── louage_links.json     # resolved louage connections
+│   ├── station_corrections.json
+│   └── station_lines.json
+├── tests/                     # Python backend tests (151 tests)
+├── tool/                      # Data pipeline & verification scripts
+│   ├── build_map_overlays.py # builds rail/road GeoJSON from Overpass exports
+│   ├── build_station_index.py # resolves louage links + station index
+│   ├── apply_station_corrections.py
+│   ├── resolve_station_coords.py
+│   ├── resolve_tnrp.py       # TNRP registry lookups
+│   ├── inspect_geometry_sources.py
+│   ├── inspect_seed_lines.py
+│   ├── verify_live_backend.py
+│   └── ...                   # 30+ scripts total
 ├── scripts/                   # Data processing scripts
 ├── Dockerfile                 # Multi-stage Rust build
 ├── docker-compose.yml         # Full stack orchestration
@@ -273,7 +308,7 @@ bledi.tn/
 The GitHub Actions workflow runs on every push to `main`:
 
 1. **Rust Build, Test & Runtime Smoke** — `cargo fmt`, `cargo clippy`, `cargo build --release`, `cargo test`, then boots the server against PostGIS and exercises the API
-2. **Python Backend Tests** — `pytest tests/` (150 tests)
+2. **Python Backend Tests** — `pytest tests/` (151 tests)
 3. **Frontend Build & Test** — `npm ci`, `npx tsc --noEmit`, `npm run build`
 4. **Security Scan** — Semgrep, Gitleaks, Trivy
 
@@ -328,9 +363,9 @@ npm run build
 
 | Component | Status | Notes |
 |-----------|--------|-------|
-| Python FastAPI backend | Working | Owns all routing. Running, tested (150 tests) |
+| Python FastAPI backend | Working | Owns all routing. Running, tested (151 tests) |
 | Rust axum backend | Working | Compiles, clippy clean, migrations pass. Auth/memories/favorites/shares only; `stations`/`lines` tables empty |
-| SvelteKit frontend | Working | Builds, PWA service worker generated. Talks to the Python backend |
+| SvelteKit frontend | Working | Builds, PWA service worker generated. Talks to the Python backend. Rail/road base layers + louage connections in the station inspector |
 | Flutter app (`src/mobile/`) | Legacy | Superseded by the web UI |
 | Docker | Configured | Compose requires a `.env`; no default credentials |
 | Deployment | Not deployed | No live server yet |
@@ -346,6 +381,6 @@ npm run build
 - 117 `bc_bus_*` BizerteConnect lines carry no stops and cannot be routed.
 - Google OAuth: only email/password auth exists
 - Integration testing: no end-to-end tests between frontend and Rust backend
-- i18n: no Arabic/French/English translation yet
+- i18n: French, English, and Arabic translations for UI strings (station inspector, map controls, auth pages)
 - Deployment: nothing deployed to any server
 - Rust backend: not yet connected to the frontend (frontend still calls Python backend)
