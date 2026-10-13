@@ -9,19 +9,12 @@ guarantee, exactly as a client sees them.
 
 from __future__ import annotations
 
-import os
-import sys
 import unittest
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, ROOT)
-sys.path.insert(0, os.path.join(ROOT, "src", "backend"))
-sys.path.insert(0, os.path.join(ROOT, "src"))
+from fastapi.testclient import TestClient
 
-from fastapi.testclient import TestClient  # noqa: E402
-
-from backend.app.main import app  # noqa: E402
-from backend.app.routing import canonical_mode  # noqa: E402
+from bledi_transit.application.routing.router import canonical_mode
+from bledi_transit.main import app
 
 TUNIS_A = (36.7961, 10.18055)
 TUNIS_B = (36.75978, 10.19059)
@@ -127,7 +120,7 @@ class StationDetailTests(unittest.TestCase):
     def test_lines_really_contain_this_stop(self):
         """Built from the line -> stops index, so this must hold exactly."""
         d = self.c.get("/api/v1/stations/place_barcelone_sud").json()
-        from backend.app.main import LINE_BY_ID
+        from bledi_transit.main import LINE_BY_ID
 
         for li in d["lines"]:
             ln = LINE_BY_ID.get(li["line_id"])
@@ -140,8 +133,8 @@ class StationDetailTests(unittest.TestCase):
 
     def test_modes_sorted_in_display_order(self):
         """Find a real multi-mode stop and assert the ordering contract."""
-        from backend.app.main import ROUTER
-        from backend.app.routing import USER_MODES
+        from bledi_transit.application.routing.router import USER_MODES
+        from bledi_transit.main import ROUTER
 
         target = None
         for sid, lids in ROUTER.lines_by_station.items():

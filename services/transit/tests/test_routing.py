@@ -14,16 +14,10 @@ different cost models).
 from __future__ import annotations
 
 import math
-import os
-import sys
+
 import pytest
-from pathlib import Path
 
-# Make the package importable from the repo root.
-REPO_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO_ROOT))
-
-from src.backend.app.routing import (
+from bledi_transit.application.routing.router import (
     BASE,
     MAX_START_WALK_METERS,
     MAX_END_WALK_METERS,

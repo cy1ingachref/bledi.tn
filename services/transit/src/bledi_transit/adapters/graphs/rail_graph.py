@@ -34,7 +34,7 @@ from typing import Any
 
 import numpy as np
 
-from .road_routing import GRID_CELL_DEG, _build_grid, _dist_to, haversine_m
+from .road_graph import GRID_CELL_DEG, _build_grid, _dist_to, haversine_m
 
 MODE_RAIL, MODE_LIGHT, MODE_TRAM = 1, 2, 4
 
@@ -53,7 +53,7 @@ UNREACHABLE_COST_FACTOR = 25.0
 def _default_path() -> str:
     here = os.path.dirname(os.path.abspath(__file__))
     return os.path.abspath(
-        os.path.join(here, "..", "..", "..", "data", "rail_graph.npz")
+        os.path.join(here, "..", "..", "..", "..", "..", "..", "data", "rail_graph.npz")
     )
 
 

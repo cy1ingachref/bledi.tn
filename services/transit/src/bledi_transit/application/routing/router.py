@@ -30,41 +30,17 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Sequence
 
-try:
-    # Real-road routing (app/road_routing.py). Optional so the transit router
-    # still works on a machine with no road graph built; legs then fall back to
-    # the legacy cache/straight-line behaviour instead of failing to import.
-    from .road_routing import load_graph as load_road_graph
-    from .road_routing import road_route_cached as road_route_cached
-except ImportError:  # pragma: no cover - direct-script execution
-    try:
-        from road_routing import load_graph as load_road_graph
-        from road_routing import road_route_cached as road_route_cached
-    except ImportError:
-        load_road_graph = None  # type: ignore[assignment]
-        road_route_cached = None  # type: ignore[assignment]
-
-try:
-    # Real-track geometry for train/metro/tram legs (app/rail_geometry.py).
-    # Deliberately separate from the road graph: a train does not follow the
-    # highway, and reusing road geometry for rail is what made legs look like
-    # they cut across the country instead of following the line.
-    from .rail_geometry import load_rail_graph
-    from .rail_geometry import track_between_cached as rail_track_cached
-except ImportError:  # pragma: no cover - direct-script execution
-    try:
-        from rail_geometry import load_rail_graph
-        from rail_geometry import track_between_cached as rail_track_cached
-    except ImportError:
-        load_rail_graph = None  # type: ignore[assignment]
-        rail_track_cached = None  # type: ignore[assignment]
+from bledi_transit.adapters.graphs.rail_graph import load_rail_graph
+from bledi_transit.adapters.graphs.rail_graph import track_between_cached as rail_track_cached
+from bledi_transit.adapters.graphs.road_graph import load_graph as load_road_graph
+from bledi_transit.adapters.graphs.road_graph import road_route_cached
 
 log = logging.getLogger("bledi.routing")
 if not log.handlers:
     logging.basicConfig(level=logging.INFO)
 
 # ── Config ──────────────────────────────────────────────────────────────
-BASE = Path(__file__).resolve().parents[3]  # repo root
+BASE = Path(__file__).resolve().parents[6]  # repo root
 SEED_PATH = BASE / "data" / "seed_all_tunisia_routes.json"
 SEED_TAGED_PATH = BASE / "data" / "seed_all_tunisia_routes.tagged.json"
 _SEED_PATH = SEED_TAGED_PATH if SEED_TAGED_PATH.exists() else SEED_PATH
@@ -215,7 +191,7 @@ def load_geometry_cache() -> dict[str, dict[str, Any]]:
     candidates = [path] if path else []
     # src/backend/app/routing.py -> repo root is three levels up.
     here = os.path.dirname(os.path.abspath(__file__))
-    root = os.path.abspath(os.path.join(here, "..", "..", ".."))
+    root = os.path.abspath(os.path.join(here, "..", "..", "..", "..", "..", ".."))
     candidates.append(os.path.join(root, "data", "route_geometry.json"))
     for cand in candidates:
         if not cand or not os.path.exists(cand):
@@ -255,7 +231,7 @@ def load_walk_geometry_cache() -> dict[str, dict[str, Any]]:
     """
     path = os.environ.get("WALK_GEOMETRY_CACHE_PATH")
     here = os.path.dirname(os.path.abspath(__file__))
-    root = os.path.abspath(os.path.join(here, "..", "..", ".."))
+    root = os.path.abspath(os.path.join(here, "..", "..", "..", "..", "..", ".."))
     default = os.path.join(root, "data", "walk_geometry.json")
     for cand in ([path] if path else []) + [default]:
         if not cand or not os.path.exists(cand):
@@ -354,7 +330,7 @@ def resolve_walk_geometry(
     if g is not None and road_route_cached is not None and straight <= 2000:
         try:
             # Find nearest foot-usable nodes for both endpoints
-            from .road_routing import _snap_candidates
+            from bledi_transit.adapters.graphs.road_graph import _snap_candidates
             a_candidates = _snap_candidates(g, "foot", a_lat, a_lon, max_m=250.0, want=3)
             b_candidates = _snap_candidates(g, "foot", b_lat, b_lon, max_m=250.0, want=3)
             # Try routing through each combination, preferring the shortest
@@ -434,7 +410,7 @@ def load_taxi_geometry_cache() -> dict[str, list[list[float]]]:
     """
     path = os.environ.get("TAXI_GEOMETRY_CACHE_PATH")
     here = os.path.dirname(os.path.abspath(__file__))
-    root = os.path.abspath(os.path.join(here, "..", "..", ".."))
+    root = os.path.abspath(os.path.join(here, "..", "..", "..", "..", "..", ".."))
     default = os.path.join(root, "data", "taxi_geometry.json")
     for cand in ([path] if path else []) + [default]:
         if not cand or not os.path.exists(cand):
