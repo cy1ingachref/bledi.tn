@@ -23,10 +23,12 @@ pub fn parse_allowed_origins(raw: &str) -> Result<Vec<HeaderValue>, String> {
             let host = origin
                 .strip_prefix("https://")
                 .or_else(|| origin.strip_prefix("http://"))
-                .ok_or_else(|| format!("{origin:?} must start with http:// or https://"))?
-                .split('/')
-                .next()
-                .unwrap_or_default();
+                .ok_or_else(|| format!("{origin:?} must start with http:// or https://"))?;
+            if host.contains('/') {
+                return Err(format!(
+                    "{origin:?} has a path; a browser Origin is only scheme, host and port"
+                ));
+            }
             if host.is_empty() || host.contains(char::is_whitespace) {
                 return Err(format!("{origin:?} has a malformed host"));
             }
@@ -68,7 +70,7 @@ mod tests {
 
     #[test]
     fn accepts_a_list_with_blanks() {
-        let origins = parse_allowed_origins(" https://a.example , ,http://b.example/").unwrap();
+        let origins = parse_allowed_origins(" https://a.example , ,http://b.example:8080").unwrap();
         assert_eq!(origins.len(), 2);
     }
 
@@ -82,6 +84,8 @@ mod tests {
             "not a url",
             "http://",
             "http://bad host",
+            "https://bledi.tn/",
+            "https://bledi.tn/app",
         ] {
             assert!(
                 parse_allowed_origins(raw).is_err(),
