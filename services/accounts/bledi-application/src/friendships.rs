@@ -31,6 +31,19 @@ pub struct FriendshipChange {
     pub email: String,
 }
 
+pub(crate) async fn accepted_friend_ids(
+    store: &dyn FriendshipStore,
+    user_id: Uuid,
+) -> Result<Vec<Uuid>> {
+    Ok(store
+        .of(user_id)
+        .await?
+        .iter()
+        .filter(|f| f.status == FriendshipStatus::Accepted)
+        .map(|f| f.other_than(user_id))
+        .collect())
+}
+
 #[derive(Clone)]
 pub struct Friendships {
     users: Arc<dyn UserStore>,
