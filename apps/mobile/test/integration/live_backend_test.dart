@@ -16,7 +16,7 @@ import 'package:flutter_test/flutter_test.dart';
 /// `flutter test` run stays offline-safe. To exercise them:
 ///
 ///     # terminal 1 — from the bledi.tn repo root
-///     python -m uvicorn src.backend.app.main:app --port 8000
+///     uvicorn --factory bledi_transit.main:create_app --port 8000
 ///     # terminal 2
 ///     flutter test --tags integration
 ///
