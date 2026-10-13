@@ -69,8 +69,6 @@
   let showRoads = $state(true);
   let showRails = $state(true);
   let showUnclassified = $state(false);
-  // When a route is on screen, dim everything that is not part of it until the
-  // rider asks to see the rest of the network again.
   let focusRoute = $state(true);
 
   let inspected = $state<StationDetail | null>(null);
@@ -329,7 +327,6 @@
     };
   });
 
-  // Layer toggles re-apply to the live map.
   $effect(() => {
     void showRoads;
     void showRails;
@@ -394,8 +391,6 @@
         {/if}
       </aside>
 
-      <!-- Primary action: a footer of the panel column, OUTSIDE the scroll
-           container so it can never scroll out of reach. -->
       <div class="cta-bar">
         <button class="cta" onclick={computeRoute} disabled={computing || count === 0}>
           {#if computing}
@@ -447,11 +442,8 @@
 </div>
 
 <style>
-  /* ── Neon Dusk tokens ────────────────────────────────────────────────────
-     Deep violet night with saturated neon for the transport types. Each
-     transport owns one hue, declared once as --n-<mode> and reused for the
-     mode chip, the network line and the route leg, so a rider only has to
-     learn the mapping once. */
+  /* Each --n-<mode> hue marks the mode chip, the network line and the route
+     leg. modeStyle.ts repeats the dark values because Leaflet needs literals. */
   .app {
     --bg: #05030c;
     --surf: rgba(13, 9, 26, 0.74);
@@ -487,12 +479,9 @@
     transition: background 0.35s ease, color 0.35s ease;
   }
 
-  /* ── Light theme ─────────────────────────────────────────────────────────
-     Daytime variant: a cool off-white ground with the same neon hues
-     darkened until they clear WCAG AA against it. Measured in-browser against
-     #f6f3ff: bus 5.34, tram 4.91, metro 6.23, train 6.86, louaj 5.88,
-     a1 5.46, a2 6.60, glow 4.83, mu 5.80 — all >= 4.5. The undarkened neon
-     values came in between 1.9 and 2.6 and failed badly. */
+  /* The neon hues darkened until they clear WCAG AA (4.5) against #f6f3ff.
+     Measured: bus 5.34, tram 4.91, metro 6.23, train 6.86, louaj 5.88,
+     a1 5.46, a2 6.60, glow 4.83, mu 5.80. */
   :global(:root[data-theme="light"]) .app {
     --bg: #f6f3ff;
     --surf: rgba(255, 255, 255, 0.86);
@@ -519,11 +508,7 @@
     font-family: "Sora", ui-sans-serif, system-ui, sans-serif;
   }
 
-  /* ── Layout ─────────────────────────────────────────────────────────────── */
   .body { display: flex; flex: 1; min-height: 0; }
-  /* Panel column: the scrollable content and the pinned action footer are
-     SIBLINGS in a flex column, so the footer is laid out after the scroll
-     area rather than inside it and cannot scroll out of reach. */
   .panel-col {
     display: flex;
     flex-direction: column;
@@ -543,7 +528,6 @@
     display: flex; flex-direction: column; gap: 18px;
   }
 
-  /* ── CTA ────────────────────────────────────────────────────────────────── */
   .cta {
     position: relative; overflow: hidden;
     display: flex; align-items: center; justify-content: center; gap: 8px;
@@ -565,11 +549,9 @@
     animation: shine 3.2s infinite;
   }
   @keyframes shine { to { translate: 100% 0; } }
-  /* The CTA lives in a bar pinned to the bottom of the panel, outside the
-     scrolling area. `position: sticky` was tried first and failed: once the
-     panel scrolls past the button's own offset the sticky element leaves the
-     viewport entirely, so the primary action became unreachable exactly when
-     results arrived. A separate non-scrolling bar cannot have that failure. */
+  /* A sibling of the scroll area, not `position: sticky` inside it: a sticky
+     button leaves the viewport once the panel scrolls past its offset, which
+     happens as soon as results arrive. */
   .cta-bar {
     flex-shrink: 0;
     padding: 12px 18px 16px;
@@ -600,16 +582,11 @@
   }
   @keyframes rise { from { opacity: 0; transform: translate(-50%, 12px); } }
 
-  /* ── Map ────────────────────────────────────────────────────────────────── */
   .map-wrap { position: relative; flex: 1; min-width: 0; }
   .map { position: absolute; inset: 0; }
 
-  /* ── Route focus: only the calculated route stays lit ────────────────────
-     Everything the rider did not ask for — the rest of the road and rail
-     network, and every station dot — drops to a ghost, so the route reads as
-     the single bright thing on the map. The A/B endpoints and the traveller
-     dot live in their own panes and are deliberately NOT dimmed. The rider
-     can bring the network back with the toggle in the results section. */
+  /* Route focus: the network and station dots fade so the route is the only
+     bright thing. The endpoints and the traveller dot sit in other panes. */
   .map-wrap :global(.leaflet-marker-pane),
   .map-wrap :global(.leaflet-net_bus-pane),
   .map-wrap :global(.leaflet-net_taxi_louage-pane),
@@ -631,17 +608,12 @@
     opacity: 0.16;
   }
 
-  /* Neon glow, applied per network pane. A canvas has no per-line element, so
-     the glow is a drop-shadow on that pane's single canvas — which is exactly
-     why each transport type gets its own pane instead of sharing one. */
   .map-wrap :global(.leaflet-net_bus-pane canvas) { filter: drop-shadow(0 0 3px var(--n-bus)); }
   .map-wrap :global(.leaflet-net_taxi_louage-pane canvas) { filter: drop-shadow(0 0 3px var(--n-louaj)); }
   .map-wrap :global(.leaflet-net_tram-pane canvas) { filter: drop-shadow(0 0 3px var(--n-tram)); }
   .map-wrap :global(.leaflet-net_metro-pane canvas) { filter: drop-shadow(0 0 4px var(--n-metro)); }
   .map-wrap :global(.leaflet-net_train-pane canvas) { filter: drop-shadow(0 0 4px var(--n-train)); }
 
-  /* Per-transport glow on the route. The route is SVG (not canvas) precisely
-     so each leg can carry a class and therefore its own hue's glow. */
   .map-wrap :global(path.route-leg-bus) { filter: drop-shadow(0 0 6px var(--n-bus)); }
   .map-wrap :global(path.route-leg-taxi_louage) { filter: drop-shadow(0 0 6px var(--n-louaj)); }
   .map-wrap :global(path.route-leg-tram) { filter: drop-shadow(0 0 6px var(--n-tram)); }
@@ -681,14 +653,12 @@
     z-index: 700;
   }
 
-  /* ── Route animation ─────────────────────────────────────────────────────
-     The draw-in is applied imperatively (see RouteDrawing) so it re-runs on
+  /* The draw-in is applied imperatively (see RouteDrawing) so it re-runs on
      every itinerary change; the flowing dash is pure CSS on a second polyline. */
   .map-wrap :global(.route-flow) { animation: bledi-flow 1s linear infinite; }
   @keyframes bledi-draw { to { stroke-dashoffset: 0; } }
   @keyframes bledi-flow { to { stroke-dashoffset: -16; } }
 
-  /* ── Marker clusters ────────────────────────────────────────────────────── */
   .map-wrap :global(.marker-cluster) { background: transparent !important; }
   .map-wrap :global(.bl-cluster) {
     position: relative;
@@ -729,7 +699,6 @@
   }
   .map-wrap :global(.tt-sub) { display: block; font-size: 10px; opacity: 0.7; }
 
-  /* ── Scrollbar / focus ──────────────────────────────────────────────────── */
   .side::-webkit-scrollbar { width: 8px; }
   .side::-webkit-scrollbar-track { background: transparent; }
   .side::-webkit-scrollbar-thumb {
@@ -744,7 +713,6 @@
      the scoped rule never styled. */
   .app :global(:focus-visible:not(.leaflet-container *)) { outline: 2px solid var(--glow); outline-offset: 2px; border-radius: 10px; }
 
-  /* ── Responsive: panel above map on small screens ───────────────────────── */
   @media (max-width: 900px) {
     .body { flex-direction: column; }
     .panel-col {
@@ -768,8 +736,8 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.001ms !important;
     }
-    /* The route draw-in sets stroke-dashoffset inline; make sure a paused
-       animation still leaves the line fully visible rather than invisible. */
+    /* The draw-in sets stroke-dashoffset inline; a paused one would leave the
+       line invisible. */
     .map-wrap :global(.route-flow) { animation: none !important; opacity: 0 !important; }
     .map-wrap :global(path.route-draw) { stroke-dashoffset: 0 !important; }
   }

@@ -9,11 +9,7 @@ from bledi_transit.domain.tunables import (
 
 
 def expected_wait(departures: list[str] | None, mode: str) -> float:
-    """Expected wait in seconds: half the median headway, else a per-mode default.
-
-    When the departures span more than MAX_HEADWAY_SEC the overnight closure
-    is one more headway in the median rather than a reason to give up.
-    """
+    """Expected wait in seconds: half the median headway, else a per-mode default."""
     default = DEFAULT_WAIT_BY_MODE.get(mode, DEFAULT_WAIT_BY_MODE["unknown"])
     if not departures:
         return default
