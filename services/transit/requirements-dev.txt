@@ -1,9 +1,0 @@
-# Test-only dependencies. Not needed to run the service.
-#
-# `httpx` is required by `starlette.testclient`, which tests/test_api_endpoints.py
-# uses to drive the FastAPI app in-process. It is not a runtime dependency of the
-# server itself, but without it that test module fails to COLLECT, which aborts
-# the whole pytest run rather than skipping one file.
-
-pytest>=7.0.0
-httpx>=0.27.0
