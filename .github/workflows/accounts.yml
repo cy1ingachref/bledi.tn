@@ -1,13 +1,11 @@
-name: Backend
+name: Accounts
 
 on:
   pull_request:
     branches: [main]
     paths:
-      - 'rust/**'
-      - 'Dockerfile'
-      - '.dockerignore'
-      - '.github/workflows/backend.yml'
+      - 'services/accounts/**'
+      - '.github/workflows/accounts.yml'
   workflow_dispatch:
 
 concurrency:
@@ -39,7 +37,7 @@ jobs:
       CARGO_TERM_COLOR: always
     defaults:
       run:
-        working-directory: rust
+        working-directory: services/accounts
     steps:
       - uses: actions/checkout@v7
 
@@ -50,7 +48,7 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
-          workspaces: rust
+          workspaces: services/accounts
 
       # The app connects as a non-superuser, as in production, so the
       # extensions the schema needs are created up front by the superuser.

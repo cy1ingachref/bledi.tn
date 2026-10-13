@@ -122,7 +122,7 @@ def main() -> None:
         ),
                     help="root of the portal export")
     ap.add_argument("--seed", default=None,
-                    help="defaults to the seed above src/mobile in this repo")
+                    help="defaults to the seed above apps/mobile in this repo")
     ap.add_argument(
         "--workbook",
         default=os.environ.get(

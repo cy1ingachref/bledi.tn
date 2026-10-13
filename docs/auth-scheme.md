@@ -9,7 +9,7 @@ There are two backends:
 | Backend | Owns | Auth today |
 |---|---|---|
 | Python FastAPI (`src/backend/app/`) | all transit routing, the seed data, geometry | none |
-| Rust axum (`rust/`) | auth, memories, favorites, location shares | JWT (HS256), bcrypt |
+| Rust axum (`services/accounts/`) | auth, memories, favorites, location shares | JWT (HS256), bcrypt |
 
 The Rust server signs HS256 tokens with `JWT_SECRET`. The Python server has no
 auth at all and does not validate anything. A client therefore has to know which
@@ -30,7 +30,7 @@ caller identity from the `sub` claim.
 
 - **One signing key.** Both services read `JWT_SECRET` from the environment. They
   must agree on the algorithm (`HS256`) and on the claim names (`sub`, `email`,
-  `exp`, `iat` — already the shape in `rust/bledi-server/src/auth.rs`).
+  `exp`, `iat` — already the shape in `services/accounts/bledi-server/src/auth.rs`).
 - **Issuer stays single.** Only the Rust server mints tokens. If Python ever
   needs to mint one (it should not), that is a signal the split is wrong.
 - **FastAPI dependency.** A `Depends` that reads the `Authorization` header,

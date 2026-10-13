@@ -20,8 +20,7 @@ services:
 
   backend:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: services/accounts
     ports:
       - "3000:3000"
     environment:

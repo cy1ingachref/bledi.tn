@@ -69,11 +69,11 @@ data/road_graph.npz
 # committed too, so it can still be regenerated.
 
 # Rust
-rust/target/
+services/accounts/target/
 **/*.rs.bk
 
 # SvelteKit
-frontend/.svelte-kit/
+apps/web/.svelte-kit/
 data/bizerteconnect_cache.json
 
 # Raw upstream scrapes. These are INPUTS to the committed converters
@@ -82,7 +82,7 @@ data/bizerteconnect_cache.json
 # are upstream third-party content, so they are not redistributed here.
 scripts/tunismapper_all_routes_stops.json
 scripts/tunismapper_station_details.json
-src/mobile/tool/osm_nodes_cache.json
+apps/mobile/tool/osm_nodes_cache.json
 
 # Claude Code local project state (may hold personal settings)
 .claude/

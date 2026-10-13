@@ -13,7 +13,7 @@ than at server start.
 import sys
 from pathlib import Path
 
-# src/mobile/tool/ -> src/mobile/ -> src/ -> repo root
+# apps/mobile/tool/ -> apps/mobile/ -> apps/ -> repo root
 REPO = Path(__file__).resolve().parents[3]
 if not (REPO / "src" / "backend" / "app" / "main.py").is_file():
     sys.exit(f"backend not found under {REPO}")
