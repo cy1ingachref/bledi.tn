@@ -20,16 +20,19 @@ cleanup() {
   fi
   docker rm -f "$NAME-api" "$NAME-db" >/dev/null 2>&1 || true
   docker network rm "$NET" >/dev/null 2>&1 || true
+  rm -f "$BODY"
   exit "$status"
 }
+BODY=$(mktemp)
 trap cleanup EXIT
 
 docker network create "$NET" >/dev/null
 docker run -d --name "$NAME-db" --network "$NET" \
   -e POSTGRES_PASSWORD="$PGPASSWORD" postgis/postgis:16-3.4 >/dev/null
 
-for _ in $(seq 1 60); do
+for i in $(seq 1 60); do
   docker exec "$NAME-db" pg_isready -U postgres -h localhost >/dev/null 2>&1 && break
+  [[ $i -lt 60 ]] || { echo "FAIL: postgres not ready after 60s"; exit 1; }
   sleep 1
 done
 
@@ -48,14 +51,14 @@ docker run -d --name "$NAME-api" --network "$NET" -p "$PORT:3000" \
   -e JWT_SECRET=smoke-only-jwt-secret-not-used-anywhere-real \
   "$IMAGE" >/dev/null
 
-for _ in $(seq 1 30); do
+for i in $(seq 1 30); do
   curl -sf "$API/health" >/dev/null && break
   [[ $(docker inspect -f '{{.State.Running}}' "$NAME-api") == true ]] || { echo "FAIL: server exited"; exit 1; }
+  [[ $i -lt 30 ]] || { echo "FAIL: server not healthy after 30s"; exit 1; }
   sleep 1
 done
 
 TOKEN=
-BODY=$(mktemp)
 
 # expect <status> <method> <path> [json body]
 expect() {
@@ -64,7 +67,7 @@ expect() {
   [[ -n $TOKEN ]] && args+=(-H "Authorization: Bearer $TOKEN")
   [[ -n $data ]] && args+=(-H 'Content-Type: application/json' -d "$data")
   local got
-  got=$(curl "${args[@]}")
+  got=$(curl "${args[@]}" || true)
   if [[ $got != "$want" ]]; then
     echo "FAIL: $method $path: expected $want, got $got"
     cat "$BODY"; echo
