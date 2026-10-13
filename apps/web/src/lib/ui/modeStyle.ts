@@ -15,6 +15,13 @@ export const MODE_STYLE: Record<ModeId, { icon: string; color: string }> = {
   walk: { icon: "walk", color: "#8b83a8" },
 };
 
+export interface ModeChip {
+  id: ModeId;
+  count: number;
+  icon: string;
+  color: string;
+}
+
 export function modeColor(raw: string): string {
   const k = modeKey(raw);
   return k === "unclassified" ? "#5a5473" : MODE_STYLE[k].color;

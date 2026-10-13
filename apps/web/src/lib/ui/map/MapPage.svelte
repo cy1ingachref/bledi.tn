@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { get } from "svelte/store";
   import Icon from "$lib/ui/Icon.svelte";
   import type {
     Endpoint,
@@ -26,7 +25,6 @@
   import { planTrip, tripProblem } from "$lib/application/planTrip";
   import { loadBaseLayers, loadLouageLinks, louageDestinations } from "$lib/application/mapData";
   import {
-    LANGS,
     translator,
     dirOf,
     formatDuration,
@@ -37,8 +35,10 @@
   } from "$lib/application/i18n";
   import { useTransit } from "$lib/ui/context";
   import { MODE_STYLE, modeColor, modeIcon } from "$lib/ui/modeStyle";
+  import { initTheme, resolvedTheme } from "$lib/ui/theme";
   import { TransitMap } from "./transitMap";
-  import { initTheme, cycleTheme, resolvedTheme, themePref, type ThemePref } from "$lib/ui/theme";
+  import AppHeader from "./AppHeader.svelte";
+  import MapLegend from "./MapLegend.svelte";
 
   const OBJECTIVES: { id: Objective; icon: string }[] = [
     { id: "fastest", icon: "clock" },
@@ -56,18 +56,7 @@
   const t = $derived(translator(lang));
   const dir = $derived(dirOf(lang));
 
-  // Theme: auto follows the OS, but an explicit pick wins and persists.
-  let theme = $state<ThemePref>("auto");
   const dark = $derived($resolvedTheme);
-  const themeIcon = $derived(theme === "auto" ? "globe" : theme === "light" ? "sun" : "moon");
-  const themeLabel = $derived(
-    theme === "auto" ? t("theme.auto") : theme === "light" ? t("theme.light") : t("theme.dark")
-  );
-
-  function cycleThemeClick() {
-    cycleTheme();
-    theme = get(themePref);
-  }
 
   // ── Data ──────────────────────────────────────────────────────────────────
   let stations = $state<Station[]>([]);
@@ -324,17 +313,9 @@
 
   // ── Lifecycle ─────────────────────────────────────────────────────────────
   onMount(() => {
-    // Theme first: the inline script in app.html already set data-theme before
-    // first paint, so this only syncs the store and wires OS-change following.
-    theme = ((): ThemePref => {
-      try {
-        const v = localStorage.getItem("bledi_theme");
-        if (v === "light" || v === "dark" || v === "auto") return v;
-      } catch { /* ignore */ }
-      return "auto";
-    })();
+    // The inline script in app.html already set data-theme before first paint,
+    // so this only syncs the store and wires OS-change following.
     initTheme();
-    theme = get(themePref);
 
     if (mapEl) tmap = new TransitMap(mapEl, onMapClick);
     tmap?.setBasemap(dark);
@@ -408,32 +389,7 @@
 </svelte:head>
 
 <div class="app" dir={dir} lang={lang}>
-  <!-- ── Header ──────────────────────────────────────────────────────────── -->
-  <header class="hdr">
-    <div class="brand">
-      <span class="brand-mark" aria-hidden="true"><Icon name="route" size={20} /></span>
-      <span class="brand-text">
-        <strong>Bledi<span class="dot">.tn</span></strong>
-        <small>{t("app.tagline")}</small>
-      </span>
-    </div>
-    <div class="hdr-right">
-      <button class="theme-btn" onclick={cycleThemeClick} aria-label={themeLabel} title={themeLabel}>
-        <Icon name={themeIcon} size={16} />
-      </button>
-      <div class="langs" role="group" aria-label="Language">
-        {#each LANGS as l}
-          <button
-            class="lang"
-            class:on={lang === l.id}
-            onclick={() => (lang = l.id)}
-            aria-pressed={lang === l.id}
-            title={l.label}
-          >{l.short}</button>
-        {/each}
-      </div>
-    </div>
-  </header>
+  <AppHeader bind:lang {t} />
 
   <div class="body">
     <!-- ── Panel column: scrollable content + pinned action footer ── -->
@@ -873,16 +829,7 @@
         </aside>
       {/if}
 
-      <!-- ── Legend ───────────────────────────────────────────────────────── -->
-      <div class="legend">
-        <div class="lg-grid">
-          {#each chips as m}
-            <span class="lg-i" class:off={!isOn(m.id)}>
-              <i style="background:{m.color}"></i>{modeLabel(t, m.id)}
-            </span>
-          {/each}
-        </div>
-      </div>
+      <MapLegend {t} {chips} {selected} />
     </main>
   </div>
 
@@ -963,62 +910,6 @@
   .app :global(h1), .app :global(h2), .app :global(h3), .app :global(h4) {
     font-family: "Sora", ui-sans-serif, system-ui, sans-serif;
   }
-
-  /* ── Header ─────────────────────────────────────────────────────────────── */
-  .hdr {
-    display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    padding: 12px 18px;
-    background: var(--surf);
-    border-bottom: 1px solid var(--line);
-    backdrop-filter: blur(18px) saturate(1.3);
-    flex-shrink: 0;
-    z-index: 600;
-    transition: background 0.35s ease, border-color 0.35s ease;
-  }
-  .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
-  .brand-mark {
-    display: grid; place-items: center;
-    width: 42px; height: 42px; flex-shrink: 0;
-    border-radius: 14px;
-    background: linear-gradient(135deg, var(--a1), var(--a2));
-    color: var(--on-accent);
-    box-shadow: 0 0 22px rgba(123, 92, 255, 0.5), 0 8px 24px rgba(0, 0, 0, 0.5);
-    animation: float 4s ease-in-out infinite;
-  }
-  @keyframes float { 50% { transform: translateY(-3px) rotate(-4deg); } }
-  .brand-text { display: flex; flex-direction: column; min-width: 0; }
-  .brand-text strong { font-family: "Sora", system-ui, sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
-  .brand-text .dot {
-    background: linear-gradient(90deg, var(--a1), var(--a2));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .brand-text small { color: var(--mu); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-  .hdr-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-
-  .theme-btn {
-    display: grid; place-items: center;
-    width: 34px; height: 34px;
-    border-radius: 99px;
-    border: 1px solid var(--line);
-    background: var(--surf-2);
-    color: var(--tx);
-    cursor: pointer;
-    transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-  }
-  .theme-btn:hover { border-color: var(--a1); color: var(--a1); transform: rotate(-12deg) scale(1.06); }
-
-  .langs { display: flex; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 99px; background: var(--surf-2); flex-shrink: 0; }
-  .lang {
-    min-width: 34px; min-height: 28px;
-    border: 0; border-radius: 99px;
-    background: transparent; color: var(--mu);
-    font: inherit; font-size: 11px; font-weight: 700;
-    cursor: pointer;
-    transition: background 0.25s ease, color 0.25s ease;
-  }
-  .lang:hover { color: var(--tx); background: var(--surf-2); }
-  .lang.on { background: linear-gradient(135deg, var(--a1), var(--a2)); color: var(--on-accent); }
 
   /* ── Layout ─────────────────────────────────────────────────────────────── */
   .body { display: flex; flex: 1; min-height: 0; }
@@ -1696,27 +1587,6 @@
   .ln-btn:hover { border-color: var(--n-louaj); background: rgba(0, 229, 192, .08); }
   .ln-btn:focus-visible { outline: 2px solid var(--n-louaj); outline-offset: 2px; }
 
-  .legend {
-    position: absolute;
-    bottom: 16px; inset-inline-start: 16px;
-    z-index: 700;
-    padding: 8px 12px;
-    border: 1px solid var(--line);
-    border-radius: 99px;
-    background: var(--surf);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.6);
-    max-width: min(340px, calc(100% - 32px));
-  }
-  .lg-grid { display: flex; flex-wrap: wrap; gap: 6px 14px; }
-  .lg-i {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 11px; color: var(--mu);
-    transition: opacity 0.3s ease;
-  }
-  .lg-i i { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 6px currentColor; }
-  .lg-i.off { opacity: 0.32; text-decoration: line-through; }
-
   /* ── Route animation ─────────────────────────────────────────────────────
      The draw-in is applied imperatively (see RouteDrawing) so it re-runs on
      every itinerary change; the flowing dash is pure CSS on a second polyline. */
@@ -1776,7 +1646,9 @@
     background: rgba(200, 180, 255, 0.32); background-clip: content-box;
   }
 
-  .app :focus-visible { outline: 2px solid var(--glow); outline-offset: 2px; border-radius: 10px; }
+  /* Reaches into the child components but not into Leaflet's own DOM, which
+     the scoped rule never styled. */
+  .app :global(:focus-visible:not(.leaflet-container *)) { outline: 2px solid var(--glow); outline-offset: 2px; border-radius: 10px; }
 
   /* ── Responsive: panel above map on small screens ───────────────────────── */
   @media (max-width: 900px) {
@@ -1789,20 +1661,19 @@
     }
     .side { padding: 14px; }
     .map-wrap { flex: 1; min-height: 36vh; }
-    .legend { display: none; }
     .inspector {
       top: auto; bottom: 12px; inset-inline: 12px;
       width: auto; max-height: 52%;
     }
   }
   @media (max-width: 420px) {
-    .hdr { padding: 10px 13px; }
     .side { padding: 13px; }
-    .brand-text small { display: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .app *, .app *::before, .app *::after {
+    .app :global(:not(.leaflet-container *)),
+    .app :global(:not(.leaflet-container *)::before),
+    .app :global(:not(.leaflet-container *)::after) {
       animation-duration: 0.001ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.001ms !important;

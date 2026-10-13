@@ -283,9 +283,11 @@ const ar: Dict = {
 
 const DICTS: Record<Lang, Dict> = { fr, en, ar };
 
-export function translator(lang: Lang) {
+export type Translate = (key: string) => string;
+
+export function translator(lang: Lang): Translate {
   const d = DICTS[lang] ?? fr;
-  return (key: string): string => d[key] ?? fr[key] ?? key;
+  return (key) => d[key] ?? fr[key] ?? key;
 }
 
 /**
