@@ -29,7 +29,6 @@
     dirOf,
     formatDuration,
     legLabel,
-    modeLabel,
     modeLabelFor,
     type Lang,
   } from "$lib/application/i18n";
@@ -39,12 +38,8 @@
   import { TransitMap } from "./transitMap";
   import AppHeader from "./AppHeader.svelte";
   import MapLegend from "./MapLegend.svelte";
-
-  const OBJECTIVES: { id: Objective; icon: string }[] = [
-    { id: "fastest", icon: "clock" },
-    { id: "cheapest", icon: "coin" },
-    { id: "fewest_transfers", icon: "transfer" },
-  ];
+  import PlaceSearch from "./PlaceSearch.svelte";
+  import TripOptions from "./TripOptions.svelte";
 
   const transit = useTransit();
 
@@ -99,12 +94,6 @@
   let inspectLoading = $state(false);
   let inspectError = $state("");
 
-  // Place search
-  let query = $state("");
-  let hits = $state<PlaceHit[]>([]);
-  let searching = $state(false);
-  let searchTimer: ReturnType<typeof setTimeout> | null = null;
-
   const count = $derived(selected.size);
   const hasRoute = $derived((routePlan?.itineraries?.length ?? 0) > 0);
   const focused = $derived(focusRoute && hasRoute);
@@ -117,10 +106,6 @@
   const shownStops = $derived(
     stations.filter((s) => isStationShown(s, selected, showUnclassified)).length
   );
-
-  function isOn(id: string): boolean {
-    return selected.has(id);
-  }
 
   function toggleMode(id: string) {
     const next = new Set(selected);
@@ -239,23 +224,6 @@
     }
   }
 
-  // ── Search ────────────────────────────────────────────────────────────────
-  function runSearch() {
-    const q = query.trim();
-    if (q.length < 2) { hits = []; return; }
-    searching = true;
-    transit
-      .searchPlaces(q, from ? { lat: from.lat, lon: from.lon } : null)
-      .then((r) => { hits = r; })
-      .catch(() => { hits = []; })
-      .finally(() => { searching = false; });
-  }
-
-  function onQueryInput() {
-    if (searchTimer) clearTimeout(searchTimer);
-    searchTimer = setTimeout(runSearch, 300);
-  }
-
   /** Fill whichever endpoint is currently targeted from a search hit. */
   function pickHit(h: PlaceHit) {
     const which = pickMode ?? (from ? "to" : "from");
@@ -267,8 +235,6 @@
       id: h.id,
       modes: h.modes,
     });
-    hits = [];
-    query = "";
     pickMode = null;
   }
 
@@ -395,198 +361,31 @@
     <!-- ── Panel column: scrollable content + pinned action footer ── -->
     <div class="panel-col">
       <aside class="side">
-        <!-- ── Search: pick a place by NAME ─────────────────────────────── -->
-        <section class="sec">
-          <div class="sec-head">
-            <h2>{t("search.usePlace")}</h2>
-            <span class="mini-actions">
-              <span class="count-pill">{shownStops} {t("status.stops")}</span>
-            </span>
-          </div>
+        <PlaceSearch
+          {t}
+          {shownStops}
+          {pickMode}
+          {from}
+          {to}
+          {locating}
+          onStartPick={startPick}
+          onPick={pickHit}
+          onSwap={swapEndpoints}
+          onLocate={useMyLocation}
+        />
 
-          <div class="search-row" class:active={!!pickMode}>
-            <Icon name="search" size={15} cls="s-ic" />
-            <input
-              bind:value={query}
-              oninput={onQueryInput}
-              placeholder={t("search.placeholder")}
-              aria-label={t("search.placeholder")}
-            />
-            {#if searching}<span class="spin dark" aria-hidden="true"></span>{/if}
-          </div>
-
-          <div class="targets" role="group" aria-label={t("search.usePlace")}>
-            <button
-              class="tgt" class:on={pickMode === "from"}
-              onclick={() => startPick("from")}
-              aria-pressed={pickMode === "from"}
-            >
-              <span class="badge a sm">A</span>{t("trip.from")}
-              <Icon name="crosshair" size={12} cls="tgt-ic" />
-            </button>
-            <button
-              class="tgt" class:on={pickMode === "to"}
-              onclick={() => startPick("to")}
-              aria-pressed={pickMode === "to"}
-            >
-              <span class="badge b sm">B</span>{t("trip.to")}
-              <Icon name="crosshair" size={12} cls="tgt-ic" />
-            </button>
-          </div>
-
-          {#if pickMode}
-            <p class="pick-note" role="status">
-              <Icon name="crosshair" size={12} /> {t("trip.pickHint")}
-            </p>
-          {/if}
-
-          {#if hits.length > 0}
-            <ul class="hits">
-              {#each hits as h}
-                <li>
-                  <button class="hit" onclick={() => pickHit(h)}>
-                    <span class="hit-ic" style="--c:{h.kind === 'city' ? '#ffc400' : '#ff3d81'}">
-                      <Icon name={h.kind === "city" ? "pin" : "target"} size={12} />
-                    </span>
-                    <span class="hit-tx">
-                      <b>{h.name}</b>
-                      <small>
-                        {h.city}
-                        {#if h.modes.length}· {h.modes.map((m) => modeLabelFor(t, m)).join(", ")}{/if}
-                      </small>
-                    </span>
-                    <Icon name="arrowRight" size={13} cls="hit-go" />
-                  </button>
-                </li>
-              {/each}
-            </ul>
-          {:else if query.trim().length >= 2 && !searching}
-            <p class="no-hit">{t("search.noResults")}</p>
-          {/if}
-
-          <!-- Trip card: A and B as one connected control, with a swap. -->
-          <div class="trip">
-            <div class="trip-row">
-              <span class="pin a" aria-hidden="true"></span>
-              <button class="trip-in" onclick={() => startPick("from")}>
-                <span class="trip-lbl">{t("trip.from")}</span>
-                <span class="trip-val" class:empty={!from}>
-                  {from ? from.name : t("trip.notSet")}
-                </span>
-              </button>
-            </div>
-            <div class="trip-row">
-              <span class="pin b" aria-hidden="true"></span>
-              <button class="trip-in" onclick={() => startPick("to")}>
-                <span class="trip-lbl">{t("trip.to")}</span>
-                <span class="trip-val" class:empty={!to}>
-                  {to ? to.name : t("trip.notSet")}
-                </span>
-              </button>
-            </div>
-            <button class="swap" onclick={swapEndpoints} aria-label={t("trip.swap")} title={t("trip.swap")}>
-              <Icon name="transfer" size={15} />
-            </button>
-          </div>
-
-          <div class="quick">
-            <button class="chip" onclick={useMyLocation} disabled={locating}>
-              <Icon name="locate" size={13} />
-              {locating ? t("trip.locating") : t("trip.myLocation")}
-            </button>
-            <button class="chip" onclick={() => startPick("from")}>
-              <Icon name="crosshair" size={13} />
-              {t("trip.pickOnMap")}
-            </button>
-          </div>
-        </section>
-
-        <!-- ── Priority ─────────────────────────────────────────────────── -->
-        <section class="sec">
-          <h2>{t("priority.title")}</h2>
-          <div class="seg" role="group" aria-label={t("priority.title")}>
-            <span
-              class="seg-pill"
-              aria-hidden="true"
-              style="transform:translateX({OBJECTIVES.findIndex((o) => o.id === objective) * 100}%)"
-            ></span>
-            {#each OBJECTIVES as o}
-              <button
-                class="seg-btn"
-                class:on={objective === o.id}
-                onclick={() => (objective = o.id)}
-                aria-pressed={objective === o.id}
-              >
-                <Icon name={o.icon} size={13} />
-                <span>{t("priority." + o.id)}</span>
-              </button>
-            {/each}
-          </div>
-        </section>
-
-        <!-- ── Modes: only the ones the network actually serves ──────────── -->
-        <section class="sec">
-          <div class="sec-head">
-            <h2>
-              {t("modes.title")}
-              <span class="counter" class:zero={count === 0}>{count}/{chips.length}</span>
-            </h2>
-            <span class="mini-actions">
-              <button class="mini" onclick={() => setAll(true)}>{t("modes.selectAll")}</button>
-              <span class="sep">·</span>
-              <button class="mini" onclick={() => setAll(false)}>{t("modes.clear")}</button>
-            </span>
-          </div>
-          <div class="modes">
-            {#each chips as m}
-              <button
-                class="mode"
-                class:on={isOn(m.id)}
-                onclick={() => toggleMode(m.id)}
-                aria-pressed={isOn(m.id)}
-                style={isOn(m.id) ? `--mc:${m.color}` : ""}
-              >
-                <span class="m-ic"><Icon name={m.icon} size={14} /></span>
-                <span class="m-lbl">{modeLabel(t, m.id)}</span>
-                <span class="m-n">{m.count.toLocaleString()}</span>
-              </button>
-            {/each}
-          </div>
-          {#if count === 0}
-            <p class="hint-warn" role="status">
-              <Icon name="alert" size={13} /> {t("error.noModes")}
-            </p>
-          {/if}
-        </section>
-
-        <!-- ── Map layers ───────────────────────────────────────────────── -->
-        <section class="sec">
-          <h2>{t("legend.network")}</h2>
-          <div class="layers">
-            <button class="layer" class:on={showRoads} onclick={() => (showRoads = !showRoads)} aria-pressed={showRoads}>
-              <span class="ly-line road" aria-hidden="true"></span>
-              <span class="ly-tx">{t("modes.bus")}</span>
-              <Icon name={showRoads ? "eye" : "eyeOff"} size={13} />
-            </button>
-            <button class="layer" class:on={showRails} onclick={() => (showRails = !showRails)} aria-pressed={showRails}>
-              <span class="ly-line rail" aria-hidden="true"></span>
-              <span class="ly-tx">{t("modes.train")}</span>
-              <Icon name={showRails ? "eye" : "eyeOff"} size={13} />
-            </button>
-            {#if unclassifiedCount > 0}
-              <button
-                class="layer"
-                class:on={showUnclassified}
-                onclick={() => (showUnclassified = !showUnclassified)}
-                aria-pressed={showUnclassified}
-              >
-                <span class="ly-line unk" aria-hidden="true"></span>
-                <span class="ly-tx">{t("modes.unclassified")}</span>
-                <span class="m-n">{unclassifiedCount}</span>
-              </button>
-            {/if}
-          </div>
-        </section>
+        <TripOptions
+          {t}
+          {chips}
+          {selected}
+          {unclassifiedCount}
+          bind:objective
+          bind:showRoads
+          bind:showRails
+          bind:showUnclassified
+          onToggleMode={toggleMode}
+          onSetAll={setAll}
+        />
 
         {#if error}
           <div class="alert" role="alert">
@@ -952,79 +751,7 @@
     letter-spacing: 0.1em; text-transform: uppercase;
     color: var(--mu-2);
   }
-  .counter {
-    padding: 2px 8px;
-    border: 1px solid var(--line);
-    border-radius: 99px;
-    background: rgba(61, 242, 201, 0.1);
-    color: var(--glow);
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 0;
-    font-variant-numeric: tabular-nums;
-  }
-  .counter.zero { border-color: rgba(255, 61, 129, 0.45); background: rgba(255, 61, 129, 0.12); color: #ff8fb3; }
   .sub { font-size: 10px; color: var(--mu-2); }
-  .count-pill {
-    font-size: 10px; font-weight: 600; color: var(--mu-2);
-    padding: 2px 8px; border-radius: 99px; border: 1px solid var(--line);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .mini-actions { display: inline-flex; align-items: center; gap: 4px; }
-  .mini {
-    border: 0; background: none; padding: 2px 5px;
-    color: var(--mu); font: inherit; font-size: 11px; font-weight: 600;
-    cursor: pointer; border-radius: 6px;
-    transition: color 0.25s ease;
-  }
-  .mini:hover { color: var(--a1); }
-  .sep { color: var(--line); }
-
-  /* ── Search ─────────────────────────────────────────────────────────────── */
-  .search-row {
-    display: flex; align-items: center; gap: 9px;
-    padding: 0 12px;
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    background: var(--surf-2);
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
-  }
-  .search-row:focus-within { border-color: var(--a1); box-shadow: 0 0 0 3px rgba(255, 138, 212, 0.15); }
-  .search-row.active { border-color: var(--glow); box-shadow: 0 0 0 3px rgba(61, 242, 201, 0.14); }
-  .search-row :global(svg.s-ic) { color: var(--mu); flex-shrink: 0; }
-  .search-row input {
-    flex: 1; min-width: 0; min-height: 42px;
-    border: 0; background: none; outline: none;
-    color: var(--tx); font: inherit; font-size: 14px;
-  }
-  .search-row input::placeholder { color: var(--mu-2); }
-
-  .targets { display: flex; gap: 6px; }
-  .tgt {
-    display: inline-flex; align-items: center; gap: 6px;
-    flex: 1; min-height: 36px; padding: 5px 10px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: var(--surf-2);
-    color: var(--mu);
-    font: inherit; font-size: 11.5px; font-weight: 600;
-    cursor: pointer;
-    transition: all 0.25s ease;
-  }
-  .tgt:hover { border-color: rgba(255, 138, 212, 0.45); color: var(--tx); }
-  .tgt.on { border-color: var(--glow); background: rgba(61, 242, 201, 0.1); color: var(--glow); }
-  .tgt :global(svg.tgt-ic) { margin-inline-start: auto; opacity: 0.6; }
-  .tgt.on :global(svg.tgt-ic) { opacity: 1; }
-
-  .pick-note {
-    display: flex; align-items: center; gap: 6px;
-    margin: 0; padding: 7px 11px;
-    border: 1px dashed rgba(61, 242, 201, 0.4);
-    border-radius: 11px;
-    background: rgba(61, 242, 201, 0.07);
-    color: var(--glow);
-    font-size: 11.5px;
-  }
 
   .badge {
     display: grid; place-items: center;
@@ -1036,193 +763,6 @@
   .badge.sm { width: 17px; height: 17px; font-size: 9px; }
   .badge.a { background: #22d3ee; }
   .badge.b { background: #f472b6; }
-
-  .hits {
-    list-style: none; margin: 0; padding: 5px;
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    background: var(--bg);
-    display: flex; flex-direction: column; gap: 2px;
-    max-height: 230px; overflow-y: auto;
-  }
-  .hit {
-    display: flex; align-items: center; gap: 9px;
-    width: 100%; padding: 8px 9px;
-    border: 0; border-radius: 11px;
-    background: none; color: var(--mu);
-    font: inherit; font-size: 12.5px; text-align: start;
-    cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease;
-  }
-  .hit:hover { background: rgba(255, 138, 212, 0.1); color: var(--tx); }
-  .hit-ic {
-    display: grid; place-items: center;
-    width: 24px; height: 24px; flex-shrink: 0;
-    border-radius: 8px;
-    background: color-mix(in srgb, var(--c) 20%, transparent);
-    color: var(--c);
-  }
-  .hit-tx { display: flex; flex-direction: column; min-width: 0; flex: 1; }
-  .hit-tx b { font-weight: 600; color: var(--tx); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .hit-tx small { font-size: 10.5px; color: var(--mu-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .hit :global(svg.hit-go) { color: var(--mu-2); flex-shrink: 0; }
-  .no-hit { margin: 0; padding: 2px 4px; color: var(--mu-2); font-size: 11.5px; }
-
-  /* ── Trip card (A -> B as one connected control) ────────────────────────── */
-  .trip {
-    position: relative;
-    background: var(--surf-2);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    padding: 6px 54px 6px 14px;
-  }
-  .trip::before {
-    content: "";
-    position: absolute;
-    left: 20px; top: 34px; bottom: 34px;
-    border-left: 2px dotted var(--mu-2);
-  }
-  .trip-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; position: relative; z-index: 1; }
-  .trip-row + .trip-row { border-top: 1px solid var(--line); }
-  .pin { width: 13px; height: 13px; border-radius: 50%; flex: none; }
-  .pin.a { background: #22d3ee; box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.2), 0 0 12px #22d3ee; }
-  .pin.b { background: #f472b6; box-shadow: 0 0 0 4px rgba(244, 114, 182, 0.2), 0 0 12px #f472b6; }
-
-  .trip-in {
-    flex: 1; min-width: 0;
-    display: flex; flex-direction: column; gap: 1px;
-    border: 0; background: none; padding: 0;
-    text-align: start; cursor: pointer; font: inherit;
-  }
-  .trip-lbl { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mu-2); }
-  .trip-val {
-    font-size: 14px; font-weight: 500; color: var(--tx);
-    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-  }
-  .trip-val.empty { color: var(--mu-2); font-style: italic; }
-
-  .swap {
-    position: absolute; right: 11px; top: 50%; translate: 0 -50%;
-    width: 34px; height: 34px;
-    display: grid; place-items: center;
-    border-radius: 50%;
-    border: 1px solid var(--line);
-    background: var(--bg); color: var(--tx);
-    cursor: pointer;
-    transition: transform 0.4s cubic-bezier(.3,1.4,.4,1), border-color 0.3s ease;
-  }
-  .swap:hover { transform: rotate(180deg); border-color: var(--a1); color: var(--a1); }
-
-  /* ── Quick chips ────────────────────────────────────────────────────────── */
-  .quick { display: flex; gap: 8px; flex-wrap: wrap; }
-  .chip {
-    display: inline-flex; align-items: center; gap: 6px;
-    border: 1px solid var(--line);
-    background: var(--surf-2);
-    color: var(--tx);
-    padding: 8px 13px;
-    border-radius: 99px;
-    font: 500 12.5px "DM Sans", system-ui, sans-serif;
-    cursor: pointer;
-    transition: transform 0.25s ease, border-color 0.25s ease;
-  }
-  .chip:hover:not(:disabled) { border-color: var(--a1); transform: translateY(-2px); }
-  .chip:disabled { opacity: 0.55; cursor: default; }
-  .chip :global(svg) { color: var(--glow); }
-
-  /* ── Priority segmented control ─────────────────────────────────────────── */
-  .seg {
-    position: relative;
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 4px;
-  }
-  .seg-pill {
-    position: absolute; top: 4px; bottom: 4px; left: 4px;
-    width: calc(33.333% - 2.7px);
-    border-radius: 12px;
-    background: linear-gradient(135deg, var(--a1), var(--a2));
-    box-shadow: 0 0 18px rgba(123, 92, 255, 0.4);
-    transition: transform 0.45s cubic-bezier(.3,1.4,.4,1);
-    pointer-events: none;
-  }
-  .seg-btn {
-    position: relative; z-index: 1;
-    display: flex; align-items: center; justify-content: center; gap: 5px;
-    background: none; border: 0;
-    color: var(--mu);
-    padding: 10px 4px;
-    font: 600 11.5px "DM Sans", system-ui, sans-serif;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  .seg-btn.on { color: var(--on-accent); }
-
-  /* ── Mode chips: neon pill with the mode's own hue ──────────────────────── */
-  .modes { display: flex; gap: 8px; flex-wrap: wrap; }
-  .mode {
-    --mc: var(--mu);
-    display: flex; align-items: center; gap: 7px;
-    padding: 8px 11px;
-    border-radius: 14px;
-    border: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.03);
-    color: var(--mu);
-    cursor: pointer;
-    font: 600 12.5px "DM Sans", system-ui, sans-serif;
-    transition: all 0.3s ease;
-  }
-  .mode:hover { border-color: rgba(200, 180, 255, 0.28); }
-  .m-ic { display: grid; place-items: center; flex-shrink: 0; color: var(--mu-2); transition: color 0.3s ease; }
-  .m-lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .m-n {
-    font-size: 10px; font-weight: 700; color: var(--mu-2);
-    font-variant-numeric: tabular-nums;
-    padding: 1px 5px; border-radius: 6px; background: rgba(255, 255, 255, 0.05);
-  }
-  .mode.on {
-    color: var(--tx);
-    border-color: var(--mc);
-    background: color-mix(in srgb, var(--mc) 16%, transparent);
-    box-shadow: 0 0 16px color-mix(in srgb, var(--mc) 34%, transparent),
-                inset 0 0 12px color-mix(in srgb, var(--mc) 12%, transparent);
-  }
-  .mode.on .m-ic { color: var(--mc); filter: drop-shadow(0 0 5px var(--mc)); }
-  .mode.on .m-n { color: var(--mc); background: color-mix(in srgb, var(--mc) 16%, transparent); }
-
-  /* ── Map layer toggles ──────────────────────────────────────────────────── */
-  .layers { display: flex; flex-wrap: wrap; gap: 8px; }
-  .layer {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 7px 11px;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: var(--surf-2);
-    color: var(--mu);
-    font: 600 11.5px "DM Sans", system-ui, sans-serif;
-    cursor: pointer;
-    transition: all 0.25s ease;
-  }
-  .layer:hover { border-color: rgba(200, 180, 255, 0.3); color: var(--tx); }
-  .layer.on { color: var(--tx); border-color: rgba(200, 180, 255, 0.35); background: rgba(255, 255, 255, 0.06); }
-  .layer :global(svg) { color: var(--mu-2); }
-  .layer.on :global(svg) { color: var(--glow); }
-  .ly-tx { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .ly-line { width: 18px; height: 3px; border-radius: 3px; flex-shrink: 0; }
-  .ly-line.road { background: linear-gradient(90deg, var(--n-bus), var(--n-louaj)); box-shadow: 0 0 8px var(--n-bus); }
-  .ly-line.rail { background: linear-gradient(90deg, var(--n-metro), var(--n-train)); box-shadow: 0 0 8px var(--n-train); }
-  .ly-line.unk { background: repeating-linear-gradient(90deg, var(--n-unk) 0 4px, transparent 4px 7px); }
-
-  .hint-warn {
-    display: flex; align-items: center; gap: 6px;
-    margin: 0; padding: 8px 11px;
-    border: 1px solid rgba(255, 196, 0, 0.3);
-    border-radius: 12px;
-    background: rgba(255, 196, 0, 0.1);
-    color: #ffd98a;
-    font-size: 11.5px;
-  }
 
   /* ── CTA ────────────────────────────────────────────────────────────────── */
   .cta {
