@@ -47,7 +47,7 @@ async fn main() {
         .await
         .expect("Failed to create pool");
 
-    sqlx::migrate!()
+    sqlx::migrate!("../migrations")
         .run(&pool)
         .await
         .expect("Failed to run migrations");

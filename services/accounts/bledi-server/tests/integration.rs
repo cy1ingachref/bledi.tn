@@ -45,7 +45,7 @@ async fn setup_db() -> AppState {
         .expect("Failed to connect to database");
 
     // Run migrations
-    sqlx::migrate!()
+    sqlx::migrate!("../migrations")
         .run(&pool)
         .await
         .expect("Failed to run migrations");
