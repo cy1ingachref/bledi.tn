@@ -5,7 +5,6 @@ set -euo pipefail
 
 IMAGE=${1:?usage: smoke-test.sh <image>}
 NAME=bledi-smoke-$$
-NET=$NAME
 PORT=${SMOKE_PORT:-3000}
 API=http://localhost:$PORT/api/v1
 # Throwaway credentials for an ephemeral container, not secrets.
@@ -19,15 +18,15 @@ cleanup() {
     docker logs "$NAME-api" 2>&1 | tail -50 || true
   fi
   docker rm -f "$NAME-api" "$NAME-db" >/dev/null 2>&1 || true
-  docker network rm "$NET" >/dev/null 2>&1 || true
+  docker network rm "$NAME" >/dev/null 2>&1 || true
   rm -f "$BODY"
   exit "$status"
 }
 BODY=$(mktemp)
 trap cleanup EXIT
 
-docker network create "$NET" >/dev/null
-docker run -d --name "$NAME-db" --network "$NET" \
+docker network create "$NAME" >/dev/null
+docker run -d --name "$NAME-db" --network "$NAME" \
   -e POSTGRES_PASSWORD="$PGPASSWORD" postgis/postgis:16-3.4 >/dev/null
 
 for i in $(seq 1 60); do
@@ -46,7 +45,7 @@ CREATE EXTENSION cube;
 CREATE EXTENSION earthdistance;
 SQL
 
-docker run -d --name "$NAME-api" --network "$NET" -p "$PORT:3000" \
+docker run -d --name "$NAME-api" --network "$NAME" -p "$PORT:3000" \
   -e DATABASE_URL="postgres://bledi:$APP_PASSWORD@$NAME-db:5432/bledi" \
   -e JWT_SECRET=smoke-only-jwt-secret-not-used-anywhere-real \
   "$IMAGE" >/dev/null
