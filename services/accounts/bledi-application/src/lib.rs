@@ -1,5 +1,7 @@
 pub mod accounts;
 mod error;
+pub mod favorites;
+pub mod friendships;
 pub mod ports;
 #[cfg(any(test, feature = "testing"))]
 pub mod testing;
