@@ -23,7 +23,6 @@ from __future__ import annotations
 import heapq
 import json
 import logging
-import math
 import os
 from collections import defaultdict
 from dataclasses import dataclass
@@ -34,6 +33,27 @@ from bledi_transit.adapters.graphs.rail_graph import load_rail_graph
 from bledi_transit.adapters.graphs.rail_graph import track_between_cached as rail_track_cached
 from bledi_transit.adapters.graphs.road_graph import load_graph as load_road_graph
 from bledi_transit.adapters.graphs.road_graph import road_route_cached
+from bledi_transit.domain.geo import haversine_m, oriented_geometry, polyline_length
+from bledi_transit.domain.tunables import (
+    BOARDING_WAIT_CAP,
+    DEFAULT_WAIT_BY_MODE,
+    DROP_OFF_CANDIDATES,
+    DROPOFF_SEARCH_METERS,
+    FEWEST_TRANSFERS_PENALTY_SEC,
+    GEOMETRY_REQUIRED_M,
+    MAX_END_WALK_METERS,
+    MAX_HEADWAY_SEC,
+    MAX_START_WALK_METERS,
+    MAX_WALK_EDGE_METERS,
+    SPEED_BY_MODE,
+    TAXI_MIN_DISTANCE_M,
+    TAXI_SPEED_KMH,
+    TAXI_SPEED_MS,
+    TRANSFER_PENALTY_SEC,
+    WAIT_HEADWAY_FACTOR,
+    WALK_SPEED_KMH,
+    WALK_SPEED_MS,
+)
 
 log = logging.getLogger("bledi.routing")
 if not log.handlers:
@@ -45,125 +65,18 @@ SEED_PATH = BASE / "data" / "seed_all_tunisia_routes.json"
 SEED_TAGED_PATH = BASE / "data" / "seed_all_tunisia_routes.tagged.json"
 _SEED_PATH = SEED_TAGED_PATH if SEED_TAGED_PATH.exists() else SEED_PATH
 
-# Walk
-WALK_SPEED_KMH = float(os.environ.get("WALK_SPEED_KMH", "4.5"))
-WALK_SPEED_MS = WALK_SPEED_KMH / 3.6
-
-# Transit display speed (user-facing time) per mode km/h.
-# Per-mode average transit speeds (km/h) used for BOTH routing cost and
-# user-facing display time. Cost and display use the same value so the
-# cheapest path is also the physically fastest one.
-# Env overrides via SPEED_<MODE>_KMH, e.g. SPEED_TRAIN_KMH=60.
-SPEED_BY_MODE: dict[str, float] = {
-    "train": float(os.environ.get("SPEED_TRAIN_KMH", "60.0")),
-    "rail": float(os.environ.get("SPEED_RAIL_KMH", "55.0")),
-    "metro": float(os.environ.get("SPEED_METRO_KMH", "30.0")),
-    "bus": float(os.environ.get("SPEED_BUS_KMH", "22.0")),
-    "rfr": float(os.environ.get("SPEED_RFR_KMH", "22.0")),
-    "tram": float(os.environ.get("SPEED_TRAM_KMH", "22.0")),
-    "taxi": float(os.environ.get("TAXI_SPEED_KMH", "45.0")),
-    "walk": float(os.environ.get("WALK_SPEED_KMH", "4.5")),
-}
-
-def transit_speed_kmh(mode: str) -> float:
-    """Return average ride speed (km/h) for a transit mode."""
-    return SPEED_BY_MODE.get(mode, SPEED_BY_MODE["bus"])
-
-def transit_speed_ms(mode: str) -> float:
-    return transit_speed_kmh(mode) / 3.6
-
-# Hard cap (seconds) on per-boarding expected wait. Lines with only a couple
-# departures/day can produce multi-hour median headways from expected_wait();
-# until dep_min is real, cap boarding wait so sparse lines do not dominate
-# long corridors.
-BOARDING_WAIT_CAP = int(os.environ.get("BOARDING_WAIT_CAP_SEC", str(20 * 60)))
-
-# Average ride speed used for the routing COST (not display). Keep close to
-# display speed so the cheapest path is also the physically fastest one.
-
-# Taxi
-TAXI_SPEED_KMH = float(os.environ.get("TAXI_SPEED_KMH", "45.0"))
-TAXI_SPEED_MS = TAXI_SPEED_KMH / 3.6
-TAXI_FARE_BASE = float(os.environ.get("TAXI_FARE_BASE", "0.600"))
-TAXI_FARE_PER_KM = float(os.environ.get("TAXI_FARE_PER_KM", "0.520"))
-
-# Expected wait when departures exist = half the median headway (seconds).
-WAIT_HEADWAY_FACTOR = 0.5
-
-# Per-mode default wait when no departures are available (seconds).
-DEFAULT_WAIT_BY_MODE: dict[str, float] = {
-    "train": 600.0,   # ~10 min headway for intercity rail
-    "metro": 300.0,   # ~5 min
-    "bus": 600.0,     # ~10 min
-    "rfr": 600.0,     # regional bus
-    "taxi": 0.0,
-    "walk": 0.0,
-    "unknown": 600.0,
-}
-
-# Transfer penalty (seconds) applied each time the rider changes lines.
-TRANSFER_PENALTY_SEC = float(os.environ.get("TRANSFER_PENALTY_SEC", "180.0"))
-# Transfer penalty used by the fewest_transfers objective (B2). Far larger than
-# TRANSFER_PENALTY_SEC so a second search with this weight genuinely prefers a
-# direct bus over a faster two-leg train+bust, which is what the user asking
-# "I hate transfers" means. Documented here per the spec's "document which".
-FEWEST_TRANSFERS_PENALTY_SEC = float(
-    os.environ.get("FEWEST_TRANSFERS_PENALTY_SEC", "5400.0")
-)
-
-# Max walk distances (meters).
-MAX_START_WALK_METERS = int(os.environ.get("MAX_START_WALK_METERS", "2000"))
-MAX_END_WALK_METERS = int(os.environ.get("MAX_END_WALK_METERS", "2000"))
-
-# Walk EDGES between stops, i.e. the pedestrian network inside the graph.
-# This used to be 0, which meant a destination stop was reachable only if a line
-# happened to call at it: Kairouan has 29 stops within 2 km and every one of
-# them had zero edges, so the router could never "walk to the nearest transport
-# and ride", which is the entire point of a multi-modal router. 900 m is a
-# realistic walk-to-bus distance; it adds ~11k edges over 4.2k stops.
-MAX_WALK_EDGE_METERS = int(os.environ.get("MAX_WALK_EDGE_METERS", "900"))
-
-# Radius used to find the "drop-off" stop when the destination itself has no
-# station nearby. Lets the router answer ride-then-brief-walk for a town with
-# no stop of its own instead of drawing one taxi line across the country.
-# Measured against the seed: the nearest line-served station is 0.1 km for Tunis,
-# 0.6 km for Nabeul, 0.9 km for Sfax, but 44.3 km for Kairouan and 90.8 km for
-# Mahdia, because no line in the 232-line seed calls at either town. The radius
-# has to cover that worst case to give those towns a "nearest station" answer at
-# all; the resulting final leg is charged at taxi speed and labelled as a local
-# hop, so a 44 km gap is never presented as a walk.
-DROPOFF_SEARCH_METERS = int(os.environ.get("DROPOFF_SEARCH_METERS", "100000"))
-
 # A walk edge resets the line context: after walking you have not "arrived on"
 # any line, so the next boarding is a fresh boarding (wait paid again) rather
 # than a free continuation. The sentinel keeps that distinct from a real line id.
 WALK_EDGE = "__walk__"
 
-# How many line-served drop-off stops to consider, nearest first. Measured on
-# the seed: 1 is correct. Widening it to 6 made Mahdia *worse* -- Dijkstra then
-# picks a distant but better-connected station (98.3 km final hop, 414 min)
-# instead of the nearest one (90.8 km, 443 min), because a longer ride is cheaper
-# on time than a shorter one plus a long taxi hop. The user's question is "what
-# is the nearest transport", so the nearest served station is the answer.
-DROP_OFF_CANDIDATES = int(os.environ.get("DROP_OFF_CANDIDATES", "1"))
 
-# Direct taxi option is suppressed for very short trips (meters).
-TAXI_MIN_DISTANCE_M = int(os.environ.get("TAXI_MIN_DISTANCE_M", "3000"))
-
-# Maximum gap (seconds) between two consecutive departures that we still treat
-# as a single service day. Gaps larger than this are assumed to be the overnight
-# closure and are excluded from the median headway (otherwise a 23:55/06:05 pair
-# would produce a phantom ~18 h headway).
-MAX_HEADWAY_SEC = int(os.environ.get("MAX_HEADWAY_SEC", str(12 * 3600)))
+def transit_speed_kmh(mode: str) -> float:
+    return SPEED_BY_MODE.get(mode, SPEED_BY_MODE["bus"])
 
 
-def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    R = 6371000.0
-    phi1, phi2 = math.radians(lat1), math.radians(lat2)
-    dphi = math.radians(lat2 - lat1)
-    dl = math.radians(lon2 - lon1)
-    a = math.sin(dphi / 2) ** 2 + math.cos(phi1) * math.cos(phi2) * math.sin(dl / 2) ** 2
-    return 2 * R * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+def transit_speed_ms(mode: str) -> float:
+    return transit_speed_kmh(mode) / 3.6
 
 
 # ── Real path geometry ─────────────────────────────────────────────────────
@@ -315,7 +228,7 @@ def resolve_walk_geometry(
     startup: a live A* per pair would cost minutes of process start-up time, and
     a user only ever sees a handful of walks.
     """
-    straight = haversine(a_lat, a_lon, b_lat, b_lon)
+    straight = haversine_m(a_lat, a_lon, b_lat, b_lon)
     live = road_leg(router, a_lat, a_lon, b_lat, b_lon, "foot")
     if live is not None and live[1] >= 0.95 * straight:
         return live[0], live[1]
@@ -473,36 +386,6 @@ def road_geometry_for(
     return list(pts) if forward else list(reversed(pts))
 
 
-def polyline_length(pts: list[Sequence[float]]) -> float:
-    """Real along-geometry distance in meters for a [[lat, lon], ...] polyline."""
-    total = 0.0
-    for i in range(len(pts) - 1):
-        total += haversine(pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1])
-    return total
-
-
-def oriented_geometry(
-    entry: dict[str, Any], from_id: str, to_id: str
-) -> list[list[float]]:
-    """Cached polyline between two stations, oriented along travel direction.
-
-    The cache key is the unordered pair min|max and the stored polyline runs
-    min -> max. A step runs from_id -> to_id, so when from_id sorts after to_id
-    the polyline is reversed to keep the drawn line pointing the way the rider
-    travels. Returns [] when there is no cached geometry.
-    """
-    pts = entry.get("geometry") or []
-    if len(pts) < 2:
-        return []
-    return list(reversed(pts)) if from_id > to_id else list(pts)
-
-
-def time_at_speed(distance_m: float, speed_ms: float) -> float:
-    if speed_ms <= 0:
-        return 0.0
-    return distance_m / speed_ms
-
-
 def expected_wait(departures: list[str] | None, mode: str) -> float:
     """Expected wait in seconds.
 
@@ -547,12 +430,6 @@ def expected_wait(departures: list[str] | None, mode: str) -> float:
 def _load_seed() -> dict[str, Any]:
     with _SEED_PATH.open(encoding="utf-8") as f:
         return json.load(f)
-
-
-# A straight line is visually indistinguishable from a real path below this
-# length, so a missing polyline is harmless there. Above it, the client must not
-# draw a straight line: that is the off-road line being reported.
-GEOMETRY_REQUIRED_M = float(os.environ.get("GEOMETRY_REQUIRED_M", "300"))
 
 
 @dataclass(slots=True)
@@ -961,7 +838,7 @@ class Router:
         wait_s: float,
     ) -> "Edge":
         """Build one directed graph edge with real distance, time and geometry."""
-        straight_m = haversine(a["lat"], a["lon"], b["lat"], b["lon"])
+        straight_m = haversine_m(a["lat"], a["lon"], b["lat"], b["lon"])
         entry = self.geometry.get(f"{min(a_id, b_id)}|{max(a_id, b_id)}")
         geom: list[list[float]] = []
         real_m = straight_m
@@ -1023,7 +900,7 @@ class Router:
                         if other <= sid:
                             continue
                         o_lat, o_lon = pos[other]
-                        d = haversine(lat, lon, o_lat, o_lon)
+                        d = haversine_m(lat, lon, o_lat, o_lon)
                         if d <= MAX_WALK_EDGE_METERS:
                             # Real pedestrian path when the cache has it. A walk
                             # edge has no line id, so the walk geometry is stored
@@ -1149,7 +1026,7 @@ class Router:
         best_transit_cost = float("inf")
 
         # Direct walk (always available) – only used if walking is allowed.
-        direct_m = haversine(start_lat, start_lon, end_lat, end_lon)
+        direct_m = haversine_m(start_lat, start_lon, end_lat, end_lon)
         direct_walk_s = direct_m / WALK_SPEED_MS
         if allowed_modes is None or "walk" in allowed_modes:
             best = {
@@ -1212,7 +1089,7 @@ class Router:
                 if cur in end_ids:
                     ec = self.stations.get(cur)
                     if ec and ec.get("lat") and ec.get("lon"):
-                        end_walk_m = haversine(ec["lat"], ec["lon"], end_lat, end_lon)
+                        end_walk_m = haversine_m(ec["lat"], ec["lon"], end_lat, end_lon)
                         # Per-candidate decision: a final gap beyond
                         # MAX_END_WALK_METERS is not a walk any sane itinerary
                         # would ask for. Charge it as a local vehicle hop at taxi
@@ -1442,7 +1319,7 @@ class Router:
         for s in self.stations.values():
             if not s.get("lat") or not s.get("lon"):
                 continue
-            d = haversine(lat, lon, s["lat"], s["lon"])
+            d = haversine_m(lat, lon, s["lat"], s["lon"])
             if d <= max_m:
                 out.append({**s, "_dist_m": d})
         out.sort(key=lambda x: x["_dist_m"])
@@ -1589,7 +1466,7 @@ class Router:
         # transit strategies entirely (they cannot match a walk-only filter,
         # so they would only produce an empty result).
         if user_allowed is not None and not (user_allowed - {"walk"}):
-            direct_m = haversine(start_lat, start_lon, end_lat, end_lon)
+            direct_m = haversine_m(start_lat, start_lon, end_lat, end_lon)
             walk_s = direct_m / WALK_SPEED_MS
             walk_step = {
                 "type": "walk",
@@ -1685,7 +1562,7 @@ class Router:
 
         # Last resort: the direct walk, only if the search produced nothing.
         if not candidates:
-            direct_m = haversine(start_lat, start_lon, end_lat, end_lon)
+            direct_m = haversine_m(start_lat, start_lon, end_lat, end_lon)
             if direct_m <= MAX_START_WALK_METERS * 2:
                 walk_s = direct_m / WALK_SPEED_MS
                 steps = [
@@ -1838,7 +1715,7 @@ class Router:
         # Start walk (only if the Dijkstra source station differs from the actual
         # start point — i.e. the walk was non-zero).
         if s_start and first and first.get("lat") and first.get("lon"):
-            straight_walk_m = haversine(start_lat, start_lon, first["lat"], first["lon"])
+            straight_walk_m = haversine_m(start_lat, start_lon, first["lat"], first["lon"])
             # Real pedestrian route when the road graph can serve the pair. The
             # straight line is kept as the distance floor, so a graph miss costs
             # the polyline but never invents a shorter-than-impossible walk.
@@ -1876,7 +1753,7 @@ class Router:
             if not a or not b or not a.get("lat") or not a.get("lon") or not b.get("lat") or not b.get("lon"):
                 continue
             line_used = path_lines[i + 1]  # line arrived on at b = line used for a->b
-            straight_m = haversine(a["lat"], a["lon"], b["lat"], b["lon"])
+            straight_m = haversine_m(a["lat"], a["lon"], b["lat"], b["lon"])
             # Prefer the edge the search actually traversed: it carries the REAL
             # along-geometry distance, time and polyline, so the reported step
             # equals the optimized cost and can be drawn accurately.
@@ -2045,7 +1922,7 @@ class Router:
         # destination is visible to the user instead of being hidden behind one
         # straight line across the map.
         if s_end and s_end.get("lat") and s_end.get("lon"):
-            straight_walk_m = haversine(prev_lat, prev_lon, end_lat, end_lon)
+            straight_walk_m = haversine_m(prev_lat, prev_lon, end_lat, end_lon)
             # Route the gap in the mode it will actually be travelled: a short
             # gap is walked (pedestrian ways, steps, footways), while a gap past
             # MAX_END_WALK_METERS is a local taxi hop and must follow drivable

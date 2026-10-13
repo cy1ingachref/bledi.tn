@@ -17,17 +17,8 @@ import math
 
 import pytest
 
-from bledi_transit.application.routing.router import (
-    BASE,
-    MAX_START_WALK_METERS,
-    MAX_END_WALK_METERS,
-    TAXI_MIN_DISTANCE_M,
-    TRANSFER_PENALTY_SEC,
-    WALK_SPEED_KMH,
-    build_graph,
-    haversine,
-    expected_wait,
-)
+from bledi_transit.application.routing.router import build_graph, expected_wait
+from bledi_transit.domain.tunables import MAX_END_WALK_METERS, MAX_START_WALK_METERS
 
 
 def _hav(meters: float) -> tuple[float, float]:
