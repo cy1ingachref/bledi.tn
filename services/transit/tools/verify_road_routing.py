@@ -1,6 +1,6 @@
 """Verify real-road routing on the Tunisia graph, and that it beats a line.
 
-Run:  python src/backend/tool/verify_road_routing.py
+Run:  python services/transit/tools/verify_road_routing.py
 
 Every check is an assertion on measured output. If this file prints PASS, the
 numbers quoted below came from this graph on this machine.
@@ -8,25 +8,13 @@ numbers quoted below came from this graph on this machine.
 
 from __future__ import annotations
 
-import math
 import os
-import sys
 import time
 
-import numpy as np
+from bledi_transit.adapters.graphs.road_graph import MODE_COL, _snap, load_graph, road_route
+from bledi_transit.domain.geo import haversine_m
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.abspath(os.path.join(HERE, "..", "app")))
-
-from road_routing import (  # noqa: E402
-    GRID_CELL_DEG,
-    MODE_BIT,
-    _snap,
-    haversine_m,
-    load_graph,
-    road_route,
-)
-
 GRAPH = os.path.abspath(os.path.join(HERE, "..", "..", "..", "data", "road_graph.npz"))
 
 # Real places in Tunisia with well-known coordinates.
@@ -79,7 +67,7 @@ def main() -> int:
     print(
         f"graph: {g.n_nodes:,} nodes, {g.n_edges:,} directed edges, loaded in {load_s:.1f}s"
     )
-    for mode in MODE_BIT:
+    for mode in MODE_COL:
         print(
             f"  {mode:5s} {g.csr_edge[mode].size:>12,} directed edges, "
             f"max speed {g.speed_mps[mode][g.csr_edge[mode]].max() * 3.6:5.1f} km/h, "
@@ -90,9 +78,9 @@ def main() -> int:
     # steps is walkable but not drivable, while motorway/trunk links are the
     # reverse. This check exists to catch a mode filter that collapsed.
     check(
-        "all three modes present and distinct",
-        len({g.csr_edge[m].size for m in MODE_BIT}) == 3,
-        ", ".join(f"{m}={g.csr_edge[m].size:,}" for m in MODE_BIT),
+        "both modes present and distinct",
+        len({g.csr_edge[m].size for m in MODE_COL}) == len(MODE_COL),
+        ", ".join(f"{m}={g.csr_edge[m].size:,}" for m in MODE_COL),
     )
     check(
         "foot-only ways (footway/steps) are walkable",
@@ -127,7 +115,6 @@ def main() -> int:
         ("nabeul", "car"),
         ("sidi_bouzid", "car"),
         ("sousse", "foot"),
-        ("sidi_bouzid", "bike"),
     ]
     routed = []
     for dest_key, mode in pairs:
