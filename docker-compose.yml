@@ -1,48 +1,43 @@
 services:
   db:
-    image: postgis/postgis:16-3.4
+    image: postgres:16-alpine
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-bledi}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
-      POSTGRES_DB: ${POSTGRES_DB:-bledi}
-    # No host port published: the database is only reachable from the compose
-    # network. Publishing 5432 with a default password exposes Postgres to the
-    # whole host (and to anything that can reach it) for no benefit in dev.
-    expose:
-      - "5432"
+      ACCOUNTS_DB_PASSWORD: ${ACCOUNTS_DB_PASSWORD:?set ACCOUNTS_DB_PASSWORD in .env}
     volumes:
       - db_data:/var/lib/postgresql/data
+      - ./services/accounts/docker/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-bledi} -d ${POSTGRES_DB:-bledi}"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d accounts"]
       interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 10
 
-  backend:
-    build:
-      context: services/accounts
-    ports:
-      - "3000:3000"
+  accounts:
+    build: services/accounts
     environment:
-      DATABASE_URL: postgres://${POSTGRES_USER:-bledi}:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}@db:5432/${POSTGRES_DB:-bledi}
-      # Required by the server; it refuses to start without a >=32 byte value.
-      # Generate one with: openssl rand -hex 32
+      DATABASE_URL: postgres://accounts:${ACCOUNTS_DB_PASSWORD}@db:5432/accounts
+      # At least 32 bytes: openssl rand -hex 32
       JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
+      # The web gateway is the only way in, and it overwrites X-Forwarded-For.
+      TRUST_PROXY_HEADERS: "1"
       RUST_LOG: info
     depends_on:
       db:
         condition: service_healthy
 
-  frontend:
-    image: node:24-alpine
-    working_dir: /app
-    volumes:
-      - ./frontend:/app
+  transit:
+    build:
+      context: .
+      dockerfile: services/transit/Dockerfile
+
+  web:
+    build: apps/web
     ports:
-      - "5173:5173"
-    command: npx vite --host 0.0.0.0
+      - "8080:8080"
     depends_on:
-      - backend
+      - accounts
+      - transit
 
 volumes:
   db_data:
