@@ -33,5 +33,14 @@ jobs:
 
       - run: npm ci --no-fund
       - run: npm audit --audit-level=high
+      - run: npm run lint
       - run: npm run check
+      - run: npm test
       - run: npm run build
+
+  image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - run: docker build -t bledi-web:ci apps/web
