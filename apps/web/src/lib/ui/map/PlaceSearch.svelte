@@ -37,16 +37,20 @@
   let hits = $state<PlaceHit[]>([]);
   let searching = $state(false);
   let searchTimer: ReturnType<typeof setTimeout> | null = null;
+  // Responses can arrive out of order; only the latest search, if not superseded by a pick,
+  // may write the hits.
+  let searchSeq = 0;
 
   function runSearch() {
+    const seq = ++searchSeq;
     const q = query.trim();
-    if (q.length < 2) { hits = []; return; }
+    if (q.length < 2) { hits = []; searching = false; return; }
     searching = true;
     transit
       .searchPlaces(q, from ? { lat: from.lat, lon: from.lon } : null)
-      .then((r) => { hits = r; })
-      .catch(() => { hits = []; })
-      .finally(() => { searching = false; });
+      .then((r) => { if (seq === searchSeq) hits = r; })
+      .catch(() => { if (seq === searchSeq) hits = []; })
+      .finally(() => { if (seq === searchSeq) searching = false; });
   }
 
   function onQueryInput() {
@@ -56,8 +60,11 @@
 
   function pick(h: PlaceHit) {
     onPick(h);
+    searchSeq++;
+    if (searchTimer) clearTimeout(searchTimer);
     hits = [];
     query = "";
+    searching = false;
   }
 </script>
 

@@ -191,7 +191,11 @@
     );
   }
 
+  // A slow answer for an earlier click must not replace the station clicked last.
+  let inspectSeq = 0;
+
   async function inspectStation(id: string, fallbackName = "") {
+    const seq = ++inspectSeq;
     inspectLoading = true;
     inspectError = "";
     inspected = {
@@ -199,13 +203,21 @@
       modes: [], lines: [], count: 0,
     };
     try {
-      inspected = await transit.station(id);
+      const station = await transit.station(id);
+      if (seq === inspectSeq) inspected = station;
     } catch {
+      if (seq !== inspectSeq) return;
       inspectError = t("error.station");
       inspected = null;
     } finally {
-      inspectLoading = false;
+      if (seq === inspectSeq) inspectLoading = false;
     }
+  }
+
+  function closeInspector() {
+    inspectSeq++;
+    inspected = null;
+    inspectLoading = false;
   }
 
   /** Fill whichever endpoint is currently targeted from a search hit. */
@@ -231,7 +243,7 @@
     computing = true;
     routePlan = null;
     error = "";
-    inspected = null;
+    closeInspector();
     try {
       const plan = await planTrip(transit, { from, to, selected, objective });
       routePlan = plan;
@@ -419,7 +431,7 @@
           loading={inspectLoading}
           error={inspectError}
           {louageLinks}
-          onClose={() => (inspected = null)}
+          onClose={closeInspector}
           onSetEndpoint={setEndpoint}
           onFocusStation={focusStation}
         />
