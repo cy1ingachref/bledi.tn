@@ -6,7 +6,7 @@ import '../datasources/api_client.dart';
 /// Calls the local multi-modal transit router.
 ///
 /// The routing algorithm itself lives in the backend
-/// (`src/backend/app/routing.py`) — this app only requests and renders it.
+/// (`services/transit`); this app only requests and renders it.
 class RoutingDataSource {
   RoutingDataSource(this._client);
 

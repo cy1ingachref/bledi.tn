@@ -28,7 +28,7 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-BUILD_ASSETS = ROOT / "frontend" / "build" / "_app" / "immutable" / "assets"
+BUILD_ASSETS = ROOT / "apps" / "web" / "build" / "_app" / "immutable" / "assets"
 API = "http://127.0.0.1:8000/api/v1"
 
 RESULTS: list[tuple[bool, str, str]] = []
@@ -268,7 +268,7 @@ def check_built_css() -> None:
     emoji_re = re.compile(
         "[\U0001F300-\U0001FAFF\U00002600-\U000027BF\U0001F000-\U0001F0FF]"
     )
-    js_dir = ROOT / "frontend" / "build" / "_app" / "immutable"
+    js_dir = ROOT / "apps" / "web" / "build" / "_app" / "immutable"
     offenders = []
     for p in list(js_dir.rglob("*.js")) + list(js_dir.rglob("*.css")):
         m = emoji_re.search(p.read_text(encoding="utf-8", errors="replace"))

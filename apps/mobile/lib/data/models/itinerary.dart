@@ -71,9 +71,9 @@ List<List<double>> latLngListToJson(List<LatLng>? object) =>
 
 /// A single leg of a transit itinerary.
 ///
-/// Matches `TransitStep` in `src/backend/app/main.py`. Note the backend sends
-/// `duration_min` in the pydantic model but does not populate it in the
-/// `/route/transit` payload, so the app falls back to [Itinerary] totals and
+/// Matches a step of the `/route/transit` payload, built in
+/// `services/transit/src/bledi_transit/application/routing/transit.py`. Steps
+/// carry no `duration_min`, so the app falls back to [Itinerary] totals and
 /// [estimatedDurationMin].
 @freezed
 abstract class RouteStep with _$RouteStep {
