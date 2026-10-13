@@ -1,6 +1,6 @@
 use crate::{Invalid, ValidationError};
 
-const EARTH_RADIUS_M: f64 = 6_371_000.0;
+pub const EARTH_RADIUS_M: f64 = 6_371_000.0;
 
 pub const LAT_MIN: f64 = 30.0;
 pub const LAT_MAX: f64 = 37.5;
