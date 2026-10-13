@@ -89,3 +89,41 @@ impl IntoResponse for ApiError {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use http_body_util::BodyExt;
+
+    use super::*;
+
+    async fn render(e: AppError) -> (StatusCode, Value) {
+        let response = ApiError::from(e).into_response();
+        let status = response.status();
+        let bytes = response.into_body().collect().await.unwrap().to_bytes();
+        (status, serde_json::from_slice(&bytes).unwrap())
+    }
+
+    #[tokio::test]
+    async fn internal_errors_hide_their_detail() {
+        let (status, body) = render(AppError::internal("relation \"users\" does not exist")).await;
+        assert_eq!(status, StatusCode::INTERNAL_SERVER_ERROR);
+        assert_eq!(body, json!({ "error": "internal" }));
+    }
+
+    #[tokio::test]
+    async fn too_far_reports_the_rounded_distance() {
+        let (status, body) = render(AppError::TooFar {
+            distance_m: 1111.6,
+            unlock_radius_m: 200.0,
+        })
+        .await;
+        assert_eq!(status, StatusCode::FORBIDDEN);
+        assert_eq!(
+            body,
+            json!({
+                "error": "Too far from this memory", "code": "too_far",
+                "distance_m": 1112.0, "unlock_radius_m": 200.0
+            })
+        );
+    }
+}
