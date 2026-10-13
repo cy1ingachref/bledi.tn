@@ -28,9 +28,9 @@ Two sources, by mode, because a train must follow the track and not the road:
 Writes a cache keyed by an unordered station-id pair, so it survives reordering
 and works for both travel directions.
 
-    python src/backend/tool/build_route_geometry.py
-    python src/backend/tool/build_route_geometry.py --limit 20     # smoke test
-    python src/backend/tool/build_route_geometry.py --resume        # continue
+    python services/transit/tools/build_route_geometry.py
+    python services/transit/tools/build_route_geometry.py --limit 20     # smoke test
+    python services/transit/tools/build_route_geometry.py --resume        # continue
 
 Refuses to overwrite a complete cache unless --force, and re-fetches only the
 missing pairs when --resume is given. Segments that cannot be resolved are
@@ -50,6 +50,9 @@ import urllib.parse
 import urllib.request
 from collections import defaultdict
 from pathlib import Path
+
+from bledi_transit.domain.geo import haversine_m as haversine
+from bledi_transit.domain.geo import simplify as douglas_peucker
 
 BASE = Path(__file__).resolve().parents[3]
 SEED_PATH = BASE / "data" / "seed_all_tunisia_routes.tagged.json"
@@ -134,15 +137,6 @@ def segments(stations: list[dict], lines: list[dict]) -> list[tuple[str, str, st
             if prev is None or (prev != "rail" and mode in ("train", "rail", "metro")):
                 seen[key] = mode if prev is None else prev
     return [(a, b, m) for (a, b), m in seen.items()]
-
-
-def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    R = 6371000.0
-    p1, p2 = math.radians(lat1), math.radians(lat2)
-    dp = math.radians(lat2 - lat1)
-    dl = math.radians(lon2 - lon1)
-    x = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
-    return 2 * R * math.atan2(math.sqrt(x), math.sqrt(1 - x))
 
 
 # ── Overpass: real track geometry ──────────────────────────────────────────
@@ -632,29 +626,8 @@ def simplify(points: list[tuple[float, float]], tol_m: float = 8.0) -> list[list
     The app draws at most a few hundred pixels of line, so sub-metre detail is
     wasted bytes in a file that is committed.
     """
-    if len(points) < 3:
-        return [[round(lat, 6), round(lon, 6)] for lat, lon in points]
-
-    def rdp(pts: list[tuple[float, float]]) -> list[tuple[float, float]]:
-        if len(pts) < 3:
-            return pts
-        (x1, y1), (x2, y2) = pts[0], pts[-1]
-        dx, dy = x2 - x1, y2 - y1
-        norm = math.hypot(dx, dy)
-        max_d, index = 0.0, 0
-        for i in range(1, len(pts) - 1):
-            x, y = pts[i]
-            if norm == 0:
-                d = math.hypot(x - x1, y - y1)
-            else:
-                d = abs(dy * x - dx * y + x2 * y1 - y2 * x1) / norm
-            if d > max_d:
-                max_d, index = d, i
-        if max_d > tol_m / 111_000.0:
-            return rdp(pts[: index + 1])[:-1] + rdp(pts[index:])
-        return [pts[0], pts[-1]]
-
-    return [[round(lat, 6), round(lon, 6)] for lat, lon in rdp(points)]
+    kept = douglas_peucker([[lat, lon] for lat, lon in points], tol_m / 111_000.0)
+    return [[round(lat, 6), round(lon, 6)] for lat, lon in kept]
 
 
 def main() -> int:

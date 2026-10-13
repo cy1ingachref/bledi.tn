@@ -20,19 +20,20 @@ Two sources, in priority order:
 Both follow real roads. Nothing here is a straight line.
 
 Usage:
-  python src/backend/tool/build_taxi_geometry.py --pairs pairs.json
-  python src/backend/tool/build_taxi_geometry.py --from-options
+  python services/transit/tools/build_taxi_geometry.py --pairs pairs.json
+  python services/transit/tools/build_taxi_geometry.py --from-options
 """
 from __future__ import annotations
 
 import argparse
 import json
-import math
 import os
 import sys
 import time
 import urllib.request
 from pathlib import Path
+
+from bledi_transit.domain.geo import haversine_m, polyline_length
 
 BASE = Path(__file__).resolve().parents[3]
 OUT = BASE / "data" / "taxi_geometry.json"
@@ -52,21 +53,6 @@ MIN_M = 20.0
 KEY_DP = 5
 
 USER_AGENT = "bledi-tn/0.2 (taxi geometry builder; contact cy1ingachref@gmail.com)"
-
-
-def haversine(p: list[float], q: list[float]) -> float:
-    la1, lo1 = p[0], p[1]
-    la2, lo2 = q[0], q[1]
-    r = 6371000.0
-    p1, p2 = math.radians(la1), math.radians(la2)
-    h = math.sin((p2 - p1) / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(
-        math.radians(lo2 - lo1) / 2
-    ) ** 2
-    return 2 * r * math.asin(math.sqrt(h))
-
-
-def polyline_length(pts: list[list[float]]) -> float:
-    return sum(haversine(pts[i], pts[i + 1]) for i in range(len(pts) - 1))
 
 
 def key_for(a: list[float], b: list[float]) -> str:
@@ -92,7 +78,7 @@ def validate(pts: list[list[float]], a: list[float], b: list[float]) -> tuple[bo
     if len(pts) < 2:
         return False, "too_few_points"
     real = polyline_length(pts)
-    straight = haversine(a, b)
+    straight = haversine_m(a[0], a[1], b[0], b[1])
     if real < MIN_M:
         return False, "too_short"
     if straight <= 0:
@@ -131,8 +117,7 @@ def local_road_route(a: list[float], b: list[float]):
     bus leg between the same two points follow the same road.
     """
     if "grid" not in _NET:
-        sys.path.insert(0, str(Path(__file__).parent))
-        import build_route_geometry as B  # noqa: E402
+        import build_route_geometry as B
 
         # Decoding the 232 MB GeoPackage takes over ten minutes on this machine.
         # BLEDI_SKIP_ROADS=1 falls through to OSRM, which needs no local file.
