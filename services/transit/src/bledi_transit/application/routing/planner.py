@@ -1,4 +1,4 @@
-"""Multi-objective planning (B2): several searches, merged, deduplicated and ranked."""
+"""Multi-objective planning: several searches, merged, deduplicated and ranked."""
 from __future__ import annotations
 
 from collections.abc import Sequence
@@ -36,26 +36,13 @@ def plan(
 ) -> dict[str, Any]:
     """Return distinct, labelled itineraries for a filtered request.
 
-    Several strategies are run and their best results merged, deduplicated
-    and ranked. Strategies, not just weights, is the point: a single search
-    with a bigger transfer penalty does NOT produce a different journey when
-    one itinerary dominates on every axis, which is exactly the Tunis->Sousse
-    case (the single rail journey is fastest, has the fewest transfers and is
-    the only rail option, so re-ranking it three times yields three copies of
-    itself).
+    Several searches restricted to different mode sets, not one search with
+    different weights: when one journey dominates on every axis (Tunis to
+    Sousse by rail), re-weighting returns three copies of it. The fare is
+    only a ranking over the candidates, never a search cost.
 
-      fastest             unfiltered search, time-optimal
-      fewest_transfers    a very high transfer penalty
-      cheapest            unfiltered search (the fare model is a post-hoc
-                          ranking over candidates, not a search cost, so
-                          this does not change the journey found)
-      bus_preferred       bus/rfr/tram only
-      rail_preferred      train/rail/metro only
-      metro_preferred     metro only
-      train_only          train/rail only
-
-    Include/exclude is a HARD filter applied inside edge expansion for
-    every strategy, so an excluded mode can never appear in a leg (D1).
+    Include/exclude is a hard filter inside edge expansion for every
+    strategy, so an excluded mode can never appear in a leg.
     """
     if objective not in OBJECTIVES:
         raise ValueError(
@@ -83,10 +70,7 @@ def plan(
     }
     user_allowed = resolve_allowed_modes(include, exclude)
 
-    # Walking-only request: the user explicitly asked for directions on
-    # foot. Emit the direct walk as the single itinerary and skip the
-    # transit strategies entirely (they cannot match a walk-only filter,
-    # so they would only produce an empty result).
+    # Walking only: no strategy can match the filter, so the direct walk is the answer.
     if user_allowed is not None and not (user_allowed - {"walk"}):
         return {
             "query": query,
@@ -95,16 +79,13 @@ def plan(
             "message": None,
         }
 
-    # Translate the user's filter into per-strategy raw-mode sets.
     bus_only = frozenset({"bus", "rfr", "tram"})
     rail_only = frozenset({"train", "rail", "metro"})
     metro_only = frozenset({"metro"})
     train_only = frozenset({"train", "rail"})
 
-    # The two unfiltered strategies still have to respect the user's
-    # filter: "fastest" with allowed=None would happily return the metro
-    # journey the user just excluded. user_allowed is therefore the BASE
-    # for every strategy, never None when a filter was given.
+    # user_allowed is the base of every strategy: "fastest" with allowed=None
+    # would return the metro journey the user just excluded.
     strategies: list[tuple[str, float, frozenset[str] | None]] = [
         ("fastest", TRANSFER_PENALTY_SEC, user_allowed),
         ("fewest_transfers", FEWEST_TRANSFERS_PENALTY_SEC, user_allowed),
@@ -155,7 +136,6 @@ def plan(
             }
         )
 
-    # Last resort: the direct walk, only if the search produced nothing.
     if not candidates and haversine_m(start_lat, start_lon, end_lat, end_lon) <= MAX_START_WALK_METERS * 2:
         candidates.append(_walk_candidate(start_lat, start_lon, end_lat, end_lon))
 
@@ -167,8 +147,7 @@ def plan(
             "message": _no_route_message(include, exclude),
         }
 
-    # Rank by the requested objective (B2.4). Ties fall through to the
-    # secondary axis so the order is total and deterministic.
+    # The secondary key breaks ties so the order is deterministic.
     if objective == "cheapest":
         candidates.sort(key=lambda c: (c["fare_estimate"], c["duration_s"]))
     elif objective == "fewest_transfers":
@@ -195,7 +174,6 @@ def plan(
 
 
 def count_transfers(steps: Sequence[dict[str, Any]]) -> int:
-    """Number of line changes across ride legs."""
     lines = [
         s.get("line") or "" for s in (steps or ()) if s.get("type") == "ride"
     ]
@@ -237,20 +215,15 @@ def _walk_candidate(start_lat: float, start_lon: float, end_lat: float, end_lon:
 def _itinerary_signature(result: dict[str, Any]) -> tuple:
     """Distinctness key: the ordered (mode, line_id) of every ride leg.
 
-    Walks are excluded on purpose. Two itineraries that differ only in how
-    far the rider walks on the same bus are the same journey as far as a
-    choice list is concerned, and offering both is the "messy options"
-    complaint (A3).
+    Walks are excluded: two itineraries that differ only in how far the
+    rider walks to the same bus are one choice for the rider.
     """
     sig: list[tuple[str, str]] = []
     for step in result.get("steps") or ():
         if step.get("type") != "ride":
             continue
         entry = (step.get("mode") or "", step.get("line") or "")
-        # Collapse consecutive legs on the same line. An itinerary is
-        # expanded per STOP, so without this every stop looked like a
-        # distinct itinerary and dedup never fired -- which is why all
-        # three objectives returned exactly one option.
+        # Steps are per stop, so one ride on a line is several equal entries.
         if sig and sig[-1] == entry:
             continue
         sig.append(entry)
@@ -276,11 +249,8 @@ def _modes_used(steps: Sequence[dict[str, Any]]) -> list[str]:
 
 
 def _geometry_report(steps: Sequence[dict[str, Any]]) -> tuple[bool, list[dict[str, Any]]]:
-    """(geometry_complete, gaps[]): geometry honesty (C6).
-
-    A leg is a GAP when it moves a meaningful distance and carries no
-    polyline. Those are exactly the legs the client must render dashed
-    rather than silently joining two points with a straight line.
+    """(geometry_complete, gaps): a gap is a leg long enough to need a
+    polyline that has none, which the client must not draw as a straight line.
     """
     gaps: list[dict[str, Any]] = []
     for step in steps or ():
@@ -303,7 +273,6 @@ def _geometry_report(steps: Sequence[dict[str, Any]]) -> tuple[bool, list[dict[s
 
 
 def _present(c: dict[str, Any], n: int, objective: str) -> dict[str, Any]:
-    """One client-facing itinerary card (B5)."""
     raw = c["raw"]
     modes = c["modes_used"]
     duration_min = round(c["duration_s"] / 60.0, 1)
@@ -357,7 +326,7 @@ def _no_route_message(
     include: Sequence[str] | None,
     exclude: Sequence[str] | None,
 ) -> str:
-    """Actionable French message when filters leave no journey (B5.message)."""
+    """Actionable French message when filters leave no journey."""
     if exclude:
         return (
             "Aucun itineraire avec les modes selectionnes; essayez d'activer "

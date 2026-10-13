@@ -10,9 +10,8 @@ from bledi_transit.domain.tunables import GEOMETRY_REQUIRED_M, SPEED_BY_MODE, WA
 
 Segments = dict[str, dict[str, Any]]
 
-# A walk edge resets the line context: after walking you have not "arrived on"
-# any line, so the next boarding is a fresh boarding (wait paid again) rather
-# than a free continuation. The sentinel keeps that distinct from a real line id.
+# The line of a walk edge. After a walk the next boarding pays its wait again,
+# and the sentinel never equals a real line id.
 WALK_EDGE = "__walk__"
 
 
@@ -28,13 +27,8 @@ def transit_speed_ms(mode: str) -> float:
 class Edge:
     """One directed graph edge.
 
-    distance_m is the REAL along-geometry distance, not the straight line, so
-    the cost model and the drawn line agree. straight_m is kept only for the
-    A* heuristic and for auditing how much the real path detours.
-
-    `geometry` empty means "no real path was found". `needs_geometry` records
-    whether that absence is visible enough to matter, so the API can refuse to
-    draw a straight line instead of silently producing an off-road one.
+    distance_m follows the geometry when there is one, so the cost model and
+    the drawn line agree. Empty `geometry` means no real path was found.
     """
     to_id: str
     line: str
@@ -67,10 +61,8 @@ def line_edge(
     real_m = straight_m
     if entry and entry.get("geometry"):
         geom = oriented_geometry(entry, a_id, b_id)
-        # A path along a network cannot be shorter than the straight line it
-        # replaces. Anything under that means the stored polyline is wrong
-        # (a mis-oriented or mis-stitched slice), so refuse it and keep the
-        # honest straight line rather than a physically impossible distance.
+        # Shorter than the straight line means a mis-oriented or mis-stitched
+        # slice in the cache.
         cand_m = polyline_length(geom)
         if cand_m >= 0.95 * straight_m:
             real_m = cand_m
@@ -98,15 +90,9 @@ def add_walk_edges(
 ) -> None:
     """Connect nearby stops with bidirectional walk edges.
 
-    Without these the graph is transit-only, so a destination stop that no
-    line calls at is unreachable and the router falls back to a single taxi
-    line drawn straight across the map. This is what lets the router answer
-    "walk to the nearest stop, ride, walk to the destination".
-
-    Built through a lat/lon grid rather than an O(n^2) scan: 4221 stops
-    squared is ~9M haversine calls at import time, which would add seconds to
-    every server start. The grid keys on ~300 m cells so only the surrounding
-    cells are examined per stop.
+    Without them a stop no line calls at is unreachable. A grid of
+    walk-radius cells replaces the O(n^2) scan, which would add seconds to
+    every start.
     """
     pos: dict[str, tuple[float, float]] = {
         sid: (s["lat"], s["lon"])
@@ -132,12 +118,9 @@ def add_walk_edges(
                     d = haversine_m(lat, lon, o_lat, o_lon)
                     if d > max_walk_edge_m:
                         continue
-                    # Geometry here is deliberately NOT live-routed. This loop
-                    # builds every station pair within 900 m (12 736 of them in
-                    # the current seed) and a live A* per pair would add minutes
-                    # to process startup. The precomputed walk cache is used if
-                    # present; the itinerary fills in the real pedestrian path
-                    # lazily, per leg, only for a walk the user actually sees.
+                    # Not live-routed: a live A* for each of the ~12 700 pairs
+                    # would add minutes to startup. The itinerary resolves the
+                    # real path only for the walks a rider sees.
                     wentry = walk_segments.get(f"{min(sid, other)}|{max(sid, other)}")
                     wgeom: list[list[float]] = []
                     wlen = d

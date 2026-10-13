@@ -37,8 +37,9 @@ DEFAULT_WAIT_BY_MODE: dict[str, float] = {
     "unknown": 600.0,
 }
 
-# Gaps between consecutive departures above this are the overnight closure,
-# not a headway (otherwise a 23:55/06:05 pair yields a phantom 18 h headway).
+# Departures spanning more than this wrap past midnight: the gap to the next
+# day's first departure counts as a headway too, so a 06:05/23:55 pair is not
+# only one 18 h headway.
 MAX_HEADWAY_SEC = 12 * 3600
 
 TRANSFER_PENALTY_SEC = 180.0

@@ -68,10 +68,8 @@ class Router:
         self.taxi_geometry = taxi_segments or {}
         self.paths: PathGeometry = paths or NoPathGeometry()
         self.mode_of_line: dict[str, str] = {}
-        # User-facing mode per line (B1). mode_of_line keeps the RAW seed value
-        # because Edge.mode must stay comparable against allowed_modes, which
-        # resolve_allowed_modes() returns as raw seed modes. The canonical form
-        # is what labels, fares and the API report.
+        # mode_of_line keeps the raw seed value because allowed_modes holds raw
+        # seed modes. The canonical form is what labels, fares and the API report.
         self.user_mode_of_line: dict[str, str] = {}
         self.line_wait: dict[str, float] = {}  # line_id -> boarding wait (s)
         for ln in lines:
@@ -80,10 +78,8 @@ class Router:
             self.mode_of_line[ln_id] = mode
             self.user_mode_of_line[ln_id] = canonical_mode(mode)
             self.line_wait[ln_id] = min(expected_wait(ln.get("departures"), mode), BOARDING_WAIT_CAP)
-        # station_id -> ordered list of line ids serving it (B3). Built from
-        # the line -> stops index, NOT from the station's own lines_served
-        # fragments, which are direction-oriented and often lack route_short_name.
-        # This is the authoritative "what passes here" source.
+        # From the lines' stop arrays, not the station's lines_served fragments,
+        # which are direction-oriented and often lack route_short_name.
         self.lines_by_station: dict[str, list[str]] = defaultdict(list)
         for ln in lines:
             ln_id = ln.get("id", "") or ""
@@ -160,18 +156,9 @@ class Router:
                 start_cap = MAX_START_WALK_METERS * 500
                 start_candidates = self._nearest_stations(start_lat, start_lon, start_cap)
 
-        # No stop to walk to: widen the search so a town with no station of its
-        # own still gets ride-then-final-gap instead of one taxi line across the
-        # country. Only stops a line actually serves are useful -- walking to an
-        # unserved one would just dead-end. Keep only the nearest: measured,
-        # widening further makes Mahdia worse (98.3 km hop / 414 min vs 90.8 km
-        # / 443 min), since a longer ride undercuts a short one plus a long hop.
-        #
-        # The final gap is priced by distance alone, here and in the itinerary
-        # alike. An earlier "did the narrow search succeed?" flag got this
-        # wrong: Mahdia has a stop inside 2 km yet its drop-off is 90.8 km out,
-        # so the flag priced the gap as a walk while the label called it a taxi
-        # hop.
+        # No stop to walk to: a town with no station of its own still gets a
+        # ride then a final gap, instead of one taxi line across the country.
+        # Only served stops help; see DROP_OFF_CANDIDATES for the count.
         if not end_candidates and end_cap >= MAX_END_WALK_METERS:
             served = [
                 s
@@ -226,9 +213,8 @@ class Router:
             visited: set[tuple[str, str | None]] = set()
             while pq:
                 cost, cur, _tie = heapq.heappop(pq)
-                # The heap stores "" where the state has no line, so that cost
-                # ties stay comparable; map it back to None for the cost model,
-                # which distinguishes "not on a line" from a real line id.
+                # The heap stores "" for "no line": costs tie constantly in the
+                # walk network, and comparing None with a str raises TypeError.
                 cur_line = _tie or None
                 if cost >= best_cost:
                     break
@@ -241,12 +227,9 @@ class Router:
                     ec = self.stations.get(cur)
                     if ec and ec.get("lat") and ec.get("lon"):
                         end_walk_m = haversine_m(ec["lat"], ec["lon"], end_lat, end_lon)
-                        # A final gap beyond MAX_END_WALK_METERS is not a walk
-                        # any sane itinerary would ask for. Charge it as a local
-                        # vehicle hop at taxi speed instead of pretending the
-                        # rider walks 90 km. Keyed on the distance alone, so a
-                        # reachable-but-far end stop cannot fall back to walking
-                        # speed in the cost model.
+                        # A gap past MAX_END_WALK_METERS is a taxi hop. Distance
+                        # alone decides, here and in expand_path, so the cost and
+                        # the drawn leg agree.
                         if end_walk_m > MAX_END_WALK_METERS:
                             end_walk_s = end_walk_m / TAXI_SPEED_MS
                         else:
@@ -285,8 +268,6 @@ class Router:
                     ):
                         continue
                     is_walk = edge.mode == "walk"
-                    # A walk edge has no line, so it resets the line context:
-                    # the next boarding pays its wait afresh.
                     arrived_line = None if is_walk else edge.line
                     segment_cost = edge.time_s
                     if not is_walk:
@@ -299,17 +280,11 @@ class Router:
                     if new_cost < dist.get(new_state, float("inf")):
                         dist[new_state] = new_cost
                         prev[new_state] = state
-                        # Costs tie constantly in a walk network, and comparing
-                        # a None line id with a str raised TypeError; the empty
-                        # string is a total order over the id space and never
-                        # equals a real line id.
                         heapq.heappush(pq, (new_cost, edge.to_id, arrived_line or ""))
 
-        # Direct taxi: an alternative when transit exists, the answer otherwise.
-        # A real transit route must win outright, or a single taxi line gets
-        # drawn across the whole map whenever it beats a multi-leg transit path
-        # on time. It must ALSO respect the caller's mode selection: a
-        # taxi/louaj answer is only legitimate when taxi or louaj is allowed.
+        # A direct taxi is only an alternative when transit exists, or one taxi
+        # line would replace every transit route it beats on time. It also needs
+        # taxi or louaj in the mode selection.
         have_transit = best is not None and best.get("mode") == "transit"
         direct_km = direct_m / 1000.0
         taxi_permitted = allowed_modes is None or bool(
