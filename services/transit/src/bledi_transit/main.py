@@ -26,6 +26,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 # Local transit router (physical-cost Dijkstra).
+from bledi_transit.adapters.seed_files import SeedFileNetwork
 from bledi_transit.application.routing.router import Router
 from bledi_transit.domain.cities import CITY_SEATS, nearest_city
 from bledi_transit.domain.geo import haversine_m
@@ -35,39 +36,7 @@ from bledi_transit.domain.stations import UNCLASSIFIED, primary_station_mode, st
 
 log = logging.getLogger("bledi")
 
-# ── Paths ──────────────────────────────────────────────────────────────
-BASE = Path(__file__).resolve().parents[4]  # repo root
-SEED_PATH = BASE / "data" / "seed_all_tunisia_routes.json"
-SEED_TAGED_PATH = BASE / "data" / "seed_all_tunisia_routes.tagged.json"
-# Real route geometry, precomputed by tool/build_route_geometry.py. Without it
-# every leg is drawn as a straight line between two stops; the seed carries no
-# shape data at all (0 of 232 lines have one), so this is the only way the map
-# can follow an actual track or road. Optional: absent means straight lines.
-GEOMETRY_PATH = BASE / "data" / "route_geometry.json"
-
-# Prefer the tagged file if it exists, else fall back to the original.
-_SEED_PATH = SEED_TAGED_PATH if SEED_TAGED_PATH.exists() else SEED_PATH
-
-# Physical track geometry (rail / metro alignments from OSM relations, road
-# alignments from OSRM) keyed by "<stop_a>|<stop_b>". Built by
-# scripts/build_route_geometry.py and committed, so the network layer has real
-# track to draw instead of straight lines between stops.
-_ROUTE_GEOMETRY_PATH = BASE / "data" / "route_geometry.json"
-
-# Rail and road alignments for the map's base layers. Built by
-# tool/build_map_overlays.py from the official Overpass exports in
-# Downloads/tunisia-transport-data (rail-network-exports, highways). Kept
-# separate from route_geometry.json because these are the PHYSICAL network --
-# every rail line and every motorway/trunk/primary road in the country -- not
-# per-route shape for a specific service.
-_MAP_RAIL_PATH = BASE / "data" / "map_rail.geojson"
-_MAP_ROADS_PATH = BASE / "data" / "map_roads.geojson"
-
-# Louage station connections, resolved from each national louage station's
-# destinations_served against the station list. Built by
-# tool/build_station_index.py. Unresolved destinations are listed in the file
-# rather than guessed, so the client can show what is genuinely unknown.
-_LOUAGE_LINKS_PATH = BASE / "data" / "louage_links.json"
+DATA_DIR = Path(os.environ.get("BLEDI_DATA_DIR") or Path(__file__).resolve().parents[4] / "data")
 
 # ── Config ──────────────────────────────────────────────────────────────
 # Local dev origins only. 8080 is the Flutter web dev server's default port
@@ -114,103 +83,17 @@ else:
     )
 
 
-# ── Seed loading ────────────────────────────────────────────────────────
-with _SEED_PATH.open(encoding="utf-8") as _f:
-    SEED_DATA: dict[str, Any] = json.load(_f)
+DATA = SeedFileNetwork(DATA_DIR)
+NETWORK = DATA.load()
+_stations = NETWORK.stations
+_lines = NETWORK.lines
+_LOUAGE_STATIONS = NETWORK.louage_stations
+_LOUAGE_ROUTES_BY_STOP = NETWORK.louage_routes_by_stop
+STATION_BY_ID = NETWORK.station_by_id
+LINE_BY_ID = NETWORK.line_by_id
+LINES_BY_NUMBER = NETWORK.lines_by_number
+_geometry_for = NETWORK.segment_geometry
 
-_stations: list[dict[str, Any]] = SEED_DATA.get("stations", [])
-_lines: list[dict[str, Any]] = SEED_DATA.get("lines", [])
-
-# Geometry cache: "a|b" -> {"geometry": [[lat, lon], ...], "source": ...}.
-# Keyed by an unordered station-id pair so it is direction-independent.
-_GEOMETRY: dict[str, dict[str, Any]] = {}
-if GEOMETRY_PATH.exists():
-    with GEOMETRY_PATH.open(encoding="utf-8") as _f:
-        _GEOMETRY = json.load(_f).get("segments", {})
-    log.info(
-        "Loaded route geometry: %d segments (%d with geometry) from %s",
-        len(_GEOMETRY),
-        sum(1 for v in _GEOMETRY.values() if v.get("geometry")),
-        GEOMETRY_PATH.name,
-    )
-else:
-    log.info(
-        "No route geometry cache at %s; legs will render as straight lines. "
-        "Run: python src/backend/tool/build_route_geometry.py",
-        GEOMETRY_PATH.name,
-    )
-
-
-def _geometry_for(from_id: str | None, to_id: str | None) -> list[list[float]]:
-    """Cached geometry between two stations, oriented along travel direction.
-
-    The cache key is the unordered pair min|max and the stored polyline always
-    runs min -> max. A step runs from_id -> to_id, so when from_id sorts after
-    to_id the polyline has to be reversed to keep the drawn line pointing the
-    way the rider travels. Returns [] when there is no geometry, which tells
-    the client to draw the straight line instead.
-    """
-    if not from_id or not to_id:
-        return []
-    entry = _GEOMETRY.get(f"{min(from_id, to_id)}|{max(from_id, to_id)}")
-    if not entry or not entry.get("geometry"):
-        return []
-    pts = entry["geometry"]
-    return list(reversed(pts)) if from_id > to_id else list(pts)
-
-
-# Louage / taxi stops come from separate seed files that the main transit seed
-# does not contain. Their modes are louage_red / louage_blue / louage_green /
-# taxi, and they are marked with `source="louage"` so the client can colour and
-# filter them distinctly.
-LOUAGE_SEED_PATH = BASE / "data" / "seed_routes_destination_tunis.json"
-_LOUAGE_STATIONS: list[dict[str, Any]] = []
-_LOUAGE_LINES: list[dict[str, Any]] = []
-if LOUAGE_SEED_PATH.exists():
-    with LOUAGE_SEED_PATH.open(encoding="utf-8") as _f:
-        _louage = json.load(_f)
-    _LOUAGE_STATIONS = _louage.get("stations", [])
-    _LOUAGE_LINES = _louage.get("routes", [])
-    log.info(
-        "Loaded louage/taxi seed: %d stops, %d routes from %s",
-        len(_LOUAGE_STATIONS), len(_LOUAGE_LINES), LOUAGE_SEED_PATH.name,
-    )
-
-# Route ids from the louage seed, so a station can advertise its services.
-_LOUAGE_ROUTES_BY_STOP: dict[str, list[dict[str, Any]]] = defaultdict(list)
-for _r in _LOUAGE_LINES:
-    for _endpoint in (_r.get("from"), _r.get("to")):
-        if _endpoint:
-            _LOUAGE_ROUTES_BY_STOP[_endpoint].append(_r)
-
-# Id -> station / line index for O(1) lookups (replaces O(lines*stations) scans).
-STATION_BY_ID: dict[str, dict[str, Any]] = {}
-for _s in _stations:
-    _sid = _s.get("id")
-    if _sid:
-        STATION_BY_ID[_sid] = _s
-
-
-LINE_BY_ID: dict[str, dict[str, Any]] = {}
-# Also index by number for the /lines/{line_number} endpoint (number is not unique).
-LINES_BY_NUMBER: dict[str, list[dict[str, Any]]] = defaultdict(list)
-for _ln in _lines:
-    _lid = _ln.get("id")
-    if _lid:
-        LINE_BY_ID[_lid] = _ln
-    _num = str(_ln.get("number") or _ln.get("route_id") or "")
-    if _num:
-        LINES_BY_NUMBER[_num].append(_ln)
-
-log.info(
-    "Loaded seed: %d stations, %d lines from %s",
-    len(_stations), len(_lines), _SEED_PATH.name,
-)
-
-
-# ── Local transit router instance ──────────────────────────────────────────
-# Built once at startup from the already-loaded seed (STATION_BY_ID + _lines).
-# Reused by the /api/v1/route/transit endpoint — no re-load per request.
 ROUTER: Router = Router(STATION_BY_ID, _lines)
 
 
@@ -219,7 +102,7 @@ class HealthResponse(BaseModel):
     status: str = "ok"
     version: str = "0.2.0"
     service: str = "bledi.tn"
-    seed_file: str = _SEED_PATH.name
+    seed_file: str = NETWORK.seed_name
     stations_count: int = len(_stations)
     lines_count: int = len(_lines)
 
@@ -543,18 +426,17 @@ def network_geometry(
         except ValueError as exc:
             raise HTTPException(status_code=400, detail="bbox values must be numbers") from exc
 
-    if not _ROUTE_GEOMETRY_PATH.exists():
+    if not DATA.has_route_segments():
         return JSONResponse(
             {
                 "error": "network geometry not built",
-                "detail": f"{_ROUTE_GEOMETRY_PATH.name} is missing; run scripts/build_route_geometry.py",
+                "detail": "route_geometry.json is missing; run services/transit/tools/build_route_geometry.py",
                 "segments": [],
             },
             status_code=503,
         )
 
-    with _ROUTE_GEOMETRY_PATH.open(encoding="utf-8") as fh:
-        raw_segments = json.load(fh).get("segments", {})
+    raw_segments = NETWORK.segments
 
     out: list[dict[str, Any]] = []
     by_mode: dict[str, int] = defaultdict(int)
@@ -625,7 +507,7 @@ def network_geometry(
     }
 
 
-def _load_overlay(path: Path, kind: str) -> dict[str, Any]:
+def _load_overlay(name: str, kind: str) -> dict[str, Any]:
     """Load a built GeoJSON overlay, or explain honestly why it is absent.
 
     Returns the features in Leaflet order ([lat, lon]) with the properties the
@@ -633,15 +515,14 @@ def _load_overlay(path: Path, kind: str) -> dict[str, Any]:
     rather than served as an empty layer, because an empty layer looks like
     "Tunisia has no railways" instead of "the overlay was never built".
     """
-    if not path.exists():
+    data = DATA.map_layer(name)
+    if data is None:
         raise HTTPException(
             status_code=503,
-            detail=(f"{path.name} is missing; run "
+            detail=(f"{DATA.map_layer_file(name)} is missing; run "
                     f"`python tool/build_map_overlays.py` to build it from "
                     f"Downloads/tunisia-transport-data"),
         )
-    with path.open(encoding="utf-8") as fh:
-        data = json.load(fh)
 
     feats: list[dict[str, Any]] = []
     for f in data.get("features", []):
@@ -673,7 +554,7 @@ def map_rail() -> dict[str, Any]:
     where OSM records one. Disused, abandoned, yard, spur and siding track is
     excluded at build time -- it is not a passenger route.
     """
-    return _load_overlay(_MAP_RAIL_PATH, "rail")
+    return _load_overlay("rail", "rail")
 
 
 @app.get("/api/v1/map/roads", tags=["Network"])
@@ -684,7 +565,7 @@ def map_roads() -> dict[str, Any]:
     …), which is what a rider recognises. Secondary and tertiary roads are
     omitted as visual noise. Simplified at build time to ~16 m.
     """
-    return _load_overlay(_MAP_ROADS_PATH, "road")
+    return _load_overlay("roads", "road")
 
 
 @app.get("/api/v1/map/overlays", tags=["Network"])
@@ -696,10 +577,9 @@ def map_overlays() -> dict[str, Any]:
     the other.
     """
     out: dict[str, Any] = {}
-    for name, path, kind in (("rail", _MAP_RAIL_PATH, "rail"),
-                             ("roads", _MAP_ROADS_PATH, "road")):
+    for name, kind in (("rail", "rail"), ("roads", "road")):
         try:
-            out[name] = _load_overlay(path, kind)
+            out[name] = _load_overlay(name, kind)
         except HTTPException as exc:
             out[name] = {"features": [], "error": str(exc.detail)}
     return out
@@ -714,14 +594,13 @@ def louage_links() -> dict[str, Any]:
     `unresolved` lists destinations that appear in no station record -- they are
     reported rather than dropped or guessed.
     """
-    if not _LOUAGE_LINKS_PATH.exists():
+    links = DATA.louage_links()
+    if links is None:
         raise HTTPException(
             status_code=503,
-            detail=(f"{_LOUAGE_LINKS_PATH.name} is missing; run "
-                    f"`python tool/build_station_index.py`"),
+            detail="louage_links.json is missing; run `python tool/build_station_index.py`",
         )
-    with _LOUAGE_LINKS_PATH.open(encoding="utf-8") as fh:
-        return json.load(fh)
+    return links
 
 
 

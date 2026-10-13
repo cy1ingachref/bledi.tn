@@ -14,16 +14,15 @@ it being reverted or half-applied.
 """
 from __future__ import annotations
 
+import json
 from collections import Counter
 from pathlib import Path
 
 import pytest
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
+from bledi_transit.adapters.seed_files import SEED_FILE
 
-SEED_PATH = REPO_ROOT / "data" / "seed_all_tunisia_routes.json"
-SEED_TAGED_PATH = REPO_ROOT / "data" / "seed_all_tunisia_routes.tagged.json"
-_SEED_PATH = SEED_TAGED_PATH if SEED_TAGED_PATH.exists() else SEED_PATH
+SEED_PATH = Path(__file__).resolve().parents[3] / "data" / SEED_FILE
 
 # Tunisia bounding box (approx).
 TUNISIA_LAT_MIN = 30.0
@@ -34,8 +33,7 @@ TUNISIA_LON_MAX = 12.0
 
 @pytest.fixture(scope="session")
 def seed():
-    import json
-    with _SEED_PATH.open(encoding="utf-8") as f:
+    with SEED_PATH.open(encoding="utf-8") as f:
         return json.load(f)
 
 

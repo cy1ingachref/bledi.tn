@@ -234,7 +234,7 @@ class TestRouterToOptionSuppressesTheFallback:
         from bledi_transit import main as M
 
         pair = next(
-            (k for k, v in M._GEOMETRY.items() if v.get("geometry")), None
+            (k for k, v in M.NETWORK.segments.items() if v.get("geometry")), None
         )
         assert pair, "no cached geometry to test against"
         a_id, b_id = pair.split("|")
@@ -265,7 +265,7 @@ class TestRouterToOptionSuppressesTheFallback:
         """
         from bledi_transit import main as M
 
-        pair = next(k for k, v in M._GEOMETRY.items() if v.get("geometry"))
+        pair = next(k for k, v in M.NETWORK.segments.items() if v.get("geometry"))
         a_id, b_id = pair.split("|")
         step = {
             "type": "ride", "mode": "train", "line": "train_x",
