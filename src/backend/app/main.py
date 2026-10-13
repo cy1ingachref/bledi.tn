@@ -65,6 +65,21 @@ _SEED_PATH = SEED_TAGED_PATH if SEED_TAGED_PATH.exists() else SEED_PATH
 # track to draw instead of straight lines between stops.
 _ROUTE_GEOMETRY_PATH = BASE / "data" / "route_geometry.json"
 
+# Rail and road alignments for the map's base layers. Built by
+# tool/build_map_overlays.py from the official Overpass exports in
+# Downloads/tunisia-transport-data (rail-network-exports, highways). Kept
+# separate from route_geometry.json because these are the PHYSICAL network --
+# every rail line and every motorway/trunk/primary road in the country -- not
+# per-route shape for a specific service.
+_MAP_RAIL_PATH = BASE / "data" / "map_rail.geojson"
+_MAP_ROADS_PATH = BASE / "data" / "map_roads.geojson"
+
+# Louage station connections, resolved from each national louage station's
+# destinations_served against the station list. Built by
+# tool/build_station_index.py. Unresolved destinations are listed in the file
+# rather than guessed, so the client can show what is genuinely unknown.
+_LOUAGE_LINKS_PATH = BASE / "data" / "louage_links.json"
+
 # ── Config ──────────────────────────────────────────────────────────────
 OSRM_URL = os.environ.get(
     "OSRM_URL",
@@ -867,6 +882,105 @@ def network_geometry(
             "available_modes": sorted(by_mode),
         },
     }
+
+
+def _load_overlay(path: Path, kind: str) -> dict[str, Any]:
+    """Load a built GeoJSON overlay, or explain honestly why it is absent.
+
+    Returns the features in Leaflet order ([lat, lon]) with the properties the
+    client needs. A missing file is reported as 503 with the build command
+    rather than served as an empty layer, because an empty layer looks like
+    "Tunisia has no railways" instead of "the overlay was never built".
+    """
+    if not path.exists():
+        raise HTTPException(
+            status_code=503,
+            detail=(f"{path.name} is missing; run "
+                    f"`python tool/build_map_overlays.py` to build it from "
+                    f"Downloads/tunisia-transport-data"),
+        )
+    with path.open(encoding="utf-8") as fh:
+        data = json.load(fh)
+
+    feats: list[dict[str, Any]] = []
+    for f in data.get("features", []):
+        geom = f.get("geometry") or {}
+        if geom.get("type") != "LineString":
+            continue
+        coords = geom.get("coordinates") or []
+        if len(coords) < 2:
+            continue
+        feats.append({
+            "kind": kind,
+            "properties": f.get("properties") or {},
+            # GeoJSON is [lon, lat]; Leaflet wants [lat, lon]. Converted here so
+            # the client has one convention (the same one /network uses).
+            "geometry": [[c[1], c[0]] for c in coords],
+        })
+    return {
+        "features": feats,
+        "metadata": {**(data.get("metadata") or {}), "returned": len(feats)},
+    }
+
+
+@app.get("/api/v1/map/rail", tags=["Network"])
+def map_rail() -> dict[str, Any]:
+    """Every passenger rail and light-rail alignment in Tunisia.
+
+    Drawn as the map's rail base layer. `properties.mode` is `train` or `metro`
+    so the client can style them apart; `ref`/`name` carry the line identity
+    where OSM records one. Disused, abandoned, yard, spur and siding track is
+    excluded at build time -- it is not a passenger route.
+    """
+    return _load_overlay(_MAP_RAIL_PATH, "rail")
+
+
+@app.get("/api/v1/map/roads", tags=["Network"])
+def map_roads() -> dict[str, Any]:
+    """The intercity road network: motorway, trunk and primary only.
+
+    `properties.highway` is the road class and `ref` the road number (RN1, A1,
+    …), which is what a rider recognises. Secondary and tertiary roads are
+    omitted as visual noise. Simplified at build time to ~16 m.
+    """
+    return _load_overlay(_MAP_ROADS_PATH, "road")
+
+
+@app.get("/api/v1/map/overlays", tags=["Network"])
+def map_overlays() -> dict[str, Any]:
+    """Rail and roads in one response, for a client that wants both at once.
+
+    Either layer may be independently absent; when it is, its entry carries an
+    `error` string instead of features, so one missing overlay does not blank
+    the other.
+    """
+    out: dict[str, Any] = {}
+    for name, path, kind in (("rail", _MAP_RAIL_PATH, "rail"),
+                             ("roads", _MAP_ROADS_PATH, "road")):
+        try:
+            out[name] = _load_overlay(path, kind)
+        except HTTPException as exc:
+            out[name] = {"features": [], "error": str(exc.detail)}
+    return out
+
+
+@app.get("/api/v1/louage/links", tags=["Louage"])
+def louage_links() -> dict[str, Any]:
+    """Which places each national louage station serves.
+
+    Resolved from the 13 national stations' own destination lists against the
+    station records, so each link is a real station id the client can focus.
+    `unresolved` lists destinations that appear in no station record -- they are
+    reported rather than dropped or guessed.
+    """
+    if not _LOUAGE_LINKS_PATH.exists():
+        raise HTTPException(
+            status_code=503,
+            detail=(f"{_LOUAGE_LINKS_PATH.name} is missing; run "
+                    f"`python tool/build_station_index.py`"),
+        )
+    with _LOUAGE_LINKS_PATH.open(encoding="utf-8") as fh:
+        return json.load(fh)
 
 
 

@@ -1,0 +1,86 @@
+{
+ "_comment": "Coordinate corrections for stations proven mis-placed. Applied by tool/apply_station_corrections.py. Every entry records its evidence and confidence so the choice is auditable, not assumed.",
+ "generated": "2026-10-13",
+ "method": "A coordinate is judged against the water index (GSHHG coastline + OSM inland water, validated 12/12 against ground truth). A stop that lands in the sea, or >30 km from the commune the official registry assigns it to, is mis-placed. Correct values come from the official operator registry (TNRP national bus-stop list, _geolocated.json, SNTRI, SRT_NABEUL, SRT Medenine) or from OSM bus_station nodes.",
+ "corrections": [
+  {
+   "id": "dl_bledi_curated_workbook_ajim",
+   "name": "Ajim",
+   "action": "quarantine",
+   "old_lat": 37.162,
+   "old_lon": 9.735,
+   "reason": "Coordinate is 4.86 km offshore in Lake Ichkeul. The same place already exists correctly as dl_sntri_ajim_85358 and dl_tnrp_national_bus_stop_registry_lycee_ajim at 33.7249, 10.7483 (Ajim, Djerba). Correcting this row would only duplicate the good one, so it is retired.",
+   "evidence": [
+    "water index: 37.162, 9.735 is WATER, 4.86 km from the nearest land",
+    "_geolocated.json: Ajim (SNTRI) at 33.72490, 10.74830",
+    "TNRP registry: Ajim (SRT Medenine) at 33.72535, 10.74837, commune Ajim, Delegation Medenine",
+    "OSM bus_stop id 5231248771 'أجيم' at 33.72092, 10.74497"
+   ],
+   "confidence": "high"
+  },
+  {
+   "id": "dl_tnrp_national_bus_stop_registry_محطة_خاصة_السيارات_النقل_الريفي",
+   "name": "محطة خاصة السيارات النقل الريفي",
+   "action": "move",
+   "old_lat": 33.501516,
+   "old_lon": 11.54331,
+   "new_lat": 33.499663,
+   "new_lon": 11.114942,
+   "reason": "The TNRP registry's own coordinate is 32.63 km offshore in the Gulf of Gabes. The SAME registry lists a Zarzis louage station ('محطة سيارات اجرة لواج خطوط داخلية وخارجية', بلدية جرجيس) at 33.499663, 11.114942 — on land, same commune, same terminal function. Its coordinate was evidently corrupted (11.54331 vs 11.114942).",
+   "evidence": [
+    "water index: 33.501516, 11.54331 is WATER, 32.63 km from the nearest land",
+    "TNRP registry row: 'محطة سيارات اجرة لواج خطوط داخلية وخارجية' lon=11.114942 lat=33.499663, Commune=بلدية جرجيس, Type=Station_TNRP, code 5255ST000",
+    "TNRP registry row: 'Zarzis' Gare_Routiere (SNTRI) at 33.4993816, 11.11462666",
+    "all 159 other Zarzis-delegation rows cluster at lat 33.48-33.61, lon 10.78-11.11"
+   ],
+   "confidence": "high"
+  },
+  {
+   "id": "dl_srtgn_croisement_ghorfa_76199",
+   "name": "Croisement ghorfa",
+   "action": "move",
+   "old_lat": 37.0033074,
+   "old_lon": 10.7337504,
+   "new_lat": 36.9897778,
+   "new_lon": 10.9519771,
+   "reason": "Coordinate is 9.21 km offshore in the Gulf of Tunis, but the TNRP registry assigns this stop to commune Haouaria (Nabeul) and the SRT_NABEUL agency. Within Haouaria the same agency lists 'Elghorfa' on land at 36.9897778, 10.9519771 — 2.3 km from the Haouaria median, and 'Croisement ghorfa' is the junction serving that locality.",
+   "evidence": [
+    "water index: 37.0033074, 10.7337504 is WATER, 9.21 km from the nearest land",
+    "TNRP registry: 'Croisement ghorfa' Agence=Haouaria, Societe=SRT_NABEUL, Commune=Haouaria",
+    "TNRP registry: 'Elghorfa' SRT_NABEUL at 36.9897778, 10.9519771, commune Haouaria",
+    "42 Haouaria-commune rows span lat 36.86-37.05, lon 10.74-11.10; the bad point is outside that envelope in the sea"
+   ],
+   "confidence": "medium",
+   "caveat": "The exact junction point is not published. The coordinate used is the same agency's Elghorfa stop, which is the locality the junction serves. Verify on the ground before treating it as exact."
+  },
+  {
+   "id": "dl_bledi_curated_workbook_bir_mouzaina",
+   "name": "Bir Mouzaina",
+   "action": "quarantine",
+   "old_lat": 37.16,
+   "old_lon": 9.72,
+   "reason": "Coordinate is 6.08 km offshore in Lake Ichkeul. The place appears in NO source with a usable position: absent from the TNRP registry, _geolocated.json, the tunismapper dumps (0 matches for 'mouzaina' across 45 MB), and the OSM bus_station exports. Serving a lake point is worse than serving nothing, so it is retired pending a real position.",
+   "evidence": [
+    "water index: 37.16, 9.72 is WATER, 6.08 km from the nearest land",
+    "BLEDI_transport.xlsx 'All stops' row 228: id=bir_mouzaina, operator='Transtu', city=None, source='tunismapper' — but tunismapper contains no such stop",
+    "grep for 'mouzaina' across all 490 files in tunisia-transport-data: only matches are the seed's own rows",
+    "no Nominatim result for 'Bir Mouzaina' / 'Douane Bir Mouzaina' (country=tn)"
+   ],
+   "confidence": "high that it is wrong; unresolvable from available data"
+  },
+  {
+   "id": "dl_bledi_curated_workbook_douane_bir_mouzaina",
+   "name": "Douane Bir Mouzaina",
+   "action": "quarantine",
+   "old_lat": 37.155,
+   "old_lon": 9.705,
+   "reason": "Coordinate is 7.51 km offshore in Lake Ichkeul. Same unresolvable provenance as Bir Mouzaina: no source anywhere carries a position for it.",
+   "evidence": [
+    "water index: 37.155, 9.705 is WATER, 7.51 km from the nearest land",
+    "BLEDI_transport.xlsx 'All stops' row 701: id=douane_bir_mouzaina, operator='Transtu', city=None, source='tunismapper'",
+    "no match in TNRP / _geolocated / tunismapper / OSM exports"
+   ],
+   "confidence": "high that it is wrong; unresolvable from available data"
+  }
+ ]
+}

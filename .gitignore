@@ -105,3 +105,9 @@ data/water_tiles/
 # Audit output. Regenerate with:
 #   python tool/audit_station_placement.py --json out/audit.json
 out/
+
+# Seed backups written by tool/apply_station_corrections.py and
+# tool/promote_artifacts.py before each mutation. Kept on disk for rollback,
+# not committed: they are full copies of a 4-5 MB file and git history already
+# holds the previous revision.
+data/*.bak-*
