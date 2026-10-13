@@ -153,10 +153,54 @@ interface GeocodeResult {
   type?: string;
 }
 
+/**
+ * A built map overlay (rail or road alignment), in Leaflet order.
+ * `properties.mode` is train/metro for rail; `properties.highway` and `ref`
+ * carry the road class and number (RN1, A1) for roads.
+ */
+export interface MapOverlayFeature {
+  kind: "rail" | "road";
+  properties: {
+    mode?: string;
+    railway?: string;
+    highway?: string;
+    ref?: string;
+    name?: string;
+    operator?: string;
+    lanes?: string;
+    oneway?: string;
+  };
+  geometry: [number, number][];
+}
+
+export interface MapOverlay {
+  features: MapOverlayFeature[];
+  metadata?: Record<string, unknown>;
+  error?: string;
+}
+
+/** One louage station's link to a place it serves. */
+export interface LouageLink {
+  from: string;
+  to: string;
+  from_name: string;
+  to_name: string;
+  destination_raw: string;
+}
+
+export interface LouageLinks {
+  links: LouageLink[];
+  /** Destinations named by a louage station that match no station record. */
+  unresolved: Record<string, number>;
+}
+
 interface Api {
   getStations(): Promise<{ features: unknown[]; metadata: StationsMeta }>;
   getLines(): Promise<Line[]>;
   getNetwork(modes?: string): Promise<NetworkResponse>;
+  getMapRail(): Promise<MapOverlay>;
+  getMapRoads(): Promise<MapOverlay>;
+  getLouageLinks(): Promise<LouageLinks>;
   getStation(id: string): Promise<StationDetail>;
   searchPlaces(
     q: string,
@@ -200,6 +244,38 @@ export const api: Api = {
     const res = await fetch(`${BASE}/network?${q.toString()}`);
     if (!res.ok) throw new Error(`GET /api/v1/network -> ${res.status}`);
     return res.json() as Promise<NetworkResponse>;
+  },
+
+  /**
+   * Rail and road base layers. These are the physical network from the official
+   * Overpass exports, separate from /network's per-route geometry. A 503 means
+   * the overlay was never built; that is surfaced as an empty layer carrying an
+   * `error`, not thrown, so one missing overlay cannot blank the map.
+   */
+  async getMapRail() {
+    const res = await fetch(`${BASE}/map/rail`);
+    if (res.status === 503) {
+      const j = await res.json().catch(() => ({}));
+      return { features: [], error: j.detail ?? "rail overlay not built" } as MapOverlay;
+    }
+    if (!res.ok) throw new Error(`GET /api/v1/map/rail -> ${res.status}`);
+    return res.json() as Promise<MapOverlay>;
+  },
+
+  async getMapRoads() {
+    const res = await fetch(`${BASE}/map/roads`);
+    if (res.status === 503) {
+      const j = await res.json().catch(() => ({}));
+      return { features: [], error: j.detail ?? "road overlay not built" } as MapOverlay;
+    }
+    if (!res.ok) throw new Error(`GET /api/v1/map/roads -> ${res.status}`);
+    return res.json() as Promise<MapOverlay>;
+  },
+
+  async getLouageLinks() {
+    const res = await fetch(`${BASE}/louage/links`);
+    if (!res.ok) throw new Error(`GET /api/v1/louage/links -> ${res.status}`);
+    return res.json() as Promise<LouageLinks>;
   },
 
   async getStation(id) {

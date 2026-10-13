@@ -14,6 +14,8 @@
     type StationDetail,
     type StationsMeta,
     type PlaceHit,
+    type MapOverlayFeature,
+    type LouageLink,
   } from "$lib/router";
   import { LANGS, translator, dirOf, formatDuration, modeLabel, type Lang } from "$lib/i18n";
   import {
@@ -128,6 +130,13 @@
   let network = $state<NetworkSegment[]>([]);
   let loadingNetwork = $state(true);
   let error = $state("");
+
+  // Physical rail/road base layers, plus the louage connection graph.
+  let baseLayers: Record<string, L.LayerGroup | null> = { roads: null, rail: null };
+  let baseRail = $state<MapOverlayFeature[]>([]);
+  let baseRoads = $state<MapOverlayFeature[]>([]);
+  let baseError = $state("");
+  let louageLinks = $state<LouageLink[]>([]);
 
   // ── Endpoints ─────────────────────────────────────────────────────────────
   // An endpoint is a NAMED place, not a pair of numbers. The rider picks it by
@@ -304,6 +313,14 @@
     { mode: "train", z: 384 },
   ];
 
+  // The physical network, drawn UNDER the per-route network: every motorway,
+  // trunk and primary road, and every rail/light-rail alignment in the country.
+  // Built by tool/build_map_overlays.py from the official Overpass exports.
+  const BASE_PANES: { key: string; z: number }[] = [
+    { key: "roads", z: 360 },
+    { key: "rail", z: 370 },
+  ];
+
   function initMap() {
     if (!mapEl) return;
     map = L.map(mapEl, {
@@ -342,6 +359,14 @@
       const el = map.getPane(name);
       if (el) { el.style.zIndex = String(p.z); el.style.pointerEvents = "none"; }
       netLayers[p.mode] = L.layerGroup().addTo(map);
+    }
+
+    for (const p of BASE_PANES) {
+      const name = `base_${p.key}`;
+      map.createPane(name);
+      const el = map.getPane(name);
+      if (el) { el.style.zIndex = String(p.z); el.style.pointerEvents = "none"; }
+      baseLayers[p.key] = L.layerGroup().addTo(map);
     }
 
     stationLayer = L.layerGroup().addTo(map);
@@ -437,6 +462,77 @@
       const isRail = p.mode === "train" || p.mode === "metro" || p.mode === "tram";
       el.style.display = (isRail ? railOn : roadOn) ? "" : "none";
     }
+    for (const p of BASE_PANES) {
+      const el = map.getPane(`base_${p.key}`);
+      if (!el) continue;
+      el.style.display = (p.key === "rail" ? railOn : roadOn) ? "" : "none";
+    }
+  }
+
+  // ── Physical base layers (rail + roads) ───────────────────────────────────
+  /**
+   * Draw the country's rail and road alignments beneath the per-route network.
+   *
+   * Styling is deliberately quieter than the route network: these are context,
+   * not the answer to "how do I get there". Rail is coloured by mode so light
+   * rail reads differently from mainline; roads are one muted grey so the
+   * road numbers stay legible without competing with the route.
+   */
+  function buildBaseLayers() {
+    if (!map) return;
+    for (const p of BASE_PANES) baseLayers[p.key]?.clearLayers();
+
+    const railLayer = baseLayers.rail;
+    if (railLayer) {
+      const railRenderer = L.canvas({ padding: 0.5, pane: "base_rail" });
+      for (const f of baseRail) {
+        if (!f.geometry || f.geometry.length < 2) continue;
+        const isMetro = (f.properties?.mode ?? "") === "metro";
+        L.polyline(f.geometry, {
+          color: isMetro ? modeColor("metro") : modeColor("train"),
+          weight: isMetro ? 1.9 : 2.3,
+          opacity: isMetro ? 0.6 : 0.72,
+          lineCap: "round",
+          lineJoin: "round",
+          interactive: false,
+          renderer: railRenderer,
+        }).addTo(railLayer);
+      }
+    }
+
+    const roadLayer = baseLayers.roads;
+    if (roadLayer) {
+      const roadRenderer = L.canvas({ padding: 0.5, pane: "base_roads" });
+      for (const f of baseRoads) {
+        if (!f.geometry || f.geometry.length < 2) continue;
+        const hw = f.properties?.highway ?? "";
+        // Motorways carry the most weight; primary the least.
+        const w = hw === "motorway" ? 1.9 : hw === "trunk" ? 1.5 : 1.1;
+        L.polyline(f.geometry, {
+          color: "#6b6f8a",
+          weight: w,
+          opacity: hw === "primary" ? 0.3 : 0.42,
+          lineCap: "round",
+          lineJoin: "round",
+          interactive: false,
+          renderer: roadRenderer,
+        }).addTo(roadLayer);
+      }
+    }
+    applyNetworkVisibility();
+  }
+
+  // ── Louage connections ────────────────────────────────────────────────────
+  /** Destinations this louage terminal serves, as resolved station records. */
+  function louageDestinations(stationId: string): LouageLink[] {
+    return louageLinks.filter((l) => l.from === stationId);
+  }
+
+  /** Centre the map on a station and open its inspector. */
+  function focusStation(id: string, name: string) {
+    const s = stations.find((x) => x.id === id);
+    if (s) map?.setView([s.lat, s.lon], Math.max(map.getZoom(), 13));
+    inspectStation(id, name);
   }
 
   // ── Stations ──────────────────────────────────────────────────────────────
@@ -914,6 +1010,7 @@
       // be redrawn to follow the theme.
       refreshStations();
       buildNetwork();
+      buildBaseLayers();
     });
 
     (async () => {
@@ -947,6 +1044,30 @@
       } finally {
         loadingNetwork = false;
       }
+    })();
+
+    // Physical base layers + louage links. Each is independent: a failure in
+    // one is recorded in baseError and leaves the others working, rather than
+    // taking down the whole map.
+    (async () => {
+      const problems: string[] = [];
+      try {
+        const [rail, roads] = await Promise.all([api.getMapRail(), api.getMapRoads()]);
+        baseRail = rail.features ?? [];
+        baseRoads = roads.features ?? [];
+        if (rail.error) problems.push(`rail: ${rail.error}`);
+        if (roads.error) problems.push(`roads: ${roads.error}`);
+        buildBaseLayers();
+      } catch (e) {
+        problems.push(e instanceof Error ? e.message : String(e));
+      }
+      try {
+        const lou = await api.getLouageLinks();
+        louageLinks = lou.links ?? [];
+      } catch (e) {
+        problems.push(`louage: ${e instanceof Error ? e.message : String(e)}`);
+      }
+      baseError = problems.join(" · ");
     })();
 
     return () => {
@@ -1411,6 +1532,29 @@
               <p class="ins-none">
                 {inspected.lines_known ? t("station.none") : t("station.unlisted")}
               </p>
+            {/if}
+
+            <!-- Louage connections: which places this louage station serves,
+                 resolved from its own destination list against real station
+                 records. Only shown for stops that ARE a louage terminal. -->
+            {#if louageDestinations(inspected.id).length}
+              <h4 class="ins-sub">{t("station.louage_links")}</h4>
+              <ul class="ins-lines">
+                {#each louageDestinations(inspected.id) as l}
+                  <li>
+                    <button
+                      class="ln-btn"
+                      onclick={() => focusStation(l.to, l.to_name)}
+                      title={l.destination_raw}
+                    >
+                      <span class="ln-top">
+                        <b>{l.to_name}</b>
+                        <span class="ln-role">{t("station.serves")}</span>
+                      </span>
+                    </button>
+                  </li>
+                {/each}
+              </ul>
             {/if}
           {/if}
         </aside>
@@ -2215,6 +2359,29 @@
   .ln-dir { font-size: 11px; color: var(--mu); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .ln-meta { font-size: 10.5px; color: var(--mu-2); }
   .ins-none { margin: 0; font-size: 11.5px; color: var(--mu-2); }
+  /* Louage connections: a sub-heading under the line list, and a button row per
+     destination so a rider can jump to the place the terminal serves. */
+  .ins-sub {
+    margin: 12px 0 6px;
+    font-size: 10.5px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--mu-2);
+    font-weight: 700;
+  }
+  .ln-btn {
+    display: block;
+    width: 100%;
+    text-align: start;
+    background: var(--surf-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 7px 9px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .ln-btn:hover { border-color: var(--n-louaj); background: rgba(0, 229, 192, .08); }
+  .ln-btn:focus-visible { outline: 2px solid var(--n-louaj); outline-offset: 2px; }
 
   .legend {
     position: absolute;
