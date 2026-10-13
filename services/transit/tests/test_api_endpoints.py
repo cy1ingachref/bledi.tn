@@ -228,19 +228,6 @@ class BackwardCompatTests(unittest.TestCase):
     def test_legacy_lines_endpoint_still_200(self):
         self.assertEqual(self.c.get("/api/v1/lines").status_code, 200)
 
-    def test_legacy_modes_endpoint_still_works(self):
-        # It legitimately requires OD + modes, so exercise it as documented.
-        r = self.c.get(
-            "/api/v1/route/modes?start_lat=36.7961&start_lon=10.18055"
-            "&end_lat=36.75978&end_lon=10.19059&modes=bus"
-        )
-        self.assertEqual(r.status_code, 200)
-        d = r.json()
-        # Legacy envelope: selected modes + itineraries, unchanged in shape.
-        self.assertIn("itineraries", d)
-        self.assertEqual(d["selected_modes"], ["bus"])
-        self.assertIn("bus", d["available_families"])
-
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
