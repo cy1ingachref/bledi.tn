@@ -1,11 +1,9 @@
-"""Guards for flexible mode selection and the no-straight-line rule.
+"""Guards for mode restriction and the no-straight-line rule.
 
 Two properties are asserted here, and both are the kind that regress silently:
 
-1. ANY subset of {bus, louaj, train} is a legal selection, and every itinerary
-   returned respects it. An itinerary that ignores part of the selection is a
-   wrong answer, not a partial one -- showing a "Train" journey for a bus-only
-   request is the failure this exists to prevent.
+1. Every itinerary respects the mode set it was searched with. Showing a
+   train journey for a bus-only request is the failure this prevents.
 
 2. A leg long enough for its absence to be visible is never handed to the
    client with an empty polyline and no warning. That combination is exactly
@@ -13,21 +11,14 @@ Two properties are asserted here, and both are the kind that regress silently:
 """
 from __future__ import annotations
 
-from itertools import combinations
-
 import pytest
 
 from bledi_transit.application.routing.router import (
     BUS_MODES,
-    COMBINATIONS,
-    FAMILIES,
     GEOMETRY_REQUIRED_M,
-    OPTION_MODES,
     RAIL_MODES,
     TAXI_MODES,
     build_graph,
-    label_for,
-    modes_for,
 )
 
 TUNIS = (36.8065, 10.1815)
@@ -43,65 +34,32 @@ def _ride_modes(result):
     return {s.get("mode") for s in result.get("steps", []) if s.get("type") == "ride"}
 
 
-class TestEveryCombinationIsLegal:
-    def test_there_are_seven_non_empty_combinations(self):
-        assert len(COMBINATIONS) == 7
-        assert set(COMBINATIONS) == {
-            frozenset(f) for n in range(1, 4) for f in combinations(FAMILIES, n)
-        }
-
-    @pytest.mark.parametrize("size", [1, 2, 3])
-    def test_each_subset_resolves_to_its_union_of_modes(self, size):
-        for subset in combinations(FAMILIES, size):
-            sel = frozenset(subset)
-            modes = modes_for(subset)
-            expected: frozenset[str] = frozenset()
-            for fam in sel:
-                expected = expected | OPTION_MODES[fam]
-            assert modes == expected, f"{sorted(sel)} -> {sorted(modes)}"
-
-    def test_empty_selection_is_none_not_every_mode(self):
-        """None means unrestricted; it must not silently mean "all modes"."""
-        assert modes_for([]) is None
-        assert modes_for(()) is None
-
-    def test_unknown_family_raises(self):
-        with pytest.raises(ValueError, match="unknown transport families"):
-            modes_for(["bus", "spaceship"])
-
-    def test_labels_read_in_a_stable_order(self):
-        assert label_for(frozenset({"bus"})) == "Bus"
-        assert label_for(frozenset({"train", "bus"})) == "Bus + Train / Metro"
-        assert label_for(frozenset({"louaj", "bus", "train"})) == (
-            "Bus + Taxi / Louage + Train / Metro"
-        )
-
-
 class TestSelectionsRestrictTheSearch:
-    @pytest.mark.parametrize("subset", [("bus",), ("train",), ("bus", "train")])
-    def test_result_uses_only_selected_families(self, router, subset):
-        allowed = modes_for(subset)
+    @pytest.mark.parametrize(
+        "allowed", [BUS_MODES, RAIL_MODES, BUS_MODES | RAIL_MODES], ids=["bus", "rail", "bus+rail"]
+    )
+    def test_result_uses_only_selected_modes(self, router, allowed):
         res = router.route(*TUNIS, *SFAX, allowed_modes=allowed)
         modes = _ride_modes(res)
         allowed_ride = {m for m in modes if m != "walk"}
         assert allowed_ride <= allowed, (
-            f"selection {subset} produced {sorted(allowed_ride - allowed)}"
+            f"selection {sorted(allowed)} produced {sorted(allowed_ride - allowed)}"
         )
 
     def test_louaj_selection_yields_a_car_leg_only(self, router):
-        res = router.route(*TUNIS, *SFAX, allowed_modes=modes_for(["louaj"]))
+        res = router.route(*TUNIS, *SFAX, allowed_modes=TAXI_MODES)
         steps = res.get("steps", [])
         assert steps
         assert all(s.get("type") == "taxi" for s in steps)
 
     def test_combination_search_can_use_bus_and_train_together(self, router):
-        """A multi-modal path is NOT reachable by searching one family alone.
+        """A multi-modal path is NOT reachable by searching one mode set alone.
 
         This is the guard on the guard: if the seed ever loses the ability to
         produce a bus+train path, the combination search degrades to a
-        single-mode answer and the per-combination tests would still pass.
+        single-mode answer and the per-selection tests would still pass.
         """
-        res = router.route(*TUNIS, *SFAX, allowed_modes=modes_for(["bus", "train"]))
+        res = router.route(*TUNIS, *SFAX, allowed_modes=BUS_MODES | RAIL_MODES)
         modes = _ride_modes(res) - {"walk"}
         assert len(modes) >= 2, f"expected a mixed bus+train path, got {modes}"
 
@@ -171,17 +129,6 @@ class TestSeedDataQualityIsVisible:
         assert implausible, (
             "no long unmatchable train edges remain -- the seed may have been "
             "repaired; re-run build_route_geometry.py to fill the gaps"
-        )
-
-    def test_families_cover_every_transit_mode_in_the_seed(self):
-        """A mode with no family would be unreachable through /route/modes."""
-        from bledi_transit.application.routing.router import build_graph as _bg
-
-        _graph, router = _bg()
-        every = set().union(*COMBINATIONS.values())
-        assert every >= set(ROUTER_MODES := {"bus", "rfr", "tram", "train",
-                                             "rail", "metro", "taxi", "louaj"}), (
-            f"modes with no family: {sorted(ROUTER_MODES - every)}"
         )
 
 

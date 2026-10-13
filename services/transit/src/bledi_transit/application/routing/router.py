@@ -458,15 +458,6 @@ class Edge:
         return not self.geometry and self.straight_m >= GEOMETRY_REQUIRED_M
 
 
-# Mode families for the three user-facing options. The user picks a transport
-# option; each option is searched separately with its own mode restriction
-# rather than being derived from one combined answer. That matters because a
-# combined search minimises total time and will happily return a train when the
-# user asked for a bus, and vice versa.
-#
-# "louaj" is the Tunisian shared-taxi: a car, so it follows the road network
-# and is priced at taxi speed. It is distinct from a scheduled bus only in that
-# it needs no timetable.
 # ── Fare model (C5) ──────────────────────────────────────────────────────
 # Approximate, DOCUMENTED, and deliberately not a fare oracle: this is what
 # objective=cheapest ranks by, so it must be monotone and defensible rather
@@ -533,8 +524,7 @@ def fare_for_itinerary(legs: Sequence[dict[str, Any]]) -> float:
 # Previously metro was folded into RAIL_MODES with train, which made
 # "no metro but train is fine" inexpressible: a user could not exclude one
 # without excluding both. Modes are now flat and each is independently
-# includable/excludable. FAMILIES survives as a grouping layer for the older
-# family-based API, but nothing hides one mode inside another any more.
+# includable/excludable.
 #
 # User-facing mode -> seed line.mode values that map onto it.
 # The louage_red|blue|green tags come from the secondary louage seed
@@ -566,11 +556,6 @@ USER_MODES: tuple[str, ...] = (
     "walk",
 )
 
-# Modes that actually appear as scheduled lines in the network. walk is always
-# permitted for access/egress and is never a selectable transport family on
-# its own (Part E: it is not a "transport family" unless the trip is short).
-TRANSIT_MODES: tuple[str, ...] = ("bus", "tram", "metro", "train", "louaj", "taxi")
-
 # French labels. The API and the UI are already French; mixing English in here
 # would be a regression, so en/ar are deliberately NOT added (Part B5).
 MODE_LABELS_FR: dict[str, str] = {
@@ -588,34 +573,9 @@ MODE_LABELS_FR: dict[str, str] = {
     "unclassified": "Non classé",
 }
 
-# Legacy family groupings, kept so /api/v1/route/modes and
-# /api/v1/route/options keep working unchanged. These are groupings, NOT the
-# unit of exclusion any more.
 BUS_MODES: frozenset[str] = frozenset({"bus", "rfr", "tram"})
 RAIL_MODES: frozenset[str] = frozenset({"train", "rail", "metro"})
 TAXI_MODES: frozenset[str] = frozenset({"taxi", "louaj"})
-
-# The old family -> raw-mode map. Note the family layer can no longer express
-# "metro without train"; use include/exclude on USER_MODES for that.
-OPTION_MODES: dict[str, frozenset[str]] = {
-    "bus": BUS_MODES,
-    "louaj": TAXI_MODES,
-    "train": RAIL_MODES,
-}
-
-FAMILIES: tuple[str, ...] = ("bus", "louaj", "train")
-
-from itertools import combinations as _combinations  # noqa: E402
-
-COMBINATIONS: dict[frozenset[str], frozenset[str]] = {}
-for _n in range(1, len(FAMILIES) + 1):
-    for _combo in _combinations(FAMILIES, _n):
-        _key = frozenset(_combo)
-        _modes: frozenset[str] = frozenset()
-        for _fam in _key:
-            _modes = _modes | OPTION_MODES[_fam]
-        COMBINATIONS[_key] = _modes
-
 
 def canonical_mode(raw: str | None) -> str:
     """Map a seed line.mode onto one of USER_MODES. Unknown -> "bus".
@@ -693,28 +653,6 @@ def resolve_allowed_modes(
             )
         return frozenset(allowed | {"walk"})
     return None
-
-
-def modes_for(families: frozenset[str] | list[str] | set[str]) -> frozenset[str] | None:
-    """Mode set for a selection of families, or None when the selection is empty.
-
-    Legacy family-based helper, retained for /api/v1/route/modes. It cannot
-    express "metro but not train"; callers needing that must use
-    resolve_allowed_modes() with include/exclude.
-    """
-    if not families:
-        return None
-    key = frozenset(families)
-    if key not in COMBINATIONS:
-        unknown = key - set(FAMILIES)
-        raise ValueError(f"unknown transport families: {sorted(unknown)}")
-    return COMBINATIONS[key]
-
-
-def label_for(families: frozenset[str]) -> str:
-    """Human label for a legacy family selection."""
-    names = {"bus": "Bus", "louaj": "Taxi / Louage", "train": "Train / Metro"}
-    return " + ".join(names[f] for f in FAMILIES if f in families)
 
 
 def mode_label_fr(mode: str) -> str:
