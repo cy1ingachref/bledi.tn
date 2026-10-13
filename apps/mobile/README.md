@@ -205,7 +205,6 @@ locales disagree on their key set.
 - `Other` groups stations further than 60 km from any governorate seat. Border
   cases such as Maknassy and Sened are really Sfax-area; correcting that needs
   real boundary data the seed does not carry.
-- Routing calls the local router only. The tunismapper proxy is disabled
-  upstream by default (`ENABLE_TUNISMAPPER_PROXY`).
+- Routing calls the local router only.
 - Not yet verified on a real Android or iOS device; only web has been exercised
   against a live backend.

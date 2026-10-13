@@ -1,51 +1,32 @@
 # Quick start
 
-## Prerequisites
-
-- Python 3.11+ with pip
-- (Optional) Docker, for OSRM driving-route geometry
-
-## Install
+## Run everything
 
 ```bash
-python -m pip install -r requirements.txt
+cp .env.example .env    # then fill each value with: openssl rand -hex 32
+docker compose up --build
 ```
 
-## Run the API
+Open `http://localhost:8080`. The web gateway serves the app and sends
+`/api/v1/*` to the right service (see [architecture](architecture.md)).
+
+## Work on one part
+
+Transit, on `:8000`:
 
 ```bash
-uvicorn src.backend.app.main:app --host 127.0.0.1 --port 8000
+pip install -e 'services/transit[dev]'
+uvicorn --factory bledi_transit.main:create_app --port 8000
 ```
 
-The API serves `frontend/index.html` at `/` and the API itself under `/api/v1/*`.
-
-## Optional: OSRM
-
-OSRM provides driving/taxi road geometry. The API falls back gracefully if OSRM
-is not available.
+Web, on `:5173`. The dev server proxies the accounts paths to `:3000` and every
+other `/api` path to `:8000`:
 
 ```bash
-docker pull osrm/osrm-backend
-docker run -t -v "${PWD}:/data -p 5000:5000 osrm/osrm-backend osrm-routed --algorithm mld /data/scripts/tunisia-latest.osrm
+cd apps/web && npm ci && npm run dev
 ```
 
-Set `OSRM_URL=http://localhost:5000/route/v1/driving` if the container uses a
-different port.
-
-## Open the frontend
-
-- Via the API: `http://localhost:8000`
-- Directly from disk: open `frontend/index.html` in a browser (it calls
-  `http://localhost:8000/api/v1/*` — start the API first).
-
-## First trip
-
-1. Click **Repère le départ** / **Repère l'arrivée** on the map, or type a place
-   name in the search boxes and click **Rechercher**.
-2. Optionally pick a departure time.
-3. Click **Itinéraire transport public** for transit, or **Calculer l'itinéraire
-   (OSRM)** for driving/taxi.
-4. Results appear in the panel; click an option to show it on the map.
+Accounts needs PostgreSQL; see the [README](../README.md#accounts).
 
 ## Routing: modes, objectives, stations and lines
 
@@ -169,30 +150,29 @@ first stop to last is **never** fabricated:
 
 ### Fare model
 
-`objective=cheapest` ranks on a documented heuristic in `routing.FARE_DINARS`
+`objective=cheapest` ranks on a documented heuristic in `domain/fares.py`
 (base DT + DT per km), charged **once per boarded line** — an itinerary is
 expanded per stop, so charging per leg over-quoted a bus+train trip ~5x. Never
 returns `null`.
 
-### Legacy endpoints
+### `GET /api/v1/route/transit`
 
-`/api/v1/route/transit`, `/api/v1/route/options` and `/api/v1/route/modes` still
-work unchanged for existing clients. `/api/v1/route/plan` is the endpoint to use
-for new work.
+The fastest itinerary, in the `best_fastest` / `legs` envelope the mobile app reads.
+`/api/v1/route/plan` is the endpoint to use for new work.
 
-## Environment variables
+## Transit environment variables
 
-| Variable | Default | Notes |
-|---|---|---|
-| `OSRM_URL` | `http://localhost:5000/route/v1/driving` | OSRM endpoint |
-| `OSRM_TIMEOUT` | `10` | OSRM request timeout (seconds) |
-| `ALLOWED_ORIGINS` | `http://127.0.0.1:8000,http://localhost:8000,http://localhost:5173` | CORS origins |
-| `ENABLE_TUNISMAPPER_PROXY` | unset | Set to `1`/`true`/`yes` to re-enable the Tunismapper itinerary proxy (disabled by default, returns 410) |
+- `BLEDI_DATA_DIR`: the seed and geometry files, `data/` in the repo by default.
+- `ROAD_GRAPH_PATH`, `RAIL_GRAPH_PATH`: the routing graphs, `road_graph.npz` and
+  `rail_graph.npz` in the data directory by default. Without the road graph,
+  road legs fall back to the geometry caches or straight lines.
+- `ALLOWED_ORIGINS`: comma separated CORS origins, the local dev and gateway
+  origins by default.
 
 ## Tests
 
 ```bash
-python -m pytest tests/ -v
+cd services/transit && lint-imports && pytest
 ```
 
 ## Data provenance and licensing

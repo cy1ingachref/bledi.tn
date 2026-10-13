@@ -2,14 +2,10 @@
 
 ## Current state
 
-The repository currently contains a working backend (`src/backend/app/main.py`),
-a physical-cost local router (`src/backend/app/routing.py`), a canonical
-Leaflet frontend (`frontend/index.html`), a self-contained offline variant
-(`frontend/bledi-map.html`), and a Flutter client (`src/mobile/`). Seed data
-covers 232 lines and 1,711 stations countrywide, from which `/api/v1/stations`
-serves 1,729 features (the extra 18 are the merged louage/taxi hubs — see
-`StationsMeta.total` vs `count`). See `README.md` for what exists today and
-`docs/provenance.md` for the data-source audit.
+Two services (transit routing in Python, accounts in Rust), a SvelteKit web app
+that also serves as the gateway, and a Flutter client. Seed data covers 379
+lines and 7,452 stations countrywide. See [architecture](architecture.md) for
+how the parts fit and [provenance](provenance.md) for the data-source audit.
 
 ## Previously planned phases (kept for context, not commitments)
 
