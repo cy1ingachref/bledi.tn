@@ -2,11 +2,11 @@
 """Regression test: transfer count must not double-count when a transfer
 also crosses modes (bus -> train).
 
-The _router_to_option conversion in main.py used two independent checks
+The router_to_option conversion used two independent checks
 that were not mutually exclusive: a "transfer" step type AND a mode-change
 between consecutive rides. Fix uses an after_transfer flag so a bus->train
 transfer is counted once. This file contains:
-- static tests of _router_to_option (conversion logic)
+- static tests of router_to_option (conversion logic)
 - dynamic end-to-end tests using the real Router + tagged seed
   (routes involving mode changes on real corridors)
 """
@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import pytest
 
-from bledi_transit.main import _router_to_option
+from support import to_option
 
 
 def _step(type_, mode, line, from_=None, to=None, label="", to_name="", from_name=""):
@@ -62,7 +62,7 @@ class TestTransferCountNoDoubleCount:
                       label="Train 36", to_name="Gare"),
             ],
         }
-        opt = _router_to_option(router_out)
+        opt = to_option(router_out)
         assert opt["transfers"] == 1, f"expected 1 transfer, got {opt['transfers']} in {opt}"
 
     def test_two_transfers_count_twice(self):
@@ -77,7 +77,7 @@ class TestTransferCountNoDoubleCount:
                 _ride("train", "TRAIN-1", from_={"lat": 2, "lon": 2}, to={"lat": 3, "lon": 2}, label="Train"),
             ],
         }
-        opt = _router_to_option(router_out)
+        opt = to_option(router_out)
         assert opt["transfers"] == 2, f"expected 2 transfers, got {opt['transfers']}"
 
     def test_mode_change_without_explicit_transfer_step_still_counts(self):
@@ -91,7 +91,7 @@ class TestTransferCountNoDoubleCount:
                 _ride("train", "TRAIN-1", from_={"lat": 1, "lon": 0}, to={"lat": 2, "lon": 0}, label="Train"),
             ],
         }
-        opt = _router_to_option(router_out)
+        opt = to_option(router_out)
         assert opt["transfers"] == 1, f"expected 1 transfer (mode change), got {opt['transfers']}"
 
 
@@ -100,7 +100,7 @@ class TestTransferCountNoDoubleCount:
 
 class TestTransferCountEndToEnd:
     """Dynamic tests: run the real Router against the tagged seed, convert
-    with _router_to_option, and assert transfer counts are sane on
+    with router_to_option, and assert transfer counts are sane on
     multi-leg / multi-mode routes."""
 
     @pytest.fixture(scope="class")
@@ -114,10 +114,9 @@ class TestTransferCountEndToEnd:
         resolves as a single line (no transfer) must report transfers == 0,
         and a path that genuinely transfers once must report transfers == 1,
         never 2."""
-        from bledi_transit.main import _router_to_option
         res = router.route(36.806, 10.184, 36.914, 9.866)
         assert res.get("error") is None, res
-        opt = _router_to_option(res)
+        opt = to_option(res)
         # The invariant under test is that a transfer is never double-counted,
         # not that this particular OD pair happens to be a single line. Walk
         # edges (added so the router can reach stops no line calls at) changed
@@ -133,19 +132,18 @@ class TestTransferCountEndToEnd:
         )
         assert opt["transfers"] <= len(ride_steps), (
             f"transfers ({opt['transfers']}) exceed ride steps ({len(ride_steps)}): "
-            f"double-count bug in _router_to_option\n{opt}"
+            f"double-count bug in router_to_option\n{opt}"
         )
 
     def test_real_path_with_walk_transfer_counts_correctly(self, router):
         """A path that contains an intermediate walk (between lines) should
         have has_walk_transfer True and transfers reflecting only real line
         changes, not the walk."""
-        from bledi_transit.main import _router_to_option
         # Tunis Centre -> Birsa (TGM) then walk to another line.
         # Use a pair close enough to get a transit path.
         res = router.route(36.806, 10.184, 36.816, 10.174)
         assert res.get("error") is None, res
-        opt = _router_to_option(res)
+        opt = to_option(res)
         # Transfers must be a non-negative integer; has_walk_transfer must be
         # a bool; under no circumstances may transfers exceed the number of
         # ride steps (which would indicate double-counting).
@@ -154,5 +152,5 @@ class TestTransferCountEndToEnd:
         ride_steps = [s for s in opt["steps"] if s["type"] == "ride"]
         assert opt["transfers"] <= len(ride_steps), (
             f"transfers ({opt['transfers']}) exceed ride steps ({len(ride_steps)}): "
-            f"double-count bug in _router_to_option\n{opt}"
+            f"double-count bug in router_to_option\n{opt}"
         )

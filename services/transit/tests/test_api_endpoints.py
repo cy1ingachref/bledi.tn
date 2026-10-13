@@ -11,10 +11,9 @@ from __future__ import annotations
 
 import unittest
 
-from fastapi.testclient import TestClient
+from support import client, services
 
 from bledi_transit.domain.modes import canonical_mode
-from bledi_transit.main import app
 
 TUNIS_A = (36.7961, 10.18055)
 TUNIS_B = (36.75978, 10.19059)
@@ -33,7 +32,7 @@ def plan_url(a=TUNIS_A, b=TUNIS_B, **params):
 class PlanEndpointTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.c = TestClient(app)
+        cls.c = client()
 
     def test_health_still_works(self):
         r = self.c.get("/api/v1/health")
@@ -100,7 +99,7 @@ class StationDetailTests(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.c = TestClient(app)
+        cls.c = client()
 
     def test_station_detail_shape(self):
         r = self.c.get("/api/v1/stations/place_barcelone_sud")
@@ -120,10 +119,9 @@ class StationDetailTests(unittest.TestCase):
     def test_lines_really_contain_this_stop(self):
         """Built from the line -> stops index, so this must hold exactly."""
         d = self.c.get("/api/v1/stations/place_barcelone_sud").json()
-        from bledi_transit.main import LINE_BY_ID
-
+        line_by_id = services().catalog.network.line_by_id
         for li in d["lines"]:
-            ln = LINE_BY_ID.get(li["line_id"])
+            ln = line_by_id.get(li["line_id"])
             self.assertIsNotNone(ln, li["line_id"])
             stops = ln.get("stations") or ln.get("stops") or []
             self.assertIn("place_barcelone_sud", stops)
@@ -134,7 +132,7 @@ class StationDetailTests(unittest.TestCase):
     def test_modes_sorted_in_display_order(self):
         """Find a real multi-mode stop and assert the ordering contract."""
         from bledi_transit.domain.modes import USER_MODES
-        from bledi_transit.main import ROUTER
+        ROUTER = services().router
 
         target = None
         for sid, lids in ROUTER.lines_by_station.items():
@@ -162,7 +160,7 @@ class LineDetailTests(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.c = TestClient(app)
+        cls.c = client()
 
     def test_line_detail_has_ordered_stops(self):
         r = self.c.get("/api/v1/lines/train_23_sncft")
@@ -212,7 +210,7 @@ class BackwardCompatTests(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.c = TestClient(app)
+        cls.c = client()
 
     def test_legacy_transit_endpoint_still_200(self):
         r = self.c.get(
