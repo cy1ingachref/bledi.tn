@@ -8,7 +8,9 @@ services:
       - db_data:/var/lib/postgresql/data
       - ./services/accounts/docker/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d accounts"]
+      # Over TCP: the entrypoint's init server listens on the socket only, so a
+      # socket check passes before init-db.sh has created the accounts role.
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U postgres -d accounts"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -22,6 +24,7 @@ services:
       # The web gateway is the only way in, and it overwrites X-Forwarded-For.
       TRUST_PROXY_HEADERS: "1"
       RUST_LOG: info
+    restart: on-failure
     depends_on:
       db:
         condition: service_healthy
