@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["bledi-application", "bledi-core", "bledi-domain", "bledi-http", "bledi-postgres", "bledi-server"]
+members = ["bledi-application", "bledi-domain", "bledi-http", "bledi-postgres", "bledi-server"]
 
 [workspace.dependencies]
 tokio = { version = "1", features = ["full"] }
@@ -16,6 +16,4 @@ bcrypt = "0.15"
 tower-http = { version = "0.5", features = ["cors", "trace"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
-thiserror = "1"
-config = "0.14"
 dotenvy = "0.15"
