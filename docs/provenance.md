@@ -134,8 +134,8 @@ The code does not assume the data is open-licensed:
 - `LICENSE.TODO` states the license is undecided and points here.
 - `README.md` links to this document and does not claim MIT or any other
   license for the dataset.
-- The `/api/v1/itinerary` Tunismapper proxy is disabled by default precisely
-  because the source's terms are unverified.
+- There is no Tunismapper itinerary proxy, because the source's terms are
+  unverified.
 
 ## Regenerating the tagged file
 

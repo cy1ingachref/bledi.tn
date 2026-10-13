@@ -44,7 +44,7 @@ python tool/inspect_louage_endpoints.py
 
 ### Four hardcoded city seats are wrong, and they drive station→city assignment
 
-`CITY_SEATS` in `src/backend/app/main.py` is the governorate-seat list used by
+`CITY_SEATS` in `services/transit/src/bledi_transit/domain/cities.py` is the governorate-seat list used by
 `nearest_city()`, which assigns **every** station to a city. Checked by
 comparing each seat to stops of the same name and to Nominatim:
 
