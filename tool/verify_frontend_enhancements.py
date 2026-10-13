@@ -338,7 +338,7 @@ def main() -> int:
         check_search()
     except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
         print(f"BACKEND UNREACHABLE: {exc}")
-        print("start it with: python -m uvicorn src.backend.app.main:app --port 8000")
+        print("start it with: uvicorn --factory bledi_transit.main:create_app --port 8000")
         return 2
 
     check_built_css()

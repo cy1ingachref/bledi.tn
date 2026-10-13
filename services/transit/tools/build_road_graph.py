@@ -23,23 +23,20 @@ identity so shared endpoints become one node. Topology comes only from this
 GPKG; geometry is resampled to at most ~25 m per point on read.
 
 Usage:
-  python src/backend/tool/build_road_graph.py [--gpkg PATH] [--out PATH]
+  python services/transit/tools/build_road_graph.py [--gpkg PATH] [--out PATH]
 """
 
 from __future__ import annotations
 
 import argparse
 from pathlib import Path
-import math
 import os
-import sys
 import time
-from typing import Iterator
 
 import numpy as np
+from gpkg_roads import iter_roads
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from gpkg_roads import iter_roads  # noqa: E402
+from bledi_transit.domain.geo import haversine_m
 
 # Bit layout of the per-edge flags byte.
 MODE_CAR, MODE_FOOT, MODE_BIKE = 1, 2, 4
@@ -77,16 +74,7 @@ CLASS_TABLE: dict[str, tuple[int, float, float, float]] = {
 
 # Exclude plain 'construction' etc. by omission from CLASS_TABLE.
 QUANT = 6  # decimal places for node identity
-EARTH_R = 6371008.8
 MAX_EDGE_M = 4000.0  # guards against a bogus geometry joining two far nodes
-
-
-def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    p1, p2 = math.radians(lat1), math.radians(lat2)
-    dp = p2 - p1
-    dl = math.radians(lon2 - lon1)
-    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
-    return 2 * EARTH_R * math.asin(min(1.0, math.sqrt(a)))
 
 
 def is_forward_only(oneway: str | None) -> bool:

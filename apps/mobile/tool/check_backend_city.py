@@ -1,33 +1,26 @@
 #!/usr/bin/env python3
 """Sanity-check the backend's station→city assignment without starting it.
 
-Run from anywhere; the backend package is located relative to this file:
+Needs the transit service installed (`pip install -e services/transit`):
 
-    python tool/check_backend_city.py
+    python apps/mobile/tool/check_backend_city.py
 
-Imports `src.backend.app.main` (which needs the repository root on sys.path) and
-exercises the pure helpers, so a syntax or import error surfaces here rather
-than at server start.
+Exercises the pure helpers on the real seed, so a syntax or import error
+surfaces here rather than at server start.
 """
 
 import sys
 from pathlib import Path
 
+from bledi_transit.adapters.seed_files import SeedFileNetwork
+from bledi_transit.domain.cities import CITY_SEATS, MAX_CITY_DISTANCE_KM, nearest_city
+
 # apps/mobile/tool/ -> apps/mobile/ -> apps/ -> repo root
 REPO = Path(__file__).resolve().parents[3]
-if not (REPO / "src" / "backend" / "app" / "main.py").is_file():
-    sys.exit(f"backend not found under {REPO}")
-sys.path.insert(0, str(REPO))
-
-from src.backend.app.main import (  # noqa: E402
-    CITY_SEATS,
-    MAX_CITY_DISTANCE_KM,
-    UNASSIGNED_CITY,
-    _LOUAGE_ROUTES_BY_STOP,
-    _LOUAGE_STATIONS,
-    _stations,
-    nearest_city,
-)
+network = SeedFileNetwork(REPO / "data").load()
+_stations = network.stations
+_LOUAGE_STATIONS = network.louage_stations
+_LOUAGE_ROUTES_BY_STOP = network.louage_routes_by_stop
 
 bad = []
 
