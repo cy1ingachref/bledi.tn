@@ -4,23 +4,44 @@
   import L from "leaflet";
   import "leaflet.markercluster";
   import Icon from "$lib/ui/Icon.svelte";
+  import type {
+    Endpoint,
+    NetworkSegment,
+    Objective,
+    RouteLeg,
+    RoutePlan,
+    Station,
+    StationDetail,
+    StationsMeta,
+    PlaceHit,
+    MapOverlayFeature,
+    LouageLink,
+  } from "$lib/domain/transit";
   import {
-    api,
-    stationFromFeature,
-    type NetworkSegment,
-    type RouteLeg,
-    type RoutePlan,
-    type Station,
-    type StationDetail,
-    type StationsMeta,
-    type PlaceHit,
-    type MapOverlayFeature,
-    type LouageLink,
-  } from "$lib/router";
-  import { LANGS, translator, dirOf, formatDuration, modeLabel, type Lang } from "$lib/application/i18n";
+    DEFAULT_MODES,
+    defaultSelection,
+    isStationShown,
+    modeKey,
+    servedModes,
+    uniqueModes,
+  } from "$lib/domain/modes";
+  import { fareOf, isWalkLeg, mergeLegs } from "$lib/domain/itinerary";
+  import { planTrip, tripProblem } from "$lib/application/planTrip";
+  import { loadBaseLayers, loadLouageLinks, louageDestinations } from "$lib/application/mapData";
+  import {
+    LANGS,
+    translator,
+    dirOf,
+    formatDuration,
+    legLabel,
+    modeLabel,
+    modeLabelFor,
+    type Lang,
+  } from "$lib/application/i18n";
+  import { useTransit } from "$lib/ui/context";
+  import { MODE_STYLE, modeColor, modeIcon } from "$lib/ui/modeStyle";
   import {
     initTheme,
-    setTheme,
     cycleTheme,
     resolvedTheme,
     themePref,
@@ -28,58 +49,13 @@
     type ThemePref,
   } from "$lib/ui/theme";
 
-  // ── Transport modes ───────────────────────────────────────────────────────
-  // One neon colour per rider-facing transport type. The same colour is used
-  // for three things, which is the point: the mode chip, the network line on
-  // the map, and the leg of the calculated route. A rider learns one colour
-  // per transport and can then read the whole map.
-  //
-  // Taxi and louage are ONE selectable category: both are road-for-hire and a
-  // rider picks between them on price at the roadside, so two near-identical
-  // chips was a false choice. The backend keeps them as distinct raw modes
-  // ("taxi" / "louaj"); the UI merges them and expands back to both on the
-  // wire (see modesIncludeFor).
-  //
-  // `unclassified` is deliberately NOT in this list. It is a station-only tag
-  // for 76 geocoded sweep stops whose operator export carried no mode: they
-  // have no lines and are not routable, so they are a map-visibility filter,
-  // never a routing mode. Sending "unclassified" to the router would be
-  // silently rewritten to "bus" by the backend's unknown -> bus default.
-  const MODE_META: Record<string, { icon: string; color: string; neon: string }> = {
-    bus: { icon: "bus", color: "#ff3d81", neon: "--n-bus" },
-    tram: { icon: "tram", color: "#ffc400", neon: "--n-tram" },
-    metro: { icon: "metro", color: "#2f7bff", neon: "--n-metro" },
-    train: { icon: "train", color: "#a855f7", neon: "--n-train" },
-    taxi_louage: { icon: "taxi", color: "#00e5c0", neon: "--n-louaj" },
-    walk: { icon: "walk", color: "#8b83a8", neon: "--n-walk" },
-  };
-
-  const MODE_ORDER = ["bus", "tram", "metro", "train", "taxi_louage", "walk"];
-
-  type ModeId = keyof typeof MODE_META;
-
-  // Raw backend mode values that all belong to the merged Taxi/Louage chip.
-  const TAXI_LOUAGE_SEED = new Set([
-    "taxi", "louaj", "louage", "louage_red", "louage_blue", "louage_green",
-  ]);
-
-  /** Collapse any raw mode value onto its selectable UI category. */
-  function modeKey(raw: string): ModeId | "unclassified" {
-    if (raw === "unclassified") return "unclassified";
-    if (TAXI_LOUAGE_SEED.has(raw)) return "taxi_louage";
-    return (raw in MODE_META ? raw : "bus") as ModeId;
-  }
-
-  // Scheduled modes start on: that is the most common Tunisian combination.
-  // Road-for-hire and walking start off. Filtered to modes the data actually
-  // serves once the station inventory arrives.
-  const DEFAULT_ON = ["bus", "metro", "train", "tram"];
-
-  const OBJECTIVES = [
+  const OBJECTIVES: { id: Objective; icon: string }[] = [
     { id: "fastest", icon: "clock" },
     { id: "cheapest", icon: "coin" },
     { id: "fewest_transfers", icon: "transfer" },
-  ] as const;
+  ];
+
+  const transit = useTransit();
 
   // ── State ─────────────────────────────────────────────────────────────────
   let mapEl: HTMLDivElement | null = $state(null);
@@ -113,11 +89,6 @@
     theme === "auto" ? t("theme.auto") : theme === "light" ? t("theme.light") : t("theme.dark")
   );
 
-  function pickTheme(p: ThemePref) {
-    theme = p;
-    setTheme(p);
-  }
-
   function cycleThemeClick() {
     cycleTheme();
     theme = get(themePref);
@@ -135,21 +106,7 @@
   let baseLayers: Record<string, L.LayerGroup | null> = { roads: null, rail: null };
   let baseRail = $state<MapOverlayFeature[]>([]);
   let baseRoads = $state<MapOverlayFeature[]>([]);
-  let baseError = $state("");
   let louageLinks = $state<LouageLink[]>([]);
-
-  // ── Endpoints ─────────────────────────────────────────────────────────────
-  // An endpoint is a NAMED place, not a pair of numbers. The rider picks it by
-  // searching a stop/city name or by clicking the map; latitude and longitude
-  // are never typed. `kind` records how it was chosen so the UI can label it.
-  type Endpoint = {
-    kind: "stop" | "city" | "map" | "gps";
-    name: string;
-    lat: number;
-    lon: number;
-    id?: string;
-    modes?: string[];
-  };
 
   let from = $state<Endpoint | null>(null);
   let to = $state<Endpoint | null>(null);
@@ -157,8 +114,8 @@
   let pickMode = $state<"from" | "to" | null>(null);
   let locating = $state(false);
 
-  let selected = $state<Set<string>>(new Set(DEFAULT_ON));
-  let objective = $state<string>("fastest");
+  let selected = $state<Set<string>>(new Set(DEFAULT_MODES));
+  let objective = $state<Objective>("fastest");
   let routePlan = $state<RoutePlan | null>(null);
   let computing = $state(false);
   let selectedItinerary = $state(0);
@@ -189,34 +146,13 @@
   const hasRoute = $derived((routePlan?.itineraries?.length ?? 0) > 0);
   const focused = $derived(focusRoute && hasRoute);
 
-  /**
-   * The mode chips, built from what the network actually serves.
-   *
-   * Chips are data-driven on purpose. The seed carries no tram lines at all
-   * and folds the three Transtu suburban lines into `train`, so a hardcoded
-   * chip row was offering two modes (tram, rfr) that could never return a
-   * single result. Reading the inventory means the row shows only real
-   * choices, and a mode that gains service appears without a code change.
-   */
-  const chips = $derived.by(() => {
-    const counts: Record<string, number> = {};
-    for (const [raw, n] of Object.entries(stationMeta.by_mode ?? {})) {
-      const k = modeKey(raw);
-      if (k === "unclassified") continue; // its own display toggle
-      counts[k] = (counts[k] ?? 0) + n;
-    }
-    return MODE_ORDER.filter((id) => (counts[id] ?? 0) > 0 || id === "walk").map((id) => ({
-      id,
-      count: counts[id] ?? 0,
-      ...MODE_META[id],
-    }));
-  });
+  const chips = $derived(
+    servedModes(stationMeta.by_mode ?? {}).map((m) => ({ ...m, ...MODE_STYLE[m.id] }))
+  );
 
   const unclassifiedCount = $derived(stationMeta.by_mode?.unclassified ?? 0);
   const shownStops = $derived(
-    stations.filter((s) =>
-      s.mode === "unclassified" ? showUnclassified : selected.has(modeKey(s.mode))
-    ).length
+    stations.filter((s) => isStationShown(s, selected, showUnclassified)).length
   );
 
   function isOn(id: string): boolean {
@@ -238,47 +174,10 @@
     refreshStations();
   }
 
-  /**
-   * Expand the UI selection into the backend's `modes_include` string.
-   *
-   * The merged Taxi/Louage chip must request BOTH raw modes, otherwise
-   * selecting it silently drops louage routes (or taxi ones). Every other chip
-   * maps 1:1.
-   */
-  function modesIncludeFor(): string {
-    const out: string[] = [];
-    for (const id of MODE_ORDER) {
-      if (!selected.has(id)) continue;
-      if (id === "taxi_louage") out.push("taxi", "louaj");
-      else out.push(id);
-    }
-    return out.join(",");
-  }
-
   function showToast(msg: string) {
     toast = msg;
     if (toastTimer) clearTimeout(toastTimer);
     toastTimer = setTimeout(() => (toast = ""), 4200);
-  }
-
-  /** Colour for a raw backend mode value. */
-  function modeColor(raw: string): string {
-    const k = modeKey(raw);
-    return k === "unclassified" ? "#5a5473" : MODE_META[k].color;
-  }
-  function modeIcon(raw: string): string {
-    const k = modeKey(raw);
-    return k === "unclassified" ? "pin" : MODE_META[k].icon;
-  }
-  function modeLabelFor(raw: string): string {
-    const k = modeKey(raw);
-    return k === "unclassified" ? t("modes.unclassified") : modeLabel(t, k);
-  }
-  /** Unique UI categories present in a raw mode list, in display order. */
-  function uniqueModes(raws: string[]): string[] {
-    const seen = new Set<string>();
-    for (const r of raws) seen.add(modeKey(r));
-    return MODE_ORDER.filter((m) => seen.has(m));
   }
 
   /** Theme-aware map colours. Leaflet takes literal colours, not CSS vars. */
@@ -522,12 +421,6 @@
     applyNetworkVisibility();
   }
 
-  // ── Louage connections ────────────────────────────────────────────────────
-  /** Destinations this louage terminal serves, as resolved station records. */
-  function louageDestinations(stationId: string): LouageLink[] {
-    return louageLinks.filter((l) => l.from === stationId);
-  }
-
   /** Centre the map on a station and open its inspector. */
   function focusStation(id: string, name: string) {
     const s = stations.find((x) => x.id === id);
@@ -539,9 +432,7 @@
   function refreshStations() {
     if (!map || !stationLayer) return;
     stationLayer.clearLayers();
-    const visible = stations.filter((s) =>
-      s.mode === "unclassified" ? showUnclassified : selected.has(modeKey(s.mode))
-    );
+    const visible = stations.filter((s) => isStationShown(s, selected, showUnclassified));
 
     // Every stop goes into a marker cluster. A silent stride (drawing every
     // Nth marker) makes a large dataset render identically to a small one, so
@@ -568,7 +459,7 @@
     for (const s of visible) {
       const mk = L.marker([s.lat, s.lon], { icon: stationIcon(s.mode), title: s.name })
         .bindTooltip(
-          `<b>${s.name}</b><span class="tt-sub">${modeLabelFor(s.mode)}</span>`,
+          `<b>${s.name}</b><span class="tt-sub">${modeLabelFor(t, s.mode)}</span>`,
           { direction: "top", offset: [0, -7] }
         )
         .on("click", () => inspectStation(s.id, s.name));
@@ -697,7 +588,7 @@
 
     for (const leg of legs) {
       if (!leg.geometry || leg.geometry.length < 2) continue;
-      const isWalk = (leg.type ?? "").toLowerCase() === "walk";
+      const isWalk = isWalkLeg(leg);
       const key = isWalk ? "walk" : (modeKey(leg.mode ?? "bus") as string);
       const pts = leg.geometry.map(([a, b]) => [a, b] as [number, number]);
       const color = isWalk ? walkColor() : modeColor(leg.mode ?? "bus");
@@ -848,8 +739,8 @@
       modes: [], lines: [], count: 0,
     };
     try {
-      inspected = await api.getStation(id);
-    } catch (e) {
+      inspected = await transit.station(id);
+    } catch {
       inspectError = t("error.station");
       inspected = null;
     } finally {
@@ -862,7 +753,7 @@
     const q = query.trim();
     if (q.length < 2) { hits = []; return; }
     searching = true;
-    api
+    transit
       .searchPlaces(q, from ? { lat: from.lat, lon: from.lon } : null)
       .then((r) => { hits = r; })
       .catch(() => { hits = []; })
@@ -892,19 +783,17 @@
 
   // ── Routing ───────────────────────────────────────────────────────────────
   async function computeRoute() {
-    if (selected.size === 0) { showToast(t("error.noModes")); return; }
-    if (!from || !to) { showToast(t("error.coords")); return; }
+    const problem = tripProblem(selected, from, to);
+    if (problem || !from || !to) {
+      showToast(t(problem === "no_modes" ? "error.noModes" : "error.coords"));
+      return;
+    }
     computing = true;
     routePlan = null;
     error = "";
     inspected = null;
     try {
-      const plan = await api.routePlan({
-        startLat: from.lat, startLon: from.lon,
-        endLat: to.lat, endLon: to.lon,
-        modesInclude: modesIncludeFor(),
-        objective,
-      });
+      const plan = await planTrip(transit, { from, to, selected, objective });
       routePlan = plan;
       selectedItinerary = 0;
       if (plan.itineraries?.length) {
@@ -921,60 +810,8 @@
     }
   }
 
-  /** Fare field differs across API versions; read whichever is present. */
-  function fareOf(itin: Record<string, unknown>): number {
-    const v = itin.fare_estimate_dinars ?? itin.fare_dinars ?? 0;
-    return typeof v === "number" ? v : 0;
-  }
-
-  /** Human-readable step label; `line` is an internal id like "rail_19_a". */
-  function legLabel(leg: RouteLeg): string {
-    if ((leg.type ?? "").toLowerCase() === "walk") return t("step.walk");
-    const base = modeLabelFor(leg.mode ?? "bus");
-    const m = (leg.line ?? "").match(/(\d+[A-Za-z]?)/);
-    return m ? `${base} ${m[1]}` : base;
-  }
-
   function legColor(leg: RouteLeg): string {
-    return (leg.type ?? "").toLowerCase() === "walk"
-      ? "#8b83a8"
-      : modeColor(leg.mode ?? "bus");
-  }
-
-  /**
-   * Collapse consecutive legs that ride the SAME line into one step.
-   *
-   * The router emits one leg per hop, splitting a single ride at every
-   * intermediate stop where a transfer is possible. A 9-hop bus ride therefore
-   * arrived as 9 identical "Bus 75" rows — technically true, useless to read,
-   * and it buried the two real boardings in the list.
-   *
-   * Merging is keyed on (mode, line) plus the walk/ride distinction, so a
-   * genuine change of line or mode still gets its own step.
-   */
-  function mergeLegs(legs: RouteLeg[]): RouteLeg[] {
-    const out: RouteLeg[] = [];
-    for (const leg of legs) {
-      const isWalk = (leg.type ?? "").toLowerCase() === "walk";
-      const prev = out[out.length - 1];
-      const prevWalk = prev ? (prev.type ?? "").toLowerCase() === "walk" : false;
-      const sameRide =
-        prev &&
-        !isWalk &&
-        !prevWalk &&
-        (prev.mode ?? "") === (leg.mode ?? "") &&
-        (prev.line ?? "") === (leg.line ?? "");
-      // Walking legs are never merged: two walks separated by a ride are
-      // different streets, and back-to-back walks only occur across a hop.
-      if (sameRide) {
-        prev.duration_min = (prev.duration_min ?? 0) + (leg.duration_min ?? 0);
-        prev.to_name = leg.to_name ?? prev.to_name;
-        prev.to = leg.to ?? prev.to;
-        continue;
-      }
-      out.push({ ...leg });
-    }
-    return out;
+    return isWalkLeg(leg) ? "#8b83a8" : modeColor(leg.mode ?? "bus");
   }
 
   /** Steps for the selected itinerary, with same-line hops collapsed. */
@@ -1015,16 +852,10 @@
 
     (async () => {
       try {
-        const { features, metadata } = await api.getStations();
-        const parsed = features.map(stationFromFeature).filter((s): s is Station => !!s);
-        stations = parsed;
-        stationMeta = metadata;
-        // Default the mode chips to the scheduled modes the data really has.
-        const present = new Set<string>();
-        for (const [raw, n] of Object.entries(metadata.by_mode ?? {})) {
-          if (n > 0) present.add(modeKey(raw) as string);
-        }
-        selected = new Set(DEFAULT_ON.filter((m) => present.has(m)));
+        const inventory = await transit.stations();
+        stations = inventory.stations;
+        stationMeta = inventory.meta;
+        selected = defaultSelection(inventory.meta.by_mode ?? {});
         refreshStations();
       } catch (e) {
         error = t("error.stations") + ": " + (e instanceof Error ? e.message : String(e));
@@ -1035,39 +866,22 @@
 
     (async () => {
       try {
-        const res = await api.getNetwork();
-        network = res.segments;
+        network = await transit.network();
         buildNetwork();
         applyNetworkVisibility();
-      } catch (e) {
+      } catch {
         error = t("error.network");
       } finally {
         loadingNetwork = false;
       }
     })();
 
-    // Physical base layers + louage links. Each is independent: a failure in
-    // one is recorded in baseError and leaves the others working, rather than
-    // taking down the whole map.
     (async () => {
-      const problems: string[] = [];
-      try {
-        const [rail, roads] = await Promise.all([api.getMapRail(), api.getMapRoads()]);
-        baseRail = rail.features ?? [];
-        baseRoads = roads.features ?? [];
-        if (rail.error) problems.push(`rail: ${rail.error}`);
-        if (roads.error) problems.push(`roads: ${roads.error}`);
-        buildBaseLayers();
-      } catch (e) {
-        problems.push(e instanceof Error ? e.message : String(e));
-      }
-      try {
-        const lou = await api.getLouageLinks();
-        louageLinks = lou.links ?? [];
-      } catch (e) {
-        problems.push(`louage: ${e instanceof Error ? e.message : String(e)}`);
-      }
-      baseError = problems.join(" · ");
+      const base = await loadBaseLayers(transit);
+      baseRail = base.rail;
+      baseRoads = base.roads;
+      buildBaseLayers();
+      louageLinks = await loadLouageLinks(transit);
     })();
 
     return () => {
@@ -1183,7 +997,7 @@
                       <b>{h.name}</b>
                       <small>
                         {h.city}
-                        {#if h.modes.length}· {h.modes.map((m) => modeLabelFor(m)).join(", ")}{/if}
+                        {#if h.modes.length}· {h.modes.map((m) => modeLabelFor(t, m)).join(", ")}{/if}
                       </small>
                     </span>
                     <Icon name="arrowRight" size={13} cls="hit-go" />
@@ -1334,7 +1148,7 @@
             </div>
 
             {#each routePlan.itineraries as itin, i}
-              {@const fare = fareOf(itin as unknown as Record<string, unknown>)}
+              {@const fare = fareOf(itin)}
               <button
                 class="itin"
                 class:on={selectedItinerary === i}
@@ -1348,7 +1162,7 @@
                 <div class="it-fare">
                   {#if fare > 0}<span class="it-price">{fare.toFixed(2)} DT</span>{/if}
                   <span class="it-mode">
-                    {uniqueModes(itin.modes_used).map((mu) => modeLabelFor(mu)).join(" + ")}
+                    {uniqueModes(itin.modes_used).map((mu) => modeLabelFor(t, mu)).join(" + ")}
                   </span>
                 </div>
                 <!-- Leg bar: one neon segment per transport type. -->
@@ -1372,11 +1186,11 @@
                       <li class="step" style="--c:{legColor(leg)}">
                         <span class="s-ic">
                           <Icon
-                            name={(leg.type ?? "").toLowerCase() === "walk" ? "walk" : modeIcon(leg.mode ?? "bus")}
+                            name={isWalkLeg(leg) ? "walk" : modeIcon(leg.mode ?? "bus")}
                             size={12}
                           />
                         </span>
-                        <span class="s-tx">{legLabel(leg)}</span>
+                        <span class="s-tx">{legLabel(t, leg)}</span>
                         {#if leg.duration_min}<span class="s-d">{Math.round(leg.duration_min)}′</span>{/if}
                       </li>
                     {/each}
@@ -1465,7 +1279,7 @@
               {#if inspected.modes.length}
                 {#each inspected.modes as m}
                   <span class="ins-mode" style="--c:{modeColor(m)}">
-                    <Icon name={modeIcon(m)} size={12} />{modeLabelFor(m)}
+                    <Icon name={modeIcon(m)} size={12} />{modeLabelFor(t, m)}
                   </span>
                 {/each}
               {:else}
@@ -1511,7 +1325,7 @@
                     <span class="ln-ic"><Icon name={modeIcon(ln.mode)} size={13} /></span>
                     <span class="ln-body">
                       <span class="ln-top">
-                        <b>{modeLabelFor(ln.mode)}{ln.number ? ` ${ln.number}` : ""}</b>
+                        <b>{modeLabelFor(t, ln.mode)}{ln.number ? ` ${ln.number}` : ""}</b>
                         <span class="ln-role">
                           {ln.role === "origin"
                             ? t("station.from")
@@ -1537,10 +1351,10 @@
             <!-- Louage connections: which places this louage station serves,
                  resolved from its own destination list against real station
                  records. Only shown for stops that ARE a louage terminal. -->
-            {#if louageDestinations(inspected.id).length}
+            {#if louageDestinations(louageLinks, inspected.id).length}
               <h4 class="ins-sub">{t("station.louage_links")}</h4>
               <ul class="ins-lines">
-                {#each louageDestinations(inspected.id) as l}
+                {#each louageDestinations(louageLinks, inspected.id) as l}
                   <li>
                     <button
                       class="ln-btn"
