@@ -11,6 +11,8 @@ concurrency:
 
 permissions:
   contents: read
+  # gitleaks-action lists the PR's commits through the API.
+  pull-requests: read
 
 jobs:
   scan:
