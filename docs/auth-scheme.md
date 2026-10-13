@@ -8,17 +8,16 @@ There are two backends:
 
 | Backend | Owns | Auth today |
 |---|---|---|
-| Python FastAPI (`src/backend/app/`) | all transit routing, the seed data, geometry | none |
+| Python FastAPI (`services/transit/`) | all transit routing, the seed data, geometry | none |
 | Rust axum (`services/accounts/`) | auth, memories, favorites, location shares | JWT (HS256), bcrypt |
 
 The Rust server signs HS256 tokens with `JWT_SECRET`. The Python server has no
-auth at all and does not validate anything. A client therefore has to know which
-backend to talk to for which route, and there is no way for the Python side to
-know who the caller is.
+auth at all and does not validate anything, so there is no way for the Python
+side to know who the caller is.
 
-The Flutter app and the web UI both need **one base URL and one contract**. Today
-they point at the Python backend for routing and at nothing for the social
-features.
+Clients already have one base URL: the web image's nginx gateway routes each
+path prefix to one service (see [architecture](architecture.md)). The gateway
+does not touch auth.
 
 ## Options
 
@@ -30,7 +29,7 @@ caller identity from the `sub` claim.
 
 - **One signing key.** Both services read `JWT_SECRET` from the environment. They
   must agree on the algorithm (`HS256`) and on the claim names (`sub`, `email`,
-  `exp`, `iat` — already the shape in `services/accounts/bledi-server/src/auth.rs`).
+  `exp`, `iat`, already the shape in `services/accounts/bledi-server/src/jwt.rs`).
 - **Issuer stays single.** Only the Rust server mints tokens. If Python ever
   needs to mint one (it should not), that is a signal the split is wrong.
 - **FastAPI dependency.** A `Depends` that reads the `Authorization` header,
@@ -82,21 +81,19 @@ one base URL, one token, both backends agree on who the caller is. It also does
 not foreclose Option C — a Python service that consumes JWTs is easy to delete
 once routing lives in Rust.
 
-Do **not** leave it as it is. The current state is the worst of the three: two
-backends, two contracts, and no way to identify a user on the half that serves
-the product.
+Do **not** leave it as it is: today there is no way to identify a user on the
+half that serves the product.
 
 ## Concrete next steps for Option A
 
 1. Add `JWT_SECRET` to the Python service's required environment, and refuse to
    start without it (mirror the Rust server's behaviour).
-2. Add a `current_user` FastAPI dependency in
-   `src/backend/app/` that verifies HS256 tokens and returns the `sub` UUID.
+2. Add a token verifier port in `bledi_transit.application`, an HS256 adapter,
+   and a `current_user` FastAPI dependency in `adapters/http` that returns the
+   `sub` UUID.
 3. Write the verify path so the algorithm and key are configurable
    (`JWT_ALGORITHM`, default `HS256`) to make a later move to RS256 a config
    change rather than a rewrite.
 4. Add tests: a valid token yields the right user; an expired token is rejected;
    a token signed with the wrong secret is rejected; a missing header on a
    protected route is a 401.
-5. Pick and document the single base URL the clients use, and which backend sits
-   behind which path prefix.
