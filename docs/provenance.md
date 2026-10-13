@@ -103,9 +103,7 @@ names BizerteConnect alongside Tunismapper.
 
 ## What is NOT in this dataset
 
-- **Louage routes.** `data/all_tunisia_bus_registry.json` holds louage operator
-  and fare metadata and station location points, but no route geometry. Louage
-  does not appear as routable lines in the seed.
+- **Louage routes.** Louage does not appear as routable lines in the seed.
 - **Own field data.** No station or line is tagged `own-field-data`.
 - **OSM-derived geometry flagged as open data.** No record currently carries an
   `osm-odbl` source.
