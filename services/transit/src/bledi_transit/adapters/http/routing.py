@@ -71,11 +71,11 @@ def route_transit(
 def geocode(
     geocoder: GeocoderDep,
     q: str = Query(..., description="Place name to search in Tunisia"),
-    limit: int = Query(3, description="Max results"),
+    limit: int = Query(3, ge=1, le=10, description="Max results"),
 ) -> Any:
     """Place search through Nominatim, cached server side."""
     data = geocoder.search(q)
-    if not data:
+    if data is None:
         return JSONResponse({"error": "Geocoding service unreachable", "source": "nominatim"}, status_code=503)
     results = [
         {
