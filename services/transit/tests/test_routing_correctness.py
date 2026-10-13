@@ -45,12 +45,12 @@ def _line(idv: str, mode: str, stops: list[str], departures: list[str] | None = 
 
 
 def _ride_s(meters: float) -> float:
-    from bledi_transit.application.routing.router import transit_speed_ms
+    from bledi_transit.application.routing.graph import transit_speed_ms
     return meters / transit_speed_ms("bus")
 
 
 def _ride_min_display(meters: float) -> float:
-    from bledi_transit.application.routing.router import transit_speed_kmh
+    from bledi_transit.application.routing.graph import transit_speed_kmh
     return meters / 1000 / transit_speed_kmh("bus") * 60
 
 

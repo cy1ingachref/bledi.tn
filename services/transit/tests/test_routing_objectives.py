@@ -14,7 +14,9 @@ from __future__ import annotations
 
 import unittest
 
-from bledi_transit.application.routing import router as routing
+from support import services
+
+from bledi_transit.application.routing.planner import count_transfers
 from bledi_transit.domain import fares, modes
 
 # Intra-Tunis: a bus route AND a metro route both connect these two points.
@@ -24,8 +26,7 @@ INTERCITY = (36.8065, 10.1815, 35.8256, 10.6360)  # Tunis -> Sousse
 
 
 def _build():
-    graph, router = routing.build_graph()
-    return router
+    return services().router
 
 
 class ModeTaxonomyTests(unittest.TestCase):
@@ -305,11 +306,11 @@ class TransferCountTests(unittest.TestCase):
             {"type": "ride", "line": "B"},
             {"type": "ride", "line": "C"},
         ]
-        self.assertEqual(routing.Router._count_transfers(steps), 2)
+        self.assertEqual(count_transfers(steps), 2)
 
     def test_single_line_is_zero_transfers(self):
         steps = [{"type": "ride", "line": "A"}] * 5
-        self.assertEqual(routing.Router._count_transfers(steps), 0)
+        self.assertEqual(count_transfers(steps), 0)
 
     def test_walks_do_not_count_as_transfers(self):
         steps = [
@@ -317,7 +318,7 @@ class TransferCountTests(unittest.TestCase):
             {"type": "walk", "line": None},
             {"type": "ride", "line": "A"},
         ]
-        self.assertEqual(routing.Router._count_transfers(steps), 0)
+        self.assertEqual(count_transfers(steps), 0)
 
 
 if __name__ == "__main__":
