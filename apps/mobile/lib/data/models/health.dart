@@ -27,33 +27,3 @@ abstract class Health with _$Health {
   bool get isHealthy => status == 'ok';
 }
 
-/// A nearby station from `GET /api/v1/stations/near`.
-@freezed
-abstract class NearbyStation with _$NearbyStation {
-  const factory NearbyStation({
-    required String id,
-    required String name,
-    required double lat,
-    required double lon,
-    @JsonKey(name: 'dist_m') @Default(0) double distM,
-    @Default(<NearbyStationLine>[]) List<NearbyStationLine> lines,
-  }) = _NearbyStation;
-
-  factory NearbyStation.fromJson(Map<String, dynamic> json) =>
-      _$NearbyStationFromJson(json);
-}
-
-/// The `lines` entries in the `/stations/near` payload are loosely typed
-/// upstream, so the loose shape is modelled here rather than reusing
-/// [StationLineRef].
-@freezed
-abstract class NearbyStationLine with _$NearbyStationLine {
-  const factory NearbyStationLine({
-    @JsonKey(name: 'route_short_name') String? routeShortName,
-    @JsonKey(name: 'route_color') String? routeColor,
-    String? direction,
-  }) = _NearbyStationLine;
-
-  factory NearbyStationLine.fromJson(Map<String, dynamic> json) =>
-      _$NearbyStationLineFromJson(json);
-}

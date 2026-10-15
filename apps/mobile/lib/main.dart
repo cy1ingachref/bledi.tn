@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'app.dart';
 import 'core/theme.dart';
+import 'features/home/home_screen.dart';
 
 /// Supported locales. Arabic is first so it becomes the default.
 const List<Locale> supportedLocales = [
@@ -26,30 +26,30 @@ class BlediApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EasyLocalization(
-              supportedLocales: easyLocalizationSupportedLocales,
-              // Asset key prefix. Flutter registers `assets: [assets/l10n/]` under
-              // the key `assets/l10n/`, and easy_localization appends
-              // `<locale>.json` to this — so it must not start with `assets/`.
-              path: 'assets/l10n',
-          fallbackLocale: const Locale('fr'),
-          startLocale: const Locale('fr'),
-          child: Builder(
-            builder: (context) => MaterialApp.router(
-              title: 'BLEDI.TN',
-              debugShowCheckedModeBanner: false,
-              routerConfig: appRouter,
-              themeMode: ThemeMode.system,
-              theme: AppTheme.light(),
-              darkTheme: AppTheme.dark(),
-              localizationsDelegates: [
-                              ...EasyLocalization.of(context)!.delegates,
-                              GlobalMaterialLocalizations.delegate,
-                              GlobalWidgetsLocalizations.delegate,
-                              GlobalCupertinoLocalizations.delegate,
-                            ],
-                            supportedLocales: EasyLocalization.of(context)!.supportedLocales,
-            ),
-          ),
-        );
+      supportedLocales: easyLocalizationSupportedLocales,
+      // Asset key prefix. Flutter registers `assets: [assets/l10n/]` under
+      // the key `assets/l10n/`, and easy_localization appends
+      // `<locale>.json` to this — so it must not start with `assets/`.
+      path: 'assets/l10n',
+      fallbackLocale: const Locale('fr'),
+      startLocale: const Locale('fr'),
+      child: Builder(
+        builder: (context) => MaterialApp(
+          title: 'BLEDI.TN',
+          debugShowCheckedModeBanner: false,
+          home: const HomeScreen(),
+          themeMode: ThemeMode.system,
+          theme: AppTheme.light(),
+          darkTheme: AppTheme.dark(),
+          localizationsDelegates: [
+            ...EasyLocalization.of(context)!.delegates,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: EasyLocalization.of(context)!.supportedLocales,
+        ),
+      ),
+    );
   }
 }

@@ -45,20 +45,6 @@ flutter run --dart-define=BLED_API_BASE=http://10.0.2.2:8000
 It is also editable at runtime from the Settings screen, and persisted with
 `shared_preferences`, so you can repoint a debug build without rebuilding.
 
-### Running on web
-
-The backend does not send CORS headers, so a browser cannot call it from another
-origin. That affects **web only** — Android and iOS are not subject to CORS.
-
-`tool/serve_web.py` serves the built app and proxies `/api/` on the same origin,
-which removes the restriction without changing the backend:
-
-```bash
-flutter build web --dart-define=BLED_API_BASE=http://127.0.0.1:8080
-python tool/serve_web.py --port 8080
-# http://127.0.0.1:8080/
-```
-
 ## Features
 
 - **Map** — OpenStreetMap tiles, centred on Tunis, constrained to Tunisia's
@@ -104,32 +90,13 @@ docs/
   osm-stop-audit.md     seed-vs-OpenStreetMap comparison and its findings
 tool/
   gen_arb.py             regenerates assets/l10n from one table
-  serve_web.py           same-origin dev server for web
   check_backend_city.py  asserts the backend's station→city assignment
-  compare_with_osm.py    seed coverage against OSM stops (--cache to reuse)
-  classify_conflicts.py  which rail/bus mode conflicts are real errors
-  fix_seed_modes.py      applies an audited station-mode correction
-  osm_common.py          shared haversine / name / mode helpers for the above
 ```
 
 ## Auditing the seed against OSM
 
-`tool/compare_with_osm.py` checks the 1 711 seed stations against live
-OpenStreetMap public-transport data. OSM is the ground truth for "which stops
-exist, and where" — it is what the reference map draws.
-
-```bash
-# whole-country coverage; first run fetches, later runs use the cache
-python tool/compare_with_osm.py --seed ../../data/seed_all_tunisia_routes.tagged.json
-
-# one city, area-scoped
-python tool/compare_with_osm.py --bbox 36.60,10.00,36.75,10.20
-```
-
-Findings, and the one station it found mis-classified, are in
-[`docs/osm-stop-audit.md`](docs/osm-stop-audit.md).
-
-Two traps worth knowing before reading that output:
+The seed was audited against live OpenStreetMap during construction. Findings
+are in `docs/osm-stop-audit.md`. Key takeaways:
 
 - Match on position within 250 m, not on name. Tunisian names vary between
   transliterations and our seed abbreviates (`Sousse Zi` for
@@ -193,8 +160,8 @@ generated. Edit the tables in `tool/gen_arb.py`, then:
 python tool/gen_arb.py
 ```
 
-It writes both the runtime `.json` and an `.arb` copy, and fails if the three
-locales disagree on their key set.
+It writes the runtime `.json` files and fails if the three locales disagree on
+their key set.
 
 ## Known limitations
 

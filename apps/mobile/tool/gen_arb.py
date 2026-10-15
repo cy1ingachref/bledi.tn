@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Generate the localization files that easy_localization loads at runtime.
+"""Generate the localisation JSON files that easy_localization loads.
 
 easy_localization reads `<locale>.json` from the asset directory, so those are
-what actually ship. The `.arb` files are kept alongside as the source-friendly
-copy for translators.
+what actually ship. There is no l10n.yaml and no .arb runtime path — the JSON
+files are the single source of truth at runtime.
 
 Keeping one dict here (instead of hand-synced copies) means a new string cannot
 drift between ar/fr/en. Run after editing TRANSLATIONS:
@@ -216,23 +216,13 @@ def main() -> None:
                 f"{locale}: missing={missing} extra={extra}"
             )
 
-        # Runtime format: plain <locale>.json, what easy_localization loads.
         payload = {k: table[k] for k in KEYS}
         json_path = OUT / f"{locale}.json"
         json_path.write_text(
             json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
         )
-
-        # Translator-facing copy, with the ARB locale marker.
-        arb_path = OUT / f"app_{locale}.arb"
-        arb_path.write_text(
-            json.dumps({"@@locale": locale, **payload}, ensure_ascii=False, indent=2)
-            + "\n",
-            encoding="utf-8",
-        )
-
-        print(f"wrote {json_path.name} + {arb_path.name} ({len(KEYS)} keys)")
+        print(f"wrote {json_path.name} ({len(KEYS)} keys)")
 
 
 if __name__ == "__main__":

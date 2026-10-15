@@ -81,26 +81,6 @@ class RoutingDataSource {
     return data;
   }
 
-  /// `GET /api/v1/stations/near`.
-  Future<List<NearbyStation>> fetchNearbyStations({
-    required double lat,
-    required double lon,
-    int limit = 10,
-  }) async {
-    final data = await _client.getJson(
-      '/api/v1/stations/near',
-      query: {'lat': lat, 'lon': lon, 'limit': limit},
-    );
-
-    if (data is! Map<String, dynamic>) return const <NearbyStation>[];
-    final near = data['near'];
-    if (near is! List) return const <NearbyStation>[];
-
-    return near
-        .whereType<Map<String, dynamic>>()
-        .map(NearbyStation.fromJson)
-        .toList(growable: false);
-  }
 }
 
 /// Transit routing access for the UI layer.
@@ -108,10 +88,6 @@ class RoutingRepository {
   RoutingRepository(this._remote);
 
   final RoutingDataSource _remote;
-
-  RouteResponse? _lastRoute;
-
-  RouteResponse? get lastRoute => _lastRoute;
 
   /// Requests an itinerary between two coordinates.
   ///
@@ -122,22 +98,12 @@ class RoutingRepository {
     required double startLon,
     required double endLat,
     required double endLon,
-  }) async {
-    final response = await _remote.fetchTransitRoute(
-      startLat: startLat,
-      startLon: startLon,
-      endLat: endLat,
-      endLon: endLon,
-    );
-    _lastRoute = response;
-    return response;
-  }
-
-  Future<List<NearbyStation>> nearbyStations({
-    required double lat,
-    required double lon,
-    int limit = 10,
-  }) => _remote.fetchNearbyStations(lat: lat, lon: lon, limit: limit);
+  }) => _remote.fetchTransitRoute(
+    startLat: startLat,
+    startLon: startLon,
+    endLat: endLat,
+    endLon: endLon,
+  );
 }
 
 /// Raw line/health calls.
