@@ -13,16 +13,6 @@ class StationsDataSource {
 
   final ApiClient _client;
 
-  /// `GET /api/v1/cities` — raw JSON, shaped by the repository into
-  /// [CitiesResponse].
-  Future<Map<String, dynamic>> fetchCities() async {
-    final data = await _client.getJson('/api/v1/cities');
-    if (data is! Map<String, dynamic>) {
-      throw const ApiException('Unexpected cities payload shape');
-    }
-    return data;
-  }
-
   /// `GET /api/v1/stations` — full FeatureCollection (1 729 features).
   Future<StationsPayload> fetchAll() async {
     final data = await _client.getJson('/api/v1/stations');
@@ -195,15 +185,6 @@ class StationsRepository {
 
     _inFlight = future;
     return future;
-  }
-
-  /// `GET /api/v1/cities` — cities with per-mode counts.
-  ///
-  /// Used by the city picker before all stations are loaded; once they are,
-  /// [StationsPayload.citySummaries] serves the same data without a request.
-  Future<CitiesResponse> fetchCities() async {
-    final data = await _remote.fetchCities();
-    return CitiesResponse.fromJson(data);
   }
 
   /// Client-side substring search over cached stations.

@@ -32,7 +32,6 @@ void main() {
       expect(decoded, isNotEmpty);
       expect(decoded['@@locale'], isNull,
           reason: 'the ARB @@locale marker must not ship at runtime');
-
       if (reference == null) {
         reference = decoded;
       } else {

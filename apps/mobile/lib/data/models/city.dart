@@ -39,14 +39,3 @@ abstract class City with _$City {
   int countOf(TransportMode mode) => countsByCategory[mode] ?? 0;
 }
 
-/// Wrapper for the `/api/v1/cities` envelope.
-@freezed
-abstract class CitiesResponse with _$CitiesResponse {
-  const factory CitiesResponse({
-    @Default(<City>[]) List<City> cities,
-    @Default(0) int count,
-  }) = _CitiesResponse;
-
-  factory CitiesResponse.fromJson(Map<String, dynamic> json) =>
-      _$CitiesResponseFromJson(json);
-}
