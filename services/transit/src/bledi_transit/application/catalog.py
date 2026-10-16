@@ -63,7 +63,8 @@ class Catalog:
                 continue
             routes = self.network.louage_routes_by_stop.get(s.get("id", ""), [])
             raw_modes = sorted({r.get("mode") for r in routes if r.get("mode")})
-            canon = sorted({canonical_mode(m) for m in raw_modes}) or ["louaj"]
+            # A louage hub is always louaj, even if some routes carry bus mode.
+            canon = ["louaj"]
             features.append(
                 {
                     "geometry": {"type": "Point", "coordinates": [lon, lat]},

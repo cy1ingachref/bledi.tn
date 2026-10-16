@@ -37,11 +37,20 @@ expect 200 GET /map
 expect 200 GET /api/v1/stations
 expect 200 GET /api/v1/lines
 expect 200 GET '/api/v1/route/plan?start_lat=36.7997&start_lon=10.1897&end_lat=36.8092&end_lon=10.1340&objective=fastest'
-[[ $(jq '.itineraries | length' "$BODY") -gt 0 ]] || { echo "FAIL: no itinerary from Tunis Marine to Le Bardo"; exit 1; }
+if command -v jq >/dev/null 2>&1; then
+  [[ $(jq '.itineraries | length' "$BODY") -gt 0 ]] || { echo "FAIL: no itinerary from Tunis Marine to Le Bardo"; exit 1; }
+else
+  python -c "import sys,json; d=json.load(open('$BODY')); sys.exit(0 if len(d.get('itineraries',[]))>0 else 1)" || { echo "FAIL: no itinerary from Tunis Marine to Le Bardo"; exit 1; }
+fi
 
-expect 201 POST /api/v1/auth/register '{"email":"stack@example.com","password":"test123456","display_name":"Stack"}'
-expect 200 POST /api/v1/auth/login '{"email":"stack@example.com","password":"test123456"}'
-TOKEN=$(jq -r .token "$BODY")
+EMAIL="stack-$(date +%s)@example.com"
+expect 201 POST /api/v1/auth/register "{\"email\":\"$EMAIL\",\"password\":\"test123456\",\"display_name\":\"Stack\"}"
+expect 200 POST /api/v1/auth/login "{\"email\":\"$EMAIL\",\"password\":\"test123456\"}"
+if command -v jq >/dev/null 2>&1; then
+  TOKEN=$(jq -r .token "$BODY")
+else
+  TOKEN=$(python -c "import sys,json; d=json.load(open('$BODY')); print(d.get('token',''))")
+fi
 expect 200 GET /api/v1/users/me
 expect 201 POST /api/v1/favorites '{"kind":"station","ref_id":"test_station","label":"Test Station"}'
 expect 200 GET /api/v1/favorites
