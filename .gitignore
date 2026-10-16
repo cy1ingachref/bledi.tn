@@ -56,10 +56,9 @@ services/transit/tools/_bytesedit.py
 #   python services/transit/tools/build_road_graph.py   (needs ~/Downloads/roads/roads.gpkg)
 #   python services/transit/tools/build_rail_graph.py   (needs ~/Downloads/rails/export.geojson)
 #
-# road_graph.npz is 153 MB and is NOT committed: the build script is committed
-# instead, so the graph is reproducible. Without it, road legs degrade to
-# straight lines, which is a visible quality loss but not a failure.
-data/road_graph.npz
+# road_graph.npz is 153 MB and is tracked via Git LFS (see .gitattributes).
+# Without it, road legs degrade to straight lines, which is a visible quality
+# loss but not a failure.
 #
 # rail_graph.npz IS committed (641 KB). It is small, and the test suite asserts
 # that a long rail leg is never returned as a bare straight line -- an assertion
