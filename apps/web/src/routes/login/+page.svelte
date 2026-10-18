@@ -57,9 +57,9 @@
     <header class="login-header">
       <h1>bledi<span>.tn</span></h1>
       <div class="langs" role="group" aria-label="Language">
-        <button aria-pressed="true" onclick={() => {}}>FR</button>
-        <button onclick={() => {}}>ع</button>
-        <button onclick={() => {}}>EN</button>
+        <button aria-pressed="true" aria-label="French" onclick={() => {}}>FR</button>
+        <button aria-label="Arabic" onclick={() => {}}>ع</button>
+        <button aria-label="English" onclick={() => {}}>EN</button>
       </div>
     </header>
 
