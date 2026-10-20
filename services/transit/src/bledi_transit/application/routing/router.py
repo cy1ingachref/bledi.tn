@@ -20,7 +20,13 @@ from collections import defaultdict
 from typing import Any
 
 from bledi_transit.application.ports import PathGeometry
-from bledi_transit.application.routing.graph import Edge, Segments, add_walk_edges, line_edge
+from bledi_transit.application.routing.graph import (
+    Edge,
+    Segments,
+    add_louage_taxi_transfers,
+    add_walk_edges,
+    line_edge,
+)
 from bledi_transit.application.routing.itinerary import expand_path
 from bledi_transit.application.routing.legs import NoPathGeometry, road_geometry_for
 from bledi_transit.application.routing.planner import plan
@@ -53,16 +59,17 @@ class Router:
     """
 
     def __init__(
-        self,
-        stations: dict[str, dict[str, Any]],
-        lines: list[dict[str, Any]],
-        *,
-        segments: Segments | None = None,
-        walk_segments: Segments | None = None,
-        taxi_segments: dict[str, Any] | None = None,
-        paths: PathGeometry | None = None,
-        max_walk_edge_m: float = MAX_WALK_EDGE_METERS,
-    ) -> None:
+            self,
+            stations: dict[str, dict[str, Any]],
+            lines: list[dict[str, Any]],
+            *,
+            segments: Segments | None = None,
+            walk_segments: Segments | None = None,
+            taxi_segments: dict[str, Any] | None = None,
+            paths: PathGeometry | None = None,
+            max_walk_edge_m: float = MAX_WALK_EDGE_METERS,
+            louage_stations: list[dict[str, Any]] | None = None,
+        ) -> None:
         self.stations = stations
         self.lines = lines
         self.taxi_geometry = taxi_segments or {}
@@ -110,6 +117,8 @@ class Router:
                 self.adj[a].append(line_edge(segments, a, b, sa, sb, ln_id, mode, wait_s))
                 self.adj[b].append(line_edge(segments, b, a, sb, sa, ln_id, mode, wait_s))
         add_walk_edges(self.adj, self.stations, walk_segments or {}, max_walk_edge_m)
+        # Connect louage and taxi stations as transfer hubs.
+        add_louage_taxi_transfers(self.adj, self.stations, louage_stations)
 
     route_plan = plan
 

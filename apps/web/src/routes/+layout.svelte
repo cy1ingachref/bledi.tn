@@ -1,25 +1,14 @@
-<script lang="ts">
-  import { onMount } from "svelte";
-  import { provideServices } from "$lib/app/services";
-  import "../app.css";
-
+<script>
+  import '@fontsource-variable/readex-pro';
+  import '../app.css';
+  import { ui } from '$lib/ui.svelte.js';
   let { children } = $props();
 
-  provideServices();
-
-  // Service worker registration. SvelteKit's adapter-static writes index.html
-  // AFTER vite-plugin-pwa's HTML transform runs, so the plugin's injected
-  // <script src="registerSW.js"> never lands and the worker was silently never
-  // registered. Registering from the layout is the SvelteKit-native path.
-  onMount(async () => {
-    if (!("serviceWorker" in navigator)) return;
-    try {
-      const { registerSW } = await import("virtual:pwa-register");
-      registerSW({ immediate: true });
-    } catch (e) {
-      console.warn("PWA registration failed:", e);
-    }
+  $effect(() => {
+    document.documentElement.lang = ui.lang;
+    document.documentElement.dir = ui.lang === 'ar' ? 'rtl' : 'ltr';
   });
 </script>
 
+<svelte:head><title>bledi.tn</title></svelte:head>
 {@render children()}

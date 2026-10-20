@@ -23,24 +23,47 @@ services:
       JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
       # The web gateway is the only way in, and it overwrites X-Forwarded-For.
       TRUST_PROXY_HEADERS: "1"
+      # Uploaded photos live on a volume, so they survive a restart.
+      MEDIA_ROOT: /app/media
       RUST_LOG: info
+    volumes:
+      - media_data:/app/media
     restart: on-failure
     depends_on:
       db:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000/api/v1/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   transit:
     build:
       context: .
       dockerfile: services/transit/Dockerfile
+    restart: on-failure
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
 
   web:
     build: apps/web
     ports:
       - "8080:8080"
     depends_on:
-      - accounts
-      - transit
+      accounts:
+        condition: service_healthy
+      transit:
+        condition: service_healthy
 
 volumes:
   db_data:
+  media_data:

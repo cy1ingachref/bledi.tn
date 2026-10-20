@@ -1,0 +1,147 @@
+name: CI
+
+# One workflow for the three buildable parts of the project. The matrix keeps the
+# per-part setup in one place: each leg runs the same job with its own toolchain.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: ${{ matrix.component }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        component: [backend, web, mobile]
+        include:
+          - component: backend
+            working-directory: services/accounts
+          - component: web
+            working-directory: apps/web
+          - component: mobile
+            working-directory: apps/mobile
+    # The store tests need a database. The service container starts for every leg, but
+    # only the backend leg talks to it.
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_PASSWORD: ci-only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      # Throwaway credentials for the ephemeral service container, not secrets.
+      DATABASE_URL: postgres://bledi_ci:bledi_ci_local_only@localhost:5432/bledi
+      CARGO_TERM_COLOR: always
+    defaults:
+      run:
+        working-directory: ${{ matrix.working-directory }}
+    steps:
+      - uses: actions/checkout@v7
+
+      # ---- backend ----
+      - name: Set up Rust
+        if: matrix.component == 'backend'
+        uses: dtolnay/rust-toolchain@1.99
+        with:
+          components: clippy, rustfmt
+
+      - uses: Swatinem/rust-cache@v2
+        if: matrix.component == 'backend'
+        with:
+          workspaces: services/accounts
+
+      # The app connects as a non-superuser that owns its database, as in production.
+      - name: Prepare the database
+        if: matrix.component == 'backend'
+        env:
+          PGHOST: localhost
+          PGUSER: postgres
+          PGPASSWORD: ci-only
+        run: |
+          psql -v ON_ERROR_STOP=1 <<'SQL'
+          CREATE ROLE bledi_ci LOGIN PASSWORD 'bledi_ci_local_only';
+          CREATE DATABASE bledi OWNER bledi_ci;
+          SQL
+
+      - name: Format
+        if: matrix.component == 'backend'
+        run: cargo fmt --all -- --check
+
+      - name: Lint
+        if: matrix.component == 'backend'
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Test
+        if: matrix.component == 'backend'
+        run: cargo test
+
+      # ---- web ----
+      - name: Set up Node
+        if: matrix.component == 'web'
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: apps/web/.nvmrc
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+
+      - name: Install
+        if: matrix.component == 'web'
+        run: npm ci --no-fund
+
+      - name: Lint
+        if: matrix.component == 'web'
+        run: npm run lint
+
+      - name: Check
+        if: matrix.component == 'web'
+        run: npm run check
+
+      # The suites are added as the parts land, so an empty one must not fail the build.
+      - name: Test
+        if: matrix.component == 'web'
+        run: npm test -- --passWithNoTests
+
+      - name: Build
+        if: matrix.component == 'web'
+        run: npm run build
+
+      # ---- mobile ----
+      - name: Set up Flutter
+        if: matrix.component == 'mobile'
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Install
+        if: matrix.component == 'mobile'
+        run: flutter pub get
+
+      - name: Analyze
+        if: matrix.component == 'mobile'
+        run: flutter analyze
+
+      - name: Format check
+        if: matrix.component == 'mobile'
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Test
+        if: matrix.component == 'mobile'
+        run: flutter test --exclude-tags integration

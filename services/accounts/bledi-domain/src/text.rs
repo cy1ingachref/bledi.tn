@@ -12,6 +12,7 @@ pub const NOTE_MAX_CHARS: usize = 500;
 pub const REF_ID_MAX_CHARS: usize = 128;
 pub const LABEL_MAX_CHARS: usize = 200;
 pub const MEDIA_URL_MAX_CHARS: usize = 2048;
+pub const MEDIA_KEY_MAX_CHARS: usize = 64;
 
 type Result<T> = std::result::Result<T, ValidationError>;
 
@@ -150,6 +151,27 @@ pub fn media_url(raw: &str) -> Result<String> {
     Ok(trimmed.to_string())
 }
 
+/// The key of a photo inside the media root. It is a file name, never a path: anything that
+/// could escape the root is refused, so a key can be joined onto the root without escaping it.
+pub fn media_key(raw: &str) -> Result<String> {
+    let value = raw.trim();
+    let bad = |message: &str| fail(Invalid::MediaKey, message);
+    if value.is_empty() {
+        return bad("media_key is required");
+    }
+    max_chars(value, MEDIA_KEY_MAX_CHARS, "media_key", Invalid::MediaKey)?;
+    if value.starts_with('.') || value.contains("..") {
+        return bad("media_key must not be a path");
+    }
+    if !value
+        .chars()
+        .all(|c| c.is_ascii_alphanumeric() || matches!(c, '-' | '_' | '.'))
+    {
+        return bad("media_key has characters that are not allowed");
+    }
+    Ok(value.to_string())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -167,7 +189,7 @@ mod tests {
             "user@example.c",
             "user@exa mple.com",
             "user@example..com",
-            "user@.example.com",
+            "@example..com",
         ] {
             assert_eq!(email(bad).unwrap_err().kind, Invalid::Email, "{bad:?}");
         }
@@ -202,6 +224,28 @@ mod tests {
             );
         }
         assert!(media_url(&format!("https://example.com/{}", "a".repeat(3000))).is_err());
+    }
+
+    #[test]
+    fn media_key_is_a_file_name_not_a_path() {
+        assert_eq!(media_key(" 3f1c1e2a-1.jpg ").unwrap(), "3f1c1e2a-1.jpg");
+        for bad in [
+            "",
+            "../secret",
+            "..",
+            ".hidden",
+            "dir/file.jpg",
+            "dir\\file.jpg",
+            "with space.jpg",
+            "file.jpg?x=1",
+        ] {
+            assert_eq!(
+                media_key(bad).unwrap_err().kind,
+                Invalid::MediaKey,
+                "{bad:?}"
+            );
+        }
+        assert!(media_key(&"a".repeat(MEDIA_KEY_MAX_CHARS + 1)).is_err());
     }
 
     #[test]

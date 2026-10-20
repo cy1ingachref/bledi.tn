@@ -10,7 +10,7 @@ use crate::{bind_area, distance_m, in_area, internal};
 
 macro_rules! columns {
     () => {
-        "id, user_id, lat, lon, title, description, media_url, media_type::text AS media_type,
+        "id, user_id, lat, lon, title, description, media_url, media_key, media_type::text AS media_type,
          visibility::text AS visibility, unlock_radius_m, created_at, updated_at"
     };
 }
@@ -24,6 +24,7 @@ struct MemoryRow {
     title: Option<String>,
     description: Option<String>,
     media_url: String,
+    media_key: Option<String>,
     #[sqlx(try_from = "String")]
     media_type: MediaType,
     #[sqlx(try_from = "String")]
@@ -43,6 +44,7 @@ impl From<MemoryRow> for Memory {
             title: row.title,
             description: row.description,
             media_url: row.media_url,
+            media_key: row.media_key,
             media_type: row.media_type,
             visibility: row.visibility,
             unlock_radius_m: row.unlock_radius_m,
@@ -68,8 +70,8 @@ impl MemoryStore for PostgresMemoryStore {
     async fn insert(&self, new: NewMemory) -> Result<Memory> {
         sqlx::query_as::<_, MemoryRow>(concat!(
             "INSERT INTO memories
-                (user_id, lat, lon, title, description, media_url, media_type, visibility, unlock_radius_m)
-             VALUES ($1, $2, $3, $4, $5, $6, $7::media_type, $8::visibility, $9)
+                (user_id, lat, lon, title, description, media_url, media_key, media_type, visibility, unlock_radius_m)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8::media_type, $9::visibility, $10)
              RETURNING ",
             columns!()
         ))
@@ -79,6 +81,7 @@ impl MemoryStore for PostgresMemoryStore {
         .bind(new.title)
         .bind(new.description)
         .bind(new.media_url)
+        .bind(new.media_key)
         .bind(new.media_type.as_str())
         .bind(new.visibility.as_str())
         .bind(new.unlock_radius.metres())
@@ -95,6 +98,19 @@ impl MemoryStore for PostgresMemoryStore {
             " FROM memories WHERE id = $1"
         ))
         .bind(id)
+        .fetch_optional(&self.pool)
+        .await
+        .map(|row| row.map(Memory::from))
+        .map_err(internal)
+    }
+
+    async fn by_media_key(&self, media_key: &str) -> Result<Option<Memory>> {
+        sqlx::query_as::<_, MemoryRow>(concat!(
+            "SELECT ",
+            columns!(),
+            " FROM memories WHERE media_key = $1"
+        ))
+        .bind(media_key)
         .fetch_optional(&self.pool)
         .await
         .map(|row| row.map(Memory::from))

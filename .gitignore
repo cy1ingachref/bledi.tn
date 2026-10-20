@@ -110,3 +110,24 @@ out/
 # not committed: they are full copies of a 4-5 MB file and git history already
 # holds the previous revision.
 data/*.bak-*
+
+# Local design reference material handed over for the frontend redesign. Kept
+# on disk to compare against, but it is a copy of another tree, not this one's
+# source, so it does not belong in this history.
+design/
+
+# Local Claude Code -> 9router model-rewriting proxy. A developer-machine
+# workaround, not part of the app or its build.
+proxy-claude.js
+
+# SvelteKit's generated cache at the repo root (apps/web/.svelte-kit is already
+# ignored above; this is the stray copy a root-level build leaves behind).
+/.svelte-kit/
+
+# Local one-shot build helpers written against this machine's absolute paths.
+# They are developer scratch, not part of the app or its CI.
+apps/web/scripts/
+
+# The single-file HTML snapshot the redesign was compared against, kept beside
+# the app for reference only.
+apps/web/design-ref.html

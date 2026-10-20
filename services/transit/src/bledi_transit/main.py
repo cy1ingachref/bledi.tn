@@ -12,7 +12,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI
+import time
+from collections import defaultdict
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 from bledi_transit.adapters.graphs.path_geometry import GraphPathGeometry
@@ -27,6 +29,10 @@ from bledi_transit.application.network import Network
 from bledi_transit.application.routing.router import Router
 
 REPO_DATA_DIR = Path(__file__).resolve().parents[4] / "data"
+
+# Rate limiting config
+RATE_LIMIT_REQUESTS = 60  # requests per window
+RATE_LIMIT_WINDOW = 60    # seconds
 
 # 8080 is the Flutter web dev server, 5173 the Vite dev server.
 DEFAULT_ORIGINS = (
@@ -51,11 +57,14 @@ class Config:
         if not data_dir.is_dir():
             raise RuntimeError(f"BLEDI_DATA_DIR {data_dir} is not a directory")
         raw = os.environ.get("ALLOWED_ORIGINS", ",".join(DEFAULT_ORIGINS))
+        allowed = tuple(o.strip() for o in raw.split(",") if o.strip())
+        if not allowed:
+            raise RuntimeError("ALLOWED_ORIGINS must not be empty")
         return cls(
             data_dir=data_dir,
             road_graph=Path(os.environ.get("ROAD_GRAPH_PATH") or data_dir / "road_graph.npz"),
             rail_graph=Path(os.environ.get("RAIL_GRAPH_PATH") or data_dir / "rail_graph.npz"),
-            allowed_origins=tuple(o.strip() for o in raw.split(",") if o.strip()),
+            allowed_origins=allowed,
         )
 
 
@@ -67,6 +76,7 @@ def build_router(config: Config, data: SeedFileNetwork, network: Network, **opti
         walk_segments=data.walk_segments(),
         taxi_segments=data.taxi_segments(),
         paths=GraphPathGeometry.load(config.road_graph, config.rail_graph),
+        louage_stations=network.louage_stations,
         **options,
     )
 
@@ -96,10 +106,32 @@ def create_app(config: Config | None = None) -> FastAPI:
         version="0.2.0",
         lifespan=lifespan,
     )
+    # Rate limiting middleware
+    _rate_limit_buckets: dict[str, list[float]] = defaultdict(list)
+
+    @app.middleware("http")
+    async def rate_limit(request: Request, call_next):
+        client_ip = request.client.host if request.client else "unknown"
+        now = time.time()
+        # Clean old entries
+        _rate_limit_buckets[client_ip] = [
+            t for t in _rate_limit_buckets[client_ip]
+            if now - t < RATE_LIMIT_WINDOW
+        ]
+        if len(_rate_limit_buckets[client_ip]) >= RATE_LIMIT_REQUESTS:
+            from fastapi.responses import JSONResponse
+            return JSONResponse(
+                {"error": "rate limit exceeded"},
+                status_code=429,
+                headers={"Retry-After": str(RATE_LIMIT_WINDOW)}
+            )
+        _rate_limit_buckets[client_ip].append(now)
+        return await call_next(request)
+
     # Never wildcard origins together with credentials.
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=list(config.allowed_origins) or ["*"],
+        allow_origins=list(config.allowed_origins),
         allow_methods=["GET"],
         allow_headers=["*"],
         allow_credentials=False,

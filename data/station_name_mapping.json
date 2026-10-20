@@ -1,0 +1,2959 @@
+{
+  "metadata": {
+    "description": "Station name variants to correct coordinates mapping for Tunisia transport data. Focus on stations appearing in multiple sources with different coordinates.",
+    "created": "2026-10-16",
+    "total_conflicting_stations": 83,
+    "sources_used": [
+      "sncft_banlieue_sahel",
+      "sncft_banlieue_sud",
+      "transtu_metro",
+      "rfr_stations",
+      "srtm_stations",
+      "sntri_geocoded",
+      "tunismapper_details",
+      "tunismapper_sweep",
+      "tunismapper_routes"
+    ],
+    "source_authority_ranking": {
+      "sncft_banlieue_sahel": 1,
+      "sncft_banlieue_sud": 1,
+      "transtu_metro": 2,
+      "rfr_stations": 2,
+      "srtm_stations": 2,
+      "sntri_geocoded": 3,
+      "tunismapper_details": 4,
+      "tunismapper_sweep": 4,
+      "tunismapper_routes": 4
+    },
+    "authority_notes": "1=Official GTFS (SNCFT), 2=Official operator exports (Transtu, SRTM, RFR), 3=Geocoded via Nominatim (SNTRI), 4=Crowdsourced (Tunismapper)",
+    "notes": "Coordinates selected from most authoritative source. Use this mapping to fix water stations and align coordinates across data sources."
+  },
+  "stations": {
+    "gabes": {
+      "normalized_name": "gabes",
+      "name_variants": [
+        "GABES",
+        "Gabes"
+      ],
+      "canonical_name": "Gabes",
+      "lat": 33.882181,
+      "lon": 10.086168,
+      "source": "srtm_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 33.884225,
+          "lon": 10.099195,
+          "name_variant": "Gabes",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 33.884225,
+          "lon": 10.099195,
+          "name_variant": "Gabes",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 33.887808,
+          "lon": 10.10044,
+          "name_variant": "GABES",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 33.884225,
+          "lon": 10.099195,
+          "name_variant": "Gabes",
+          "entry_count": 1
+        },
+        "srtm_stations": {
+          "lat": 33.882181,
+          "lon": 10.086168,
+          "name_variant": "Gabes",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "skhira": {
+      "normalized_name": "skhira",
+      "name_variants": [
+        "SKHIRA",
+        "Skhira"
+      ],
+      "canonical_name": "SKHIRA",
+      "lat": 34.347068,
+      "lon": 9.975302,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 34.300432,
+          "lon": 10.068851,
+          "name_variant": "Skhira",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 34.300432,
+          "lon": 10.068851,
+          "name_variant": "Skhira",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 34.347068,
+          "lon": 9.975302,
+          "name_variant": "SKHIRA",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 34.300432,
+          "lon": 10.068851,
+          "name_variant": "Skhira",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "mahares": {
+      "normalized_name": "mahares",
+      "name_variants": [
+        "MAHARES",
+        "Mahares"
+      ],
+      "canonical_name": "MAHARES",
+      "lat": 34.524359,
+      "lon": 10.506322,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 34.526263,
+          "lon": 10.498693,
+          "name_variant": "Mahares",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 34.526263,
+          "lon": 10.498693,
+          "name_variant": "Mahares",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 34.524359,
+          "lon": 10.506322,
+          "name_variant": "MAHARES",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 34.526263,
+          "lon": 10.498693,
+          "name_variant": "Mahares",
+          "entry_count": 2
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "gargour": {
+      "normalized_name": "gargour",
+      "name_variants": [
+        "GARGOUR",
+        "GARGOUR ",
+        "Gargour"
+      ],
+      "canonical_name": "GARGOUR ",
+      "lat": 34.604471,
+      "lon": 10.608935,
+      "source": "srtm_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 34.572812,
+          "lon": 10.577882,
+          "name_variant": "Gargour",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 34.572812,
+          "lon": 10.577882,
+          "name_variant": "Gargour",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 34.648226,
+          "lon": 10.588619,
+          "name_variant": "GARGOUR",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 34.572812,
+          "lon": 10.577882,
+          "name_variant": "Gargour",
+          "entry_count": 2
+        },
+        "srtm_stations": {
+          "lat": 34.604471,
+          "lon": 10.608935,
+          "name_variant": "GARGOUR ",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 6,
+      "is_conflict": true
+    },
+    "sfax": {
+      "normalized_name": "sfax",
+      "name_variants": [
+        "SFAX",
+        "SFAX ",
+        "Sfax"
+      ],
+      "canonical_name": "SFAX ",
+      "lat": 34.722848,
+      "lon": 10.757554,
+      "source": "srtm_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 34.735151,
+          "lon": 10.767124,
+          "name_variant": "Sfax",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 34.735151,
+          "lon": 10.767124,
+          "name_variant": "Sfax",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 34.739436,
+          "lon": 10.760402,
+          "name_variant": "SFAX",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 34.735151,
+          "lon": 10.767124,
+          "name_variant": "Sfax",
+          "entry_count": 3
+        },
+        "srtm_stations": {
+          "lat": 34.722848,
+          "lon": 10.757554,
+          "name_variant": "SFAX ",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 7,
+      "is_conflict": true
+    },
+    "sidi salah": {
+      "normalized_name": "sidi salah",
+      "name_variants": [
+        "Sidi Salah"
+      ],
+      "canonical_name": "Sidi Salah",
+      "lat": 36.884337,
+      "lon": 10.767343,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.884337,
+          "lon": 10.767343,
+          "name_variant": "Sidi Salah",
+          "entry_count": 2
+        },
+        "tunismapper_sweep": {
+          "lat": 34.858019,
+          "lon": 10.767343,
+          "name_variant": "Sidi Salah",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 34.858019,
+          "lon": 10.767343,
+          "name_variant": "Sidi Salah",
+          "entry_count": 4
+        }
+      },
+      "total_entries": 7,
+      "is_conflict": true
+    },
+    "el jem": {
+      "normalized_name": "el jem",
+      "name_variants": [
+        "EL JEM",
+        "El Jem"
+      ],
+      "canonical_name": "EL JEM",
+      "lat": 35.296644,
+      "lon": 10.71284,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 35.292566,
+          "lon": 10.70958,
+          "name_variant": "El Jem",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 35.292566,
+          "lon": 10.70958,
+          "name_variant": "El Jem",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 35.296644,
+          "lon": 10.71284,
+          "name_variant": "EL JEM",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 35.292566,
+          "lon": 10.70958,
+          "name_variant": "El Jem",
+          "entry_count": 3
+        }
+      },
+      "total_entries": 6,
+      "is_conflict": true
+    },
+    "menzel": {
+      "normalized_name": "menzel",
+      "name_variants": [
+        "MENZEL",
+        "Menzel Gare"
+      ],
+      "canonical_name": "MENZEL",
+      "lat": 37.154987,
+      "lon": 9.79259,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.010529,
+          "lon": 10.377545,
+          "name_variant": "Menzel Gare",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 36.010529,
+          "lon": 10.377545,
+          "name_variant": "Menzel Gare",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 37.154987,
+          "lon": 9.79259,
+          "name_variant": "MENZEL",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.010529,
+          "lon": 10.377545,
+          "name_variant": "Menzel Gare",
+          "entry_count": 6
+        }
+      },
+      "total_entries": 9,
+      "is_conflict": true
+    },
+    "bouficha": {
+      "normalized_name": "bouficha",
+      "name_variants": [
+        "BOUFICHA",
+        "Bouficha"
+      ],
+      "canonical_name": "BOUFICHA",
+      "lat": 36.274533,
+      "lon": 10.426005,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.303302,
+          "lon": 10.451222,
+          "name_variant": "Bouficha",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 36.303302,
+          "lon": 10.451222,
+          "name_variant": "Bouficha",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 36.274533,
+          "lon": 10.426005,
+          "name_variant": "BOUFICHA",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.303302,
+          "lon": 10.451222,
+          "name_variant": "Bouficha",
+          "entry_count": 6
+        }
+      },
+      "total_entries": 9,
+      "is_conflict": true
+    },
+    "sidi mtir": {
+      "normalized_name": "sidi mtir",
+      "name_variants": [
+        "SIDI MTIR",
+        "Sidi Mtir"
+      ],
+      "canonical_name": "SIDI MTIR",
+      "lat": 36.358482,
+      "lon": 10.501576,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.386958,
+          "lon": 10.502964,
+          "name_variant": "Sidi Mtir",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 36.386958,
+          "lon": 10.502964,
+          "name_variant": "Sidi Mtir",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 36.358482,
+          "lon": 10.501576,
+          "name_variant": "SIDI MTIR",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.386958,
+          "lon": 10.502964,
+          "name_variant": "Sidi Mtir",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "grombalia": {
+      "normalized_name": "grombalia",
+      "name_variants": [
+        "GROMBALIA",
+        "Grombalia"
+      ],
+      "canonical_name": "GROMBALIA",
+      "lat": 36.598423,
+      "lon": 10.49904,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.596344,
+          "lon": 10.497722,
+          "name_variant": "Grombalia",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 36.596344,
+          "lon": 10.497722,
+          "name_variant": "Grombalia",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 36.598423,
+          "lon": 10.49904,
+          "name_variant": "GROMBALIA",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.596344,
+          "lon": 10.497722,
+          "name_variant": "Grombalia",
+          "entry_count": 7
+        }
+      },
+      "total_entries": 10,
+      "is_conflict": true
+    },
+    "ezzahra": {
+      "normalized_name": "ezzahra",
+      "name_variants": [
+        "Ez-Zahra",
+        "Ezzahra"
+      ],
+      "canonical_name": "Ezzahra",
+      "lat": 35.500043,
+      "lon": 11.048318,
+      "source": "sncft_banlieue_sahel",
+      "source_authority": 1,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.7468,
+          "lon": 10.307049,
+          "name_variant": "Ez-Zahra",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 36.7468,
+          "lon": 10.307049,
+          "name_variant": "Ez-Zahra",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.7468,
+          "lon": 10.307049,
+          "name_variant": "Ez-Zahra",
+          "entry_count": 2
+        },
+        "sncft_banlieue_sahel": {
+          "lat": 35.500043,
+          "lon": 11.048318,
+          "name_variant": "Ezzahra",
+          "entry_count": 1
+        },
+        "sncft_banlieue_sud": {
+          "lat": 36.7468,
+          "lon": 10.307049,
+          "name_variant": "Ez-Zahra",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 6,
+      "is_conflict": true
+    },
+    "sidi rezig": {
+      "normalized_name": "sidi rezig",
+      "name_variants": [
+        "Gare Sidi Rezig",
+        "Sidi Rezig"
+      ],
+      "canonical_name": "Sidi Rezig",
+      "lat": 36.767334,
+      "lon": 10.244545,
+      "source": "sncft_banlieue_sud",
+      "source_authority": 1,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.768571,
+          "lon": 10.245007,
+          "name_variant": "Gare Sidi Rezig",
+          "entry_count": 2
+        },
+        "tunismapper_sweep": {
+          "lat": 36.767334,
+          "lon": 10.244545,
+          "name_variant": "Sidi Rezig",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.768571,
+          "lon": 10.245007,
+          "name_variant": "Gare Sidi Rezig",
+          "entry_count": 2
+        },
+        "sncft_banlieue_sud": {
+          "lat": 36.767334,
+          "lon": 10.244545,
+          "name_variant": "Sidi Rezig",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 6,
+      "is_conflict": true
+    },
+    "degueche": {
+      "normalized_name": "degueche",
+      "name_variants": [
+        "DEGUECHE",
+        "Degueche"
+      ],
+      "canonical_name": "DEGUECHE",
+      "lat": 33.98525,
+      "lon": 8.212811,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 33.986857,
+          "lon": 8.213272,
+          "name_variant": "Degueche",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 33.986857,
+          "lon": 8.213272,
+          "name_variant": "Degueche",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 33.98525,
+          "lon": 8.212811,
+          "name_variant": "DEGUECHE",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 33.986857,
+          "lon": 8.213272,
+          "name_variant": "Degueche",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "tozeur": {
+      "normalized_name": "tozeur",
+      "name_variants": [
+        "TOZEUR",
+        "Tozeur"
+      ],
+      "canonical_name": "TOZEUR",
+      "lat": 33.9239,
+      "lon": 8.137064,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 33.926555,
+          "lon": 8.135781,
+          "name_variant": "Tozeur",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 33.926555,
+          "lon": 8.135781,
+          "name_variant": "Tozeur",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 33.9239,
+          "lon": 8.137064,
+          "name_variant": "TOZEUR",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 33.926555,
+          "lon": 8.135781,
+          "name_variant": "Tozeur",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "gafsa": {
+      "normalized_name": "gafsa",
+      "name_variants": [
+        "GAFSA",
+        "Gafsa"
+      ],
+      "canonical_name": "GAFSA",
+      "lat": 34.422437,
+      "lon": 8.784386,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 34.394709,
+          "lon": 8.803897,
+          "name_variant": "Gafsa",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 34.394709,
+          "lon": 8.803897,
+          "name_variant": "Gafsa",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 34.422437,
+          "lon": 8.784386,
+          "name_variant": "GAFSA",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 34.394709,
+          "lon": 8.803897,
+          "name_variant": "Gafsa",
+          "entry_count": 3
+        }
+      },
+      "total_entries": 6,
+      "is_conflict": true
+    },
+    "metlaoui": {
+      "normalized_name": "metlaoui",
+      "name_variants": [
+        "METLAOUI",
+        "Metlaoui"
+      ],
+      "canonical_name": "METLAOUI",
+      "lat": 34.315723,
+      "lon": 8.401829,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 34.315777,
+          "lon": 8.416425,
+          "name_variant": "Metlaoui",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 34.315777,
+          "lon": 8.416425,
+          "name_variant": "Metlaoui",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 34.315723,
+          "lon": 8.401829,
+          "name_variant": "METLAOUI",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 34.315777,
+          "lon": 8.416425,
+          "name_variant": "Metlaoui",
+          "entry_count": 3
+        }
+      },
+      "total_entries": 6,
+      "is_conflict": true
+    },
+    "mateur": {
+      "normalized_name": "mateur",
+      "name_variants": [
+        "MATEUR",
+        "Mateur"
+      ],
+      "canonical_name": "MATEUR",
+      "lat": 37.038598,
+      "lon": 9.667697,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 37.037888,
+          "lon": 9.684491,
+          "name_variant": "Mateur",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 37.037888,
+          "lon": 9.684491,
+          "name_variant": "Mateur",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 37.038598,
+          "lon": 9.667697,
+          "name_variant": "MATEUR",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 37.037888,
+          "lon": 9.684491,
+          "name_variant": "Mateur",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "les salines": {
+      "normalized_name": "les salines",
+      "name_variants": [
+        "Les Salines"
+      ],
+      "canonical_name": "Les Salines",
+      "lat": 36.79351,
+      "lon": 10.278782,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.79351,
+          "lon": 10.278782,
+          "name_variant": "Les Salines",
+          "entry_count": 2
+        },
+        "tunismapper_sweep": {
+          "lat": 36.077774,
+          "lon": 8.964018,
+          "name_variant": "Les Salines",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.077774,
+          "lon": 8.964018,
+          "name_variant": "Les Salines",
+          "entry_count": 7
+        }
+      },
+      "total_entries": 10,
+      "is_conflict": true
+    },
+    "le kef": {
+      "normalized_name": "le kef",
+      "name_variants": [
+        "LE KEF",
+        "Le Kef"
+      ],
+      "canonical_name": "LE KEF",
+      "lat": 36.035764,
+      "lon": 8.724938,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.166733,
+          "lon": 8.703682,
+          "name_variant": "Le Kef",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 36.166733,
+          "lon": 8.703682,
+          "name_variant": "Le Kef",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 36.035764,
+          "lon": 8.724938,
+          "name_variant": "LE KEF",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.166733,
+          "lon": 8.703682,
+          "name_variant": "Le Kef",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "nassen": {
+      "normalized_name": "nassen",
+      "name_variants": [
+        "Nassen"
+      ],
+      "canonical_name": "Nassen",
+      "lat": 36.792003,
+      "lon": 10.2253,
+      "source": "rfr_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.703576,
+          "lon": 10.232804,
+          "name_variant": "Nassen",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 36.703576,
+          "lon": 10.232804,
+          "name_variant": "Nassen",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.703576,
+          "lon": 10.232804,
+          "name_variant": "Nassen",
+          "entry_count": 4
+        },
+        "rfr_stations": {
+          "lat": 36.792003,
+          "lon": 10.2253,
+          "name_variant": "Nassen",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 7,
+      "is_conflict": true
+    },
+    "sidi ayed": {
+      "normalized_name": "sidi ayed",
+      "name_variants": [
+        "SIDI AYED",
+        "Sidi Ayed"
+      ],
+      "canonical_name": "SIDI AYED",
+      "lat": 36.365963,
+      "lon": 9.370807,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.351213,
+          "lon": 9.390917,
+          "name_variant": "Sidi Ayed",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 36.351213,
+          "lon": 9.390917,
+          "name_variant": "Sidi Ayed",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 36.365963,
+          "lon": 9.370807,
+          "name_variant": "SIDI AYED",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.351213,
+          "lon": 9.390917,
+          "name_variant": "Sidi Ayed",
+          "entry_count": 3
+        }
+      },
+      "total_entries": 6,
+      "is_conflict": true
+    },
+    "gaafour": {
+      "normalized_name": "gaafour",
+      "name_variants": [
+        "GAAFOUR",
+        "Gaafour"
+      ],
+      "canonical_name": "GAAFOUR",
+      "lat": 36.253178,
+      "lon": 9.330166,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.322656,
+          "lon": 9.326598,
+          "name_variant": "Gaafour",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 36.322656,
+          "lon": 9.326598,
+          "name_variant": "Gaafour",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 36.253178,
+          "lon": 9.330166,
+          "name_variant": "GAAFOUR",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.322656,
+          "lon": 9.326598,
+          "name_variant": "Gaafour",
+          "entry_count": 4
+        }
+      },
+      "total_entries": 7,
+      "is_conflict": true
+    },
+    "msaken": {
+      "normalized_name": "msaken",
+      "name_variants": [
+        "M'SAKEN",
+        "MSaken"
+      ],
+      "canonical_name": "M'SAKEN",
+      "lat": 35.673682,
+      "lon": 10.538488,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 35.728896,
+          "lon": 10.600033,
+          "name_variant": "MSaken",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 35.728896,
+          "lon": 10.600033,
+          "name_variant": "MSaken",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 35.673682,
+          "lon": 10.538488,
+          "name_variant": "M'SAKEN",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 35.728896,
+          "lon": 10.600033,
+          "name_variant": "MSaken",
+          "entry_count": 3
+        }
+      },
+      "total_entries": 6,
+      "is_conflict": true
+    },
+    "redeyef": {
+      "normalized_name": "redeyef",
+      "name_variants": [
+        "REDEYEF",
+        "Redeyef"
+      ],
+      "canonical_name": "REDEYEF",
+      "lat": 34.38432,
+      "lon": 8.153887,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 34.388008,
+          "lon": 8.152487,
+          "name_variant": "Redeyef",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 34.388008,
+          "lon": 8.152487,
+          "name_variant": "Redeyef",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 34.38432,
+          "lon": 8.153887,
+          "name_variant": "REDEYEF",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 34.388008,
+          "lon": 8.152487,
+          "name_variant": "Redeyef",
+          "entry_count": 2
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "mahdia": {
+      "normalized_name": "mahdia",
+      "name_variants": [
+        "Mahdia"
+      ],
+      "canonical_name": "Mahdia",
+      "lat": 35.499194,
+      "lon": 11.062861,
+      "source": "sncft_banlieue_sahel",
+      "source_authority": 1,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 35.500775,
+          "lon": 11.064272,
+          "name_variant": "Mahdia",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 35.500775,
+          "lon": 11.064272,
+          "name_variant": "Mahdia",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 35.500775,
+          "lon": 11.064272,
+          "name_variant": "Mahdia",
+          "entry_count": 2
+        },
+        "sncft_banlieue_sahel": {
+          "lat": 35.499194,
+          "lon": 11.062861,
+          "name_variant": "Mahdia",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "sidi smail": {
+      "normalized_name": "sidi smail",
+      "name_variants": [
+        "SIDI SMAIL",
+        "Sidi Smail"
+      ],
+      "canonical_name": "SIDI SMAIL",
+      "lat": 36.5784,
+      "lon": 9.151882,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.595518,
+          "lon": 9.111899,
+          "name_variant": "Sidi Smail",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 36.595518,
+          "lon": 9.111899,
+          "name_variant": "Sidi Smail",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 36.5784,
+          "lon": 9.151882,
+          "name_variant": "SIDI SMAIL",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.595518,
+          "lon": 9.111899,
+          "name_variant": "Sidi Smail",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "chaouat": {
+      "normalized_name": "chaouat",
+      "name_variants": [
+        "CHAOUAT",
+        "Chaouat"
+      ],
+      "canonical_name": "CHAOUAT",
+      "lat": 36.90559,
+      "lon": 9.943391,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.889481,
+          "lon": 9.944471,
+          "name_variant": "Chaouat",
+          "entry_count": 2
+        },
+        "tunismapper_sweep": {
+          "lat": 36.889481,
+          "lon": 9.944471,
+          "name_variant": "Chaouat",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 36.90559,
+          "lon": 9.943391,
+          "name_variant": "CHAOUAT",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.888269,
+          "lon": 9.944332,
+          "name_variant": "Chaouat",
+          "entry_count": 3
+        }
+      },
+      "total_entries": 7,
+      "is_conflict": true
+    },
+    "sidi othman": {
+      "normalized_name": "sidi othman",
+      "name_variants": [
+        "SIDI OTHMAN",
+        "Sidi Othman"
+      ],
+      "canonical_name": "SIDI OTHMAN",
+      "lat": 36.972966,
+      "lon": 9.871629,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.960039,
+          "lon": 9.924713,
+          "name_variant": "Sidi Othman",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 36.960039,
+          "lon": 9.924713,
+          "name_variant": "Sidi Othman",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 36.972966,
+          "lon": 9.871629,
+          "name_variant": "SIDI OTHMAN",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.960039,
+          "lon": 9.924713,
+          "name_variant": "Sidi Othman",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "bizerte": {
+      "normalized_name": "bizerte",
+      "name_variants": [
+        "BIZERTE",
+        "Bizerte"
+      ],
+      "canonical_name": "BIZERTE",
+      "lat": 37.27209,
+      "lon": 9.870857,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 37.266437,
+          "lon": 9.8639,
+          "name_variant": "Bizerte",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 37.266437,
+          "lon": 9.8639,
+          "name_variant": "Bizerte",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 37.27209,
+          "lon": 9.870857,
+          "name_variant": "BIZERTE",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 37.266437,
+          "lon": 9.8639,
+          "name_variant": "Bizerte",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "le bardo": {
+      "normalized_name": "le bardo",
+      "name_variants": [
+        "Le Bardo"
+      ],
+      "canonical_name": "Le Bardo",
+      "lat": 36.811173,
+      "lon": 10.134372,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.811173,
+          "lon": 10.134372,
+          "name_variant": "Le Bardo",
+          "entry_count": 2
+        },
+        "tunismapper_sweep": {
+          "lat": 36.811173,
+          "lon": 10.134372,
+          "name_variant": "Le Bardo",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.807548,
+          "lon": 10.134372,
+          "name_variant": "Le Bardo",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "ezzouhour 2": {
+      "normalized_name": "ezzouhour 2",
+      "name_variants": [
+        "Ezzouhour 2"
+      ],
+      "canonical_name": "Ezzouhour 2",
+      "lat": 36.792003,
+      "lon": 10.127812,
+      "source": "rfr_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.787836,
+          "lon": 10.127572,
+          "name_variant": "Ezzouhour 2",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 36.787836,
+          "lon": 10.127572,
+          "name_variant": "Ezzouhour 2",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.787836,
+          "lon": 10.127572,
+          "name_variant": "Ezzouhour 2",
+          "entry_count": 1
+        },
+        "rfr_stations": {
+          "lat": 36.792003,
+          "lon": 10.127812,
+          "name_variant": "Ezzouhour 2",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "bab alioua": {
+      "normalized_name": "bab alioua",
+      "name_variants": [
+        "BAB ALIOUA",
+        "Bab Alioua"
+      ],
+      "canonical_name": "BAB ALIOUA",
+      "lat": 36.785807,
+      "lon": 10.179813,
+      "source": "transtu_metro",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.788588,
+          "lon": 10.18034,
+          "name_variant": "BAB ALIOUA",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.788588,
+          "lon": 10.18034,
+          "name_variant": "Bab Alioua",
+          "entry_count": 5
+        },
+        "transtu_metro": {
+          "lat": 36.785807,
+          "lon": 10.179813,
+          "name_variant": "BAB ALIOUA",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 8,
+      "is_conflict": true
+    },
+    "ibn sina": {
+      "normalized_name": "ibn sina",
+      "name_variants": [
+        "IBN SINA",
+        "Ibn Sina"
+      ],
+      "canonical_name": "IBN SINA",
+      "lat": 36.75428,
+      "lon": 10.19393,
+      "source": "transtu_metro",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.75428,
+          "lon": 10.19393,
+          "name_variant": "Ibn Sina",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.744703,
+          "lon": 10.186675,
+          "name_variant": "Ibn Sina",
+          "entry_count": 4
+        },
+        "transtu_metro": {
+          "lat": 36.75428,
+          "lon": 10.19393,
+          "name_variant": "IBN SINA",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 7,
+      "is_conflict": true
+    },
+    "cite ennour": {
+      "normalized_name": "cite ennour",
+      "name_variants": [
+        "CITE ENNOUR",
+        "Cité Ennour"
+      ],
+      "canonical_name": "CITE ENNOUR",
+      "lat": 36.7515,
+      "lon": 10.20473,
+      "source": "transtu_metro",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.778152,
+          "lon": 10.20473,
+          "name_variant": "Cité Ennour",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.778152,
+          "lon": 9.853266,
+          "name_variant": "Cité Ennour",
+          "entry_count": 3
+        },
+        "transtu_metro": {
+          "lat": 36.7515,
+          "lon": 10.20473,
+          "name_variant": "CITE ENNOUR",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 6,
+      "is_conflict": true
+    },
+    "ben arous": {
+      "normalized_name": "ben arous",
+      "name_variants": [
+        "BEN AROUS",
+        "Ben Arous"
+      ],
+      "canonical_name": "BEN AROUS",
+      "lat": 36.7554,
+      "lon": 10.21898,
+      "source": "transtu_metro",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.7554,
+          "lon": 10.21898,
+          "name_variant": "BEN AROUS",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.7554,
+          "lon": 10.21898,
+          "name_variant": "BEN AROUS",
+          "entry_count": 1
+        },
+        "transtu_metro": {
+          "lat": 36.7554,
+          "lon": 10.21898,
+          "name_variant": "BEN AROUS",
+          "entry_count": 1
+        },
+        "rfr_stations": {
+          "lat": 36.792003,
+          "lon": 10.217064,
+          "name_variant": "Ben Arous",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "cite el khadhra": {
+      "normalized_name": "cite el khadhra",
+      "name_variants": [
+        "CITE EL KHADHRA",
+        "Cité El Khadhra"
+      ],
+      "canonical_name": "Cité El Khadhra",
+      "lat": 36.82923,
+      "lon": 10.19506,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.82923,
+          "lon": 10.19506,
+          "name_variant": "Cité El Khadhra",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.823838,
+          "lon": 10.19506,
+          "name_variant": "Cité El Khadhra",
+          "entry_count": 7
+        }
+      },
+      "total_entries": 9,
+      "is_conflict": true
+    },
+    "tunis marine": {
+      "normalized_name": "tunis marine",
+      "name_variants": [
+        "STATION TUNIS MARINE",
+        "TUNIS MARINE",
+        "Tunis Marine"
+      ],
+      "canonical_name": "STATION TUNIS MARINE",
+      "lat": 36.800203,
+      "lon": 10.192837,
+      "source": "transtu_metro",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.8002,
+          "lon": 10.19283,
+          "name_variant": "TUNIS MARINE",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.8002,
+          "lon": 10.19283,
+          "name_variant": "TUNIS MARINE",
+          "entry_count": 2
+        },
+        "transtu_metro": {
+          "lat": 36.800203,
+          "lon": 10.192837,
+          "name_variant": "STATION TUNIS MARINE",
+          "entry_count": 1
+        },
+        "rfr_stations": {
+          "lat": 36.799088,
+          "lon": 10.190458,
+          "name_variant": "Tunis Marine",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "bab saadoun": {
+      "normalized_name": "bab saadoun",
+      "name_variants": [
+        "BAB SAADOUN",
+        "Bab Saadoun "
+      ],
+      "canonical_name": "BAB SAADOUN",
+      "lat": 36.80986,
+      "lon": 10.16219,
+      "source": "transtu_metro",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.80986,
+          "lon": 10.16219,
+          "name_variant": "Bab Saadoun ",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.809275,
+          "lon": 10.156576,
+          "name_variant": "Bab Saadoun ",
+          "entry_count": 12
+        },
+        "transtu_metro": {
+          "lat": 36.80986,
+          "lon": 10.16219,
+          "name_variant": "BAB SAADOUN",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 15,
+      "is_conflict": true
+    },
+    "bouchoucha": {
+      "normalized_name": "bouchoucha",
+      "name_variants": [
+        "BOUCHOUCHA",
+        "Bouchoucha"
+      ],
+      "canonical_name": "BOUCHOUCHA",
+      "lat": 36.80953,
+      "lon": 10.15026,
+      "source": "transtu_metro",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.80953,
+          "lon": 10.15026,
+          "name_variant": "BOUCHOUCHA",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.80905,
+          "lon": 10.147097,
+          "name_variant": "Bouchoucha",
+          "entry_count": 24
+        },
+        "transtu_metro": {
+          "lat": 36.80953,
+          "lon": 10.15026,
+          "name_variant": "BOUCHOUCHA",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 27,
+      "is_conflict": true
+    },
+    "bardo": {
+      "normalized_name": "bardo",
+      "name_variants": [
+        "BARDO",
+        "Bardo"
+      ],
+      "canonical_name": "BARDO",
+      "lat": 36.80724,
+      "lon": 10.13523,
+      "source": "transtu_metro",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.807772,
+          "lon": 10.13523,
+          "name_variant": "Bardo",
+          "entry_count": 3
+        },
+        "tunismapper_routes": {
+          "lat": 36.807772,
+          "lon": 10.138723,
+          "name_variant": "Bardo",
+          "entry_count": 10
+        },
+        "transtu_metro": {
+          "lat": 36.80724,
+          "lon": 10.13523,
+          "name_variant": "BARDO",
+          "entry_count": 1
+        },
+        "rfr_stations": {
+          "lat": 36.80733,
+          "lon": 10.135577,
+          "name_variant": "Bardo",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 15,
+      "is_conflict": true
+    },
+    "denden": {
+      "normalized_name": "denden",
+      "name_variants": [
+        "DENDEN",
+        "Denden"
+      ],
+      "canonical_name": "DENDEN",
+      "lat": 36.80221,
+      "lon": 10.11075,
+      "source": "transtu_metro",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.80221,
+          "lon": 10.110217,
+          "name_variant": "Denden",
+          "entry_count": 3
+        },
+        "tunismapper_routes": {
+          "lat": 36.8011,
+          "lon": 10.109573,
+          "name_variant": "Denden",
+          "entry_count": 9
+        },
+        "transtu_metro": {
+          "lat": 36.80221,
+          "lon": 10.11075,
+          "name_variant": "DENDEN",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 13,
+      "is_conflict": true
+    },
+    "manouba": {
+      "normalized_name": "manouba",
+      "name_variants": [
+        "MANOUBA",
+        "Manouba"
+      ],
+      "canonical_name": "Manouba",
+      "lat": 36.816164,
+      "lon": 10.101137,
+      "source": "rfr_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.80211,
+          "lon": 10.10269,
+          "name_variant": "MANOUBA",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.80211,
+          "lon": 10.10269,
+          "name_variant": "MANOUBA",
+          "entry_count": 1
+        },
+        "rfr_stations": {
+          "lat": 36.816164,
+          "lon": 10.101137,
+          "name_variant": "Manouba",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 3,
+      "is_conflict": true
+    },
+    "moncef bey": {
+      "normalized_name": "moncef bey",
+      "name_variants": [
+        "MONCEF BEY",
+        "Moncef Bey "
+      ],
+      "canonical_name": "MONCEF BEY",
+      "lat": 36.80528,
+      "lon": 10.09065,
+      "source": "transtu_metro",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.80528,
+          "lon": 10.185628,
+          "name_variant": "MONCEF BEY",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.792944,
+          "lon": 10.185628,
+          "name_variant": "Moncef Bey ",
+          "entry_count": 5
+        },
+        "transtu_metro": {
+          "lat": 36.80528,
+          "lon": 10.09065,
+          "name_variant": "MONCEF BEY",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 8,
+      "is_conflict": true
+    },
+    "la goulette": {
+      "normalized_name": "la goulette",
+      "name_variants": [
+        "LA GOULETTE",
+        "La Goulette"
+      ],
+      "canonical_name": "LA GOULETTE",
+      "lat": 36.818051,
+      "lon": 10.30194,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.818051,
+          "lon": 10.30194,
+          "name_variant": "LA GOULETTE",
+          "entry_count": 2
+        },
+        "tunismapper_sweep": {
+          "lat": 36.806685,
+          "lon": 10.290958,
+          "name_variant": "La Goulette",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.818051,
+          "lon": 10.30194,
+          "name_variant": "LA GOULETTE",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "aeroport": {
+      "normalized_name": "aeroport",
+      "name_variants": [
+        "AÉROPORT",
+        "Aéroport"
+      ],
+      "canonical_name": "Aéroport",
+      "lat": 35.76249,
+      "lon": 10.754113,
+      "source": "sncft_banlieue_sahel",
+      "source_authority": 1,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.831947,
+          "lon": 10.313875,
+          "name_variant": "AÉROPORT",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.831947,
+          "lon": 10.313875,
+          "name_variant": "AÉROPORT",
+          "entry_count": 1
+        },
+        "sncft_banlieue_sahel": {
+          "lat": 35.76249,
+          "lon": 10.754113,
+          "name_variant": "Aéroport",
+          "entry_count": 1
+        },
+        "rfr_stations": {
+          "lat": 36.845769,
+          "lon": 10.201651,
+          "name_variant": "Aéroport",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "ben mahmoud": {
+      "normalized_name": "ben mahmoud",
+      "name_variants": [
+        "Ben Mahmoud"
+      ],
+      "canonical_name": "Ben Mahmoud",
+      "lat": 36.887275,
+      "lon": 10.301099,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.887275,
+          "lon": 10.301099,
+          "name_variant": "Ben Mahmoud",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.785925,
+          "lon": 10.08149,
+          "name_variant": "Ben Mahmoud",
+          "entry_count": 13
+        }
+      },
+      "total_entries": 15,
+      "is_conflict": true
+    },
+    "sidi amara": {
+      "normalized_name": "sidi amara",
+      "name_variants": [
+        "SIDI AMARA",
+        "Sidi Amara"
+      ],
+      "canonical_name": "SIDI AMARA",
+      "lat": 35.86315,
+      "lon": 9.515844,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.753645,
+          "lon": 9.971276,
+          "name_variant": "Sidi Amara",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 35.86315,
+          "lon": 9.515844,
+          "name_variant": "SIDI AMARA",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.753645,
+          "lon": 9.971276,
+          "name_variant": "Sidi Amara",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 3,
+      "is_conflict": true
+    },
+    "jayara": {
+      "normalized_name": "jayara",
+      "name_variants": [
+        "Jayara"
+      ],
+      "canonical_name": "Jayara",
+      "lat": 36.792003,
+      "lon": 10.096753,
+      "source": "rfr_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.778413,
+          "lon": 10.096338,
+          "name_variant": "Jayara",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.778413,
+          "lon": 10.096338,
+          "name_variant": "Jayara",
+          "entry_count": 3
+        },
+        "rfr_stations": {
+          "lat": 36.792003,
+          "lon": 10.096753,
+          "name_variant": "Jayara",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "cite monji slim": {
+      "normalized_name": "cite monji slim",
+      "name_variants": [
+        "Cite Monji Slim",
+        "Cité Monji Slim"
+      ],
+      "canonical_name": "Cite Monji Slim",
+      "lat": 36.901886,
+      "lon": 10.146258,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.901886,
+          "lon": 10.146258,
+          "name_variant": "Cite Monji Slim",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.712976,
+          "lon": 10.146258,
+          "name_variant": "Cite Monji Slim",
+          "entry_count": 3
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "fouchana": {
+      "normalized_name": "fouchana",
+      "name_variants": [
+        "FOUCHANA",
+        "Fouchana"
+      ],
+      "canonical_name": "FOUCHANA",
+      "lat": 36.698722,
+      "lon": 10.169358,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.700045,
+          "lon": 10.166194,
+          "name_variant": "Fouchana",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 36.698722,
+          "lon": 10.169358,
+          "name_variant": "FOUCHANA",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.700045,
+          "lon": 10.166194,
+          "name_variant": "Fouchana",
+          "entry_count": 8
+        }
+      },
+      "total_entries": 10,
+      "is_conflict": true
+    },
+    "mghira": {
+      "normalized_name": "mghira",
+      "name_variants": [
+        "Mghira"
+      ],
+      "canonical_name": "Mghira",
+      "lat": 36.792003,
+      "lon": 10.179331,
+      "source": "rfr_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.716231,
+          "lon": 10.174852,
+          "name_variant": "Mghira",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.70647,
+          "lon": 10.174852,
+          "name_variant": "Mghira",
+          "entry_count": 9
+        },
+        "rfr_stations": {
+          "lat": 36.792003,
+          "lon": 10.179331,
+          "name_variant": "Mghira",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 12,
+      "is_conflict": true
+    },
+    "barcelone": {
+      "normalized_name": "barcelone",
+      "name_variants": [
+        "BARCELONE",
+        "Barcelone",
+        "Station Barcelone"
+      ],
+      "canonical_name": "BARCELONE",
+      "lat": 36.796109,
+      "lon": 10.180552,
+      "source": "transtu_metro",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.797041,
+          "lon": 10.180131,
+          "name_variant": "Station Barcelone",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.797041,
+          "lon": 10.180131,
+          "name_variant": "Station Barcelone",
+          "entry_count": 23
+        },
+        "transtu_metro": {
+          "lat": 36.796109,
+          "lon": 10.180552,
+          "name_variant": "BARCELONE",
+          "entry_count": 1
+        },
+        "rfr_stations": {
+          "lat": 36.794791,
+          "lon": 10.180499,
+          "name_variant": "Barcelone",
+          "entry_count": 2
+        }
+      },
+      "total_entries": 27,
+      "is_conflict": true
+    },
+    "djebel jelloud": {
+      "normalized_name": "djebel jelloud",
+      "name_variants": [
+        "Djebel Jelloud",
+        "Gare Djebel Jelloud"
+      ],
+      "canonical_name": "Gare Djebel Jelloud",
+      "lat": 36.773178,
+      "lon": 10.208723,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.773178,
+          "lon": 10.208723,
+          "name_variant": "Gare Djebel Jelloud",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.771538,
+          "lon": 10.208723,
+          "name_variant": "Gare Djebel Jelloud",
+          "entry_count": 26
+        }
+      },
+      "total_entries": 28,
+      "is_conflict": true
+    },
+    "marche de gros": {
+      "normalized_name": "marche de gros",
+      "name_variants": [
+        "Marche de gros",
+        "Marché De Gros"
+      ],
+      "canonical_name": "Marche de gros",
+      "lat": 36.792003,
+      "lon": 10.233841,
+      "source": "rfr_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.724326,
+          "lon": 10.228484,
+          "name_variant": "Marché De Gros",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.724326,
+          "lon": 10.228484,
+          "name_variant": "Marché De Gros",
+          "entry_count": 3
+        },
+        "rfr_stations": {
+          "lat": 36.792003,
+          "lon": 10.233841,
+          "name_variant": "Marche de gros",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "mosquee": {
+      "normalized_name": "mosquee",
+      "name_variants": [
+        "MOSQUEE",
+        "Mosquée"
+      ],
+      "canonical_name": "MOSQUEE",
+      "lat": 33.681407,
+      "lon": 10.680385,
+      "source": "srtm_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.738582,
+          "lon": 10.244525,
+          "name_variant": "Mosquée",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.738582,
+          "lon": 10.244525,
+          "name_variant": "Mosquée",
+          "entry_count": 3
+        },
+        "srtm_stations": {
+          "lat": 33.681407,
+          "lon": 10.680385,
+          "name_variant": "MOSQUEE",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "residence yesmine": {
+      "normalized_name": "residence yesmine",
+      "name_variants": [
+        "Résidence Yesmine "
+      ],
+      "canonical_name": "Résidence Yesmine ",
+      "lat": 36.826254,
+      "lon": 10.135681,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.826254,
+          "lon": 10.135681,
+          "name_variant": "Résidence Yesmine ",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.826254,
+          "lon": 10.134233,
+          "name_variant": "Résidence Yesmine ",
+          "entry_count": 4
+        }
+      },
+      "total_entries": 6,
+      "is_conflict": true
+    },
+    "stil": {
+      "normalized_name": "stil",
+      "name_variants": [
+        "STIL",
+        "Stil"
+      ],
+      "canonical_name": "STIL",
+      "lat": 36.833948,
+      "lon": 10.190425,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.833948,
+          "lon": 10.190425,
+          "name_variant": "STIL",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.833948,
+          "lon": 9.945673,
+          "name_variant": "Stil",
+          "entry_count": 7
+        }
+      },
+      "total_entries": 9,
+      "is_conflict": true
+    },
+    "bortal": {
+      "normalized_name": "bortal",
+      "name_variants": [
+        "Bortal",
+        "Bortal "
+      ],
+      "canonical_name": "Bortal",
+      "lat": 36.811955,
+      "lon": 10.115802,
+      "source": "rfr_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.812087,
+          "lon": 10.117408,
+          "name_variant": "Bortal ",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.812087,
+          "lon": 10.117408,
+          "name_variant": "Bortal ",
+          "entry_count": 19
+        },
+        "rfr_stations": {
+          "lat": 36.811955,
+          "lon": 10.115802,
+          "name_variant": "Bortal",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 21,
+      "is_conflict": true
+    },
+    "soned": {
+      "normalized_name": "soned",
+      "name_variants": [
+        "Soned"
+      ],
+      "canonical_name": "Soned",
+      "lat": 36.836053,
+      "lon": 10.160626,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.836053,
+          "lon": 10.160626,
+          "name_variant": "Soned",
+          "entry_count": 4
+        },
+        "tunismapper_routes": {
+          "lat": 36.765295,
+          "lon": 10.210255,
+          "name_variant": "Soned",
+          "entry_count": 20
+        }
+      },
+      "total_entries": 24,
+      "is_conflict": true
+    },
+    "saidia": {
+      "normalized_name": "saidia",
+      "name_variants": [
+        "SAIDIA",
+        "Saidia",
+        "Saidia "
+      ],
+      "canonical_name": "SAIDIA",
+      "lat": 36.80541,
+      "lon": 10.12664,
+      "source": "transtu_metro",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.805117,
+          "lon": 10.131561,
+          "name_variant": "Saidia ",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.805117,
+          "lon": 10.131561,
+          "name_variant": "Saidia ",
+          "entry_count": 2
+        },
+        "transtu_metro": {
+          "lat": 36.80541,
+          "lon": 10.12664,
+          "name_variant": "SAIDIA",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "bejawa 2": {
+      "normalized_name": "bejawa 2",
+      "name_variants": [
+        "Bejawa 2"
+      ],
+      "canonical_name": "Bejawa 2",
+      "lat": 36.843402,
+      "lon": 10.009993,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.843402,
+          "lon": 10.009993,
+          "name_variant": "Bejawa 2",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.83684,
+          "lon": 10.007917,
+          "name_variant": "Bejawa 2",
+          "entry_count": 10
+        }
+      },
+      "total_entries": 12,
+      "is_conflict": true
+    },
+    "ecole primaire": {
+      "normalized_name": "ecole primaire",
+      "name_variants": [
+        "Ecole Primaire"
+      ],
+      "canonical_name": "Ecole Primaire",
+      "lat": 37.058121,
+      "lon": 10.120076,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 37.058121,
+          "lon": 10.120076,
+          "name_variant": "Ecole Primaire",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.836617,
+          "lon": 10.01266,
+          "name_variant": "Ecole Primaire",
+          "entry_count": 14
+        }
+      },
+      "total_entries": 16,
+      "is_conflict": true
+    },
+    "fatouma bourguiba": {
+      "normalized_name": "fatouma bourguiba",
+      "name_variants": [
+        "Fatouma Bourguiba"
+      ],
+      "canonical_name": "Fatouma Bourguiba",
+      "lat": 36.811787,
+      "lon": 10.156549,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.811787,
+          "lon": 10.156549,
+          "name_variant": "Fatouma Bourguiba",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.672806,
+          "lon": 10.156549,
+          "name_variant": "Fatouma Bourguiba",
+          "entry_count": 3
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "sidi saad": {
+      "normalized_name": "sidi saad",
+      "name_variants": [
+        "Sidi Saad"
+      ],
+      "canonical_name": "Sidi Saad",
+      "lat": 36.670376,
+      "lon": 10.268525,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.670376,
+          "lon": 10.268525,
+          "name_variant": "Sidi Saad",
+          "entry_count": 2
+        },
+        "tunismapper_sweep": {
+          "lat": 35.391277,
+          "lon": 9.760725,
+          "name_variant": "Sidi Saad",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.670376,
+          "lon": 10.268525,
+          "name_variant": "Sidi Saad",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "cite erraoudha": {
+      "normalized_name": "cite erraoudha",
+      "name_variants": [
+        "Cite Erraoudha ",
+        "Cité Erraoudha"
+      ],
+      "canonical_name": "Cité Erraoudha",
+      "lat": 36.80626,
+      "lon": 10.150219,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.80626,
+          "lon": 10.150219,
+          "name_variant": "Cité Erraoudha",
+          "entry_count": 2
+        },
+        "tunismapper_sweep": {
+          "lat": 36.80626,
+          "lon": 10.139212,
+          "name_variant": "Cité Erraoudha",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.801774,
+          "lon": 10.150219,
+          "name_variant": "Cite Erraoudha ",
+          "entry_count": 2
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "mnihla": {
+      "normalized_name": "mnihla",
+      "name_variants": [
+        "Mnihla"
+      ],
+      "canonical_name": "Mnihla",
+      "lat": 36.854747,
+      "lon": 10.116819,
+      "source": "rfr_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.857591,
+          "lon": 10.116476,
+          "name_variant": "Mnihla",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.857591,
+          "lon": 10.116476,
+          "name_variant": "Mnihla",
+          "entry_count": 3
+        },
+        "rfr_stations": {
+          "lat": 36.854747,
+          "lon": 10.116819,
+          "name_variant": "Mnihla",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "moezeya": {
+      "normalized_name": "moezeya",
+      "name_variants": [
+        "Moezeya"
+      ],
+      "canonical_name": "Moezeya",
+      "lat": 36.830093,
+      "lon": 10.064909,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.830093,
+          "lon": 10.064909,
+          "name_variant": "Moezeya",
+          "entry_count": 2
+        },
+        "tunismapper_routes": {
+          "lat": 36.825731,
+          "lon": 10.064909,
+          "name_variant": "Moezeya",
+          "entry_count": 11
+        }
+      },
+      "total_entries": 13,
+      "is_conflict": true
+    },
+    "10 decembre": {
+      "normalized_name": "10 decembre",
+      "name_variants": [
+        "10 DECEMBRE",
+        "10 Decembre"
+      ],
+      "canonical_name": "10 DECEMBRE",
+      "lat": 36.844289,
+      "lon": 10.184069,
+      "source": "transtu_metro",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.842184,
+          "lon": 10.182519,
+          "name_variant": "10 Decembre",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.842184,
+          "lon": 10.182519,
+          "name_variant": "10 Decembre",
+          "entry_count": 16
+        },
+        "transtu_metro": {
+          "lat": 36.844289,
+          "lon": 10.184069,
+          "name_variant": "10 DECEMBRE",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 18,
+      "is_conflict": true
+    },
+    "cite essalem": {
+      "normalized_name": "cite essalem",
+      "name_variants": [
+        "Cité Essalem"
+      ],
+      "canonical_name": "Cité Essalem",
+      "lat": 36.854947,
+      "lon": 10.272104,
+      "source": "tunismapper_details",
+      "source_authority": 4,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.854947,
+          "lon": 10.272104,
+          "name_variant": "Cité Essalem",
+          "entry_count": 3
+        },
+        "tunismapper_routes": {
+          "lat": 36.853276,
+          "lon": 10.274223,
+          "name_variant": "Cité Essalem",
+          "entry_count": 7
+        }
+      },
+      "total_entries": 10,
+      "is_conflict": true
+    },
+    "sidi amor": {
+      "normalized_name": "sidi amor",
+      "name_variants": [
+        "SIDI AMOR",
+        "Sidi Amor"
+      ],
+      "canonical_name": "SIDI AMOR",
+      "lat": 36.810182,
+      "lon": 10.073234,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.939772,
+          "lon": 10.178627,
+          "name_variant": "Sidi Amor",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 36.810182,
+          "lon": 10.073234,
+          "name_variant": "SIDI AMOR",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.939772,
+          "lon": 10.178627,
+          "name_variant": "Sidi Amor",
+          "entry_count": 3
+        }
+      },
+      "total_entries": 5,
+      "is_conflict": true
+    },
+    "soukra": {
+      "normalized_name": "soukra",
+      "name_variants": [
+        "Soukra"
+      ],
+      "canonical_name": "Soukra",
+      "lat": 36.854843,
+      "lon": 10.202396,
+      "source": "rfr_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.879922,
+          "lon": 10.260799,
+          "name_variant": "Soukra",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.879922,
+          "lon": 10.260799,
+          "name_variant": "Soukra",
+          "entry_count": 2
+        },
+        "rfr_stations": {
+          "lat": 36.854843,
+          "lon": 10.202396,
+          "name_variant": "Soukra",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 4,
+      "is_conflict": true
+    },
+    "charguia": {
+      "normalized_name": "charguia",
+      "name_variants": [
+        "Charguia"
+      ],
+      "canonical_name": "Charguia",
+      "lat": 36.832336,
+      "lon": 10.20057,
+      "source": "rfr_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 36.828574,
+          "lon": 10.206164,
+          "name_variant": "Charguia",
+          "entry_count": 1
+        },
+        "tunismapper_routes": {
+          "lat": 36.828574,
+          "lon": 10.206164,
+          "name_variant": "Charguia",
+          "entry_count": 5
+        },
+        "rfr_stations": {
+          "lat": 36.832336,
+          "lon": 10.20057,
+          "name_variant": "Charguia",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 7,
+      "is_conflict": true
+    },
+    "feriana": {
+      "normalized_name": "feriana",
+      "name_variants": [
+        "FERIANA",
+        "Feriana"
+      ],
+      "canonical_name": "FERIANA",
+      "lat": 34.946648,
+      "lon": 8.566311,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 34.94918,
+          "lon": 8.568148,
+          "name_variant": "Feriana",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 34.94918,
+          "lon": 8.568148,
+          "name_variant": "Feriana",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 34.946648,
+          "lon": 8.566311,
+          "name_variant": "FERIANA",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 3,
+      "is_conflict": true
+    },
+    "jalta": {
+      "normalized_name": "jalta",
+      "name_variants": [
+        "JALTA",
+        "Jalta"
+      ],
+      "canonical_name": "JALTA",
+      "lat": 37.07184,
+      "lon": 9.534712,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 37.074039,
+          "lon": 9.534736,
+          "name_variant": "Jalta",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 37.074039,
+          "lon": 9.534736,
+          "name_variant": "Jalta",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 37.07184,
+          "lon": 9.534712,
+          "name_variant": "JALTA",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 3,
+      "is_conflict": true
+    },
+    "kasserine": {
+      "normalized_name": "kasserine",
+      "name_variants": [
+        "KASSERINE",
+        "Kasserine"
+      ],
+      "canonical_name": "KASSERINE",
+      "lat": 35.168765,
+      "lon": 8.836565,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 35.167402,
+          "lon": 8.834704,
+          "name_variant": "Kasserine",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 35.167402,
+          "lon": 8.834704,
+          "name_variant": "Kasserine",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 35.168765,
+          "lon": 8.836565,
+          "name_variant": "KASSERINE",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 3,
+      "is_conflict": true
+    },
+    "sbeitla": {
+      "normalized_name": "sbeitla",
+      "name_variants": [
+        "SBEITLA",
+        "Sbeitla"
+      ],
+      "canonical_name": "SBEITLA",
+      "lat": 35.240338,
+      "lon": 9.120342,
+      "source": "sntri_geocoded",
+      "source_authority": 3,
+      "all_sources": {
+        "tunismapper_details": {
+          "lat": 35.227595,
+          "lon": 9.128112,
+          "name_variant": "Sbeitla",
+          "entry_count": 1
+        },
+        "tunismapper_sweep": {
+          "lat": 35.227595,
+          "lon": 9.128112,
+          "name_variant": "Sbeitla",
+          "entry_count": 1
+        },
+        "sntri_geocoded": {
+          "lat": 35.240338,
+          "lon": 9.120342,
+          "name_variant": "SBEITLA",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 3,
+      "is_conflict": true
+    },
+    "akarit": {
+      "normalized_name": "akarit",
+      "name_variants": [
+        "AKARIT",
+        "AKARIT "
+      ],
+      "canonical_name": "AKARIT ",
+      "lat": 34.10509,
+      "lon": 9.983225,
+      "source": "srtm_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "sntri_geocoded": {
+          "lat": 34.108583,
+          "lon": 9.983133,
+          "name_variant": "AKARIT",
+          "entry_count": 1
+        },
+        "srtm_stations": {
+          "lat": 34.10509,
+          "lon": 9.983225,
+          "name_variant": "AKARIT ",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 2,
+      "is_conflict": true
+    },
+    "el may": {
+      "normalized_name": "el may",
+      "name_variants": [
+        "EL MAY"
+      ],
+      "canonical_name": "EL MAY",
+      "lat": 33.801846,
+      "lon": 10.885065,
+      "source": "srtm_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "sntri_geocoded": {
+          "lat": 33.801189,
+          "lon": 10.883328,
+          "name_variant": "EL MAY",
+          "entry_count": 1
+        },
+        "srtm_stations": {
+          "lat": 33.801846,
+          "lon": 10.885065,
+          "name_variant": "EL MAY",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 2,
+      "is_conflict": true
+    },
+    "moknine": {
+      "normalized_name": "moknine",
+      "name_variants": [
+        "MOKNINE",
+        "Moknine"
+      ],
+      "canonical_name": "Moknine",
+      "lat": 35.631289,
+      "lon": 10.915611,
+      "source": "sncft_banlieue_sahel",
+      "source_authority": 1,
+      "all_sources": {
+        "sntri_geocoded": {
+          "lat": 35.628257,
+          "lon": 10.900133,
+          "name_variant": "MOKNINE",
+          "entry_count": 1
+        },
+        "sncft_banlieue_sahel": {
+          "lat": 35.631289,
+          "lon": 10.915611,
+          "name_variant": "Moknine",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 2,
+      "is_conflict": true
+    },
+    "smar": {
+      "normalized_name": "smar",
+      "name_variants": [
+        "SMAR",
+        "SMAR "
+      ],
+      "canonical_name": "SMAR ",
+      "lat": 32.995044,
+      "lon": 10.821754,
+      "source": "srtm_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "sntri_geocoded": {
+          "lat": 33.031397,
+          "lon": 10.909536,
+          "name_variant": "SMAR",
+          "entry_count": 1
+        },
+        "srtm_stations": {
+          "lat": 32.995044,
+          "lon": 10.821754,
+          "name_variant": "SMAR ",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 2,
+      "is_conflict": true
+    },
+    "zarzis": {
+      "normalized_name": "zarzis",
+      "name_variants": [
+        "ZARZIS",
+        "zarzis"
+      ],
+      "canonical_name": "zarzis",
+      "lat": 33.498873,
+      "lon": 11.114969,
+      "source": "srtm_stations",
+      "source_authority": 2,
+      "all_sources": {
+        "sntri_geocoded": {
+          "lat": 33.50368,
+          "lon": 11.109717,
+          "name_variant": "ZARZIS",
+          "entry_count": 1
+        },
+        "srtm_stations": {
+          "lat": 33.498873,
+          "lon": 11.114969,
+          "name_variant": "zarzis",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 2,
+      "is_conflict": true
+    },
+    "sayada": {
+      "normalized_name": "sayada",
+      "name_variants": [
+        "SAYADA ",
+        "Sayada"
+      ],
+      "canonical_name": "Sayada",
+      "lat": 35.666075,
+      "lon": 10.8882,
+      "source": "sncft_banlieue_sahel",
+      "source_authority": 1,
+      "all_sources": {
+        "sncft_banlieue_sahel": {
+          "lat": 35.666075,
+          "lon": 10.8882,
+          "name_variant": "Sayada",
+          "entry_count": 1
+        },
+        "srtm_stations": {
+          "lat": 34.493559,
+          "lon": 10.38833,
+          "name_variant": "SAYADA ",
+          "entry_count": 1
+        }
+      },
+      "total_entries": 2,
+      "is_conflict": true
+    }
+  }
+}

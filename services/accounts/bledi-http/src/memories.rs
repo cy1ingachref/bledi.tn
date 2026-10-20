@@ -1,6 +1,6 @@
 use axum::extract::State;
 use axum::http::StatusCode;
-use bledi_application::memories::{CreateMemory, UpdateMemory};
+use bledi_application::memories::UpdateMemory;
 use bledi_application::{Nearby, Position};
 use bledi_domain::memory::{MediaType, Memory, Visibility};
 use chrono::{DateTime, Utc};
@@ -9,7 +9,9 @@ use uuid::Uuid;
 
 use crate::auth::AuthUser;
 use crate::extract::{Json, Path, Query};
+use crate::media;
 use crate::rate_limit::Decision;
+use crate::upload::CreateMemoryBody;
 use crate::{ApiError, AppState};
 
 /// A memory as its owner, or a caller who unlocked it, sees it.
@@ -95,12 +97,39 @@ pub async fn nearby(
     Ok(views(state.services.memories.nearby(me, query).await?))
 }
 
+/// Creates a memory. The request is JSON, or a form carrying a photo.
+///
+/// An uploaded photo is stored under the media root and the memory points at it by key, so
+/// the URL is derived from the key and the client never names the file.
 pub async fn create(
     State(state): State<AppState>,
     AuthUser(me): AuthUser,
-    Json(input): Json<CreateMemory>,
+    body: CreateMemoryBody,
 ) -> Result<(StatusCode, Json<MemoryView>), ApiError> {
-    let memory = state.services.memories.create(me, input).await?;
+    let (input, uploaded) = match body.photo {
+        Some(photo) => {
+            let prepared = media::prepare(&photo)?;
+            state.media.save(&prepared.key, &prepared.bytes).await?;
+            let mut input = body.memory;
+            input.media_key = Some(prepared.key.clone());
+            input.media_url = None;
+            // The type comes from the bytes, not from what the client called it.
+            input.media_type = MediaType::Image;
+            (input, Some(prepared))
+        }
+        None => (body.memory, None),
+    };
+
+    let memory = match state.services.memories.create(me, input).await {
+        Ok(memory) => memory,
+        Err(e) => {
+            // The photo has no memory to belong to, so it must not stay behind.
+            if let Some(prepared) = uploaded {
+                state.media.remove(&prepared.key).await;
+            }
+            return Err(e.into());
+        }
+    };
     Ok((StatusCode::CREATED, Json(memory.into())))
 }
 

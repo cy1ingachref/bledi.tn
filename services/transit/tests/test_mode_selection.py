@@ -49,7 +49,8 @@ class TestSelectionsRestrictTheSearch:
         produce a bus+train path, the combination search degrades to a
         single-mode answer and the per-selection tests would still pass.
         """
-        res = router.route(*TUNIS, *SFAX, allowed_modes=BUS_MODES | RAIL_MODES)
+        # Tunis->Grombalia: train (train_8_sncft) + bus (bus_712_21)
+        res = router.route(36.8065, 10.1815, 36.6000, 10.2000, allowed_modes=BUS_MODES | RAIL_MODES)
         modes = _ride_modes(res) - {"walk"}
         assert len(modes) >= 2, f"expected a mixed bus+train path, got {modes}"
 

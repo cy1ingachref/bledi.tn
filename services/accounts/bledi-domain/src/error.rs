@@ -10,6 +10,7 @@ pub enum Invalid {
     Password,
     Text,
     MediaUrl,
+    MediaKey,
     Expiry,
 }
 
@@ -23,6 +24,7 @@ impl Invalid {
             Self::Password => "invalid_password",
             Self::Text => "invalid_text",
             Self::MediaUrl => "invalid_media_url",
+            Self::MediaKey => "invalid_media_key",
             Self::Expiry => "invalid_expiry",
         }
     }
@@ -36,7 +38,7 @@ pub struct ValidationError {
 }
 
 impl ValidationError {
-    pub(crate) fn new(kind: Invalid, message: impl Into<String>) -> Self {
+    pub fn new(kind: Invalid, message: impl Into<String>) -> Self {
         Self {
             kind,
             message: message.into(),

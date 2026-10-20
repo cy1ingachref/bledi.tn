@@ -1,9 +1,12 @@
 use axum::http::{header, HeaderValue, Method};
 use tower_http::cors::CorsLayer;
 
+/// The origins the local development stack and the tests use. A deployment that names its
+/// own origins overrides this; the list is never opened up to the world.
 pub const DEFAULT_ALLOWED_ORIGINS: &[&str] = &[
     "http://127.0.0.1:8000",
     "http://localhost:8000",
+    "http://127.0.0.1:5173",
     "http://localhost:5173",
     "http://127.0.0.1:8080",
     "http://localhost:8080",
@@ -35,6 +38,18 @@ pub fn parse_allowed_origins(raw: &str) -> Result<Vec<HeaderValue>, String> {
             HeaderValue::from_str(origin).map_err(|_| format!("{origin:?} is not a header value"))
         })
         .collect()
+}
+
+/// The origins the API accepts, from a list the operator wrote.
+///
+/// A list that names no origin is refused: a policy that matches nothing silently breaks
+/// every browser client, and the operator would never learn why.
+pub fn allowed_origins_from(raw: &str) -> Result<Vec<HeaderValue>, String> {
+    let origins = parse_allowed_origins(raw).map_err(|e| format!("ALLOWED_ORIGINS: {e}"))?;
+    if origins.is_empty() {
+        return Err("ALLOWED_ORIGINS lists no origin.".into());
+    }
+    Ok(origins)
 }
 
 /// Credentials stay off: the API takes a bearer token the browser never attaches on its own,
@@ -92,5 +107,12 @@ mod tests {
                 "{raw:?} must be refused"
             );
         }
+    }
+
+    #[test]
+    fn an_empty_list_is_refused() {
+        assert!(allowed_origins_from("").is_err());
+        assert!(allowed_origins_from("  ,  ").is_err());
+        assert!(allowed_origins_from("https://ok.example").is_ok());
     }
 }

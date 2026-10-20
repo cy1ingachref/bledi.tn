@@ -1,0 +1,60 @@
+name: Data pipeline
+
+# The data scripts rewrite the seed the routing service reads, so a bad edit must fail
+# here and not in production.
+on:
+  pull_request:
+    paths:
+      - 'data/**'
+      - 'scripts/**'
+      - 'services/transit/**'
+      - '.github/workflows/data-pipeline.yml'
+  workflow_dispatch:
+  schedule:
+    # Weekly, to catch a seed that drifted from the service that reads it.
+    - cron: '37 4 * * 1'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+
+      # The lint and type-check tools are not service dependencies, so they are pinned
+      # separately to the versions this pipeline was checked against.
+      - name: Install the lint and type-check tools
+        run: python -m pip install ruff==0.16.0 mypy==1.20.2
+
+      # The critical rules only: the data scripts are one-off importers with a lot of
+      # untyped parsing, and a broader rule set fails on code nobody maintains.
+      - name: Lint
+        run: python -m ruff check --select=E9,F63,F7,F82 scripts/ tool/ services/transit/src/
+
+      # The scripts that build the seed and the catalog. The list is explicit because the
+      # older one-off importers still have type errors that are not worth fixing.
+      - name: Type check
+        run: >-
+          python -m mypy
+          scripts/build_corrected_seed.py
+          scripts/correct_corrections.py
+          scripts/corrected_pipeline.py
+          scripts/clean_and_connect.py
+          scripts/final-verify.py
+          scripts/build_transport_catalog.py
+          scripts/verify_seed.py
+
+      # The checksum of the corrected seed, and the invariants the pipeline guarantees.
+      - name: Verify the seed
+        run: python scripts/verify_seed.py

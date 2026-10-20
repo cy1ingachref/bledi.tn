@@ -41,7 +41,7 @@ RUN touch */src/*.rs \
 FROM debian:bookworm-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libpq5 ca-certificates \
+    libpq5 ca-certificates curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Run as an unprivileged user. The container needs no root privileges: it only
@@ -53,12 +53,17 @@ WORKDIR /app
 
 COPY --from=builder /app/target/release/bledi-server /usr/local/bin/bledi-server
 
+# The media root holds the uploaded photos. It is a volume in compose, and the
+# service account has to be able to write to it.
+RUN mkdir -p /app/media && chown bledi:bledi /app/media
+
 # NOTE: no DATABASE_URL default and no JWT_SECRET default are baked in.
 # Both are REQUIRED at runtime and the server refuses to start without them.
 # Supply them via `docker compose` env_file / environment, or `docker run -e`.
 # Baking a default connection string into an image ships a working credential
 # to anyone who pulls it.
-ENV RUST_LOG=info
+ENV RUST_LOG=info \
+    MEDIA_ROOT=/app/media
 
 USER bledi
 

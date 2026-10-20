@@ -51,6 +51,7 @@ fn memory(owner: Uuid, at: Coordinates, visibility: Visibility) -> NewMemory {
         title: Some("t".into()),
         description: None,
         media_url: "https://example.com/m.jpg".into(),
+        media_key: None,
         media_type: MediaType::Image,
         visibility,
         unlock_radius: UnlockRadius::new(200.0).unwrap(),

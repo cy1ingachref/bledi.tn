@@ -1,3 +1,4 @@
+use std::path::PathBuf;
 use std::time::Duration;
 
 use axum::body::Body;
@@ -6,6 +7,7 @@ use axum::Router;
 use bledi_application::testing::Fakes;
 use bledi_application::Services;
 use bledi_http::cors::{parse_allowed_origins, DEFAULT_ALLOWED_ORIGINS};
+use bledi_http::media::MediaStore;
 use bledi_http::rate_limit::{Limit, RateLimits};
 use bledi_http::{router, HttpConfig};
 use http_body_util::BodyExt;
@@ -14,6 +16,11 @@ use tower::ServiceExt;
 use uuid::Uuid;
 
 pub const UNLIMITED: Limit = Limit::new(u32::MAX, Duration::from_secs(1));
+
+/// A fresh directory per test app, so two tests never see each other's photos.
+fn temp_media_root() -> PathBuf {
+    std::env::temp_dir().join(format!("bledi-http-test-{}", Uuid::new_v4()))
+}
 
 pub fn config() -> HttpConfig {
     HttpConfig {
@@ -24,6 +31,7 @@ pub fn config() -> HttpConfig {
             unlock: UNLIMITED,
         },
         trust_proxy_headers: false,
+        media: MediaStore::new(temp_media_root()).unwrap(),
     }
 }
 

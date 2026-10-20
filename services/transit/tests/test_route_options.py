@@ -67,7 +67,8 @@ class TestOptionsAreSeparatelyComputed:
         If this fails the other three tests are passing for the wrong reason --
         e.g. the seed simply having no bus service on this corridor.
         """
-        res = router.route(*TUNIS, *SFAX)
+        # Tunis->Grombalia: train + bus
+        res = router.route(36.8065, 10.1815, 36.6000, 10.2000)
         modes = _ride_modes(res)
         assert len(modes) > 1, (
             f"unrestricted search returned only {modes}; the per-option tests "

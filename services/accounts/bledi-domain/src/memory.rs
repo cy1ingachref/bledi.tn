@@ -24,6 +24,9 @@ pub struct Memory {
     pub title: Option<String>,
     pub description: Option<String>,
     pub media_url: String,
+    /// The key of an uploaded photo inside the media root. `None` for a memory whose media is
+    /// a third-party URL. The key is the source of truth: the URL is derived from it.
+    pub media_key: Option<String>,
     pub media_type: MediaType,
     pub visibility: Visibility,
     pub unlock_radius_m: f64,
@@ -101,6 +104,7 @@ mod tests {
             title: Some("old".into()),
             description: None,
             media_url: "https://media.bledi.tn/x.jpg".into(),
+            media_key: None,
             media_type: MediaType::Image,
             visibility,
             unlock_radius_m: 200.0,

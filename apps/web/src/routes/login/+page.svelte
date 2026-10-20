@@ -1,276 +1,131 @@
 <script>
-  import '@fontsource-variable/readex-pro';
-  import '../../app.css';
+  import '@fontsource/courier-prime/400.css';
+  import '@fontsource/courier-prime/700.css';
+  import { onMount } from 'svelte';
+  import { goto } from '$app/navigation';
+  import { resolve } from '$app/paths';
+  import LangSwitch from '$lib/LangSwitch.svelte';
+  import { ui } from '$lib/ui.svelte.js';
 
-  let email = $state('');
-  let password = $state('');
-  let error = $state('');
-  let loading = $state(false);
+  const copy = {
+    fr: { card: 'Carte d’usager', title: 'Connexion', sub: 'Retrouvez vos trajets enregistrés.', email: 'Email', pass: 'Mot de passe', submit: 'Se connecter', forgot: 'Mot de passe oublié ?', create: 'Créer un compte', guest: 'Continuer sans compte' },
+    ar: { card: 'بطاقة المستخدم', title: 'تسجيل الدخول', sub: 'استرجع مساراتك المحفوظة.', email: 'البريد', pass: 'كلمة السر', submit: 'تسجيل الدخول', forgot: 'نسيت كلمة السر؟', create: 'إنشاء حساب', guest: 'المتابعة بدون حساب' },
+    en: { card: 'Rider card', title: 'Log in', sub: 'Pick up your saved routes.', email: 'Email', pass: 'Password', submit: 'Log in', forgot: 'Forgot password?', create: 'Create account', guest: 'Continue without an account' }
+  };
+  const t = $derived(copy[ui.lang]);
 
-  function validate() {
-    error = '';
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      error = 'Please enter a valid email address.';
-      return false;
-    }
-    if (!password || password.length < 6) {
-      error = 'Password must be at least 6 characters.';
-      return false;
-    }
-    return true;
-  }
+  let today = $state('');
+  let punched = $state(false);
+  onMount(() => {
+    const d = new Date(), p = (n) => String(n).padStart(2, '0');
+    today = `${p(d.getDate())}.${p(d.getMonth() + 1)}.${String(d.getFullYear()).slice(2)}`;
+  });
 
-  function signIn() {
-    if (!validate()) return;
-    loading = true;
-    const name = email.split('@')[0];
-    const token = btoa(`${email}:${Date.now()}`);
-    localStorage.setItem('bledi_auth', JSON.stringify({ email, name, token }));
-    loading = false;
-    window.location.href = '/';
-  }
-
-  function signUp() {
-    if (!validate()) return;
-    loading = true;
-    const name = email.split('@')[0];
-    const token = btoa(`${email}:${Date.now()}`);
-    localStorage.setItem('bledi_auth', JSON.stringify({ email, name, token }));
-    loading = false;
-    window.location.href = '/';
-  }
-
-  function handleSubmit(e) {
+  function submit(e) {
     e.preventDefault();
-    signIn();
+    punched = true; // demo only: connect to your auth API here
+    setTimeout(() => goto(resolve('/')), 900);
   }
 </script>
 
-<svelte:head>
-  <title>Sign in — bledi.tn</title>
-</svelte:head>
+<main class="scene">
+  <div class="lang"><LangSwitch /></div>
 
-<div class="note">Design preview · bledi.tn</div>
+  <div class="wrap">
+    <div class="ticket">
+      <div class="band"><strong>bledi.tn</strong><span>{t.card}</span></div>
 
-<div class="login-wrap">
-  <div class="login-card">
-    <header class="login-header">
-      <h1>bledi<span>.tn</span></h1>
-      <div class="langs" role="group" aria-label="Language">
-        <button aria-pressed="true" aria-label="French" onclick={() => {}}>FR</button>
-        <button aria-label="Arabic" onclick={() => {}}>ع</button>
-        <button aria-label="English" onclick={() => {}}>EN</button>
+      <form onsubmit={submit}>
+        <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true">
+          <defs><path id="ring" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" /></defs>
+          <circle cx="60" cy="60" r="57" /><circle cx="60" cy="60" r="30" />
+          <text class="ring"><textPath href="#ring">BLEDI.TN • TUNIS • BLEDI.TN • TUNIS •</textPath></text>
+          <text class="date" x="60" y="64" text-anchor="middle">{today}</text>
+        </svg>
+
+        <div class="head">
+          <h1>{t.title}</h1>
+          <p>{t.sub}</p>
+        </div>
+
+        <label class="field"><span>{t.email}</span><input type="email" name="email" autocomplete="username" required /></label>
+        <label class="field"><span>{t.pass}</span><input type="password" name="password" autocomplete="current-password" required /></label>
+
+        <div class="action">
+          <button class="go" disabled={punched}>{t.submit}</button>
+          {#if punched}<i class="punch"></i>{/if}
+        </div>
+        <div class="links"><a href="#">{t.forgot}</a><a href="#">{t.create}</a></div>
+      </form>
+
+      <div class="stub">
+        <div><small>N° 000417</small><a href={resolve('/')}>{t.guest}</a></div>
+        <i class="bars"></i>
       </div>
-    </header>
-
-    <p class="sub">Sign in to your account</p>
-
-    <form onsubmit={handleSubmit} novalidate>
-      <div class="field">
-        <label for="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          bind:value={email}
-          placeholder="you@example.com"
-          autocomplete="email"
-          required
-        />
-      </div>
-
-      <div class="field">
-        <label for="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          bind:value={password}
-          placeholder="••••••••"
-          autocomplete="current-password"
-          required
-        />
-      </div>
-
-      {#if error}
-        <p class="error">{error}</p>
-      {/if}
-
-      <button type="submit" class="btn-signin" disabled={loading}>
-        {loading ? 'Signing in…' : 'Sign in'}
-      </button>
-    </form>
-
-    <div class="alt">
-      <span>Don't have an account?</span>
-      <button class="btn-link" onclick={signUp}>Sign up</button>
     </div>
   </div>
-</div>
+
+  <div class="track" aria-hidden="true"></div>
+</main>
 
 <style>
-  .login-wrap {
-    min-height: 100dvh;
-    display: grid;
-    place-items: center;
-    background: var(--ink);
-    padding: 16px;
-    position: relative;
+  .scene {
+    --cut: 96px; position: relative; min-height: 100dvh; display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; overflow: hidden;
+    padding: 72px 16px 96px; background: radial-gradient(ellipse at 50% 35%, #214559, #0f2230 72%);
+  }
+  .scene::before {
+    content: ''; position: absolute; inset: 0; opacity: 0.08; pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .lang { position: absolute; top: 16px; inset-inline-end: 16px; z-index: 2; }
+  .track {
+    position: absolute; inset-inline: 0; bottom: 0; height: 56px; opacity: 0.5;
+    background:
+      linear-gradient(#8aa0ab, #8aa0ab) 0 10px / 100% 3px no-repeat,
+      linear-gradient(#8aa0ab, #8aa0ab) 0 38px / 100% 3px no-repeat,
+      repeating-linear-gradient(90deg, #2a4252 0 12px, transparent 12px 40px);
   }
 
-  .note {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 10;
-    background: #0F2230;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.8rem;
-    opacity: 0.9;
-    font-family: 'Readex Pro Variable', system-ui, sans-serif;
+  .wrap { position: relative; z-index: 1; width: min(100%, 420px); filter: drop-shadow(0 18px 24px #0009); }
+  .ticket {
+    position: relative; overflow: hidden; border-radius: 6px; color: #1b3a4b;
+    font-family: 'Courier Prime', 'Readex Pro Variable', monospace;
+    background: radial-gradient(#0000000c 1px, transparent 1.5px) 0 0 / 5px 5px, #c9dde6;
+    -webkit-mask: radial-gradient(circle 11px at 0 calc(100% - var(--cut)), #0000 98%, #000) left / 51% 100% no-repeat,
+                  radial-gradient(circle 11px at 100% calc(100% - var(--cut)), #0000 98%, #000) right / 51% 100% no-repeat;
+    mask: radial-gradient(circle 11px at 0 calc(100% - var(--cut)), #0000 98%, #000) left / 51% 100% no-repeat,
+          radial-gradient(circle 11px at 100% calc(100% - var(--cut)), #0000 98%, #000) right / 51% 100% no-repeat;
   }
+  .band { display: flex; justify-content: space-between; align-items: baseline; padding: 11px 20px; background: var(--red); color: #fff; border-bottom: 4px double #ffffff99; }
+  .band strong { font-size: 1.15rem; }
+  form { position: relative; padding: 22px 22px 20px; }
 
-  .login-card {
-    width: 100%;
-    max-width: 420px;
-    background: var(--paper);
-    border-radius: 24px;
-    padding: 44px 36px 36px;
-    box-shadow: 0 24px 70px rgba(15, 34, 48, 0.45), 0 8px 24px rgba(15, 34, 48, 0.2);
-    position: relative;
-  }
+  .stamp { position: absolute; top: 8px; inset-inline-end: 12px; width: 92px; rotate: -14deg; fill: none; stroke: #a3262a; stroke-width: 2; opacity: 0.72; mix-blend-mode: multiply; }
+  .stamp text { fill: #a3262a; stroke: none; font: 700 10px 'Courier Prime', monospace; letter-spacing: 0.5px; }
+  .stamp .date { font-size: 11px; letter-spacing: 0; }
 
-  .login-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-  }
+  .head { padding-inline-end: 96px; }
+  h1 { margin: 0; font: 700 1.7rem/1.2 'Readex Pro Variable', sans-serif; letter-spacing: -0.01em; }
+  .head p { margin: 4px 0 0; font-size: 0.9rem; }
 
-  .login-header h1 {
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-  .login-header h1 span { color: var(--sea); }
+  .field { display: flex; align-items: baseline; gap: 10px; margin-top: 20px; }
+  .field span { flex: 0 0 12ch; font-weight: 700; }
+  .field input { flex: 1; min-width: 0; padding: 5px 4px; border: 0; border-bottom: 2px dotted #3b6277; border-radius: 0; background: #ffffff40; font: inherit; }
 
-  .langs {
-    display: flex;
-    gap: 4px;
+  .action { position: relative; margin-top: 24px; }
+  .go { width: 100%; padding: 13px; border: 0; border-radius: 3px; background: var(--ink); color: #c9dde6; font: 700 1rem 'Courier Prime', 'Readex Pro Variable', monospace; }
+  .go:hover:not(:disabled) { background: #1c3a4e; }
+  .punch {
+    position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%;
+    background: #0f2230; box-shadow: inset 0 3px 6px #000b; animation: punch 0.35s cubic-bezier(0.3, 1.6, 0.5, 1) both;
   }
-  .langs button {
-    min-width: 40px;
-    height: 36px;
-    border: 1.5px solid var(--rule);
-    border-radius: 10px;
-    background: #fff;
-    color: var(--ink);
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.15s, border-color 0.15s, color 0.15s;
-  }
-  .langs button[aria-pressed='true'] {
-    background: var(--ink);
-    border-color: var(--ink);
-    color: #fff;
-  }
-  .langs button:hover:not([aria-pressed='true']) {
-    border-color: var(--sea);
-  }
+  @keyframes punch { from { scale: 0; } to { scale: 1; } }
 
-  .sub {
-    margin: 0 0 28px;
-    color: var(--muted);
-    font-size: 1rem;
-  }
+  .links { display: flex; justify-content: space-between; gap: 12px; margin-top: 14px; font-size: 0.85rem; }
+  a { color: inherit; }
 
-  form { display: grid; gap: 18px; }
-
-  .field { display: grid; gap: 6px; }
-  .field label {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-  }
-
-  .field input {
-    height: 48px;
-    padding: 0 16px;
-    border: 1.5px solid var(--rule);
-    border-radius: 12px;
-    font-size: 1rem;
-    background: #fff;
-    color: var(--ink);
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .field input::placeholder { color: var(--muted); opacity: 0.7; }
-  .field input:focus {
-    outline: none;
-    border-color: var(--sea);
-    box-shadow: 0 0 0 3px rgba(31, 111, 139, 0.12), 0 0 0 5px rgba(244, 180, 0, 0.06);
-  }
-
-  .error {
-    margin: 0;
-    color: var(--red);
-    font-size: 0.85rem;
-    text-align: center;
-    font-weight: 500;
-  }
-
-  .btn-signin {
-    height: 50px;
-    border: none;
-    border-radius: 12px;
-    background: var(--ink);
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-    box-shadow: 0 4px 14px rgba(15, 34, 48, 0.25);
-  }
-  .btn-signin:hover:not(:disabled) {
-    background: #16304A;
-  }
-  .btn-signin:active:not(:disabled) {
-    transform: translateY(1px);
-  }
-  .btn-signin:disabled {
-    opacity: 0.55;
-    cursor: not-allowed;
-  }
-
-  .alt {
-    margin-top: 24px;
-    text-align: center;
-    font-size: 0.875rem;
-    color: var(--muted);
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    align-items: center;
-  }
-
-  .btn-link {
-    background: none;
-    border: none;
-    color: var(--sea);
-    font-weight: 600;
-    cursor: pointer;
-    font-size: inherit;
-    padding: 0;
-    transition: color 0.15s;
-  }
-  .btn-link:hover { color: var(--ink); text-decoration: underline; }
-
-  @media (max-width: 480px) {
-    .login-card { padding: 36px 24px 28px; border-radius: 20px; }
-    .login-header h1 { font-size: 1.5rem; }
-  }
+  .stub { box-sizing: border-box; height: var(--cut); padding: 0 22px; display: flex; justify-content: space-between; align-items: center; border-top: 2px dashed #6f8c9b; }
+  .stub div { display: grid; gap: 4px; font-size: 0.85rem; }
+  .stub small { color: var(--red); font-size: 0.85rem; font-weight: 700; }
+  .bars { width: 90px; height: 36px; background: repeating-linear-gradient(90deg, #1b3a4b 0 2px, transparent 2px 4px, #1b3a4b 4px 5px, transparent 5px 8px, #1b3a4b 8px 11px, transparent 11px 13px); }
 </style>

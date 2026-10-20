@@ -29,6 +29,7 @@ pub struct NewMemory {
     pub title: Option<String>,
     pub description: Option<String>,
     pub media_url: String,
+    pub media_key: Option<String>,
     pub media_type: MediaType,
     pub visibility: Visibility,
     pub unlock_radius: UnlockRadius,
@@ -63,6 +64,8 @@ pub trait UserStore: Send + Sync {
 pub trait MemoryStore: Send + Sync {
     async fn insert(&self, memory: NewMemory) -> Result<Memory>;
     async fn get(&self, id: Uuid) -> Result<Option<Memory>>;
+    /// The memory holding the photo under `media_key`, if there is one.
+    async fn by_media_key(&self, media_key: &str) -> Result<Option<Memory>>;
     /// Newest first.
     async fn owned_by(&self, user_id: Uuid) -> Result<Vec<Memory>>;
     /// Memories `viewer` may see inside `area`, nearest first.

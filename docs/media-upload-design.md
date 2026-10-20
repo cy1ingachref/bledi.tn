@@ -1,29 +1,67 @@
-# Media upload design (not yet implemented)
+# Media upload design
 
-Status: **design only.** No upload endpoint exists. This document specifies what
-must be built before geo-pinned memories can store real photos and videos.
+Status: **implemented for images.** A geo-pinned memory now carries a real
+photo: the accounts service receives it, checks it, stores it under its own
+media root and serves it back. The object-storage pipeline described at the
+end of this document is still the target for video, and for images once the
+data grows.
 
-## Why this must come before the memories API is exposed
+## What is implemented
 
-Today a memory stores an arbitrary string in `media_url`, and the frontend
-renders it directly:
+- **The photo travels with the memory.** `POST /api/v1/memories` takes a
+  multipart form; the `photo` part is the image. The client never names a file
+  and never sends a URL.
+- **The type comes from the bytes.** The server reads the magic number and
+  accepts only JPEG and PNG (`services/accounts/bledi-http/src/media.rs`). A
+  `.jpg` that is really an HTML file is refused.
+- **The size is capped at 10 MiB** (`media::MAX_UPLOAD_BYTES`), and the body
+  limit on the route leaves room for the multipart overhead.
+- **The metadata is dropped.** EXIF and XMP blocks are stripped before the
+  photo is stored (`services/accounts/bledi-http/src/exif.rs`). A GPS tag would
+  otherwise defeat `unlock_radius_m` outright.
+- **The key is the source of truth.** The server names the file `<uuid>.<ext>`
+  and stores that key with the memory; `media_url` is derived from it
+  (`/api/v1/media/<key>`), so a change of host or path rewrites the URL without
+  touching a stored row.
+- **The photo is served only to the people who may see the memory.**
+  `GET /api/v1/media/:key` resolves the key back to its memory and applies that
+  memory's visibility rules, so a private photo is not reachable by guessing a
+  URL. The response is `private, max-age=300` and `nosniff`.
+- **The browser cannot load it directly.** The endpoint needs the caller's
+  token, so the client fetches the bytes and shows them through an object URL
+  (`fetchMedia` in `apps/web/src/lib/api.js`).
+
+What is not done: video, object storage and moderation. The JSON create path
+still accepts a `media_url` pointing at a third-party host; the multipart path
+the app uses ignores it, but the server should refuse it outright.
+
+## Why the third-party URL had to go
+
+A memory used to store an arbitrary string in `media_url`, and the frontend
+rendered it directly:
 
 ```svelte
 <img src={m.media_url} alt="" />
 ```
 
-That means anyone can create a memory pointing at a host they control and log the
-IP address, User-Agent and Referer of every viewer who scrolls past it. It also
-means the app can be used to host arbitrary content under a bledi.tn page.
+That let anyone create a memory pointing at a host they control and log the IP
+address, User-Agent and Referer of every viewer who scrolled past it. It also
+meant the app could be used to host arbitrary content under a bledi.tn page.
 
-Validation of `media_url` (absolute http/https, max 2048 chars, no `data:` URLs —
-see `services/accounts/bledi-server/src/validate.rs`) reduces the blast radius but does not fix
-it: a valid https URL on an attacker's server is exactly the attack.
+Validation of `media_url` (absolute http/https, max 2048 chars, no `data:` URLs
+— see `services/accounts/bledi-domain/src/text.rs`) reduced the blast radius
+but did not fix it: a valid https URL on an attacker's server is exactly the
+attack.
 
-The fix is to stop accepting third-party URLs entirely and serve media from a
-first-party host that we control.
+The fix was to stop accepting third-party URLs for uploaded photos and serve the
+media from the accounts service itself.
 
-## Target design
+## The object-storage design (not implemented yet)
+
+The photos now live on the media root of the accounts service, which is a
+volume. That is enough for one server, and not enough for more than one. The
+target design moves the bytes into object storage and keeps the key as the
+only thing the database stores.
 
 ```
 client ──1. POST /api/v1/uploads ─────────────► bledi-server
@@ -89,6 +127,8 @@ is ever served:
 5. Write the final object to `memories/<user_id>/<uuid>.<ext>` and delete the
    staging object.
 
+Steps 1–3 are done today; 4 and 5 are what object storage would add.
+
 ### 4. Serving
 
 Serve only from a first-party host, e.g. `https://media.bledi.tn`, either via the
@@ -106,11 +146,9 @@ CDN in front of the bucket or via a signed-redirect endpoint. Two options:
 
 ### 5. Data model change
 
-`memories.media_url` should become `memories.media_key` (the object key), and the
-API should compute `media_url` on read. Keeping a stored absolute URL means a
-bucket migration or CDN change invalidates every row. If a stored URL must be
-kept for compatibility, store the key as the source of truth and treat the URL as
-derived.
+Done: `memories.media_key` holds the object key and the API computes
+`media_url` on read. Keeping a stored absolute URL would mean a bucket migration
+or CDN change invalidates every row.
 
 ### 6. What this does NOT fix
 
@@ -124,14 +162,16 @@ derived.
 
 ## Minimum shippable subset
 
-If a full pipeline is too large for the next milestone, the minimum safe version
-is:
+For the image path, the minimum safe version is done:
 
 1. Presigned POST upload with `content-length-range` and a content-type allowlist.
+   *Today: a multipart form to the create-memory call, with the same size cap
+   and allowlist enforced on the bytes.*
 2. Server-side magic-number check + size check on create.
-3. Re-encode + EXIF strip for images.
+3. Re-encode + EXIF strip for images. *Today: the EXIF strip is done; the
+   re-encode is not.*
 4. Store `media_key`, sign on read, serve from one first-party host.
-5. Reject any client-supplied absolute URL.
+5. Reject any client-supplied absolute URL. *Not done on the JSON path yet.*
 
 Steps 1–5 are what make it safe. Video transcoding (step 4 of the processing
 list) can follow.

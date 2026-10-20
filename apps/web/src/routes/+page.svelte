@@ -2,19 +2,18 @@
   import Board from '$lib/Board.svelte';
   import MapView from '$lib/MapView.svelte';
   import { ui } from '$lib/ui.svelte.js';
-  import { dict, routes } from '$lib/data.js';
+  import { dict } from '$lib/data.js';
   import { loadCatalog, modeColor } from '$lib/catalog.svelte.js';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
+  import { resolve } from '$app/paths';
+  import { SvelteSet, SvelteURLSearchParams } from 'svelte/reactivity';
 
   // --- from/to: the *fuzzy* keys the user typed (display only) ---
   let fromText = $state('');
   let toText = $state('');
   let fromId = $state(null);
   let toId = $state(null);
-
-  // --- pick: the selected *route* (from the options radio group) ---
-  let pick = $state(routes.length ? routes[0].id : null);
 
   // --- picks: the station id we zoomed to (from/to) ---
   let fromPick = $state(null);
@@ -29,15 +28,6 @@
   // --- suggestions lists (populated by the input listeners) ---
   let fromSuggestions = $state([]);
   let toSuggestions = $state([]);
-  let nearby = $state([]);
-
-  // autocomplete: what the user has currently typed (for datalist filtering)
-  let fromQuery = $state('');
-  let toQuery = $state('');
-
-  // dropdown open state for the two selects
-  let fromOpen = $state(false);
-  let toOpen = $state(false);
 
   // debounce timers and loading states for geocode
   let fromTimeout = null;
@@ -80,39 +70,6 @@
     return R * 2 * Math.asin(Math.sqrt(a));
   }
 
-  // --- filter relevant stations (proximity to start/end or route path) ---
-  function filterRelevant(stationList, startLat, startLon, endLat, endLon, path) {
-    if (!stationList || !stationList.length) return [];
-    const buffer = 500; // meters
-    const pts = [];
-    if (startLat != null && startLon != null) pts.push({ lat: startLat, lon: startLon });
-    if (endLat != null && endLon != null) pts.push({ lat: endLat, lon: endLon });
-    if (path && path.length >= 2) {
-      for (const p of path) {
-        if (Array.isArray(p) && p.length >= 2) pts.push({ lat: p[0], lon: p[1] });
-      }
-    }
-    if (pts.length === 0) return [];
-    const result = [];
-    const seen = new Set();
-    for (const s of stationList) {
-      if (seen.has(s.id)) continue;
-      seen.add(s.id);
-      let near = false;
-      for (const p of pts) {
-        const d = haversine(s.lat, s.lon, p.lat, p.lon);
-        if (d <= buffer) {
-          near = true;
-          break;
-        }
-      }
-      if (near) result.push(s);
-    }
-    return result;
-  }
-
-  const relevantStations = $derived(filterRelevant(stations, startLat, startLon, endLat, endLon, []));
-
   // ---- merge the static catalog records into the map station list ----
   // The catalog is the authoritative, offline-capable source of every transport
   // resource (bus / louage / metro / rail / taxi / train / unknown). The backend
@@ -120,7 +77,7 @@
   function mergeCatalog(raw) {
     if (!raw || !raw.modes) return;
     const out = [];
-    const seen = new Set();
+    const seen = new SvelteSet();
     for (const [mode, rec] of Object.entries(raw.modes)) {
       for (const st of rec.stations || []) {
         if (st.lat == null || st.lon == null) continue;
@@ -212,7 +169,7 @@
       }));
       onResults(results);
       onLoading(false);
-    } catch (e) {
+    } catch {
       onResults([]);
       onError('Network error');
       onLoading(false);
@@ -222,7 +179,6 @@
   // ---- debounced input handlers ----
   function onFromInput(e) {
     fromText = e.currentTarget.value;
-    fromQuery = fromText;
     if (fromTimeout) clearTimeout(fromTimeout);
     fromTimeout = setTimeout(() => {
       fetchGeocode(fromText, (results) => {
@@ -258,7 +214,6 @@
   }
   function onToInput(e) {
     toText = e.currentTarget.value;
-    toQuery = toText;
     if (toTimeout) clearTimeout(toTimeout);
     toTimeout = setTimeout(() => {
       fetchGeocode(toText, (results) => {
@@ -343,7 +298,7 @@
   // ---- URL-parameter routing (from=/to=) ----
   function syncUrl() {
     try {
-      const params = new URLSearchParams();
+      const params = new SvelteURLSearchParams();
       if (startLat != null && startLon != null) {
         params.set('from', `${startLat.toFixed(5)},${startLon.toFixed(5)}`);
       }
@@ -389,18 +344,18 @@
   onMount(() => {
     const auth = localStorage.getItem('bledi_auth');
     if (!auth) {
-      goto('/login');
+      goto(resolve('/login'));
       return;
     }
     try {
       const parsed = JSON.parse(auth);
       if (!parsed.email || !parsed.token) {
         localStorage.removeItem('bledi_auth');
-        goto('/login');
+        goto(resolve('/login'));
       }
     } catch {
       localStorage.removeItem('bledi_auth');
-      goto('/login');
+      goto(resolve('/login'));
     }
   });
 
@@ -412,7 +367,7 @@
       catalog = raw;
       catalogLoading = false;
       applyUrlParams();
-    } catch (e) {
+    } catch {
       catalogLoading = false;
     }
   });
@@ -488,7 +443,7 @@
     <header>
           <h1>bledi<span>.tn</span></h1>
           <div class="header-actions">
-            <button class="memories-link" onclick={() => goto('/memories')}>
+            <button class="memories-link" onclick={() => goto(resolve('/memories'))}>
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
               Memories
             </button>
@@ -600,7 +555,7 @@
 
     <!-- pending route: feedback AFTER the user confirms (continues the FROM/TO) -->
     {#if false}
-      <Board color="#1F6F8B" to={{fr:'—',ar:''}} minutes={''} unit={t?.min ?? ''} />
+      <Board color="#1F6F8B" to={{fr:'—',ar:''}} minutes="" unit={t?.min ?? ''} />
     {/if}
 
     <div class="options" role="radiogroup" aria-label="Itinéraires">

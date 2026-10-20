@@ -4,7 +4,7 @@ members = ["bledi-application", "bledi-domain", "bledi-http", "bledi-postgres", 
 
 [workspace.dependencies]
 tokio = { version = "1", features = ["full"] }
-axum = { version = "0.7", features = ["macros"] }
+axum = { version = "0.7", features = ["macros", "multipart"] }
 async-trait = "0.1"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
