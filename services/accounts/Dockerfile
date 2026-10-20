@@ -40,8 +40,13 @@ RUN touch */src/*.rs \
 # Runtime image
 FROM debian:bookworm-slim
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libpq5 ca-certificates curl \
+# The base tag only moves when python releases, so apply the Debian security
+# patches that landed since it was built. perl-base in particular is carried by
+# every debian-slim image and had a CRITICAL advisory against the pinned build.
+RUN apt-get update \
+    && apt-get upgrade -y --no-install-recommends \
+    && apt-get install -y --no-install-recommends \
+        libpq5 ca-certificates curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Run as an unprivileged user. The container needs no root privileges: it only

@@ -1,9 +1,13 @@
 name: Docker release
 
 # Builds the three images, scans them, and pushes the ones that pass to GHCR.
+#
+# Tags only. This workflow publishes artifacts, so it runs where the artifact is
+# real and the scan result is actionable. CI already gates every push to main;
+# publishing on each of those pushes would overwrite :main continuously and let
+# a release job block ordinary development.
 on:
   push:
-    branches: [main]
     tags:
       - 'v*'
   workflow_dispatch:
