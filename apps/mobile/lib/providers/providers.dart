@@ -65,8 +65,9 @@ class BaseUrlNotifier extends Notifier<String> {
   }
 }
 
-final baseUrlProvider =
-    NotifierProvider<BaseUrlNotifier, String>(BaseUrlNotifier.new);
+final baseUrlProvider = NotifierProvider<BaseUrlNotifier, String>(
+  BaseUrlNotifier.new,
+);
 
 /// The single [ApiClient]; rebuilt whenever the base URL changes.
 final apiClientProvider = Provider<ApiClient>((ref) {
@@ -192,22 +193,25 @@ class RouteSelectionNotifier extends Notifier<RouteSelection> {
   @override
   RouteSelection build() => const RouteSelection();
 
-  void setOrigin(MapPoint point) =>
-      state = state.copyWith(origin: point, target: SelectionTarget.destination);
+  void setOrigin(MapPoint point) => state = state.copyWith(
+    origin: point,
+    target: SelectionTarget.destination,
+  );
 
-  void setDestination(MapPoint point) =>
-      state = state.copyWith(destination: point, target: SelectionTarget.origin);
+  void setDestination(MapPoint point) => state = state.copyWith(
+    destination: point,
+    target: SelectionTarget.origin,
+  );
 
   void swap() => state = state.swapped();
 
   void clear() => state = const RouteSelection();
 
-  void setTarget(SelectionTarget target) =>
-      state = RouteSelection(
-        origin: state.origin,
-        destination: state.destination,
-        target: target,
-      );
+  void setTarget(SelectionTarget target) => state = RouteSelection(
+    origin: state.origin,
+    destination: state.destination,
+    target: target,
+  );
 }
 
 final routeSelectionProvider =
@@ -217,7 +221,11 @@ final routeSelectionProvider =
 
 /// Result of the last routing request.
 class RoutingResult {
-  const RoutingResult({this.itinerary, this.errorMessage, this.isLoading = false});
+  const RoutingResult({
+    this.itinerary,
+    this.errorMessage,
+    this.isLoading = false,
+  });
 
   final Itinerary? itinerary;
   final String? errorMessage;
@@ -226,7 +234,12 @@ class RoutingResult {
   bool get hasItinerary => itinerary != null && itinerary!.steps.isNotEmpty;
   bool get hasError => errorMessage != null;
 
-  RoutingResult copyWith({Itinerary? itinerary, String? errorMessage, bool? isLoading, bool clearError = false}) {
+  RoutingResult copyWith({
+    Itinerary? itinerary,
+    String? errorMessage,
+    bool? isLoading,
+    bool clearError = false,
+  }) {
     return RoutingResult(
       itinerary: itinerary ?? this.itinerary,
       errorMessage: clearError ? null : (errorMessage ?? this.errorMessage),
@@ -271,8 +284,8 @@ class TransportSelectionNotifier extends Notifier<Set<TransportMode>> {
 
 final transportSelectionProvider =
     NotifierProvider<TransportSelectionNotifier, Set<TransportMode>>(
-  TransportSelectionNotifier.new,
-);
+      TransportSelectionNotifier.new,
+    );
 
 /// Drives `/api/v1/route/transit` for the selected origin/destination.
 class RoutingNotifier extends Notifier<RoutingResult> {
@@ -290,12 +303,14 @@ class RoutingNotifier extends Notifier<RoutingResult> {
 
     state = const RoutingResult(isLoading: true);
     try {
-      final response = await ref.read(routingRepositoryProvider).findTransitRoute(
-        startLat: origin.lat,
-        startLon: origin.lon,
-        endLat: destination.lat,
-        endLon: destination.lon,
-      );
+      final response = await ref
+          .read(routingRepositoryProvider)
+          .findTransitRoute(
+            startLat: origin.lat,
+            startLon: origin.lon,
+            endLat: destination.lat,
+            endLon: destination.lon,
+          );
 
       if (response.hasError) {
         state = RoutingResult(errorMessage: response.error);
@@ -336,8 +351,9 @@ class RoutingNotifier extends Notifier<RoutingResult> {
   }
 }
 
-final routingProvider =
-    NotifierProvider<RoutingNotifier, RoutingResult>(RoutingNotifier.new);
+final routingProvider = NotifierProvider<RoutingNotifier, RoutingResult>(
+  RoutingNotifier.new,
+);
 
 /// Current map zoom level.
 ///
@@ -354,8 +370,9 @@ class MapZoomNotifier extends Notifier<double> {
   }
 }
 
-final mapZoomProvider =
-    NotifierProvider<MapZoomNotifier, double>(MapZoomNotifier.new);
+final mapZoomProvider = NotifierProvider<MapZoomNotifier, double>(
+  MapZoomNotifier.new,
+);
 
 /// Whether the station/stop overlay is visible.
 class StationOverlayNotifier extends Notifier<bool> {
@@ -366,8 +383,9 @@ class StationOverlayNotifier extends Notifier<bool> {
   void set(bool value) => state = value;
 }
 
-final stationOverlayProvider =
-    NotifierProvider<StationOverlayNotifier, bool>(StationOverlayNotifier.new);
+final stationOverlayProvider = NotifierProvider<StationOverlayNotifier, bool>(
+  StationOverlayNotifier.new,
+);
 
 /// Which transport categories the map shows.
 class ModeFilterNotifier extends Notifier<Set<TransportMode>> {
@@ -385,11 +403,8 @@ class ModeFilterNotifier extends Notifier<Set<TransportMode>> {
     state = next.isEmpty ? {mode} : next;
   }
 
-  void showAll() => state = {
-    TransportMode.rail,
-    TransportMode.bus,
-    TransportMode.louage,
-  };
+  void showAll() =>
+      state = {TransportMode.rail, TransportMode.bus, TransportMode.louage};
 }
 
 final modeFilterProvider =
@@ -405,8 +420,9 @@ class SelectedCityNotifier extends Notifier<String?> {
   void select(String? city) => state = city;
 }
 
-final selectedCityProvider =
-    NotifierProvider<SelectedCityNotifier, String?>(SelectedCityNotifier.new);
+final selectedCityProvider = NotifierProvider<SelectedCityNotifier, String?>(
+  SelectedCityNotifier.new,
+);
 
 /// Cities derived from the loaded stations, largest first.
 ///
@@ -462,10 +478,7 @@ class UserLocationNotifier extends Notifier<UserLocation> {
           timeLimit: Duration(seconds: 15),
         ),
       );
-      state = UserLocation(
-        lat: position.latitude,
-        lon: position.longitude,
-      );
+      state = UserLocation(lat: position.latitude, lon: position.longitude);
     } on Object catch (e) {
       debugPrint('Location request failed: $e');
       state = UserLocation(error: 'unavailable');
@@ -474,4 +487,6 @@ class UserLocationNotifier extends Notifier<UserLocation> {
 }
 
 final userLocationProvider =
-    NotifierProvider<UserLocationNotifier, UserLocation>(UserLocationNotifier.new);
+    NotifierProvider<UserLocationNotifier, UserLocation>(
+      UserLocationNotifier.new,
+    );

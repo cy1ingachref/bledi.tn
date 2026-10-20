@@ -58,7 +58,10 @@ class RouteOverlay extends ConsumerWidget {
             Polyline(
               points: step.path,
               strokeWidth: step.isWalk ? 4 : 7,
-              color: _colorFor(context, step).withValues(alpha: step.isWalk ? 0.9 : 1.0),
+              color: _colorFor(
+                context,
+                step,
+              ).withValues(alpha: step.isWalk ? 0.9 : 1.0),
               borderColor: Colors.white.withValues(alpha: 0.9),
               borderStrokeWidth: step.isWalk ? 0.8 : 1.4,
               pattern: step.isWalk
@@ -152,7 +155,11 @@ Marker routeMilestoneMarker(RouteMilestone milestone, RouteStep? step) {
         shape: BoxShape.circle,
         border: Border.all(color: Colors.white, width: 2.5),
         boxShadow: const [
-          BoxShadow(color: Color(0x33000000), blurRadius: 4, offset: Offset(0, 1)),
+          BoxShadow(
+            color: Color(0x33000000),
+            blurRadius: 4,
+            offset: Offset(0, 1),
+          ),
         ],
       ),
       alignment: Alignment.center,
@@ -203,7 +210,14 @@ Marker routeEndpointMarker(LatLng point, RouteStep step) => Marker(
 /// The interactive map: OSM tiles, the route overlay, and the origin /
 /// destination pins.
 class BlediMap extends ConsumerStatefulWidget {
-  const BlediMap({super.key, required this.controller, required this.onLongPress, this.onStationTap, this.onCityTap, this.children = const []});
+  const BlediMap({
+    super.key,
+    required this.controller,
+    required this.onLongPress,
+    this.onStationTap,
+    this.onCityTap,
+    this.children = const [],
+  });
 
   final MapController controller;
 
@@ -235,7 +249,9 @@ class _BlediMapState extends ConsumerState<BlediMap> {
     final showStations = ref.watch(stationOverlayProvider);
 
     // Fit the camera to the route once, when it first arrives.
-    if (itinerary != null && !_didAutoFitRoute && itinerary.allPoints.length >= 2) {
+    if (itinerary != null &&
+        !_didAutoFitRoute &&
+        itinerary.allPoints.length >= 2) {
       _didAutoFitRoute = true;
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
@@ -252,10 +268,7 @@ class _BlediMapState extends ConsumerState<BlediMap> {
     return FlutterMap(
       mapController: widget.controller,
       options: MapOptions(
-        initialCenter: LatLng(
-          AppConstants.tunisLat,
-          AppConstants.tunisLon,
-        ),
+        initialCenter: LatLng(AppConstants.tunisLat, AppConstants.tunisLon),
         initialZoom: AppConstants.tunisZoom,
         minZoom: 5,
         maxZoom: 18,
@@ -286,7 +299,7 @@ class _BlediMapState extends ConsumerState<BlediMap> {
             onStationTap: widget.onStationTap,
             onCityTap: widget.onCityTap,
           ),
-if (itinerary != null && itinerary.steps.isNotEmpty) ...[
+        if (itinerary != null && itinerary.steps.isNotEmpty) ...[
           RouteOverlay(itinerary: itinerary),
           MarkerLayer(markers: RouteOverlay.buildMarkers(itinerary)),
         ],
@@ -316,14 +329,20 @@ class _EndpointLayer extends StatelessWidget {
             point: LatLng(origin!.lat, origin!.lon),
             width: 32,
             height: 32,
-            child: const _EndpointPin(color: Color(0xFF2F9E44), icon: Icons.trip_origin),
+            child: const _EndpointPin(
+              color: Color(0xFF2F9E44),
+              icon: Icons.trip_origin,
+            ),
           ),
         if (destination != null)
           Marker(
             point: LatLng(destination!.lat, destination!.lon),
             width: 32,
             height: 32,
-            child: const _EndpointPin(color: Color(0xFFE03131), icon: Icons.place),
+            child: const _EndpointPin(
+              color: Color(0xFFE03131),
+              icon: Icons.place,
+            ),
           ),
       ],
     );

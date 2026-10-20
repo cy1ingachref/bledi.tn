@@ -96,11 +96,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   /// Filters the map to a city and zooms to it.
   void _onCityTap(CityGroup city) {
-    final alreadySelected =
-        ref.read(selectedCityProvider) == city.name;
-    ref.read(selectedCityProvider.notifier).select(
-      alreadySelected ? null : city.name,
-    );
+    final alreadySelected = ref.read(selectedCityProvider) == city.name;
+    ref
+        .read(selectedCityProvider.notifier)
+        .select(alreadySelected ? null : city.name);
     _mapController.move(
       city.center,
       alreadySelected ? AppConstants.tunisZoom : 12,
@@ -131,9 +130,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         'location_disabled' || 'unavailable' => 'location_unavailable'.tr(),
         _ => 'location_unavailable'.tr(),
       };
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(message)),
-      );
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
       return;
     }
     _mapController.move(LatLng(location.lat!, location.lon!), 15);
@@ -172,8 +170,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               destination: selection.destination,
               isLoading: result.isLoading,
               onPickOrigin: () => _openPicker(SelectionTarget.origin),
-              onPickDestination: () =>
-                  _openPicker(SelectionTarget.destination),
+              onPickDestination: () => _openPicker(SelectionTarget.destination),
               onSwap: () => ref.read(routeSelectionProvider.notifier).swap(),
               onClear: () {
                 ref.read(routeSelectionProvider.notifier).clear();
@@ -201,9 +198,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 FloatingActionButton.small(
                   heroTag: 'station_overlay',
                   tooltip: 'stations'.tr(),
-                  onPressed: () => ref
-                      .read(stationOverlayProvider.notifier)
-                      .toggle(),
+                  onPressed: () =>
+                      ref.read(stationOverlayProvider.notifier).toggle(),
                   child: Icon(
                     showStations ? Icons.layers : Icons.layers_outlined,
                   ),
@@ -227,10 +223,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 onClear: () {
                   ref.read(selectedCityProvider.notifier).select(null);
                   _mapController.move(
-                    LatLng(
-                      AppConstants.tunisLat,
-                      AppConstants.tunisLon,
-                    ),
+                    LatLng(AppConstants.tunisLat, AppConstants.tunisLon),
                     AppConstants.tunisZoom,
                   );
                 },
@@ -248,9 +241,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               left: 12,
               right: 12,
               bottom: 16,
-              child: _RouteSummaryBar(
-                onTap: _showResultSheet,
-              ),
+              child: _RouteSummaryBar(onTap: _showResultSheet),
             ),
         ],
       ),

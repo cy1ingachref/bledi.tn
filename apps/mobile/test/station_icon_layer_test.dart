@@ -113,38 +113,56 @@ Future<_RecordingCanvas> _paintLayer(
 }
 
 List<MapStation> sampleStations() => [
-      for (var i = 0; i < 5; i++)
-        MapStation(
-          id: 's$i',
-          name: 'S$i',
-          lat: 36.8065 + i * 0.002,
-          lon: 10.1815,
-          mode: i.isEven ? TransportMode.bus : TransportMode.rail,
-        ),
-    ];
+  for (var i = 0; i < 5; i++)
+    MapStation(
+      id: 's$i',
+      name: 'S$i',
+      lat: 36.8065 + i * 0.002,
+      lon: 10.1815,
+      mode: i.isEven ? TransportMode.bus : TransportMode.rail,
+    ),
+];
 
 void main() {
-  testWidgets('glyphs are painted once zoomed past the threshold',
-      (tester) async {
+  testWidgets('glyphs are painted once zoomed past the threshold', (
+    tester,
+  ) async {
     final out = await _paintLayer(tester, 9, stations: sampleStations());
-    expect(out.circles, greaterThan(0), reason: 'dots must paint when zoomed out');
+    expect(
+      out.circles,
+      greaterThan(0),
+      reason: 'dots must paint when zoomed out',
+    );
     expect(out.paths, 0, reason: 'no glyphs below the threshold');
 
     final inn = await _paintLayer(tester, 15, stations: sampleStations());
     expect(inn.circles, greaterThanOrEqualTo(5), reason: 'a pin per station');
-    expect(inn.paths, greaterThanOrEqualTo(5),
-        reason: 'one glyph path per station, drawn inside the pin');
+    expect(
+      inn.paths,
+      greaterThanOrEqualTo(5),
+      reason: 'one glyph path per station, drawn inside the pin',
+    );
   });
 
-  testWidgets('every transport mode contributes a distinct glyph',
-      (tester) async {
+  testWidgets('every transport mode contributes a distinct glyph', (
+    tester,
+  ) async {
     final stations = [
       for (final mode in TransportMode.values)
-        MapStation(id: mode.name, name: mode.name, lat: 36.8065, lon: 10.1815, mode: mode),
+        MapStation(
+          id: mode.name,
+          name: mode.name,
+          lat: 36.8065,
+          lon: 10.1815,
+          mode: mode,
+        ),
     ];
     final canvas = await _paintLayer(tester, 15, stations: stations);
-    expect(canvas.paths, TransportMode.values.length,
-        reason: 'bus, rail, louage and unknown each need their own glyph');
+    expect(
+      canvas.paths,
+      TransportMode.values.length,
+      reason: 'bus, rail, louage and unknown each need their own glyph',
+    );
   });
 
   testWidgets('a city tap reaches icon zoom', (tester) async {
@@ -154,8 +172,11 @@ void main() {
     print('iconZoom = ${StationIconLayer.iconZoom}');
     expect(StationIconLayer.iconZoom, lessThanOrEqualTo(12));
     final canvas = await _paintLayer(tester, 12, stations: sampleStations());
-    expect(canvas.paths, greaterThan(0),
-        reason: 'zooming to a city must reveal glyphs');
+    expect(
+      canvas.paths,
+      greaterThan(0),
+      reason: 'zooming to a city must reveal glyphs',
+    );
   });
 
   testWidgets('each mode renders a visually distinct glyph', (tester) async {
@@ -165,8 +186,13 @@ void main() {
         tester,
         16,
         stations: [
-          MapStation(id: mode.name, name: mode.name, lat: 36.8065, lon: 10.1815,
-              mode: mode),
+          MapStation(
+            id: mode.name,
+            name: mode.name,
+            lat: 36.8065,
+            lon: 10.1815,
+            mode: mode,
+          ),
         ],
       );
       // Record what was drawn, in order, with the colours.
@@ -175,8 +201,11 @@ void main() {
     // ignore: avoid_print
     print('  glyph signatures: $sigs');
     // Four modes, four distinct shapes: no two may share a bounding box.
-    expect(sigs.values.toSet().length, TransportMode.values.length,
-        reason: 'each mode must render differently, got $sigs');
+    expect(
+      sigs.values.toSet().length,
+      TransportMode.values.length,
+      reason: 'each mode must render differently, got $sigs',
+    );
     // A bus is wider than it is tall; a train is the other way round. That
     // single fact is what makes the two tellable apart at map scale, so assert
     // the aspect ratios rather than mere inequality.
@@ -187,12 +216,21 @@ void main() {
     }
     // ignore: avoid_print
     print('  aspect ratios (w/h): $aspect');
-    expect(aspect[TransportMode.bus.name]!, greaterThan(1.0),
-        reason: 'a bus reads as wide');
-    expect(aspect[TransportMode.rail.name]!, lessThan(1.0),
-        reason: 'a train reads as tall');
-    expect(aspect[TransportMode.louage.name]!, greaterThan(1.0),
-        reason: 'a taxi reads as wide');
+    expect(
+      aspect[TransportMode.bus.name]!,
+      greaterThan(1.0),
+      reason: 'a bus reads as wide',
+    );
+    expect(
+      aspect[TransportMode.rail.name]!,
+      lessThan(1.0),
+      reason: 'a train reads as tall',
+    );
+    expect(
+      aspect[TransportMode.louage.name]!,
+      greaterThan(1.0),
+      reason: 'a taxi reads as wide',
+    );
   });
 
   testWidgets('stations off-screen are skipped', (tester) async {

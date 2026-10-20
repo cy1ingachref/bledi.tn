@@ -43,9 +43,7 @@ void main() {
     ''';
 
     test('parses the bus itinerary envelope', () {
-      final response = RouteResponse.fromJson(
-        jsonDecodeCompat(busItinerary),
-      );
+      final response = RouteResponse.fromJson(jsonDecodeCompat(busItinerary));
 
       expect(response.hasError, isFalse);
       expect(response.source, 'local-router');
@@ -60,9 +58,7 @@ void main() {
     });
 
     test('decodes [lat, lon] pairs in the Tunisia orientation', () {
-      final response = RouteResponse.fromJson(
-        jsonDecodeCompat(busItinerary),
-      );
+      final response = RouteResponse.fromJson(jsonDecodeCompat(busItinerary));
       final first = response.primary!.steps.first;
 
       // Tunis is ~36.8 N / ~10.2 E. A swapped decoder would put this near
@@ -74,9 +70,9 @@ void main() {
     });
 
     test('exposes step types, modes and line labels', () {
-      final steps = RouteResponse.fromJson(
-        jsonDecodeCompat(busItinerary),
-      ).primary!.steps;
+      final steps = RouteResponse.fromJson(jsonDecodeCompat(busItinerary))
+          .primary!
+          .steps;
 
       expect(steps[0].type, 'walk');
       expect(steps[0].isWalk, isTrue);
@@ -94,9 +90,9 @@ void main() {
     });
 
     test('keeps backend hex colours, validating the format', () {
-      final steps = RouteResponse.fromJson(
-        jsonDecodeCompat(busItinerary),
-      ).primary!.steps;
+      final steps = RouteResponse.fromJson(jsonDecodeCompat(busItinerary))
+          .primary!
+          .steps;
 
       expect(steps[0].hexColor, '#8b949e');
       expect(steps[1].hexColor, '#e03131');
@@ -123,9 +119,8 @@ void main() {
         "source": "local-router"
       }
       ''';
-      final itinerary = RouteResponse.fromJson(
-        jsonDecodeCompat(taxiJson),
-      ).primary!;
+      final itinerary = RouteResponse.fromJson(jsonDecodeCompat(taxiJson))
+          .primary!;
 
       expect(itinerary.steps.single.isTaxi, isTrue);
       expect(itinerary.hasFare, isTrue);
@@ -135,7 +130,8 @@ void main() {
 
     test('surfaces the HTTP-200 error envelope', () {
       // The router reports "no route" with status 200 + an error field.
-      const errorJson = '{"error": "No transit route found", '
+      const errorJson =
+          '{"error": "No transit route found", '
           '"source": "local-router"}';
       final response = RouteResponse.fromJson(jsonDecodeCompat(errorJson));
 
@@ -231,10 +227,7 @@ void main() {
     });
 
     test('normalises seed colours that omit the leading hash', () {
-      expect(
-        const Line(id: 'x', color: '829EC0').hexColor,
-        '#829EC0',
-      );
+      expect(const Line(id: 'x', color: '829EC0').hexColor, '#829EC0');
       expect(const Line(id: 'x', color: '#829ec0').hexColor, '#829ec0');
       // Malformed values are rejected rather than crashing the map paint.
       expect(const Line(id: 'x', color: 'not-a-colour').hexColor, isNull);
@@ -245,7 +238,8 @@ void main() {
   group('Health', () {
     test('parses /api/v1/health', () {
       // Captured live: {"status":"ok","version":"0.2.0",...}
-      const json = '{"status":"ok","version":"0.2.0","service":"bledi.tn",'
+      const json =
+          '{"status":"ok","version":"0.2.0","service":"bledi.tn",'
           '"seed_file":"seed_all_tunisia_routes.tagged.json",'
           '"stations_count":1711,"lines_count":232}';
       final health = Health.fromJson(jsonDecodeCompat(json));
@@ -294,7 +288,10 @@ void main() {
 
       expect(train, lessThan(bus));
       expect(metro, lessThan(bus));
-      expect(bus, lessThan(stepOf('walk', mode: 'walk').estimatedDurationMin()));
+      expect(
+        bus,
+        lessThan(stepOf('walk', mode: 'walk').estimatedDurationMin()),
+      );
     });
 
     test('a backend-provided duration always wins over the estimate', () {

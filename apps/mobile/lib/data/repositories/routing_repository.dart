@@ -71,8 +71,8 @@ class RoutingDataSource {
         'modes_include': v.join(','),
       if (exclude case final List<String> v? when v.isNotEmpty)
         'modes_exclude': v.join(','),
-      if (maxTransfers case final int v?) 'max_transfers': v,
-      if (maxWalkM case final double v?) 'max_walk_m': v,
+      'max_transfers': ?maxTransfers,
+      'max_walk_m': ?maxWalkM,
     };
     final data = await _client.getJson('/api/v1/route/plan', query: query);
     if (data is! Map<String, dynamic>) {
@@ -80,7 +80,6 @@ class RoutingDataSource {
     }
     return data;
   }
-
 }
 
 /// Transit routing access for the UI layer.

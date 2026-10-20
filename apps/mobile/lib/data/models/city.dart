@@ -38,4 +38,3 @@ abstract class City with _$City {
 
   int countOf(TransportMode mode) => countsByCategory[mode] ?? 0;
 }
-

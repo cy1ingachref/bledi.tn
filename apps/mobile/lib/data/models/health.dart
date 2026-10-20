@@ -21,9 +21,7 @@ abstract class Health with _$Health {
     @JsonKey(name: 'lines_count') @Default(0) int linesCount,
   }) = _Health;
 
-  factory Health.fromJson(Map<String, dynamic> json) =>
-      _$HealthFromJson(json);
+  factory Health.fromJson(Map<String, dynamic> json) => _$HealthFromJson(json);
 
   bool get isHealthy => status == 'ok';
 }
-

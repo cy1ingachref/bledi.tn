@@ -38,8 +38,11 @@ void main() {
   group('TransportMode.apiValue', () {
     test('round-trips through fromName', () {
       for (final mode in TransportMode.selectable) {
-        expect(TransportMode.fromName(mode.apiValue), mode,
-            reason: '${mode.name} -> ${mode.apiValue} must parse back');
+        expect(
+          TransportMode.fromName(mode.apiValue),
+          mode,
+          reason: '${mode.name} -> ${mode.apiValue} must parse back',
+        );
       }
     });
 
@@ -63,16 +66,13 @@ void main() {
 
     test('covers the five real transports, each once', () {
       expect(TransportMode.selectable.length, 5);
-      expect(
-        TransportMode.selectable.toSet(),
-        {
-          TransportMode.bus,
-          TransportMode.metro,
-          TransportMode.tram,
-          TransportMode.rail,
-          TransportMode.louage,
-        },
-      );
+      expect(TransportMode.selectable.toSet(), {
+        TransportMode.bus,
+        TransportMode.metro,
+        TransportMode.tram,
+        TransportMode.rail,
+        TransportMode.louage,
+      });
     });
   });
 

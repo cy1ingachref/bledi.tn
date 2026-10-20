@@ -51,8 +51,7 @@ void main() {
       print('\n[SKIP] No backend at $baseUrl — integration tests skipped.');
       return;
     }
-    payloadStations =
-        (await StationsDataSource(client).fetchAll()).stations;
+    payloadStations = (await StationsDataSource(client).fetchAll()).stations;
   });
 
   tearDownAll(() => client.close());
@@ -103,16 +102,22 @@ void main() {
 
       // The enriched backend supplies a real mode for every stop; the
       // line-id fallback should therefore almost never be needed.
-      expect(undeclared, lessThan(payload.stations.length ~/ 10),
-          reason: 'most stations must carry a declared mode');
+      expect(
+        undeclared,
+        lessThan(payload.stations.length ~/ 10),
+        reason: 'most stations must carry a declared mode',
+      );
 
       // The product palette has exactly three real categories; `unknown` must
       // stay a small minority rather than swallowing everything.
       for (final key in ['rail', 'bus', 'louage']) {
         expect(counts[key], greaterThan(0), reason: '$key must be present');
       }
-      expect(counts['unknown'] ?? 0, lessThan(payload.stations.length ~/ 4),
-          reason: 'unknown must not dominate');
+      expect(
+        counts['unknown'] ?? 0,
+        lessThan(payload.stations.length ~/ 4),
+        reason: 'unknown must not dominate',
+      );
     });
 
     test('stations carry a city, and the loudest mode groups correctly', () {
@@ -140,7 +145,10 @@ void main() {
       expect(tunis.lon, closeTo(10.17, 0.6));
 
       // Per-city counts must add up to the city's total.
-      final summed = tunis.countsByCategory.values.fold<int>(0, (a, b) => a + b);
+      final summed = tunis.countsByCategory.values.fold<int>(
+        0,
+        (a, b) => a + b,
+      );
       expect(summed, lessThanOrEqualTo(tunis.stationCount));
     });
 
@@ -151,8 +159,11 @@ void main() {
           .where((s) => s.source == 'louage')
           .toList(growable: false);
 
-      expect(louage, isNotEmpty,
-          reason: 'the louage seed must contribute yellow-category stops');
+      expect(
+        louage,
+        isNotEmpty,
+        reason: 'the louage seed must contribute yellow-category stops',
+      );
       for (final station in louage) {
         expect(station.transportMode, TransportMode.louage);
         expect(station.id, startsWith('louage_'));
@@ -172,12 +183,18 @@ void main() {
       expect(repository.cached, isNotNull);
 
       final second = await repository.getAll();
-      expect(identical(first, second), isTrue,
-          reason: 'cached payload should be returned as-is');
+      expect(
+        identical(first, second),
+        isTrue,
+        reason: 'cached payload should be returned as-is',
+      );
 
       // Concurrent callers must share one in-flight request.
       repository.clearCache();
-      final results = await Future.wait([repository.getAll(), repository.getAll()]);
+      final results = await Future.wait([
+        repository.getAll(),
+        repository.getAll(),
+      ]);
       expect(identical(results[0], results[1]), isTrue);
 
       repository.clearCache();
@@ -220,8 +237,11 @@ void main() {
         endLon: endLon,
       );
 
-      expect(response.hasError, isFalse,
-          reason: 'backend error: ${response.error}');
+      expect(
+        response.hasError,
+        isFalse,
+        reason: 'backend error: ${response.error}',
+      );
 
       final itinerary = response.primary;
       expect(itinerary, isNotNull);
@@ -243,7 +263,8 @@ void main() {
         final previous = itinerary.steps[i - 1].end;
         final current = itinerary.steps[i].start;
         expect(
-          previous.latitude, closeTo(current.latitude, 1e-9),
+          previous.latitude,
+          closeTo(current.latitude, 1e-9),
           reason: 'gap between step $i-1 end and step $i start',
         );
         expect(previous.longitude, closeTo(current.longitude, 1e-9));
@@ -260,7 +281,9 @@ void main() {
         endLon: endLon,
       );
       final itinerary = response.primary;
-      if (itinerary == null) return markTestSkipped('no route for these points');
+      if (itinerary == null) {
+        return markTestSkipped('no route for these points');
+      }
 
       final rides = itinerary.steps.where((s) => s.isRide).toList();
       if (rides.isEmpty) {
@@ -293,27 +316,30 @@ void main() {
       }
     });
 
-    test('identical origin and destination yields a zero-length walk', () async {
-      if (!online) return markTestSkipped('backend offline');
+    test(
+      'identical origin and destination yields a zero-length walk',
+      () async {
+        if (!online) return markTestSkipped('backend offline');
 
-      final response = await RoutingDataSource(client).fetchTransitRoute(
-        startLat: 36.8065,
-        startLon: 10.1815,
-        endLat: 36.8065,
-        endLon: 10.1815,
-      );
+        final response = await RoutingDataSource(client).fetchTransitRoute(
+          startLat: 36.8065,
+          startLon: 10.1815,
+          endLat: 36.8065,
+          endLon: 10.1815,
+        );
 
-      // The router always has a taxi fallback, so for any two valid points it
-      // returns *something*; an identical pair degrades to a 0 m walk. This
-      // must decode rather than throw, and the app must be able to render it.
-      expect(response.hasError, isFalse);
-      final itinerary = response.primary;
-      expect(itinerary, isNotNull);
-      expect(itinerary!.steps, isNotEmpty);
-      expect(itinerary.steps.first.distanceMeters, lessThan(1));
-      // A degenerate route must not be mistaken for a usable one in the UI.
-      expect(response.primary!.durationMin, 0);
-    });
+        // The router always has a taxi fallback, so for any two valid points it
+        // returns *something*; an identical pair degrades to a 0 m walk. This
+        // must decode rather than throw, and the app must be able to render it.
+        expect(response.hasError, isFalse);
+        final itinerary = response.primary;
+        expect(itinerary, isNotNull);
+        expect(itinerary!.steps, isNotEmpty);
+        expect(itinerary.steps.first.distanceMeters, lessThan(1));
+        // A degenerate route must not be mistaken for a usable one in the UI.
+        expect(response.primary!.durationMin, 0);
+      },
+    );
 
     test('missing required params surface as an ApiException', () async {
       if (!online) return markTestSkipped('backend offline');
@@ -321,7 +347,10 @@ void main() {
       // FastAPI validates the query params and answers 422. The client must
       // turn that into a typed error, not a raw DioException.
       try {
-        await client.getJson('/api/v1/route/transit', query: {'start_lat': 36.8});
+        await client.getJson(
+          '/api/v1/route/transit',
+          query: {'start_lat': 36.8},
+        );
         fail('expected ApiException');
       } on ApiException catch (e) {
         expect(e.statusCode, anyOf(422, 400));
@@ -399,8 +428,9 @@ void main() {
 
       // Decode twice through the generated model to prove stability.
       final once = RouteResponse.fromJson(raw as Map<String, dynamic>);
-      final twice = RouteResponse.fromJson(jsonDecode(jsonEncode(once.toJson()))
-          as Map<String, dynamic>);
+      final twice = RouteResponse.fromJson(
+        jsonDecode(jsonEncode(once.toJson())) as Map<String, dynamic>,
+      );
 
       expect(twice.primary!.steps.length, once.primary!.steps.length);
       expect(twice.primary!.durationMin, once.primary!.durationMin);

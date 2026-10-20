@@ -32,9 +32,8 @@ LatLng latLngFromJsonList(List<dynamic>? json) {
 }
 
 /// Inverse of [latLngFromJsonList].
-List<double>? latLngToJsonList(LatLng? object) => object == null
-    ? null
-    : <double>[object.latitude, object.longitude];
+List<double>? latLngToJsonList(LatLng? object) =>
+    object == null ? null : <double>[object.latitude, object.longitude];
 
 /// Decodes a backend geometry polyline (`[[lat, lon], ...]`) into [LatLng]s.
 ///
@@ -62,12 +61,9 @@ List<LatLng> latLngListFromJson(List<dynamic>? json) {
 }
 
 /// Inverse of [latLngListFromJson].
-List<List<double>> latLngListToJson(List<LatLng>? object) =>
-    object == null
-        ? const <List<double>>[]
-        : object
-              .map((p) => <double>[p.latitude, p.longitude])
-              .toList();
+List<List<double>> latLngListToJson(List<LatLng>? object) => object == null
+    ? const <List<double>>[]
+    : object.map((p) => <double>[p.latitude, p.longitude]).toList();
 
 /// A single leg of a transit itinerary.
 ///
@@ -82,9 +78,17 @@ abstract class RouteStep with _$RouteStep {
   const factory RouteStep({
     /// `walk` | `ride` | `transfer` | `taxi`
     required String type,
-    @JsonKey(name: 'start', fromJson: latLngFromJsonList, toJson: latLngToJsonList)
+    @JsonKey(
+      name: 'start',
+      fromJson: latLngFromJsonList,
+      toJson: latLngToJsonList,
+    )
     required LatLng start,
-    @JsonKey(name: 'end', fromJson: latLngFromJsonList, toJson: latLngToJsonList)
+    @JsonKey(
+      name: 'end',
+      fromJson: latLngFromJsonList,
+      toJson: latLngToJsonList,
+    )
     required LatLng end,
     String? color,
     @JsonKey(name: 'stop_name') String? stopName,
@@ -93,6 +97,7 @@ abstract class RouteStep with _$RouteStep {
     String? line,
     @JsonKey(name: 'from_name') String? fromName,
     @JsonKey(name: 'to_name') String? toName,
+
     /// Ordered `[lat, lon]` pairs tracing the real path of this leg, when the
     /// backend has geometry for it (OSRM/OSM). Empty means "no geometry", and
     /// the map then falls back to the straight [start]->[end] line.
@@ -103,11 +108,10 @@ abstract class RouteStep with _$RouteStep {
     )
     @Default(<LatLng>[])
     List<LatLng> geometry,
+
     /// True when [geometry] traces a real track/road rather than being a
     /// synthesised straight line.
-    @JsonKey(name: 'has_geometry')
-    @Default(false)
-    bool hasGeometry,
+    @JsonKey(name: 'has_geometry') @Default(false) bool hasGeometry,
   }) = _RouteStep;
 
   factory RouteStep.fromJson(Map<String, dynamic> json) =>
@@ -129,10 +133,11 @@ abstract class RouteStep with _$RouteStep {
   /// rather than the instruction.
   String get endLabel {
     if (toName != null && toName!.trim().isNotEmpty) return toName!.trim();
-    if (stopName != null && stopName!.trim().isNotEmpty) return stopName!.trim();
+    if (stopName != null && stopName!.trim().isNotEmpty) {
+      return stopName!.trim();
+    }
     return '';
   }
-
 
   /// Label for where this step starts, falling back to [endLabel].
   String get startLabel {
@@ -200,10 +205,12 @@ abstract class RouteStep with _$RouteStep {
     final first = geometry.first;
     final last = geometry.last;
     const eps = 1e-6;
-    final startsOk = (first.latitude - start.latitude).abs() < eps
-        && (first.longitude - start.longitude).abs() < eps;
-    final endsOk = (last.latitude - end.latitude).abs() < eps
-        && (last.longitude - end.longitude).abs() < eps;
+    final startsOk =
+        (first.latitude - start.latitude).abs() < eps &&
+        (first.longitude - start.longitude).abs() < eps;
+    final endsOk =
+        (last.latitude - end.latitude).abs() < eps &&
+        (last.longitude - end.longitude).abs() < eps;
     if (!startsOk || !endsOk) return <LatLng>[start, end];
     return geometry;
   }
@@ -310,9 +317,7 @@ abstract class Itinerary with _$Itinerary {
   bool get hasRealGeometry => steps.any((s) => s.followsRealPath);
 
   /// Union of every step's start/end, for fitting the map camera.
-  List<LatLng> get allPoints => [
-    for (final step in steps) ...step.path,
-  ];
+  List<LatLng> get allPoints => [for (final step in steps) ...step.path];
 
   bool get hasFare => fareDinars != null && fareDinars! > 0;
 }

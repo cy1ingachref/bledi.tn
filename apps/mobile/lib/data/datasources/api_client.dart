@@ -93,7 +93,8 @@ class ApiClient {
         'The server took too long to respond. Is the backend running at $baseUrl?',
       DioExceptionType.connectionError =>
         'Cannot reach the backend at $baseUrl. Check that it is running and reachable.',
-      DioExceptionType.badCertificate => 'The backend certificate was rejected.',
+      DioExceptionType.badCertificate =>
+        'The backend certificate was rejected.',
       DioExceptionType.cancel => 'Request cancelled.',
       _ => detail ?? 'Request failed (HTTP ${status ?? 'error'}).',
     };
@@ -104,10 +105,7 @@ class ApiClient {
   /// GET [path] returning decoded JSON, with [query] appended.
   ///
   /// Throws [ApiException] on transport failure or non-2xx status.
-  Future<dynamic> getJson(
-    String path, {
-    Map<String, dynamic>? query,
-  }) {
+  Future<dynamic> getJson(String path, {Map<String, dynamic>? query}) {
     return _guard(() async {
       final cleaned = <String, dynamic>{};
       query?.forEach((key, value) {

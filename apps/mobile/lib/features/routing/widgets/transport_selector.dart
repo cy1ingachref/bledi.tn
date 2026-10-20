@@ -38,7 +38,9 @@ class TransportSelector extends ConsumerWidget {
             ),
             TextButton(
               key: const ValueKey<String>('transport_select_all'),
-              onPressed: ref.read(transportSelectionProvider.notifier).selectAll,
+              onPressed: ref
+                  .read(transportSelectionProvider.notifier)
+                  .selectAll,
               child: const Text('Tous'),
             ),
           ],
