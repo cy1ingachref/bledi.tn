@@ -6,8 +6,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:bledi_app/data/models/itinerary.dart';
 
 /// Build a step from JSON, the way the backend sends it.
-RouteStep stepFrom(Map<String, dynamic> json) =>
-    RouteStep.fromJson(json);
+RouteStep stepFrom(Map<String, dynamic> json) => RouteStep.fromJson(json);
 
 Map<String, dynamic> ride({
   required double lat1,
@@ -32,17 +31,19 @@ Map<String, dynamic> ride({
 void main() {
   group('RouteStep.path', () {
     test('uses real geometry when present', () {
-      final s = stepFrom(ride(
-        lat1: 36.8,
-        lon1: 10.1,
-        lat2: 36.9,
-        lon2: 10.2,
-        geometry: [
-          [36.8, 10.1],
-          [36.85, 10.15],
-          [36.9, 10.2],
-        ],
-      ));
+      final s = stepFrom(
+        ride(
+          lat1: 36.8,
+          lon1: 10.1,
+          lat2: 36.9,
+          lon2: 10.2,
+          geometry: [
+            [36.8, 10.1],
+            [36.85, 10.15],
+            [36.9, 10.2],
+          ],
+        ),
+      );
       expect(s.hasGeometry, isTrue);
       expect(s.followsRealPath, isTrue);
       expect(s.path.length, 3);
@@ -61,17 +62,19 @@ void main() {
       // A geometry that fails to reach the destination would visibly detach the
       // line from the stop marker, so it must be rejected in favour of the
       // straight line rather than trusted.
-      final s = stepFrom(ride(
-        lat1: 36.8,
-        lon1: 10.1,
-        lat2: 36.9,
-        lon2: 10.2,
-        geometry: [
-          [36.7, 10.0],
-          [36.85, 10.15],
-          [36.95, 10.3],
-        ],
-      ));
+      final s = stepFrom(
+        ride(
+          lat1: 36.8,
+          lon1: 10.1,
+          lat2: 36.9,
+          lon2: 10.2,
+          geometry: [
+            [36.7, 10.0],
+            [36.85, 10.15],
+            [36.95, 10.3],
+          ],
+        ),
+      );
       expect(s.geometry.length, 3, reason: 'raw geometry is still decoded');
       expect(s.path.length, 2, reason: 'but is not drawn');
       expect(s.path.first, const LatLng(36.8, 10.1));
@@ -79,15 +82,17 @@ void main() {
     });
 
     test('rejects geometry with a single point', () {
-      final s = stepFrom(ride(
-        lat1: 36.8,
-        lon1: 10.1,
-        lat2: 36.9,
-        lon2: 10.2,
-        geometry: [
-          [36.8, 10.1],
-        ],
-      ));
+      final s = stepFrom(
+        ride(
+          lat1: 36.8,
+          lon1: 10.1,
+          lat2: 36.9,
+          lon2: 10.2,
+          geometry: [
+            [36.8, 10.1],
+          ],
+        ),
+      );
       expect(s.path.length, 2);
     });
   });
@@ -117,7 +122,13 @@ void main() {
       // Rades/Hammam Lif/Grombalia on Tunis->Sfax were reported but invisible.
       final it = withSteps([
         ride(lat1: 36.80, lon1: 10.18, lat2: 36.81, lon2: 10.19, to: 'Rades'),
-        ride(lat1: 36.81, lon1: 10.19, lat2: 36.82, lon2: 10.20, to: 'Hammam Lif'),
+        ride(
+          lat1: 36.81,
+          lon1: 10.19,
+          lat2: 36.82,
+          lon2: 10.20,
+          to: 'Hammam Lif',
+        ),
         ride(lat1: 36.82, lon1: 10.20, lat2: 36.83, lon2: 10.21, to: 'Sfax'),
       ]);
       expect(it.milestones.length, 3);

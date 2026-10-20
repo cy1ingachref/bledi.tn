@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 
@@ -60,7 +59,6 @@ class StationIconLayer extends StatelessWidget {
 
   /// Hard cap, so zooming to a single stop does not bury the map under icons.
   static const double _maxPinRadius = 22;
-
 }
 
 class _StationIconPainter extends CustomPainter {
@@ -107,18 +105,24 @@ class _StationIconPainter extends CustomPainter {
       3.14159,
     )
     ..addRect(Rect.fromLTWH(-s * 0.31, 0, s * 0.62, s * 0.34))
-    ..addOval(Rect.fromCenter(
-      center: Offset(0, -s * 0.3),
-      width: s * 0.2,
-      height: s * 0.2,
-    ));
+    ..addOval(
+      Rect.fromCenter(
+        center: Offset(0, -s * 0.3),
+        width: s * 0.2,
+        height: s * 0.2,
+      ),
+    );
 
   /// Tram: a tram body with a pantograph bar overhead, distinguishing it from
   /// both the train and the metro at the same icon size.
   static Path _tramPath(double s) => Path()
     ..addRRect(
       RRect.fromRectAndRadius(
-        Rect.fromCenter(center: Offset(0, s * 0.08), width: s * 0.5, height: s * 0.62),
+        Rect.fromCenter(
+          center: Offset(0, s * 0.08),
+          width: s * 0.5,
+          height: s * 0.62,
+        ),
         Radius.circular(s * 0.16),
       ),
     )
@@ -128,11 +132,13 @@ class _StationIconPainter extends CustomPainter {
 
   /// Walk: a single footprint, the only asymmetric glyph in the set.
   static Path _walkPath(double s) => Path()
-    ..addOval(Rect.fromCenter(
-      center: Offset(-s * 0.02, -s * 0.26),
-      width: s * 0.34,
-      height: s * 0.44,
-    ))
+    ..addOval(
+      Rect.fromCenter(
+        center: Offset(-s * 0.02, -s * 0.26),
+        width: s * 0.34,
+        height: s * 0.44,
+      ),
+    )
     ..addRect(Rect.fromLTWH(-s * 0.02, s * 0.04, s * 0.32, s * 0.16));
 
   /// Louage / taxi: a car seen side-on, with a roof sign above the cabin.
@@ -153,7 +159,11 @@ class _StationIconPainter extends CustomPainter {
     // roof sign
     ..addRRect(
       RRect.fromRectAndRadius(
-        Rect.fromCenter(center: Offset(0, -s * 0.28), width: s * 0.34, height: s * 0.16),
+        Rect.fromCenter(
+          center: Offset(0, -s * 0.28),
+          width: s * 0.34,
+          height: s * 0.16,
+        ),
         Radius.circular(s * 0.05),
       ),
     );
@@ -161,7 +171,9 @@ class _StationIconPainter extends CustomPainter {
   /// Unclassified: a plain dot — the same idea as the zoomed-out marker, so
   /// "we do not know" never looks like a mode we do know.
   static Path _otherPath(double s) => Path()
-    ..addOval(Rect.fromCenter(center: Offset.zero, width: s * 0.4, height: s * 0.4));
+    ..addOval(
+      Rect.fromCenter(center: Offset.zero, width: s * 0.4, height: s * 0.4),
+    );
 
   static Map<TransportMode, Path> _buildGlyphs() {
     final s = 10.0;
@@ -192,8 +204,12 @@ class _StationIconPainter extends CustomPainter {
     final showIcons = zoom >= StationIconLayer.iconZoom;
     final pinRadius = showIcons
         ? (StationIconLayer._pinRadius +
-                (zoom - StationIconLayer.iconZoom) * StationIconLayer._radiusPerZoom)
-            .clamp(StationIconLayer._pinRadius, StationIconLayer._maxPinRadius)
+                  (zoom - StationIconLayer.iconZoom) *
+                      StationIconLayer._radiusPerZoom)
+              .clamp(
+                StationIconLayer._pinRadius,
+                StationIconLayer._maxPinRadius,
+              )
         : StationIconLayer._dotRadius;
 
     final paint = Paint()..style = PaintingStyle.fill;
@@ -209,13 +225,19 @@ class _StationIconPainter extends CustomPainter {
       final offset = camera.latLngToScreenOffset(station.point);
       // Skip anything off-screen: the national view holds 4 200 stops and only
       // a few hundred are ever visible.
-      if (offset.dx < -40 || offset.dy < -40 ||
-          offset.dx > size.width + 40 || offset.dy > size.height + 40) {
+      if (offset.dx < -40 ||
+          offset.dy < -40 ||
+          offset.dx > size.width + 40 ||
+          offset.dy > size.height + 40) {
         continue;
       }
 
       if (!showIcons) {
-        canvas.drawCircle(offset, StationIconLayer._dotRadius, paint..color = station.color);
+        canvas.drawCircle(
+          offset,
+          StationIconLayer._dotRadius,
+          paint..color = station.color,
+        );
         canvas.drawCircle(offset, StationIconLayer._dotRadius, border);
         continue;
       }

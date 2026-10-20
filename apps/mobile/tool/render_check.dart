@@ -33,9 +33,13 @@ Future<void> main() async {
   });
 
   print('legs                : ${it.steps.length}');
-  print('legs with geometry  : ${it.steps.where((s) => s.followsRealPath).length}');
-  print('geometry points     : '
-      '${it.steps.fold<int>(0, (a, s) => a + s.geometry.length)}');
+  print(
+    'legs with geometry  : ${it.steps.where((s) => s.followsRealPath).length}',
+  );
+  print(
+    'geometry points     : '
+    '${it.steps.fold<int>(0, (a, s) => a + s.geometry.length)}',
+  );
   print('hasRealGeometry     : ${it.hasRealGeometry}');
 
   final path = it.continuousPath;
@@ -54,9 +58,13 @@ Future<void> main() async {
   // started sending it after the labelling fix. If this is 0 the running
   // backend predates that change and every milestone below falls back to the
   // instructional label, so the output is not evidence either way.
-  final named = it.steps.where((s) => (s.toName ?? '').trim().isNotEmpty).length;
-  print('steps with to_name  : $named/${it.steps.length}'
-      '${named == 0 ? '  <-- stale backend, labels below are NOT authoritative' : ''}');
+  final named = it.steps
+      .where((s) => (s.toName ?? '').trim().isNotEmpty)
+      .length;
+  print(
+    'steps with to_name  : $named/${it.steps.length}'
+    '${named == 0 ? '  <-- stale backend, labels below are NOT authoritative' : ''}',
+  );
   print('');
   print('numbered milestones the map renders:');
   for (final m in ms) {
@@ -75,7 +83,8 @@ Future<void> main() async {
   print('');
   print('legs that would draw nothing: $bad');
 
-  final ok = it.hasRealGeometry &&
+  final ok =
+      it.hasRealGeometry &&
       ms.where((m) => m.isIntermediate).length > 0 &&
       dupes == 0 &&
       bad == 0 &&
@@ -89,9 +98,11 @@ Future<Map<String, dynamic>> _fetch() async {
     'BLED_API_BASE',
     defaultValue: 'http://127.0.0.1:8000',
   );
-  final uri = Uri.parse('$base/api/v1/route/transit'
-      '?start_lat=36.8078&start_lon=10.1815'
-      '&end_lat=34.7406&end_lon=10.7603');
+  final uri = Uri.parse(
+    '$base/api/v1/route/transit'
+    '?start_lat=36.8078&start_lon=10.1815'
+    '&end_lat=34.7406&end_lon=10.7603',
+  );
   final request = await HttpClient().getUrl(uri);
   final response = await request.close();
   final body = await response.transform(utf8.decoder).join();

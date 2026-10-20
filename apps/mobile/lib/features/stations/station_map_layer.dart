@@ -86,7 +86,6 @@ class StationMapLayer extends ConsumerWidget {
       ],
     );
   }
-
 }
 
 /// Resolves a tap to the nearest station within a touch radius.
@@ -96,7 +95,10 @@ class StationMapLayer extends ConsumerWidget {
 /// nearest-neighbour resolution is simpler and stays cheap because it only
 /// iterates the already-filtered visible set.
 class _StationTapCatcher extends StatelessWidget {
-  const _StationTapCatcher({required this.stations, required this.onStationTap});
+  const _StationTapCatcher({
+    required this.stations,
+    required this.onStationTap,
+  });
 
   final List<MapStation> stations;
   final void Function(MapStation station) onStationTap;
@@ -108,8 +110,7 @@ class _StationTapCatcher extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) => GestureDetector(
         behavior: HitTestBehavior.translucent,
-        onTapUp: (details) =>
-            _resolve(context, details.localPosition),
+        onTapUp: (details) => _resolve(context, details.localPosition),
         child: const SizedBox.expand(),
       ),
     );
@@ -157,9 +158,9 @@ class _CityLabel extends StatelessWidget {
     final dominant = city.countsByMode.entries.isEmpty
         ? TransportMode.unknown
         : (city.countsByMode.entries.toList()
-              ..sort((a, b) => b.value.compareTo(a.value)))
-            .first
-            .key;
+                ..sort((a, b) => b.value.compareTo(a.value)))
+              .first
+              .key;
     final tint = AppTheme.modeColor(dominant);
 
     return GestureDetector(
@@ -167,17 +168,13 @@ class _CityLabel extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
-          color: isSelected
-              ? tint
-              : scheme.surface.withValues(alpha: 0.88),
+          color: isSelected ? tint : scheme.surface.withValues(alpha: 0.88),
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: isSelected ? Colors.white : tint.withValues(alpha: 0.7),
             width: isSelected ? 2 : 1,
           ),
-          boxShadow: const [
-            BoxShadow(color: Colors.black26, blurRadius: 4),
-          ],
+          boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 4)],
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -200,9 +197,7 @@ class _CityLabel extends StatelessWidget {
               style: TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.w600,
-                color: isSelected
-                    ? Colors.white
-                    : scheme.onSurfaceVariant,
+                color: isSelected ? Colors.white : scheme.onSurfaceVariant,
               ),
             ),
           ],
@@ -293,12 +288,12 @@ class StationLegend extends ConsumerWidget {
               children: [
                 Text(
                   'filter'.tr(),
-                  style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.labelMedium
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 TextButton(
-                  onPressed: () => ref.read(modeFilterProvider.notifier).showAll(),
+                  onPressed: () =>
+                      ref.read(modeFilterProvider.notifier).showAll(),
                   child: Text('show_all'.tr()),
                 ),
               ],

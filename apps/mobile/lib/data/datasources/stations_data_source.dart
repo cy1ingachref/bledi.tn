@@ -29,8 +29,7 @@ class StationsDataSource {
       if (station != null) stations.add(station);
     }
 
-    final metadata =
-        data['metadata'] is Map<String, dynamic>
+    final metadata = data['metadata'] is Map<String, dynamic>
         ? data['metadata'] as Map<String, dynamic>
         : const <String, dynamic>{};
 
@@ -43,16 +42,15 @@ class StationsDataSource {
   Station? _parseFeature(dynamic feature) {
     if (feature is! Map<String, dynamic>) return null;
 
-    final properties =
-        feature['properties'] is Map<String, dynamic>
+    final properties = feature['properties'] is Map<String, dynamic>
         ? feature['properties'] as Map<String, dynamic>
         : const <String, dynamic>{};
-    final geometry =
-        feature['geometry'] is Map<String, dynamic>
+    final geometry = feature['geometry'] is Map<String, dynamic>
         ? feature['geometry'] as Map<String, dynamic>
         : const <String, dynamic>{};
-    final coordinates =
-        geometry['coordinates'] is List ? geometry['coordinates'] as List : const [];
+    final coordinates = geometry['coordinates'] is List
+        ? geometry['coordinates'] as List
+        : const [];
 
     if (coordinates.length < 2) return null;
     final lon = (coordinates[0] as num?)?.toDouble();
@@ -176,12 +174,15 @@ class StationsRepository {
     if (!forceRefresh && pending != null) return pending;
 
     late final Future<StationsPayload> future;
-    future = _remote.fetchAll().then((payload) {
-      _cache = payload;
-      return payload;
-    }).whenComplete(() {
-      if (identical(_inFlight, future)) _inFlight = null;
-    });
+    future = _remote
+        .fetchAll()
+        .then((payload) {
+          _cache = payload;
+          return payload;
+        })
+        .whenComplete(() {
+          if (identical(_inFlight, future)) _inFlight = null;
+        });
 
     _inFlight = future;
     return future;

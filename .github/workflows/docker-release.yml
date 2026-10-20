@@ -80,10 +80,12 @@ jobs:
 
       # The scan runs before the push: a vulnerable image never reaches the registry.
       # Pinned to a commit: trivy-action tags were rewritten in a 2026 supply chain attack.
+      # metadata-action's `tags` output is newline-separated, and Trivy takes one
+      # reference, so index the first tag out of its JSON form.
       - name: Scan
         uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25 # v0.36.0
         with:
-          image-ref: ${{ steps.meta.outputs.tags }}
+          image-ref: ${{ fromJSON(steps.meta.outputs.json).tags[0] }}
           format: table
           ignore-unfixed: true
           vuln-type: os,library

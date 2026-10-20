@@ -22,10 +22,7 @@ class RoutingPanel extends ConsumerWidget {
 
     final itinerary = result.itinerary;
     if (itinerary == null) {
-      return SizedBox(
-        height: 220,
-        child: Center(child: Text('routing'.tr())),
-      );
+      return SizedBox(height: 220, child: Center(child: Text('routing'.tr())));
     }
 
     return DraggableScrollableSheet(
@@ -179,9 +176,7 @@ class _StepTile extends StatelessWidget {
     final theme = Theme.of(context);
     final color = _resolveColor(theme, step);
     final label = stepLabel(context, step);
-    final title = step.isRide
-        ? (step.line ?? label)
-        : label;
+    final title = step.isRide ? (step.line ?? label) : label;
 
     final durationMin = step.estimatedDurationMin();
     // The backend sends no per-step duration, so this figure is derived from
@@ -210,7 +205,11 @@ class _StepTile extends StatelessWidget {
                 child: Icon(stepIcon(step), size: 16, color: color),
               ),
               if (index < 99)
-                Container(width: 2, height: 22, color: color.withValues(alpha: 0.4)),
+                Container(
+                  width: 2,
+                  height: 22,
+                  color: color.withValues(alpha: 0.4),
+                ),
             ],
           ),
           const SizedBox(width: 12),
@@ -276,7 +275,11 @@ class _ErrorBody extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.error_outline, size: 36, color: Theme.of(context).colorScheme.error),
+          Icon(
+            Icons.error_outline,
+            size: 36,
+            color: Theme.of(context).colorScheme.error,
+          ),
           const SizedBox(height: 12),
           Text(message, textAlign: TextAlign.center),
           const SizedBox(height: 16),

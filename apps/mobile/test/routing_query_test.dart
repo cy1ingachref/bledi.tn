@@ -61,8 +61,11 @@ void main() {
         endLon: 10.6,
       );
       final q = rec.queries.single;
-      expect(q.containsKey('modes_include'), isFalse,
-          reason: 'an empty include must be omitted, not sent as ""');
+      expect(
+        q.containsKey('modes_include'),
+        isFalse,
+        reason: 'an empty include must be omitted, not sent as ""',
+      );
       expect(q.containsKey('modes_exclude'), isFalse);
       expect(q['objective'], 'fastest');
       expect(rec.requests.single.path, '/api/v1/route/plan');

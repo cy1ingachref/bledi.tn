@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/constants.dart';
 import '../../data/models/health.dart';
 import '../../providers/providers.dart';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,9 +21,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = TextEditingController(
-      text: ref.read(baseUrlProvider),
-    );
+    _controller = TextEditingController(text: ref.read(baseUrlProvider));
   }
 
   @override
@@ -39,7 +38,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     ref.invalidate(stationsProvider);
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('${'backend_url'.tr()}: ${ref.read(baseUrlProvider)}')),
+      SnackBar(
+        content: Text('${'backend_url'.tr()}: ${ref.read(baseUrlProvider)}'),
+      ),
     );
   }
 
@@ -82,10 +83,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             loading: () => const LinearProgressIndicator(),
             error: (error, _) => Card(
               child: ListTile(
-                leading: Icon(
-                  Icons.cloud_off,
-                  color: theme.colorScheme.error,
-                ),
+                leading: Icon(Icons.cloud_off, color: theme.colorScheme.error),
                 title: Text('backend_unreachable'.tr()),
                 subtitle: Text(error.toString()),
               ),

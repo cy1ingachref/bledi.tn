@@ -114,10 +114,12 @@ jobs:
         if: matrix.component == 'web'
         run: npm run check
 
-      # The suites are added as the parts land, so an empty one must not fail the build.
+      # The suites are added as the parts land, so an empty one must not fail the
+      # build. The flag lives in package.json's test script, not here: passing it
+      # in both places hands vitest the option twice and it refuses to parse.
       - name: Test
         if: matrix.component == 'web'
-        run: npm test -- --passWithNoTests
+        run: npm test
 
       - name: Build
         if: matrix.component == 'web'

@@ -75,9 +75,7 @@ class _StationSearchSheetState extends ConsumerState<StationSearchSheet> {
                         icon: const Icon(Icons.close),
                         onPressed: () {
                           _controller.clear();
-                          ref
-                              .read(stationSearchQueryProvider.notifier)
-                              .clear();
+                          ref.read(stationSearchQueryProvider.notifier).clear();
                           setState(() => _query = '');
                         },
                       ),
@@ -188,10 +186,7 @@ class _StationTile extends StatelessWidget {
 
     return ListTile(
       onTap: onTap,
-      leading: Icon(
-        Icons.directions_bus,
-        color: theme.colorScheme.primary,
-      ),
+      leading: Icon(Icons.directions_bus, color: theme.colorScheme.primary),
       title: Text(station.name, maxLines: 1, overflow: TextOverflow.ellipsis),
       subtitle: lineLabels.isEmpty
           ? null
@@ -223,10 +218,7 @@ class _ErrorView extends StatelessWidget {
             const SizedBox(height: 12),
             Text(message, textAlign: TextAlign.center),
             const SizedBox(height: 16),
-            FilledButton.tonal(
-              onPressed: onRetry,
-              child: Text('retry'.tr()),
-            ),
+            FilledButton.tonal(onPressed: onRetry, child: Text('retry'.tr())),
           ],
         ),
       ),
