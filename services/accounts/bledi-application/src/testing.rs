@@ -149,6 +149,7 @@ impl MemoryStore for InMemoryMemoryStore {
             title: new.title,
             description: new.description,
             media_url: new.media_url,
+            media_key: new.media_key,
             media_type: new.media_type,
             visibility: new.visibility,
             unlock_radius_m: new.unlock_radius.metres(),
@@ -161,6 +162,16 @@ impl MemoryStore for InMemoryMemoryStore {
 
     async fn get(&self, id: Uuid) -> Result<Option<Memory>> {
         Ok(self.0.lock().unwrap().iter().find(|m| m.id == id).cloned())
+    }
+
+    async fn by_media_key(&self, media_key: &str) -> Result<Option<Memory>> {
+        Ok(self
+            .0
+            .lock()
+            .unwrap()
+            .iter()
+            .find(|m| m.media_key.as_deref() == Some(media_key))
+            .cloned())
     }
 
     async fn owned_by(&self, user_id: Uuid) -> Result<Vec<Memory>> {

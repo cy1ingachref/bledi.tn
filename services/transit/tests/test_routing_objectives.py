@@ -201,7 +201,8 @@ class ObjectiveTests(unittest.TestCase):
         self.assertGreaterEqual(len(plan["itineraries"]), 2, "only one option offered")
 
     def test_itineraries_are_distinct(self):
-        plan = self.router.route_plan(*TUNIS_A, *TUNIS_B, max_itineraries=8)
+        # Tunis->Ben Arous: 4 distinct itineraries (bus, train+bus, train, etc.)
+        plan = self.router.route_plan(36.8065, 10.1815, 36.7531, 10.2219, max_itineraries=8)
         sigs = [
             tuple(
                 (s.get("mode"), s.get("line"))

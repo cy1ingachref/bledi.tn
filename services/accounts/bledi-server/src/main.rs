@@ -7,6 +7,7 @@ use std::sync::Arc;
 
 use bledi_application::ports::Clock;
 use bledi_application::{Ports, Services};
+use bledi_http::media::MediaStore;
 use bledi_http::rate_limit::RateLimits;
 use bledi_http::HttpConfig;
 use bledi_postgres::{
@@ -60,12 +61,20 @@ async fn main() {
         clock: Arc::new(SystemClock),
     };
     tracing::info!("CORS: {} allowed origin(s)", config.allowed_origins.len());
+    let media = MediaStore::new(&config.media_root).unwrap_or_else(|e| {
+        eprintln!(
+            "FATAL: cannot use the media root {:?}: {e}",
+            config.media_root
+        );
+        std::process::exit(1);
+    });
     let app = bledi_http::router(
         Services::new(&ports),
         HttpConfig {
             allowed_origins: config.allowed_origins,
             rate_limits: RateLimits::default(),
             trust_proxy_headers: config.trust_proxy_headers,
+            media,
         },
     );
 

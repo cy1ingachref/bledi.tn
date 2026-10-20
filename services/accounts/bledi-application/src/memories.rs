@@ -13,13 +13,20 @@ use crate::{AppError, Missing, Nearby, Ports, Position};
 
 const NEARBY_LIMIT: usize = 200;
 
+/// Where an uploaded photo is served from. The key is appended to it.
+const MEDIA_PATH: &str = "/api/v1/media";
+
 #[derive(Debug, Deserialize)]
 pub struct CreateMemory {
     pub lat: f64,
     pub lon: f64,
     pub title: Option<String>,
     pub description: Option<String>,
-    pub media_url: String,
+    /// A third-party media URL. Ignored when `media_key` is set.
+    pub media_url: Option<String>,
+    /// The key of a photo uploaded to the media endpoint. When it is set the URL is derived
+    /// from the key, so a client cannot point a memory at a host it controls.
+    pub media_key: Option<String>,
     pub media_type: MediaType,
     pub visibility: Visibility,
     pub unlock_radius_m: f64,
@@ -69,13 +76,26 @@ impl Memories {
     }
 
     pub async fn create(&self, me: Uuid, input: CreateMemory) -> Result<Memory> {
+        // An uploaded photo wins over a client-supplied URL: the key is the source of truth
+        // and the URL is derived from it.
+        let (media_url, media_key) = match input.media_key {
+            Some(key) => {
+                let key = text::media_key(&key)?;
+                (format!("{MEDIA_PATH}/{key}"), Some(key))
+            }
+            None => (
+                text::media_url(input.media_url.as_deref().unwrap_or_default())?,
+                None,
+            ),
+        };
         let memory = NewMemory {
             user_id: me,
             location: Coordinates::in_tunisia(input.lat, input.lon)?,
             unlock_radius: UnlockRadius::new(input.unlock_radius_m)?,
             title: text::title(input.title.as_deref())?,
             description: text::description(input.description.as_deref())?,
-            media_url: text::media_url(&input.media_url)?,
+            media_url,
+            media_key,
             media_type: input.media_type,
             visibility: input.visibility,
         };
@@ -84,6 +104,19 @@ impl Memories {
 
     pub async fn get(&self, me: Uuid, id: Uuid) -> Result<Memory> {
         let memory = self.find(id).await?;
+        self.ensure_visible(me, &memory).await?;
+        Ok(memory)
+    }
+
+    /// The memory a photo belongs to, when the caller may see it. The photo itself is only
+    /// handed out with the key, which is an unguessable UUID.
+    pub async fn media_for(&self, me: Uuid, media_key: &str) -> Result<Memory> {
+        let key = text::media_key(media_key)?;
+        let memory = self
+            .memories
+            .by_media_key(&key)
+            .await?
+            .ok_or(AppError::NotFound(Missing::Memory))?;
         self.ensure_visible(me, &memory).await?;
         Ok(memory)
     }
@@ -155,7 +188,8 @@ mod tests {
             lon: 10.18,
             title: Some("Pinned".into()),
             description: None,
-            media_url: "https://example.com/media.jpg".into(),
+            media_url: Some("https://example.com/media.jpg".into()),
+            media_key: None,
             media_type: MediaType::Image,
             visibility,
             unlock_radius_m: 200.0,
@@ -190,6 +224,36 @@ mod tests {
         );
         let created = memories.create(me, pin(Visibility::Public)).await.unwrap();
         assert_eq!(memories.mine(me).await.unwrap(), vec![created]);
+    }
+
+    #[tokio::test]
+    async fn a_memory_without_a_media_url_is_refused() {
+        let fakes = Fakes::new();
+        let memories = Memories::new(&fakes.ports());
+        let me = fakes.user("me@example.com").await;
+        let no_media = CreateMemory {
+            media_url: None,
+            ..pin(Visibility::Public)
+        };
+        assert_eq!(
+            memories.create(me, no_media).await.unwrap_err().code(),
+            "invalid_media_url"
+        );
+    }
+
+    #[tokio::test]
+    async fn an_uploaded_photo_wins_over_a_client_supplied_url() {
+        let fakes = Fakes::new();
+        let memories = Memories::new(&fakes.ports());
+        let me = fakes.user("me@example.com").await;
+        let upload = CreateMemory {
+            media_url: Some("https://evil.example/tracker.gif".into()),
+            media_key: Some("abc-123.jpg".into()),
+            ..pin(Visibility::Public)
+        };
+        let created = memories.create(me, upload).await.unwrap();
+        assert_eq!(created.media_key.as_deref(), Some("abc-123.jpg"));
+        assert_eq!(created.media_url, "/api/v1/media/abc-123.jpg");
     }
 
     #[tokio::test]

@@ -70,7 +70,7 @@ def route_transit(
 @router.get("/geocode", tags=["Stations"])
 def geocode(
     geocoder: GeocoderDep,
-    q: str = Query(..., description="Place name to search in Tunisia"),
+    q: str = Query(..., min_length=2, max_length=200, description="Place name to search in Tunisia"),
     limit: int = Query(3, ge=1, le=10, description="Max results"),
 ) -> Any:
     """Place search through Nominatim, cached server side."""

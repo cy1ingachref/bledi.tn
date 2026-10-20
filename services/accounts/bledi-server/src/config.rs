@@ -1,5 +1,7 @@
+use std::path::PathBuf;
+
 use axum::http::HeaderValue;
-use bledi_http::cors::{parse_allowed_origins, DEFAULT_ALLOWED_ORIGINS};
+use bledi_http::cors::{allowed_origins_from, DEFAULT_ALLOWED_ORIGINS};
 
 /// HS256 is only as strong as its secret, and a short one falls to an offline brute force of
 /// a single issued token.
@@ -12,6 +14,8 @@ pub struct Config {
     pub jwt_secret: Vec<u8>,
     pub allowed_origins: Vec<HeaderValue>,
     pub trust_proxy_headers: bool,
+    /// Where uploaded photos are written and read from.
+    pub media_root: PathBuf,
 }
 
 impl Config {
@@ -37,20 +41,22 @@ impl Config {
             .ok_or("DATABASE_URL is not set. Set it to a PostgreSQL connection string.")?;
 
         let origins = set("ALLOWED_ORIGINS").unwrap_or_else(|| DEFAULT_ALLOWED_ORIGINS.join(","));
-        let allowed_origins =
-            parse_allowed_origins(&origins).map_err(|e| format!("ALLOWED_ORIGINS: {e}"))?;
-        if allowed_origins.is_empty() {
-            return Err("ALLOWED_ORIGINS lists no origin.".into());
-        }
+        let allowed_origins = allowed_origins_from(&origins)?;
 
         let trust_proxy_headers =
             var("TRUST_PROXY_HEADERS").is_some_and(|v| v == "1" || v.eq_ignore_ascii_case("true"));
+
+        // A path, not a credential: the default is only where the photos land.
+        let media_root = set("MEDIA_ROOT")
+            .map(PathBuf::from)
+            .unwrap_or_else(|| PathBuf::from("./media"));
 
         Ok(Self {
             database_url,
             jwt_secret: jwt_secret.as_bytes().to_vec(),
             allowed_origins,
             trust_proxy_headers,
+            media_root,
         })
     }
 }
