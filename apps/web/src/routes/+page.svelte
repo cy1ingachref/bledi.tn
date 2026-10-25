@@ -564,8 +564,11 @@
       {@const activeOpt = routeOptions.find((o) => o.id === selectedOption) ?? routeOptions[0]}
       <div class="board" aria-live="polite">
         <span class="badge" style:background={activeOpt?.color ?? '#1F6F8B'}>{activeOpt?.badge ?? 'TGM'}</span>
-        <span class="route-text">{toText || '—'}</span>
-        <strong>{activeOpt?.minutes ? String(activeOpt.minutes) : (routeMinutes ? String(routeMinutes) : '38')} {t?.min ?? 'min'}</strong>
+        <div class="dest">
+          <p class="fr">{toText || '—'}</p>
+          <p class="ar" dir="rtl"></p>
+        </div>
+        <p class="eta"><strong>{activeOpt?.minutes ? String(activeOpt.minutes) : (routeMinutes ? String(routeMinutes) : '38')}</strong> {t?.min ?? 'min'}</p>
       </div>
     {/if}
 
@@ -721,6 +724,24 @@
   .status .loading { font-style: italic; }
 
   .badge { padding: 3px 9px; border-radius: 7px; color: #fff; font-size: 0.85rem; font-weight: 700; }
+
+  /* LED board */
+  .board {
+    position: relative; display: grid; grid-template-columns: auto 1fr auto;
+    align-items: center; gap: 14px; padding: 16px 18px; border-radius: 14px;
+    background: #0a0a0a; color: var(--amber); text-shadow: 0 0 10px rgb(244 180 0 / 0.45);
+  }
+  .board::after {
+    content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    background: radial-gradient(circle, #0a0a0a 28%, transparent 31%) 0 0 / 3px 3px;
+  }
+  .board .badge { min-width: 52px; padding: 6px 10px; border-radius: 8px; text-align: center; position: relative; z-index: 1; color: #fff; font-weight: 700; text-shadow: none; }
+  .dest p { margin: 0; }
+  .fr { font-size: 1.35rem; font-weight: 700; line-height: 1.2; }
+  .ar { font-size: 1.5rem; font-weight: 600; line-height: 1.3; }
+  .eta { margin: 0; text-align: end; font-size: 0.9rem; position: relative; z-index: 1; }
+  .eta strong { display: block; font-size: 2rem; line-height: 1; font-variant-numeric: tabular-nums; }
+
   .options { display: flex; gap: 8px; }
   .options button {
     flex: 1; display: grid; gap: 2px; justify-items: start; padding: 10px 12px; text-align: start;

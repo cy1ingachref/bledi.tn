@@ -1,10 +1,14 @@
-[#design] Design review issues verified on `fix/open-issues-parallel`:
-- Login page dead links (#25) are not present; placeholders use `<button>` now.
-- Swap control is a real button; keyboard access and `aria-label` are in place.
-- Language choice is persisted via `bledi_lang` in localStorage.
-- Board.svelte reduced-motion guard exists in `apps/web/src/app.css`.
-- `design-issues.md` was stale as of main `589dd77`; current branch no longer matches the old claims.
+[#design] Design review status on `fix/open-issues-parallel` @ 333b867:
+- Login dead links (#25): no `href="#"` placeholders remain.
+- Swap control (#27): real button, keyboard reachable.
+- Keyboard/markers (#55): MapView markers no longer use `keyboard:false`.
+- Memory markers a11y (#55): popups built from DOM nodes with `alt` text.
+- Empty state a11y (#27): route unavailable state is a button.
+- Bare catch logging (#28): route/MapView/memories catch blocks log errors.
+- Board dead code (#52): removed `Board.svelte` and replaced with inline markup.
+- Loading state (#49): station fetch always clears `loading` in `finally`.
 
-Remaining design/auth work:
+Remaining design/auth/docs work:
 - `docs/auth-scheme.md` is still design-only; shared JWT consumption in Python is unimplemented.
 - `/design-login` does not exist as a separate route; auth is at `/login`.
+- Web test coverage is still minimal; `npm run test` passes but with `--passWithNoTests`.
