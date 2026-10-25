@@ -74,4 +74,7 @@ USER bledi
 
 EXPOSE 3000
 
+HEALTHCHECK --interval=10s --timeout=5s --retries=5 --start-period=30s \
+  CMD ["curl", "-f", "http://localhost:3000/api/v1/health"]
+
 CMD ["bledi-server"]

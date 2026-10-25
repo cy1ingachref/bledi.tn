@@ -23,6 +23,7 @@
   // already fetched; the rest are fetched here with the token and kept, so the same
   // photo is fetched once and not once per redraw.
   let fetchedPhotos = {};
+  let objectUrls = [];
 
   // Only internal constants and numbers reach this string, never user data.
   function dot(color, size = 14, extraClass = '') {
@@ -39,27 +40,32 @@
   function memoryPopup(memory) {
     const box = document.createElement('div');
     box.className = 'memory-popup';
+    const safeMediaUrl = (u) => {
+      if (typeof u !== 'string') return null;
+      try {
+        const p = new URL(u, location.href);
+        return p.origin === location.origin || p.pathname.startsWith('/api/v1/media/') ? p.href : null;
+      } catch {
+        return null;
+      }
+    };
     if (memory.media_url) {
       const img = document.createElement('img');
       img.alt = memory.title ?? 'Memory';
       img.loading = 'lazy';
       const known = photos?.[memory.media_url] ?? fetchedPhotos[memory.media_url];
-      if (known) {
-        img.src = known;
+      const src = known ?? safeMediaUrl(memory.media_url);
+      if (src) {
+        img.src = src;
       } else if (mediaToken) {
-        // The media endpoint needs the caller's token, so an <img> cannot load it: the
-        // bytes are fetched here and shown through an object URL.
         fetchMedia(mediaToken, memory.media_url)
           .then((blob) => {
             const objectUrl = URL.createObjectURL(blob);
             fetchedPhotos[memory.media_url] = objectUrl;
+            objectUrls.push(objectUrl);
             img.src = objectUrl;
           })
-          .catch(() => {
-            // The photo stays out of the popup when the server refuses it.
-          });
-      } else {
-        img.src = memory.media_url;
+          .catch(() => {});
       }
       box.append(img);
     }
@@ -83,12 +89,45 @@
   function draw() {
     if (!map || !L) return;
     line?.remove();
-    markers.forEach((m) => m.remove());
-    stationMarkers.forEach((m) => m.remove());
-    memoryMarkers.forEach((m) => m.remove());
-    stationMarkers = [];
-    memoryMarkers = [];
-    markers = [];
+
+    const existing = {};
+    for (const m of stationMarkers) existing[m.stationId] = m;
+    for (const m of memoryMarkers) existing[m.memoryId] = m;
+
+    const nextStation = {};
+    for (const s of stations) {
+      if (s.lat == null || s.lon == null) continue;
+      const key = `station:${s.id}`;
+      let m = existing[key];
+      if (!m) {
+        m = L.marker([s.lat, s.lon], { icon: dot(modeColor(s.mode), 10, 'station-marker-pop') }).addTo(map);
+        m.stationId = key;
+      }
+      m.setLatLng([s.lat, s.lon]);
+      m.bindTooltip(s.name, { direction: 'top', offset: [0, -8] });
+      nextStation[key] = m;
+    }
+
+    const nextMemory = {};
+    for (const memory of memories) {
+      if (memory.lat == null || memory.lon == null) continue;
+      const key = `memory:${memory.id}`;
+      let m = existing[key];
+      if (!m) {
+        m = L.marker([memory.lat, memory.lon], { icon: dot('#F4B400', 14, 'memory-marker') }).addTo(map);
+        m.memoryId = key;
+      }
+      m.setLatLng([memory.lat, memory.lon]);
+      m.setPopupContent(memoryPopup(memory));
+      nextMemory[key] = m;
+    }
+
+    for (const m of stationMarkers) if (!nextStation[m.stationId]) m.remove();
+    for (const m of memoryMarkers) if (!nextMemory[m.memoryId]) m.remove();
+    stationMarkers = Object.values(nextStation);
+    memoryMarkers = Object.values(nextMemory);
+
+    markers = markers.filter((m) => m != null && map.hasLayer(m));
 
     if (path.length >= 2) {
       // SVG renderer so CSS keyframes can animate stroke-dashoffset on the path
@@ -134,7 +173,7 @@
 
     for (const s of stations) {
       if (s.lat == null || s.lon == null) continue;
-      const m = L.marker([s.lat, s.lon], { icon: dot(modeColor(s.mode), 10, 'station-marker-pop'), keyboard: false }).addTo(map);
+      const m = L.marker([s.lat, s.lon], { icon: dot(modeColor(s.mode), 10, 'station-marker-pop') }).addTo(map);
       m.bindTooltip(s.name, { direction: 'top', offset: [0, -8] });
       stationMarkers.push(m);
     }
@@ -158,7 +197,11 @@
       zoom = L.control.zoom({ position: rtl ? 'topleft' : 'topright' }).addTo(map);
       draw();
     })();
-    return () => map?.remove();
+    return () => {
+      objectUrls.forEach((u) => URL.revokeObjectURL(u));
+      objectUrls = [];
+      map?.remove();
+    };
   });
 
   $effect(() => {

@@ -15,6 +15,9 @@ const apiUrl = (endpoint) => {
 // origin in production and in development.
 const ACCOUNTS_BASE = '/api/v1';
 
+import { goto } from '$app/navigation';
+import { resolve } from '$app/paths';
+
 // Fetch itineraries for a route
 export async function fetchRoutePlan({ startLat, startLon, endLat, endLon, modes = ['bus', 'tgm'] }) {
   const params = new URLSearchParams({
@@ -78,22 +81,32 @@ export async function healthCheck() {
 // ---- accounts ----
 
 export async function accounts(path, { token, method = 'GET', body, form } = {}) {
-  const response = await fetch(`${ACCOUNTS_BASE}${path}`, {
-    method,
-    headers: {
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      ...(body ? { 'Content-Type': 'application/json' } : {})
-    },
-    // A form carries its own multipart boundary, so no Content-Type is set for it.
-    body: form ?? (body ? JSON.stringify(body) : undefined)
-  });
-
-  if (!response.ok) {
-    const payload = await response.json().catch(() => ({}));
-    throw new Error(payload.error || `Request failed: ${response.status}`);
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+  try {
+    const response = await fetch(`${ACCOUNTS_BASE}${path}`, {
+      method,
+      signal: controller.signal,
+      headers: {
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        ...(body ? { 'Content-Type': 'application/json' } : {})
+      },
+      // A form carries its own multipart boundary, so no Content-Type is set for it.
+      body: form ?? (body ? JSON.stringify(body) : undefined)
+    });
+    if (response.status === 401) {
+      localStorage.removeItem('bledi_auth');
+      await goto(resolve('/login'));
+    }
+    if (!response.ok) {
+      const payload = await response.json().catch(() => ({}));
+      throw new Error(payload.error || `Request failed: ${response.status}`);
+    }
+    if (response.status === 204) return null;
+    return response.json();
+  } finally {
+    clearTimeout(timeout);
   }
-  if (response.status === 204) return null;
-  return response.json();
 }
 
 export async function loginUser({ email, password }) {
