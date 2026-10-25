@@ -1,3 +1,10 @@
-[#design] Design review issues found (from screenshot + /design-login + docs):
-Login (/design-login): language buttons no-op (fixed aria-label but handlers empty), fake auth btoa() vulnerability, localStorage (needs HttpOnly cookie), design note "Design preview" present.
-Main map (screenshot): Board.svelte flip animation needs stronger reduced-motion guard; no /design spec dir; auth-scheme.md unimplemented; 5 open routing review items remain.
+[#design] Design review issues verified on `fix/open-issues-parallel`:
+- Login page dead links (#25) are not present; placeholders use `<button>` now.
+- Swap control is a real button; keyboard access and `aria-label` are in place.
+- Language choice is persisted via `bledi_lang` in localStorage.
+- Board.svelte reduced-motion guard exists in `apps/web/src/app.css`.
+- `design-issues.md` was stale as of main `589dd77`; current branch no longer matches the old claims.
+
+Remaining design/auth work:
+- `docs/auth-scheme.md` is still design-only; shared JWT consumption in Python is unimplemented.
+- `/design-login` does not exist as a separate route; auth is at `/login`.
