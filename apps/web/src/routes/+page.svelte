@@ -375,21 +375,18 @@
             if (feats.length) {
               stations = feats;
             }
-            reSolve();
             applyUrlParams();
-            loading = false;
-          } else {
-            if (catalog && catalog.modes && stations.length === 0) {
-              mergeCatalog(catalog);
-              loading = false;
-            }
+          } else if (catalog && catalog.modes && stations.length === 0) {
+            mergeCatalog(catalog);
           }
         } catch (err) {
           console.error('stations fetch failed', err);
           if (catalog && catalog.modes && stations.length === 0) {
             mergeCatalog(catalog);
-            loading = false;
           }
+        } finally {
+          applyUrlParams();
+          loading = false;
         }
       })();
     } else {
