@@ -171,20 +171,6 @@
     } else if (line) {
       fitTo(line.getBounds());
     }
-
-    for (const s of stations) {
-      if (s.lat == null || s.lon == null) continue;
-      const m = L.marker([s.lat, s.lon], { icon: dot(modeColor(s.mode), 10, 'station-marker-pop') }).addTo(map);
-      m.bindTooltip(s.name, { direction: 'top', offset: [0, -8] });
-      stationMarkers.push(m);
-    }
-
-    for (const memory of memories) {
-      if (memory.lat == null || memory.lon == null) continue;
-      const m = L.marker([memory.lat, memory.lon], { icon: dot('#F4B400', 14, 'memory-marker'), keyboard: false }).addTo(map);
-      m.bindPopup(memoryPopup(memory));
-      memoryMarkers.push(m);
-    }
   }
 
   onMount(() => {
