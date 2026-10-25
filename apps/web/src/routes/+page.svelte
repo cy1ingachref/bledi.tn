@@ -2,63 +2,52 @@
   import Board from '$lib/Board.svelte';
   import MapView from '$lib/MapView.svelte';
   import { ui } from '$lib/ui.svelte.js';
-  import { dict } from '$lib/data.js';
+  import { dict, routes, fetchRoutePlan, normalizeRoutes } from '$lib/data.js';
   import { loadCatalog, modeColor } from '$lib/catalog.svelte.js';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import { resolve } from '$app/paths';
   import { SvelteSet, SvelteURLSearchParams } from 'svelte/reactivity';
 
-  // --- from/to: the *fuzzy* keys the user typed (display only) ---
   let fromText = $state('');
   let toText = $state('');
   let fromId = $state(null);
   let toId = $state(null);
 
-  // --- picks: the station id we zoomed to (from/to) ---
-  let fromPick = $state(null);
-  let toPick = $state(null);
-
-  // --- the *resolved* locations (lat/lon) we actually route over ---
   let startLat = $state(null);
   let startLon = $state(null);
   let endLat = $state(null);
   let endLon = $state(null);
 
-  // --- suggestions lists (populated by the input listeners) ---
   let fromSuggestions = $state([]);
   let toSuggestions = $state([]);
 
-  // debounce timers and loading states for geocode
+  let routeOptions = $state([]);
+  let selectedOption = $state(null);
+  let routeMinutes = $state(null);
+
   let fromTimeout = null;
   let toTimeout = null;
   let fromLoading = $state(false);
   let toLoading = $state(false);
   let fromError = $state(null);
   let toError = $state(null);
+  let fromSeq = 0;
+  let toSeq = 0;
+  let fromAbort = null;
+  let toAbort = null;
 
-  // map zoom control (unlocked after we know where we are)
   let mapReady = $state(false);
-
-  // stations rendered on the map — merged from the backend + the static catalog
-  // (the catalog is the offline-safe fallback: it is built from the corrected
-  // seed and shipped with the site, so the map shows the full network even
-  // when no backend is running).
   let stations = $state([]);
   let loading = $state(true);
-
-  // transport catalogue (static JSON)
   let catalog = $state([]);
   let catalogLoading = $state(true);
 
   const t = $derived(dict[ui.lang]);
 
-  // safe coordinate formatter: 7 catalog stations have null lat/lon, and a
-  // bare .toFixed() on null throws and aborts the whole panel render.
   const fmtCoord = (v) =>
     typeof v === 'number' && Number.isFinite(v) ? v.toFixed(4) : '—';
 
-  // haversine helper (used for the nearby-station ordering)
   function haversine(lat1, lon1, lat2, lon2) {
     const R = 6371000;
     const toRad = (d) => (d * Math.PI) / 180;
@@ -70,10 +59,6 @@
     return R * 2 * Math.asin(Math.sqrt(a));
   }
 
-  // ---- merge the static catalog records into the map station list ----
-  // The catalog is the authoritative, offline-capable source of every transport
-  // resource (bus / louage / metro / rail / taxi / train / unknown). The backend
-  // is merged on top when it answers, so a running backend can enrich the list.
   function mergeCatalog(raw) {
     if (!raw || !raw.modes) return;
     const out = [];
@@ -96,7 +81,6 @@
     if (out.length) stations = out;
   }
 
-  // ---- resolve explicit coords from the two picks ----
   function reSolve() {
     if (fromId) {
       const a = stations.find((s) => s.id === fromId);
@@ -108,14 +92,12 @@
     }
   }
 
-  // ---- map: zoom to (and briefly highlight) a station ----
   function zoomTo(id) {
     mapReady = true;
     const st = stations.find((s) => s.id === id);
     if (st) reSolve();
   }
 
-  // ---- nearby stations sorted by haversine distance to the from/to point ----
   function nearbyFrom() {
     if (!fromId) return [];
     const from = stations.find((s) => s.id === fromId);
@@ -138,53 +120,37 @@
       .map((s) => ({ id: s.id, name: s.name, lat: s.lat, lon: s.lon }));
   }
 
-  // ---- geocode search via backend ----
-  async function fetchGeocode(query, onResults, onLoading, onError) {
+  async function fetchGeocode(query) {
     const q = (query || '').trim();
-    if (!q || q.length < 2) {
-      onResults([]);
-      onLoading(false);
-      onError(null);
-      return;
+    if (!q || q.length < 2) return [];
+    const res = await fetch('/api/v1/geocode?q=' + encodeURIComponent(q) + '&limit=8');
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      throw new Error(body.error || 'Geocode failed');
     }
-    onLoading(true);
-    onError(null);
-    try {
-      const res = await fetch('http://localhost:8000/api/v1/geocode?q=' + encodeURIComponent(q) + '&limit=8');
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        onResults([]);
-        onError(body.error || 'Geocode failed');
-        onLoading(false);
-        return;
-      }
-      const data = await res.json();
-      const results = (data.results || []).map((r) => ({
-        id: 'geo:' + (r.lat != null ? r.lat.toFixed(4) : '0') + ':' + (r.lon != null ? r.lon.toFixed(4) : '0') + ':' + (r.display_name || '').replace(/\W+/g, '_'),
-        name: r.display_name || r.name || r.display_name || '',
-        lat: r.lat != null ? parseFloat(r.lat) : null,
-        lon: r.lon != null ? parseFloat(r.lon) : null,
-        mode: 'unknown',
-        operator: '',
-      }));
-      onResults(results);
-      onLoading(false);
-    } catch {
-      onResults([]);
-      onError('Network error');
-      onLoading(false);
-    }
+    const data = await res.json();
+    return (data.results || []).map((r) => ({
+      id: 'geo:' + (Number.isFinite(r.lat) ? r.lat.toFixed(4) : '0') + ':' + (Number.isFinite(r.lon) ? r.lon.toFixed(4) : '0') + ':' + (r.display_name || '').replace(/\W+/g, '_'),
+      name: r.display_name || r.name || r.display_name || '',
+      lat: Number.isFinite(r.lat) ? r.lat : null,
+      lon: Number.isFinite(r.lon) ? r.lon : null,
+      mode: 'unknown',
+      operator: '',
+    }));
   }
 
-  // ---- debounced input handlers ----
-  function onFromInput(e) {
+  async function onFromInput(e) {
     fromText = e.currentTarget.value;
     if (fromTimeout) clearTimeout(fromTimeout);
-    fromTimeout = setTimeout(() => {
-      fetchGeocode(fromText, (results) => {
+    if (fromAbort) fromAbort.abort();
+    const seq = ++fromSeq;
+    fromAbort = new AbortController();
+    fromTimeout = setTimeout(async () => {
+      try {
+        const results = await fetchGeocode(fromText);
+        if (seq !== fromSeq) return;
         fromSuggestions = results;
         if (results.length === 0) {
-          // Fallback: try local station filter if nothing from geocode
           const q = (fromText || '').trim().toLowerCase();
           if (q) {
             fromSuggestions = stations
@@ -200,23 +166,32 @@
             fromSuggestions = [];
           }
         }
-      }, (loading) => { fromLoading = loading; }, (err) => { fromError = err; });
+      } catch (err) {
+        if (err.name === 'AbortError') return;
+        fromError = err.message ?? 'Network error';
+      } finally {
+        fromLoading = false;
+      }
     }, 250);
-    // Clear fromId if text no longer matches
     if (fromId) {
       const hit = stations.find((s) => s.id === fromId);
       if (hit && hit.name !== fromText) {
         fromId = null;
-        fromPick = null;
         startLat = null; startLon = null;
       }
     }
   }
-  function onToInput(e) {
+
+  async function onToInput(e) {
     toText = e.currentTarget.value;
     if (toTimeout) clearTimeout(toTimeout);
-    toTimeout = setTimeout(() => {
-      fetchGeocode(toText, (results) => {
+    if (toAbort) toAbort.abort();
+    const seq = ++toSeq;
+    toAbort = new AbortController();
+    toTimeout = setTimeout(async () => {
+      try {
+        const results = await fetchGeocode(toText);
+        if (seq !== toSeq) return;
         toSuggestions = results;
         if (results.length === 0) {
           const q = (toText || '').trim().toLowerCase();
@@ -234,28 +209,31 @@
             toSuggestions = [];
           }
         }
-      }, (loading) => { toLoading = loading; }, (err) => { toError = err; });
+      } catch (err) {
+        if (err.name === 'AbortError') return;
+        toError = err.message ?? 'Network error';
+      } finally {
+        toLoading = false;
+      }
     }, 250);
     if (toId) {
       const hit = stations.find((s) => s.id === toId);
       if (hit && hit.name !== toText) {
         toId = null;
-        toPick = null;
         endLat = null; endLon = null;
       }
     }
   }
+
   function closeFrom() { /* keep typed value */ }
   function closeTo() { /* keep typed value */ }
 
   function pickFrom(id) {
     let st = stations.find((s) => s.id === id);
     if (!st) {
-      // If it's a geocode result that hasn't been added yet, try from suggestions
       const sugg = fromSuggestions.find((s) => s.id === id);
       if (sugg) {
         st = sugg;
-        // Add to stations temporarily
         stations = [...stations, { ...st }];
       } else {
         return;
@@ -268,6 +246,7 @@
     reSolve();
     zoomTo(id);
   }
+
   function pickTo(id) {
     let st = stations.find((s) => s.id === id);
     if (!st) {
@@ -288,14 +267,13 @@
   }
 
   function swap() {
-    const ft = fromText, fi = fromId, fp = fromPick;
-    fromText = toText; fromId = toId; fromPick = toPick;
-    toText = ft; toId = fi; toPick = fp;
+    const ft = fromText, fi = fromId;
+    fromText = toText; fromId = toId;
+    toText = ft; toId = fi;
     fromSuggestions = []; toSuggestions = [];
     reSolve();
   }
 
-  // ---- URL-parameter routing (from=/to=) ----
   function syncUrl() {
     try {
       const params = new SvelteURLSearchParams();
@@ -316,25 +294,25 @@
       const tt = params.get('to');
       if (f && fromText === '') {
         const [la, lo] = f.split(',').map(Number);
-        if (la != null && lo != null) {
+        if (Number.isFinite(la) && Number.isFinite(lo)) {
           const hit = stations.find((s) => Math.abs(s.lat - la) < 1e-4 && Math.abs(s.lon - lo) < 1e-4);
-          if (hit) { fromText = hit.name; fromId = hit.id; fromPick = hit.id; zoomTo(hit.id); }
+          if (hit) { fromText = hit.name; fromId = hit.id; zoomTo(hit.id); }
         }
       }
       if (tt && toText === '') {
         const [la, lo] = tt.split(',').map(Number);
-        if (la != null && lo != null) {
+        if (Number.isFinite(la) && Number.isFinite(lo)) {
           const hit = stations.find((s) => Math.abs(s.lat - la) < 1e-4 && Math.abs(s.lon - lo) < 1e-4);
-          if (hit) { toText = hit.name; toId = hit.id; toPick = hit.id; zoomTo(hit.id); }
+          if (hit) { toText = hit.name; toId = hit.id; zoomTo(hit.id); }
         }
       }
     } catch { /* window unavailable (SSR) */ }
   }
 
-  // ---- auth check ----
   $effect(() => {
     document.documentElement.lang = ui.lang;
     document.documentElement.dir = ui.lang === 'ar' ? 'rtl' : 'ltr';
+    localStorage.setItem('bledi_lang', ui.lang);
   });
 
   $effect(() => {
@@ -342,6 +320,9 @@
   });
 
   onMount(() => {
+    const savedLang = localStorage.getItem('bledi_lang');
+    if (savedLang) ui.lang = savedLang;
+
     const auth = localStorage.getItem('bledi_auth');
     if (!auth) {
       goto(resolve('/login'));
@@ -359,20 +340,18 @@
     }
   });
 
-  // ---- data load ----
   onMount(async () => {
-    // Load catalog but don't populate stations yet (wait for both from/to selection)
     try {
       const raw = await loadCatalog();
       catalog = raw;
       catalogLoading = false;
       applyUrlParams();
-    } catch {
+    } catch (err) {
+      console.error('catalog load failed', err);
       catalogLoading = false;
     }
   });
 
-  // Only populate stations when both fromId and toId are selected
   $effect(() => {
     if (fromId && toId) {
       if (catalog && catalog.modes) {
@@ -380,7 +359,7 @@
       }
       (async () => {
         try {
-          const res = await fetch('http://localhost:8000/api/v1/stations');
+          const res = await fetch('/api/v1/stations');
           if (res.ok) {
             const data = await res.json();
             const feats = (data.features || [])
@@ -405,7 +384,8 @@
               loading = false;
             }
           }
-        } catch {
+        } catch (err) {
+          console.error('stations fetch failed', err);
           if (catalog && catalog.modes && stations.length === 0) {
             mergeCatalog(catalog);
             loading = false;
@@ -413,11 +393,41 @@
         }
       })();
     } else {
-      // Minimal state: keep stations empty when one or both ids missing
       if (stations.length > 0) {
         stations = [];
       }
       loading = true;
+    }
+  });
+
+  $effect(() => {
+    if (startLat != null && startLon != null && endLat != null && endLon != null) {
+      (async () => {
+        try {
+          const res = await fetchRoutePlan({ startLat, startLon, endLat, endLon });
+          const normalized = normalizeRoutes(res);
+          if (normalized.length > 0) {
+            routeOptions = normalized;
+            if (!selectedOption || !routeOptions.some((o) => o.id === selectedOption)) {
+              selectedOption = routeOptions[0].id;
+            }
+            routeMinutes = routeOptions.find((o) => o.id === selectedOption)?.minutes ?? routeOptions[0].minutes;
+          } else {
+            routeOptions = routes;
+            selectedOption = routes[0].id;
+            routeMinutes = routes[0].minutes;
+          }
+        } catch (err) {
+          console.error('route plan failed', err);
+          routeOptions = routes;
+          selectedOption = routes[0].id;
+          routeMinutes = routes[0].minutes;
+        }
+      })();
+    } else {
+      routeOptions = [];
+      selectedOption = null;
+      routeMinutes = null;
     }
   });
 </script>
@@ -428,7 +438,7 @@
 
 <main>
   <MapView
-    path={[]}
+    path={routeOptions.find((o) => o.id === selectedOption)?.path ?? routeOptions[0]?.path ?? []}
     rtl={ui.lang === 'ar'}
     {stations}
     {startLat}
@@ -495,9 +505,9 @@
         </div>
       </div>
 
-      <div class="swap" onclick={swap} aria-label={t.swap}>
+      <button class="swap" onclick={swap} aria-label={t.swap}>
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4v16M4 8l4-4 4 4M16 20V4M12 16l4 4 4-4" /></svg>
-      </div>
+      </button>
 
       <div class="autocomplete">
         <i class="dot b"></i>
@@ -538,7 +548,7 @@
         </div>
       </div>
 
-      <button class="go" aria-label="Go" onclick={() => { fromPick = null; toPick = null; reSolve(); }}>
+      <button class="go" aria-label="Go" onclick={() => { reSolve(); }}>
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
       </button>
     </div>
@@ -553,30 +563,49 @@
       {/if}
     </div>
 
-    <!-- pending route: feedback AFTER the user confirms (continues the FROM/TO) -->
-    {#if false}
-      <Board color="#1F6F8B" to={{fr:'—',ar:''}} minutes="" unit={t?.min ?? ''} />
+    {#if fromId && toId}
+      {@const activeOpt = routeOptions.find((o) => o.id === selectedOption) ?? routeOptions[0]}
+      <Board
+        badge={activeOpt?.badge ?? 'TGM'}
+        color={activeOpt?.color ?? '#1F6F8B'}
+        to={{ fr: toText || '—', ar: toText || '—' }}
+        minutes={activeOpt?.minutes ? String(activeOpt.minutes) : (routeMinutes ? String(routeMinutes) : '38')}
+        unit={t?.min ?? 'min'}
+      />
     {/if}
 
     <div class="options" role="radiogroup" aria-label="Itinéraires">
-      <div class="empty-state" style="padding: 12px; color: var(--muted); font-size: 0.9rem; text-align: center; width: 100%;">
-        Route options unavailable — select stations to load transport plans.
-      </div>
+      {#each routeOptions as opt}
+        <button
+          role="radio"
+          aria-checked={selectedOption === opt.id}
+          class:on={selectedOption === opt.id}
+          onclick={() => (selectedOption = opt.id)}
+        >
+          <span class="badge" style:background={opt.color}>{opt.badge}</span>
+          <span class="times"><bdi>{opt.depart}–{opt.arrive}</bdi></span>
+          <strong>{opt.minutes} {t?.min ?? 'min'}</strong>
+        </button>
+      {:else}
+        <div class="empty-state" style="padding: 12px; color: var(--muted); font-size: 0.9rem; text-align: center; width: 100%;">
+          Route options unavailable — select stations to load transport plans.
+        </div>
+      {/each}
     </div>
 
     <ol class="steps">
-      {#each [] as s}
-        <li class={s.kind} style:--c={s.kind === 'walk' ? 'var(--muted)' : '#1F6F8B'}>
-          <span>{s.label?.[ui.lang] ?? ''}</span>
+      {#each (routeOptions.find((o) => o.id === selectedOption) ?? routeOptions[0])?.steps ?? [] as s}
+        <li class={s.kind} style:--c={s.kind === 'walk' ? 'var(--muted)' : (routeOptions.find((o) => o.id === selectedOption)?.color ?? '#1F6F8B')}>
+          <span>{s.label?.[ui.lang] ?? s.label?.fr ?? ''}</span>
           <small>{s.min ?? ''} {t?.min ?? ''}</small>
         </li>
+      {:else}
+        <li class="note-step" style="--c:var(--muted); padding-inline-start: 34px; font-size: 0.8rem; color: var(--muted);">
+          <span>No active route — steps will appear once a transport plan is loaded.</span>
+        </li>
       {/each}
-      <li class="note-step" style="--c:var(--muted); padding-inline-start: 34px; font-size: 0.8rem; color: var(--muted);">
-        <span>No active route — steps will appear once a transport plan is loaded.</span>
-      </li>
     </ol>
 
-    <!-- Transport catalogue panel -->
     <section class="catalog-section" aria-label="Transit resource catalog">
       <header>
         <h2>All transport resources</h2>
@@ -684,7 +713,7 @@
   .dot.b { bottom: 19px; background: var(--red); }
   .swap {
     position: absolute; inset-inline-end: 8px; top: 50%; translate: 0 -50%;
-    width: 40px; height: 40px; border: 1px solid var(--rule); border-radius: 50%; background: #fff;
+    width: 40px; height: 40px; border: 1px solid var(--rule); border-radius: 50%; background: #fff; cursor: pointer;
   }
   .go {
     position: absolute; inset-inline-end: 8px; top: 50%; translate: 0 -50%;
@@ -718,7 +747,6 @@
 
   .hidden { opacity: 0; transform: translateY(-8px); max-height: 0; overflow: hidden; pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease; }
 
-  /* --- Transport resources section --- */
   .catalog-section {
     margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--rule);
     display: grid; gap: 14px;

@@ -6,25 +6,50 @@
   import { resolve } from '$app/paths';
   import LangSwitch from '$lib/LangSwitch.svelte';
   import { ui } from '$lib/ui.svelte.js';
+  import { loginUser } from '$lib/api.js';
 
   const copy = {
-    fr: { card: 'Carte d’usager', title: 'Connexion', sub: 'Retrouvez vos trajets enregistrés.', email: 'Email', pass: 'Mot de passe', submit: 'Se connecter', forgot: 'Mot de passe oublié ?', create: 'Créer un compte', guest: 'Continuer sans compte' },
-    ar: { card: 'بطاقة المستخدم', title: 'تسجيل الدخول', sub: 'استرجع مساراتك المحفوظة.', email: 'البريد', pass: 'كلمة السر', submit: 'تسجيل الدخول', forgot: 'نسيت كلمة السر؟', create: 'إنشاء حساب', guest: 'المتابعة بدون حساب' },
-    en: { card: 'Rider card', title: 'Log in', sub: 'Pick up your saved routes.', email: 'Email', pass: 'Password', submit: 'Log in', forgot: 'Forgot password?', create: 'Create account', guest: 'Continue without an account' }
+    fr: { card: 'Carte d’usager', title: 'Connexion', sub: 'Retrouvez vos trajets enregistrés.', email: 'Email', pass: 'Mot de passe', submit: 'Se connecter', forgot: 'Mot de passe oublié ?', create: 'Créer un compte', guest: 'Continuer sans compte', error: 'Email ou mot de passe incorrect' },
+    ar: { card: 'بطاقة المستخدم', title: 'تسجيل الدخول', sub: 'استرجع مساراتك المحفوظة.', email: 'البريد', pass: 'كلمة السر', submit: 'تسجيل الدخول', forgot: 'نسيت كلمة السر؟', create: 'إنشاء حساب', guest: 'المتابعة بدون حساب', error: 'البريد أو كلمة السر غير صحيح' },
+    en: { card: 'Rider card', title: 'Log in', sub: 'Pick up your saved routes.', email: 'Email', pass: 'Password', submit: 'Log in', forgot: 'Forgot password?', create: 'Create account', guest: 'Continue without an account', error: 'Invalid email or password' }
   };
   const t = $derived(copy[ui.lang]);
 
   let today = $state('');
   let punched = $state(false);
+  let error = $state('');
+  let loading = $state(false);
+
   onMount(() => {
     const d = new Date(), p = (n) => String(n).padStart(2, '0');
     today = `${p(d.getDate())}.${p(d.getMonth() + 1)}.${String(d.getFullYear()).slice(2)}`;
   });
 
-  function submit(e) {
+  async function submit(e) {
     e.preventDefault();
-    punched = true; // demo only: connect to your auth API here
-    setTimeout(() => goto(resolve('/')), 900);
+    const email = e.currentTarget.email?.value?.trim();
+    const password = e.currentTarget.password?.value;
+    if (!email || !password) {
+      error = t.error;
+      return;
+    }
+    punched = true;
+    loading = true;
+    error = '';
+    try {
+      const result = await loginUser({ email, password });
+      const auth = {
+        email,
+        token: result?.token || result?.access_token || 'local-demo',
+      };
+      localStorage.setItem('bledi_auth', JSON.stringify(auth));
+      await goto(resolve('/'));
+    } catch (err) {
+      error = err?.message || t.error;
+      punched = false;
+    } finally {
+      loading = false;
+    }
   }
 </script>
 
@@ -52,10 +77,14 @@
         <label class="field"><span>{t.pass}</span><input type="password" name="password" autocomplete="current-password" required /></label>
 
         <div class="action">
-          <button class="go" disabled={punched}>{t.submit}</button>
-          {#if punched}<i class="punch"></i>{/if}
+          <button class="go" disabled={punched && loading}>{loading ? '...' : t.submit}</button>
+          {#if punched && loading}<i class="punch"></i>{/if}
         </div>
-        <div class="links"><a href="#">{t.forgot}</a><a href="#">{t.create}</a></div>
+        {#if error}<p class="error">{error}</p>{/if}
+        <div class="links">
+          <button type="button" class="link-btn">{t.forgot}</button>
+          <button type="button" class="link-btn">{t.create}</button>
+        </div>
       </form>
 
       <div class="stub">
@@ -122,6 +151,12 @@
   @keyframes punch { from { scale: 0; } to { scale: 1; } }
 
   .links { display: flex; justify-content: space-between; gap: 12px; margin-top: 14px; font-size: 0.85rem; }
+  .link-btn {
+    background: transparent; border: 0; padding: 0; color: inherit;
+    text-decoration: underline; cursor: pointer; font: inherit; font-size: 0.85rem;
+  }
+  .link-btn:hover { color: var(--ink); }
+  .error { background: #fde8e8; color: #9b1c1c; padding: 8px 12px; border-radius: 4px; font-size: 0.85rem; margin-top: 10px; }
   a { color: inherit; }
 
   .stub { box-sizing: border-box; height: var(--cut); padding: 0 22px; display: flex; justify-content: space-between; align-items: center; border-top: 2px dashed #6f8c9b; }
