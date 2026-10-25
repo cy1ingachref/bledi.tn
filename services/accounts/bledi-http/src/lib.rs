@@ -6,6 +6,7 @@ mod exif;
 mod extract;
 pub mod media;
 mod memories;
+pub mod pagination;
 pub mod rate_limit;
 mod social;
 mod upload;

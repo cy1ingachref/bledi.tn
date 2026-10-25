@@ -334,7 +334,8 @@
         localStorage.removeItem('bledi_auth');
         goto(resolve('/login'));
       }
-    } catch {
+    } catch (err) {
+      console.error('Auth parse failed', err);
       localStorage.removeItem('bledi_auth');
       goto(resolve('/login'));
     }
@@ -587,9 +588,9 @@
           <strong>{opt.minutes} {t?.min ?? 'min'}</strong>
         </button>
       {:else}
-        <div class="empty-state" style="padding: 12px; color: var(--muted); font-size: 0.9rem; text-align: center; width: 100%;">
+        <button type="button" class="empty-state" style="padding: 12px; color: var(--muted); font-size: 0.9rem; text-align: center; width: 100%;">
           Route options unavailable — select stations to load transport plans.
-        </div>
+        </button>
       {/each}
     </div>
 
