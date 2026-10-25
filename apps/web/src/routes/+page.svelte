@@ -1,5 +1,4 @@
 <script>
-  import Board from '$lib/Board.svelte';
   import MapView from '$lib/MapView.svelte';
   import { ui } from '$lib/ui.svelte.js';
   import { dict, routes, fetchRoutePlan, normalizeRoutes } from '$lib/data.js';
@@ -566,13 +565,11 @@
 
     {#if fromId && toId}
       {@const activeOpt = routeOptions.find((o) => o.id === selectedOption) ?? routeOptions[0]}
-      <Board
-        badge={activeOpt?.badge ?? 'TGM'}
-        color={activeOpt?.color ?? '#1F6F8B'}
-        to={{ fr: toText || '—', ar: toText || '—' }}
-        minutes={activeOpt?.minutes ? String(activeOpt.minutes) : (routeMinutes ? String(routeMinutes) : '38')}
-        unit={t?.min ?? 'min'}
-      />
+      <div class="board" aria-live="polite">
+        <span class="badge" style:background={activeOpt?.color ?? '#1F6F8B'}>{activeOpt?.badge ?? 'TGM'}</span>
+        <span class="route-text">{toText || '—'}</span>
+        <strong>{activeOpt?.minutes ? String(activeOpt.minutes) : (routeMinutes ? String(routeMinutes) : '38')} {t?.min ?? 'min'}</strong>
+      </div>
     {/if}
 
     <div class="options" role="radiogroup" aria-label="Itinéraires">
