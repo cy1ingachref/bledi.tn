@@ -116,8 +116,10 @@
       if (stored) {
         auth = JSON.parse(stored);
       }
-    } catch {
+    } catch (err) {
+      console.error('Auth parse failed', err);
       localStorage.removeItem('bledi_auth');
+      goto(resolve('/login'));
     }
 
     loadData();
@@ -139,7 +141,8 @@
           const url = URL.createObjectURL(blob);
           objectUrls.push(url);
           photos = { ...photos, [m.media_url]: url };
-        } catch {
+        } catch (err) {
+          console.warn('Memory photo load failed', err);
           // The server refused this one: the memory is listed without a photo.
         }
       })

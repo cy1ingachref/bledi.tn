@@ -45,7 +45,8 @@
       try {
         const p = new URL(u, location.href);
         return p.origin === location.origin || p.pathname.startsWith('/api/v1/media/') ? p.href : null;
-      } catch {
+      } catch (err) {
+        console.warn('Invalid media url', err);
         return null;
       }
     };

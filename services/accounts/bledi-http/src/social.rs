@@ -11,6 +11,7 @@ use uuid::Uuid;
 
 use crate::auth::AuthUser;
 use crate::extract::{Json, Path, Query};
+use crate::pagination::Pagination;
 use crate::{ApiError, AppState};
 
 type Created<T> = Result<(StatusCode, Json<T>), ApiError>;
@@ -18,15 +19,19 @@ type Created<T> = Result<(StatusCode, Json<T>), ApiError>;
 pub async fn friends(
     State(state): State<AppState>,
     AuthUser(me): AuthUser,
+    Query(pagination): Query<Pagination>,
 ) -> Result<Json<Vec<Friend>>, ApiError> {
-    Ok(Json(state.services.friendships.list(me).await?))
+    let (limit, offset) = pagination.into();
+    Ok(Json(state.services.friendships.list_paginated(me, limit, offset).await?))
 }
 
 pub async fn friend_requests(
     State(state): State<AppState>,
     AuthUser(me): AuthUser,
+    Query(pagination): Query<Pagination>,
 ) -> Result<Json<Vec<Friend>>, ApiError> {
-    Ok(Json(state.services.friendships.requests(me).await?))
+    let (limit, offset) = pagination.into();
+    Ok(Json(state.services.friendships.requests_paginated(me, limit, offset).await?))
 }
 
 /// 201 for a new request, 200 when it accepted the one the other user had already sent.
@@ -63,8 +68,10 @@ pub async fn remove_friend(
 pub async fn favorites(
     State(state): State<AppState>,
     AuthUser(me): AuthUser,
+    Query(pagination): Query<Pagination>,
 ) -> Result<Json<Vec<Favorite>>, ApiError> {
-    Ok(Json(state.services.favorites.list(me).await?))
+    let (limit, offset) = pagination.into();
+    Ok(Json(state.services.favorites.list_paginated(me, limit, offset).await?))
 }
 
 pub async fn save_favorite(
