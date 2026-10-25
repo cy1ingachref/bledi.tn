@@ -101,7 +101,7 @@
       const key = `station:${s.id}`;
       let m = existing[key];
       if (!m) {
-        m = L.marker([s.lat, s.lon], { icon: dot(modeColor(s.mode), 10, 'station-marker-pop') }).addTo(map);
+        m = L.marker([s.lat, s.lon], { icon: dot(modeColor(s.mode), 10, 'station-marker-pop station-marker') }).addTo(map);
         m.stationId = key;
       }
       m.setLatLng([s.lat, s.lon]);
@@ -178,8 +178,8 @@
       L = (await import('leaflet')).default;
       await import('leaflet/dist/leaflet.css');
       map = L.map(el, { zoomControl: false }).setView([36.84, 10.24], 12);
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap, © CARTO', maxZoom: 19
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap', maxZoom: 19
       }).addTo(map);
       zoom = L.control.zoom({ position: rtl ? 'topleft' : 'topright' }).addTo(map);
       draw();
