@@ -281,42 +281,35 @@
       localStorage.removeItem('bledi_auth');
       goto(resolve('/login'));
     }
-  });
 
-  $effect(() => {
-    if (fromId && toId) {
-      (async () => {
-        try {
-          const res = await fetch('/api/v1/stations');
-          if (res.ok) {
-            const data = await res.json();
-            const feats = (data.features || [])
-              .filter((f) => f.properties && f.geometry && f.geometry.coordinates)
-              .map((f) => ({
-                id: f.properties.id,
-                name: f.properties.name,
-                lat: f.geometry.coordinates[1],
-                lon: f.geometry.coordinates[0],
-                mode: f.properties.mode || 'unknown',
-                operator: f.properties.operator || '',
-                type: f.properties.mode || 'station',
-              }));
-            if (feats.length) {
-              stations = feats;
-            }
-            applyUrlParams();
+    (async () => {
+      try {
+        const res = await fetch('/api/v1/stations');
+        if (res.ok) {
+          const data = await res.json();
+          const feats = (data.features || [])
+            .filter((f) => f.properties && f.geometry && f.geometry.coordinates)
+            .map((f) => ({
+              id: f.properties.id,
+              name: f.properties.name,
+              lat: f.geometry.coordinates[1],
+              lon: f.geometry.coordinates[0],
+              mode: f.properties.mode || 'unknown',
+              operator: f.properties.operator || '',
+              type: f.properties.mode || 'station',
+            }));
+          if (feats.length) {
+            stations = feats;
           }
-        } catch (err) {
-          console.error('stations fetch failed', err);
-        } finally {
-          applyUrlParams();
-          reSolve();
-          loading = false;
         }
-      })();
-    } else {
-      loading = true;
-    }
+      } catch (err) {
+        console.error('stations fetch failed', err);
+      } finally {
+        applyUrlParams();
+        reSolve();
+        loading = false;
+      }
+    })();
   });
 
   $effect(() => {
