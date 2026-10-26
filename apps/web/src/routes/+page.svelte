@@ -77,6 +77,7 @@
       lon: Number.isFinite(r.lon) ? r.lon : null,
       mode: 'unknown',
       operator: '',
+      type: r.type || '',
     }));
   }
 
@@ -102,7 +103,7 @@
                 return an - bn || a.name.localeCompare(b.name);
               })
               .slice(0, 8)
-              .map((s) => ({ id: s.id, name: s.name, lat: s.lat, lon: s.lon, mode: s.mode || 'unknown', operator: s.operator || '' }));
+              .map((s) => ({ id: s.id, name: s.name, lat: s.lat, lon: s.lon, mode: s.mode || 'unknown', operator: s.operator || '', type: s.mode || 'station' }));
           } else {
             fromSuggestions = [];
           }
@@ -145,7 +146,7 @@
                 return an - bn || a.name.localeCompare(b.name);
               })
               .slice(0, 8)
-              .map((s) => ({ id: s.id, name: s.name, lat: s.lat, lon: s.lon, mode: s.mode || 'unknown', operator: s.operator || '' }));
+              .map((s) => ({ id: s.id, name: s.name, lat: s.lat, lon: s.lon, mode: s.mode || 'unknown', operator: s.operator || '', type: s.mode || 'station' }));
           } else {
             toSuggestions = [];
           }
@@ -298,6 +299,7 @@
                 lon: f.geometry.coordinates[0],
                 mode: f.properties.mode || 'unknown',
                 operator: f.properties.operator || '',
+                type: f.properties.mode || 'station',
               }));
             if (feats.length) {
               stations = feats;
@@ -410,7 +412,7 @@
           {#each fromSuggestions as s}
             <button class="suggestion" onclick={() => pickFrom(s.id)}>
               <span class="name">{s.name}</span>
-              <span class="meta">{fmtCoord(s.lat)}, {fmtCoord(s.lon)}</span>
+              <span class="meta">{s.type || ''} · {fmtCoord(s.lat)}, {fmtCoord(s.lon)}</span>
             </button>
           {/each}
         </div>
@@ -445,7 +447,7 @@
           {#each toSuggestions as s}
             <button class="suggestion" onclick={() => pickTo(s.id)}>
               <span class="name">{s.name}</span>
-              <span class="meta">{fmtCoord(s.lat)}, {fmtCoord(s.lon)}</span>
+              <span class="meta">{s.type || ''} · {fmtCoord(s.lat)}, {fmtCoord(s.lon)}</span>
             </button>
           {/each}
         </div>
