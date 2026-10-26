@@ -297,6 +297,7 @@
       if (names.has(name)) return true;
       if (!latLons.length) return false;
 
+      const threshold = s.mode === 'louaj' ? 1000 : 350;
       let minDist = Infinity;
       for (const [la, lo] of latLons) {
         const dLat = toRad(la - s.lat);
@@ -306,7 +307,7 @@
         const d = R * c;
         if (d < minDist) minDist = d;
       }
-      return minDist <= 350;
+      return minDist <= threshold;
     });
   }
 
