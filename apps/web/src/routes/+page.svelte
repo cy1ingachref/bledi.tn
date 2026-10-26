@@ -20,6 +20,17 @@
   let fromSuggestions = $state([]);
   let toSuggestions = $state([]);
 
+  let selectedModes = $state(['bus', 'train', 'louaj']);
+  const ALL_MODES = ['bus', 'train', 'louaj'];
+
+  function toggleMode(mode) {
+    if (selectedModes.includes(mode)) {
+      if (selectedModes.length > 1) selectedModes = selectedModes.filter((m) => m !== mode);
+    } else {
+      selectedModes = [...selectedModes, mode];
+    }
+  }
+
   let routeOptions = $state([]);
   let selectedOption = $state(null);
   let routeMinutes = $state(null);
@@ -40,6 +51,8 @@
   let loading = $state(true);
 
   const t = $derived(dict[ui.lang]);
+
+  const modeBadge = (mode) => ({train:'TGM/Train',bus:'Bus',louaj:'Louage',taxi:'Taxi',walk:'Marche'})[mode] || mode;
 
   const fmtCoord = (v) =>
     typeof v === 'number' && Number.isFinite(v) ? v.toFixed(4) : '—';
@@ -368,10 +381,11 @@
   });
 
   $effect(() => {
+    const modes = selectedModes;
     if (startLat != null && startLon != null && endLat != null && endLon != null) {
       (async () => {
         try {
-          const res = await fetchRoutePlan({ startLat, startLon, endLat, endLon });
+          const res = await fetchRoutePlan({ startLat, startLon, endLat, endLon, modes });
           const normalized = normalizeRoutes(res);
           if (normalized.length > 0) {
             routeOptions = normalized;
@@ -532,9 +546,30 @@
           <p class="fr">{toText || '—'}</p>
           <p class="ar" dir="rtl"></p>
         </div>
-        <p class="eta"><strong>{activeOpt?.minutes ? String(activeOpt.minutes) : (routeMinutes ? String(routeMinutes) : '—')}</strong> {t?.min ?? 'min'}</p>
+        <p class="eta">
+          <strong>{activeOpt?.minutes ? String(activeOpt.minutes) : (routeMinutes ? String(routeMinutes) : '—')}</strong> {t?.min ?? 'min'}
+          {#if activeOpt?.identifier}
+            <span class="identifier">{activeOpt.identifier}</span>
+          {/if}
+          {#if activeOpt?.fare_dinars != null && activeOpt.fare_dinars > 0}
+            <span class="fare">{activeOpt.fare_dinars} DT</span>
+          {/if}
+        </p>
       </div>
     {/if}
+
+    <div class="mode-filters" role="group" aria-label="Modes">
+      {#each ALL_MODES as mode}
+        <button
+          class="chip"
+          class:on={selectedModes.includes(mode)}
+          onclick={() => toggleMode(mode)}
+          aria-pressed={selectedModes.includes(mode)}
+        >
+          {modeBadge(mode)}
+        </button>
+      {/each}
+    </div>
 
     <div class="options" role="radiogroup" aria-label="Itinéraires">
       {#each routeOptions as opt}
@@ -547,6 +582,12 @@
           <span class="badge" style:background={opt.color}>{opt.badge}</span>
           <span class="times"><bdi>{opt.depart}–{opt.arrive}</bdi></span>
           <strong>{opt.minutes} {t?.min ?? 'min'}</strong>
+          {#if opt.identifier}
+            <span class="opt-id">{opt.identifier}</span>
+          {/if}
+          {#if opt.fare_dinars != null && opt.fare_dinars > 0}
+            <span class="opt-fare">{opt.fare_dinars} DT</span>
+          {/if}
         </button>
       {:else}
         <button type="button" class="empty-state" style="padding: 12px; color: var(--muted); font-size: 0.9rem; text-align: center; width: 100%;">
@@ -565,13 +606,26 @@
           style:--c={s.kind === 'walk' ? 'var(--muted)' : (routeOptions.find((o) => o.id === selectedOption)?.color ?? '#1F6F8B')}
           class:milestone={ride && isLast}
         >
-          <span>{s.label?.[ui.lang] ?? s.label?.fr ?? ''}</span>
-          <small>{s.min ?? ''} {t?.min ?? ''}</small>
-          {#if ride && isLast}
-            <span class="milestone-badge" style:background={routeOptions.find((o) => o.id === selectedOption)?.color ?? '#1F6F8B'}>
-              {routeOptions.find((o) => o.id === selectedOption)?.badge ?? '—'}
-            </span>
-          {/if}
+          <div class="step-main">
+            <span>{s.label?.[ui.lang] ?? s.label?.fr ?? ''}</span>
+            {#if s.identifier}
+              <span class="step-id">{s.identifier}</span>
+            {/if}
+          </div>
+          <div class="step-meta">
+            <small>{s.min ?? ''} {t?.min ?? ''}</small>
+            {#if Array.isArray(s.stations) && s.stations.length}
+              <span class="stations">→ {s.stations.join(' · ')}</span>
+            {/if}
+            {#if typeof s.fare_dinars === 'number' && s.fare_dinars > 0}
+              <span class="fare">{s.fare_dinars} DT</span>
+            {/if}
+            {#if ride && isLast}
+              <span class="milestone-badge" style:background={routeOptions.find((o) => o.id === selectedOption)?.color ?? '#1F6F8B'}>
+                {routeOptions.find((o) => o.id === selectedOption)?.badge ?? '—'}
+              </span>
+            {/if}
+          </div>
         </li>
       {:else}
         <li class="note-step" style="--c:var(--muted); padding-inline-start: 34px; font-size: 0.8rem; color: var(--muted);">
@@ -675,6 +729,23 @@
   }
   .options button.on { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
   .times { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+  .opt-id { color: var(--muted); font-size: 0.75rem; }
+  .opt-fare { color: var(--sea); font-size: 0.75rem; font-weight: 700; }
+
+  .mode-filters { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip {
+    padding: 6px 10px; border-radius: 999px; border: 1px solid var(--rule); background: #fff;
+    font-size: 0.82rem; font-weight: 600;
+  }
+  .chip.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .identifier { display: block; font-size: 0.75rem; color: var(--muted); }
+  .fare { color: var(--sea); font-weight: 700; }
+
+  .step-main { display: flex; flex-direction: column; gap: 2px; }
+  .step-id { font-size: 0.75rem; color: var(--muted); }
+  .step-meta { display: flex; flex-direction: column; align-items: end; gap: 2px; text-align: end; }
+  .stations { color: var(--ink); font-size: 0.72rem; }
 
   .steps { list-style: none; margin: 0; padding: 0; }
   .steps li { position: relative; display: flex; justify-content: space-between; gap: 12px; padding: 6px 0 16px; padding-inline-start: 34px; }

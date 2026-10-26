@@ -26,7 +26,7 @@ export async function fetchRoutePlan({ startLat, startLon, endLat, endLon, modes
     end_lat: String(endLat),
     end_lon: String(endLon),
     modes_include: modes.join(','),
-    max_itineraries: 2
+    max_itineraries: 6
   });
 
   const response = await fetch(apiUrl(`/route/plan?${params}`));

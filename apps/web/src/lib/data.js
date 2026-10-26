@@ -94,9 +94,51 @@ export const defaultModes = ['train', 'bus', 'louaj'];
 // Helper to normalize mode from API response
 function normalizeMode(mode) {
   if (!mode) return 'bus';
-  if (mode === 'transit' || mode === 'bus') return 'bus';
-  if (mode === 'train') return 'train';
-  return mode;
+  const m = String(mode).toLowerCase();
+  if (m === 'transit' || m === 'bus' || m === 'rfr' || m === 'tram' || m === 'metro') return 'bus';
+  if (m === 'train' || m === 'tgm') return 'train';
+  if (m === 'louaj' || m === 'louage' || m === 'louage_red' || m === 'louage_blue' || m === 'louage_green') return 'louaj';
+  if (m === 'taxi') return 'taxi';
+  return 'bus';
+}
+
+function modeLabelFr(mode) {
+  return {train:'TGM/Train',bus:'Bus',louaj:'Louage',taxi:'Taxi',walk:'Marche'}[mode] || mode;
+}
+function modeBadge(mode) {
+  return {train:'TGM/Train',bus:'Bus',louaj:'Louage',taxi:'Taxi',walk:'Marche'}[mode] || mode;
+}
+
+function legIdentifier(leg) {
+  const id = leg.mode_id || leg.line_id || leg.line || leg.route_short_name || leg.id || null;
+  const op = leg.operator || leg.agency || '';
+  if (id && op) return `${op} · ${id}`;
+  if (id) return String(id);
+  if (op) return String(op);
+  return '—';
+}
+
+function legStationNames(leg) {
+  const out = [];
+  const add = (v) => { const s = (v || '').trim(); if (s) out.push(s); };
+  add(leg.from_name);
+  add(leg.to_name);
+  if (Array.isArray(leg.intermediate_stops)) {
+    for (const s of leg.intermediate_stops) add(typeof s === 'string' ? s : (s?.name || ''));
+  }
+  return out;
+}
+
+function modeFareDinars(leg) {
+  const f = leg.fare_dinars;
+  if (typeof f === 'number' && Number.isFinite(f) && f > 0) return f;
+  const a = leg.fare;
+  if (typeof a === 'object') {
+    if (typeof a.dinars === 'number') return a.dinars;
+    if (typeof a.value === 'number') return a.value;
+  }
+  if (typeof a === 'number' && Number.isFinite(a) && a > 0) return a;
+  return null;
 }
 
 // Helper to build path array from legs geometry
@@ -121,35 +163,59 @@ function buildPathFromLegs(legs) {
 // Helper to format a route from API response
 // API returns itineraries with legs that have geometry points
 export function formatRoute(apiRoute) {
-  const type = normalizeMode(apiRoute.mode);
+  const rawMode = apiRoute.mode || apiRoute.type || 'transit';
+  const type = normalizeMode(rawMode);
   const routeType = routeTypes[type] || routeTypes.bus;
   
   // Build path from legs geometry (API returns legs, not steps for geometry)
   const legs = apiRoute.legs || apiRoute.steps || [];
   const path = buildPathFromLegs(legs);
+  const isTaxi = rawMode === 'taxi';
+  const totalFareRaw = modeFareDinars({fare_dinars: apiRoute.fare_dinars, fare: apiRoute.fare});
+  const legsFare = legs.reduce((sum, leg) => sum + (modeFareDinars(leg) || 0), 0);
+  const fareDinars = totalFareRaw || legsFare || null;
   
   return {
-    id: type,
-    badge: routeType.badge,
-    color: routeType.color,
+    id: type + '_' + Math.random().toString(36).slice(2, 7),
+    rawMode,
+    mode: type,
+    badge: isTaxi ? 'Taxi' : (routeType.badge || modeBadge(type)),
+    color: routeType.color || '#1F6F8B',
     minutes: Math.round((apiRoute.duration_min || apiRoute.duration || 0)),
     depart: apiRoute.depart_time || '--:--',
     arrive: apiRoute.arrive_time || '--:--',
-    path: path,
-    steps: (apiRoute.steps || apiRoute.legs || []).map((leg, i) => ({
-      kind: leg.type === 'walk' ? 'walk' : 'ride',
-      min: Math.round((leg.duration_min || 0)),
-      label: {
-        fr: leg.label?.fr || leg.name?.fr || leg.from_name || `Étape ${i + 1}`,
-        ar: leg.label?.ar || leg.name?.ar || leg.from_name || `الخطوة ${i + 1}`,
-        en: leg.label?.en || leg.name?.en || leg.from_name || `Step ${i + 1}`
-      }
-    }))
+    fare_dinars: fareDinars,
+    path,
+    identifier: isTaxi ? 'Taxi' : (apiRoute.identifier || legs.map(legIdentifier).filter(Boolean).join(' → ') || modeBadge(type)),
+    steps: legs.map((leg, i) => {
+      const isWalk = leg.type === 'walk';
+      return {
+        kind: isWalk ? 'walk' : 'ride',
+        mode: normalizeMode(leg.mode || leg.type || 'bus'),
+        min: Math.round((leg.duration_min || 0)),
+        identifier: isWalk ? null : legIdentifier(leg),
+        stations: legStationNames(leg),
+        fare_dinars: modeFareDinars(leg),
+        label: {
+          fr: leg.label?.fr || leg.name?.fr || leg.from_name || `Étape ${i + 1}`,
+          ar: leg.label?.ar || leg.name?.ar || leg.from_name || `الخطوة ${i + 1}`,
+          en: leg.label?.en || leg.name?.en || leg.from_name || `Step ${i + 1}`
+        }
+      };
+    })
   };
 }
 
 // Normalize API response to routes array
 export function normalizeRoutes(apiResponse) {
   if (!apiResponse || !apiResponse.itineraries) return [];
-  return apiResponse.itineraries.map(formatRoute);
+  const items = apiResponse.itineraries.map(formatRoute);
+  items.sort((a, b) => {
+    if (a.minutes !== b.minutes) return a.minutes - b.minutes;
+    return (a.fare_dinars || 1e9) - (b.fare_dinars || 1e9);
+  });
+  items.forEach((it, idx) => { it.id = it.mode + '_' + (idx + 1); });
+  return items;
 }
+
+export { modeLabelFr, modeBadge };
