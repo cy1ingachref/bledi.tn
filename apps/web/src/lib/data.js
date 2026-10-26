@@ -84,7 +84,19 @@ export const routeTypes = {
   'bus': { id: 'bus', badge: 'Bus', color: '#2E7D4F' },
   'transit': { id: 'transit', badge: 'Bus', color: '#2E7D4F' },
   'walk': { id: 'walk', badge: 'Marche', color: '#888E92' },
-  'louaj': { id: 'louaj', badge: 'Louage', color: '#D7261E' }
+  'louaj': { id: 'louaj', badge: 'Louage', color: '#D7261E' },
+  'taxi': { id: 'taxi', badge: 'Taxi', color: '#F4B400' },
+};
+
+export const modeColors = {
+  train: '#1F6F8B',
+  bus: '#2E7D4F',
+  tram: '#2E7D4F',
+  metro: '#2E7D4F',
+  louaj: '#D7261E',
+  taxi: '#F4B400',
+  walk: '#888E92',
+  transfer: '#888E92',
 };
 
 // Default modes to search
@@ -189,19 +201,15 @@ export function formatRoute(apiRoute) {
     identifier: isTaxi ? 'Taxi' : (apiRoute.identifier || legs.map(legIdentifier).filter(Boolean).join(' → ') || modeBadge(type)),
     steps: legs.map((leg, i) => {
       const isWalk = leg.type === 'walk';
-      return {
-        kind: isWalk ? 'walk' : 'ride',
-        mode: normalizeMode(leg.mode || leg.type || 'bus'),
-        min: Math.round((leg.duration_min || 0)),
-        identifier: isWalk ? null : legIdentifier(leg),
-        stations: legStationNames(leg),
-        fare_dinars: modeFareDinars(leg),
-        label: {
-          fr: leg.label?.fr || leg.name?.fr || leg.from_name || `Étape ${i + 1}`,
-          ar: leg.label?.ar || leg.name?.ar || leg.from_name || `الخطوة ${i + 1}`,
-          en: leg.label?.en || leg.name?.en || leg.from_name || `Step ${i + 1}`
-        }
+      const mode = isWalk ? 'walk' : normalizeMode(leg.mode || leg.type || 'bus');
+      const identifier = isWalk ? null : legIdentifier(leg);
+      const stations = legStationNames(leg);
+      const label = {
+        fr: leg.label?.fr || leg.name?.fr || leg.from_name || `Étape ${i + 1}`,
+        ar: leg.label?.ar || leg.name?.ar || leg.from_name || `الخطوة ${i + 1}`,
+        en: leg.label?.en || leg.name?.en || leg.from_name || `Step ${i + 1}`
       };
+      return { kind: isWalk ? 'walk' : 'ride', mode, min: Math.round((leg.duration_min || 0)), identifier, stations, fare_dinars: modeFareDinars(leg), label };
     })
   };
 }

@@ -1,7 +1,7 @@
 <script>
   import MapView from '$lib/MapView.svelte';
   import { ui } from '$lib/ui.svelte.js';
-  import { dict, routes, fetchRoutePlan, normalizeRoutes } from '$lib/data.js';
+  import { dict, routes, fetchRoutePlan, normalizeRoutes, modeColors } from '$lib/data.js';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import { resolve } from '$app/paths';
@@ -136,7 +136,7 @@
       } finally {
         fromLoading = false;
       }
-    }, 250);
+    }, 180);
     if (fromId) {
       const hit = stations.find((s) => s.id === fromId);
       if (hit && hit.name !== fromText) {
@@ -183,7 +183,7 @@
       } finally {
         toLoading = false;
       }
-    }, 250);
+    }, 180);
     if (toId) {
       const hit = stations.find((s) => s.id === toId);
       if (hit && hit.name !== toText) {
@@ -609,7 +609,7 @@
         {@const ride = s.kind === 'ride'}
         <li
           class={s.kind}
-          style:--c={s.kind === 'walk' ? 'var(--muted)' : (routeOptions.find((o) => o.id === selectedOption)?.color ?? '#1F6F8B')}
+          style:--c={s.kind === 'walk' ? 'var(--muted)' : (modeColors[s.mode] || routeOptions.find((o) => o.id === selectedOption)?.color || '#1F6F8B')}
           class:milestone={ride && isLast}
         >
           <div class="step-main">
