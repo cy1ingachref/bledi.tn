@@ -392,11 +392,16 @@
         <input
           aria-label={t.from}
           placeholder={t.from}
-          value={fromText}
+          bind:value={fromText}
           oninput={onFromInput}
-          onblur={closeFrom}
-          onfocus={closeFrom}
+          onchange={(e) => {
+            const q = (e.currentTarget.value || '').trim();
+            if (!q) return;
+            const hit = [...stations, ...fromSuggestions].find((s) => s.name === q);
+            if (hit) pickFrom(hit.id);
+          }}
           autocomplete="off"
+          list="from-suggest"
         />
         <datalist id="from-suggest">
           {#each fromSuggestions as s}
@@ -410,7 +415,7 @@
             <span class="loading" style="padding: 6px 8px; display:block; color: var(--red);">{fromError}</span>
           {/if}
           {#each fromSuggestions as s}
-            <button class="suggestion" onmousedown={(e) => { e.preventDefault(); pickFrom(s.id); }}>
+            <button class="suggestion" tabindex="-1" onmousedown={(e) => { e.preventDefault(); pickFrom(s.id); }}>
               <span class="name">{s.name}</span>
               <span class="meta">{s.type || ''} · {fmtCoord(s.lat)}, {fmtCoord(s.lon)}</span>
             </button>
@@ -427,11 +432,16 @@
         <input
           aria-label={t.to}
           placeholder={t.to}
-          value={toText}
+          bind:value={toText}
           oninput={onToInput}
-          onblur={closeTo}
-          onfocus={closeTo}
+          onchange={(e) => {
+            const q = (e.currentTarget.value || '').trim();
+            if (!q) return;
+            const hit = [...stations, ...toSuggestions].find((s) => s.name === q);
+            if (hit) pickTo(hit.id);
+          }}
           autocomplete="off"
+          list="to-suggest"
         />
         <datalist id="to-suggest">
           {#each toSuggestions as s}
@@ -445,7 +455,7 @@
             <span class="loading" style="padding: 6px 8px; display:block; color: var(--red);">{toError}</span>
           {/if}
           {#each toSuggestions as s}
-            <button class="suggestion" onmousedown={(e) => { e.preventDefault(); pickTo(s.id); }}>
+            <button class="suggestion" tabindex="-1" onmousedown={(e) => { e.preventDefault(); pickTo(s.id); }}>
               <span class="name">{s.name}</span>
               <span class="meta">{s.type || ''} · {fmtCoord(s.lat)}, {fmtCoord(s.lon)}</span>
             </button>
