@@ -7,11 +7,17 @@ from bledi_transit.domain.geo import haversine_m
 
 SegmentGeometry = Callable[[str | None, str | None], list[list[float]]]
 
-_MODE_COLORS = {"metro": "#339af0", "train": "#845ef7", "rfr": "#ff922b", "bus": "#e03131"}
+_MODE_COLORS = {"metro": "#339af0", "train": "#845ef7", "rfr": "#ff922b", "bus": "#e03131", "louaj": "#D7261E", "taxi": "#F4B400"}
 
 
 def _mode_color(mode: str) -> str:
     return _MODE_COLORS.get(mode, "#8b949e")
+def _point(p: Any) -> tuple[float, float]:
+    if isinstance(p, dict):
+        return float(p.get("lat", 0.0)), float(p.get("lon", 0.0))
+    if isinstance(p, list) and len(p) >= 2:
+        return float(p[0]), float(p[1])
+    return 0.0, 0.0
 
 
 def _leg_from_step(step: dict[str, Any], gap_breaks: bool = False) -> dict[str, Any]:
@@ -23,10 +29,13 @@ def _leg_from_step(step: dict[str, Any], gap_breaks: bool = False) -> dict[str, 
     `gap_breaks` records that this leg is a hole in an otherwise continuous ride.
     """
     geom = step.get("geometry") or []
-    frm, to = step.get("start"), step.get("end")
+    frm = step.get("start") or step.get("from")
+    to = step.get("end") or step.get("to")
+    fr_lat, fr_lon = _point(frm)
+    to_lat, to_lon = _point(to)
     gap_m = None
     if len(geom) < 2 and frm and to:
-        gap_m = round(haversine_m(frm[0], frm[1], to[0], to[1]))
+        gap_m = round(haversine_m(fr_lat, fr_lon, to_lat, to_lon))
     return {
         "mode": step.get("mode"),
         "type": step.get("type"),
@@ -47,6 +56,10 @@ def _leg_from_step(step: dict[str, Any], gap_breaks: bool = False) -> dict[str, 
         "straight_m": step.get("straight_m"),
         "time_seconds": step.get("time_seconds"),
         "duration": step.get("time_seconds"),
+        "start": [fr_lat, fr_lon],
+        "end": [to_lat, to_lon],
+        "stop_name": (step.get("to_name") or step.get("label") or "").strip(),
+        "color": _mode_color(step.get("mode") if step.get("type") == "ride" else "walk"),
     }
 
 
@@ -101,14 +114,6 @@ def steps_to_legs(steps: list[dict[str, Any]]) -> list[dict[str, Any]]:
             continue
         legs.append(_leg_from_step(s))
     return legs
-
-
-def _point(p: Any) -> tuple[float, float]:
-    if isinstance(p, dict):
-        return p.get("lat"), p.get("lon")
-    if isinstance(p, list):
-        return p[0], p[1]
-    return 0.0, 0.0
 
 
 def router_to_option(router_out: dict[str, Any], segment_geometry: SegmentGeometry) -> dict[str, Any]:
