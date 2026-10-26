@@ -45,7 +45,6 @@
     typeof v === 'number' && Number.isFinite(v) ? v.toFixed(4) : '—';
 
   function reSolve() {
-    console.log('reSolve start', { fromId, toId, startLat, startLon, endLat, endLon, stationsLen: stations.length });
     if (fromId && startLat == null) {
       const a = stations.find((s) => s.id === fromId) || fromSuggestions.find((s) => s.id === fromId);
       if (a) { startLat = a.lat; startLon = a.lon; }
@@ -54,7 +53,6 @@
       const b = stations.find((s) => s.id === toId) || toSuggestions.find((s) => s.id === toId);
       if (b) { endLat = b.lat; endLon = b.lon; }
     }
-    console.log('reSolve end', { startLat, startLon, endLat, endLon });
   }
 
   function zoomTo(id) {
