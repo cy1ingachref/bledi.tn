@@ -45,14 +45,16 @@
     typeof v === 'number' && Number.isFinite(v) ? v.toFixed(4) : '—';
 
   function reSolve() {
-    if (fromId) {
-      const a = stations.find((s) => s.id === fromId);
+    console.log('reSolve start', { fromId, toId, startLat, startLon, endLat, endLon, stationsLen: stations.length });
+    if (fromId && startLat == null) {
+      const a = stations.find((s) => s.id === fromId) || fromSuggestions.find((s) => s.id === fromId);
       if (a) { startLat = a.lat; startLon = a.lon; }
     }
-    if (toId) {
-      const b = stations.find((s) => s.id === toId);
+    if (toId && endLat == null) {
+      const b = stations.find((s) => s.id === toId) || toSuggestions.find((s) => s.id === toId);
       if (b) { endLat = b.lat; endLon = b.lon; }
     }
+    console.log('reSolve end', { startLat, startLon, endLat, endLon });
   }
 
   function zoomTo(id) {
@@ -310,13 +312,11 @@
           console.error('stations fetch failed', err);
         } finally {
           applyUrlParams();
+          reSolve();
           loading = false;
         }
       })();
     } else {
-      if (stations.length > 0) {
-        stations = [];
-      }
       loading = true;
     }
   });
@@ -410,7 +410,7 @@
             <span class="loading" style="padding: 6px 8px; display:block; color: var(--red);">{fromError}</span>
           {/if}
           {#each fromSuggestions as s}
-            <button class="suggestion" onclick={() => pickFrom(s.id)}>
+            <button class="suggestion" onmousedown={(e) => { e.preventDefault(); pickFrom(s.id); }}>
               <span class="name">{s.name}</span>
               <span class="meta">{s.type || ''} · {fmtCoord(s.lat)}, {fmtCoord(s.lon)}</span>
             </button>
@@ -445,7 +445,7 @@
             <span class="loading" style="padding: 6px 8px; display:block; color: var(--red);">{toError}</span>
           {/if}
           {#each toSuggestions as s}
-            <button class="suggestion" onclick={() => pickTo(s.id)}>
+            <button class="suggestion" onmousedown={(e) => { e.preventDefault(); pickTo(s.id); }}>
               <span class="name">{s.name}</span>
               <span class="meta">{s.type || ''} · {fmtCoord(s.lat)}, {fmtCoord(s.lon)}</span>
             </button>
