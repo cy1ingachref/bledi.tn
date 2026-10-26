@@ -88,7 +88,7 @@
       </form>
 
       <div class="stub">
-        <div><small>N° 000417</small><a href={resolve('/')}>{t.guest}</a></div>
+        <div><small>N° 000417</small><button type="button" class="link-btn" onclick={() => { localStorage.setItem('bledi_auth', JSON.stringify({email:'guest',token:'guest'})); goto(resolve('/')); }}>{t.guest}</button></div>
         <i class="bars"></i>
       </div>
     </div>
