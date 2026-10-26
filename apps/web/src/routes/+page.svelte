@@ -469,12 +469,12 @@
     {#if fromId && toId}
       {@const activeOpt = routeOptions.find((o) => o.id === selectedOption) ?? routeOptions[0]}
       <div class="board" aria-live="polite">
-        <span class="badge" style:background={activeOpt?.color ?? '#1F6F8B'}>{activeOpt?.badge ?? 'TGM'}</span>
+        <span class="badge" style:background={activeOpt?.color ?? '#1F6F8B'}>{activeOpt?.badge ?? '—'}</span>
         <div class="dest">
           <p class="fr">{toText || '—'}</p>
           <p class="ar" dir="rtl"></p>
         </div>
-        <p class="eta"><strong>{activeOpt?.minutes ? String(activeOpt.minutes) : (routeMinutes ? String(routeMinutes) : '38')}</strong> {t?.min ?? 'min'}</p>
+        <p class="eta"><strong>{activeOpt?.minutes ? String(activeOpt.minutes) : (routeMinutes ? String(routeMinutes) : '—')}</strong> {t?.min ?? 'min'}</p>
       </div>
     {/if}
 
@@ -498,10 +498,22 @@
     </div>
 
     <ol class="steps">
-      {#each (routeOptions.find((o) => o.id === selectedOption) ?? routeOptions[0])?.steps ?? [] as s}
-        <li class={s.kind} style:--c={s.kind === 'walk' ? 'var(--muted)' : (routeOptions.find((o) => o.id === selectedOption)?.color ?? '#1F6F8B')}>
+      {#each (routeOptions.find((o) => o.id === selectedOption) ?? routeOptions[0])?.steps ?? [] as s, i}
+        {@const seq = i + 1}
+        {@const isLast = seq === ((routeOptions.find((o) => o.id === selectedOption) ?? routeOptions[0])?.steps?.length ?? 0)}
+        {@const ride = s.kind === 'ride'}
+        <li
+          class={s.kind}
+          style:--c={s.kind === 'walk' ? 'var(--muted)' : (routeOptions.find((o) => o.id === selectedOption)?.color ?? '#1F6F8B')}
+          class:milestone={ride && isLast}
+        >
           <span>{s.label?.[ui.lang] ?? s.label?.fr ?? ''}</span>
           <small>{s.min ?? ''} {t?.min ?? ''}</small>
+          {#if ride && isLast}
+            <span class="milestone-badge" style:background={routeOptions.find((o) => o.id === selectedOption)?.color ?? '#1F6F8B'}>
+              {routeOptions.find((o) => o.id === selectedOption)?.badge ?? '—'}
+            </span>
+          {/if}
         </li>
       {:else}
         <li class="note-step" style="--c:var(--muted); padding-inline-start: 34px; font-size: 0.8rem; color: var(--muted);">
@@ -576,6 +588,10 @@
   .status .loading { font-style: italic; }
 
   .badge { padding: 3px 9px; border-radius: 7px; color: #fff; font-size: 0.85rem; font-weight: 700; }
+  .steps { display: grid; gap: 10px; }
+  .steps li { display: grid; gap: 2px; }
+  .milestone { position: relative; }
+  .milestone-badge { justify-self: end; padding: 3px 10px; border-radius: 999px; color: #fff; font-size: 0.78rem; font-weight: 700; }
 
   /* LED board */
   .board {
