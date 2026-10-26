@@ -75,7 +75,8 @@ def steps_to_legs(steps: list[dict[str, Any]]) -> list[dict[str, Any]]:
         # The hole can be the step being appended OR the leg already
         # accumulated: the first step of a ride may itself be the unmatchable one.
         prev_has_hole = bool(mergeable and prev.get("needs_geometry"))
-        if mergeable and (prev_has_hole or (not geom and s.get("needs_geometry"))):
+        current_has_hole = bool(mergeable and s.get("needs_geometry"))
+        if mergeable and (prev_has_hole or current_has_hole or (not geom)):
             legs.append(_leg_from_step(s, gap_breaks=prev_has_hole))
             continue
         if mergeable:
