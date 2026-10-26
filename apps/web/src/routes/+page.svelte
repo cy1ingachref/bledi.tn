@@ -107,6 +107,10 @@
           } else {
             fromSuggestions = [];
           }
+        } else {
+          const q = (fromText || '').trim();
+          const hit = results.find((s) => s.name === q);
+          if (hit) pickFrom(hit.id);
         }
       } catch (err) {
         if (err.name === 'AbortError') return;
@@ -150,6 +154,10 @@
           } else {
             toSuggestions = [];
           }
+        } else {
+          const q = (toText || '').trim();
+          const hit = results.find((s) => s.name === q);
+          if (hit) pickTo(hit.id);
         }
       } catch (err) {
         if (err.name === 'AbortError') return;
@@ -257,8 +265,54 @@
     localStorage.setItem('bledi_lang', ui.lang);
   });
 
+  let displayStations = $state([]);
+
+  function computeRelevantStations(route, allStations) {
+    if (!Array.isArray(allStations) || !allStations.length) return [];
+    if (!route) return [];
+
+    const names = new Set();
+    const latLons = [];
+    if (startLat != null && startLon != null) latLons.push([startLat, startLon]);
+    if (endLat != null && endLon != null) latLons.push([endLat, endLon]);
+
+    for (const leg of (route.legs || route.steps || [])) {
+      if (leg.from_name) names.add(leg.from_name.trim().toLowerCase());
+      if (leg.to_name) names.add(leg.to_name.trim().toLowerCase());
+      if (Array.isArray(leg.geometry)) {
+        for (const pt of leg.geometry) {
+          if (Array.isArray(pt) && pt.length >= 2) latLons.push([pt[0], pt[1]]);
+        }
+      }
+    }
+
+    if (!latLons.length && !names.size) return [];
+
+    const R = 6371000;
+    const toRad = (v) => v * Math.PI / 180;
+
+    return allStations.filter((s) => {
+      if (s.lat == null || s.lon == null) return false;
+      const name = (s.name || '').trim().toLowerCase();
+      if (names.has(name)) return true;
+      if (!latLons.length) return false;
+
+      let minDist = Infinity;
+      for (const [la, lo] of latLons) {
+        const dLat = toRad(la - s.lat);
+        const dLon = toRad(lo - s.lon);
+        const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(s.lat)) * Math.cos(toRad(la)) * Math.sin(dLon / 2) ** 2;
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const d = R * c;
+        if (d < minDist) minDist = d;
+      }
+      return minDist <= 350;
+    });
+  }
+
   $effect(() => {
-    syncUrl();
+    const activeRoute = routeOptions.find((o) => o.id === selectedOption) ?? routeOptions[0];
+    displayStations = computeRelevantStations(activeRoute, stations);
   });
 
   onMount(() => {
@@ -352,7 +406,7 @@
   <MapView
     path={routeOptions.find((o) => o.id === selectedOption)?.path ?? routeOptions[0]?.path ?? []}
     rtl={ui.lang === 'ar'}
-    {stations}
+    stations={displayStations}
     {startLat}
     {startLon}
     {endLat}
@@ -464,8 +518,8 @@
         <span class="loading">Select start and destination to view nearby stations and routes.</span>
       {:else if loading}
         <span class="loading">Loading stations...</span>
-      {:else}
-        <span class="count">{stations.length} stations</span>
+      {:else if routeOptions.length > 0}
+        <span class="count">{displayStations.length} stations</span>
       {/if}
     </div>
 
