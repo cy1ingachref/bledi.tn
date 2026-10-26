@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { defaultModes, routeTypes } from './data.js';
+import { defaultModes, routeTypes } from '$lib/data.js';
 
 describe('route mode defaults', () => {
   it('uses backend-supported modes and excludes invalid tgm', () => {
