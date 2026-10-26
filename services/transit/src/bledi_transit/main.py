@@ -114,11 +114,8 @@ def create_app(config: Config | None = None) -> FastAPI:
         client_ip = request.client.host if request.client else "unknown"
         now = time.time()
         # Prune expired entries across all clients so one IP cannot grow the dict without bound.
-        _rate_limit_buckets = defaultdict(list, {
-            ip: [t for t in times if now - t < RATE_LIMIT_WINDOW]
-            for ip, times in list(_rate_limit_buckets.items())
-            if times
-        })
+        for ip, times in list(_rate_limit_buckets.items()):
+            _rate_limit_buckets[ip] = [t for t in times if now - t < RATE_LIMIT_WINDOW]
         if len(_rate_limit_buckets[client_ip]) >= RATE_LIMIT_REQUESTS:
             from fastapi.responses import JSONResponse
             return JSONResponse(
