@@ -19,11 +19,17 @@ pip install -e 'services/transit[dev]'
 uvicorn --factory bledi_transit.main:create_app --port 8000
 ```
 
-Web, on `:5173`. The dev server proxies the accounts paths to `:3000` and every
+Web, on `:8080`. The dev server proxies the accounts paths to `:3000` and every
 other `/api` path to `:8000`:
 
 ```bash
 cd apps/web && npm ci && npm run dev
+```
+
+Tests:
+
+```bash
+cd apps/web && npm test
 ```
 
 Accounts needs PostgreSQL; see the [README](../README.md#accounts).
