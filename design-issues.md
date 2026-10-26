@@ -11,4 +11,4 @@
 Remaining design/auth/docs work:
 - `docs/auth-scheme.md` is still design-only; shared JWT consumption in Python is unimplemented.
 - `/design-login` does not exist as a separate route; auth is at `/login`.
-- Web test coverage is still minimal; `npm run test` passes but with `--passWithNoTests`.
+- Web test coverage is still minimal; `npm run test` now runs focused route-mode tests.
