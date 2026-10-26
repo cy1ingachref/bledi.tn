@@ -569,7 +569,7 @@
     border: 1px solid var(--rule); border-radius: 12px; background: #fff;
   }
   .autocomplete { position: relative; }
-  .suggestions { position: absolute; inset-inline-start: 0; inset-block: 100%; z-index: 10; }
+  .suggestions { position: absolute; inset-inline-start: 0; inset-block-start: 100%; z-index: 10; }
   .suggestions { max-height: 240px; overflow: auto; }
   .suggestion {
     display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px;

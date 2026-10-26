@@ -19,7 +19,7 @@ import { goto } from '$app/navigation';
 import { resolve } from '$app/paths';
 
 // Fetch itineraries for a route
-export async function fetchRoutePlan({ startLat, startLon, endLat, endLon, modes = ['bus', 'tgm'] }) {
+export async function fetchRoutePlan({ startLat, startLon, endLat, endLon, modes = ['bus', 'train'] }) {
   const params = new URLSearchParams({
     start_lat: String(startLat),
     start_lon: String(startLon),
