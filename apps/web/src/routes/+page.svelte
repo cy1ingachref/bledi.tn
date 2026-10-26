@@ -54,6 +54,11 @@
 
   const modeBadge = (mode) => ({train:'TGM/Train',bus:'Bus',louaj:'Louage',taxi:'Taxi',walk:'Marche'})[mode] || mode;
 
+  const cityLabel = (text) => {
+    if (!text) return '—';
+    return text.split(',')[0].trim();
+  };
+
   const fmtCoord = (v) =>
     typeof v === 'number' && Number.isFinite(v) ? v.toFixed(4) : '—';
 
@@ -385,8 +390,15 @@
     if (startLat != null && startLon != null && endLat != null && endLon != null) {
       (async () => {
         try {
-          const res = await fetchRoutePlan({ startLat, startLon, endLat, endLon, modes });
-          const normalized = normalizeRoutes(res);
+          let res = await fetchRoutePlan({ startLat, startLon, endLat, endLon, modes });
+          let normalized = normalizeRoutes(res);
+          if ((!normalized || !normalized.length) && !modes.includes('louage')) {
+            try {
+              const louageModes = Array.from(new Set([...modes, 'louage']));
+              res = await fetchRoutePlan({ startLat, startLon, endLat, endLon, modes: louageModes });
+              normalized = normalizeRoutes(res);
+            } catch { }
+          }
           if (normalized.length > 0) {
             routeOptions = normalized;
             if (!selectedOption || !routeOptions.some((o) => o.id === selectedOption)) {
@@ -543,17 +555,11 @@
       <div class="board" aria-live="polite">
         <span class="badge" style:background={activeOpt?.color ?? '#1F6F8B'}>{activeOpt?.badge ?? '—'}</span>
         <div class="dest">
-          <p class="fr">{toText || '—'}</p>
+          <p class="fr">{cityLabel(fromText)} → {cityLabel(toText)}</p>
           <p class="ar" dir="rtl"></p>
         </div>
         <p class="eta">
           <strong>{activeOpt?.minutes ? String(activeOpt.minutes) : (routeMinutes ? String(routeMinutes) : '—')}</strong> {t?.min ?? 'min'}
-          {#if activeOpt?.identifier}
-            <span class="identifier">{activeOpt.identifier}</span>
-          {/if}
-          {#if activeOpt?.fare_dinars != null && activeOpt.fare_dinars > 0}
-            <span class="fare">{activeOpt.fare_dinars} DT</span>
-          {/if}
         </p>
       </div>
     {/if}
