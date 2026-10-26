@@ -63,7 +63,7 @@
 
   async function fetchGeocode(query) {
     const q = (query || '').trim();
-    if (!q || q.length < 2) return [];
+    if (!q || q.length < 1) return [];
     const res = await fetch('/api/v1/geocode?q=' + encodeURIComponent(q) + '&limit=8');
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
