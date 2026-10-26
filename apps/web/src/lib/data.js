@@ -83,12 +83,13 @@ export const routeTypes = {
   'train': { id: 'train', badge: 'TGM', color: '#1F6F8B' },
   'bus': { id: 'bus', badge: 'Bus', color: '#2E7D4F' },
   'transit': { id: 'transit', badge: 'Bus', color: '#2E7D4F' },
-  'walk': { id: 'walk', badge: 'Marche', color: '#888E92' }
+  'walk': { id: 'walk', badge: 'Marche', color: '#888E92' },
+  'louaj': { id: 'louaj', badge: 'Louage', color: '#D7261E' }
 };
 
-// Default modes to search 
-// 'train' for TGM/light rail, 'bus' for buses
-export const defaultModes = ['train', 'bus'];
+// Default modes to search
+// Include louage so shared-louage routing is attempted by default
+export const defaultModes = ['train', 'bus', 'louaj'];
 
 // Helper to normalize mode from API response
 function normalizeMode(mode) {

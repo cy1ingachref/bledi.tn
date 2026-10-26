@@ -5,6 +5,7 @@ describe('route mode defaults', () => {
   it('uses backend-supported modes and excludes invalid tgm', () => {
     expect(defaultModes).toContain('bus');
     expect(defaultModes).toContain('train');
+    expect(defaultModes).toContain('louaj');
     expect(defaultModes).not.toContain('tgm');
   });
 
