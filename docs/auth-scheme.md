@@ -1,6 +1,8 @@
 # Single auth scheme across the two backends
 
-Status: **design + recommendation.** Nothing here is implemented yet.
+Status: **design.** Nothing here is implemented yet. The recommended path is
+**Option A**: Python becomes a token *consumer* that validates the same HS256
+tokens the Rust server issues, using the shared `JWT_SECRET`.
 
 ## The problem
 
