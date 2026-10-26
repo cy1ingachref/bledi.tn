@@ -166,7 +166,6 @@
     if (start && end) {
       const sw = L.latLngBounds([[startLat, startLon], [endLat, endLon]]);
       fitTo(sw);
-      start.flyTo([startLat, startLon]);
       end.flyTo([endLat, endLon]);
     } else if (line) {
       fitTo(line.getBounds());
