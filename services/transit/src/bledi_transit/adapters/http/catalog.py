@@ -48,7 +48,7 @@ def overpass_taxi_louage() -> Any:
     """Taxi/louage/bus stations from local Overpass export."""
     import json
     from pathlib import Path
-    p = Path(__file__).resolve().parents[7] / "data" / "osm_overpass" / "taxi_louage_stations.json"
+    p = Path(__file__).resolve().parents[6] / "data" / "osm_overpass" / "taxi_louage_stations.json"
     if not p.exists():
         return {"type": "FeatureCollection", "features": []}
     obj = json.loads(p.read_text(encoding="utf-8"))
@@ -62,6 +62,7 @@ def overpass_taxi_louage() -> Any:
             "mode": "taxi_louage",
             "operator": "",
             "type": "station",
+            "louage_route_type": s.get("louage_route_type") or "local",
         }
         features.append({
             "type": "Feature",

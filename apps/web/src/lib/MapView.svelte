@@ -36,6 +36,12 @@
     });
   }
 
+  function louageColor(routeType) {
+    if (routeType === 'long_distance') return '#D7261E'; // red stripe
+    if (routeType === 'regional') return '#1F6F8B';     // blue stripe
+    return '#E8B630';                                   // yellow stripe
+  }
+
   // A memory title and photo come from other users, so the popup is built from DOM nodes
   // and never from an HTML string.
   function memoryPopup(memory) {
@@ -95,6 +101,7 @@
     const existing = {};
     for (const m of stationMarkers) existing[m.stationId] = m;
     for (const m of memoryMarkers) existing[m.memoryId] = m;
+    for (const m of overlayMarkers) existing[m.overlayId] = m;
 
     const nextStation = {};
     for (const s of stations) {
@@ -135,7 +142,9 @@
       const key = `overlay:${s.id}`;
       let m = existing[key];
       if (!m) {
-        m = L.marker([s.lat, s.lon], { icon: dot('#F4B400', 12, 'station-marker-pop overlay-marker') }).addTo(map);
+        m = L.marker([s.lat, s.lon], {
+          icon: dot(louageColor(s.louage_route_type || 'local'), 12, 'station-marker-pop overlay-marker')
+        }).addTo(map);
         m.overlayId = key;
       }
       m.setLatLng([s.lat, s.lon]);
