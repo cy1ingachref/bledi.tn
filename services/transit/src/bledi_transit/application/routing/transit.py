@@ -168,10 +168,12 @@ def router_to_option(router_out: dict[str, Any], segment_geometry: SegmentGeomet
         if t != "transfer":
             after_transfer = False
         geom: list[list[float]] = s.get("geometry") or []
-        if not geom and t == "ride" and not s.get("needs_geometry"):
-            # A flagged leg has no real path; filling it from the station pair
-            # cache would report the false line the flag exists to prevent.
-            geom = segment_geometry(s.get("from_id"), s.get("to_id"))
+        if not geom and t == "ride":
+            # Missing live geometry: fall back to the cached segment geometry
+            # so long intercity legs still draw something instead of a straight
+            # line or an invisible leg.
+            if not s.get("needs_geometry"):
+                geom = segment_geometry(s.get("from_id"), s.get("to_id"))
         steps_out.append(
             {
                 "type": t,
