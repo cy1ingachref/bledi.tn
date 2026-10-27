@@ -43,6 +43,34 @@ def root() -> dict[str, Any]:
     }
 
 
+@router.get("/stations/overpass-taxi-louage", tags=["Stations"])
+def overpass_taxi_louage() -> Any:
+    """Taxi/louage/bus stations from local Overpass export."""
+    import json
+    from pathlib import Path
+    p = Path(__file__).resolve().parents[7] / "data" / "osm_overpass" / "taxi_louage_stations.json"
+    if not p.exists():
+        return {"type": "FeatureCollection", "features": []}
+    obj = json.loads(p.read_text(encoding="utf-8"))
+    features = []
+    for s in obj.get("stations", []):
+        if s.get("lat") is None or s.get("lon") is None:
+            continue
+        props = {
+            "id": s.get("id"),
+            "name": s.get("name") or s.get("name_ar") or s.get("name_fr") or s.get("name_en") or "",
+            "mode": "taxi_louage",
+            "operator": "",
+            "type": "station",
+        }
+        features.append({
+            "type": "Feature",
+            "properties": props,
+            "geometry": {"type": "Point", "coordinates": [s["lon"], s["lat"]]},
+        })
+    return {"type": "FeatureCollection", "features": features}
+
+
 @router.get("/stations", response_model=StationsResponse, tags=["Stations"])
 def stations(catalog: CatalogDep) -> Any:
     """All stops as GeoJSON, with the canonical mode and the nearest governorate."""
