@@ -111,7 +111,7 @@
           type: r.type || '',
           isCountry: !!isCountry,
         };
-      });
+      }).filter((r, idx, arr) => arr.findIndex(x => x.name.toLowerCase() === r.name.toLowerCase()) === idx);
     } catch {
       return [];
     }
@@ -133,6 +133,7 @@
         if (results.length === 0) {
           const q = (fromText || '').trim().toLowerCase();
           if (q) {
+            const seen = new Set();
             fromSuggestions = stations
               .filter((s) => s.id !== fromId && s.name && s.name.toLowerCase().includes(q))
               .sort((a, b) => {
@@ -141,7 +142,8 @@
                 return an - bn || a.name.localeCompare(b.name);
               })
               .slice(0, 8)
-              .map((s) => ({ id: s.id, name: s.name, lat: s.lat, lon: s.lon, mode: s.mode || 'unknown', operator: s.operator || '', type: s.mode || 'station' }));
+              .map((s) => ({ id: s.id, name: s.name, lat: s.lat, lon: s.lon, mode: s.mode || 'unknown', operator: s.operator || '', type: s.mode || 'station' }))
+              .filter((s) => { const k = s.name.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; });
           } else {
             fromSuggestions = [];
           }
@@ -179,6 +181,7 @@
         if (results.length === 0) {
           const q = (toText || '').trim().toLowerCase();
           if (q) {
+            const seen = new Set();
             toSuggestions = stations
               .filter((s) => s.id !== toId && s.name && s.name.toLowerCase().includes(q))
               .sort((a, b) => {
@@ -187,7 +190,8 @@
                 return an - bn || a.name.localeCompare(b.name);
               })
               .slice(0, 8)
-              .map((s) => ({ id: s.id, name: s.name, lat: s.lat, lon: s.lon, mode: s.mode || 'unknown', operator: s.operator || '', type: s.mode || 'station' }));
+              .map((s) => ({ id: s.id, name: s.name, lat: s.lat, lon: s.lon, mode: s.mode || 'unknown', operator: s.operator || '', type: s.mode || 'station' }))
+              .filter((s) => { const k = s.name.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; });
           } else {
             toSuggestions = [];
           }
@@ -547,18 +551,6 @@
           {#each fromSuggestions as s}
             <button class="suggestion" tabindex="-1" onmousedown={(e) => { e.preventDefault(); pickFrom(s.id); }}>
               <span class="name">{cityLabel(s.name)}</span>
-              <span class="meta">
-                {#if s.isCountry}
-                  {ui.lang === 'ar' ? 'دولة' : (ui.lang === 'en' ? 'Country' : 'Pays')}
-                {:else if s.type}
-                  {s.type}
-                {:else if s.mode && s.mode !== 'unknown'}
-                  {s.mode}
-                {/if}
-                {#if s.lat != null && s.lon != null}
-                  · {s.lat.toFixed(2)}, {s.lon.toFixed(2)}
-                {/if}
-              </span>
             </button>
           {/each}
         </div>
@@ -592,18 +584,6 @@
           {#each toSuggestions as s}
             <button class="suggestion" tabindex="-1" onmousedown={(e) => { e.preventDefault(); pickTo(s.id); }}>
               <span class="name">{cityLabel(s.name)}</span>
-              <span class="meta">
-                {#if s.isCountry}
-                  {ui.lang === 'ar' ? 'دولة' : (ui.lang === 'en' ? 'Country' : 'Pays')}
-                {:else if s.type}
-                  {s.type}
-                {:else if s.mode && s.mode !== 'unknown'}
-                  {s.mode}
-                {/if}
-                {#if s.lat != null && s.lon != null}
-                  · {s.lat.toFixed(2)}, {s.lon.toFixed(2)}
-                {/if}
-              </span>
             </button>
           {/each}
         </div>

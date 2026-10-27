@@ -194,6 +194,10 @@
       const sw = L.latLngBounds([[startLat, startLon], [endLat, endLon]]);
       fitTo(sw);
       map?.flyTo([endLat, endLon]);
+    } else if (start) {
+      map?.flyTo([startLat, startLon], 14, { duration: 1 });
+    } else if (end) {
+      map?.flyTo([endLat, endLon], 14, { duration: 1 });
     } else if (line) {
       fitTo(line.getBounds());
     } else if (overlayMarkers.length) {
