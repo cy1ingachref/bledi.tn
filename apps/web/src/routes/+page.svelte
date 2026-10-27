@@ -20,16 +20,8 @@
   let fromSuggestions = $state([]);
   let toSuggestions = $state([]);
 
-  let selectedModes = $state(['bus', 'train', 'louaj']);
-  const ALL_MODES = ['bus', 'train', 'louaj'];
-
-  function toggleMode(mode) {
-    if (selectedModes.includes(mode)) {
-      if (selectedModes.length > 1) selectedModes = selectedModes.filter((m) => m !== mode);
-    } else {
-      selectedModes = [...selectedModes, mode];
-    }
-  }
+  const MODES = ['bus', 'train', 'louage'];
+  const modes = $state(MODES);
 
   let routeOptions = $state([]);
   let selectedOption = $state(null);
@@ -386,19 +378,12 @@
   });
 
   $effect(() => {
-    const modes = selectedModes;
+    const modes = MODES;
     if (startLat != null && startLon != null && endLat != null && endLon != null) {
       (async () => {
         try {
-          let res = await fetchRoutePlan({ startLat, startLon, endLat, endLon, modes });
-          let normalized = normalizeRoutes(res);
-          if ((!normalized || !normalized.length) && !modes.includes('louage')) {
-            try {
-              const louageModes = Array.from(new Set([...modes, 'louage']));
-              res = await fetchRoutePlan({ startLat, startLon, endLat, endLon, modes: louageModes });
-              normalized = normalizeRoutes(res);
-            } catch { }
-          }
+          const res = await fetchRoutePlan({ startLat, startLon, endLat, endLon, modes });
+          const normalized = normalizeRoutes(res);
           if (normalized.length > 0) {
             routeOptions = normalized;
             if (!selectedOption || !routeOptions.some((o) => o.id === selectedOption)) {
@@ -406,15 +391,15 @@
             }
             routeMinutes = routeOptions.find((o) => o.id === selectedOption)?.minutes ?? routeOptions[0].minutes;
           } else {
-            routeOptions = routes;
-            selectedOption = routes[0].id;
-            routeMinutes = routes[0].minutes;
+            routeOptions = [];
+            selectedOption = null;
+            routeMinutes = null;
           }
         } catch (err) {
           console.error('route plan failed', err);
-          routeOptions = routes;
-          selectedOption = routes[0].id;
-          routeMinutes = routes[0].minutes;
+          routeOptions = [];
+          selectedOption = null;
+          routeMinutes = null;
         }
       })();
     } else {
@@ -563,19 +548,6 @@
         </p>
       </div>
     {/if}
-
-    <div class="mode-filters" role="group" aria-label="Modes">
-      {#each ALL_MODES as mode}
-        <button
-          class="chip"
-          class:on={selectedModes.includes(mode)}
-          onclick={() => toggleMode(mode)}
-          aria-pressed={selectedModes.includes(mode)}
-        >
-          {modeBadge(mode)}
-        </button>
-      {/each}
-    </div>
 
     <div class="options" role="radiogroup" aria-label="Itinéraires">
       {#each routeOptions as opt}
@@ -737,13 +709,6 @@
   .times { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
   .opt-id { color: var(--muted); font-size: 0.75rem; }
   .opt-fare { color: var(--sea); font-size: 0.75rem; font-weight: 700; }
-
-  .mode-filters { display: flex; gap: 6px; flex-wrap: wrap; }
-  .chip {
-    padding: 6px 10px; border-radius: 999px; border: 1px solid var(--rule); background: #fff;
-    font-size: 0.82rem; font-weight: 600;
-  }
-  .chip.on { background: var(--ink); color: #fff; border-color: var(--ink); }
 
   .identifier { display: block; font-size: 0.75rem; color: var(--muted); }
   .fare { color: var(--sea); font-weight: 700; }
