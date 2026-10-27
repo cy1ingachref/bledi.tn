@@ -21,7 +21,7 @@
   let toSuggestions = $state([]);
 
   const MODES = ['bus', 'train', 'louage'];
-  const modes = $state(MODES);
+  let modes = $state(MODES);
 
   let routeOptions = $state([]);
   let selectedOption = $state(null);
@@ -41,12 +41,20 @@
   let mapReady = $state(false);
   let stations = $state([]);
   let overlayStations = $state([]);
-  let showOverlay = $state(true);
+  let showOverlay = $state(false);
   let loading = $state(true);
 
   const t = $derived(dict[ui.lang]);
 
   const modeBadge = (mode) => ({train:'TGM/Train',bus:'Bus',louaj:'Louage',taxi:'Taxi',walk:'Marche'})[mode] || mode;
+
+  const MODES_LIST = [
+    { key: 'bus', label: { fr: 'Bus', ar: 'حافلة', en: 'Bus' } },
+    { key: 'train', label: { fr: 'Train/TGM', ar: 'قطار', en: 'Train/TGM' } },
+    { key: 'louage', label: { fr: 'Louage', ar: 'لواج', en: 'Louage' } },
+  ];
+
+  const modeLabel = (key) => MODES_LIST.find((m) => m.key === key)?.label?.[ui.lang] || key;
 
   const cityLabel = (text) => {
     if (!text) return '—';
@@ -69,6 +77,14 @@
 
   function zoomTo(id) {
     mapReady = true;
+    if (typeof id === 'string' && id.startsWith('geo:')) {
+      const lat = Number.parseFloat(id.split(':')[1]);
+      const lon = Number.parseFloat(id.split(':')[2]);
+      if (Number.isFinite(lat) && Number.isFinite(lon)) {
+        if (map && L) map.flyTo([lat, lon], 14, { duration: 1 });
+      }
+      return;
+    }
     const st = stations.find((s) => s.id === id);
     if (st) reSolve();
   }
@@ -107,11 +123,13 @@
     if (fromAbort) fromAbort.abort();
     const seq = ++fromSeq;
     fromAbort = new AbortController();
+    fromLoading = true;
+    fromError = null;
     fromTimeout = setTimeout(async () => {
       try {
         const results = await fetchGeocode(fromText);
         if (seq !== fromSeq) return;
-        fromSuggestions = results;
+        fromSuggestions = results ? [...results] : [];
         if (results.length === 0) {
           const q = (fromText || '').trim().toLowerCase();
           if (q) {
@@ -127,10 +145,6 @@
           } else {
             fromSuggestions = [];
           }
-        } else {
-          const q = (fromText || '').trim();
-          const hit = results.find((s) => s.name === q);
-          if (hit) pickFrom(hit.id);
         }
       } catch (err) {
         if (err.name === 'AbortError') return;
@@ -155,11 +169,13 @@
     if (toAbort) toAbort.abort();
     const seq = ++toSeq;
     toAbort = new AbortController();
+    toLoading = true;
+    toError = null;
     toTimeout = setTimeout(async () => {
       try {
         const results = await fetchGeocode(toText);
         if (seq !== toSeq) return;
-        toSuggestions = results;
+        toSuggestions = results ? [...results] : [];
         if (results.length === 0) {
           const q = (toText || '').trim().toLowerCase();
           if (q) {
@@ -175,10 +191,6 @@
           } else {
             toSuggestions = [];
           }
-        } else {
-          const q = (toText || '').trim();
-          const hit = results.find((s) => s.name === q);
-          if (hit) pickTo(hit.id);
         }
       } catch (err) {
         if (err.name === 'AbortError') return;
@@ -423,11 +435,11 @@
   });
 
   $effect(() => {
-    const modes = MODES;
     if (startLat != null && startLon != null && endLat != null && endLon != null) {
+      showOverlay = true;
       (async () => {
         try {
-          const res = await fetchRoutePlan({ startLat, startLon, endLat, endLon, modes });
+          const res = await fetchRoutePlan({ startLat, startLon, endLat, endLon, modes: [...modes] });
           const normalized = normalizeRoutes(res);
           if (normalized.length > 0) {
             routeOptions = normalized;
@@ -445,12 +457,15 @@
           routeOptions = [];
           selectedOption = null;
           routeMinutes = null;
+        } finally {
+          if (routeOptions.length === 0) showOverlay = false;
         }
       })();
     } else {
       routeOptions = [];
       selectedOption = null;
       routeMinutes = null;
+      showOverlay = false;
     }
   });
 </script>
@@ -464,26 +479,32 @@
     path={routeOptions.find((o) => o.id === selectedOption)?.path ?? routeOptions[0]?.path ?? []}
     rtl={ui.lang === 'ar'}
     stations={displayStations}
-    overlayStations={showOverlay ? overlayStations : []}
+    overlayStations={[]}
     {startLat}
     {startLon}
     {endLat}
     {endLon}
     {mapReady}
     {zoomTo}
+    onMapClick={(pt) => {
+      if (!fromId || !toId) {
+        const id = 'geo:' + Number(pt.lat).toFixed(4) + ':' + Number(pt.lon).toFixed(4) + ':click';
+        if (!fromId) {
+          startLat = Number(pt.lat); startLon = Number(pt.lon);
+          fromText = 'Choisi sur la carte';
+          fromId = id;
+          fromSuggestions = [];
+        } else if (!toId) {
+          endLat = Number(pt.lat); endLon = Number(pt.lon);
+          toText = 'Choisi sur la carte';
+          toId = id;
+          toSuggestions = [];
+        }
+        reSolve();
+        zoomTo(id);
+      }
+    }}
   />
-
-  <button class="overlay-toggle" onclick={() => (showOverlay = !showOverlay)}>
-    {showOverlay ? 'Masquer stations taxi/louage' : 'Afficher stations taxi/louage'}
-  </button>
-
-  {#if showOverlay}
-    <div class="legend" aria-hidden="true">
-      <div class="legend-row"><span class="legend-dot" style="background:#D7261E"></span> Longue distance</div>
-      <div class="legend-row"><span class="legend-dot" style="background:#1F6F8B"></span> Régional</div>
-      <div class="legend-row"><span class="legend-dot" style="background:#E8B630"></span> Local / rural</div>
-    </div>
-  {/if}
 
   <section class="panel">
     <header>
@@ -516,13 +537,7 @@
             if (hit) pickFrom(hit.id);
           }}
           autocomplete="off"
-          list="from-suggest"
         />
-        <datalist id="from-suggest">
-          {#each fromSuggestions as s}
-            <option value={s.name}></option>
-          {/each}
-        </datalist>
         <div class="suggestions">
           {#if fromLoading}
             <span class="loading" style="padding: 6px 8px; display:block;">Searching places...</span>
@@ -567,13 +582,7 @@
             if (hit) pickTo(hit.id);
           }}
           autocomplete="off"
-          list="to-suggest"
         />
-        <datalist id="to-suggest">
-          {#each toSuggestions as s}
-            <option value={s.name}></option>
-          {/each}
-        </datalist>
         <div class="suggestions">
           {#if toLoading}
             <span class="loading" style="padding: 6px 8px; display:block;">Searching places...</span>
@@ -605,13 +614,31 @@
       </button>
     </div>
 
+    <div class="modes" role="group" aria-label="Transport">
+      {#each MODES_LIST as m}
+        <button
+          class="mode-chip"
+          class:on={modes.includes(m.key)}
+          onclick={() => {
+            const set = new Set(modes);
+            if (set.has(m.key)) set.delete(m.key); else set.add(m.key);
+            modes = [...set];
+          }}
+        >
+          {m.label[ui.lang] || m.label.fr}
+        </button>
+      {/each}
+    </div>
+
     <div class="status">
       {#if !fromId || !toId}
-        <span class="loading">Select start and destination to view nearby stations and routes.</span>
+        <span class="loading">Choose a start and a destination to calculate a route.</span>
       {:else if loading}
-        <span class="loading">Loading stations...</span>
+        <span class="loading">Calculating...</span>
       {:else if routeOptions.length > 0}
-        <span class="count">{displayStations.length} stations</span>
+        <span class="count">{displayStations.length} stations shown · {routeOptions.length} route{routeOptions.length > 1 ? 's' : ''}</span>
+      {:else}
+        <span class="loading">No route found for the selected transport.</span>
       {/if}
     </div>
 
@@ -748,6 +775,16 @@
     width: 40px; height: 40px; border: 1px solid var(--rule); border-radius: 50%; background: #fff;
   }
   .go:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .modes { display: flex; gap: 8px; }
+  .mode-chip {
+    flex: 1; display: inline-flex; align-items: center; justify-content: center;
+    padding: 10px 12px; text-align: center;
+    border: 1.5px solid var(--rule); border-radius: 12px; background: #fff; cursor: pointer;
+  }
+  .mode-chip:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .mode-chip.on { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); color: var(--ink); font-weight: 700; }
+  .mode-chip.on:hover { color: #fff; }
 
   .status { text-align: center; font-size: 0.85rem; color: var(--muted); }
   .status .count { color: var(--sea); font-weight: 600; }

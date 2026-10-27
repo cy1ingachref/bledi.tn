@@ -16,6 +16,7 @@
     endLon = null,
     mapReady = false,
     overlayStations = [],
+    onMapClick = null,
   } = $props();
 
   let el, map, L, line, zoom, markers = [], stationMarkers = [], memoryMarkers = [], overlayMarkers = [];
@@ -210,6 +211,12 @@
         attribution: '© OpenStreetMap', maxZoom: 19
       }).addTo(map);
       zoom = L.control.zoom({ position: rtl ? 'topleft' : 'topright' }).addTo(map);
+      if (typeof onMapClick === 'function') {
+        map.on('click', (e) => {
+          const { lat, lng } = e.latlng;
+          onMapClick({ lat, lon: lng });
+        });
+      }
       draw();
     })();
     return () => {
