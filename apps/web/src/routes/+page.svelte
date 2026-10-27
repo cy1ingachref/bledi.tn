@@ -449,6 +449,14 @@
     {showOverlay ? 'Masquer stations taxi/louage' : 'Afficher stations taxi/louage'}
   </button>
 
+  {#if showOverlay}
+    <div class="legend" aria-hidden="true">
+      <div class="legend-row"><span class="legend-dot" style="background:#D7261E"></span> Longue distance</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#1F6F8B"></span> Régional</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#E8B630"></span> Local / rural</div>
+    </div>
+  {/if}
+
   <section class="panel">
     <header>
       <h1>bledi<span>.tn</span></h1>
@@ -761,15 +769,27 @@
     top: 16px;
     z-index: 1002;
     padding: 8px 12px;
-    border-radius: 999px;
-    border: 1px solid var(--rule);
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: saturate(140%) blur(6px);
+    border-radius: 10px;
+    border: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
     color: var(--ink);
-    font-weight: 600;
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     cursor: pointer;
-    box-shadow: 0 2px 8px #0002;
   }
-  .overlay-toggle:hover { background: #fff; }
+  .legend {
+    position: absolute;
+    inset-inline-end: 16px;
+    top: 60px;
+    z-index: 1001;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+    background: color-mix(in srgb, var(--surface) 86%, transparent);
+    color: var(--ink);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    backdrop-filter: blur(3px);
+  }
+  .legend-row { display: flex; align-items: center; gap: 8px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 </style>
