@@ -76,21 +76,29 @@
   async function fetchGeocode(query) {
     const q = (query || '').trim();
     if (!q || q.length < 1) return [];
-    const res = await fetch('/api/v1/geocode?q=' + encodeURIComponent(q) + '&limit=8');
-    if (!res.ok) {
-      const body = await res.json().catch(() => ({}));
-      throw new Error(body.error || 'Geocode failed');
+    try {
+      const res = await fetch('/api/v1/geocode?q=' + encodeURIComponent(q) + '&limit=8');
+      if (!res.ok) return [];
+      const data = await res.json();
+      return (data.results || []).map((r) => {
+        const isCountry = r.type === 'country' ||
+          (r.type === 'administrative' && !(r.display_name || '').includes(','));
+        const rawName = r.display_name || r.name || '';
+        const name = isCountry ? (query.trim() || rawName) : rawName;
+        return {
+          id: 'geo:' + (Number.isFinite(r.lat) ? r.lat.toFixed(4) : '0') + ':' + (Number.isFinite(r.lon) ? r.lon.toFixed(4) : '0') + ':' + rawName.replace(/\W+/g, '_'),
+          name,
+          lat: Number.isFinite(r.lat) ? r.lat : null,
+          lon: Number.isFinite(r.lon) ? r.lon : null,
+          mode: 'unknown',
+          operator: '',
+          type: r.type || '',
+          isCountry: !!isCountry,
+        };
+      });
+    } catch {
+      return [];
     }
-    const data = await res.json();
-    return (data.results || []).map((r) => ({
-      id: 'geo:' + (Number.isFinite(r.lat) ? r.lat.toFixed(4) : '0') + ':' + (Number.isFinite(r.lon) ? r.lon.toFixed(4) : '0') + ':' + (r.display_name || '').replace(/\W+/g, '_'),
-      name: r.display_name || r.name || r.display_name || '',
-      lat: Number.isFinite(r.lat) ? r.lat : null,
-      lon: Number.isFinite(r.lon) ? r.lon : null,
-      mode: 'unknown',
-      operator: '',
-      type: r.type || '',
-    }));
   }
 
   async function onFromInput(e) {
@@ -136,6 +144,7 @@
       if (hit && hit.name !== fromText) {
         fromId = null;
         startLat = null; startLon = null;
+        fromSuggestions = [];
       }
     }
   }
@@ -183,6 +192,7 @@
       if (hit && hit.name !== toText) {
         toId = null;
         endLat = null; endLon = null;
+        toSuggestions = [];
       }
     }
   }
@@ -191,6 +201,8 @@
   function closeTo() { /* keep typed value */ }
 
   function pickFrom(id) {
+    startLat = null;
+    startLon = null;
     let st = stations.find((s) => s.id === id);
     if (!st) {
       const sugg = fromSuggestions.find((s) => s.id === id);
@@ -205,11 +217,20 @@
     fromText = st.name;
     fromSuggestions = [];
     fromError = null;
+    if (toId === id) {
+      toId = null;
+      toText = '';
+      endLat = null;
+      endLon = null;
+      toSuggestions = [];
+    }
     reSolve();
     zoomTo(id);
   }
 
   function pickTo(id) {
+    endLat = null;
+    endLon = null;
     let st = stations.find((s) => s.id === id);
     if (!st) {
       const sugg = toSuggestions.find((s) => s.id === id);
@@ -224,6 +245,13 @@
     toText = st.name;
     toSuggestions = [];
     toError = null;
+    if (fromId === id) {
+      fromId = null;
+      fromText = '';
+      startLat = null;
+      startLon = null;
+      fromSuggestions = [];
+    }
     reSolve();
     zoomTo(id);
   }
@@ -503,8 +531,19 @@
           {/if}
           {#each fromSuggestions as s}
             <button class="suggestion" tabindex="-1" onmousedown={(e) => { e.preventDefault(); pickFrom(s.id); }}>
-              <span class="name">{s.name}</span>
-              <span class="meta">{s.type || ''} · {fmtCoord(s.lat)}, {fmtCoord(s.lon)}</span>
+              <span class="name">{cityLabel(s.name)}</span>
+              <span class="meta">
+                {#if s.isCountry}
+                  {ui.lang === 'ar' ? 'دولة' : (ui.lang === 'en' ? 'Country' : 'Pays')}
+                {:else if s.type}
+                  {s.type}
+                {:else if s.mode && s.mode !== 'unknown'}
+                  {s.mode}
+                {/if}
+                {#if s.lat != null && s.lon != null}
+                  · {s.lat.toFixed(2)}, {s.lon.toFixed(2)}
+                {/if}
+              </span>
             </button>
           {/each}
         </div>
@@ -543,8 +582,19 @@
           {/if}
           {#each toSuggestions as s}
             <button class="suggestion" tabindex="-1" onmousedown={(e) => { e.preventDefault(); pickTo(s.id); }}>
-              <span class="name">{s.name}</span>
-              <span class="meta">{s.type || ''} · {fmtCoord(s.lat)}, {fmtCoord(s.lon)}</span>
+              <span class="name">{cityLabel(s.name)}</span>
+              <span class="meta">
+                {#if s.isCountry}
+                  {ui.lang === 'ar' ? 'دولة' : (ui.lang === 'en' ? 'Country' : 'Pays')}
+                {:else if s.type}
+                  {s.type}
+                {:else if s.mode && s.mode !== 'unknown'}
+                  {s.mode}
+                {/if}
+                {#if s.lat != null && s.lon != null}
+                  · {s.lat.toFixed(2)}, {s.lon.toFixed(2)}
+                {/if}
+              </span>
             </button>
           {/each}
         </div>
@@ -588,11 +638,10 @@
           onclick={() => (selectedOption = opt.id)}
         >
           <span class="badge" style:background={opt.color}>{opt.badge}</span>
-          <span class="times"><bdi>{opt.depart}–{opt.arrive}</bdi></span>
-          <strong>{opt.minutes} {t?.min ?? 'min'}</strong>
-          {#if opt.identifier}
-            <span class="opt-id">{opt.identifier}</span>
+          {#if opt.label}
+            <span class="opt-label">{opt.label}</span>
           {/if}
+          <strong>{opt.minutes} {t?.min ?? 'min'}</strong>
           {#if opt.fare_dinars != null && opt.fare_dinars > 0}
             <span class="opt-fare">{opt.fare_dinars} DT</span>
           {/if}
@@ -616,9 +665,6 @@
         >
           <div class="step-main">
             <span>{s.label?.[ui.lang] ?? s.label?.fr ?? ''}</span>
-            {#if s.identifier}
-              <span class="step-id">{s.identifier}</span>
-            {/if}
           </div>
           <div class="step-meta">
             <small>{s.min ?? ''} {t?.min ?? ''}</small>
@@ -736,15 +782,13 @@
     border: 1.5px solid var(--rule); border-radius: 12px; background: #fff;
   }
   .options button.on { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
-  .times { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
-  .opt-id { color: var(--muted); font-size: 0.75rem; }
+  .opt-label { color: var(--muted); font-size: 0.75rem; }
   .opt-fare { color: var(--sea); font-size: 0.75rem; font-weight: 700; }
 
   .identifier { display: block; font-size: 0.75rem; color: var(--muted); }
   .fare { color: var(--sea); font-weight: 700; }
 
   .step-main { display: flex; flex-direction: column; gap: 2px; }
-  .step-id { font-size: 0.75rem; color: var(--muted); }
   .step-meta { display: flex; flex-direction: column; align-items: end; gap: 2px; text-align: end; }
   .stations { color: var(--ink); font-size: 0.72rem; }
 
