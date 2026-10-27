@@ -198,11 +198,12 @@ export function formatRoute(apiRoute) {
     arrive: apiRoute.arrive_time || '--:--',
     fare_dinars: fareDinars,
     path,
-    identifier: isTaxi ? 'Taxi' : (apiRoute.identifier || legs.map(legIdentifier).filter(Boolean).join(' → ') || modeBadge(type)),
+    label: apiRoute.label || '',
+    identifier: isTaxi ? 'Taxi' : null,
     steps: legs.map((leg, i) => {
       const isWalk = leg.type === 'walk';
       const mode = isWalk ? 'walk' : normalizeMode(leg.mode || leg.type || 'bus');
-      const identifier = isWalk ? null : legIdentifier(leg);
+      const identifier = null;
       const stations = legStationNames(leg);
       const label = {
         fr: leg.label?.fr || leg.name?.fr || leg.from_name || `Étape ${i + 1}`,
