@@ -40,6 +40,8 @@
 
   let mapReady = $state(false);
   let stations = $state([]);
+  let overlayStations = $state([]);
+  let showOverlay = $state(true);
   let loading = $state(true);
 
   const t = $derived(dict[ui.lang]);
@@ -367,6 +369,21 @@
             stations = feats;
           }
         }
+        const ov = await fetch('/api/v1/stations/overpass-taxi-louage');
+        if (ov.ok) {
+          const data = await ov.json();
+          overlayStations = (data.features || [])
+            .map((f) => ({
+              id: f.properties.id,
+              name: f.properties.name || '',
+              lat: f.geometry.coordinates[1],
+              lon: f.geometry.coordinates[0],
+              mode: 'taxi_louage',
+              operator: '',
+              type: 'station',
+            }))
+            .filter((s) => Number.isFinite(s.lat) && Number.isFinite(s.lon));
+        }
       } catch (err) {
         console.error('stations fetch failed', err);
       } finally {
@@ -419,6 +436,7 @@
     path={routeOptions.find((o) => o.id === selectedOption)?.path ?? routeOptions[0]?.path ?? []}
     rtl={ui.lang === 'ar'}
     stations={displayStations}
+    overlayStations={showOverlay ? overlayStations : []}
     {startLat}
     {startLon}
     {endLat}
@@ -426,6 +444,10 @@
     {mapReady}
     {zoomTo}
   />
+
+  <button class="overlay-toggle" onclick={() => (showOverlay = !showOverlay)}>
+    {showOverlay ? 'Masquer stations taxi/louage' : 'Afficher stations taxi/louage'}
+  </button>
 
   <section class="panel">
     <header>
@@ -732,4 +754,22 @@
   .hidden { opacity: 0; transform: translateY(-8px); max-height: 0; overflow: hidden; pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease; }
 
   .step { margin-top: 8px; font-size: 0.82rem; color: var(--muted); }
+
+  .overlay-toggle {
+    position: absolute;
+    inset-inline-end: 16px;
+    top: 16px;
+    z-index: 1002;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: saturate(140%) blur(6px);
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.82rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #0002;
+  }
+  .overlay-toggle:hover { background: #fff; }
 </style>

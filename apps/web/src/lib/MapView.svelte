@@ -15,9 +15,10 @@
     endLat = null,
     endLon = null,
     mapReady = false,
+    overlayStations = [],
   } = $props();
 
-  let el, map, L, line, zoom, markers = [], stationMarkers = [], memoryMarkers = [];
+  let el, map, L, line, zoom, markers = [], stationMarkers = [], memoryMarkers = [], overlayMarkers = [];
 
   // Photos the caller may see, keyed by their media URL. The page hands over the ones it
   // already fetched; the rest are fetched here with the token and kept, so the same
@@ -128,6 +129,22 @@
     stationMarkers = Object.values(nextStation);
     memoryMarkers = Object.values(nextMemory);
 
+    const nextOverlay = {};
+    for (const s of overlayStations) {
+      if (s.lat == null || s.lon == null) continue;
+      const key = `overlay:${s.id}`;
+      let m = existing[key];
+      if (!m) {
+        m = L.marker([s.lat, s.lon], { icon: dot('#F4B400', 12, 'station-marker-pop overlay-marker') }).addTo(map);
+        m.overlayId = key;
+      }
+      m.setLatLng([s.lat, s.lon]);
+      m.bindTooltip(s.name, { direction: 'top', offset: [0, -8] });
+      nextOverlay[key] = m;
+    }
+    for (const m of overlayMarkers) if (!nextOverlay[m.overlayId]) m.remove();
+    overlayMarkers = Object.values(nextOverlay);
+
     markers = markers.filter((m) => m != null && map.hasLayer(m));
 
     if (path.length >= 2) {
@@ -169,6 +186,9 @@
       end.flyTo([endLat, endLon]);
     } else if (line) {
       fitTo(line.getBounds());
+    } else if (overlayMarkers.length) {
+      const bounds = L.latLngBounds(overlayMarkers.map((m) => m.getLatLng()));
+      fitTo(bounds);
     }
   }
 
@@ -201,6 +221,10 @@
 
   $effect(() => {
     if (stations && map && L) draw();
+  });
+
+  $effect(() => {
+    if (overlayStations && map && L) draw();
   });
 </script>
 
@@ -240,6 +264,7 @@
 
   /* Memory markers stay still: they are places, not the route being drawn. */
   .memory-marker { filter: drop-shadow(0 0 6px rgba(244, 180, 0, 0.7)); }
+  .overlay-marker { filter: drop-shadow(0 0 6px rgba(244, 180, 0, 0.85)); }
 
   :global(.memory-popup) { display: grid; gap: 6px; justify-items: center; }
   :global(.memory-popup img) {
