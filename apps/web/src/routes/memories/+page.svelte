@@ -5,6 +5,7 @@
   import { ui } from '$lib/ui.svelte.js';
   import { fetchMedia } from '$lib/api.js';
   import { listMemories, createMemory, deleteMemory, fetchNearbyMemories } from '$lib/memories.js';
+  import { goto } from '$app/navigation';
 
   const copy = {
     fr: {

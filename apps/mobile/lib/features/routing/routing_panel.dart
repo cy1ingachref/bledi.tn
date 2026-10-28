@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/theme.dart';
 import '../../data/models/itinerary.dart';
 import '../../providers/providers.dart';
+import '../../features/home/widgets/bledi_map.dart';
 
 /// Bottom sheet showing the itinerary summary and step-by-step instructions.
 class RoutingPanel extends ConsumerWidget {
