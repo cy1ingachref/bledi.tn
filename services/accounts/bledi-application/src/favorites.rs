@@ -28,7 +28,16 @@ impl Favorites {
     }
 
     pub async fn list(&self, me: Uuid) -> Result<Vec<Favorite>> {
-        self.favorites.owned_by(me).await
+        self.list_paginated(me, 20, 0).await
+    }
+
+    pub async fn list_paginated(
+        &self,
+        me: Uuid,
+        limit: usize,
+        offset: usize,
+    ) -> Result<Vec<Favorite>> {
+        self.favorites.owned_by_paginated(me, limit, offset).await
     }
 
     pub async fn save(&self, me: Uuid, input: SaveFavorite) -> Result<Favorite> {

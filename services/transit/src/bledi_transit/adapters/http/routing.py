@@ -12,6 +12,18 @@ from bledi_transit.application.routing.transit import transit_itinerary
 router = APIRouter(prefix="/api/v1")
 
 
+def _lat(value: float) -> float:
+    if not -90.0 <= value <= 90.0:
+        raise ValueError(f"latitude out of range: {value}")
+    return value
+
+
+def _lon(value: float) -> float:
+    if not -180.0 <= value <= 180.0:
+        raise ValueError(f"longitude out of range: {value}")
+    return value
+
+
 def _split(raw: str | None) -> list[str]:
     return [p.strip() for p in raw.split(",") if p.strip()] if raw else []
 
@@ -36,10 +48,10 @@ def route_plan(
     """
     try:
         return planner.route_plan(
-            start_lat,
-            start_lon,
-            end_lat,
-            end_lon,
+            _lat(start_lat),
+            _lon(start_lon),
+            _lat(end_lat),
+            _lon(end_lon),
             include=_split(modes_include),
             exclude=_split(modes_exclude),
             objective=objective,
@@ -62,7 +74,12 @@ def route_transit(
 ) -> dict[str, Any]:
     """The fastest itinerary in the best_fastest / legs envelope."""
     return transit_itinerary(
-        planner.route(start_lat, start_lon, end_lat, end_lon),
+        planner.route(
+            _lat(start_lat),
+            _lon(start_lon),
+            _lat(end_lat),
+            _lon(end_lon),
+        ),
         catalog.network.segment_geometry,
     )
 
@@ -70,20 +87,24 @@ def route_transit(
 @router.get("/geocode", tags=["Stations"])
 def geocode(
     geocoder: GeocoderDep,
+    catalog: CatalogDep,
     q: str = Query(..., min_length=2, max_length=200, description="Place name to search in Tunisia"),
     limit: int = Query(3, ge=1, le=10, description="Max results"),
 ) -> Any:
-    """Place search through Nominatim, cached server side."""
-    data = geocoder.search(q)
-    if data is None:
-        return JSONResponse({"error": "Geocoding service unreachable", "source": "nominatim"}, status_code=503)
+    """Place search through Nominatim, cached server side, with local fallback."""
+    raw = geocoder.search(q)
+    source = "nominatim"
+    if raw is None:
+        raw = catalog.search(q, limit, None, None)
+        source = "local"
+    items = raw if isinstance(raw, list) else raw.get("results", [])
     results = [
         {
             "lon": float(d["lon"]),
             "lat": float(d["lat"]),
-            "display_name": d.get("display_name", ""),
-            "type": d.get("type", ""),
+            "display_name": d.get("display_name") or d.get("name") or "",
+            "type": d.get("type") or d.get("kind") or "",
         }
-        for d in data[:limit]
+        for d in items[:limit]
     ]
-    return {"query": q, "results": results, "count": len(results)}
+    return {"query": q, "results": results, "count": len(results), "source": source}

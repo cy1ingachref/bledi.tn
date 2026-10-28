@@ -96,6 +96,7 @@ class Router:
                 if isinstance(sid, str):
                     self.lines_by_station[sid].append(ln_id)
         self.adj: dict[str, list[Edge]] = defaultdict(list)
+        self.louage_stations = louage_stations or []
         segments = segments or {}
         for ln in lines:
             stops = ln.get("stations") or ln.get("stops") or []
@@ -429,5 +430,25 @@ class Router:
             d = haversine_m(lat, lon, s["lat"], s["lon"])
             if d <= max_m:
                 out.append({**s, "_dist_m": d})
+        if self.louage_stations:
+            for s in self.louage_stations:
+                loc = s.get("location") or {}
+                slat = loc.get("lat")
+                slon = loc.get("lon")
+                if not slat or not slon:
+                    continue
+                d = haversine_m(lat, lon, slat, slon)
+                if d <= max_m:
+                    out.append(
+                        {
+                            "id": s.get("id"),
+                            "name": s.get("name_fr") or s.get("name_en") or s.get("id"),
+                            "lat": slat,
+                            "lon": slon,
+                            "mode": "louaj",
+                            "_dist_m": d,
+                            "_louage": True,
+                        }
+                    )
         out.sort(key=lambda x: x["_dist_m"])
         return out

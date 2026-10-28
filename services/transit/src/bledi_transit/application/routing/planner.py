@@ -83,6 +83,7 @@ def plan(
     rail_only = frozenset({"train", "rail", "metro"})
     metro_only = frozenset({"metro"})
     train_only = frozenset({"train", "rail"})
+    louage_only = frozenset({"louage", "louaj"})
 
     # user_allowed is the base of every strategy: "fastest" with allowed=None
     # would return the metro journey the user just excluded.
@@ -95,6 +96,7 @@ def plan(
         ("rail_preferred", rail_only),
         ("metro_preferred", metro_only),
         ("train_only", train_only),
+        ("louage_only", louage_only),
     ):
         inter = subset if user_allowed is None else (user_allowed & subset)
         if not inter:

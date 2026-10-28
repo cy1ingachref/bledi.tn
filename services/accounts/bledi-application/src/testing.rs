@@ -241,6 +241,24 @@ impl FriendshipStore for InMemoryFriendshipStore {
             .collect())
     }
 
+    async fn of_paginated(
+        &self,
+        user_id: Uuid,
+        limit: usize,
+        offset: usize,
+    ) -> Result<Vec<Friendship>> {
+        let mut rows: Vec<_> = self
+            .0
+            .lock()
+            .unwrap()
+            .iter()
+            .filter(|f| f.user_id == user_id || f.friend_id == user_id)
+            .cloned()
+            .collect();
+        rows.sort_by_key(|f| std::cmp::Reverse(f.created_at));
+        rows.into_iter().skip(offset).take(limit).collect()
+    }
+
     async fn request(&self, from: Uuid, to: Uuid) -> Result<()> {
         let mut rows = self.0.lock().unwrap();
         if rows.iter().any(|f| f.user_id == from && f.friend_id == to) {
@@ -288,6 +306,25 @@ impl FavoriteStore for InMemoryFavoriteStore {
             .filter(|f| f.user_id == user_id)
             .cloned()
             .collect())
+    }
+
+    async fn owned_by_paginated(
+        &self,
+        user_id: Uuid,
+        limit: usize,
+        offset: usize,
+    ) -> Result<Vec<Favorite>> {
+        let mut favorites: Vec<_> = self
+            .0
+            .lock()
+            .unwrap()
+            .iter()
+            .rev()
+            .filter(|f| f.user_id == user_id)
+            .cloned()
+            .collect();
+        favorites.truncate(offset + limit);
+        Ok(favorites.into_iter().skip(offset).collect())
     }
 
     async fn upsert(&self, new: NewFavorite) -> Result<Favorite> {
