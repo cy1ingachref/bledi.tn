@@ -130,6 +130,9 @@ function legIdentifier(leg) {
   return '—';
 }
 
+// kept for potential future route-detail rendering
+// placeholder removed in CI cleanup
+
 function legStationNames(leg) {
   const out = [];
   const add = (v) => { const s = (v || '').trim(); if (s) out.push(s); };

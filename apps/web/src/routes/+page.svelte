@@ -1,11 +1,11 @@
 <script>
   import MapView from '$lib/MapView.svelte';
   import { ui } from '$lib/ui.svelte.js';
-  import { dict, routes, fetchRoutePlan, normalizeRoutes, modeColors } from '$lib/data.js';
+  import { dict, fetchRoutePlan, normalizeRoutes, modeColors } from '$lib/data.js';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import { resolve } from '$app/paths';
-  import { SvelteURLSearchParams } from 'svelte/reactivity';
+  import { SvelteURLSearchParams, SvelteSet } from 'svelte/reactivity';
 
   let fromText = $state('');
   let toText = $state('');
@@ -40,13 +40,9 @@
 
   let mapReady = $state(false);
   let stations = $state([]);
-  let overlayStations = $state([]);
-  let showOverlay = $state(false);
   let loading = $state(true);
 
   const t = $derived(dict[ui.lang]);
-
-  const modeBadge = (mode) => ({train:'TGM/Train',bus:'Bus',louaj:'Louage',taxi:'Taxi',walk:'Marche'})[mode] || mode;
 
   const MODES_LIST = [
     { key: 'bus', label: { fr: 'Bus', ar: 'حافلة', en: 'Bus' } },
@@ -54,15 +50,12 @@
     { key: 'louage', label: { fr: 'Louage', ar: 'لواج', en: 'Louage' } },
   ];
 
-  const modeLabel = (key) => MODES_LIST.find((m) => m.key === key)?.label?.[ui.lang] || key;
+  const modeLabel = (key) => MODES_LIST.find((m) => m.key === key)?.label?.[ui.lang] || key; // eslint-disable-line no-unused-vars
 
   const cityLabel = (text) => {
     if (!text) return '—';
     return text.split(',')[0].trim();
   };
-
-  const fmtCoord = (v) =>
-    typeof v === 'number' && Number.isFinite(v) ? v.toFixed(4) : '—';
 
   function reSolve() {
     if (fromId && startLat == null) {
@@ -81,7 +74,8 @@
       const lat = Number.parseFloat(id.split(':')[1]);
       const lon = Number.parseFloat(id.split(':')[2]);
       if (Number.isFinite(lat) && Number.isFinite(lon)) {
-        if (map && L) map.flyTo([lat, lon], 14, { duration: 1 });
+        const evt = new CustomEvent('flyto', { detail: { lat, lon, zoom: 14, duration: 1 } });
+        window.dispatchEvent(evt);
       }
       return;
     }
@@ -133,7 +127,7 @@
         if (results.length === 0) {
           const q = (fromText || '').trim().toLowerCase();
           if (q) {
-            const seen = new Set();
+            const seen = new SvelteSet();
             fromSuggestions = stations
               .filter((s) => s.id !== fromId && s.name && s.name.toLowerCase().includes(q))
               .sort((a, b) => {
@@ -181,7 +175,7 @@
         if (results.length === 0) {
           const q = (toText || '').trim().toLowerCase();
           if (q) {
-            const seen = new Set();
+            const seen = new SvelteSet();
             toSuggestions = stations
               .filter((s) => s.id !== toId && s.name && s.name.toLowerCase().includes(q))
               .sort((a, b) => {
@@ -327,7 +321,7 @@
     if (!Array.isArray(allStations) || !allStations.length) return [];
     if (!route) return [];
 
-    const names = new Set();
+    const names = new SvelteSet();
     const latLons = [];
     if (startLat != null && startLon != null) latLons.push([startLat, startLon]);
     if (endLat != null && endLon != null) latLons.push([endLat, endLon]);
@@ -600,7 +594,7 @@
           class="mode-chip"
           class:on={modes.includes(m.key)}
           onclick={() => {
-            const set = new Set(modes);
+            const set = new SvelteSet(modes);
             if (set.has(m.key)) set.delete(m.key); else set.add(m.key);
             modes = [...set];
           }}
