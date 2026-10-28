@@ -256,7 +256,7 @@ impl FriendshipStore for InMemoryFriendshipStore {
             .cloned()
             .collect();
         rows.sort_by_key(|f| std::cmp::Reverse(f.created_at));
-        rows.into_iter().skip(offset).take(limit).collect()
+        Ok(rows.into_iter().skip(offset).take(limit).collect())
     }
 
     async fn request(&self, from: Uuid, to: Uuid) -> Result<()> {

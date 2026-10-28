@@ -227,7 +227,7 @@
         if (Number.isFinite(lat) && Number.isFinite(lon)) {
           map.flyTo([lat, lon], zoom, { duration });
         }
-      }) as EventListener);
+      }));
       draw();
     })();
     return () => {
