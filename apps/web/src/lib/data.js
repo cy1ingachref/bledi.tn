@@ -121,18 +121,6 @@ function modeBadge(mode) {
   return {train:'TGM/Train',bus:'Bus',louaj:'Louage',taxi:'Taxi',walk:'Marche'}[mode] || mode;
 }
 
-function legIdentifier(leg) {
-  const id = leg.mode_id || leg.line_id || leg.line || leg.route_short_name || leg.id || null;
-  const op = leg.operator || leg.agency || '';
-  if (id && op) return `${op} · ${id}`;
-  if (id) return String(id);
-  if (op) return String(op);
-  return '—';
-}
-
-// kept for potential future route-detail rendering
-// placeholder removed in CI cleanup
-
 function legStationNames(leg) {
   const out = [];
   const add = (v) => { const s = (v || '').trim(); if (s) out.push(s); };

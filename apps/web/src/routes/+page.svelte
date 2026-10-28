@@ -50,8 +50,6 @@
     { key: 'louage', label: { fr: 'Louage', ar: 'لواج', en: 'Louage' } },
   ];
 
-  const modeLabel = (key) => MODES_LIST.find((m) => m.key === key)?.label?.[ui.lang] || key; // eslint-disable-line no-unused-vars
-
   const cityLabel = (text) => {
     if (!text) return '—';
     return text.split(',')[0].trim();
@@ -207,8 +205,8 @@
     }
   }
 
-  function closeFrom() { /* keep typed value */ }
-  function closeTo() { /* keep typed value */ }
+  function closeFrom() {}
+  function closeTo() {}
 
   function pickFrom(id) {
     startLat = null;
