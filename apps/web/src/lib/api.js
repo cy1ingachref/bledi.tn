@@ -1,7 +1,7 @@
 // API client for bledi.tn backend
 // API base URL - change this if backend runs on different host/port
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/v1';
+const API_BASE_URL = '/api/v1';
 
 // Utility to build full URL
 const apiUrl = (endpoint) => {
