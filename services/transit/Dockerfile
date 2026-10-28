@@ -17,6 +17,7 @@ FROM python:3.11-slim-bookworm
 # friends otherwise sit at whatever version shipped with the image.
 RUN apt-get update \
     && apt-get upgrade -y --no-install-recommends \
+    && apt-get install -y --no-install-recommends curl \
     && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd --system --gid 10001 bledi \
@@ -66,5 +67,8 @@ ENV PATH=/venv/bin:$PATH \
 
 USER bledi
 EXPOSE 8000
+
+HEALTHCHECK --interval=10s --timeout=5s --retries=5 --start-period=30s \
+  CMD ["curl", "-f", "http://localhost:8000/health"]
 
 CMD ["uvicorn", "--factory", "bledi_transit.main:create_app", "--host", "0.0.0.0", "--port", "8000"]

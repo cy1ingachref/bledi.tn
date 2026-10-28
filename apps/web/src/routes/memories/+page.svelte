@@ -92,6 +92,9 @@
   let loading = $state(true);
   let error = $state('');
 
+  const fmtCoord = (v) =>
+    typeof v === 'number' && Number.isFinite(v) ? v.toFixed(4) : '—';
+
   // The media endpoint needs the caller's token, so the photos are fetched as bytes and
   // shown through object URLs.
   let photos = $state({});
@@ -113,8 +116,10 @@
       if (stored) {
         auth = JSON.parse(stored);
       }
-    } catch {
+    } catch (err) {
+      console.error('Auth parse failed', err);
       localStorage.removeItem('bledi_auth');
+      goto(resolve('/login'));
     }
 
     loadData();
@@ -128,17 +133,20 @@
   /** Fetches the photos the caller may see and turns them into object URLs. */
   async function loadPhotos(list) {
     if (!auth?.token) return;
-    for (const m of list) {
-      if (!m.media_url || photos[m.media_url]) continue;
-      try {
-        const blob = await fetchMedia(auth.token, m.media_url);
-        const url = URL.createObjectURL(blob);
-        objectUrls.push(url);
-        photos = { ...photos, [m.media_url]: url };
-      } catch {
-        // The server refused this one: the memory is listed without a photo.
-      }
-    }
+    await Promise.all(
+      list.map(async (m) => {
+        if (!m.media_url || photos[m.media_url]) return;
+        try {
+          const blob = await fetchMedia(auth.token, m.media_url);
+          const url = URL.createObjectURL(blob);
+          objectUrls.push(url);
+          photos = { ...photos, [m.media_url]: url };
+        } catch (err) {
+          console.warn('Memory photo load failed', err);
+          // The server refused this one: the memory is listed without a photo.
+        }
+      })
+    );
   }
 
   async function loadData() {
@@ -338,7 +346,7 @@
                   <li>
                     <div class="mem-info">
                       <strong>{m.title || 'Untitled'}</strong>
-                      <span class="meta">{m.visibility} • {m.lat.toFixed(4)}, {m.lon.toFixed(4)}</span>
+                      <span class="meta">{m.visibility} • {fmtCoord(m.lat)}, {fmtCoord(m.lon)}</span>
                     </div>
                   </li>
                 {/each}

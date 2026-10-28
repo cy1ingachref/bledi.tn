@@ -87,6 +87,13 @@ pub trait FriendshipStore: Send + Sync {
     async fn between(&self, a: Uuid, b: Uuid) -> Result<Vec<Friendship>>;
     /// Every row `user_id` is part of.
     async fn of(&self, user_id: Uuid) -> Result<Vec<Friendship>>;
+    /// Same as `of`, but newest first, limited.
+    async fn of_paginated(
+        &self,
+        user_id: Uuid,
+        limit: usize,
+        offset: usize,
+    ) -> Result<Vec<Friendship>>;
     /// Fails with `RequestPending` when `from` already asked `to`.
     async fn request(&self, from: Uuid, to: Uuid) -> Result<()>;
     /// False when there is no pending request from `requester` to `recipient`.
@@ -99,6 +106,13 @@ pub trait FriendshipStore: Send + Sync {
 pub trait FavoriteStore: Send + Sync {
     /// Newest first.
     async fn owned_by(&self, user_id: Uuid) -> Result<Vec<Favorite>>;
+    /// Same as `owned_by`, but limited.
+    async fn owned_by_paginated(
+        &self,
+        user_id: Uuid,
+        limit: usize,
+        offset: usize,
+    ) -> Result<Vec<Favorite>>;
     /// Saving the same kind and ref_id again replaces the label.
     async fn upsert(&self, favorite: NewFavorite) -> Result<Favorite>;
     async fn delete(&self, id: Uuid, user_id: Uuid) -> Result<bool>;

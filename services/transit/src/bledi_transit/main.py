@@ -113,17 +113,15 @@ def create_app(config: Config | None = None) -> FastAPI:
     async def rate_limit(request: Request, call_next):
         client_ip = request.client.host if request.client else "unknown"
         now = time.time()
-        # Clean old entries
-        _rate_limit_buckets[client_ip] = [
-            t for t in _rate_limit_buckets[client_ip]
-            if now - t < RATE_LIMIT_WINDOW
-        ]
+        # Prune expired entries across all clients so one IP cannot grow the dict without bound.
+        for ip, times in list(_rate_limit_buckets.items()):
+            _rate_limit_buckets[ip] = [t for t in times if now - t < RATE_LIMIT_WINDOW]
         if len(_rate_limit_buckets[client_ip]) >= RATE_LIMIT_REQUESTS:
             from fastapi.responses import JSONResponse
             return JSONResponse(
                 {"error": "rate limit exceeded"},
                 status_code=429,
-                headers={"Retry-After": str(RATE_LIMIT_WINDOW)}
+                headers={"Retry-After": str(RATE_LIMIT_WINDOW)},
             )
         _rate_limit_buckets[client_ip].append(now)
         return await call_next(request)

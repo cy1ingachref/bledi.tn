@@ -137,11 +137,11 @@ def expand_path(
         # The raw seed mode, not the canonical one: canonical_mode() folds
         # "rail" into "train", which SPEED_BY_MODE times differently.
         raw_mode = router.mode_of_line.get(line_used or "", "bus") or "bus"
-        if not seg_geom and mode == "bus" and straight_m >= GEOMETRY_REQUIRED_M:
-            live_bus = paths.road(a["lat"], a["lon"], b["lat"], b["lon"], "car")
-            if live_bus is not None and live_bus[1] >= 0.95 * straight_m:
-                seg_geom = live_bus[0]
-                seg_m = live_bus[1]
+        if not seg_geom and mode in ("bus", "louaj", "taxi") and straight_m >= GEOMETRY_REQUIRED_M:
+            live_road = paths.road(a["lat"], a["lon"], b["lat"], b["lon"], "car")
+            if live_road is not None and live_road[1] >= 0.95 * straight_m:
+                seg_geom = live_road[0]
+                seg_m = live_road[1]
                 edge = None  # force re-timing from the real road distance
         ride_min = (
             (edge.time_s / 60.0)

@@ -60,7 +60,16 @@ impl Friendships {
 
     /// Everyone linked to `me` in either direction, by email.
     pub async fn list(&self, me: Uuid) -> Result<Vec<Friend>> {
-        let rows = self.friendships.of(me).await?;
+        self.list_paginated(me, 20, 0).await
+    }
+
+    pub async fn list_paginated(
+        &self,
+        me: Uuid,
+        limit: usize,
+        offset: usize,
+    ) -> Result<Vec<Friend>> {
+        let rows = self.friendships.of_paginated(me, limit, offset).await?;
         let mut friends = self.with_users(me, rows).await?;
         friends.sort_by(|a, b| a.email.cmp(&b.email));
         Ok(friends)
@@ -68,9 +77,18 @@ impl Friendships {
 
     /// Pending requests sent to `me`, newest first.
     pub async fn requests(&self, me: Uuid) -> Result<Vec<Friend>> {
+        self.requests_paginated(me, 20, 0).await
+    }
+
+    pub async fn requests_paginated(
+        &self,
+        me: Uuid,
+        limit: usize,
+        offset: usize,
+    ) -> Result<Vec<Friend>> {
         let mut rows: Vec<Friendship> = self
             .friendships
-            .of(me)
+            .of_paginated(me, limit, offset)
             .await?
             .into_iter()
             .filter(|f| f.friend_id == me && f.status == FriendshipStatus::Pending)

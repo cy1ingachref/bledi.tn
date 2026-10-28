@@ -6,7 +6,6 @@ use sqlx::{FromRow, PgPool};
 use uuid::Uuid;
 
 use crate::internal;
-
 #[derive(FromRow)]
 struct FavoriteRow {
     id: Uuid,
@@ -50,6 +49,28 @@ impl FavoriteStore for PostgresFavoriteStore {
              FROM favorites WHERE user_id = $1 ORDER BY created_at DESC",
         )
         .bind(user_id)
+        .fetch_all(&self.pool)
+        .await
+        .map(|rows| rows.into_iter().map(Favorite::from).collect())
+        .map_err(internal)
+    }
+
+    async fn owned_by_paginated(
+        &self,
+        user_id: Uuid,
+        limit: usize,
+        offset: usize,
+    ) -> Result<Vec<Favorite>> {
+        sqlx::query_as::<_, FavoriteRow>(
+            "SELECT id, user_id, kind::text AS kind, ref_id, label, created_at
+             FROM favorites
+             WHERE user_id = $1
+             ORDER BY created_at DESC
+             LIMIT $2 OFFSET $3",
+        )
+        .bind(user_id)
+        .bind(limit as i64)
+        .bind(offset as i64)
         .fetch_all(&self.pool)
         .await
         .map(|rows| rows.into_iter().map(Favorite::from).collect())

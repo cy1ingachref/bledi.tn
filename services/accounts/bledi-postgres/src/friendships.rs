@@ -70,6 +70,22 @@ impl FriendshipStore for PostgresFriendshipStore {
         self.fetch(query.bind(user_id)).await
     }
 
+    async fn of_paginated(
+        &self,
+        user_id: Uuid,
+        limit: usize,
+        offset: usize,
+    ) -> Result<Vec<Friendship>> {
+        let query = sqlx::query_as(
+            "SELECT user_id, friend_id, status, created_at FROM friendships
+             WHERE user_id = $1 OR friend_id = $1
+             ORDER BY created_at DESC
+             LIMIT $2 OFFSET $3",
+        );
+        self.fetch(query.bind(user_id).bind(limit as i64).bind(offset as i64))
+            .await
+    }
+
     async fn request(&self, from: Uuid, to: Uuid) -> Result<()> {
         sqlx::query(
             "INSERT INTO friendships (user_id, friend_id, status) VALUES ($1, $2, 'pending')",
