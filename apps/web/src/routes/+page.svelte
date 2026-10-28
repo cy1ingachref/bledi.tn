@@ -5,7 +5,7 @@
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import { resolve } from '$app/paths';
-  import { SvelteURLSearchParams, SvelteSet } from 'svelte/reactivity';
+  import { SvelteSet } from 'svelte/reactivity';
 
   let fromText = $state('');
   let toText = $state('');
@@ -64,6 +64,28 @@
       const b = stations.find((s) => s.id === toId) || toSuggestions.find((s) => s.id === toId);
       if (b) { endLat = b.lat; endLon = b.lon; }
     }
+  }
+
+  function applyUrlParams() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const f = params.get('from');
+      const tt = params.get('to');
+      if (f && fromText === '') {
+        const [la, lo] = f.split(',').map(Number);
+        if (Number.isFinite(la) && Number.isFinite(lo)) {
+          const hit = stations.find((s) => Math.abs(s.lat - la) < 1e-4 && Math.abs(s.lon - lo) < 1e-4);
+          if (hit) { fromText = hit.name; fromId = hit.id; zoomTo(hit.id); }
+        }
+      }
+      if (tt && toText === '') {
+        const [la, lo] = tt.split(',').map(Number);
+        if (Number.isFinite(la) && Number.isFinite(lo)) {
+          const hit = stations.find((s) => Math.abs(s.lat - la) < 1e-4 && Math.abs(s.lon - lo) < 1e-4);
+          if (hit) { toText = hit.name; toId = hit.id; zoomTo(hit.id); }
+        }
+      }
+    } catch { /* window unavailable (SSR) */ }
   }
 
   function zoomTo(id) {
@@ -205,9 +227,6 @@
     }
   }
 
-  function closeFrom() {}
-  function closeTo() {}
-
   function pickFrom(id) {
     startLat = null;
     startLon = null;
@@ -270,41 +289,6 @@
     toText = ft; toId = fi;
     fromSuggestions = []; toSuggestions = [];
     reSolve();
-  }
-
-  function syncUrl() {
-    try {
-      const params = new SvelteURLSearchParams();
-      if (startLat != null && startLon != null) {
-        params.set('from', `${startLat.toFixed(5)},${startLon.toFixed(5)}`);
-      }
-      if (endLat != null && endLon != null) {
-        params.set('to', `${endLat.toFixed(5)},${endLon.toFixed(5)}`);
-      }
-      history.replaceState(null, '', `${window.location.pathname}?${params.toString()}`);
-    } catch { /* window/history unavailable (SSR) */ }
-  }
-
-  function applyUrlParams() {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const f = params.get('from');
-      const tt = params.get('to');
-      if (f && fromText === '') {
-        const [la, lo] = f.split(',').map(Number);
-        if (Number.isFinite(la) && Number.isFinite(lo)) {
-          const hit = stations.find((s) => Math.abs(s.lat - la) < 1e-4 && Math.abs(s.lon - lo) < 1e-4);
-          if (hit) { fromText = hit.name; fromId = hit.id; zoomTo(hit.id); }
-        }
-      }
-      if (tt && toText === '') {
-        const [la, lo] = tt.split(',').map(Number);
-        if (Number.isFinite(la) && Number.isFinite(lo)) {
-          const hit = stations.find((s) => Math.abs(s.lat - la) < 1e-4 && Math.abs(s.lon - lo) < 1e-4);
-          if (hit) { toText = hit.name; toId = hit.id; zoomTo(hit.id); }
-        }
-      }
-    } catch { /* window unavailable (SSR) */ }
   }
 
   $effect(() => {
@@ -408,7 +392,7 @@
         const ov = await fetch('/api/v1/stations/overpass-taxi-louage');
         if (ov.ok) {
           const data = await ov.json();
-          overlayStations = (data.features || [])
+          const ovStations = (data.features || [])
             .map((f) => ({
               id: f.properties.id,
               name: f.properties.name || '',
@@ -419,6 +403,9 @@
               type: 'station',
             }))
             .filter((s) => Number.isFinite(s.lat) && Number.isFinite(s.lon));
+          if (ovStations.length) {
+            stations = [...stations, ...ovStations];
+          }
         }
       } catch (err) {
         console.error('stations fetch failed', err);
@@ -432,7 +419,6 @@
 
   $effect(() => {
     if (startLat != null && startLon != null && endLat != null && endLon != null) {
-      showOverlay = true;
       (async () => {
         try {
           const res = await fetchRoutePlan({ startLat, startLon, endLat, endLon, modes: [...modes] });
@@ -453,15 +439,12 @@
           routeOptions = [];
           selectedOption = null;
           routeMinutes = null;
-        } finally {
-          if (routeOptions.length === 0) showOverlay = false;
         }
       })();
     } else {
       routeOptions = [];
       selectedOption = null;
       routeMinutes = null;
-      showOverlay = false;
     }
   });
 </script>
@@ -481,7 +464,6 @@
     {endLat}
     {endLon}
     {mapReady}
-    {zoomTo}
     onMapClick={(pt) => {
       if (!fromId || !toId) {
         const id = 'geo:' + Number(pt.lat).toFixed(4) + ':' + Number(pt.lon).toFixed(4) + ':click';
