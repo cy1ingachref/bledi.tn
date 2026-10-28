@@ -54,16 +54,16 @@ jobs:
       run:
         working-directory: ${{ matrix.working-directory }}
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@5b0524f730db83f9513c18ab31a6c086c7239076
 
       # ---- backend ----
       - name: Set up Rust
         if: matrix.component == 'backend'
-        uses: dtolnay/rust-toolchain@1.99
+        uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8
         with:
           components: clippy, rustfmt
 
-      - uses: Swatinem/rust-cache@v2
+      - uses: Swatinem/rust-cache@e9d7b9f1e587218970671bac74e5511ed9506e6a
         if: matrix.component == 'backend'
         with:
           workspaces: services/accounts
@@ -96,7 +96,7 @@ jobs:
       # ---- web ----
       - name: Set up Node
         if: matrix.component == 'web'
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
           node-version-file: apps/web/.nvmrc
           cache: npm
@@ -128,7 +128,7 @@ jobs:
       # ---- mobile ----
       - name: Set up Flutter
         if: matrix.component == 'mobile'
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@1a449444c387b1966244ae4d4f8c696479add0b2
         with:
           channel: stable
 
