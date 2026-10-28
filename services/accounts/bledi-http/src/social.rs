@@ -22,7 +22,13 @@ pub async fn friends(
     Query(pagination): Query<Pagination>,
 ) -> Result<Json<Vec<Friend>>, ApiError> {
     let (limit, offset) = pagination.into();
-    Ok(Json(state.services.friendships.list_paginated(me, limit, offset).await?))
+    Ok(Json(
+        state
+            .services
+            .friendships
+            .list_paginated(me, limit, offset)
+            .await?,
+    ))
 }
 
 pub async fn friend_requests(
@@ -31,7 +37,13 @@ pub async fn friend_requests(
     Query(pagination): Query<Pagination>,
 ) -> Result<Json<Vec<Friend>>, ApiError> {
     let (limit, offset) = pagination.into();
-    Ok(Json(state.services.friendships.requests_paginated(me, limit, offset).await?))
+    Ok(Json(
+        state
+            .services
+            .friendships
+            .requests_paginated(me, limit, offset)
+            .await?,
+    ))
 }
 
 /// 201 for a new request, 200 when it accepted the one the other user had already sent.
@@ -71,7 +83,13 @@ pub async fn favorites(
     Query(pagination): Query<Pagination>,
 ) -> Result<Json<Vec<Favorite>>, ApiError> {
     let (limit, offset) = pagination.into();
-    Ok(Json(state.services.favorites.list_paginated(me, limit, offset).await?))
+    Ok(Json(
+        state
+            .services
+            .favorites
+            .list_paginated(me, limit, offset)
+            .await?,
+    ))
 }
 
 pub async fn save_favorite(
