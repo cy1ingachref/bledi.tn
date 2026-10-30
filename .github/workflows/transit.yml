@@ -41,6 +41,9 @@ jobs:
         shell: /usr/bin/bash {0}
         run: |
           for attempt in 1 2 3; do
+            echo "Attempt $attempt: preflight"
+            python -m pytest --version
+            echo "Attempt $attempt: running tests"
             if python -m pytest -q tests/ -x; then
               exit 0
             fi
