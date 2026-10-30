@@ -18,7 +18,7 @@ jobs:
        (github.event.action != 'labeled' || github.event.label.name == 'e2e'))
     # Job level, so a skipped run (another label added) does not cancel a live one.
     concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+      group: ${{ github.workflow }}-${{ github.ref }}-${{ github.run_id }}
       cancel-in-progress: true
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -49,7 +49,7 @@ jobs:
       (contains(github.event.pull_request.labels.*.name, 'e2e') &&
        (github.event.action != 'labeled' || github.event.label.name == 'e2e'))
     concurrency:
-      group: ${{ github.workflow }}-stack-${{ github.ref }}
+      group: ${{ github.workflow }}-stack-${{ github.ref }}-${{ github.run_id }}
       cancel-in-progress: true
     runs-on: ubuntu-latest
     timeout-minutes: 30
