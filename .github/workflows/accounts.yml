@@ -39,14 +39,14 @@ jobs:
       run:
         working-directory: services/accounts
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@v7
 
       # Same toolchain as the Dockerfile builder, so the checked compiler is the shipped one.
-      - uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8
+      - uses: dtolnay/rust-toolchain@1
         with:
           components: clippy, rustfmt
 
-      - uses: Swatinem/rust-cache@e9d7b9f1e587218970671bac74e5511ed9506e6a
+      - uses: Swatinem/rust-cache@v2
         with:
           workspaces: services/accounts
 
