@@ -44,6 +44,8 @@ jobs:
       # Same toolchain as the Dockerfile builder, so the checked compiler is the shipped one.
       - uses: dtolnay/rust-toolchain@v1
         with:
+          toolchain: stable
+        with:
           components: clippy, rustfmt
 
       - uses: Swatinem/rust-cache@v2
