@@ -48,7 +48,7 @@ jobs:
           --health-retries 10
     env:
       # Throwaway credentials for the ephemeral service container, not secrets.
-      DATABASE_URL: postgres://bledi_ci:bledi_ci_local_only@localhost:5432/bledi
+      DATABASE_URL: postgres://bledi_ci:***@localhost:5432/bledi
       CARGO_TERM_COLOR: always
     defaults:
       run:
@@ -63,6 +63,7 @@ jobs:
         if: matrix.component == 'backend'
         uses: dtolnay/rust-toolchain@v1
         with:
+          toolchain: stable
           components: clippy, rustfmt
 
       - uses: Swatinem/rust-cache@v2
