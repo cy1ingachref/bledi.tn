@@ -23,6 +23,10 @@ jobs:
         with:
           lfs: true
         with:
+          lfs: true
+        with:
+          lfs: true
+        with:
           # gitleaks scans the PR's commit range, which a shallow clone lacks.
           fetch-depth: 0
 
