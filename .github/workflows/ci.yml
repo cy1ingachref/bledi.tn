@@ -59,7 +59,7 @@ jobs:
       # ---- backend ----
       - name: Set up Rust
         if: matrix.component == 'backend'
-        uses: dtolnay/rust-toolchain@1
+        uses: dtolnay/rust-toolchain@v1
         with:
           components: clippy, rustfmt
 
