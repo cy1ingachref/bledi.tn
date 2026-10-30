@@ -21,6 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          lfs: true
+        with:
           # gitleaks scans the PR's commit range, which a shallow clone lacks.
           fetch-depth: 0
 

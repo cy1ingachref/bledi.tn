@@ -55,6 +55,8 @@ jobs:
         working-directory: ${{ matrix.working-directory }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          lfs: true
 
       # ---- backend ----
       - name: Set up Rust

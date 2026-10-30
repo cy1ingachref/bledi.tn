@@ -40,6 +40,8 @@ jobs:
         working-directory: services/accounts
     steps:
       - uses: actions/checkout@v7
+        with:
+          lfs: true
 
       # Same toolchain as the Dockerfile builder, so the checked compiler is the shipped one.
       - uses: dtolnay/rust-toolchain@v1
