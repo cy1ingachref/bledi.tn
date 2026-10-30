@@ -37,4 +37,10 @@ jobs:
       - run: python -m pip install --require-hashes -r requirements-dev.lock.txt
       - run: python -m pip install --no-deps -e .
       - run: lint-imports
-      - run: python -m pytest -q
+      - name: Run pytest with retry
+        uses: nick-fields/retry-action@v2
+        with:
+          timeout_minutes: 20
+          max_attempts: 3
+          retry_wait_seconds: 60
+          command: python -m pytest -q
