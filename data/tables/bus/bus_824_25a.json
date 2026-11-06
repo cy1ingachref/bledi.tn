@@ -1,0 +1,607 @@
+{
+ "line_id": "bus_824_25a",
+ "number": "25A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 25A: Avenue Carthage - Cité El Amal",
+ "direction_aller": [
+  "avenue_carthage",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud",
+  "protection_civile",
+  "sidi_fathallah1",
+  "sidi_fathallah2",
+  "soned",
+  "kiosque_mobil_ben_arous",
+  "centre_ben_arous",
+  "municipalit_ben_arous",
+  "centre_des_handicap_s",
+  "cellulose_silos",
+  "institut_ennour",
+  "coll_ge_mourouj_3",
+  "imprimerie_bouslama",
+  "depot_bir_el_kassaa",
+  "mourouj_3",
+  "steg_nassen",
+  "cit_bellile",
+  "ptt_naassen",
+  "lyc_e_nassen",
+  "centre_de_formation_agricole_naasen",
+  "tunisie_porcelaine",
+  "chebedda_25_a",
+  "derbigum",
+  "mosqu_e_rahma",
+  "briqueterie_tunisienne",
+  "huilerie_ben_saidaine",
+  "ferme_gammoudi",
+  "lyc_e_fouchana",
+  "entr_e_fouchana",
+  "caf_sabiha",
+  "cit_erriadh_fouchana",
+  "cit_el_amal"
+ ],
+ "direction_retour": [
+  "cit_el_amal",
+  "cit_erriadh_fouchana",
+  "caf_sabiha",
+  "entr_e_fouchana",
+  "lyc_e_fouchana",
+  "ferme_gammoudi",
+  "huilerie_ben_saidaine",
+  "briqueterie_tunisienne",
+  "mosqu_e_rahma",
+  "derbigum",
+  "chebedda_25_a",
+  "tunisie_porcelaine",
+  "centre_de_formation_agricole_naasen",
+  "lyc_e_nassen",
+  "ptt_naassen",
+  "cit_bellile",
+  "steg_nassen",
+  "mourouj_3",
+  "depot_bir_el_kassaa",
+  "imprimerie_bouslama",
+  "coll_ge_mourouj_3",
+  "institut_ennour",
+  "cellulose_silos",
+  "centre_des_handicap_s",
+  "municipalit_ben_arous",
+  "centre_ben_arous",
+  "kiosque_mobil_ben_arous",
+  "soned",
+  "sidi_fathallah2",
+  "sidi_fathallah1",
+  "protection_civile",
+  "djebel_jelloud",
+  "el_afrane",
+  "centre_de_coordination_ouardia",
+  "dubosville",
+  "avenue_carthage"
+ ],
+ "stations_count": 36,
+ "start": {
+  "id": "avenue_carthage",
+  "name": "Avenue Carthage"
+ },
+ "end": {
+  "id": "cit_el_amal",
+  "name": "Cité El Amal"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "avenue_carthage",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud",
+  "protection_civile",
+  "sidi_fathallah1",
+  "sidi_fathallah2",
+  "soned",
+  "kiosque_mobil_ben_arous",
+  "centre_ben_arous",
+  "municipalit_ben_arous",
+  "centre_des_handicap_s",
+  "cellulose_silos",
+  "institut_ennour",
+  "coll_ge_mourouj_3",
+  "imprimerie_bouslama",
+  "depot_bir_el_kassaa",
+  "mourouj_3",
+  "steg_nassen",
+  "cit_bellile",
+  "ptt_naassen",
+  "lyc_e_nassen",
+  "centre_de_formation_agricole_naasen",
+  "tunisie_porcelaine",
+  "chebedda_25_a",
+  "derbigum",
+  "mosqu_e_rahma",
+  "briqueterie_tunisienne",
+  "huilerie_ben_saidaine",
+  "ferme_gammoudi",
+  "lyc_e_fouchana",
+  "entr_e_fouchana",
+  "caf_sabiha",
+  "cit_erriadh_fouchana",
+  "cit_el_amal"
+ ],
+ "stations_detail": [
+  {
+   "id": "avenue_carthage",
+   "name_en": "Avenue Carthage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7919242,
+   "lon": 10.1822642,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dubosville",
+   "name_en": "Dubosville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839884,
+   "lon": 10.1917495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_coordination_ouardia",
+   "name_en": "Centre De Coordination Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7806046,
+   "lon": 10.1956231,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_afrane",
+   "name_en": "El Afrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7796674,
+   "lon": 10.1966209,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebel_jelloud",
+   "name_en": "Djebel Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7731781,
+   "lon": 10.2025642,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "protection_civile",
+   "name_en": "Protection Civile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7719233,
+   "lon": 10.2037229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_fathallah1",
+   "name_en": "Sidi Fathallah1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7690357,
+   "lon": 10.2074351,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_fathallah2",
+   "name_en": "Sidi Fathallah2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7667667,
+   "lon": 10.2092375,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soned",
+   "name_en": "Soned",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7652949,
+   "lon": 10.210255,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_mobil_ben_arous",
+   "name_en": "Kiosque Mobil Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7570296,
+   "lon": 10.2187867,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_ben_arous",
+   "name_en": "Centre Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75346,
+   "lon": 10.2224984,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipalit_ben_arous",
+   "name_en": "Municipalité Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7483193,
+   "lon": 10.2253308,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_des_handicap_s",
+   "name_en": "Centre Des Handicapés",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7470814,
+   "lon": 10.2256741,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cellulose_silos",
+   "name_en": "Cellulose (Silos)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.745409,
+   "lon": 10.2258662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "institut_ennour",
+   "name_en": "Institut Ennour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.739619,
+   "lon": 10.2209534,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "coll_ge_mourouj_3",
+   "name_en": "Collége Mourouj 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7341334,
+   "lon": 10.2169623,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "imprimerie_bouslama",
+   "name_en": "Imprimerie Bouslama",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7299672,
+   "lon": 10.2187423,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "depot_bir_el_kassaa",
+   "name_en": "Depot Bir El Kassaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7254497,
+   "lon": 10.2219834,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mourouj_3",
+   "name_en": "Mourouj 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7204552,
+   "lon": 10.2230933,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_nassen",
+   "name_en": "Steg Nassen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7154051,
+   "lon": 10.2242881,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_bellile",
+   "name_en": "Cité Bellile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7096932,
+   "lon": 10.2275624,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ptt_naassen",
+   "name_en": "Ptt Naassen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7040799,
+   "lon": 10.2321336,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_nassen",
+   "name_en": "Lycée Nassen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6993821,
+   "lon": 10.2221126,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_agricole_naasen",
+   "name_en": "Centre De Formation Agricole Naasen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6958109,
+   "lon": 10.2145805,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tunisie_porcelaine",
+   "name_en": "Tunisie Porcelaine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.69411,
+   "lon": 10.2101019,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chebedda_25_a",
+   "name_en": "Chebedda 25 A",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6932454,
+   "lon": 10.207629,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "derbigum",
+   "name_en": "Derbigum",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.692084,
+   "lon": 10.2003709,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_rahma",
+   "name_en": "Mosquée Rahma",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6898394,
+   "lon": 10.1954832,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "briqueterie_tunisienne",
+   "name_en": "Briqueterie Tunisienne",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6909406,
+   "lon": 10.1909127,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "huilerie_ben_saidaine",
+   "name_en": "Huilerie Ben Saidaine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6928115,
+   "lon": 10.1851825,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ferme_gammoudi",
+   "name_en": "Ferme Gammoudi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6952593,
+   "lon": 10.1773729,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_fouchana",
+   "name_en": "Lycée Fouchana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6971381,
+   "lon": 10.1729909,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entr_e_fouchana",
+   "name_en": "Entrée Fouchana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6983814,
+   "lon": 10.1700598,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_sabiha",
+   "name_en": "Café Sabiha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6989348,
+   "lon": 10.1686079,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_erriadh_fouchana",
+   "name_en": "Cité Erriadh Fouchana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7022346,
+   "lon": 10.1624299,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_amal",
+   "name_en": "Cité El Amal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7035767,
+   "lon": 10.1640806,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

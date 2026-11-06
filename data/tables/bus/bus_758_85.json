@@ -1,0 +1,559 @@
+{
+ "line_id": "bus_758_85",
+ "number": "85",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 85: Sealatelec Termenus85 - Terminus 75 85",
+ "direction_aller": [
+  "sealatelec_termenus85",
+  "bontaze",
+  "btk",
+  "protection_civile",
+  "garde_national_z_i_mghira",
+  "promed_tech",
+  "centre_de_formation_mghira",
+  "abattoir",
+  "gartex",
+  "cit_el_ouifak_gn",
+  "fouchana",
+  "entr_e_fouchana",
+  "lyc_e_fouchana",
+  "ferme_gammoudi",
+  "huilerie_ben_saidaine",
+  "briqueterie_tunisienne",
+  "mosqu_e_rahma",
+  "derbigum",
+  "chebedda_25_a",
+  "tunisie_porcelaine",
+  "centre_de_formation_agricole_naasen",
+  "lyc_e_nassen",
+  "ptt_naassen",
+  "nassen_1_l_85_section",
+  "boujerdga_75_26a_37",
+  "pont_autoroute_sud",
+  "huilerie_bayrem",
+  "el_khelij",
+  "el_bahri",
+  "gan",
+  "place_14_janvier_boumhel",
+  "av_de_environnement",
+  "terminus_75_85"
+ ],
+ "direction_retour": [
+  "terminus_75_85",
+  "av_de_environnement",
+  "place_14_janvier_boumhel",
+  "gan",
+  "el_bahri",
+  "el_khelij",
+  "huilerie_bayrem",
+  "pont_autoroute_sud",
+  "boujerdga_75_26a_37",
+  "nassen_1_l_85_section",
+  "ptt_naassen",
+  "lyc_e_nassen",
+  "centre_de_formation_agricole_naasen",
+  "tunisie_porcelaine",
+  "chebedda_25_a",
+  "derbigum",
+  "mosqu_e_rahma",
+  "briqueterie_tunisienne",
+  "huilerie_ben_saidaine",
+  "ferme_gammoudi",
+  "lyc_e_fouchana",
+  "entr_e_fouchana",
+  "fouchana",
+  "cit_el_ouifak_gn",
+  "gartex",
+  "abattoir",
+  "centre_de_formation_mghira",
+  "promed_tech",
+  "garde_national_z_i_mghira",
+  "protection_civile",
+  "btk",
+  "bontaze",
+  "sealatelec_termenus85"
+ ],
+ "stations_count": 33,
+ "start": {
+  "id": "sealatelec_termenus85",
+  "name": "Sealatelec Termenus85"
+ },
+ "end": {
+  "id": "terminus_75_85",
+  "name": "Terminus 75 85"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "sealatelec_termenus85",
+  "bontaze",
+  "btk",
+  "protection_civile",
+  "garde_national_z_i_mghira",
+  "promed_tech",
+  "centre_de_formation_mghira",
+  "abattoir",
+  "gartex",
+  "cit_el_ouifak_gn",
+  "fouchana",
+  "entr_e_fouchana",
+  "lyc_e_fouchana",
+  "ferme_gammoudi",
+  "huilerie_ben_saidaine",
+  "briqueterie_tunisienne",
+  "mosqu_e_rahma",
+  "derbigum",
+  "chebedda_25_a",
+  "tunisie_porcelaine",
+  "centre_de_formation_agricole_naasen",
+  "lyc_e_nassen",
+  "ptt_naassen",
+  "nassen_1_l_85_section",
+  "boujerdga_75_26a_37",
+  "pont_autoroute_sud",
+  "huilerie_bayrem",
+  "el_khelij",
+  "el_bahri",
+  "gan",
+  "place_14_janvier_boumhel",
+  "av_de_environnement",
+  "terminus_75_85"
+ ],
+ "stations_detail": [
+  {
+   "id": "sealatelec_termenus85",
+   "name_en": "Sealatelec Termenus85",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.722524,
+   "lon": 10.1868633,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bontaze",
+   "name_en": "Bontaze",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7215554,
+   "lon": 10.1838858,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "btk",
+   "name_en": "BTK",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7162229,
+   "lon": 10.1812844,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "protection_civile",
+   "name_en": "Protection Civile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7719233,
+   "lon": 10.2037229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_z_i_mghira",
+   "name_en": "Garde National Z.I Mghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.717467,
+   "lon": 10.1735114,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "promed_tech",
+   "name_en": "Promed Tech",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7159482,
+   "lon": 10.1716442,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_mghira",
+   "name_en": "Centre De Formation Mghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7123279,
+   "lon": 10.1677174,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "abattoir",
+   "name_en": "Abattoir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7085693,
+   "lon": 10.1720518,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gartex",
+   "name_en": "GARTEX",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7066598,
+   "lon": 10.1743264,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_ouifak_gn",
+   "name_en": "Cité El Ouifak (Gn)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7026939,
+   "lon": 10.1721377,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "fouchana",
+   "name_en": "Fouchana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7000451,
+   "lon": 10.1661939,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entr_e_fouchana",
+   "name_en": "Entrée Fouchana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6983814,
+   "lon": 10.1700598,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_fouchana",
+   "name_en": "Lycée Fouchana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6971381,
+   "lon": 10.1729909,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ferme_gammoudi",
+   "name_en": "Ferme Gammoudi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6952593,
+   "lon": 10.1773729,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "huilerie_ben_saidaine",
+   "name_en": "Huilerie Ben Saidaine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6928115,
+   "lon": 10.1851825,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "briqueterie_tunisienne",
+   "name_en": "Briqueterie Tunisienne",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6909406,
+   "lon": 10.1909127,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_rahma",
+   "name_en": "Mosquée Rahma",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6898394,
+   "lon": 10.1954832,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "derbigum",
+   "name_en": "Derbigum",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.692084,
+   "lon": 10.2003709,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chebedda_25_a",
+   "name_en": "Chebedda 25 A",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6932454,
+   "lon": 10.207629,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tunisie_porcelaine",
+   "name_en": "Tunisie Porcelaine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.69411,
+   "lon": 10.2101019,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_agricole_naasen",
+   "name_en": "Centre De Formation Agricole Naasen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6958109,
+   "lon": 10.2145805,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_nassen",
+   "name_en": "Lycée Nassen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6993821,
+   "lon": 10.2221126,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ptt_naassen",
+   "name_en": "Ptt Naassen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7040799,
+   "lon": 10.2321336,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nassen_1_l_85_section",
+   "name_en": "Nassen 1 L 85-Section",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7091708,
+   "lon": 10.2410812,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boujerdga_75_26a_37",
+   "name_en": "Boujerdga 75 26A 37",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7148915,
+   "lon": 10.2646742,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_autoroute_sud",
+   "name_en": "Pont Autoroute Sud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7160428,
+   "lon": 10.2750594,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "huilerie_bayrem",
+   "name_en": "Huilerie Bayrem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7157309,
+   "lon": 10.2821722,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_khelij",
+   "name_en": "El Khelij",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7172617,
+   "lon": 10.2886738,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_bahri",
+   "name_en": "El Bahri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7185251,
+   "lon": 10.2920488,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gan",
+   "name_en": "Gan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7210666,
+   "lon": 10.2965495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_14_janvier_boumhel",
+   "name_en": "Place 14 Janvier (Boumhel)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7243385,
+   "lon": 10.300766,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_de_environnement",
+   "name_en": "Av De Environnement",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7264523,
+   "lon": 10.3038721,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_75_85",
+   "name_en": "Terminus 75 85",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7251325,
+   "lon": 10.3061252,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

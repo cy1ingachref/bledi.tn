@@ -1,0 +1,127 @@
+{
+ "line_id": "bus_763_90",
+ "number": "90",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 90: Rabattement Slimen Kahia - Terminus Cite Ben Younes",
+ "direction_aller": [
+  "rabattement_slimen_kahia",
+  "cafe_boutoffaha",
+  "cafe_z_plus",
+  "cite_ben_younes",
+  "garde_national_ben_younes",
+  "terminus_cite_ben_younes"
+ ],
+ "direction_retour": [
+  "terminus_cite_ben_younes",
+  "garde_national_ben_younes",
+  "cite_ben_younes",
+  "cafe_z_plus",
+  "cafe_boutoffaha",
+  "rabattement_slimen_kahia"
+ ],
+ "stations_count": 6,
+ "start": {
+  "id": "rabattement_slimen_kahia",
+  "name": "Rabattement Slimen Kahia"
+ },
+ "end": {
+  "id": "terminus_cite_ben_younes",
+  "name": "Terminus Cite Ben Younes"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_slimen_kahia",
+  "cafe_boutoffaha",
+  "cafe_z_plus",
+  "cite_ben_younes",
+  "garde_national_ben_younes",
+  "terminus_cite_ben_younes"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_slimen_kahia",
+   "name_en": "Rabattement Slimen Kahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8038639,
+   "lon": 10.0985919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cafe_boutoffaha",
+   "name_en": "Cafe Boutoffaha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8019933,
+   "lon": 10.0998794,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cafe_z_plus",
+   "name_en": "Cafe Z Plus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8014757,
+   "lon": 10.0936754,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_ben_younes",
+   "name_en": "Cite Ben Younes",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7983099,
+   "lon": 10.0885175,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_ben_younes",
+   "name_en": "Garde National Ben Younes",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7964864,
+   "lon": 10.0892927,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_cite_ben_younes",
+   "name_en": "Terminus Cite Ben Younes",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7957837,
+   "lon": 10.0893703,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

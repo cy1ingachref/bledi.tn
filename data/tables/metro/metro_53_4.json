@@ -1,0 +1,367 @@
+{
+ "line_id": "metro_53_4",
+ "number": "4",
+ "mode": "metro",
+ "operator": "Transtu",
+ "name": "Ligne 4: PLACE BARCELONE NORD - KHAIREDDINE",
+ "direction_aller": [
+  "place_barcelone_nord",
+  "habib_thameur",
+  "place_de_la_republique",
+  "bab_el_khadhra",
+  "bab_laassal",
+  "bab_saadoun",
+  "bouchoucha",
+  "20_mars",
+  "bardo",
+  "essaidia",
+  "khaznadar",
+  "artisanat",
+  "denden",
+  "manouba",
+  "slimene_kehia",
+  "moncef_bey",
+  "aboubaker_errazi",
+  "pole_technologique",
+  "ksar_el_warda",
+  "campus_universitaire_manouba",
+  "khaireddine"
+ ],
+ "direction_retour": [
+  "khaireddine",
+  "campus_universitaire_manouba",
+  "ksar_el_warda",
+  "pole_technologique",
+  "aboubaker_errazi",
+  "moncef_bey",
+  "slimene_kehia",
+  "manouba",
+  "denden",
+  "artisanat",
+  "khaznadar",
+  "essaidia",
+  "bardo",
+  "20_mars",
+  "bouchoucha",
+  "bab_saadoun",
+  "bab_laassal",
+  "bab_el_khadhra",
+  "place_de_la_republique",
+  "habib_thameur",
+  "place_barcelone_nord"
+ ],
+ "stations_count": 21,
+ "start": {
+  "id": "place_barcelone_nord",
+  "name": "PLACE BARCELONE NORD"
+ },
+ "end": {
+  "id": "khaireddine",
+  "name": "KHAIREDDINE"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "place_barcelone_nord",
+  "habib_thameur",
+  "place_de_la_republique",
+  "bab_el_khadhra",
+  "bab_laassal",
+  "bab_saadoun",
+  "bouchoucha",
+  "20_mars",
+  "bardo",
+  "essaidia",
+  "khaznadar",
+  "artisanat",
+  "denden",
+  "manouba",
+  "slimene_kehia",
+  "moncef_bey",
+  "aboubaker_errazi",
+  "pole_technologique",
+  "ksar_el_warda",
+  "campus_universitaire_manouba",
+  "khaireddine"
+ ],
+ "stations_detail": [
+  {
+   "id": "place_barcelone_nord",
+   "name_en": "PLACE BARCELONE NORD",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.79652,
+   "lon": 10.17982,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "habib_thameur",
+   "name_en": "HABIB THAMEUR",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80131,
+   "lon": 10.17864,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_de_la_republique",
+   "name_en": "PLACE DE LA REPUBLIQUE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80649,
+   "lon": 10.18081,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_el_khadhra",
+   "name_en": "BAB EL KHADHRA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8103,
+   "lon": 10.17239,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_laassal",
+   "name_en": "BAB LAASSAL",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81331,
+   "lon": 10.16817,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_saadoun",
+   "name_en": "BAB SAADOUN",
+   "name_ar": "باب سعدون",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80986,
+   "lon": 10.16219,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchoucha",
+   "name_en": "BOUCHOUCHA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80953,
+   "lon": 10.15026,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "bardo",
+   "name_en": "BARDO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80724,
+   "lon": 10.13523,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "essaidia",
+   "name_en": "ESSAIDIA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80541,
+   "lon": 10.12664,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "khaznadar",
+   "name_en": "KHAZNADAR",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80421,
+   "lon": 10.12177,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "artisanat",
+   "name_en": "ARTISANAT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80293,
+   "lon": 10.11601,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "denden",
+   "name_en": "DENDEN",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80221,
+   "lon": 10.11075,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "manouba",
+   "name_en": "MANOUBA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80211,
+   "lon": 10.10269,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "slimene_kehia",
+   "name_en": "SLIMENE KEHIA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80334,
+   "lon": 10.09908,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "moncef_bey",
+   "name_en": "MONCEF BEY",
+   "name_ar": "المنصف باي",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_3m"
+   ],
+   "lat": 36.80528,
+   "lon": 10.09065,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "aboubaker_errazi",
+   "name_en": "ABOUBAKER ERRAZI",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80739,
+   "lon": 10.08247,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "pole_technologique",
+   "name_en": "POLE TECHNOLOGIQUE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80811,
+   "lon": 10.08053,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "ksar_el_warda",
+   "name_en": "KSAR EL WARDA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8092,
+   "lon": 10.07461,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "campus_universitaire_manouba",
+   "name_en": "CAMPUS UNIVERSITAIRE MANOUBA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81396,
+   "lon": 10.05981,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "khaireddine",
+   "name_en": "KHAIREDDINE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81533,
+   "lon": 10.05678,
+   "mode": "metro",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

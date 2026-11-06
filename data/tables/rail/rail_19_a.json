@@ -1,0 +1,335 @@
+{
+ "line_id": "rail_19_a",
+ "number": "A",
+ "mode": "rail",
+ "operator": "Transtu",
+ "name": "Ligne A: Tunis Ville - Lycee Technique Rades",
+ "direction_aller": [
+  "tunis_ville",
+  "depot_farhat_hached",
+  "djebal_jelloud",
+  "megrine_ryad",
+  "megrine",
+  "sidi_rezig",
+  "rades",
+  "rades_mel",
+  "ez_zahra",
+  "ezzahra_lyc_e",
+  "bou_kornine",
+  "hammam_lif",
+  "arret_du_stade",
+  "tahar_sfar",
+  "hammam_chat",
+  "bir_el_bey",
+  "borj_cedria",
+  "erriadh",
+  "lycee_technique_rades"
+ ],
+ "direction_retour": [
+  "lycee_technique_rades",
+  "erriadh",
+  "borj_cedria",
+  "bir_el_bey",
+  "hammam_chat",
+  "tahar_sfar",
+  "arret_du_stade",
+  "hammam_lif",
+  "bou_kornine",
+  "ezzahra_lyc_e",
+  "ez_zahra",
+  "rades_mel",
+  "rades",
+  "sidi_rezig",
+  "megrine",
+  "megrine_ryad",
+  "djebal_jelloud",
+  "depot_farhat_hached",
+  "tunis_ville"
+ ],
+ "stations_count": 19,
+ "start": {
+  "id": "tunis_ville",
+  "name": "Tunis Ville"
+ },
+ "end": {
+  "id": "lycee_technique_rades",
+  "name": "Lycee Technique Rades"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "tunis_ville",
+  "depot_farhat_hached",
+  "djebal_jelloud",
+  "megrine_ryad",
+  "megrine",
+  "sidi_rezig",
+  "rades",
+  "rades_mel",
+  "ez_zahra",
+  "ezzahra_lyc_e",
+  "bou_kornine",
+  "hammam_lif",
+  "arret_du_stade",
+  "tahar_sfar",
+  "hammam_chat",
+  "bir_el_bey",
+  "borj_cedria",
+  "erriadh",
+  "lycee_technique_rades"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_ville",
+   "name_en": "Tunis Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7947693,
+   "lon": 10.1803806,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "depot_farhat_hached",
+   "name_en": "Depot Farhat Hached",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7840267,
+   "lon": 10.1919152,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebal_jelloud",
+   "name_en": "Djebal Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7727251,
+   "lon": 10.2082258,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "megrine_ryad",
+   "name_en": "Megrine Ryad",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7702743,
+   "lon": 10.2229004,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "megrine",
+   "name_en": "Megrine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.768327,
+   "lon": 10.2339183,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_rezig",
+   "name_en": "Sidi Rezig",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7673336,
+   "lon": 10.2445454,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "rades",
+   "name_en": "Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7683604,
+   "lon": 10.269735,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "rades_mel",
+   "name_en": "Rades Mel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7629769,
+   "lon": 10.2842731,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "ez_zahra",
+   "name_en": "Ez-Zahra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7468002,
+   "lon": 10.3070495,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "ezzahra_lyc_e",
+   "name_en": "Ezzahra Lycée",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7390405,
+   "lon": 10.3179647,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "bou_kornine",
+   "name_en": "Bou Kornine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7347949,
+   "lon": 10.3239341,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_lif",
+   "name_en": "Hammam Lif",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7294393,
+   "lon": 10.3342066,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "arret_du_stade",
+   "name_en": "Arret Du Stade",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7234436,
+   "lon": 10.3482081,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "tahar_sfar",
+   "name_en": "Tahar Sfar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7175239,
+   "lon": 10.3596743,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_chat",
+   "name_en": "Hammam Chat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7136003,
+   "lon": 10.3694051,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_el_bey",
+   "name_en": "Bir El Bey",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7102497,
+   "lon": 10.3786432,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_cedria",
+   "name_en": "Borj Cedria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7034822,
+   "lon": 10.3974291,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "erriadh",
+   "name_en": "Erriadh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.699504,
+   "lon": 10.41484,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_technique_rades",
+   "name_en": "Lycee Technique Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7667869,
+   "lon": 10.2608437,
+   "mode": "rail",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

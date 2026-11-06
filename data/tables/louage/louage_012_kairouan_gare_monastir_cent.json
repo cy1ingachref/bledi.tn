@@ -1,0 +1,69 @@
+{
+ "line_id": "louage_012_kairouan_gare_monastir_cent",
+ "number": "L12",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage: Kairouan - Gare des Louages → Monastir - Central Station",
+ "direction_aller": [
+  "louage_kairouan_gare_des_louages",
+  "louage_monastir_central_station"
+ ],
+ "direction_retour": [
+  "louage_monastir_central_station",
+  "louage_kairouan_gare_des_louages"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_kairouan_gare_des_louages",
+  "name": "Kairouan - Gare des Louages"
+ },
+ "end": {
+  "id": "louage_monastir_central_station",
+  "name": "Monastir - Central Station"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "louage_kairouan_gare_des_louages",
+   "to": "louage_monastir_central_station",
+   "km": 66.4
+  }
+ ],
+ "original_stations": [
+  "louage_kairouan_gare_des_louages",
+  "louage_monastir_central_station"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_kairouan_gare_des_louages",
+   "name_en": "Kairouan - Gare des Louages",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "no_source"
+   ],
+   "lat": 35.6885,
+   "lon": 10.0965,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "louage_monastir_central_station",
+   "name_en": "Monastir - Central Station",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_104m"
+   ],
+   "lat": 35.7725,
+   "lon": 10.825,
+   "mode": "louage",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv"
+}

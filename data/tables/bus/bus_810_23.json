@@ -1,0 +1,223 @@
+{
+ "line_id": "bus_810_23",
+ "number": "23/",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 23/: Cafe Medina 23/ - Ecole Fejja",
+ "direction_aller": [
+  "cafe_medina_23",
+  "cite_26_26",
+  "aalouine1",
+  "aalouine2",
+  "menzel_hbib_23d_23",
+  "croisement_borj_amri_23d_23",
+  "steg_menzel_hbib_23d_23",
+  "poulailler_menzel_hbib_23d_23",
+  "prison_civile_borj_amri_23d_23",
+  "entree_fejja",
+  "cite_fejja",
+  "ecole_fejja"
+ ],
+ "direction_retour": [
+  "ecole_fejja",
+  "cite_fejja",
+  "entree_fejja",
+  "prison_civile_borj_amri_23d_23",
+  "poulailler_menzel_hbib_23d_23",
+  "steg_menzel_hbib_23d_23",
+  "croisement_borj_amri_23d_23",
+  "menzel_hbib_23d_23",
+  "aalouine2",
+  "aalouine1",
+  "cite_26_26",
+  "cafe_medina_23"
+ ],
+ "stations_count": 12,
+ "start": {
+  "id": "cafe_medina_23",
+  "name": "Cafe Medina 23/"
+ },
+ "end": {
+  "id": "ecole_fejja",
+  "name": "Ecole Fejja"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "cafe_medina_23",
+  "cite_26_26",
+  "aalouine1",
+  "aalouine2",
+  "menzel_hbib_23d_23",
+  "croisement_borj_amri_23d_23",
+  "steg_menzel_hbib_23d_23",
+  "poulailler_menzel_hbib_23d_23",
+  "prison_civile_borj_amri_23d_23",
+  "entree_fejja",
+  "cite_fejja",
+  "ecole_fejja"
+ ],
+ "stations_detail": [
+  {
+   "id": "cafe_medina_23",
+   "name_en": "Cafe Medina 23/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7126728,
+   "lon": 9.8823682,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_26_26",
+   "name_en": "Cite 26/26",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.695612,
+   "lon": 9.8826363,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "aalouine1",
+   "name_en": "Aalouine1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6824414,
+   "lon": 9.8811064,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "aalouine2",
+   "name_en": "Aalouine2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6728266,
+   "lon": 9.8785214,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzel_hbib_23d_23",
+   "name_en": "Menzel Hbib 23D-23/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6620926,
+   "lon": 9.8987994,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_borj_amri_23d_23",
+   "name_en": "Croisement Borj Amri 23D-23/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6729273,
+   "lon": 9.9120334,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_menzel_hbib_23d_23",
+   "name_en": "Steg Menzel Hbib 23D-23/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6804994,
+   "lon": 9.9226603,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poulailler_menzel_hbib_23d_23",
+   "name_en": "Poulailler Menzel Hbib 23D-23/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6861437,
+   "lon": 9.9310127,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "prison_civile_borj_amri_23d_23",
+   "name_en": "Prison Civile Borj Amri 23D-23/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6901778,
+   "lon": 9.9409849,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entree_fejja",
+   "name_en": "Entree Fejja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6915973,
+   "lon": 9.9464673,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_fejja",
+   "name_en": "Cite Fejja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6864534,
+   "lon": 9.9495361,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_fejja",
+   "name_en": "Ecole Fejja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6820353,
+   "lon": 9.9526474,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

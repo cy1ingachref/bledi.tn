@@ -45,6 +45,14 @@ export default defineConfig({
         changeOrigin: true,
         secure: false
       },
+      // Rust routing service (transit-routing :8081). Strip /routing so
+      // /routing/route -> :8081/route and /routing/health -> :8081/health.
+      '/routing': {
+        target: 'http://localhost:8081',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/routing/, '')
+      },
       // Everything else is the transit service.
       '/api': {
         target: 'http://localhost:8000',

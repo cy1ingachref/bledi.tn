@@ -1,0 +1,644 @@
+{
+ "line_id": "bus_765_92",
+ "number": "92",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 92: Rabattement Slimen Kahia - Terminus L92",
+ "direction_aller": [
+  "rabattement_slimen_kahia",
+  "onas_manouba",
+  "dar_mocennine",
+  "gouvernorat_manouba",
+  "hopital_errazi",
+  "cite_orangers_1",
+  "cite_orangers_2",
+  "chemin_de_fer",
+  "terminus_l92"
+ ],
+ "direction_retour": [
+  "terminus_l92",
+  "chemin_de_fer",
+  "cite_orangers_2",
+  "cite_orangers_1",
+  "hopital_errazi",
+  "gouvernorat_manouba",
+  "dar_mocennine",
+  "onas_manouba",
+  "rabattement_slimen_kahia"
+ ],
+ "stations_count": 9,
+ "start": {
+  "id": "rabattement_slimen_kahia",
+  "name": "Rabattement Slimen Kahia"
+ },
+ "end": {
+  "id": "terminus_l92",
+  "name": "Terminus L92"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_slimen_kahia",
+  "onas_manouba",
+  "dar_mocennine",
+  "gouvernorat_manouba",
+  "hopital_errazi",
+  "cite_orangers_1",
+  "cite_orangers_2",
+  "chemin_de_fer",
+  "terminus_l92"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_slimen_kahia",
+   "name_en": "Rabattement Slimen Kahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8038639,
+   "lon": 10.0985919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "onas_manouba",
+   "name_en": "ONAS Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8061167,
+   "lon": 10.0948744,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dar_mocennine",
+   "name_en": "Dar Mocennine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8095931,
+   "lon": 10.0910119,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gouvernorat_manouba",
+   "name_en": "Gouvernorat Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8114227,
+   "lon": 10.0885442,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_errazi",
+   "name_en": "Hopital Errazi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8112853,
+   "lon": 10.0863877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_orangers_1",
+   "name_en": "Cite Orangers 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8150895,
+   "lon": 10.0834317,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_orangers_2",
+   "name_en": "Cite Orangers 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8167781,
+   "lon": 10.0812057,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chemin_de_fer",
+   "name_en": "Chemin De Fer",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8190027,
+   "lon": 10.0793496,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_l92",
+   "name_en": "Terminus L92",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8214032,
+   "lon": 10.076721,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "rabattement_slimen_kahia",
+   "to": "onas_manouba",
+   "key": "onas_manouba|rabattement_slimen_kahia",
+   "straight_m": 415.08,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8061167,
+     10.0948744
+    ],
+    [
+     36.805487,
+     10.096039
+    ],
+    [
+     36.804363,
+     10.096908
+    ],
+    [
+     36.803638,
+     10.097825
+    ],
+    [
+     36.803574,
+     10.098264
+    ],
+    [
+     36.803395,
+     10.098537
+    ],
+    [
+     36.801962,
+     10.100273
+    ],
+    [
+     36.802073,
+     10.100337
+    ],
+    [
+     36.8038639,
+     10.0985919
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 946.15,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 259.09,
+   "length_ratio": 2.2794,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "onas_manouba",
+   "to": "dar_mocennine",
+   "key": "dar_mocennine|onas_manouba",
+   "straight_m": 517.37,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8095931,
+     10.0910119
+    ],
+    [
+     36.809217,
+     10.091506
+    ],
+    [
+     36.808799,
+     10.091673
+    ],
+    [
+     36.808615,
+     10.092102
+    ],
+    [
+     36.807063,
+     10.093073
+    ],
+    [
+     36.8061167,
+     10.0948744
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 537.65,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 49.89,
+   "length_ratio": 1.0392,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "dar_mocennine",
+   "to": "gouvernorat_manouba",
+   "key": "dar_mocennine|gouvernorat_manouba",
+   "straight_m": 299.42,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8095931,
+     10.0910119
+    ],
+    [
+     36.8114227,
+     10.0885442
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 299.42,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "gouvernorat_manouba",
+   "to": "hopital_errazi",
+   "key": "gouvernorat_manouba|hopital_errazi",
+   "straight_m": 192.59,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8114227,
+     10.0885442
+    ],
+    [
+     36.811794,
+     10.088069
+    ],
+    [
+     36.810973,
+     10.086895
+    ],
+    [
+     36.810928,
+     10.08645
+    ],
+    [
+     36.8112853,
+     10.0863877
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 277.93,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 44.51,
+   "length_ratio": 1.4431,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "hopital_errazi",
+   "to": "cite_orangers_1",
+   "key": "cite_orangers_1|hopital_errazi",
+   "straight_m": 498.18,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8150895,
+     10.0834317
+    ],
+    [
+     36.815509,
+     10.083894
+    ],
+    [
+     36.815764,
+     10.083593
+    ],
+    [
+     36.81529,
+     10.082983
+    ],
+    [
+     36.814275,
+     10.084185
+    ],
+    [
+     36.8112853,
+     10.0863877
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 718.38,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 76.36,
+   "length_ratio": 1.442,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_orangers_1",
+   "to": "cite_orangers_2",
+   "key": "cite_orangers_1|cite_orangers_2",
+   "straight_m": 272.99,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8150895,
+     10.0834317
+    ],
+    [
+     36.815509,
+     10.083894
+    ],
+    [
+     36.815764,
+     10.083593
+    ],
+    [
+     36.81529,
+     10.082983
+    ],
+    [
+     36.8167781,
+     10.0812057
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 405.83,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 64.32,
+   "length_ratio": 1.4866,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_orangers_2",
+   "to": "chemin_de_fer",
+   "key": "chemin_de_fer|cite_orangers_2",
+   "straight_m": 297.47,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8190027,
+     10.0793496
+    ],
+    [
+     36.819141,
+     10.079945
+    ],
+    [
+     36.818828,
+     10.082079
+    ],
+    [
+     36.818019,
+     10.080084
+    ],
+    [
+     36.8167781,
+     10.0812057
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 617.7,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 191.25,
+   "length_ratio": 2.0765,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "chemin_de_fer",
+   "to": "terminus_l92",
+   "key": "chemin_de_fer|terminus_l92",
+   "straight_m": 354.96,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8190027,
+     10.0793496
+    ],
+    [
+     36.819141,
+     10.079945
+    ],
+    [
+     36.818828,
+     10.082079
+    ],
+    [
+     36.818019,
+     10.080084
+    ],
+    [
+     36.819777,
+     10.078598
+    ],
+    [
+     36.8214032,
+     10.076721
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 929.6,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 243.73,
+   "length_ratio": 2.6189,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8038639,
+   10.0985919
+  ],
+  [
+   36.802073,
+   10.100337
+  ],
+  [
+   36.801962,
+   10.100273
+  ],
+  [
+   36.803395,
+   10.098537
+  ],
+  [
+   36.803574,
+   10.098264
+  ],
+  [
+   36.803638,
+   10.097825
+  ],
+  [
+   36.804363,
+   10.096908
+  ],
+  [
+   36.805487,
+   10.096039
+  ],
+  [
+   36.8061167,
+   10.0948744
+  ],
+  [
+   36.807063,
+   10.093073
+  ],
+  [
+   36.808615,
+   10.092102
+  ],
+  [
+   36.808799,
+   10.091673
+  ],
+  [
+   36.809217,
+   10.091506
+  ],
+  [
+   36.8095931,
+   10.0910119
+  ],
+  [
+   36.8114227,
+   10.0885442
+  ],
+  [
+   36.811794,
+   10.088069
+  ],
+  [
+   36.810973,
+   10.086895
+  ],
+  [
+   36.810928,
+   10.08645
+  ],
+  [
+   36.8112853,
+   10.0863877
+  ],
+  [
+   36.814275,
+   10.084185
+  ],
+  [
+   36.81529,
+   10.082983
+  ],
+  [
+   36.815764,
+   10.083593
+  ],
+  [
+   36.815509,
+   10.083894
+  ],
+  [
+   36.8150895,
+   10.0834317
+  ],
+  [
+   36.815509,
+   10.083894
+  ],
+  [
+   36.815764,
+   10.083593
+  ],
+  [
+   36.81529,
+   10.082983
+  ],
+  [
+   36.8167781,
+   10.0812057
+  ],
+  [
+   36.818019,
+   10.080084
+  ],
+  [
+   36.818828,
+   10.082079
+  ],
+  [
+   36.819141,
+   10.079945
+  ],
+  [
+   36.8190027,
+   10.0793496
+  ],
+  [
+   36.819141,
+   10.079945
+  ],
+  [
+   36.818828,
+   10.082079
+  ],
+  [
+   36.818019,
+   10.080084
+  ],
+  [
+   36.819777,
+   10.078598
+  ],
+  [
+   36.8214032,
+   10.076721
+  ]
+ ],
+ "phase3a": {
+  "pairs": 8,
+  "resolved": 8,
+  "unresolved": 0
+ }
+}

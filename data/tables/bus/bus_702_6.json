@@ -1,0 +1,191 @@
+{
+ "line_id": "bus_702_6",
+ "number": "6",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 6: 10 Decembre - Terminus Sidi Soufiene",
+ "direction_aller": [
+  "10_decembre",
+  "el_anbaria",
+  "lycee_ariana",
+  "place_sala_centre",
+  "foyer_ariana",
+  "les_abattoirs",
+  "cit_ennozha",
+  "borje_louzir",
+  "sidi_soufiene",
+  "terminus_sidi_soufiene"
+ ],
+ "direction_retour": [
+  "terminus_sidi_soufiene",
+  "sidi_soufiene",
+  "borje_louzir",
+  "cit_ennozha",
+  "les_abattoirs",
+  "foyer_ariana",
+  "place_sala_centre",
+  "lycee_ariana",
+  "el_anbaria",
+  "10_decembre"
+ ],
+ "stations_count": 10,
+ "start": {
+  "id": "10_decembre",
+  "name": "10 Decembre"
+ },
+ "end": {
+  "id": "terminus_sidi_soufiene",
+  "name": "Terminus Sidi Soufiene"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "10_decembre",
+  "el_anbaria",
+  "lycee_ariana",
+  "place_sala_centre",
+  "foyer_ariana",
+  "les_abattoirs",
+  "cit_ennozha",
+  "borje_louzir",
+  "sidi_soufiene",
+  "terminus_sidi_soufiene"
+ ],
+ "stations_detail": [
+  {
+   "id": "10_decembre",
+   "name_en": "10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421837,
+   "lon": 10.182519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_anbaria",
+   "name_en": "El Anbaria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8511265,
+   "lon": 10.1836125,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_ariana",
+   "name_en": "Lycee Ariana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8518082,
+   "lon": 10.1843751,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_sala_centre",
+   "name_en": "Place Sala Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85811,
+   "lon": 10.1914391,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_ariana",
+   "name_en": "Foyer Ariana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8584957,
+   "lon": 10.194707,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_abattoirs",
+   "name_en": "Les Abattoirs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8601659,
+   "lon": 10.1981876,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ennozha",
+   "name_en": "Cité Ennozha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.860076,
+   "lon": 10.1990933,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "borje_louzir",
+   "name_en": "Borje Louzir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.864771,
+   "lon": 10.2011313,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_soufiene",
+   "name_en": "Sidi Soufiene",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8677833,
+   "lon": 10.2084639,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_sidi_soufiene",
+   "name_en": "Terminus Sidi Soufiene",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8738772,
+   "lon": 10.2192893,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

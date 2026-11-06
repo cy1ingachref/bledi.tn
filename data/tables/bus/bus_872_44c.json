@@ -1,0 +1,250 @@
+{
+ "line_id": "bus_872_44c",
+ "number": "44C",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 44C: Intilaka - Jabbes",
+ "direction_aller": [
+  "intilaka",
+  "cit_errafeha",
+  "mnihla",
+  "kiosque",
+  "borj_jebbes",
+  "sanheji",
+  "sidi_marouen",
+  "geant",
+  "kiosque_agile",
+  "sabalet_ben_amar",
+  "jabbes_elborj",
+  "caf_jabbes",
+  "jabbes"
+ ],
+ "direction_retour": [
+  "jabbes",
+  "caf_jabbes",
+  "jabbes_elborj",
+  "sabalet_ben_amar",
+  "kiosque_agile",
+  "geant",
+  "sidi_marouen",
+  "sanheji",
+  "borj_jebbes",
+  "kiosque",
+  "mnihla",
+  "cit_errafeha",
+  "intilaka"
+ ],
+ "stations_count": 13,
+ "start": {
+  "id": "intilaka",
+  "name": "Intilaka"
+ },
+ "end": {
+  "id": "jabbes",
+  "name": "Jabbes"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [
+  {
+   "from": "mnihla",
+   "to": "kiosque",
+   "km": 20.9
+  },
+  {
+   "from": "kiosque",
+   "to": "borj_jebbes",
+   "km": 22.4
+  }
+ ],
+ "original_stations": [
+  "intilaka",
+  "cit_errafeha",
+  "mnihla",
+  "kiosque",
+  "borj_jebbes",
+  "sanheji",
+  "sidi_marouen",
+  "geant",
+  "kiosque_agile",
+  "sabalet_ben_amar",
+  "jabbes_elborj",
+  "caf_jabbes",
+  "jabbes"
+ ],
+ "stations_detail": [
+  {
+   "id": "intilaka",
+   "name_en": "Intilaka",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8396862,
+   "lon": 10.1168229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_errafeha",
+   "name_en": "Cité Errafeha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.852579,
+   "lon": 10.1233855,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mnihla",
+   "name_en": "Mnihla",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8575912,
+   "lon": 10.1164759,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque",
+   "name_en": "Kiosque",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6744031,
+   "lon": 10.0638679,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_jebbes",
+   "name_en": "Borj Jebbes",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8717714,
+   "lon": 10.1157249,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sanheji",
+   "name_en": "Sanheji",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8780318,
+   "lon": 10.1155307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_marouen",
+   "name_en": "Sidi Marouen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8939971,
+   "lon": 10.1163587,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "geant",
+   "name_en": "GEANT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8982192,
+   "lon": 10.1204885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_agile",
+   "name_en": "Kiosque Agile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8985123,
+   "lon": 10.114386,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sabalet_ben_amar",
+   "name_en": "Sabalet Ben Amar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9080505,
+   "lon": 10.1084462,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jabbes_elborj",
+   "name_en": "Jabbes Elborj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8925985,
+   "lon": 10.0874231,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_jabbes",
+   "name_en": "Café Jabbes",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8877204,
+   "lon": 10.0760773,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jabbes",
+   "name_en": "Jabbes",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8898645,
+   "lon": 10.0822837,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

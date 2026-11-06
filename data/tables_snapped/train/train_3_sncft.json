@@ -1,0 +1,1017 @@
+{
+ "line_id": "train_3_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Sousse Bab Jdid - Monastir",
+ "direction_aller": [
+  "sousse_bab_jdid",
+  "sousse_mohamed_v",
+  "sousse_sud",
+  "sousse_zi",
+  "sahline_ville",
+  "sahline_sebkha",
+  "les_hotels_monastir",
+  "aeroport_skanes_monastir",
+  "la_faculte",
+  "monastir"
+ ],
+ "direction_retour": [
+  "monastir",
+  "la_faculte",
+  "aeroport_skanes_monastir",
+  "les_hotels_monastir",
+  "sahline_sebkha",
+  "sahline_ville",
+  "sousse_zi",
+  "sousse_sud",
+  "sousse_mohamed_v",
+  "sousse_bab_jdid"
+ ],
+ "stations_count": 10,
+ "start": {
+  "id": "sousse_bab_jdid",
+  "name": "Sousse Bab Jdid"
+ },
+ "end": {
+  "id": "monastir",
+  "name": "Monastir"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "sousse_bab_jdid",
+  "sousse_mohamed_v",
+  "sousse_sud",
+  "sousse_zi",
+  "sahline_ville",
+  "sahline_sebkha",
+  "les_hotels_monastir",
+  "aeroport_skanes_monastir",
+  "la_faculte",
+  "monastir"
+ ],
+ "stations_detail": [
+  {
+   "id": "sousse_bab_jdid",
+   "name_en": "Sousse Bab Jdid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.823063,
+   "lon": 10.6415928,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_mohamed_v",
+   "name_en": "Sousse Mohamed V",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.8159939,
+   "lon": 10.6432475,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_sud",
+   "name_en": "Sousse Sud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.800173,
+   "lon": 10.649924,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_zi",
+   "name_en": "Sousse Zi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7821012,
+   "lon": 10.6683762,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sahline_ville",
+   "name_en": "Sahline Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7595786,
+   "lon": 10.7014559,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sahline_sebkha",
+   "name_en": "Sahline Sebkha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7576841,
+   "lon": 10.7165366,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_hotels_monastir",
+   "name_en": "Les Hotels Monastir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7601219,
+   "lon": 10.7448919,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "aeroport_skanes_monastir",
+   "name_en": "Aeroport Skanes Monastir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7625157,
+   "lon": 10.754098,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_faculte",
+   "name_en": "La Faculte",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7596167,
+   "lon": 10.8073597,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "monastir",
+   "name_en": "Monastir",
+   "name_ar": "المنستير",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_77m"
+   ],
+   "lat": 35.7706263,
+   "lon": 10.8252907,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "sousse_bab_jdid",
+   "to": "sousse_mohamed_v",
+   "key": "sousse_bab_jdid|sousse_mohamed_v",
+   "straight_m": 800.08,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.823063,
+     10.6415928
+    ],
+    [
+     35.822212,
+     10.641443
+    ],
+    [
+     35.821742,
+     10.641571
+    ],
+    [
+     35.818218,
+     10.643633
+    ],
+    [
+     35.81772,
+     10.643664
+    ],
+    [
+     35.8159939,
+     10.6432475
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 833.85,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 80.27,
+   "length_ratio": 1.0422,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sousse_mohamed_v",
+   "to": "sousse_sud",
+   "key": "sousse_mohamed_v|sousse_sud",
+   "straight_m": 1859.38,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.8159939,
+     10.6432475
+    ],
+    [
+     35.814517,
+     10.643171
+    ],
+    [
+     35.813238,
+     10.643578
+    ],
+    [
+     35.800173,
+     10.649924
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1872.66,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 71.03,
+   "length_ratio": 1.0071,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sousse_sud",
+   "to": "sousse_zi",
+   "key": "sousse_sud|sousse_zi",
+   "straight_m": 2609.22,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.800173,
+     10.649924
+    ],
+    [
+     35.786807,
+     10.656415
+    ],
+    [
+     35.785298,
+     10.657311
+    ],
+    [
+     35.784343,
+     10.658185
+    ],
+    [
+     35.783402,
+     10.659382
+    ],
+    [
+     35.782928,
+     10.660223
+    ],
+    [
+     35.782489,
+     10.661227
+    ],
+    [
+     35.782077,
+     10.66269
+    ],
+    [
+     35.781853,
+     10.665316
+    ],
+    [
+     35.7821012,
+     10.6683762
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 2916.81,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 548.93,
+   "length_ratio": 1.1179,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sousse_zi",
+   "to": "sahline_ville",
+   "key": "sahline_ville|sousse_zi",
+   "straight_m": 3896.01,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.7595786,
+     10.7014559
+    ],
+    [
+     35.760144,
+     10.699293
+    ],
+    [
+     35.760717,
+     10.697699
+    ],
+    [
+     35.761334,
+     10.696478
+    ],
+    [
+     35.762422,
+     10.694972
+    ],
+    [
+     35.763922,
+     10.693542
+    ],
+    [
+     35.770316,
+     10.688294
+    ],
+    [
+     35.772065,
+     10.686712
+    ],
+    [
+     35.773207,
+     10.685377
+    ],
+    [
+     35.776009,
+     10.681378
+    ],
+    [
+     35.779881,
+     10.677454
+    ],
+    [
+     35.780746,
+     10.676303
+    ],
+    [
+     35.781729,
+     10.674188
+    ],
+    [
+     35.782159,
+     10.672323
+    ],
+    [
+     35.782261,
+     10.670485
+    ],
+    [
+     35.7821012,
+     10.6683762
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 4083.05,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 344.28,
+   "length_ratio": 1.048,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sahline_ville",
+   "to": "sahline_sebkha",
+   "key": "sahline_sebkha|sahline_ville",
+   "straight_m": 1376.99,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.7576841,
+     10.7165366
+    ],
+    [
+     35.758702,
+     10.713274
+    ],
+    [
+     35.758957,
+     10.712158
+    ],
+    [
+     35.759016,
+     10.710662
+    ],
+    [
+     35.758618,
+     10.707609
+    ],
+    [
+     35.7586,
+     10.706064
+    ],
+    [
+     35.758872,
+     10.704324
+    ],
+    [
+     35.7595786,
+     10.7014559
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1403.96,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 79.43,
+   "length_ratio": 1.0196,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sahline_sebkha",
+   "to": "les_hotels_monastir",
+   "key": "les_hotels_monastir|sahline_sebkha",
+   "straight_m": 2572.9,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.7601219,
+     10.7448919
+    ],
+    [
+     35.759456,
+     10.742494
+    ],
+    [
+     35.759001,
+     10.741172
+    ],
+    [
+     35.75553,
+     10.733842
+    ],
+    [
+     35.755029,
+     10.732034
+    ],
+    [
+     35.754996,
+     10.730559
+    ],
+    [
+     35.755897,
+     10.722426
+    ],
+    [
+     35.7576841,
+     10.7165366
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2737.68,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 440.92,
+   "length_ratio": 1.064,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "les_hotels_monastir",
+   "to": "aeroport_skanes_monastir",
+   "key": "aeroport_skanes_monastir|les_hotels_monastir",
+   "straight_m": 872.27,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.7625157,
+     10.754098
+    ],
+    [
+     35.7601219,
+     10.7448919
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 872.27,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "aeroport_skanes_monastir",
+   "to": "la_faculte",
+   "key": "aeroport_skanes_monastir|la_faculte",
+   "straight_m": 4816.63,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.7625157,
+     10.754098
+    ],
+    [
+     35.753467,
+     10.799958
+    ],
+    [
+     35.752616,
+     10.798493
+    ],
+    [
+     35.75234,
+     10.797698
+    ],
+    [
+     35.752143,
+     10.796
+    ],
+    [
+     35.752304,
+     10.794515
+    ],
+    [
+     35.752674,
+     10.793396
+    ],
+    [
+     35.753459,
+     10.792084
+    ],
+    [
+     35.755504,
+     10.789411
+    ],
+    [
+     35.756252,
+     10.788705
+    ],
+    [
+     35.757338,
+     10.788046
+    ],
+    [
+     35.757864,
+     10.787909
+    ],
+    [
+     35.759053,
+     10.787838
+    ],
+    [
+     35.766844,
+     10.788446
+    ],
+    [
+     35.767701,
+     10.788359
+    ],
+    [
+     35.768739,
+     10.78798
+    ],
+    [
+     35.770094,
+     10.787012
+    ],
+    [
+     35.770972,
+     10.785925
+    ],
+    [
+     35.77171,
+     10.784374
+    ],
+    [
+     35.772075,
+     10.782618
+    ],
+    [
+     35.772075,
+     10.780984
+    ],
+    [
+     35.771765,
+     10.77836
+    ],
+    [
+     35.771393,
+     10.776324
+    ],
+    [
+     35.770933,
+     10.7747
+    ],
+    [
+     35.770003,
+     10.772405
+    ],
+    [
+     35.764598,
+     10.761271
+    ],
+    [
+     35.7596167,
+     10.8073597
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 13858.22,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 1232.79,
+   "length_ratio": 2.8772,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "la_faculte",
+   "to": "monastir",
+   "key": "la_faculte|monastir",
+   "straight_m": 2028.82,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.7596167,
+     10.8073597
+    ],
+    [
+     35.768555,
+     10.818339
+    ],
+    [
+     35.7669,
+     10.814709
+    ],
+    [
+     35.765833,
+     10.813462
+    ],
+    [
+     35.761566,
+     10.809581
+    ],
+    [
+     35.7706263,
+     10.8252907
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 4271.12,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 245.69,
+   "length_ratio": 2.1052,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   35.823063,
+   10.6415928
+  ],
+  [
+   35.822212,
+   10.641443
+  ],
+  [
+   35.821742,
+   10.641571
+  ],
+  [
+   35.818218,
+   10.643633
+  ],
+  [
+   35.81772,
+   10.643664
+  ],
+  [
+   35.8159939,
+   10.6432475
+  ],
+  [
+   35.814517,
+   10.643171
+  ],
+  [
+   35.813238,
+   10.643578
+  ],
+  [
+   35.800173,
+   10.649924
+  ],
+  [
+   35.786807,
+   10.656415
+  ],
+  [
+   35.785298,
+   10.657311
+  ],
+  [
+   35.784343,
+   10.658185
+  ],
+  [
+   35.783402,
+   10.659382
+  ],
+  [
+   35.782928,
+   10.660223
+  ],
+  [
+   35.782489,
+   10.661227
+  ],
+  [
+   35.782077,
+   10.66269
+  ],
+  [
+   35.781853,
+   10.665316
+  ],
+  [
+   35.7821012,
+   10.6683762
+  ],
+  [
+   35.782261,
+   10.670485
+  ],
+  [
+   35.782159,
+   10.672323
+  ],
+  [
+   35.781729,
+   10.674188
+  ],
+  [
+   35.780746,
+   10.676303
+  ],
+  [
+   35.779881,
+   10.677454
+  ],
+  [
+   35.776009,
+   10.681378
+  ],
+  [
+   35.773207,
+   10.685377
+  ],
+  [
+   35.772065,
+   10.686712
+  ],
+  [
+   35.770316,
+   10.688294
+  ],
+  [
+   35.763922,
+   10.693542
+  ],
+  [
+   35.762422,
+   10.694972
+  ],
+  [
+   35.761334,
+   10.696478
+  ],
+  [
+   35.760717,
+   10.697699
+  ],
+  [
+   35.760144,
+   10.699293
+  ],
+  [
+   35.7595786,
+   10.7014559
+  ],
+  [
+   35.758872,
+   10.704324
+  ],
+  [
+   35.7586,
+   10.706064
+  ],
+  [
+   35.758618,
+   10.707609
+  ],
+  [
+   35.759016,
+   10.710662
+  ],
+  [
+   35.758957,
+   10.712158
+  ],
+  [
+   35.758702,
+   10.713274
+  ],
+  [
+   35.7576841,
+   10.7165366
+  ],
+  [
+   35.755897,
+   10.722426
+  ],
+  [
+   35.754996,
+   10.730559
+  ],
+  [
+   35.755029,
+   10.732034
+  ],
+  [
+   35.75553,
+   10.733842
+  ],
+  [
+   35.759001,
+   10.741172
+  ],
+  [
+   35.759456,
+   10.742494
+  ],
+  [
+   35.7601219,
+   10.7448919
+  ],
+  [
+   35.7625157,
+   10.754098
+  ],
+  [
+   35.753467,
+   10.799958
+  ],
+  [
+   35.752616,
+   10.798493
+  ],
+  [
+   35.75234,
+   10.797698
+  ],
+  [
+   35.752143,
+   10.796
+  ],
+  [
+   35.752304,
+   10.794515
+  ],
+  [
+   35.752674,
+   10.793396
+  ],
+  [
+   35.753459,
+   10.792084
+  ],
+  [
+   35.755504,
+   10.789411
+  ],
+  [
+   35.756252,
+   10.788705
+  ],
+  [
+   35.757338,
+   10.788046
+  ],
+  [
+   35.757864,
+   10.787909
+  ],
+  [
+   35.759053,
+   10.787838
+  ],
+  [
+   35.766844,
+   10.788446
+  ],
+  [
+   35.767701,
+   10.788359
+  ],
+  [
+   35.768739,
+   10.78798
+  ],
+  [
+   35.770094,
+   10.787012
+  ],
+  [
+   35.770972,
+   10.785925
+  ],
+  [
+   35.77171,
+   10.784374
+  ],
+  [
+   35.772075,
+   10.782618
+  ],
+  [
+   35.772075,
+   10.780984
+  ],
+  [
+   35.771765,
+   10.77836
+  ],
+  [
+   35.771393,
+   10.776324
+  ],
+  [
+   35.770933,
+   10.7747
+  ],
+  [
+   35.770003,
+   10.772405
+  ],
+  [
+   35.764598,
+   10.761271
+  ],
+  [
+   35.7596167,
+   10.8073597
+  ],
+  [
+   35.768555,
+   10.818339
+  ],
+  [
+   35.7669,
+   10.814709
+  ],
+  [
+   35.765833,
+   10.813462
+  ],
+  [
+   35.761566,
+   10.809581
+  ],
+  [
+   35.7706263,
+   10.8252907
+  ]
+ ],
+ "phase3a": {
+  "pairs": 9,
+  "resolved": 9,
+  "unresolved": 0
+ }
+}

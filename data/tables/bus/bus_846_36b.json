@@ -1,0 +1,159 @@
+{
+ "line_id": "bus_846_36b",
+ "number": "36B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 36B: Terminus Ministére Des Affaires Etrangeres ( L 36 B ) - Touta Bardo",
+ "direction_aller": [
+  "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+  "clinique_el_amel",
+  "campus",
+  "14_janvier",
+  "foyer_bardo_2",
+  "foyer_bardo_1",
+  "caf_el_haj",
+  "touta_bardo"
+ ],
+ "direction_retour": [
+  "touta_bardo",
+  "caf_el_haj",
+  "foyer_bardo_1",
+  "foyer_bardo_2",
+  "14_janvier",
+  "campus",
+  "clinique_el_amel",
+  "terminus_minist_re_des_affaires_etrangeres_l_36_b"
+ ],
+ "stations_count": 8,
+ "start": {
+  "id": "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+  "name": "Terminus Ministére Des Affaires Etrangeres ( L 36 B )"
+ },
+ "end": {
+  "id": "touta_bardo",
+  "name": "Touta Bardo"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+  "clinique_el_amel",
+  "campus",
+  "14_janvier",
+  "foyer_bardo_2",
+  "foyer_bardo_1",
+  "caf_el_haj",
+  "touta_bardo"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+   "name_en": "Terminus Ministére Des Affaires Etrangeres ( L 36 B )",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8295624,
+   "lon": 10.1590382,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "clinique_el_amel",
+   "name_en": "Clinique El Amel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8503229,
+   "lon": 10.149575,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "campus",
+   "name_en": "Campus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8253694,
+   "lon": 10.1438887,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "14_janvier",
+   "name_en": "14 Janvier",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.823507,
+   "lon": 10.1414964,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_bardo_2",
+   "name_en": "Foyer Bardo 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81864,
+   "lon": 10.1414,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_bardo_1",
+   "name_en": "Foyer Bardo 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8141538,
+   "lon": 10.1462171,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_el_haj",
+   "name_en": "Café El Haj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8125757,
+   "lon": 10.1400783,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "touta_bardo",
+   "name_en": "Touta Bardo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8088443,
+   "lon": 10.1379771,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

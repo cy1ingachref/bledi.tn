@@ -1,0 +1,972 @@
+{
+ "line_id": "bus_768_95",
+ "number": "95",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 95: Rabattement Slimen Kahia - Terminus 56 72",
+ "direction_aller": [
+  "rabattement_slimen_kahia",
+  "poste_police_manouba",
+  "dar_mocennine",
+  "gouvernorat_manouba",
+  "ibn_jazzar_mannouba",
+  "boudria",
+  "hopital_kassab",
+  "ineps",
+  "d_l_gation_daouar_hicher",
+  "caf_hammem",
+  "baigneur",
+  "mosqu_e_avenue_chebbi",
+  "sabbela_56",
+  "affaires_sociales",
+  "terminus_56_72"
+ ],
+ "direction_retour": [
+  "terminus_56_72",
+  "affaires_sociales",
+  "sabbela_56",
+  "mosqu_e_avenue_chebbi",
+  "baigneur",
+  "caf_hammem",
+  "d_l_gation_daouar_hicher",
+  "ineps",
+  "hopital_kassab",
+  "boudria",
+  "ibn_jazzar_mannouba",
+  "gouvernorat_manouba",
+  "dar_mocennine",
+  "poste_police_manouba",
+  "rabattement_slimen_kahia"
+ ],
+ "stations_count": 15,
+ "start": {
+  "id": "rabattement_slimen_kahia",
+  "name": "Rabattement Slimen Kahia"
+ },
+ "end": {
+  "id": "terminus_56_72",
+  "name": "Terminus 56 72"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_slimen_kahia",
+  "poste_police_manouba",
+  "dar_mocennine",
+  "gouvernorat_manouba",
+  "ibn_jazzar_mannouba",
+  "boudria",
+  "hopital_kassab",
+  "ineps",
+  "d_l_gation_daouar_hicher",
+  "caf_hammem",
+  "baigneur",
+  "mosqu_e_avenue_chebbi",
+  "sabbela_56",
+  "affaires_sociales",
+  "terminus_56_72"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_slimen_kahia",
+   "name_en": "Rabattement Slimen Kahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8038639,
+   "lon": 10.0985919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poste_police_manouba",
+   "name_en": "Poste Police Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8083952,
+   "lon": 10.0923558,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dar_mocennine",
+   "name_en": "Dar Mocennine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8095931,
+   "lon": 10.0910119,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gouvernorat_manouba",
+   "name_en": "Gouvernorat Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8114227,
+   "lon": 10.0885442,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ibn_jazzar_mannouba",
+   "name_en": "Ibn Jazzar Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8128095,
+   "lon": 10.0892791,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boudria",
+   "name_en": "Boudria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8161882,
+   "lon": 10.0961131,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_kassab",
+   "name_en": "Hopital Kassab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8155796,
+   "lon": 10.1003191,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ineps",
+   "name_en": "INEPS",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8164772,
+   "lon": 10.1016119,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "d_l_gation_daouar_hicher",
+   "name_en": "Délégation Daouar Hicher",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8177484,
+   "lon": 10.0952015,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_hammem",
+   "name_en": "Café Hammem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8205913,
+   "lon": 10.0927178,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "baigneur",
+   "name_en": "Baigneur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8221034,
+   "lon": 10.0893598,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_avenue_chebbi",
+   "name_en": "Mosquée Avenue Chebbi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8255253,
+   "lon": 10.081018,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sabbela_56",
+   "name_en": "Sabbela (56)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.828582,
+   "lon": 10.0762648,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "affaires_sociales",
+   "name_en": "Affaires Sociales",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8316312,
+   "lon": 10.0831315,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_56_72",
+   "name_en": "Terminus 56 72",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8326267,
+   "lon": 10.0886137,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "rabattement_slimen_kahia",
+   "to": "poste_police_manouba",
+   "key": "poste_police_manouba|rabattement_slimen_kahia",
+   "straight_m": 749.75,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8083952,
+     10.0923558
+    ],
+    [
+     36.807568,
+     10.092707
+    ],
+    [
+     36.806955,
+     10.093204
+    ],
+    [
+     36.805586,
+     10.095913
+    ],
+    [
+     36.804292,
+     10.096984
+    ],
+    [
+     36.80361,
+     10.097864
+    ],
+    [
+     36.803574,
+     10.098264
+    ],
+    [
+     36.803395,
+     10.098537
+    ],
+    [
+     36.80242,
+     10.099808
+    ],
+    [
+     36.801977,
+     10.10022
+    ],
+    [
+     36.802073,
+     10.100337
+    ],
+    [
+     36.8038639,
+     10.0985919
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1298.15,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 255.01,
+   "length_ratio": 1.7314,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "poste_police_manouba",
+   "to": "dar_mocennine",
+   "key": "dar_mocennine|poste_police_manouba",
+   "straight_m": 179.04,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8095931,
+     10.0910119
+    ],
+    [
+     36.809217,
+     10.091506
+    ],
+    [
+     36.808821,
+     10.091652
+    ],
+    [
+     36.808615,
+     10.092102
+    ],
+    [
+     36.8083952,
+     10.0923558
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 186.04,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 14.98,
+   "length_ratio": 1.0391,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "dar_mocennine",
+   "to": "gouvernorat_manouba",
+   "key": "dar_mocennine|gouvernorat_manouba",
+   "straight_m": 299.42,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8095931,
+     10.0910119
+    ],
+    [
+     36.8114227,
+     10.0885442
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 299.42,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "gouvernorat_manouba",
+   "to": "ibn_jazzar_mannouba",
+   "key": "gouvernorat_manouba|ibn_jazzar_mannouba",
+   "straight_m": 167.51,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8114227,
+     10.0885442
+    ],
+    [
+     36.811681,
+     10.088214
+    ],
+    [
+     36.811918,
+     10.088226
+    ],
+    [
+     36.8128095,
+     10.0892791
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 203.91,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 47.59,
+   "length_ratio": 1.2173,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ibn_jazzar_mannouba",
+   "to": "boudria",
+   "key": "boudria|ibn_jazzar_mannouba",
+   "straight_m": 715.02,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8161882,
+     10.0961131
+    ],
+    [
+     36.816416,
+     10.095066
+    ],
+    [
+     36.8128095,
+     10.0892791
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 749.43,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 70.53,
+   "length_ratio": 1.0481,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "boudria",
+   "to": "hopital_kassab",
+   "key": "boudria|hopital_kassab",
+   "straight_m": 380.48,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8161882,
+     10.0961131
+    ],
+    [
+     36.815494,
+     10.099885
+    ],
+    [
+     36.81528,
+     10.100342
+    ],
+    [
+     36.815329,
+     10.100562
+    ],
+    [
+     36.815504,
+     10.10063
+    ],
+    [
+     36.815644,
+     10.100485
+    ],
+    [
+     36.8155796,
+     10.1003191
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 469.0,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 35.27,
+   "length_ratio": 1.2327,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "hopital_kassab",
+   "to": "ineps",
+   "key": "hopital_kassab|ineps",
+   "straight_m": 152.34,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 1440 m implausible vs 152 m straight"
+  },
+  {
+   "from": "ineps",
+   "to": "d_l_gation_daouar_hicher",
+   "key": "d_l_gation_daouar_hicher|ineps",
+   "straight_m": 587.88,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8177484,
+     10.0952015
+    ],
+    [
+     36.817127,
+     10.095058
+    ],
+    [
+     36.817065,
+     10.095348
+    ],
+    [
+     36.816273,
+     10.101579
+    ],
+    [
+     36.81565,
+     10.104135
+    ],
+    [
+     36.815736,
+     10.104292
+    ],
+    [
+     36.81586,
+     10.104215
+    ],
+    [
+     36.815871,
+     10.103716
+    ],
+    [
+     36.8164772,
+     10.1016119
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1172.28,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 252.41,
+   "length_ratio": 1.9941,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "d_l_gation_daouar_hicher",
+   "to": "caf_hammem",
+   "key": "caf_hammem|d_l_gation_daouar_hicher",
+   "straight_m": 385.76,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8205913,
+     10.0927178
+    ],
+    [
+     36.819589,
+     10.095544
+    ],
+    [
+     36.8177484,
+     10.0952015
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 482.08,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 142.28,
+   "length_ratio": 1.2497,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "caf_hammem",
+   "to": "baigneur",
+   "key": "baigneur|caf_hammem",
+   "straight_m": 342.95,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8221034,
+     10.0893598
+    ],
+    [
+     36.82122,
+     10.091003
+    ],
+    [
+     36.8205913,
+     10.0927178
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 344.08,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 13.9,
+   "length_ratio": 1.0033,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "baigneur",
+   "to": "mosqu_e_avenue_chebbi",
+   "key": "baigneur|mosqu_e_avenue_chebbi",
+   "straight_m": 834.32,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8221034,
+     10.0893598
+    ],
+    [
+     36.822565,
+     10.088176
+    ],
+    [
+     36.82369,
+     10.084485
+    ],
+    [
+     36.8255253,
+     10.081018
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 838.72,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 40.88,
+   "length_ratio": 1.0053,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mosqu_e_avenue_chebbi",
+   "to": "sabbela_56",
+   "key": "mosqu_e_avenue_chebbi|sabbela_56",
+   "straight_m": 542.69,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8255253,
+     10.081018
+    ],
+    [
+     36.828582,
+     10.0762648
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 542.69,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sabbela_56",
+   "to": "affaires_sociales",
+   "key": "affaires_sociales|sabbela_56",
+   "straight_m": 698.9,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8316312,
+     10.0831315
+    ],
+    [
+     36.830268,
+     10.077892
+    ],
+    [
+     36.829946,
+     10.076984
+    ],
+    [
+     36.828856,
+     10.075739
+    ],
+    [
+     36.828582,
+     10.0762648
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 798.79,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 101.57,
+   "length_ratio": 1.1429,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "affaires_sociales",
+   "to": "terminus_56_72",
+   "key": "affaires_sociales|terminus_56_72",
+   "straight_m": 500.32,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8316312,
+     10.0831315
+    ],
+    [
+     36.832436,
+     10.088048
+    ],
+    [
+     36.832538,
+     10.088483
+    ],
+    [
+     36.8326267,
+     10.0886137
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 502.22,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 9.54,
+   "length_ratio": 1.0038,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8038639,
+   10.0985919
+  ],
+  [
+   36.802073,
+   10.100337
+  ],
+  [
+   36.801977,
+   10.10022
+  ],
+  [
+   36.80242,
+   10.099808
+  ],
+  [
+   36.803395,
+   10.098537
+  ],
+  [
+   36.803574,
+   10.098264
+  ],
+  [
+   36.80361,
+   10.097864
+  ],
+  [
+   36.804292,
+   10.096984
+  ],
+  [
+   36.805586,
+   10.095913
+  ],
+  [
+   36.806955,
+   10.093204
+  ],
+  [
+   36.807568,
+   10.092707
+  ],
+  [
+   36.8083952,
+   10.0923558
+  ],
+  [
+   36.808615,
+   10.092102
+  ],
+  [
+   36.808821,
+   10.091652
+  ],
+  [
+   36.809217,
+   10.091506
+  ],
+  [
+   36.8095931,
+   10.0910119
+  ],
+  [
+   36.8114227,
+   10.0885442
+  ],
+  [
+   36.811681,
+   10.088214
+  ],
+  [
+   36.811918,
+   10.088226
+  ],
+  [
+   36.8128095,
+   10.0892791
+  ],
+  [
+   36.816416,
+   10.095066
+  ],
+  [
+   36.8161882,
+   10.0961131
+  ],
+  [
+   36.815494,
+   10.099885
+  ],
+  [
+   36.81528,
+   10.100342
+  ],
+  [
+   36.815329,
+   10.100562
+  ],
+  [
+   36.815504,
+   10.10063
+  ],
+  [
+   36.815644,
+   10.100485
+  ],
+  [
+   36.8155796,
+   10.1003191
+  ],
+  [
+   36.8164772,
+   10.1016119
+  ],
+  [
+   36.815871,
+   10.103716
+  ],
+  [
+   36.81586,
+   10.104215
+  ],
+  [
+   36.815736,
+   10.104292
+  ],
+  [
+   36.81565,
+   10.104135
+  ],
+  [
+   36.816273,
+   10.101579
+  ],
+  [
+   36.817065,
+   10.095348
+  ],
+  [
+   36.817127,
+   10.095058
+  ],
+  [
+   36.8177484,
+   10.0952015
+  ],
+  [
+   36.819589,
+   10.095544
+  ],
+  [
+   36.8205913,
+   10.0927178
+  ],
+  [
+   36.82122,
+   10.091003
+  ],
+  [
+   36.8221034,
+   10.0893598
+  ],
+  [
+   36.822565,
+   10.088176
+  ],
+  [
+   36.82369,
+   10.084485
+  ],
+  [
+   36.8255253,
+   10.081018
+  ],
+  [
+   36.828582,
+   10.0762648
+  ],
+  [
+   36.828856,
+   10.075739
+  ],
+  [
+   36.829946,
+   10.076984
+  ],
+  [
+   36.830268,
+   10.077892
+  ],
+  [
+   36.8316312,
+   10.0831315
+  ],
+  [
+   36.832436,
+   10.088048
+  ],
+  [
+   36.832538,
+   10.088483
+  ],
+  [
+   36.8326267,
+   10.0886137
+  ]
+ ],
+ "phase3a": {
+  "pairs": 14,
+  "resolved": 13,
+  "unresolved": 1
+ }
+}

@@ -1,0 +1,207 @@
+{
+ "line_id": "metro_50_1",
+ "number": "1",
+ "mode": "metro",
+ "operator": "Transtu",
+ "name": "Ligne 1: PLACE BARCELONE SUD - BEN AROUS",
+ "direction_aller": [
+  "place_barcelone_sud",
+  "bab_alioua",
+  "mohamed_manachou",
+  "13_aout",
+  "mohamed_ali",
+  "kabaria",
+  "ibn_sina",
+  "cite_ennour",
+  "ouerdia_6",
+  "abou_el_kacem_echebbi",
+  "ben_arous"
+ ],
+ "direction_retour": [
+  "ben_arous",
+  "abou_el_kacem_echebbi",
+  "ouerdia_6",
+  "cite_ennour",
+  "ibn_sina",
+  "kabaria",
+  "mohamed_ali",
+  "13_aout",
+  "mohamed_manachou",
+  "bab_alioua",
+  "place_barcelone_sud"
+ ],
+ "stations_count": 11,
+ "start": {
+  "id": "place_barcelone_sud",
+  "name": "PLACE BARCELONE SUD"
+ },
+ "end": {
+  "id": "ben_arous",
+  "name": "BEN AROUS"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "place_barcelone_sud",
+  "bab_alioua",
+  "mohamed_manachou",
+  "13_aout",
+  "mohamed_ali",
+  "kabaria",
+  "ibn_sina",
+  "cite_ennour",
+  "ouerdia_6",
+  "abou_el_kacem_echebbi",
+  "ben_arous"
+ ],
+ "stations_detail": [
+  {
+   "id": "place_barcelone_sud",
+   "name_en": "PLACE BARCELONE SUD",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7961,
+   "lon": 10.18055,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_alioua",
+   "name_en": "BAB ALIOUA",
+   "name_ar": "باب علوية",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7858,
+   "lon": 10.17981,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "mohamed_manachou",
+   "name_en": "MOHAMED MANACHOU",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7821,
+   "lon": 10.17984,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "13_aout",
+   "name_en": "13 AOUT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.77504,
+   "lon": 10.1792,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "mohamed_ali",
+   "name_en": "MOHAMED ALI",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.76788,
+   "lon": 10.18388,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "kabaria",
+   "name_en": "KABARIA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75978,
+   "lon": 10.19059,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "ibn_sina",
+   "name_en": "IBN SINA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75428,
+   "lon": 10.19393,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_ennour",
+   "name_en": "CITE ENNOUR",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7515,
+   "lon": 10.20473,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "ouerdia_6",
+   "name_en": "OUERDIA 6",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75424,
+   "lon": 10.19906,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "abou_el_kacem_echebbi",
+   "name_en": "ABOU EL KACEM ECHEBBI",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75246,
+   "lon": 10.21474,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_arous",
+   "name_en": "BEN AROUS",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7554,
+   "lon": 10.21898,
+   "mode": "metro",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

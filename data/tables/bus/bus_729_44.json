@@ -1,0 +1,692 @@
+{
+ "line_id": "bus_729_44",
+ "number": "44",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 44: Intilaka - Lycée Kalaate Al Andalouss",
+ "direction_aller": [
+  "intilaka",
+  "lycee_cite_errafeha",
+  "cit_errafeha",
+  "mnihla",
+  "kiosque",
+  "borj_jebbes",
+  "caf_maraya",
+  "sanheji",
+  "ben_arfa",
+  "sidi_marouen",
+  "geant",
+  "kiosque_agile",
+  "sabalet_ben_amar",
+  "p_age",
+  "borj_youssef_1",
+  "borj_youssef",
+  "essalat",
+  "arr_t_usine",
+  "oued_elmelah",
+  "arr_t_el_kaabi",
+  "pont_bizerte_glasse",
+  "pont_bizerte",
+  "tobyas",
+  "methali",
+  "oued_majerda",
+  "gessir_1",
+  "gessir_2",
+  "huilerie_entr_e_galaat",
+  "r_servoir_eau",
+  "ejjbal",
+  "el_fajja",
+  "ejjbal_2",
+  "ejjbal_3",
+  "municipale",
+  "ben_nicha",
+  "kambouza",
+  "errmila",
+  "route_lyc_e",
+  "ecole_primaire",
+  "lyc_e_kalaate_al_andalouss"
+ ],
+ "direction_retour": [
+  "lyc_e_kalaate_al_andalouss",
+  "ecole_primaire",
+  "route_lyc_e",
+  "errmila",
+  "kambouza",
+  "ben_nicha",
+  "municipale",
+  "ejjbal_3",
+  "ejjbal_2",
+  "el_fajja",
+  "ejjbal",
+  "r_servoir_eau",
+  "huilerie_entr_e_galaat",
+  "gessir_2",
+  "gessir_1",
+  "oued_majerda",
+  "methali",
+  "tobyas",
+  "pont_bizerte",
+  "pont_bizerte_glasse",
+  "arr_t_el_kaabi",
+  "oued_elmelah",
+  "arr_t_usine",
+  "essalat",
+  "borj_youssef",
+  "borj_youssef_1",
+  "p_age",
+  "sabalet_ben_amar",
+  "kiosque_agile",
+  "geant",
+  "sidi_marouen",
+  "ben_arfa",
+  "sanheji",
+  "caf_maraya",
+  "borj_jebbes",
+  "kiosque",
+  "mnihla",
+  "cit_errafeha",
+  "lycee_cite_errafeha",
+  "intilaka"
+ ],
+ "stations_count": 40,
+ "start": {
+  "id": "intilaka",
+  "name": "Intilaka"
+ },
+ "end": {
+  "id": "lyc_e_kalaate_al_andalouss",
+  "name": "Lycée Kalaate Al Andalouss"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [
+  {
+   "from": "mnihla",
+   "to": "kiosque",
+   "km": 20.9
+  },
+  {
+   "from": "kiosque",
+   "to": "borj_jebbes",
+   "km": 22.4
+  },
+  {
+   "from": "route_lyc_e",
+   "to": "ecole_primaire",
+   "km": 26.7
+  },
+  {
+   "from": "ecole_primaire",
+   "to": "lyc_e_kalaate_al_andalouss",
+   "km": 26.0
+  }
+ ],
+ "original_stations": [
+  "intilaka",
+  "lycee_cite_errafeha",
+  "cit_errafeha",
+  "mnihla",
+  "kiosque",
+  "borj_jebbes",
+  "caf_maraya",
+  "sanheji",
+  "ben_arfa",
+  "sidi_marouen",
+  "geant",
+  "kiosque_agile",
+  "sabalet_ben_amar",
+  "p_age",
+  "borj_youssef_1",
+  "borj_youssef",
+  "essalat",
+  "arr_t_usine",
+  "oued_elmelah",
+  "arr_t_el_kaabi",
+  "pont_bizerte_glasse",
+  "pont_bizerte",
+  "tobyas",
+  "methali",
+  "oued_majerda",
+  "gessir_1",
+  "gessir_2",
+  "huilerie_entr_e_galaat",
+  "r_servoir_eau",
+  "ejjbal",
+  "el_fajja",
+  "ejjbal_2",
+  "ejjbal_3",
+  "municipale",
+  "ben_nicha",
+  "kambouza",
+  "errmila",
+  "route_lyc_e",
+  "ecole_primaire",
+  "lyc_e_kalaate_al_andalouss"
+ ],
+ "stations_detail": [
+  {
+   "id": "intilaka",
+   "name_en": "Intilaka",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8396862,
+   "lon": 10.1168229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_cite_errafeha",
+   "name_en": "Lycee Cite Errafeha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8454003,
+   "lon": 10.1167978,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_errafeha",
+   "name_en": "Cité Errafeha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.852579,
+   "lon": 10.1233855,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mnihla",
+   "name_en": "Mnihla",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8575912,
+   "lon": 10.1164759,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque",
+   "name_en": "Kiosque",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6744031,
+   "lon": 10.0638679,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_jebbes",
+   "name_en": "Borj Jebbes",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8717714,
+   "lon": 10.1157249,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_maraya",
+   "name_en": "Café Maraya",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8779179,
+   "lon": 10.1158024,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sanheji",
+   "name_en": "Sanheji",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8780318,
+   "lon": 10.1155307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_arfa",
+   "name_en": "Ben Arfa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8830524,
+   "lon": 10.1156056,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_marouen",
+   "name_en": "Sidi Marouen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8939971,
+   "lon": 10.1163587,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "geant",
+   "name_en": "GEANT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8982192,
+   "lon": 10.1204885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_agile",
+   "name_en": "Kiosque Agile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8985123,
+   "lon": 10.114386,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sabalet_ben_amar",
+   "name_en": "Sabalet Ben Amar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9080505,
+   "lon": 10.1084462,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "p_age",
+   "name_en": "Péage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.926013,
+   "lon": 10.099739,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_youssef_1",
+   "name_en": "Borj Youssef 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9385697,
+   "lon": 10.0900831,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_youssef",
+   "name_en": "Borj Youssef",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9440906,
+   "lon": 10.088581,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "essalat",
+   "name_en": "Essalat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9610153,
+   "lon": 10.0795902,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arr_t_usine",
+   "name_en": "Arrét Usine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9692871,
+   "lon": 10.0739104,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_elmelah",
+   "name_en": "Oued Elmelah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9763419,
+   "lon": 10.0674452,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arr_t_el_kaabi",
+   "name_en": "Arrét El Kaabi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9847169,
+   "lon": 10.0635374,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_bizerte_glasse",
+   "name_en": "Pont Bizerte Glasse",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9929852,
+   "lon": 10.0626816,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_bizerte",
+   "name_en": "Pont Bizerte",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9934993,
+   "lon": 10.0681962,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tobyas",
+   "name_en": "Tobyas",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9990862,
+   "lon": 10.0720371,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "methali",
+   "name_en": "Methali",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.011829,
+   "lon": 10.0707073,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_majerda",
+   "name_en": "Oued Majerda",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0198302,
+   "lon": 10.0755245,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gessir_1",
+   "name_en": "Gessir 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0313937,
+   "lon": 10.0810928,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gessir_2",
+   "name_en": "Gessir 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0344427,
+   "lon": 10.084805,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "huilerie_entr_e_galaat",
+   "name_en": "Huilerie Entrée Galaat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0437573,
+   "lon": 10.0932756,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "r_servoir_eau",
+   "name_en": "Réservoir Eau",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.045987,
+   "lon": 10.095802,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ejjbal",
+   "name_en": "Ejjbal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0484766,
+   "lon": 10.0980224,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_fajja",
+   "name_en": "El Fajja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0513999,
+   "lon": 10.1014993,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ejjbal_2",
+   "name_en": "Ejjbal 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0552145,
+   "lon": 10.1042834,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ejjbal_3",
+   "name_en": "Ejjbal 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0564004,
+   "lon": 10.1063058,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipale",
+   "name_en": "Municipale",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0584001,
+   "lon": 10.1099001,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_nicha",
+   "name_en": "Ben Nicha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0597609,
+   "lon": 10.1120028,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kambouza",
+   "name_en": "Kambouza",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0609724,
+   "lon": 10.1155058,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "errmila",
+   "name_en": "Errmila",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0623138,
+   "lon": 10.1179652,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "route_lyc_e",
+   "name_en": "Route Lycée",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0613222,
+   "lon": 10.1186545,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire",
+   "name_en": "Ecole Primaire",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8366171,
+   "lon": 10.0126596,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_kalaate_al_andalouss",
+   "name_en": "Lycée Kalaate Al Andalouss",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.053151,
+   "lon": 10.1222381,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

@@ -1,0 +1,238 @@
+{
+ "line_id": "bus_769_96",
+ "number": "96",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 96: Rabattement Khaireddine Mannouba - Gobaa Terminus 96",
+ "direction_aller": [
+  "rabattement_khaireddine_mannouba",
+  "cit_snit_manouba",
+  "gobaa_terminus_96"
+ ],
+ "direction_retour": [
+  "gobaa_terminus_96",
+  "cit_snit_manouba",
+  "rabattement_khaireddine_mannouba"
+ ],
+ "stations_count": 3,
+ "start": {
+  "id": "rabattement_khaireddine_mannouba",
+  "name": "Rabattement Khaireddine Mannouba"
+ },
+ "end": {
+  "id": "gobaa_terminus_96",
+  "name": "Gobaa Terminus 96"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_khaireddine_mannouba",
+  "cit_snit_manouba",
+  "gobaa_terminus_96"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_khaireddine_mannouba",
+   "name_en": "Rabattement Khaireddine Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156704,
+   "lon": 10.0564588,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_snit_manouba",
+   "name_en": "Cité Snit Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8174686,
+   "lon": 10.0575002,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gobaa_terminus_96",
+   "name_en": "Gobaa Terminus 96",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8222353,
+   "lon": 10.0568779,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "rabattement_khaireddine_mannouba",
+   "to": "cit_snit_manouba",
+   "key": "cit_snit_manouba|rabattement_khaireddine_mannouba",
+   "straight_m": 220.4,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8174686,
+     10.0575002
+    ],
+    [
+     36.816501,
+     10.056598
+    ],
+    [
+     36.816218,
+     10.056499
+    ],
+    [
+     36.815806,
+     10.056549
+    ],
+    [
+     36.815428,
+     10.05607
+    ],
+    [
+     36.814777,
+     10.057265
+    ],
+    [
+     36.81482,
+     10.057443
+    ],
+    [
+     36.815149,
+     10.057518
+    ],
+    [
+     36.8156704,
+     10.0564588
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 565.94,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 128.91,
+   "length_ratio": 2.5678,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_snit_manouba",
+   "to": "gobaa_terminus_96",
+   "key": "cit_snit_manouba|gobaa_terminus_96",
+   "straight_m": 532.92,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8174686,
+     10.0575002
+    ],
+    [
+     36.819679,
+     10.059765
+    ],
+    [
+     36.820047,
+     10.059912
+    ],
+    [
+     36.821394,
+     10.058089
+    ],
+    [
+     36.821506,
+     10.05818
+    ],
+    [
+     36.8222353,
+     10.0568779
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 737.99,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 243.32,
+   "length_ratio": 1.3848,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8156704,
+   10.0564588
+  ],
+  [
+   36.815149,
+   10.057518
+  ],
+  [
+   36.81482,
+   10.057443
+  ],
+  [
+   36.814777,
+   10.057265
+  ],
+  [
+   36.815428,
+   10.05607
+  ],
+  [
+   36.815806,
+   10.056549
+  ],
+  [
+   36.816218,
+   10.056499
+  ],
+  [
+   36.816501,
+   10.056598
+  ],
+  [
+   36.8174686,
+   10.0575002
+  ],
+  [
+   36.819679,
+   10.059765
+  ],
+  [
+   36.820047,
+   10.059912
+  ],
+  [
+   36.821394,
+   10.058089
+  ],
+  [
+   36.821506,
+   10.05818
+  ],
+  [
+   36.8222353,
+   10.0568779
+  ]
+ ],
+ "phase3a": {
+  "pairs": 2,
+  "resolved": 2,
+  "unresolved": 0
+ }
+}

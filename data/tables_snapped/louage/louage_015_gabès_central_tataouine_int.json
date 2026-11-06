@@ -1,0 +1,88 @@
+{
+ "line_id": "louage_015_gabès_central_tataouine_int",
+ "number": "L15",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage: Gabès - Central Station → Tataouine - Intercity Hub",
+ "direction_aller": [
+  "louage_gabès_central_station",
+  "louage_tataouine_intercity_hub"
+ ],
+ "direction_retour": [
+  "louage_tataouine_intercity_hub",
+  "louage_gabès_central_station"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_gabès_central_station",
+  "name": "Gabès - Central Station"
+ },
+ "end": {
+  "id": "louage_tataouine_intercity_hub",
+  "name": "Tataouine - Intercity Hub"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "louage_gabès_central_station",
+   "to": "louage_tataouine_intercity_hub",
+   "km": 110.3
+  }
+ ],
+ "original_stations": [
+  "louage_gabès_central_station",
+  "louage_tataouine_intercity_hub"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_gabès_central_station",
+   "name_en": "Gabès - Central Station",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "no_source"
+   ],
+   "lat": 33.882,
+   "lon": 10.0935,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "louage_tataouine_intercity_hub",
+   "name_en": "Tataouine - Intercity Hub",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "no_source"
+   ],
+   "lat": 32.935,
+   "lon": 10.4485,
+   "mode": "louage",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv",
+ "segments": [
+  {
+   "from": "louage_gabès_central_station",
+   "to": "louage_tataouine_intercity_hub",
+   "key": "louage_gabès_central_station|louage_tataouine_intercity_hub",
+   "straight_m": 110336.84,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": null
+  }
+ ],
+ "snapped_geometry": [],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 0,
+  "unresolved": 1
+ }
+}

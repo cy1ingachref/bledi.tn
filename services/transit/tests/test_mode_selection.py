@@ -36,11 +36,22 @@ class TestSelectionsRestrictTheSearch:
             f"selection {sorted(allowed)} produced {sorted(allowed_ride - allowed)}"
         )
 
-    def test_louaj_selection_yields_a_car_leg_only(self, router):
-        res = router.route(*TUNIS, *SFAX, allowed_modes=TAXI_MODES)
+    def test_louage_selection_only_ever_rides_louage_lines(self, router):
+        """Louage is not point to point: no louage line, no louage answer, and never a taxi."""
+        res = router.route(*TUNIS, *SFAX, allowed_modes=frozenset({"louage", "louaj"}))
         steps = res.get("steps", [])
-        assert steps
-        assert all(s.get("type") == "taxi" for s in steps)
+        assert steps, "Tunis-Sfax has a louage line (L3)"
+        assert not any(s.get("type") == "taxi" for s in steps)
+        assert any(s.get("type") == "ride" and s.get("mode") == "louaj" for s in steps)
+
+    def test_taxi_selection_yields_a_car_leg_within_range(self, router):
+        res = router.route(*TUNIS, 36.40, 10.62, allowed_modes=frozenset({"taxi"}))  # Hammamet, ~70 km
+        steps = res.get("steps", [])
+        assert steps and all(s.get("type") == "taxi" for s in steps)
+
+    def test_taxi_is_not_offered_across_the_country(self, router):
+        res = router.route(*TUNIS, *SFAX, allowed_modes=frozenset({"taxi"}))  # ~270 km
+        assert not res.get("steps")
 
     def test_combination_search_can_use_bus_and_train_together(self, router):
         """A multi-modal path is NOT reachable by searching one mode set alone.

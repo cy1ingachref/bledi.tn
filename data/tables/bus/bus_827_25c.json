@@ -1,0 +1,383 @@
+{
+ "line_id": "bus_827_25c",
+ "number": "25C",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 25C: Avenue Carthage - Naassen 1",
+ "direction_aller": [
+  "avenue_carthage",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud",
+  "protection_civile",
+  "sidi_fathallah1",
+  "sidi_fathallah2",
+  "soned",
+  "kiosque_mobil_ben_arous",
+  "centre_ben_arous",
+  "municipalit_ben_arous",
+  "centre_des_handicap_s",
+  "cellulose_silos",
+  "institut_ennour",
+  "coll_ge_mourouj_3",
+  "imprimerie_bouslama",
+  "depot_bir_el_kassaa",
+  "mourouj_3",
+  "steg_nassen",
+  "cit_bellile",
+  "naassen_1"
+ ],
+ "direction_retour": [
+  "naassen_1",
+  "cit_bellile",
+  "steg_nassen",
+  "mourouj_3",
+  "depot_bir_el_kassaa",
+  "imprimerie_bouslama",
+  "coll_ge_mourouj_3",
+  "institut_ennour",
+  "cellulose_silos",
+  "centre_des_handicap_s",
+  "municipalit_ben_arous",
+  "centre_ben_arous",
+  "kiosque_mobil_ben_arous",
+  "soned",
+  "sidi_fathallah2",
+  "sidi_fathallah1",
+  "protection_civile",
+  "djebel_jelloud",
+  "el_afrane",
+  "centre_de_coordination_ouardia",
+  "dubosville",
+  "avenue_carthage"
+ ],
+ "stations_count": 22,
+ "start": {
+  "id": "avenue_carthage",
+  "name": "Avenue Carthage"
+ },
+ "end": {
+  "id": "naassen_1",
+  "name": "Naassen 1"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "avenue_carthage",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud",
+  "protection_civile",
+  "sidi_fathallah1",
+  "sidi_fathallah2",
+  "soned",
+  "kiosque_mobil_ben_arous",
+  "centre_ben_arous",
+  "municipalit_ben_arous",
+  "centre_des_handicap_s",
+  "cellulose_silos",
+  "institut_ennour",
+  "coll_ge_mourouj_3",
+  "imprimerie_bouslama",
+  "depot_bir_el_kassaa",
+  "mourouj_3",
+  "steg_nassen",
+  "cit_bellile",
+  "naassen_1"
+ ],
+ "stations_detail": [
+  {
+   "id": "avenue_carthage",
+   "name_en": "Avenue Carthage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7919242,
+   "lon": 10.1822642,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dubosville",
+   "name_en": "Dubosville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839884,
+   "lon": 10.1917495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_coordination_ouardia",
+   "name_en": "Centre De Coordination Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7806046,
+   "lon": 10.1956231,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_afrane",
+   "name_en": "El Afrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7796674,
+   "lon": 10.1966209,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebel_jelloud",
+   "name_en": "Djebel Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7731781,
+   "lon": 10.2025642,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "protection_civile",
+   "name_en": "Protection Civile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7719233,
+   "lon": 10.2037229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_fathallah1",
+   "name_en": "Sidi Fathallah1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7690357,
+   "lon": 10.2074351,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_fathallah2",
+   "name_en": "Sidi Fathallah2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7667667,
+   "lon": 10.2092375,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soned",
+   "name_en": "Soned",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7652949,
+   "lon": 10.210255,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_mobil_ben_arous",
+   "name_en": "Kiosque Mobil Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7570296,
+   "lon": 10.2187867,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_ben_arous",
+   "name_en": "Centre Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75346,
+   "lon": 10.2224984,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipalit_ben_arous",
+   "name_en": "Municipalité Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7483193,
+   "lon": 10.2253308,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_des_handicap_s",
+   "name_en": "Centre Des Handicapés",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7470814,
+   "lon": 10.2256741,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cellulose_silos",
+   "name_en": "Cellulose (Silos)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.745409,
+   "lon": 10.2258662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "institut_ennour",
+   "name_en": "Institut Ennour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.739619,
+   "lon": 10.2209534,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "coll_ge_mourouj_3",
+   "name_en": "Collége Mourouj 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7341334,
+   "lon": 10.2169623,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "imprimerie_bouslama",
+   "name_en": "Imprimerie Bouslama",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7299672,
+   "lon": 10.2187423,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "depot_bir_el_kassaa",
+   "name_en": "Depot Bir El Kassaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7254497,
+   "lon": 10.2219834,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mourouj_3",
+   "name_en": "Mourouj 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7204552,
+   "lon": 10.2230933,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_nassen",
+   "name_en": "Steg Nassen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7154051,
+   "lon": 10.2242881,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_bellile",
+   "name_en": "Cité Bellile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7096932,
+   "lon": 10.2275624,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "naassen_1",
+   "name_en": "Naassen 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7031045,
+   "lon": 10.2328624,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

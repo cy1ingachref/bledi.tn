@@ -1,0 +1,325 @@
+{
+ "line_id": "bus_881_66b",
+ "number": "66B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 66B: Terminus Tebourba - Andorre",
+ "direction_aller": [
+  "terminus_tebourba",
+  "cit_errajet",
+  "lyc_e_technique_tebourba",
+  "hopital_tebourba",
+  "frigo",
+  "route_chouigui",
+  "entree_chouigui",
+  "foret_de_tebourba",
+  "croisement_mateur",
+  "lycee_edkhila",
+  "sidi_abd_elbassette",
+  "ain_ezommite",
+  "ferme_el_hajri",
+  "elmeleha",
+  "el_barrage",
+  "cit_el_ayari",
+  "ecole_el_hawaria",
+  "andorre"
+ ],
+ "direction_retour": [
+  "andorre",
+  "ecole_el_hawaria",
+  "cit_el_ayari",
+  "el_barrage",
+  "elmeleha",
+  "ferme_el_hajri",
+  "ain_ezommite",
+  "sidi_abd_elbassette",
+  "lycee_edkhila",
+  "croisement_mateur",
+  "foret_de_tebourba",
+  "entree_chouigui",
+  "route_chouigui",
+  "frigo",
+  "hopital_tebourba",
+  "lyc_e_technique_tebourba",
+  "cit_errajet",
+  "terminus_tebourba"
+ ],
+ "stations_count": 18,
+ "start": {
+  "id": "terminus_tebourba",
+  "name": "Terminus Tebourba"
+ },
+ "end": {
+  "id": "andorre",
+  "name": "Andorre"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [
+  {
+   "from": "ecole_el_hawaria",
+   "to": "andorre",
+   "km": 51.9
+  }
+ ],
+ "original_stations": [
+  "terminus_tebourba",
+  "cit_errajet",
+  "lyc_e_technique_tebourba",
+  "hopital_tebourba",
+  "frigo",
+  "route_chouigui",
+  "entree_chouigui",
+  "foret_de_tebourba",
+  "croisement_mateur",
+  "lycee_edkhila",
+  "sidi_abd_elbassette",
+  "ain_ezommite",
+  "ferme_el_hajri",
+  "elmeleha",
+  "el_barrage",
+  "cit_el_ayari",
+  "ecole_el_hawaria",
+  "andorre"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tebourba",
+   "name_en": "Terminus Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8275891,
+   "lon": 9.8438062,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_errajet",
+   "name_en": "Cité Errajet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8367438,
+   "lon": 9.8360227,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_technique_tebourba",
+   "name_en": "Lycée Technique Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8446187,
+   "lon": 9.8290137,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_tebourba",
+   "name_en": "Hopital Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8459266,
+   "lon": 9.8280961,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "frigo",
+   "name_en": "Frigo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9238596,
+   "lon": 9.8888109,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "route_chouigui",
+   "name_en": "Route Chouigui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8634396,
+   "lon": 9.7983129,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entree_chouigui",
+   "name_en": "Entree Chouigui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8768205,
+   "lon": 9.7992141,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foret_de_tebourba",
+   "name_en": "Foret De Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8832796,
+   "lon": 9.7878471,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_mateur",
+   "name_en": "Croisement Mateur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8887673,
+   "lon": 9.7372124,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_edkhila",
+   "name_en": "Lycee Edkhila",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8723127,
+   "lon": 9.7107931,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_abd_elbassette",
+   "name_en": "Sidi Abd Elbassette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8767542,
+   "lon": 9.6847708,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ain_ezommite",
+   "name_en": "Ain Ezommite",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8782561,
+   "lon": 9.6755544,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ferme_el_hajri",
+   "name_en": "Ferme El Hajri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8703,
+   "lon": 9.6676047,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "elmeleha",
+   "name_en": "Elmeleha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8531578,
+   "lon": 9.6714345,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_barrage",
+   "name_en": "El Barrage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8333497,
+   "lon": 9.6721537,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_ayari",
+   "name_en": "Cité El Ayari",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8272612,
+   "lon": 9.6769706,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_el_hawaria",
+   "name_en": "Ecole El Hawaria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8295026,
+   "lon": 9.6837409,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "andorre",
+   "name_en": "Andorre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6377377,
+   "lon": 10.2149453,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

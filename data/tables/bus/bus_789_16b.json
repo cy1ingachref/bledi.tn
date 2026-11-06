@@ -1,0 +1,415 @@
+{
+ "line_id": "bus_789_16b",
+ "number": "16B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 16B: Rabattement Khaireddine Mannouba - Terminus Tebourba",
+ "direction_aller": [
+  "rabattement_khaireddine_mannouba",
+  "croisement_sanhaja",
+  "coop_rative_central",
+  "cit_torjmen",
+  "douar_el_bey",
+  "pompage",
+  "erriadh_manouba",
+  "zone_f",
+  "saida",
+  "oued_chafrou",
+  "stil",
+  "sidi_taleb_16d",
+  "stade_ejdaida",
+  "cit_rtt",
+  "ejedayda_gare",
+  "hammed",
+  "nouvelle_hammed",
+  "ecole_hammed",
+  "dhniba",
+  "parc_mayana",
+  "depot_tebourba",
+  "garde_nationale_tebourba",
+  "steg_tebourba",
+  "terminus_tebourba"
+ ],
+ "direction_retour": [
+  "terminus_tebourba",
+  "steg_tebourba",
+  "garde_nationale_tebourba",
+  "depot_tebourba",
+  "parc_mayana",
+  "dhniba",
+  "ecole_hammed",
+  "nouvelle_hammed",
+  "hammed",
+  "ejedayda_gare",
+  "cit_rtt",
+  "stade_ejdaida",
+  "sidi_taleb_16d",
+  "stil",
+  "oued_chafrou",
+  "saida",
+  "zone_f",
+  "erriadh_manouba",
+  "pompage",
+  "douar_el_bey",
+  "cit_torjmen",
+  "coop_rative_central",
+  "croisement_sanhaja",
+  "rabattement_khaireddine_mannouba"
+ ],
+ "stations_count": 24,
+ "start": {
+  "id": "rabattement_khaireddine_mannouba",
+  "name": "Rabattement Khaireddine Mannouba"
+ },
+ "end": {
+  "id": "terminus_tebourba",
+  "name": "Terminus Tebourba"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_khaireddine_mannouba",
+  "croisement_sanhaja",
+  "coop_rative_central",
+  "cit_torjmen",
+  "douar_el_bey",
+  "pompage",
+  "erriadh_manouba",
+  "zone_f",
+  "saida",
+  "oued_chafrou",
+  "stil",
+  "sidi_taleb_16d",
+  "stade_ejdaida",
+  "cit_rtt",
+  "ejedayda_gare",
+  "hammed",
+  "nouvelle_hammed",
+  "ecole_hammed",
+  "dhniba",
+  "parc_mayana",
+  "depot_tebourba",
+  "garde_nationale_tebourba",
+  "steg_tebourba",
+  "terminus_tebourba"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_khaireddine_mannouba",
+   "name_en": "Rabattement Khaireddine Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156704,
+   "lon": 10.0564588,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_sanhaja",
+   "name_en": "Croisement Sanhaja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230522,
+   "lon": 10.034149,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "coop_rative_central",
+   "name_en": "Coopérative Central",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.828223,
+   "lon": 10.0204221,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_torjmen",
+   "name_en": "Cité Torjmen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8318167,
+   "lon": 10.0130071,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "douar_el_bey",
+   "name_en": "Douar El Bey",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8354187,
+   "lon": 10.0063971,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pompage",
+   "name_en": "Pompage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356135,
+   "lon": 9.9975573,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "erriadh_manouba",
+   "name_en": "Erriadh Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8341505,
+   "lon": 9.9851857,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zone_f",
+   "name_en": "Zone F",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8333755,
+   "lon": 9.9786226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "saida",
+   "name_en": "Saida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8322184,
+   "lon": 9.9682448,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_chafrou",
+   "name_en": "Oued Chafrou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8336009,
+   "lon": 9.950274,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stil",
+   "name_en": "Stil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8339484,
+   "lon": 9.9456734,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_taleb_16d",
+   "name_en": "Sidi Taleb 16D",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8360449,
+   "lon": 9.9413553,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_ejdaida",
+   "name_en": "Stade Ejdaida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8399507,
+   "lon": 9.9349768,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_rtt",
+   "name_en": "Cité RTT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8429957,
+   "lon": 9.9313561,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ejedayda_gare",
+   "name_en": "Ejedayda Gare",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8490133,
+   "lon": 9.9354897,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammed",
+   "name_en": "Hammed",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8489485,
+   "lon": 9.9288725,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nouvelle_hammed",
+   "name_en": "Nouvelle Hammed",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8534646,
+   "lon": 9.8812897,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_hammed",
+   "name_en": "Ecole Hammed",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8589415,
+   "lon": 9.8904307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dhniba",
+   "name_en": "Dhniba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8500703,
+   "lon": 9.8777172,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "parc_mayana",
+   "name_en": "Parc Mayana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8441119,
+   "lon": 9.8696116,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "depot_tebourba",
+   "name_en": "Depot Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8382849,
+   "lon": 9.8599286,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_nationale_tebourba",
+   "name_en": "Garde Nationale Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8331425,
+   "lon": 9.8448065,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_tebourba",
+   "name_en": "Steg Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8310429,
+   "lon": 9.8421619,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_tebourba",
+   "name_en": "Terminus Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8275891,
+   "lon": 9.8438062,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

@@ -1,0 +1,88 @@
+{
+ "line_id": "louage_014_sfax_gare_rou_mahdia_centra",
+ "number": "L14",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage: Sfax - Gare Routière → Mahdia - Central Station",
+ "direction_aller": [
+  "louage_sfax_gare_routière",
+  "louage_mahdia_central_station"
+ ],
+ "direction_retour": [
+  "louage_mahdia_central_station",
+  "louage_sfax_gare_routière"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_sfax_gare_routière",
+  "name": "Sfax - Gare Routière"
+ },
+ "end": {
+  "id": "louage_mahdia_central_station",
+  "name": "Mahdia - Central Station"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "louage_sfax_gare_routière",
+   "to": "louage_mahdia_central_station",
+   "km": 89.1
+  }
+ ],
+ "original_stations": [
+  "louage_sfax_gare_routière",
+  "louage_mahdia_central_station"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_sfax_gare_routière",
+   "name_en": "Sfax - Gare Routière",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_219m"
+   ],
+   "lat": 34.7394,
+   "lon": 10.7604,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "louage_mahdia_central_station",
+   "name_en": "Mahdia - Central Station",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_20m"
+   ],
+   "lat": 35.505,
+   "lon": 11.0485,
+   "mode": "louage",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv",
+ "segments": [
+  {
+   "from": "louage_sfax_gare_routière",
+   "to": "louage_mahdia_central_station",
+   "key": "louage_mahdia_central_station|louage_sfax_gare_routière",
+   "straight_m": 89072.03,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": null
+  }
+ ],
+ "snapped_geometry": [],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 0,
+  "unresolved": 1
+ }
+}

@@ -1,0 +1,255 @@
+{
+ "line_id": "bus_888_46b",
+ "number": "46B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 46B: Terminus Tebourba - Terminus Laajema",
+ "direction_aller": [
+  "terminus_tebourba",
+  "piscine",
+  "cite_errimel",
+  "lycee_el_battan",
+  "cit_akacha",
+  "pont_rached",
+  "cit_ennour",
+  "el_mehrine",
+  "mahfoura",
+  "mahfoura_1",
+  "siclou",
+  "ecole_primaire_el_mahfoura",
+  "bouchiba",
+  "terminus_laajema"
+ ],
+ "direction_retour": [
+  "terminus_laajema",
+  "bouchiba",
+  "ecole_primaire_el_mahfoura",
+  "siclou",
+  "mahfoura_1",
+  "mahfoura",
+  "el_mehrine",
+  "cit_ennour",
+  "pont_rached",
+  "cit_akacha",
+  "lycee_el_battan",
+  "cite_errimel",
+  "piscine",
+  "terminus_tebourba"
+ ],
+ "stations_count": 14,
+ "start": {
+  "id": "terminus_tebourba",
+  "name": "Terminus Tebourba"
+ },
+ "end": {
+  "id": "terminus_laajema",
+  "name": "Terminus Laajema"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tebourba",
+  "piscine",
+  "cite_errimel",
+  "lycee_el_battan",
+  "cit_akacha",
+  "pont_rached",
+  "cit_ennour",
+  "el_mehrine",
+  "mahfoura",
+  "mahfoura_1",
+  "siclou",
+  "ecole_primaire_el_mahfoura",
+  "bouchiba",
+  "terminus_laajema"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tebourba",
+   "name_en": "Terminus Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8275891,
+   "lon": 9.8438062,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "piscine",
+   "name_en": "Piscine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8250615,
+   "lon": 9.8426178,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_errimel",
+   "name_en": "Cite Errimel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8201649,
+   "lon": 9.8428268,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_el_battan",
+   "name_en": "Lycee El Battan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8007522,
+   "lon": 9.8461957,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_akacha",
+   "name_en": "Cité Akacha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7921835,
+   "lon": 9.8473707,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_rached",
+   "name_en": "Pont Rached",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7860085,
+   "lon": 9.8474138,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ennour",
+   "name_en": "Cité Ennour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7781518,
+   "lon": 9.8532662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_mehrine",
+   "name_en": "El Mehrine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.76924,
+   "lon": 9.85656,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mahfoura",
+   "name_en": "Mahfoura",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7666831,
+   "lon": 9.8449192,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mahfoura_1",
+   "name_en": "Mahfoura 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7647708,
+   "lon": 9.8326669,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "siclou",
+   "name_en": "Siclou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.760903,
+   "lon": 9.8094604,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire_el_mahfoura",
+   "name_en": "Ecole Primaire El Mahfoura",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7612253,
+   "lon": 9.7863397,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchiba",
+   "name_en": "Bouchiba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7573585,
+   "lon": 9.7776929,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_laajema",
+   "name_en": "Terminus Laajema",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7624738,
+   "lon": 9.7705029,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

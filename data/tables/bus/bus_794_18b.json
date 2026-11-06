@@ -1,0 +1,314 @@
+{
+ "line_id": "bus_794_18b",
+ "number": "18B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 18B: 10 Decembre - ONAS Sidi Salah",
+ "direction_aller": [
+  "10_decembre",
+  "touta_10_decembre",
+  "el_anbaria",
+  "lyc_e_kheredinne",
+  "la_poste",
+  "place_sala_centre",
+  "foyer_ariana",
+  "caf_hamied_18c",
+  "monoprix",
+  "hamadi_abid",
+  "shell_soukra",
+  "club_de_la_police_national",
+  "salle_des_f_tes_ezitouna",
+  "universit_ibn_khaldoune",
+  "sidi_salah",
+  "mosqu_e_sidi_salah",
+  "onas_sidi_salah"
+ ],
+ "direction_retour": [
+  "onas_sidi_salah",
+  "mosqu_e_sidi_salah",
+  "sidi_salah",
+  "universit_ibn_khaldoune",
+  "salle_des_f_tes_ezitouna",
+  "club_de_la_police_national",
+  "shell_soukra",
+  "hamadi_abid",
+  "monoprix",
+  "caf_hamied_18c",
+  "foyer_ariana",
+  "place_sala_centre",
+  "la_poste",
+  "lyc_e_kheredinne",
+  "el_anbaria",
+  "touta_10_decembre",
+  "10_decembre"
+ ],
+ "stations_count": 17,
+ "start": {
+  "id": "10_decembre",
+  "name": "10 Decembre"
+ },
+ "end": {
+  "id": "onas_sidi_salah",
+  "name": "ONAS Sidi Salah"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [
+  {
+   "from": "universit_ibn_khaldoune",
+   "to": "sidi_salah",
+   "km": 230.1
+  },
+  {
+   "from": "sidi_salah",
+   "to": "mosqu_e_sidi_salah",
+   "km": 231.2
+  }
+ ],
+ "original_stations": [
+  "10_decembre",
+  "touta_10_decembre",
+  "el_anbaria",
+  "lyc_e_kheredinne",
+  "la_poste",
+  "place_sala_centre",
+  "foyer_ariana",
+  "caf_hamied_18c",
+  "monoprix",
+  "hamadi_abid",
+  "shell_soukra",
+  "club_de_la_police_national",
+  "salle_des_f_tes_ezitouna",
+  "universit_ibn_khaldoune",
+  "sidi_salah",
+  "mosqu_e_sidi_salah",
+  "onas_sidi_salah"
+ ],
+ "stations_detail": [
+  {
+   "id": "10_decembre",
+   "name_en": "10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421837,
+   "lon": 10.182519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "touta_10_decembre",
+   "name_en": "Touta 10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8454206,
+   "lon": 10.1834417,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_anbaria",
+   "name_en": "El Anbaria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8511265,
+   "lon": 10.1836125,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_kheredinne",
+   "name_en": "Lycée Kheredinne",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8531309,
+   "lon": 10.1852164,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_poste",
+   "name_en": "La Poste",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8557499,
+   "lon": 10.1878432,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_sala_centre",
+   "name_en": "Place Sala Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85811,
+   "lon": 10.1914391,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_ariana",
+   "name_en": "Foyer Ariana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8584957,
+   "lon": 10.194707,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_hamied_18c",
+   "name_en": "Café Hamied 18C",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8593094,
+   "lon": 10.2056327,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "monoprix",
+   "name_en": "Monoprix",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8635327,
+   "lon": 10.2153531,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hamadi_abid",
+   "name_en": "Hamadi Abid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8671893,
+   "lon": 10.2237216,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "shell_soukra",
+   "name_en": "Shell Soukra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.870324,
+   "lon": 10.230685,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "club_de_la_police_national",
+   "name_en": "Club De La Police National",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8735254,
+   "lon": 10.2361353,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "salle_des_f_tes_ezitouna",
+   "name_en": "Salle Des Fétes Ezitouna",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8767104,
+   "lon": 10.2324823,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "universit_ibn_khaldoune",
+   "name_en": "Université Ibn Khaldoune",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.880973,
+   "lon": 10.2283993,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_salah",
+   "name_en": "Sidi Salah",
+   "name_ar": "سيدي صالح",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_43m"
+   ],
+   "lat": 34.8580193,
+   "lon": 10.7673434,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_sidi_salah",
+   "name_en": "Mosquée Sidi Salah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8886294,
+   "lon": 10.2150317,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "onas_sidi_salah",
+   "name_en": "ONAS Sidi Salah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8921132,
+   "lon": 10.2115341,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

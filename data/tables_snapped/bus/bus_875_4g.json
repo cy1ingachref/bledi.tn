@@ -1,0 +1,1523 @@
+{
+ "line_id": "bus_875_4g",
+ "number": "4G",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 4G: Kasbah - Boudria ",
+ "direction_aller": [
+  "kasbah",
+  "telecom",
+  "charle_nicole",
+  "bab_saadoun",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "municipalite_bardo",
+  "lycee_saoueb",
+  "lycee_khaznadar",
+  "khaznadar",
+  "artisanat",
+  "denden",
+  "environnement_mannouba",
+  "steg_mannouba",
+  "t_l_com_manouba",
+  "el_farabi_mannouba",
+  "caserne_mannouba",
+  "hopital_kassab",
+  "boudria"
+ ],
+ "direction_retour": [
+  "boudria",
+  "hopital_kassab",
+  "caserne_mannouba",
+  "el_farabi_mannouba",
+  "t_l_com_manouba",
+  "steg_mannouba",
+  "environnement_mannouba",
+  "denden",
+  "artisanat",
+  "khaznadar",
+  "lycee_khaznadar",
+  "lycee_saoueb",
+  "municipalite_bardo",
+  "20_mars",
+  "bouchoucha",
+  "immeuble_chefia",
+  "bab_saadoun",
+  "charle_nicole",
+  "telecom",
+  "kasbah"
+ ],
+ "stations_count": 20,
+ "start": {
+  "id": "kasbah",
+  "name": "Kasbah"
+ },
+ "end": {
+  "id": "boudria",
+  "name": "Boudria"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "kasbah",
+  "telecom",
+  "charle_nicole",
+  "bab_saadoun",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "municipalite_bardo",
+  "lycee_saoueb",
+  "lycee_khaznadar",
+  "khaznadar",
+  "artisanat",
+  "denden",
+  "environnement_mannouba",
+  "steg_mannouba",
+  "t_l_com_manouba",
+  "el_farabi_mannouba",
+  "caserne_mannouba",
+  "hopital_kassab",
+  "boudria"
+ ],
+ "stations_detail": [
+  {
+   "id": "kasbah",
+   "name_en": "Kasbah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7963447,
+   "lon": 10.1681174,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "telecom",
+   "name_en": "Telecom",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8002558,
+   "lon": 10.1651885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_saadoun",
+   "name_en": "BAB SAADOUN",
+   "name_ar": "باب سعدون",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80986,
+   "lon": 10.16219,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_chefia",
+   "name_en": "Immeuble Chefia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8098234,
+   "lon": 10.152579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchoucha",
+   "name_en": "BOUCHOUCHA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80953,
+   "lon": 10.15026,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipalite_bardo",
+   "name_en": "Municipalite Bardo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8071673,
+   "lon": 10.1336858,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_saoueb",
+   "name_en": "Lycee Saoueb",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8059724,
+   "lon": 10.1288632,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_khaznadar",
+   "name_en": "Lycee Khaznadar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8049673,
+   "lon": 10.1243088,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "khaznadar",
+   "name_en": "KHAZNADAR",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80421,
+   "lon": 10.12177,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "artisanat",
+   "name_en": "ARTISANAT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80293,
+   "lon": 10.11601,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "denden",
+   "name_en": "DENDEN",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80221,
+   "lon": 10.11075,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "environnement_mannouba",
+   "name_en": "Environnement Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8070893,
+   "lon": 10.1035594,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_mannouba",
+   "name_en": "Steg Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8077015,
+   "lon": 10.10125,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "t_l_com_manouba",
+   "name_en": "Télécom Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8086353,
+   "lon": 10.1007516,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_farabi_mannouba",
+   "name_en": "El Farabi Mannouba -",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8113565,
+   "lon": 10.0992464,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caserne_mannouba",
+   "name_en": "Caserne Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8133724,
+   "lon": 10.0983933,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_kassab",
+   "name_en": "Hopital Kassab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8155796,
+   "lon": 10.1003191,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boudria",
+   "name_en": "Boudria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8161882,
+   "lon": 10.0961131,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "kasbah",
+   "to": "telecom",
+   "key": "kasbah|telecom",
+   "straight_m": 507.09,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7963447,
+     10.1681174
+    ],
+    [
+     36.797012,
+     10.167962
+    ],
+    [
+     36.797369,
+     10.168029
+    ],
+    [
+     36.797802,
+     10.168321
+    ],
+    [
+     36.798204,
+     10.168163
+    ],
+    [
+     36.800674,
+     10.166231
+    ],
+    [
+     36.80012,
+     10.165146
+    ],
+    [
+     36.8002558,
+     10.1651885
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 671.42,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 109.81,
+   "length_ratio": 1.3241,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "telecom",
+   "to": "charle_nicole",
+   "key": "charle_nicole|telecom",
+   "straight_m": 316.6,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8027802,
+     10.1635439
+    ],
+    [
+     36.80268,
+     10.163531
+    ],
+    [
+     36.802639,
+     10.163758
+    ],
+    [
+     36.799744,
+     10.165179
+    ],
+    [
+     36.799322,
+     10.16519
+    ],
+    [
+     36.798629,
+     10.164832
+    ],
+    [
+     36.798609,
+     10.164923
+    ],
+    [
+     36.799405,
+     10.165329
+    ],
+    [
+     36.8002558,
+     10.1651885
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 707.56,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 184.64,
+   "length_ratio": 2.2349,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "charle_nicole",
+   "to": "bab_saadoun",
+   "key": "bab_saadoun|charle_nicole",
+   "straight_m": 796.41,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.80986,
+     10.16219
+    ],
+    [
+     36.808964,
+     10.159719
+    ],
+    [
+     36.808598,
+     10.159307
+    ],
+    [
+     36.808033,
+     10.159242
+    ],
+    [
+     36.807544,
+     10.159524
+    ],
+    [
+     36.806225,
+     10.161275
+    ],
+    [
+     36.805223,
+     10.162241
+    ],
+    [
+     36.8027802,
+     10.1635439
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1069.41,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 290.18,
+   "length_ratio": 1.3428,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bab_saadoun",
+   "to": "immeuble_chefia",
+   "key": "bab_saadoun|immeuble_chefia",
+   "straight_m": 855.64,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.80986,
+     10.16219
+    ],
+    [
+     36.808913,
+     10.158778
+    ],
+    [
+     36.809413,
+     10.155873
+    ],
+    [
+     36.809843,
+     10.155378
+    ],
+    [
+     36.809967,
+     10.154925
+    ],
+    [
+     36.809751,
+     10.153986
+    ],
+    [
+     36.8098234,
+     10.152579
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 906.16,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 103.86,
+   "length_ratio": 1.059,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "immeuble_chefia",
+   "to": "bouchoucha",
+   "key": "bouchoucha|immeuble_chefia",
+   "straight_m": 209.01,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.80953,
+     10.15026
+    ],
+    [
+     36.809403,
+     10.149228
+    ],
+    [
+     36.809857,
+     10.149123
+    ],
+    [
+     36.809925,
+     10.149196
+    ],
+    [
+     36.809738,
+     10.15021
+    ],
+    [
+     36.810286,
+     10.15035
+    ],
+    [
+     36.811266,
+     10.151482
+    ],
+    [
+     36.81058,
+     10.15293
+    ],
+    [
+     36.809826,
+     10.152753
+    ],
+    [
+     36.8098234,
+     10.152579
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 708.11,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 173.69,
+   "length_ratio": 3.3879,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bouchoucha",
+   "to": "20_mars",
+   "key": "20_mars|bouchoucha",
+   "straight_m": 713.7,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.80835,
+     10.14238
+    ],
+    [
+     36.80953,
+     10.15026
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 713.7,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "20_mars",
+   "to": "municipalite_bardo",
+   "key": "20_mars|municipalite_bardo",
+   "straight_m": 785.12,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.80835,
+     10.14238
+    ],
+    [
+     36.807657,
+     10.137868
+    ],
+    [
+     36.807862,
+     10.137074
+    ],
+    [
+     36.80778,
+     10.137049
+    ],
+    [
+     36.807785,
+     10.135318
+    ],
+    [
+     36.808066,
+     10.134624
+    ],
+    [
+     36.80795,
+     10.134533
+    ],
+    [
+     36.807713,
+     10.134797
+    ],
+    [
+     36.807335,
+     10.134487
+    ],
+    [
+     36.8071673,
+     10.1336858
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 890.58,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 84.53,
+   "length_ratio": 1.1343,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "municipalite_bardo",
+   "to": "lycee_saoueb",
+   "key": "lycee_saoueb|municipalite_bardo",
+   "straight_m": 449.44,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8059724,
+     10.1288632
+    ],
+    [
+     36.805589,
+     10.12709
+    ],
+    [
+     36.805516,
+     10.127199
+    ],
+    [
+     36.805412,
+     10.127162
+    ],
+    [
+     36.80641,
+     10.131757
+    ],
+    [
+     36.807181,
+     10.134501
+    ],
+    [
+     36.807534,
+     10.134702
+    ],
+    [
+     36.80772,
+     10.135153
+    ],
+    [
+     36.807719,
+     10.136551
+    ],
+    [
+     36.807623,
+     10.136761
+    ],
+    [
+     36.807436,
+     10.136852
+    ],
+    [
+     36.80741,
+     10.137089
+    ],
+    [
+     36.807589,
+     10.137242
+    ],
+    [
+     36.807769,
+     10.137094
+    ],
+    [
+     36.807785,
+     10.135318
+    ],
+    [
+     36.808066,
+     10.134624
+    ],
+    [
+     36.80795,
+     10.134533
+    ],
+    [
+     36.807713,
+     10.134797
+    ],
+    [
+     36.807335,
+     10.134487
+    ],
+    [
+     36.8071673,
+     10.1336858
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1598.89,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 320.06,
+   "length_ratio": 3.5575,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "lycee_saoueb",
+   "to": "lycee_khaznadar",
+   "key": "lycee_khaznadar|lycee_saoueb",
+   "straight_m": 420.6,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 3402 m implausible vs 421 m straight"
+  },
+  {
+   "from": "lycee_khaznadar",
+   "to": "khaznadar",
+   "key": "khaznadar|lycee_khaznadar",
+   "straight_m": 241.21,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 1284 m implausible vs 241 m straight"
+  },
+  {
+   "from": "khaznadar",
+   "to": "artisanat",
+   "key": "artisanat|khaznadar",
+   "straight_m": 532.22,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.80293,
+     10.11601
+    ],
+    [
+     36.803304,
+     10.119467
+    ],
+    [
+     36.80421,
+     10.12177
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 539.04,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 42.24,
+   "length_ratio": 1.0128,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "artisanat",
+   "to": "denden",
+   "key": "artisanat|denden",
+   "straight_m": 475.11,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.80293,
+     10.11601
+    ],
+    [
+     36.802222,
+     10.111774
+    ],
+    [
+     36.80221,
+     10.11075
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 476.46,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 14.05,
+   "length_ratio": 1.0028,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "denden",
+   "to": "environnement_mannouba",
+   "key": "denden|environnement_mannouba",
+   "straight_m": 839.17,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.80221,
+     10.11075
+    ],
+    [
+     36.802161,
+     10.111221
+    ],
+    [
+     36.801934,
+     10.11132
+    ],
+    [
+     36.800536,
+     10.108808
+    ],
+    [
+     36.801122,
+     10.108508
+    ],
+    [
+     36.802278,
+     10.108537
+    ],
+    [
+     36.80229,
+     10.107372
+    ],
+    [
+     36.804295,
+     10.106579
+    ],
+    [
+     36.805198,
+     10.10586
+    ],
+    [
+     36.807454,
+     10.10456
+    ],
+    [
+     36.8070893,
+     10.1035594
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1371.21,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 253.79,
+   "length_ratio": 1.634,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "environnement_mannouba",
+   "to": "steg_mannouba",
+   "key": "environnement_mannouba|steg_mannouba",
+   "straight_m": 216.58,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8070893,
+     10.1035594
+    ],
+    [
+     36.806618,
+     10.101879
+    ],
+    [
+     36.8077015,
+     10.10125
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 291.38,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 96.77,
+   "length_ratio": 1.3454,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "steg_mannouba",
+   "to": "t_l_com_manouba",
+   "key": "steg_mannouba|t_l_com_manouba",
+   "straight_m": 112.92,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8077015,
+     10.10125
+    ],
+    [
+     36.8086353,
+     10.1007516
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 112.92,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "t_l_com_manouba",
+   "to": "el_farabi_mannouba",
+   "key": "el_farabi_mannouba|t_l_com_manouba",
+   "straight_m": 330.93,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8113565,
+     10.0992464
+    ],
+    [
+     36.8086353,
+     10.1007516
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 330.93,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "el_farabi_mannouba",
+   "to": "caserne_mannouba",
+   "key": "caserne_mannouba|el_farabi_mannouba",
+   "straight_m": 236.67,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8133724,
+     10.0983933
+    ],
+    [
+     36.812446,
+     10.098892
+    ],
+    [
+     36.8113565,
+     10.0992464
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 237.36,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 8.99,
+   "length_ratio": 1.0029,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "caserne_mannouba",
+   "to": "hopital_kassab",
+   "key": "caserne_mannouba|hopital_kassab",
+   "straight_m": 299.38,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8133724,
+     10.0983933
+    ],
+    [
+     36.813703,
+     10.098015
+    ],
+    [
+     36.81528,
+     10.100342
+    ],
+    [
+     36.815329,
+     10.100562
+    ],
+    [
+     36.815554,
+     10.100614
+    ],
+    [
+     36.8155796,
+     10.1003191
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 393.44,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 48.66,
+   "length_ratio": 1.3142,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "hopital_kassab",
+   "to": "boudria",
+   "key": "boudria|hopital_kassab",
+   "straight_m": 380.48,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8161882,
+     10.0961131
+    ],
+    [
+     36.815494,
+     10.099885
+    ],
+    [
+     36.81528,
+     10.100342
+    ],
+    [
+     36.815329,
+     10.100562
+    ],
+    [
+     36.815504,
+     10.10063
+    ],
+    [
+     36.815644,
+     10.100485
+    ],
+    [
+     36.8155796,
+     10.1003191
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 469.0,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 35.27,
+   "length_ratio": 1.2327,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7963447,
+   10.1681174
+  ],
+  [
+   36.797012,
+   10.167962
+  ],
+  [
+   36.797369,
+   10.168029
+  ],
+  [
+   36.797802,
+   10.168321
+  ],
+  [
+   36.798204,
+   10.168163
+  ],
+  [
+   36.800674,
+   10.166231
+  ],
+  [
+   36.80012,
+   10.165146
+  ],
+  [
+   36.8002558,
+   10.1651885
+  ],
+  [
+   36.799405,
+   10.165329
+  ],
+  [
+   36.798609,
+   10.164923
+  ],
+  [
+   36.798629,
+   10.164832
+  ],
+  [
+   36.799322,
+   10.16519
+  ],
+  [
+   36.799744,
+   10.165179
+  ],
+  [
+   36.802639,
+   10.163758
+  ],
+  [
+   36.80268,
+   10.163531
+  ],
+  [
+   36.8027802,
+   10.1635439
+  ],
+  [
+   36.805223,
+   10.162241
+  ],
+  [
+   36.806225,
+   10.161275
+  ],
+  [
+   36.807544,
+   10.159524
+  ],
+  [
+   36.808033,
+   10.159242
+  ],
+  [
+   36.808598,
+   10.159307
+  ],
+  [
+   36.808964,
+   10.159719
+  ],
+  [
+   36.80986,
+   10.16219
+  ],
+  [
+   36.808913,
+   10.158778
+  ],
+  [
+   36.809413,
+   10.155873
+  ],
+  [
+   36.809843,
+   10.155378
+  ],
+  [
+   36.809967,
+   10.154925
+  ],
+  [
+   36.809751,
+   10.153986
+  ],
+  [
+   36.8098234,
+   10.152579
+  ],
+  [
+   36.809826,
+   10.152753
+  ],
+  [
+   36.81058,
+   10.15293
+  ],
+  [
+   36.811266,
+   10.151482
+  ],
+  [
+   36.810286,
+   10.15035
+  ],
+  [
+   36.809738,
+   10.15021
+  ],
+  [
+   36.809925,
+   10.149196
+  ],
+  [
+   36.809857,
+   10.149123
+  ],
+  [
+   36.809403,
+   10.149228
+  ],
+  [
+   36.80953,
+   10.15026
+  ],
+  [
+   36.80835,
+   10.14238
+  ],
+  [
+   36.807657,
+   10.137868
+  ],
+  [
+   36.807862,
+   10.137074
+  ],
+  [
+   36.80778,
+   10.137049
+  ],
+  [
+   36.807785,
+   10.135318
+  ],
+  [
+   36.808066,
+   10.134624
+  ],
+  [
+   36.80795,
+   10.134533
+  ],
+  [
+   36.807713,
+   10.134797
+  ],
+  [
+   36.807335,
+   10.134487
+  ],
+  [
+   36.8071673,
+   10.1336858
+  ],
+  [
+   36.807335,
+   10.134487
+  ],
+  [
+   36.807713,
+   10.134797
+  ],
+  [
+   36.80795,
+   10.134533
+  ],
+  [
+   36.808066,
+   10.134624
+  ],
+  [
+   36.807785,
+   10.135318
+  ],
+  [
+   36.807769,
+   10.137094
+  ],
+  [
+   36.807589,
+   10.137242
+  ],
+  [
+   36.80741,
+   10.137089
+  ],
+  [
+   36.807436,
+   10.136852
+  ],
+  [
+   36.807623,
+   10.136761
+  ],
+  [
+   36.807719,
+   10.136551
+  ],
+  [
+   36.80772,
+   10.135153
+  ],
+  [
+   36.807534,
+   10.134702
+  ],
+  [
+   36.807181,
+   10.134501
+  ],
+  [
+   36.80641,
+   10.131757
+  ],
+  [
+   36.805412,
+   10.127162
+  ],
+  [
+   36.805516,
+   10.127199
+  ],
+  [
+   36.805589,
+   10.12709
+  ],
+  [
+   36.8059724,
+   10.1288632
+  ],
+  [
+   36.80421,
+   10.12177
+  ],
+  [
+   36.803304,
+   10.119467
+  ],
+  [
+   36.80293,
+   10.11601
+  ],
+  [
+   36.802222,
+   10.111774
+  ],
+  [
+   36.80221,
+   10.11075
+  ],
+  [
+   36.802161,
+   10.111221
+  ],
+  [
+   36.801934,
+   10.11132
+  ],
+  [
+   36.800536,
+   10.108808
+  ],
+  [
+   36.801122,
+   10.108508
+  ],
+  [
+   36.802278,
+   10.108537
+  ],
+  [
+   36.80229,
+   10.107372
+  ],
+  [
+   36.804295,
+   10.106579
+  ],
+  [
+   36.805198,
+   10.10586
+  ],
+  [
+   36.807454,
+   10.10456
+  ],
+  [
+   36.8070893,
+   10.1035594
+  ],
+  [
+   36.806618,
+   10.101879
+  ],
+  [
+   36.8077015,
+   10.10125
+  ],
+  [
+   36.8086353,
+   10.1007516
+  ],
+  [
+   36.8113565,
+   10.0992464
+  ],
+  [
+   36.812446,
+   10.098892
+  ],
+  [
+   36.8133724,
+   10.0983933
+  ],
+  [
+   36.813703,
+   10.098015
+  ],
+  [
+   36.81528,
+   10.100342
+  ],
+  [
+   36.815329,
+   10.100562
+  ],
+  [
+   36.815554,
+   10.100614
+  ],
+  [
+   36.8155796,
+   10.1003191
+  ],
+  [
+   36.815644,
+   10.100485
+  ],
+  [
+   36.815504,
+   10.10063
+  ],
+  [
+   36.815329,
+   10.100562
+  ],
+  [
+   36.81528,
+   10.100342
+  ],
+  [
+   36.815494,
+   10.099885
+  ],
+  [
+   36.8161882,
+   10.0961131
+  ]
+ ],
+ "phase3a": {
+  "pairs": 19,
+  "resolved": 17,
+  "unresolved": 2
+ }
+}

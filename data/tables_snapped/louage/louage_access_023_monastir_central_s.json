@@ -1,0 +1,82 @@
+{
+ "line_id": "louage_access_023_monastir_central_s",
+ "number": "LA23",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage access: Monastir - Central Station → Monastir",
+ "direction_aller": [
+  "louage_monastir_central_station",
+  "dl_srtj_monastir_07506"
+ ],
+ "direction_retour": [
+  "dl_srtj_monastir_07506",
+  "louage_monastir_central_station"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_monastir_central_station",
+  "name": "Monastir - Central Station"
+ },
+ "end": {
+  "id": "dl_srtj_monastir_07506",
+  "name": "Monastir"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "louage_monastir_central_station",
+  "dl_srtj_monastir_07506"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_monastir_central_station",
+   "name_en": "Monastir - Central Station",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_104m"
+   ],
+   "lat": 35.7725,
+   "lon": 10.825,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "dl_srtj_monastir_07506",
+   "name_en": "Monastir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_38m"
+   ],
+   "lat": 35.7734575169,
+   "lon": 10.825990364,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv",
+ "segments": [
+  {
+   "from": "louage_monastir_central_station",
+   "to": "dl_srtj_monastir_07506",
+   "key": "dl_srtj_monastir_07506|louage_monastir_central_station",
+   "straight_m": 138.99,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": null
+  }
+ ],
+ "snapped_geometry": [],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 0,
+  "unresolved": 1
+ }
+}

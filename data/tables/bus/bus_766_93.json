@@ -1,0 +1,63 @@
+{
+ "line_id": "bus_766_93",
+ "number": "93",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 93: Rabattement Khaireddine Mannouba - Terminus 16A 93",
+ "direction_aller": [
+  "rabattement_khaireddine_mannouba",
+  "terminus_16a_93"
+ ],
+ "direction_retour": [
+  "terminus_16a_93",
+  "rabattement_khaireddine_mannouba"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "rabattement_khaireddine_mannouba",
+  "name": "Rabattement Khaireddine Mannouba"
+ },
+ "end": {
+  "id": "terminus_16a_93",
+  "name": "Terminus 16A 93"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_khaireddine_mannouba",
+  "terminus_16a_93"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_khaireddine_mannouba",
+   "name_en": "Rabattement Khaireddine Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156704,
+   "lon": 10.0564588,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_16a_93",
+   "name_en": "Terminus 16A 93",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8200511,
+   "lon": 10.0296797,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

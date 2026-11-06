@@ -1,0 +1,88 @@
+{
+ "line_id": "louage_013_sfax_gare_rou_djerba_houmt",
+ "number": "L13",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage: Sfax - Gare Routière → Djerba - Houmt Souk Station",
+ "direction_aller": [
+  "louage_sfax_gare_routière",
+  "louage_djerba_houmt_souk_station"
+ ],
+ "direction_retour": [
+  "louage_djerba_houmt_souk_station",
+  "louage_sfax_gare_routière"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_sfax_gare_routière",
+  "name": "Sfax - Gare Routière"
+ },
+ "end": {
+  "id": "louage_djerba_houmt_souk_station",
+  "name": "Djerba - Houmt Souk Station"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "louage_sfax_gare_routière",
+   "to": "louage_djerba_houmt_souk_station",
+   "km": 96.4
+  }
+ ],
+ "original_stations": [
+  "louage_sfax_gare_routière",
+  "louage_djerba_houmt_souk_station"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_sfax_gare_routière",
+   "name_en": "Sfax - Gare Routière",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_219m"
+   ],
+   "lat": 34.7394,
+   "lon": 10.7604,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "louage_djerba_houmt_souk_station",
+   "name_en": "Djerba - Houmt Souk Station",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_82m"
+   ],
+   "lat": 33.8765,
+   "lon": 10.8565,
+   "mode": "louage",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv",
+ "segments": [
+  {
+   "from": "louage_sfax_gare_routière",
+   "to": "louage_djerba_houmt_souk_station",
+   "key": "louage_djerba_houmt_souk_station|louage_sfax_gare_routière",
+   "straight_m": 96355.36,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": null
+  }
+ ],
+ "snapped_geometry": [],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 0,
+  "unresolved": 1
+ }
+}

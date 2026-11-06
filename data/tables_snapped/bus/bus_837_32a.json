@@ -1,0 +1,1519 @@
+{
+ "line_id": "bus_837_32a",
+ "number": "32A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 32A: Bab Alioua - Terminus 33B/32A/533",
+ "direction_aller": [
+  "bab_alioua",
+  "sidi_bechir",
+  "bab_jdid",
+  "bab_mnara",
+  "kasbah",
+  "darghouth_bacha",
+  "stade_mellassine",
+  "souk_mellassine",
+  "centre_de_formation_zouhour",
+  "kharouba",
+  "office_de_huile",
+  "mizanetta",
+  "ecole_zouhour4",
+  "immeubles_hrairia",
+  "cite_essalama",
+  "ben_daha",
+  "sidi_hsin_section",
+  "sidi_hsin",
+  "croisement_20_mars",
+  "terminus_33b_32a_533"
+ ],
+ "direction_retour": [
+  "terminus_33b_32a_533",
+  "croisement_20_mars",
+  "sidi_hsin",
+  "sidi_hsin_section",
+  "ben_daha",
+  "cite_essalama",
+  "immeubles_hrairia",
+  "ecole_zouhour4",
+  "mizanetta",
+  "office_de_huile",
+  "kharouba",
+  "centre_de_formation_zouhour",
+  "souk_mellassine",
+  "stade_mellassine",
+  "darghouth_bacha",
+  "kasbah",
+  "bab_mnara",
+  "bab_jdid",
+  "sidi_bechir",
+  "bab_alioua"
+ ],
+ "stations_count": 20,
+ "start": {
+  "id": "bab_alioua",
+  "name": "BAB ALIOUA"
+ },
+ "end": {
+  "id": "terminus_33b_32a_533",
+  "name": "Terminus 33B/32A/533"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "bab_alioua",
+  "sidi_bechir",
+  "bab_jdid",
+  "bab_mnara",
+  "kasbah",
+  "darghouth_bacha",
+  "stade_mellassine",
+  "souk_mellassine",
+  "centre_de_formation_zouhour",
+  "kharouba",
+  "office_de_huile",
+  "mizanetta",
+  "ecole_zouhour4",
+  "immeubles_hrairia",
+  "cite_essalama",
+  "ben_daha",
+  "sidi_hsin_section",
+  "sidi_hsin",
+  "croisement_20_mars",
+  "terminus_33b_32a_533"
+ ],
+ "stations_detail": [
+  {
+   "id": "bab_alioua",
+   "name_en": "BAB ALIOUA",
+   "name_ar": "باب علوية",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7858,
+   "lon": 10.17981,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bechir",
+   "name_en": "Sidi Bechir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7914689,
+   "lon": 10.1774998,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_jdid",
+   "name_en": "Bab Jdid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7921584,
+   "lon": 10.17213,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_mnara",
+   "name_en": "Bab Mnara",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7932496,
+   "lon": 10.1700674,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kasbah",
+   "name_en": "Kasbah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7963447,
+   "lon": 10.1681174,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "darghouth_bacha",
+   "name_en": "Darghouth Bacha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7976742,
+   "lon": 10.162871,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_mellassine",
+   "name_en": "Stade Mellassine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7981849,
+   "lon": 10.1535288,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "souk_mellassine",
+   "name_en": "Souk Mellassine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7979787,
+   "lon": 10.1506964,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_zouhour",
+   "name_en": "Centre De Formation Zouhour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7972038,
+   "lon": 10.146185,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kharouba",
+   "name_en": "Kharouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7967029,
+   "lon": 10.1437226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "office_de_huile",
+   "name_en": "Office De Huile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7960371,
+   "lon": 10.1386318,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mizanetta",
+   "name_en": "Mizanetta",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7943601,
+   "lon": 10.1316662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_zouhour4",
+   "name_en": "Ecole Zouhour4",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7909852,
+   "lon": 10.1273826,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeubles_hrairia",
+   "name_en": "Immeubles Hrairia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7870148,
+   "lon": 10.1238794,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_essalama",
+   "name_en": "Cite Essalama",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7841114,
+   "lon": 10.117158,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_daha",
+   "name_en": "Ben Daha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.781323,
+   "lon": 10.1112679,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_hsin_section",
+   "name_en": "Sidi Hsin Section",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7747534,
+   "lon": 10.1145885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_hsin",
+   "name_en": "Sidi Hsin",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7696915,
+   "lon": 10.113301,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_20_mars",
+   "name_en": "Croisement 20 Mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7602707,
+   "lon": 10.1148242,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_33b_32a_533",
+   "name_en": "Terminus 33B/32A/533",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7516026,
+   "lon": 10.1100931,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "bab_alioua",
+   "to": "sidi_bechir",
+   "key": "bab_alioua|sidi_bechir",
+   "straight_m": 663.08,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7858,
+     10.17981
+    ],
+    [
+     36.784275,
+     10.180296
+    ],
+    [
+     36.784295,
+     10.180436
+    ],
+    [
+     36.785762,
+     10.18015
+    ],
+    [
+     36.787279,
+     10.180489
+    ],
+    [
+     36.787858,
+     10.18083
+    ],
+    [
+     36.788403,
+     10.181698
+    ],
+    [
+     36.788608,
+     10.18171
+    ],
+    [
+     36.789304,
+     10.180734
+    ],
+    [
+     36.790085,
+     10.180147
+    ],
+    [
+     36.790864,
+     10.178188
+    ],
+    [
+     36.7914689,
+     10.1774998
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1219.86,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 257.72,
+   "length_ratio": 1.8397,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sidi_bechir",
+   "to": "bab_jdid",
+   "key": "bab_jdid|sidi_bechir",
+   "straight_m": 484.27,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7921584,
+     10.17213
+    ],
+    [
+     36.791845,
+     10.173429
+    ],
+    [
+     36.792108,
+     10.175292
+    ],
+    [
+     36.792386,
+     10.176409
+    ],
+    [
+     36.791288,
+     10.177477
+    ],
+    [
+     36.791343,
+     10.177563
+    ],
+    [
+     36.7914689,
+     10.1774998
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 573.07,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 85.31,
+   "length_ratio": 1.1834,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bab_jdid",
+   "to": "bab_mnara",
+   "key": "bab_jdid|bab_mnara",
+   "straight_m": 220.13,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7921584,
+     10.17213
+    ],
+    [
+     36.792471,
+     10.17077
+    ],
+    [
+     36.79276,
+     10.1704
+    ],
+    [
+     36.7932496,
+     10.1700674
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 233.99,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 37.75,
+   "length_ratio": 1.063,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bab_mnara",
+   "to": "kasbah",
+   "key": "bab_mnara|kasbah",
+   "straight_m": 385.48,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7932496,
+     10.1700674
+    ],
+    [
+     36.793988,
+     10.16996
+    ],
+    [
+     36.794767,
+     10.16957
+    ],
+    [
+     36.795422,
+     10.168694
+    ],
+    [
+     36.7963447,
+     10.1681174
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 397.43,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 36.46,
+   "length_ratio": 1.031,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "kasbah",
+   "to": "darghouth_bacha",
+   "key": "darghouth_bacha|kasbah",
+   "straight_m": 489.98,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7976742,
+     10.162871
+    ],
+    [
+     36.796614,
+     10.163643
+    ],
+    [
+     36.79638,
+     10.163973
+    ],
+    [
+     36.796069,
+     10.164006
+    ],
+    [
+     36.797149,
+     10.167513
+    ],
+    [
+     36.797105,
+     10.167923
+    ],
+    [
+     36.7963447,
+     10.1681174
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 668.11,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 139.68,
+   "length_ratio": 1.3636,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "darghouth_bacha",
+   "to": "stade_mellassine",
+   "key": "darghouth_bacha|stade_mellassine",
+   "straight_m": 833.76,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7976742,
+     10.162871
+    ],
+    [
+     36.799001,
+     10.161693
+    ],
+    [
+     36.799904,
+     10.161623
+    ],
+    [
+     36.800132,
+     10.161444
+    ],
+    [
+     36.800293,
+     10.161115
+    ],
+    [
+     36.799995,
+     10.15983
+    ],
+    [
+     36.799263,
+     10.158919
+    ],
+    [
+     36.799026,
+     10.158377
+    ],
+    [
+     36.798975,
+     10.155403
+    ],
+    [
+     36.798333,
+     10.15404
+    ],
+    [
+     36.7981849,
+     10.1535288
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1088.97,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 279.87,
+   "length_ratio": 1.3061,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "stade_mellassine",
+   "to": "souk_mellassine",
+   "key": "souk_mellassine|stade_mellassine",
+   "straight_m": 253.24,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 1069 m implausible vs 253 m straight"
+  },
+  {
+   "from": "souk_mellassine",
+   "to": "centre_de_formation_zouhour",
+   "key": "centre_de_formation_zouhour|souk_mellassine",
+   "straight_m": 410.83,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7972038,
+     10.146185
+    ],
+    [
+     36.796894,
+     10.145283
+    ],
+    [
+     36.796811,
+     10.145326
+    ],
+    [
+     36.797611,
+     10.148023
+    ],
+    [
+     36.797544,
+     10.148639
+    ],
+    [
+     36.797709,
+     10.148967
+    ],
+    [
+     36.797936,
+     10.151481
+    ],
+    [
+     36.7979787,
+     10.1506964
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 738.6,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 88.08,
+   "length_ratio": 1.7978,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "centre_de_formation_zouhour",
+   "to": "kharouba",
+   "key": "centre_de_formation_zouhour|kharouba",
+   "straight_m": 226.22,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7972038,
+     10.146185
+    ],
+    [
+     36.7967029,
+     10.1437226
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 226.22,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "kharouba",
+   "to": "office_de_huile",
+   "key": "kharouba|office_de_huile",
+   "straight_m": 459.3,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7967029,
+     10.1437226
+    ],
+    [
+     36.795922,
+     10.1386
+    ],
+    [
+     36.7960371,
+     10.1386318
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 477.42,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 13.11,
+   "length_ratio": 1.0395,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "office_de_huile",
+   "to": "mizanetta",
+   "key": "mizanetta|office_de_huile",
+   "straight_m": 647.66,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7943601,
+     10.1316662
+    ],
+    [
+     36.794098,
+     10.131082
+    ],
+    [
+     36.794005,
+     10.131143
+    ],
+    [
+     36.795849,
+     10.138667
+    ],
+    [
+     36.7960371,
+     10.1386318
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 793.09,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 61.07,
+   "length_ratio": 1.2246,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mizanetta",
+   "to": "ecole_zouhour4",
+   "key": "ecole_zouhour4|mizanetta",
+   "straight_m": 535.09,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7909852,
+     10.1273826
+    ],
+    [
+     36.793061,
+     10.129195
+    ],
+    [
+     36.793334,
+     10.129228
+    ],
+    [
+     36.794005,
+     10.131143
+    ],
+    [
+     36.795087,
+     10.130554
+    ],
+    [
+     36.795377,
+     10.131864
+    ],
+    [
+     36.794516,
+     10.132196
+    ],
+    [
+     36.7943601,
+     10.1316662
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 901.0,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 127.07,
+   "length_ratio": 1.6838,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ecole_zouhour4",
+   "to": "immeubles_hrairia",
+   "key": "ecole_zouhour4|immeubles_hrairia",
+   "straight_m": 540.58,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7909852,
+     10.1273826
+    ],
+    [
+     36.788823,
+     10.125274
+    ],
+    [
+     36.7870148,
+     10.1238794
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 541.39,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 14.61,
+   "length_ratio": 1.0015,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "immeubles_hrairia",
+   "to": "cite_essalama",
+   "key": "cite_essalama|immeubles_hrairia",
+   "straight_m": 680.08,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 3037 m implausible vs 680 m straight"
+  },
+  {
+   "from": "cite_essalama",
+   "to": "ben_daha",
+   "key": "ben_daha|cite_essalama",
+   "straight_m": 609.34,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.781323,
+     10.1112679
+    ],
+    [
+     36.781772,
+     10.111057
+    ],
+    [
+     36.782011,
+     10.111011
+    ],
+    [
+     36.78223,
+     10.111133
+    ],
+    [
+     36.782455,
+     10.110979
+    ],
+    [
+     36.78378,
+     10.114928
+    ],
+    [
+     36.783916,
+     10.114987
+    ],
+    [
+     36.784234,
+     10.114814
+    ],
+    [
+     36.784884,
+     10.116247
+    ],
+    [
+     36.785765,
+     10.115675
+    ],
+    [
+     36.786242,
+     10.116662
+    ],
+    [
+     36.787461,
+     10.119519
+    ],
+    [
+     36.785696,
+     10.119327
+    ],
+    [
+     36.785256,
+     10.119134
+    ],
+    [
+     36.784782,
+     10.118718
+    ],
+    [
+     36.7841114,
+     10.117158
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1690.28,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 427.71,
+   "length_ratio": 2.774,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ben_daha",
+   "to": "sidi_hsin_section",
+   "key": "ben_daha|sidi_hsin_section",
+   "straight_m": 788.1,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.781323,
+     10.1112679
+    ],
+    [
+     36.775665,
+     10.114757
+    ],
+    [
+     36.775053,
+     10.114751
+    ],
+    [
+     36.7747534,
+     10.1145885
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 806.08,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 51.95,
+   "length_ratio": 1.0228,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sidi_hsin_section",
+   "to": "sidi_hsin",
+   "key": "sidi_hsin|sidi_hsin_section",
+   "straight_m": 574.42,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7696915,
+     10.113301
+    ],
+    [
+     36.770621,
+     10.113097
+    ],
+    [
+     36.770979,
+     10.113139
+    ],
+    [
+     36.772823,
+     10.11464
+    ],
+    [
+     36.773394,
+     10.114858
+    ],
+    [
+     36.775053,
+     10.114751
+    ],
+    [
+     36.7747534,
+     10.1145885
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 677.14,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 53.7,
+   "length_ratio": 1.1788,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sidi_hsin",
+   "to": "croisement_20_mars",
+   "key": "croisement_20_mars|sidi_hsin",
+   "straight_m": 1056.3,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7602707,
+     10.1148242
+    ],
+    [
+     36.760104,
+     10.115031
+    ],
+    [
+     36.761842,
+     10.11509
+    ],
+    [
+     36.762742,
+     10.114741
+    ],
+    [
+     36.767082,
+     10.114381
+    ],
+    [
+     36.7696915,
+     10.113301
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1113.6,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 58.14,
+   "length_ratio": 1.0542,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "croisement_20_mars",
+   "to": "terminus_33b_32a_533",
+   "key": "croisement_20_mars|terminus_33b_32a_533",
+   "straight_m": 1051.98,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7602707,
+     10.1148242
+    ],
+    [
+     36.760064,
+     10.115032
+    ],
+    [
+     36.755602,
+     10.112967
+    ],
+    [
+     36.753257,
+     10.111594
+    ],
+    [
+     36.7516026,
+     10.1100931
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1074.11,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 56.4,
+   "length_ratio": 1.021,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7858,
+   10.17981
+  ],
+  [
+   36.784275,
+   10.180296
+  ],
+  [
+   36.784295,
+   10.180436
+  ],
+  [
+   36.785762,
+   10.18015
+  ],
+  [
+   36.787279,
+   10.180489
+  ],
+  [
+   36.787858,
+   10.18083
+  ],
+  [
+   36.788403,
+   10.181698
+  ],
+  [
+   36.788608,
+   10.18171
+  ],
+  [
+   36.789304,
+   10.180734
+  ],
+  [
+   36.790085,
+   10.180147
+  ],
+  [
+   36.790864,
+   10.178188
+  ],
+  [
+   36.7914689,
+   10.1774998
+  ],
+  [
+   36.791343,
+   10.177563
+  ],
+  [
+   36.791288,
+   10.177477
+  ],
+  [
+   36.792386,
+   10.176409
+  ],
+  [
+   36.792108,
+   10.175292
+  ],
+  [
+   36.791845,
+   10.173429
+  ],
+  [
+   36.7921584,
+   10.17213
+  ],
+  [
+   36.792471,
+   10.17077
+  ],
+  [
+   36.79276,
+   10.1704
+  ],
+  [
+   36.7932496,
+   10.1700674
+  ],
+  [
+   36.793988,
+   10.16996
+  ],
+  [
+   36.794767,
+   10.16957
+  ],
+  [
+   36.795422,
+   10.168694
+  ],
+  [
+   36.7963447,
+   10.1681174
+  ],
+  [
+   36.797105,
+   10.167923
+  ],
+  [
+   36.797149,
+   10.167513
+  ],
+  [
+   36.796069,
+   10.164006
+  ],
+  [
+   36.79638,
+   10.163973
+  ],
+  [
+   36.796614,
+   10.163643
+  ],
+  [
+   36.7976742,
+   10.162871
+  ],
+  [
+   36.799001,
+   10.161693
+  ],
+  [
+   36.799904,
+   10.161623
+  ],
+  [
+   36.800132,
+   10.161444
+  ],
+  [
+   36.800293,
+   10.161115
+  ],
+  [
+   36.799995,
+   10.15983
+  ],
+  [
+   36.799263,
+   10.158919
+  ],
+  [
+   36.799026,
+   10.158377
+  ],
+  [
+   36.798975,
+   10.155403
+  ],
+  [
+   36.798333,
+   10.15404
+  ],
+  [
+   36.7981849,
+   10.1535288
+  ],
+  [
+   36.7979787,
+   10.1506964
+  ],
+  [
+   36.797936,
+   10.151481
+  ],
+  [
+   36.797709,
+   10.148967
+  ],
+  [
+   36.797544,
+   10.148639
+  ],
+  [
+   36.797611,
+   10.148023
+  ],
+  [
+   36.796811,
+   10.145326
+  ],
+  [
+   36.796894,
+   10.145283
+  ],
+  [
+   36.7972038,
+   10.146185
+  ],
+  [
+   36.7967029,
+   10.1437226
+  ],
+  [
+   36.795922,
+   10.1386
+  ],
+  [
+   36.7960371,
+   10.1386318
+  ],
+  [
+   36.795849,
+   10.138667
+  ],
+  [
+   36.794005,
+   10.131143
+  ],
+  [
+   36.794098,
+   10.131082
+  ],
+  [
+   36.7943601,
+   10.1316662
+  ],
+  [
+   36.794516,
+   10.132196
+  ],
+  [
+   36.795377,
+   10.131864
+  ],
+  [
+   36.795087,
+   10.130554
+  ],
+  [
+   36.794005,
+   10.131143
+  ],
+  [
+   36.793334,
+   10.129228
+  ],
+  [
+   36.793061,
+   10.129195
+  ],
+  [
+   36.7909852,
+   10.1273826
+  ],
+  [
+   36.788823,
+   10.125274
+  ],
+  [
+   36.7870148,
+   10.1238794
+  ],
+  [
+   36.7841114,
+   10.117158
+  ],
+  [
+   36.784782,
+   10.118718
+  ],
+  [
+   36.785256,
+   10.119134
+  ],
+  [
+   36.785696,
+   10.119327
+  ],
+  [
+   36.787461,
+   10.119519
+  ],
+  [
+   36.786242,
+   10.116662
+  ],
+  [
+   36.785765,
+   10.115675
+  ],
+  [
+   36.784884,
+   10.116247
+  ],
+  [
+   36.784234,
+   10.114814
+  ],
+  [
+   36.783916,
+   10.114987
+  ],
+  [
+   36.78378,
+   10.114928
+  ],
+  [
+   36.782455,
+   10.110979
+  ],
+  [
+   36.78223,
+   10.111133
+  ],
+  [
+   36.782011,
+   10.111011
+  ],
+  [
+   36.781772,
+   10.111057
+  ],
+  [
+   36.781323,
+   10.1112679
+  ],
+  [
+   36.775665,
+   10.114757
+  ],
+  [
+   36.775053,
+   10.114751
+  ],
+  [
+   36.7747534,
+   10.1145885
+  ],
+  [
+   36.775053,
+   10.114751
+  ],
+  [
+   36.773394,
+   10.114858
+  ],
+  [
+   36.772823,
+   10.11464
+  ],
+  [
+   36.770979,
+   10.113139
+  ],
+  [
+   36.770621,
+   10.113097
+  ],
+  [
+   36.7696915,
+   10.113301
+  ],
+  [
+   36.767082,
+   10.114381
+  ],
+  [
+   36.762742,
+   10.114741
+  ],
+  [
+   36.761842,
+   10.11509
+  ],
+  [
+   36.760104,
+   10.115031
+  ],
+  [
+   36.7602707,
+   10.1148242
+  ],
+  [
+   36.760064,
+   10.115032
+  ],
+  [
+   36.755602,
+   10.112967
+  ],
+  [
+   36.753257,
+   10.111594
+  ],
+  [
+   36.7516026,
+   10.1100931
+  ]
+ ],
+ "phase3a": {
+  "pairs": 19,
+  "resolved": 17,
+  "unresolved": 2
+ }
+}

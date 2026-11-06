@@ -1,0 +1,527 @@
+{
+ "line_id": "bus_812_23c",
+ "number": "23C",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 23C: Rabattement Slimen Kahia - Sidi Hmida",
+ "direction_aller": [
+  "rabattement_slimen_kahia",
+  "abdelmoula",
+  "p_pini_re",
+  "garde_national_agba",
+  "agba_superieur",
+  "canal_agba",
+  "ben_mahmoud",
+  "cite_elwaha",
+  "sonede_agba",
+  "ghdir_elgollah",
+  "cite_jabri",
+  "croisement_ben_yedder",
+  "bir_ed_drouj",
+  "huilerie_loukil",
+  "lycee_chebi",
+  "mosqu_e_mornagiaa",
+  "mornagiaa",
+  "sogefripe",
+  "20_mars_l23c_d",
+  "poulailler_hmaiem",
+  "croisement_hmaiem",
+  "hmaiem",
+  "entree_fejja",
+  "cite_fejja",
+  "ecole_fejja",
+  "croisement_enfaiedh",
+  "oued_halouen",
+  "enfaiedh",
+  "oued_labiedh",
+  "route_sidi_hmida",
+  "sidi_hmida"
+ ],
+ "direction_retour": [
+  "sidi_hmida",
+  "route_sidi_hmida",
+  "oued_labiedh",
+  "enfaiedh",
+  "oued_halouen",
+  "croisement_enfaiedh",
+  "ecole_fejja",
+  "cite_fejja",
+  "entree_fejja",
+  "hmaiem",
+  "croisement_hmaiem",
+  "poulailler_hmaiem",
+  "20_mars_l23c_d",
+  "sogefripe",
+  "mornagiaa",
+  "mosqu_e_mornagiaa",
+  "lycee_chebi",
+  "huilerie_loukil",
+  "bir_ed_drouj",
+  "croisement_ben_yedder",
+  "cite_jabri",
+  "ghdir_elgollah",
+  "sonede_agba",
+  "cite_elwaha",
+  "ben_mahmoud",
+  "canal_agba",
+  "agba_superieur",
+  "garde_national_agba",
+  "p_pini_re",
+  "abdelmoula",
+  "rabattement_slimen_kahia"
+ ],
+ "stations_count": 31,
+ "start": {
+  "id": "rabattement_slimen_kahia",
+  "name": "Rabattement Slimen Kahia"
+ },
+ "end": {
+  "id": "sidi_hmida",
+  "name": "Sidi Hmida"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_slimen_kahia",
+  "abdelmoula",
+  "p_pini_re",
+  "garde_national_agba",
+  "agba_superieur",
+  "canal_agba",
+  "ben_mahmoud",
+  "cite_elwaha",
+  "sonede_agba",
+  "ghdir_elgollah",
+  "cite_jabri",
+  "croisement_ben_yedder",
+  "bir_ed_drouj",
+  "huilerie_loukil",
+  "lycee_chebi",
+  "mosqu_e_mornagiaa",
+  "mornagiaa",
+  "sogefripe",
+  "20_mars_l23c_d",
+  "poulailler_hmaiem",
+  "croisement_hmaiem",
+  "hmaiem",
+  "entree_fejja",
+  "cite_fejja",
+  "ecole_fejja",
+  "croisement_enfaiedh",
+  "oued_halouen",
+  "enfaiedh",
+  "oued_labiedh",
+  "route_sidi_hmida",
+  "sidi_hmida"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_slimen_kahia",
+   "name_en": "Rabattement Slimen Kahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8038639,
+   "lon": 10.0985919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "abdelmoula",
+   "name_en": "Abdelmoula",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7959899,
+   "lon": 10.1005552,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "p_pini_re",
+   "name_en": "Pépiniére",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7927629,
+   "lon": 10.094418,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_agba",
+   "name_en": "Garde National Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7904465,
+   "lon": 10.0909771,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "agba_superieur",
+   "name_en": "Agba Superieur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7895551,
+   "lon": 10.0884129,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "canal_agba",
+   "name_en": "Canal Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.788472,
+   "lon": 10.0854329,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_mahmoud",
+   "name_en": "Ben Mahmoud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7859248,
+   "lon": 10.0814901,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_elwaha",
+   "name_en": "Cite Elwaha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7834695,
+   "lon": 10.0760318,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sonede_agba",
+   "name_en": "Sonede Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7822278,
+   "lon": 10.0699352,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ghdir_elgollah",
+   "name_en": "Ghdir Elgollah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7801114,
+   "lon": 10.0632993,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_jabri",
+   "name_en": "Cite Jabri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7765133,
+   "lon": 10.0582461,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_ben_yedder",
+   "name_en": "Croisement Ben Yedder",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7745368,
+   "lon": 10.0545903,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_ed_drouj",
+   "name_en": "Bir Ed Drouj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7705509,
+   "lon": 10.0472972,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "huilerie_loukil",
+   "name_en": "Huilerie Loukil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7667221,
+   "lon": 10.0393847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_chebi",
+   "name_en": "Lycee Chebi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7613159,
+   "lon": 10.0275132,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_mornagiaa",
+   "name_en": "Mosquée Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7587678,
+   "lon": 10.0194667,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mornagiaa",
+   "name_en": "Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7563433,
+   "lon": 10.0135175,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sogefripe",
+   "name_en": "Sogefripe",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7537173,
+   "lon": 10.0109425,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars_l23c_d",
+   "name_en": "20 Mars L23C/D",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7489549,
+   "lon": 10.0053796,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poulailler_hmaiem",
+   "name_en": "Poulailler Hmaiem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.718018,
+   "lon": 9.9917326,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_hmaiem",
+   "name_en": "Croisement Hmaiem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7105484,
+   "lon": 9.9868241,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hmaiem",
+   "name_en": "Hmaiem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7016399,
+   "lon": 9.996786,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entree_fejja",
+   "name_en": "Entree Fejja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6915973,
+   "lon": 9.9464673,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_fejja",
+   "name_en": "Cite Fejja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6864534,
+   "lon": 9.9495361,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_fejja",
+   "name_en": "Ecole Fejja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6820353,
+   "lon": 9.9526474,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_enfaiedh",
+   "name_en": "Croisement Enfaiedh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6563046,
+   "lon": 9.9765835,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_halouen",
+   "name_en": "Oued Halouen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6431382,
+   "lon": 9.96476,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "enfaiedh",
+   "name_en": "Enfaiedh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6317492,
+   "lon": 9.9548468,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_labiedh",
+   "name_en": "Oued Labiedh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6276294,
+   "lon": 9.9415055,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "route_sidi_hmida",
+   "name_en": "Route Sidi Hmida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6289295,
+   "lon": 9.9205789,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_hmida",
+   "name_en": "Sidi Hmida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6273237,
+   "lon": 9.9067816,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

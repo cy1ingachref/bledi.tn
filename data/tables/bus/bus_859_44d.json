@@ -1,0 +1,602 @@
+{
+ "line_id": "bus_859_44d",
+ "number": "44D/",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 44D/: Depot Charguia - Cité Monji Slim Terminus 44B 44D/",
+ "direction_aller": [
+  "depot_charguia",
+  "charguia_2",
+  "les_abattoirs",
+  "place_sala_centre",
+  "arr_t_bab_hadid",
+  "magro",
+  "hopital_mahmoud_matri",
+  "touben_2",
+  "croisement_riadh_andalous",
+  "cit_el_ghazela",
+  "usine_de_carrelage",
+  "cit_populaire_ennahli",
+  "carri_re_nahli",
+  "nahli_3",
+  "geant",
+  "kiosque_agile",
+  "sabalet_ben_amar",
+  "mthalith",
+  "frachich",
+  "sanad",
+  "makfoufine_1",
+  "makfoufine_2",
+  "mrezgeya",
+  "lyc_e_sidi_thabet",
+  "m_decine_v_t_rinaire",
+  "sidi_thabet_centre",
+  "inpfca",
+  "mbarka_1",
+  "cite_monji_slim",
+  "cit_monji_slim_terminus_44b_44d"
+ ],
+ "direction_retour": [
+  "cit_monji_slim_terminus_44b_44d",
+  "cite_monji_slim",
+  "mbarka_1",
+  "inpfca",
+  "sidi_thabet_centre",
+  "m_decine_v_t_rinaire",
+  "lyc_e_sidi_thabet",
+  "mrezgeya",
+  "makfoufine_2",
+  "makfoufine_1",
+  "sanad",
+  "frachich",
+  "mthalith",
+  "sabalet_ben_amar",
+  "kiosque_agile",
+  "geant",
+  "nahli_3",
+  "carri_re_nahli",
+  "cit_populaire_ennahli",
+  "usine_de_carrelage",
+  "cit_el_ghazela",
+  "croisement_riadh_andalous",
+  "touben_2",
+  "hopital_mahmoud_matri",
+  "magro",
+  "arr_t_bab_hadid",
+  "place_sala_centre",
+  "les_abattoirs",
+  "charguia_2",
+  "depot_charguia"
+ ],
+ "stations_count": 30,
+ "start": {
+  "id": "depot_charguia",
+  "name": "Depot Charguia"
+ },
+ "end": {
+  "id": "cit_monji_slim_terminus_44b_44d",
+  "name": "Cité Monji Slim Terminus 44B 44D/"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 3,
+ "teleport_legs": [
+  {
+   "from": "mthalith",
+   "to": "frachich",
+   "km": 40.9
+  },
+  {
+   "from": "frachich",
+   "to": "sanad",
+   "km": 40.9
+  },
+  {
+   "from": "mbarka_1",
+   "to": "cite_monji_slim",
+   "km": 23.2
+  },
+  {
+   "from": "cite_monji_slim",
+   "to": "cit_monji_slim_terminus_44b_44d",
+   "km": 23.9
+  }
+ ],
+ "original_stations": [
+  "depot_charguia",
+  "charguia_2",
+  "les_abattoirs",
+  "place_sala_centre",
+  "arr_t_bab_hadid",
+  "magro",
+  "hopital_mahmoud_matri",
+  "touben_2",
+  "croisement_riadh_andalous",
+  "cit_el_ghazela",
+  "usine_de_carrelage",
+  "cit_populaire_ennahli",
+  "carri_re_nahli",
+  "nahli_3",
+  "geant",
+  "kiosque_agile",
+  "sabalet_ben_amar",
+  "mthalith",
+  "frachich",
+  "sanad",
+  "makfoufine_1",
+  "makfoufine_2",
+  "mrezgeya",
+  "lyc_e_sidi_thabet",
+  "m_decine_v_t_rinaire",
+  "sidi_thabet_centre",
+  "inpfca",
+  "mbarka_1",
+  "cite_monji_slim",
+  "cit_monji_slim_terminus_44b_44d"
+ ],
+ "stations_detail": [
+  {
+   "id": "depot_charguia",
+   "name_en": "Depot Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.839222,
+   "lon": 10.2045873,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia_2",
+   "name_en": "Charguia 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8543199,
+   "lon": 10.2028332,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_abattoirs",
+   "name_en": "Les Abattoirs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8601659,
+   "lon": 10.1981876,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_sala_centre",
+   "name_en": "Place Sala Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85811,
+   "lon": 10.1914391,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arr_t_bab_hadid",
+   "name_en": "Arrét Bab Hadid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8581935,
+   "lon": 10.1885869,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magro",
+   "name_en": "MAGRO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8619428,
+   "lon": 10.1872281,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_mahmoud_matri",
+   "name_en": "Hopital Mahmoud Matri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8678091,
+   "lon": 10.1839567,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "touben_2",
+   "name_en": "Touben 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8716035,
+   "lon": 10.1821533,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_riadh_andalous",
+   "name_en": "Croisement Riadh Andalous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8781743,
+   "lon": 10.1784243,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_ghazela",
+   "name_en": "Cité El Ghazela",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8817704,
+   "lon": 10.1754349,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "usine_de_carrelage",
+   "name_en": "Usine De Carrelage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8842822,
+   "lon": 10.171149,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_populaire_ennahli",
+   "name_en": "Cité Populaire Ennahli",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8874807,
+   "lon": 10.1669078,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carri_re_nahli",
+   "name_en": "Carriére Nahli",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8908012,
+   "lon": 10.1598052,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nahli_3",
+   "name_en": "Nahli 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8929593,
+   "lon": 10.1300863,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "geant",
+   "name_en": "GEANT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8982192,
+   "lon": 10.1204885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_agile",
+   "name_en": "Kiosque Agile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8985123,
+   "lon": 10.114386,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sabalet_ben_amar",
+   "name_en": "Sabalet Ben Amar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9080505,
+   "lon": 10.1084462,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mthalith",
+   "name_en": "Mthalith",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9138924,
+   "lon": 10.1007912,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "frachich",
+   "name_en": "Frachich",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5618227,
+   "lon": 9.9676782,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sanad",
+   "name_en": "Sanad",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9194455,
+   "lon": 10.0759644,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "makfoufine_1",
+   "name_en": "Makfoufine 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9205754,
+   "lon": 10.0848903,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "makfoufine_2",
+   "name_en": "Makfoufine 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9209311,
+   "lon": 10.0812415,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mrezgeya",
+   "name_en": "Mrezgeya",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9137498,
+   "lon": 10.0603003,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_sidi_thabet",
+   "name_en": "Lycée Sidi Thabet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9128382,
+   "lon": 10.0555577,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "m_decine_v_t_rinaire",
+   "name_en": "Médecine Vétérinaire",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9115463,
+   "lon": 10.0496844,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_thabet_centre",
+   "name_en": "Sidi Thabet Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9077597,
+   "lon": 10.0415673,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "inpfca",
+   "name_en": "INPFCA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9057172,
+   "lon": 10.0395725,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mbarka_1",
+   "name_en": "Mbarka 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8988481,
+   "lon": 10.0285322,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_monji_slim",
+   "name_en": "Cite Monji Slim",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7129764,
+   "lon": 10.1462581,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_monji_slim_terminus_44b_44d",
+   "name_en": "Cité Monji Slim Terminus 44B 44D/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9051251,
+   "lon": 10.0263224,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": {
+  "direction_aller_corrected": [
+   "depot_charguia",
+   "charguia_2",
+   "les_abattoirs",
+   "place_sala_centre",
+   "arr_t_bab_hadid",
+   "magro",
+   "hopital_mahmoud_matri",
+   "touben_2",
+   "croisement_riadh_andalous",
+   "cit_el_ghazela",
+   "usine_de_carrelage",
+   "cit_populaire_ennahli",
+   "carri_re_nahli",
+   "nahli_3",
+   "geant",
+   "kiosque_agile",
+   "sabalet_ben_amar",
+   "mthalith",
+   "makfoufine_1",
+   "makfoufine_2",
+   "sanad",
+   "mrezgeya",
+   "lyc_e_sidi_thabet",
+   "m_decine_v_t_rinaire",
+   "sidi_thabet_centre",
+   "inpfca",
+   "cit_monji_slim_terminus_44b_44d",
+   "mbarka_1",
+   "cite_monji_slim",
+   "frachich"
+  ],
+  "direction_retour_corrected": [
+   "frachich",
+   "cite_monji_slim",
+   "mbarka_1",
+   "cit_monji_slim_terminus_44b_44d",
+   "inpfca",
+   "sidi_thabet_centre",
+   "m_decine_v_t_rinaire",
+   "lyc_e_sidi_thabet",
+   "mrezgeya",
+   "sanad",
+   "makfoufine_2",
+   "makfoufine_1",
+   "mthalith",
+   "sabalet_ben_amar",
+   "kiosque_agile",
+   "geant",
+   "nahli_3",
+   "carri_re_nahli",
+   "cit_populaire_ennahli",
+   "usine_de_carrelage",
+   "cit_el_ghazela",
+   "croisement_riadh_andalous",
+   "touben_2",
+   "hopital_mahmoud_matri",
+   "magro",
+   "arr_t_bab_hadid",
+   "place_sala_centre",
+   "les_abattoirs",
+   "charguia_2",
+   "depot_charguia"
+  ],
+  "original_path_m": 149698.8,
+  "corrected_path_m": 68604.1,
+  "original_reversals": 3,
+  "corrected_reversals": 0,
+  "note": "greedy nearest-neighbour from origin; original preserved"
+ },
+ "source": "tunismapper"
+}

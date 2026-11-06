@@ -1,0 +1,5643 @@
+{
+ "line_id": "bus_817_23t",
+ "number": "23T",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 23T: Rabattement Slimen Kahia - Ksar Hdid",
+ "direction_aller": [
+  "rabattement_slimen_kahia",
+  "abdelmoula",
+  "p_pini_re",
+  "garde_national_agba",
+  "agba_superieur",
+  "canal_agba",
+  "ben_mahmoud",
+  "cite_elwaha",
+  "sonede_agba",
+  "ghdir_elgollah",
+  "cite_jabri",
+  "croisement_ben_yedder",
+  "bir_ed_drouj",
+  "huilerie_loukil",
+  "lycee_chebi",
+  "mosqu_e_mornagiaa",
+  "mornagiaa",
+  "20_mars",
+  "lycee_20_mars",
+  "firma",
+  "guitouni",
+  "croisement_sidi_ali_hattab",
+  "sidi_amara",
+  "sidi_ali_hattab",
+  "ecole_hattab",
+  "jnaieh",
+  "avenion",
+  "kochbati",
+  "ali_ben_mbarek",
+  "entree_bassatine",
+  "cite_des_immeubles",
+  "tebaltech",
+  "cite_tebaltech",
+  "ahmed_laouini",
+  "ksar_hdid"
+ ],
+ "direction_retour": [
+  "ksar_hdid",
+  "ahmed_laouini",
+  "cite_tebaltech",
+  "tebaltech",
+  "cite_des_immeubles",
+  "entree_bassatine",
+  "ali_ben_mbarek",
+  "kochbati",
+  "avenion",
+  "jnaieh",
+  "ecole_hattab",
+  "sidi_ali_hattab",
+  "sidi_amara",
+  "croisement_sidi_ali_hattab",
+  "guitouni",
+  "firma",
+  "lycee_20_mars",
+  "20_mars",
+  "mornagiaa",
+  "mosqu_e_mornagiaa",
+  "lycee_chebi",
+  "huilerie_loukil",
+  "bir_ed_drouj",
+  "croisement_ben_yedder",
+  "cite_jabri",
+  "ghdir_elgollah",
+  "sonede_agba",
+  "cite_elwaha",
+  "ben_mahmoud",
+  "canal_agba",
+  "agba_superieur",
+  "garde_national_agba",
+  "p_pini_re",
+  "abdelmoula",
+  "rabattement_slimen_kahia"
+ ],
+ "stations_count": 35,
+ "start": {
+  "id": "rabattement_slimen_kahia",
+  "name": "Rabattement Slimen Kahia"
+ },
+ "end": {
+  "id": "ksar_hdid",
+  "name": "Ksar Hdid"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 3,
+ "teleport_legs": [
+  {
+   "from": "avenion",
+   "to": "kochbati",
+   "km": 29.5
+  },
+  {
+   "from": "kochbati",
+   "to": "ali_ben_mbarek",
+   "km": 29.8
+  }
+ ],
+ "original_stations": [
+  "rabattement_slimen_kahia",
+  "abdelmoula",
+  "p_pini_re",
+  "garde_national_agba",
+  "agba_superieur",
+  "canal_agba",
+  "ben_mahmoud",
+  "cite_elwaha",
+  "sonede_agba",
+  "ghdir_elgollah",
+  "cite_jabri",
+  "croisement_ben_yedder",
+  "bir_ed_drouj",
+  "huilerie_loukil",
+  "lycee_chebi",
+  "mosqu_e_mornagiaa",
+  "mornagiaa",
+  "20_mars",
+  "lycee_20_mars",
+  "firma",
+  "guitouni",
+  "croisement_sidi_ali_hattab",
+  "sidi_amara",
+  "sidi_ali_hattab",
+  "ecole_hattab",
+  "jnaieh",
+  "avenion",
+  "kochbati",
+  "ali_ben_mbarek",
+  "entree_bassatine",
+  "cite_des_immeubles",
+  "tebaltech",
+  "cite_tebaltech",
+  "ahmed_laouini",
+  "ksar_hdid"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_slimen_kahia",
+   "name_en": "Rabattement Slimen Kahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8038639,
+   "lon": 10.0985919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "abdelmoula",
+   "name_en": "Abdelmoula",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7959899,
+   "lon": 10.1005552,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "p_pini_re",
+   "name_en": "Pépiniére",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7927629,
+   "lon": 10.094418,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_agba",
+   "name_en": "Garde National Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7904465,
+   "lon": 10.0909771,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "agba_superieur",
+   "name_en": "Agba Superieur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7895551,
+   "lon": 10.0884129,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "canal_agba",
+   "name_en": "Canal Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.788472,
+   "lon": 10.0854329,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_mahmoud",
+   "name_en": "Ben Mahmoud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7859248,
+   "lon": 10.0814901,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_elwaha",
+   "name_en": "Cite Elwaha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7834695,
+   "lon": 10.0760318,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sonede_agba",
+   "name_en": "Sonede Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7822278,
+   "lon": 10.0699352,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ghdir_elgollah",
+   "name_en": "Ghdir Elgollah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7801114,
+   "lon": 10.0632993,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_jabri",
+   "name_en": "Cite Jabri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7765133,
+   "lon": 10.0582461,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_ben_yedder",
+   "name_en": "Croisement Ben Yedder",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7745368,
+   "lon": 10.0545903,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_ed_drouj",
+   "name_en": "Bir Ed Drouj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7705509,
+   "lon": 10.0472972,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "huilerie_loukil",
+   "name_en": "Huilerie Loukil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7667221,
+   "lon": 10.0393847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_chebi",
+   "name_en": "Lycee Chebi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7613159,
+   "lon": 10.0275132,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_mornagiaa",
+   "name_en": "Mosquée Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7587678,
+   "lon": 10.0194667,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mornagiaa",
+   "name_en": "Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7563433,
+   "lon": 10.0135175,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_20_mars",
+   "name_en": "Lycee 20 Mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.757778,
+   "lon": 10.0002617,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "firma",
+   "name_en": "Firma",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7547273,
+   "lon": 9.9921939,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "guitouni",
+   "name_en": "Guitouni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7518734,
+   "lon": 9.9800703,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_sidi_ali_hattab",
+   "name_en": "Croisement Sidi Ali Hattab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7491217,
+   "lon": 9.9732358,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_amara",
+   "name_en": "Sidi Amara",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7536446,
+   "lon": 9.9712755,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_ali_hattab",
+   "name_en": "Sidi Ali Hattab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7568165,
+   "lon": 9.9681507,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_hattab",
+   "name_en": "Ecole Hattab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7613055,
+   "lon": 9.9630331,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jnaieh",
+   "name_en": "Jnaieh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7683164,
+   "lon": 9.95747,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "avenion",
+   "name_en": "Avenion",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7749897,
+   "lon": 9.9527172,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kochbati",
+   "name_en": "Kochbati",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7999166,
+   "lon": 10.2829875,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ali_ben_mbarek",
+   "name_en": "Ali Ben Mbarek",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7812289,
+   "lon": 9.9487074,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entree_bassatine",
+   "name_en": "Entree Bassatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7830373,
+   "lon": 9.9475727,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_des_immeubles",
+   "name_en": "Cite Des Immeubles",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839271,
+   "lon": 9.9426054,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tebaltech",
+   "name_en": "Tebaltech",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7791962,
+   "lon": 9.9245218,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_tebaltech",
+   "name_en": "Cite Tebaltech",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7764961,
+   "lon": 9.9224968,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ahmed_laouini",
+   "name_en": "Ahmed Laouini",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.764062,
+   "lon": 9.9258575,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ksar_hdid",
+   "name_en": "Ksar Hdid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7558749,
+   "lon": 9.9274668,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "rabattement_slimen_kahia",
+   "to": "abdelmoula",
+   "key": "abdelmoula|rabattement_slimen_kahia",
+   "straight_m": 892.83,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7959899,
+     10.1005552
+    ],
+    [
+     36.794964,
+     10.098254
+    ],
+    [
+     36.794886,
+     10.098318
+    ],
+    [
+     36.796058,
+     10.101052
+    ],
+    [
+     36.797303,
+     10.102792
+    ],
+    [
+     36.798849,
+     10.10578
+    ],
+    [
+     36.799282,
+     10.104726
+    ],
+    [
+     36.800645,
+     10.102932
+    ],
+    [
+     36.801223,
+     10.101636
+    ],
+    [
+     36.801901,
+     10.10071
+    ],
+    [
+     36.802097,
+     10.100267
+    ],
+    [
+     36.8038639,
+     10.0985919
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1906.75,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 518.44,
+   "length_ratio": 2.1356,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "abdelmoula",
+   "to": "p_pini_re",
+   "key": "abdelmoula|p_pini_re",
+   "straight_m": 653.76,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7959899,
+     10.1005552
+    ],
+    [
+     36.794231,
+     10.096595
+    ],
+    [
+     36.792671,
+     10.094435
+    ],
+    [
+     36.7927629,
+     10.094418
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 672.57,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 30.06,
+   "length_ratio": 1.0288,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "p_pini_re",
+   "to": "garde_national_agba",
+   "key": "garde_national_agba|p_pini_re",
+   "straight_m": 400.28,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 1936 m implausible vs 400 m straight"
+  },
+  {
+   "from": "garde_national_agba",
+   "to": "agba_superieur",
+   "key": "agba_superieur|garde_national_agba",
+   "straight_m": 248.92,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7895551,
+     10.0884129
+    ],
+    [
+     36.78919,
+     10.087384
+    ],
+    [
+     36.79001,
+     10.08711
+    ],
+    [
+     36.79016,
+     10.087936
+    ],
+    [
+     36.791129,
+     10.087974
+    ],
+    [
+     36.791033,
+     10.088689
+    ],
+    [
+     36.791777,
+     10.088772
+    ],
+    [
+     36.792003,
+     10.089595
+    ],
+    [
+     36.791796,
+     10.089741
+    ],
+    [
+     36.79201,
+     10.090231
+    ],
+    [
+     36.791787,
+     10.090398
+    ],
+    [
+     36.791828,
+     10.090629
+    ],
+    [
+     36.791569,
+     10.090987
+    ],
+    [
+     36.790796,
+     10.091612
+    ],
+    [
+     36.7904465,
+     10.0909771
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 943.0,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 213.9,
+   "length_ratio": 3.7884,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "agba_superieur",
+   "to": "canal_agba",
+   "key": "agba_superieur|canal_agba",
+   "straight_m": 291.42,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7895551,
+     10.0884129
+    ],
+    [
+     36.788992,
+     10.086727
+    ],
+    [
+     36.788472,
+     10.0854329
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 291.6,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 5.03,
+   "length_ratio": 1.0006,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "canal_agba",
+   "to": "ben_mahmoud",
+   "key": "ben_mahmoud|canal_agba",
+   "straight_m": 451.11,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7859248,
+     10.0814901
+    ],
+    [
+     36.785692,
+     10.080778
+    ],
+    [
+     36.785599,
+     10.080767
+    ],
+    [
+     36.785578,
+     10.080917
+    ],
+    [
+     36.785982,
+     10.081984
+    ],
+    [
+     36.78787,
+     10.084564
+    ],
+    [
+     36.788515,
+     10.085813
+    ],
+    [
+     36.789271,
+     10.087954
+    ],
+    [
+     36.788962,
+     10.088322
+    ],
+    [
+     36.789522,
+     10.088619
+    ],
+    [
+     36.78903,
+     10.086837
+    ],
+    [
+     36.788472,
+     10.0854329
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1272.05,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 306.81,
+   "length_ratio": 2.8198,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ben_mahmoud",
+   "to": "cite_elwaha",
+   "key": "ben_mahmoud|cite_elwaha",
+   "straight_m": 557.51,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7859248,
+     10.0814901
+    ],
+    [
+     36.785302,
+     10.079628
+    ],
+    [
+     36.783915,
+     10.077537
+    ],
+    [
+     36.7834695,
+     10.0760318
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 564.4,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 22.45,
+   "length_ratio": 1.0124,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_elwaha",
+   "to": "sonede_agba",
+   "key": "cite_elwaha|sonede_agba",
+   "straight_m": 560.23,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7834695,
+     10.0760318
+    ],
+    [
+     36.783378,
+     10.07537
+    ],
+    [
+     36.783493,
+     10.074944
+    ],
+    [
+     36.783342,
+     10.074573
+    ],
+    [
+     36.783136,
+     10.072603
+    ],
+    [
+     36.783179,
+     10.072124
+    ],
+    [
+     36.782847,
+     10.071622
+    ],
+    [
+     36.7822278,
+     10.0699352
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 579.99,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 54.47,
+   "length_ratio": 1.0353,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sonede_agba",
+   "to": "ghdir_elgollah",
+   "key": "ghdir_elgollah|sonede_agba",
+   "straight_m": 636.12,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7801114,
+     10.0632993
+    ],
+    [
+     36.779769,
+     10.062524
+    ],
+    [
+     36.779213,
+     10.0615
+    ],
+    [
+     36.777995,
+     10.060144
+    ],
+    [
+     36.777924,
+     10.060235
+    ],
+    [
+     36.778996,
+     10.061409
+    ],
+    [
+     36.779671,
+     10.062567
+    ],
+    [
+     36.781185,
+     10.068132
+    ],
+    [
+     36.782363,
+     10.070528
+    ],
+    [
+     36.782773,
+     10.07171
+    ],
+    [
+     36.782823,
+     10.072308
+    ],
+    [
+     36.783066,
+     10.07239
+    ],
+    [
+     36.783179,
+     10.072124
+    ],
+    [
+     36.782847,
+     10.071622
+    ],
+    [
+     36.7822278,
+     10.0699352
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1888.02,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 366.53,
+   "length_ratio": 2.968,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ghdir_elgollah",
+   "to": "cite_jabri",
+   "key": "cite_jabri|ghdir_elgollah",
+   "straight_m": 602.18,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7765133,
+     10.0582461
+    ],
+    [
+     36.775651,
+     10.056715
+    ],
+    [
+     36.775578,
+     10.056766
+    ],
+    [
+     36.776674,
+     10.05876
+    ],
+    [
+     36.778827,
+     10.06119
+    ],
+    [
+     36.779531,
+     10.062283
+    ],
+    [
+     36.780013,
+     10.063577
+    ],
+    [
+     36.780629,
+     10.066033
+    ],
+    [
+     36.780591,
+     10.066331
+    ],
+    [
+     36.780806,
+     10.066377
+    ],
+    [
+     36.780876,
+     10.066143
+    ],
+    [
+     36.780661,
+     10.065828
+    ],
+    [
+     36.7801114,
+     10.0632993
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1538.93,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 284.78,
+   "length_ratio": 2.5556,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_jabri",
+   "to": "croisement_ben_yedder",
+   "key": "cite_jabri|croisement_ben_yedder",
+   "straight_m": 392.84,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7765133,
+     10.0582461
+    ],
+    [
+     36.7745368,
+     10.0545903
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 392.84,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "croisement_ben_yedder",
+   "to": "bir_ed_drouj",
+   "key": "bir_ed_drouj|croisement_ben_yedder",
+   "straight_m": 786.39,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7705509,
+     10.0472972
+    ],
+    [
+     36.771221,
+     10.048597
+    ],
+    [
+     36.772216,
+     10.050998
+    ],
+    [
+     36.773046,
+     10.052479
+    ],
+    [
+     36.772966,
+     10.053473
+    ],
+    [
+     36.774015,
+     10.054029
+    ],
+    [
+     36.775578,
+     10.056766
+    ],
+    [
+     36.775651,
+     10.056715
+    ],
+    [
+     36.7745368,
+     10.0545903
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1290.03,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 226.19,
+   "length_ratio": 1.6404,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bir_ed_drouj",
+   "to": "huilerie_loukil",
+   "key": "bir_ed_drouj|huilerie_loukil",
+   "straight_m": 823.41,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7705509,
+     10.0472972
+    ],
+    [
+     36.769289,
+     10.045396
+    ],
+    [
+     36.7667221,
+     10.0393847
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 826.7,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 32.54,
+   "length_ratio": 1.004,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "huilerie_loukil",
+   "to": "lycee_chebi",
+   "key": "huilerie_loukil|lycee_chebi",
+   "straight_m": 1216.42,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7667221,
+     10.0393847
+    ],
+    [
+     36.76513,
+     10.035496
+    ],
+    [
+     36.762816,
+     10.0318
+    ],
+    [
+     36.7613159,
+     10.0275132
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1223.58,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 43.7,
+   "length_ratio": 1.0059,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "lycee_chebi",
+   "to": "mosqu_e_mornagiaa",
+   "key": "lycee_chebi|mosqu_e_mornagiaa",
+   "straight_m": 770.78,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7613159,
+     10.0275132
+    ],
+    [
+     36.760538,
+     10.025256
+    ],
+    [
+     36.759832,
+     10.022492
+    ],
+    [
+     36.7587678,
+     10.0194667
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 771.67,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 10.98,
+   "length_ratio": 1.0012,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mosqu_e_mornagiaa",
+   "to": "mornagiaa",
+   "key": "mornagiaa|mosqu_e_mornagiaa",
+   "straight_m": 594.62,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7563433,
+     10.0135175
+    ],
+    [
+     36.756094,
+     10.013822
+    ],
+    [
+     36.756908,
+     10.014712
+    ],
+    [
+     36.757201,
+     10.015232
+    ],
+    [
+     36.757938,
+     10.017455
+    ],
+    [
+     36.757937,
+     10.017821
+    ],
+    [
+     36.758217,
+     10.018113
+    ],
+    [
+     36.7587678,
+     10.0194667
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 638.51,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 37.01,
+   "length_ratio": 1.0738,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mornagiaa",
+   "to": "20_mars",
+   "key": "20_mars|mornagiaa",
+   "straight_m": 12850.89,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.80835,
+     10.14238
+    ],
+    [
+     36.807657,
+     10.137868
+    ],
+    [
+     36.807862,
+     10.137074
+    ],
+    [
+     36.80778,
+     10.137049
+    ],
+    [
+     36.807785,
+     10.135318
+    ],
+    [
+     36.808066,
+     10.134624
+    ],
+    [
+     36.80795,
+     10.134533
+    ],
+    [
+     36.807713,
+     10.134797
+    ],
+    [
+     36.807335,
+     10.134487
+    ],
+    [
+     36.806498,
+     10.131563
+    ],
+    [
+     36.805399,
+     10.126172
+    ],
+    [
+     36.804408,
+     10.12223
+    ],
+    [
+     36.803412,
+     10.119698
+    ],
+    [
+     36.803352,
+     10.119335
+    ],
+    [
+     36.803482,
+     10.118793
+    ],
+    [
+     36.803249,
+     10.118374
+    ],
+    [
+     36.802348,
+     10.112043
+    ],
+    [
+     36.798101,
+     10.10426
+    ],
+    [
+     36.797579,
+     10.103118
+    ],
+    [
+     36.796121,
+     10.100991
+    ],
+    [
+     36.794067,
+     10.096299
+    ],
+    [
+     36.791841,
+     10.093245
+    ],
+    [
+     36.790095,
+     10.090511
+    ],
+    [
+     36.78903,
+     10.086837
+    ],
+    [
+     36.788637,
+     10.085886
+    ],
+    [
+     36.787757,
+     10.08424
+    ],
+    [
+     36.786044,
+     10.081886
+    ],
+    [
+     36.785229,
+     10.079467
+    ],
+    [
+     36.783744,
+     10.077187
+    ],
+    [
+     36.783385,
+     10.075829
+    ],
+    [
+     36.783493,
+     10.074944
+    ],
+    [
+     36.783342,
+     10.074573
+    ],
+    [
+     36.783136,
+     10.072603
+    ],
+    [
+     36.783179,
+     10.072124
+    ],
+    [
+     36.782913,
+     10.071766
+    ],
+    [
+     36.782457,
+     10.070466
+    ],
+    [
+     36.781275,
+     10.068047
+    ],
+    [
+     36.779769,
+     10.062524
+    ],
+    [
+     36.779074,
+     10.061312
+    ],
+    [
+     36.777569,
+     10.059704
+    ],
+    [
+     36.776605,
+     10.058477
+    ],
+    [
+     36.774102,
+     10.053978
+    ],
+    [
+     36.773619,
+     10.053415
+    ],
+    [
+     36.773289,
+     10.053495
+    ],
+    [
+     36.773048,
+     10.053371
+    ],
+    [
+     36.773046,
+     10.052479
+    ],
+    [
+     36.772216,
+     10.050998
+    ],
+    [
+     36.771221,
+     10.048597
+    ],
+    [
+     36.769681,
+     10.046147
+    ],
+    [
+     36.769016,
+     10.044815
+    ],
+    [
+     36.767315,
+     10.041043
+    ],
+    [
+     36.765386,
+     10.036003
+    ],
+    [
+     36.76271,
+     10.031556
+    ],
+    [
+     36.760667,
+     10.025684
+    ],
+    [
+     36.759755,
+     10.022263
+    ],
+    [
+     36.757482,
+     10.016092
+    ],
+    [
+     36.757231,
+     10.015028
+    ],
+    [
+     36.757081,
+     10.013114
+    ],
+    [
+     36.7563433,
+     10.0135175
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 13340.17,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 619.78,
+   "length_ratio": 1.0381,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "20_mars",
+   "to": "lycee_20_mars",
+   "key": "20_mars|lycee_20_mars",
+   "straight_m": 13849.64,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.80835,
+     10.14238
+    ],
+    [
+     36.807657,
+     10.137868
+    ],
+    [
+     36.807862,
+     10.137074
+    ],
+    [
+     36.80778,
+     10.137049
+    ],
+    [
+     36.807785,
+     10.135318
+    ],
+    [
+     36.808066,
+     10.134624
+    ],
+    [
+     36.80795,
+     10.134533
+    ],
+    [
+     36.807713,
+     10.134797
+    ],
+    [
+     36.807335,
+     10.134487
+    ],
+    [
+     36.806498,
+     10.131563
+    ],
+    [
+     36.805399,
+     10.126172
+    ],
+    [
+     36.804408,
+     10.12223
+    ],
+    [
+     36.803412,
+     10.119698
+    ],
+    [
+     36.803352,
+     10.119335
+    ],
+    [
+     36.803482,
+     10.118793
+    ],
+    [
+     36.803249,
+     10.118374
+    ],
+    [
+     36.802348,
+     10.112043
+    ],
+    [
+     36.798101,
+     10.10426
+    ],
+    [
+     36.797579,
+     10.103118
+    ],
+    [
+     36.796121,
+     10.100991
+    ],
+    [
+     36.794067,
+     10.096299
+    ],
+    [
+     36.791841,
+     10.093245
+    ],
+    [
+     36.790095,
+     10.090511
+    ],
+    [
+     36.78903,
+     10.086837
+    ],
+    [
+     36.788637,
+     10.085886
+    ],
+    [
+     36.787757,
+     10.08424
+    ],
+    [
+     36.786044,
+     10.081886
+    ],
+    [
+     36.785229,
+     10.079467
+    ],
+    [
+     36.783744,
+     10.077187
+    ],
+    [
+     36.783385,
+     10.075829
+    ],
+    [
+     36.783493,
+     10.074944
+    ],
+    [
+     36.783342,
+     10.074573
+    ],
+    [
+     36.783136,
+     10.072603
+    ],
+    [
+     36.783179,
+     10.072124
+    ],
+    [
+     36.782913,
+     10.071766
+    ],
+    [
+     36.782457,
+     10.070466
+    ],
+    [
+     36.781275,
+     10.068047
+    ],
+    [
+     36.780066,
+     10.063364
+    ],
+    [
+     36.779627,
+     10.062223
+    ],
+    [
+     36.778912,
+     10.061108
+    ],
+    [
+     36.777664,
+     10.059813
+    ],
+    [
+     36.776605,
+     10.058477
+    ],
+    [
+     36.774102,
+     10.053978
+    ],
+    [
+     36.773619,
+     10.053415
+    ],
+    [
+     36.773289,
+     10.053495
+    ],
+    [
+     36.773048,
+     10.053371
+    ],
+    [
+     36.773046,
+     10.052479
+    ],
+    [
+     36.772216,
+     10.050998
+    ],
+    [
+     36.771221,
+     10.048597
+    ],
+    [
+     36.769681,
+     10.046147
+    ],
+    [
+     36.769016,
+     10.044815
+    ],
+    [
+     36.767315,
+     10.041043
+    ],
+    [
+     36.765386,
+     10.036003
+    ],
+    [
+     36.76271,
+     10.031556
+    ],
+    [
+     36.760667,
+     10.025684
+    ],
+    [
+     36.759832,
+     10.022492
+    ],
+    [
+     36.758089,
+     10.01784
+    ],
+    [
+     36.757231,
+     10.015028
+    ],
+    [
+     36.757018,
+     10.011757
+    ],
+    [
+     36.757901,
+     10.001835
+    ],
+    [
+     36.757887,
+     10.001172
+    ],
+    [
+     36.757778,
+     10.0002617
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 14402.02,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 630.42,
+   "length_ratio": 1.0399,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "lycee_20_mars",
+   "to": "firma",
+   "key": "firma|lycee_20_mars",
+   "straight_m": 794.78,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7547273,
+     9.9921939
+    ],
+    [
+     36.755366,
+     9.994375
+    ],
+    [
+     36.757778,
+     10.0002617
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 795.92,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 18.71,
+   "length_ratio": 1.0014,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "firma",
+   "to": "guitouni",
+   "key": "firma|guitouni",
+   "straight_m": 1125.76,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7547273,
+     9.9921939
+    ],
+    [
+     36.75415,
+     9.990413
+    ],
+    [
+     36.752977,
+     9.983387
+    ],
+    [
+     36.753024,
+     9.982959
+    ],
+    [
+     36.753187,
+     9.982709
+    ],
+    [
+     36.7518734,
+     9.9800703
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1154.53,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 73.87,
+   "length_ratio": 1.0256,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "guitouni",
+   "to": "croisement_sidi_ali_hattab",
+   "key": "croisement_sidi_ali_hattab|guitouni",
+   "straight_m": 681.47,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7491217,
+     9.9732358
+    ],
+    [
+     36.750175,
+     9.972677
+    ],
+    [
+     36.750028,
+     9.97229
+    ],
+    [
+     36.748774,
+     9.973043
+    ],
+    [
+     36.7518734,
+     9.9800703
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1034.85,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 131.36,
+   "length_ratio": 1.5185,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "croisement_sidi_ali_hattab",
+   "to": "sidi_amara",
+   "key": "croisement_sidi_ali_hattab|sidi_amara",
+   "straight_m": 532.39,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7491217,
+     9.9732358
+    ],
+    [
+     36.750175,
+     9.972677
+    ],
+    [
+     36.750064,
+     9.972385
+    ],
+    [
+     36.751264,
+     9.97172
+    ],
+    [
+     36.7536446,
+     9.9712755
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 569.71,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 49.43,
+   "length_ratio": 1.0701,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sidi_amara",
+   "to": "sidi_ali_hattab",
+   "key": "sidi_ali_hattab|sidi_amara",
+   "straight_m": 449.33,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7568165,
+     9.9681507
+    ],
+    [
+     36.754702,
+     9.970674
+    ],
+    [
+     36.754214,
+     9.97106
+    ],
+    [
+     36.7536446,
+     9.9712755
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 455.7,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 30.78,
+   "length_ratio": 1.0142,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sidi_ali_hattab",
+   "to": "ecole_hattab",
+   "key": "ecole_hattab|sidi_ali_hattab",
+   "straight_m": 676.02,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7613055,
+     9.9630331
+    ],
+    [
+     36.760862,
+     9.963924
+    ],
+    [
+     36.760611,
+     9.964277
+    ],
+    [
+     36.7568165,
+     9.9681507
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 680.56,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 29.74,
+   "length_ratio": 1.0067,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ecole_hattab",
+   "to": "jnaieh",
+   "key": "ecole_hattab|jnaieh",
+   "straight_m": 923.75,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7613055,
+     9.9630331
+    ],
+    [
+     36.761553,
+     9.962134
+    ],
+    [
+     36.762139,
+     9.961496
+    ],
+    [
+     36.7683164,
+     9.95747
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 946.03,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 65.83,
+   "length_ratio": 1.0241,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "jnaieh",
+   "to": "avenion",
+   "key": "avenion|jnaieh",
+   "straight_m": 854.3,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7749897,
+     9.9527172
+    ],
+    [
+     36.7683164,
+     9.95747
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 854.3,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "avenion",
+   "to": "kochbati",
+   "key": "avenion|kochbati",
+   "straight_m": 29541.52,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7749897,
+     9.9527172
+    ],
+    [
+     36.766903,
+     9.958396
+    ],
+    [
+     36.761895,
+     9.961713
+    ],
+    [
+     36.761553,
+     9.962134
+    ],
+    [
+     36.760711,
+     9.964158
+    ],
+    [
+     36.757088,
+     9.967787
+    ],
+    [
+     36.75451,
+     9.970847
+    ],
+    [
+     36.753994,
+     9.97116
+    ],
+    [
+     36.75104,
+     9.971761
+    ],
+    [
+     36.748774,
+     9.973043
+    ],
+    [
+     36.751646,
+     9.979732
+    ],
+    [
+     36.752753,
+     9.981967
+    ],
+    [
+     36.756226,
+     9.987404
+    ],
+    [
+     36.75723,
+     9.989362
+    ],
+    [
+     36.762112,
+     10.002446
+    ],
+    [
+     36.762907,
+     10.005479
+    ],
+    [
+     36.765406,
+     10.023345
+    ],
+    [
+     36.767346,
+     10.033361
+    ],
+    [
+     36.768034,
+     10.036297
+    ],
+    [
+     36.769069,
+     10.039979
+    ],
+    [
+     36.77254,
+     10.049743
+    ],
+    [
+     36.773312,
+     10.052754
+    ],
+    [
+     36.773384,
+     10.053662
+    ],
+    [
+     36.774015,
+     10.054029
+    ],
+    [
+     36.776674,
+     10.05876
+    ],
+    [
+     36.778827,
+     10.06119
+    ],
+    [
+     36.779531,
+     10.062283
+    ],
+    [
+     36.780013,
+     10.063577
+    ],
+    [
+     36.781185,
+     10.068132
+    ],
+    [
+     36.782363,
+     10.070528
+    ],
+    [
+     36.782773,
+     10.07171
+    ],
+    [
+     36.782796,
+     10.072244
+    ],
+    [
+     36.783051,
+     10.072701
+    ],
+    [
+     36.783229,
+     10.07394
+    ],
+    [
+     36.783134,
+     10.075016
+    ],
+    [
+     36.783356,
+     10.076312
+    ],
+    [
+     36.783626,
+     10.077165
+    ],
+    [
+     36.785192,
+     10.079611
+    ],
+    [
+     36.785982,
+     10.081984
+    ],
+    [
+     36.78787,
+     10.084564
+    ],
+    [
+     36.788515,
+     10.085813
+    ],
+    [
+     36.788954,
+     10.086849
+    ],
+    [
+     36.79,
+     10.090515
+    ],
+    [
+     36.79234,
+     10.09412
+    ],
+    [
+     36.794028,
+     10.09641
+    ],
+    [
+     36.796058,
+     10.101052
+    ],
+    [
+     36.797524,
+     10.103175
+    ],
+    [
+     36.79878,
+     10.105747
+    ],
+    [
+     36.802065,
+     10.111688
+    ],
+    [
+     36.802387,
+     10.112797
+    ],
+    [
+     36.803032,
+     10.117766
+    ],
+    [
+     36.803093,
+     10.118496
+    ],
+    [
+     36.802958,
+     10.119011
+    ],
+    [
+     36.803193,
+     10.119342
+    ],
+    [
+     36.804325,
+     10.122443
+    ],
+    [
+     36.80641,
+     10.131757
+    ],
+    [
+     36.807181,
+     10.134501
+    ],
+    [
+     36.807534,
+     10.134702
+    ],
+    [
+     36.80772,
+     10.135153
+    ],
+    [
+     36.807698,
+     10.136634
+    ],
+    [
+     36.807303,
+     10.137048
+    ],
+    [
+     36.799518,
+     10.155296
+    ],
+    [
+     36.798935,
+     10.157354
+    ],
+    [
+     36.799074,
+     10.158529
+    ],
+    [
+     36.79943,
+     10.159166
+    ],
+    [
+     36.799995,
+     10.15983
+    ],
+    [
+     36.800213,
+     10.160991
+    ],
+    [
+     36.802804,
+     10.163946
+    ],
+    [
+     36.80306,
+     10.165395
+    ],
+    [
+     36.803487,
+     10.165633
+    ],
+    [
+     36.803799,
+     10.166515
+    ],
+    [
+     36.804529,
+     10.167556
+    ],
+    [
+     36.805177,
+     10.168173
+    ],
+    [
+     36.805321,
+     10.169187
+    ],
+    [
+     36.804382,
+     10.171647
+    ],
+    [
+     36.803746,
+     10.172699
+    ],
+    [
+     36.8029,
+     10.173445
+    ],
+    [
+     36.802476,
+     10.17421
+    ],
+    [
+     36.802227,
+     10.175105
+    ],
+    [
+     36.801638,
+     10.175942
+    ],
+    [
+     36.801165,
+     10.176239
+    ],
+    [
+     36.800349,
+     10.176299
+    ],
+    [
+     36.800106,
+     10.17627
+    ],
+    [
+     36.799179,
+     10.175764
+    ],
+    [
+     36.799448,
+     10.178517
+    ],
+    [
+     36.799411,
+     10.179426
+    ],
+    [
+     36.800088,
+     10.185707
+    ],
+    [
+     36.799962,
+     10.186272
+    ],
+    [
+     36.800148,
+     10.186737
+    ],
+    [
+     36.800316,
+     10.188298
+    ],
+    [
+     36.800204,
+     10.188823
+    ],
+    [
+     36.800417,
+     10.189311
+    ],
+    [
+     36.801325,
+     10.195471
+    ],
+    [
+     36.800969,
+     10.198197
+    ],
+    [
+     36.800005,
+     10.200976
+    ],
+    [
+     36.799727,
+     10.202095
+    ],
+    [
+     36.79962,
+     10.203686
+    ],
+    [
+     36.800026,
+     10.206778
+    ],
+    [
+     36.807739,
+     10.254101
+    ],
+    [
+     36.808479,
+     10.256668
+    ],
+    [
+     36.809911,
+     10.26028
+    ],
+    [
+     36.810476,
+     10.262618
+    ],
+    [
+     36.810558,
+     10.263543
+    ],
+    [
+     36.810444,
+     10.263964
+    ],
+    [
+     36.810026,
+     10.264127
+    ],
+    [
+     36.809827,
+     10.263982
+    ],
+    [
+     36.809717,
+     10.263712
+    ],
+    [
+     36.80993,
+     10.263072
+    ],
+    [
+     36.811152,
+     10.26199
+    ],
+    [
+     36.811452,
+     10.261078
+    ],
+    [
+     36.811414,
+     10.260585
+    ],
+    [
+     36.811114,
+     10.259947
+    ],
+    [
+     36.810664,
+     10.259627
+    ],
+    [
+     36.810117,
+     10.259549
+    ],
+    [
+     36.799661,
+     10.262105
+    ],
+    [
+     36.798914,
+     10.26243
+    ],
+    [
+     36.798234,
+     10.263119
+    ],
+    [
+     36.797776,
+     10.264386
+    ],
+    [
+     36.797753,
+     10.269862
+    ],
+    [
+     36.797619,
+     10.270551
+    ],
+    [
+     36.797257,
+     10.271329
+    ],
+    [
+     36.796947,
+     10.271711
+    ],
+    [
+     36.796257,
+     10.272151
+    ],
+    [
+     36.793894,
+     10.272602
+    ],
+    [
+     36.793244,
+     10.272898
+    ],
+    [
+     36.792498,
+     10.273515
+    ],
+    [
+     36.790824,
+     10.275485
+    ],
+    [
+     36.790495,
+     10.275722
+    ],
+    [
+     36.790589,
+     10.276044
+    ],
+    [
+     36.793864,
+     10.277702
+    ],
+    [
+     36.795678,
+     10.279018
+    ],
+    [
+     36.796572,
+     10.279515
+    ],
+    [
+     36.796934,
+     10.279971
+    ],
+    [
+     36.798405,
+     10.281041
+    ],
+    [
+     36.7999166,
+     10.2829875
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 37240.75,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 3072.03,
+   "length_ratio": 1.2606,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "kochbati",
+   "to": "ali_ben_mbarek",
+   "key": "ali_ben_mbarek|kochbati",
+   "straight_m": 29839.52,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7812289,
+     9.9487074
+    ],
+    [
+     36.778716,
+     9.950373
+    ],
+    [
+     36.775964,
+     9.951933
+    ],
+    [
+     36.766903,
+     9.958396
+    ],
+    [
+     36.762139,
+     9.961496
+    ],
+    [
+     36.761553,
+     9.962134
+    ],
+    [
+     36.760711,
+     9.964158
+    ],
+    [
+     36.757088,
+     9.967787
+    ],
+    [
+     36.754792,
+     9.970574
+    ],
+    [
+     36.75437,
+     9.970953
+    ],
+    [
+     36.75373,
+     9.971225
+    ],
+    [
+     36.75104,
+     9.971761
+    ],
+    [
+     36.748774,
+     9.973043
+    ],
+    [
+     36.751646,
+     9.979732
+    ],
+    [
+     36.752753,
+     9.981967
+    ],
+    [
+     36.756226,
+     9.987404
+    ],
+    [
+     36.75723,
+     9.989362
+    ],
+    [
+     36.762112,
+     10.002446
+    ],
+    [
+     36.762907,
+     10.005479
+    ],
+    [
+     36.765406,
+     10.023345
+    ],
+    [
+     36.767346,
+     10.033361
+    ],
+    [
+     36.768034,
+     10.036297
+    ],
+    [
+     36.769069,
+     10.039979
+    ],
+    [
+     36.77254,
+     10.049743
+    ],
+    [
+     36.773312,
+     10.052754
+    ],
+    [
+     36.773384,
+     10.053662
+    ],
+    [
+     36.774015,
+     10.054029
+    ],
+    [
+     36.776674,
+     10.05876
+    ],
+    [
+     36.778827,
+     10.06119
+    ],
+    [
+     36.779531,
+     10.062283
+    ],
+    [
+     36.780013,
+     10.063577
+    ],
+    [
+     36.781185,
+     10.068132
+    ],
+    [
+     36.782363,
+     10.070528
+    ],
+    [
+     36.782773,
+     10.07171
+    ],
+    [
+     36.782796,
+     10.072244
+    ],
+    [
+     36.783051,
+     10.072701
+    ],
+    [
+     36.783229,
+     10.07394
+    ],
+    [
+     36.783134,
+     10.075016
+    ],
+    [
+     36.783356,
+     10.076312
+    ],
+    [
+     36.783626,
+     10.077165
+    ],
+    [
+     36.785192,
+     10.079611
+    ],
+    [
+     36.785982,
+     10.081984
+    ],
+    [
+     36.78787,
+     10.084564
+    ],
+    [
+     36.788515,
+     10.085813
+    ],
+    [
+     36.788954,
+     10.086849
+    ],
+    [
+     36.79,
+     10.090515
+    ],
+    [
+     36.79234,
+     10.09412
+    ],
+    [
+     36.794028,
+     10.09641
+    ],
+    [
+     36.796058,
+     10.101052
+    ],
+    [
+     36.797524,
+     10.103175
+    ],
+    [
+     36.79878,
+     10.105747
+    ],
+    [
+     36.802065,
+     10.111688
+    ],
+    [
+     36.802387,
+     10.112797
+    ],
+    [
+     36.803032,
+     10.117766
+    ],
+    [
+     36.803093,
+     10.118496
+    ],
+    [
+     36.802958,
+     10.119011
+    ],
+    [
+     36.803193,
+     10.119342
+    ],
+    [
+     36.804325,
+     10.122443
+    ],
+    [
+     36.80641,
+     10.131757
+    ],
+    [
+     36.807181,
+     10.134501
+    ],
+    [
+     36.807534,
+     10.134702
+    ],
+    [
+     36.80772,
+     10.135153
+    ],
+    [
+     36.807698,
+     10.136634
+    ],
+    [
+     36.807303,
+     10.137048
+    ],
+    [
+     36.799518,
+     10.155296
+    ],
+    [
+     36.798935,
+     10.157354
+    ],
+    [
+     36.799074,
+     10.158529
+    ],
+    [
+     36.79943,
+     10.159166
+    ],
+    [
+     36.799995,
+     10.15983
+    ],
+    [
+     36.800213,
+     10.160991
+    ],
+    [
+     36.802804,
+     10.163946
+    ],
+    [
+     36.80306,
+     10.165395
+    ],
+    [
+     36.803487,
+     10.165633
+    ],
+    [
+     36.803799,
+     10.166515
+    ],
+    [
+     36.804529,
+     10.167556
+    ],
+    [
+     36.805177,
+     10.168173
+    ],
+    [
+     36.805321,
+     10.169187
+    ],
+    [
+     36.804382,
+     10.171647
+    ],
+    [
+     36.803746,
+     10.172699
+    ],
+    [
+     36.8029,
+     10.173445
+    ],
+    [
+     36.802476,
+     10.17421
+    ],
+    [
+     36.802227,
+     10.175105
+    ],
+    [
+     36.801638,
+     10.175942
+    ],
+    [
+     36.801165,
+     10.176239
+    ],
+    [
+     36.800349,
+     10.176299
+    ],
+    [
+     36.800106,
+     10.17627
+    ],
+    [
+     36.799179,
+     10.175764
+    ],
+    [
+     36.799448,
+     10.178517
+    ],
+    [
+     36.799411,
+     10.179426
+    ],
+    [
+     36.800088,
+     10.185707
+    ],
+    [
+     36.799962,
+     10.186272
+    ],
+    [
+     36.800148,
+     10.186737
+    ],
+    [
+     36.800316,
+     10.188298
+    ],
+    [
+     36.800204,
+     10.188823
+    ],
+    [
+     36.800417,
+     10.189311
+    ],
+    [
+     36.801325,
+     10.195471
+    ],
+    [
+     36.800969,
+     10.198197
+    ],
+    [
+     36.800005,
+     10.200976
+    ],
+    [
+     36.799727,
+     10.202095
+    ],
+    [
+     36.79962,
+     10.203686
+    ],
+    [
+     36.800026,
+     10.206778
+    ],
+    [
+     36.807739,
+     10.254101
+    ],
+    [
+     36.808479,
+     10.256668
+    ],
+    [
+     36.809911,
+     10.26028
+    ],
+    [
+     36.810476,
+     10.262618
+    ],
+    [
+     36.810558,
+     10.263543
+    ],
+    [
+     36.810444,
+     10.263964
+    ],
+    [
+     36.810026,
+     10.264127
+    ],
+    [
+     36.809827,
+     10.263982
+    ],
+    [
+     36.809717,
+     10.263712
+    ],
+    [
+     36.80993,
+     10.263072
+    ],
+    [
+     36.811152,
+     10.26199
+    ],
+    [
+     36.811452,
+     10.261078
+    ],
+    [
+     36.811414,
+     10.260585
+    ],
+    [
+     36.811114,
+     10.259947
+    ],
+    [
+     36.810664,
+     10.259627
+    ],
+    [
+     36.810117,
+     10.259549
+    ],
+    [
+     36.799661,
+     10.262105
+    ],
+    [
+     36.798914,
+     10.26243
+    ],
+    [
+     36.798234,
+     10.263119
+    ],
+    [
+     36.797776,
+     10.264386
+    ],
+    [
+     36.797753,
+     10.269862
+    ],
+    [
+     36.797619,
+     10.270551
+    ],
+    [
+     36.797257,
+     10.271329
+    ],
+    [
+     36.796947,
+     10.271711
+    ],
+    [
+     36.796257,
+     10.272151
+    ],
+    [
+     36.793894,
+     10.272602
+    ],
+    [
+     36.793244,
+     10.272898
+    ],
+    [
+     36.792498,
+     10.273515
+    ],
+    [
+     36.790824,
+     10.275485
+    ],
+    [
+     36.790495,
+     10.275722
+    ],
+    [
+     36.790589,
+     10.276044
+    ],
+    [
+     36.793864,
+     10.277702
+    ],
+    [
+     36.795678,
+     10.279018
+    ],
+    [
+     36.796572,
+     10.279515
+    ],
+    [
+     36.796934,
+     10.279971
+    ],
+    [
+     36.798405,
+     10.281041
+    ],
+    [
+     36.7999166,
+     10.2829875
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 38021.75,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 3750.97,
+   "length_ratio": 1.2742,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ali_ben_mbarek",
+   "to": "entree_bassatine",
+   "key": "ali_ben_mbarek|entree_bassatine",
+   "straight_m": 225.05,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7812289,
+     9.9487074
+    ],
+    [
+     36.7830373,
+     9.9475727
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 225.05,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "entree_bassatine",
+   "to": "cite_des_immeubles",
+   "key": "cite_des_immeubles|entree_bassatine",
+   "straight_m": 453.3,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7839271,
+     9.9426054
+    ],
+    [
+     36.784414,
+     9.947117
+    ],
+    [
+     36.7830373,
+     9.9475727
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 563.79,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 140.53,
+   "length_ratio": 1.2437,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_des_immeubles",
+   "to": "tebaltech",
+   "key": "cite_des_immeubles|tebaltech",
+   "straight_m": 1694.24,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7839271,
+     9.9426054
+    ],
+    [
+     36.783456,
+     9.938618
+    ],
+    [
+     36.781928,
+     9.938204
+    ],
+    [
+     36.781503,
+     9.937751
+    ],
+    [
+     36.779719,
+     9.927047
+    ],
+    [
+     36.779189,
+     9.925273
+    ],
+    [
+     36.7791962,
+     9.9245218
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1804.2,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 121.99,
+   "length_ratio": 1.0649,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "tebaltech",
+   "to": "cite_tebaltech",
+   "key": "cite_tebaltech|tebaltech",
+   "straight_m": 350.24,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7764961,
+     9.9224968
+    ],
+    [
+     36.777387,
+     9.923306
+    ],
+    [
+     36.777657,
+     9.923404
+    ],
+    [
+     36.778008,
+     9.923846
+    ],
+    [
+     36.778506,
+     9.923489
+    ],
+    [
+     36.778708,
+     9.923546
+    ],
+    [
+     36.7791962,
+     9.9245218
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 398.56,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 46.55,
+   "length_ratio": 1.138,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_tebaltech",
+   "to": "ahmed_laouini",
+   "key": "ahmed_laouini|cite_tebaltech",
+   "straight_m": 1414.64,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.764062,
+     9.9258575
+    ],
+    [
+     36.771569,
+     9.924359
+    ],
+    [
+     36.775008,
+     9.923774
+    ],
+    [
+     36.775576,
+     9.921989
+    ],
+    [
+     36.7764961,
+     9.9224968
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1514.21,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 76.17,
+   "length_ratio": 1.0704,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ahmed_laouini",
+   "to": "ksar_hdid",
+   "key": "ahmed_laouini|ksar_hdid",
+   "straight_m": 921.58,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.764062,
+     9.9258575
+    ],
+    [
+     36.762225,
+     9.926396
+    ],
+    [
+     36.759983,
+     9.927942
+    ],
+    [
+     36.75634,
+     9.927215
+    ],
+    [
+     36.755802,
+     9.927287
+    ],
+    [
+     36.7558749,
+     9.9274668
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 982.98,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 112.88,
+   "length_ratio": 1.0666,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8038639,
+   10.0985919
+  ],
+  [
+   36.802097,
+   10.100267
+  ],
+  [
+   36.801901,
+   10.10071
+  ],
+  [
+   36.801223,
+   10.101636
+  ],
+  [
+   36.800645,
+   10.102932
+  ],
+  [
+   36.799282,
+   10.104726
+  ],
+  [
+   36.798849,
+   10.10578
+  ],
+  [
+   36.797303,
+   10.102792
+  ],
+  [
+   36.796058,
+   10.101052
+  ],
+  [
+   36.794886,
+   10.098318
+  ],
+  [
+   36.794964,
+   10.098254
+  ],
+  [
+   36.7959899,
+   10.1005552
+  ],
+  [
+   36.794231,
+   10.096595
+  ],
+  [
+   36.792671,
+   10.094435
+  ],
+  [
+   36.7927629,
+   10.094418
+  ],
+  [
+   36.7904465,
+   10.0909771
+  ],
+  [
+   36.790796,
+   10.091612
+  ],
+  [
+   36.791569,
+   10.090987
+  ],
+  [
+   36.791828,
+   10.090629
+  ],
+  [
+   36.791787,
+   10.090398
+  ],
+  [
+   36.79201,
+   10.090231
+  ],
+  [
+   36.791796,
+   10.089741
+  ],
+  [
+   36.792003,
+   10.089595
+  ],
+  [
+   36.791777,
+   10.088772
+  ],
+  [
+   36.791033,
+   10.088689
+  ],
+  [
+   36.791129,
+   10.087974
+  ],
+  [
+   36.79016,
+   10.087936
+  ],
+  [
+   36.79001,
+   10.08711
+  ],
+  [
+   36.78919,
+   10.087384
+  ],
+  [
+   36.7895551,
+   10.0884129
+  ],
+  [
+   36.788992,
+   10.086727
+  ],
+  [
+   36.788472,
+   10.0854329
+  ],
+  [
+   36.78903,
+   10.086837
+  ],
+  [
+   36.789522,
+   10.088619
+  ],
+  [
+   36.788962,
+   10.088322
+  ],
+  [
+   36.789271,
+   10.087954
+  ],
+  [
+   36.788515,
+   10.085813
+  ],
+  [
+   36.78787,
+   10.084564
+  ],
+  [
+   36.785982,
+   10.081984
+  ],
+  [
+   36.785578,
+   10.080917
+  ],
+  [
+   36.785599,
+   10.080767
+  ],
+  [
+   36.785692,
+   10.080778
+  ],
+  [
+   36.7859248,
+   10.0814901
+  ],
+  [
+   36.785302,
+   10.079628
+  ],
+  [
+   36.783915,
+   10.077537
+  ],
+  [
+   36.7834695,
+   10.0760318
+  ],
+  [
+   36.783378,
+   10.07537
+  ],
+  [
+   36.783493,
+   10.074944
+  ],
+  [
+   36.783342,
+   10.074573
+  ],
+  [
+   36.783136,
+   10.072603
+  ],
+  [
+   36.783179,
+   10.072124
+  ],
+  [
+   36.782847,
+   10.071622
+  ],
+  [
+   36.7822278,
+   10.0699352
+  ],
+  [
+   36.782847,
+   10.071622
+  ],
+  [
+   36.783179,
+   10.072124
+  ],
+  [
+   36.783066,
+   10.07239
+  ],
+  [
+   36.782823,
+   10.072308
+  ],
+  [
+   36.782773,
+   10.07171
+  ],
+  [
+   36.782363,
+   10.070528
+  ],
+  [
+   36.781185,
+   10.068132
+  ],
+  [
+   36.779671,
+   10.062567
+  ],
+  [
+   36.778996,
+   10.061409
+  ],
+  [
+   36.777924,
+   10.060235
+  ],
+  [
+   36.777995,
+   10.060144
+  ],
+  [
+   36.779213,
+   10.0615
+  ],
+  [
+   36.779769,
+   10.062524
+  ],
+  [
+   36.7801114,
+   10.0632993
+  ],
+  [
+   36.780661,
+   10.065828
+  ],
+  [
+   36.780876,
+   10.066143
+  ],
+  [
+   36.780806,
+   10.066377
+  ],
+  [
+   36.780591,
+   10.066331
+  ],
+  [
+   36.780629,
+   10.066033
+  ],
+  [
+   36.780013,
+   10.063577
+  ],
+  [
+   36.779531,
+   10.062283
+  ],
+  [
+   36.778827,
+   10.06119
+  ],
+  [
+   36.776674,
+   10.05876
+  ],
+  [
+   36.775578,
+   10.056766
+  ],
+  [
+   36.775651,
+   10.056715
+  ],
+  [
+   36.7765133,
+   10.0582461
+  ],
+  [
+   36.7745368,
+   10.0545903
+  ],
+  [
+   36.775651,
+   10.056715
+  ],
+  [
+   36.775578,
+   10.056766
+  ],
+  [
+   36.774015,
+   10.054029
+  ],
+  [
+   36.772966,
+   10.053473
+  ],
+  [
+   36.773046,
+   10.052479
+  ],
+  [
+   36.772216,
+   10.050998
+  ],
+  [
+   36.771221,
+   10.048597
+  ],
+  [
+   36.7705509,
+   10.0472972
+  ],
+  [
+   36.769289,
+   10.045396
+  ],
+  [
+   36.7667221,
+   10.0393847
+  ],
+  [
+   36.76513,
+   10.035496
+  ],
+  [
+   36.762816,
+   10.0318
+  ],
+  [
+   36.7613159,
+   10.0275132
+  ],
+  [
+   36.760538,
+   10.025256
+  ],
+  [
+   36.759832,
+   10.022492
+  ],
+  [
+   36.7587678,
+   10.0194667
+  ],
+  [
+   36.758217,
+   10.018113
+  ],
+  [
+   36.757937,
+   10.017821
+  ],
+  [
+   36.757938,
+   10.017455
+  ],
+  [
+   36.757201,
+   10.015232
+  ],
+  [
+   36.756908,
+   10.014712
+  ],
+  [
+   36.756094,
+   10.013822
+  ],
+  [
+   36.7563433,
+   10.0135175
+  ],
+  [
+   36.757081,
+   10.013114
+  ],
+  [
+   36.757231,
+   10.015028
+  ],
+  [
+   36.757482,
+   10.016092
+  ],
+  [
+   36.759755,
+   10.022263
+  ],
+  [
+   36.760667,
+   10.025684
+  ],
+  [
+   36.76271,
+   10.031556
+  ],
+  [
+   36.765386,
+   10.036003
+  ],
+  [
+   36.767315,
+   10.041043
+  ],
+  [
+   36.769016,
+   10.044815
+  ],
+  [
+   36.769681,
+   10.046147
+  ],
+  [
+   36.771221,
+   10.048597
+  ],
+  [
+   36.772216,
+   10.050998
+  ],
+  [
+   36.773046,
+   10.052479
+  ],
+  [
+   36.773048,
+   10.053371
+  ],
+  [
+   36.773289,
+   10.053495
+  ],
+  [
+   36.773619,
+   10.053415
+  ],
+  [
+   36.774102,
+   10.053978
+  ],
+  [
+   36.776605,
+   10.058477
+  ],
+  [
+   36.777569,
+   10.059704
+  ],
+  [
+   36.779074,
+   10.061312
+  ],
+  [
+   36.779769,
+   10.062524
+  ],
+  [
+   36.781275,
+   10.068047
+  ],
+  [
+   36.782457,
+   10.070466
+  ],
+  [
+   36.782913,
+   10.071766
+  ],
+  [
+   36.783179,
+   10.072124
+  ],
+  [
+   36.783136,
+   10.072603
+  ],
+  [
+   36.783342,
+   10.074573
+  ],
+  [
+   36.783493,
+   10.074944
+  ],
+  [
+   36.783385,
+   10.075829
+  ],
+  [
+   36.783744,
+   10.077187
+  ],
+  [
+   36.785229,
+   10.079467
+  ],
+  [
+   36.786044,
+   10.081886
+  ],
+  [
+   36.787757,
+   10.08424
+  ],
+  [
+   36.788637,
+   10.085886
+  ],
+  [
+   36.78903,
+   10.086837
+  ],
+  [
+   36.790095,
+   10.090511
+  ],
+  [
+   36.791841,
+   10.093245
+  ],
+  [
+   36.794067,
+   10.096299
+  ],
+  [
+   36.796121,
+   10.100991
+  ],
+  [
+   36.797579,
+   10.103118
+  ],
+  [
+   36.798101,
+   10.10426
+  ],
+  [
+   36.802348,
+   10.112043
+  ],
+  [
+   36.803249,
+   10.118374
+  ],
+  [
+   36.803482,
+   10.118793
+  ],
+  [
+   36.803352,
+   10.119335
+  ],
+  [
+   36.803412,
+   10.119698
+  ],
+  [
+   36.804408,
+   10.12223
+  ],
+  [
+   36.805399,
+   10.126172
+  ],
+  [
+   36.806498,
+   10.131563
+  ],
+  [
+   36.807335,
+   10.134487
+  ],
+  [
+   36.807713,
+   10.134797
+  ],
+  [
+   36.80795,
+   10.134533
+  ],
+  [
+   36.808066,
+   10.134624
+  ],
+  [
+   36.807785,
+   10.135318
+  ],
+  [
+   36.80778,
+   10.137049
+  ],
+  [
+   36.807862,
+   10.137074
+  ],
+  [
+   36.807657,
+   10.137868
+  ],
+  [
+   36.80835,
+   10.14238
+  ],
+  [
+   36.807657,
+   10.137868
+  ],
+  [
+   36.807862,
+   10.137074
+  ],
+  [
+   36.80778,
+   10.137049
+  ],
+  [
+   36.807785,
+   10.135318
+  ],
+  [
+   36.808066,
+   10.134624
+  ],
+  [
+   36.80795,
+   10.134533
+  ],
+  [
+   36.807713,
+   10.134797
+  ],
+  [
+   36.807335,
+   10.134487
+  ],
+  [
+   36.806498,
+   10.131563
+  ],
+  [
+   36.805399,
+   10.126172
+  ],
+  [
+   36.804408,
+   10.12223
+  ],
+  [
+   36.803412,
+   10.119698
+  ],
+  [
+   36.803352,
+   10.119335
+  ],
+  [
+   36.803482,
+   10.118793
+  ],
+  [
+   36.803249,
+   10.118374
+  ],
+  [
+   36.802348,
+   10.112043
+  ],
+  [
+   36.798101,
+   10.10426
+  ],
+  [
+   36.797579,
+   10.103118
+  ],
+  [
+   36.796121,
+   10.100991
+  ],
+  [
+   36.794067,
+   10.096299
+  ],
+  [
+   36.791841,
+   10.093245
+  ],
+  [
+   36.790095,
+   10.090511
+  ],
+  [
+   36.78903,
+   10.086837
+  ],
+  [
+   36.788637,
+   10.085886
+  ],
+  [
+   36.787757,
+   10.08424
+  ],
+  [
+   36.786044,
+   10.081886
+  ],
+  [
+   36.785229,
+   10.079467
+  ],
+  [
+   36.783744,
+   10.077187
+  ],
+  [
+   36.783385,
+   10.075829
+  ],
+  [
+   36.783493,
+   10.074944
+  ],
+  [
+   36.783342,
+   10.074573
+  ],
+  [
+   36.783136,
+   10.072603
+  ],
+  [
+   36.783179,
+   10.072124
+  ],
+  [
+   36.782913,
+   10.071766
+  ],
+  [
+   36.782457,
+   10.070466
+  ],
+  [
+   36.781275,
+   10.068047
+  ],
+  [
+   36.780066,
+   10.063364
+  ],
+  [
+   36.779627,
+   10.062223
+  ],
+  [
+   36.778912,
+   10.061108
+  ],
+  [
+   36.777664,
+   10.059813
+  ],
+  [
+   36.776605,
+   10.058477
+  ],
+  [
+   36.774102,
+   10.053978
+  ],
+  [
+   36.773619,
+   10.053415
+  ],
+  [
+   36.773289,
+   10.053495
+  ],
+  [
+   36.773048,
+   10.053371
+  ],
+  [
+   36.773046,
+   10.052479
+  ],
+  [
+   36.772216,
+   10.050998
+  ],
+  [
+   36.771221,
+   10.048597
+  ],
+  [
+   36.769681,
+   10.046147
+  ],
+  [
+   36.769016,
+   10.044815
+  ],
+  [
+   36.767315,
+   10.041043
+  ],
+  [
+   36.765386,
+   10.036003
+  ],
+  [
+   36.76271,
+   10.031556
+  ],
+  [
+   36.760667,
+   10.025684
+  ],
+  [
+   36.759832,
+   10.022492
+  ],
+  [
+   36.758089,
+   10.01784
+  ],
+  [
+   36.757231,
+   10.015028
+  ],
+  [
+   36.757018,
+   10.011757
+  ],
+  [
+   36.757901,
+   10.001835
+  ],
+  [
+   36.757887,
+   10.001172
+  ],
+  [
+   36.757778,
+   10.0002617
+  ],
+  [
+   36.755366,
+   9.994375
+  ],
+  [
+   36.7547273,
+   9.9921939
+  ],
+  [
+   36.75415,
+   9.990413
+  ],
+  [
+   36.752977,
+   9.983387
+  ],
+  [
+   36.753024,
+   9.982959
+  ],
+  [
+   36.753187,
+   9.982709
+  ],
+  [
+   36.7518734,
+   9.9800703
+  ],
+  [
+   36.748774,
+   9.973043
+  ],
+  [
+   36.750028,
+   9.97229
+  ],
+  [
+   36.750175,
+   9.972677
+  ],
+  [
+   36.7491217,
+   9.9732358
+  ],
+  [
+   36.750175,
+   9.972677
+  ],
+  [
+   36.750064,
+   9.972385
+  ],
+  [
+   36.751264,
+   9.97172
+  ],
+  [
+   36.7536446,
+   9.9712755
+  ],
+  [
+   36.754214,
+   9.97106
+  ],
+  [
+   36.754702,
+   9.970674
+  ],
+  [
+   36.7568165,
+   9.9681507
+  ],
+  [
+   36.760611,
+   9.964277
+  ],
+  [
+   36.760862,
+   9.963924
+  ],
+  [
+   36.7613055,
+   9.9630331
+  ],
+  [
+   36.761553,
+   9.962134
+  ],
+  [
+   36.762139,
+   9.961496
+  ],
+  [
+   36.7683164,
+   9.95747
+  ],
+  [
+   36.7749897,
+   9.9527172
+  ],
+  [
+   36.766903,
+   9.958396
+  ],
+  [
+   36.761895,
+   9.961713
+  ],
+  [
+   36.761553,
+   9.962134
+  ],
+  [
+   36.760711,
+   9.964158
+  ],
+  [
+   36.757088,
+   9.967787
+  ],
+  [
+   36.75451,
+   9.970847
+  ],
+  [
+   36.753994,
+   9.97116
+  ],
+  [
+   36.75104,
+   9.971761
+  ],
+  [
+   36.748774,
+   9.973043
+  ],
+  [
+   36.751646,
+   9.979732
+  ],
+  [
+   36.752753,
+   9.981967
+  ],
+  [
+   36.756226,
+   9.987404
+  ],
+  [
+   36.75723,
+   9.989362
+  ],
+  [
+   36.762112,
+   10.002446
+  ],
+  [
+   36.762907,
+   10.005479
+  ],
+  [
+   36.765406,
+   10.023345
+  ],
+  [
+   36.767346,
+   10.033361
+  ],
+  [
+   36.768034,
+   10.036297
+  ],
+  [
+   36.769069,
+   10.039979
+  ],
+  [
+   36.77254,
+   10.049743
+  ],
+  [
+   36.773312,
+   10.052754
+  ],
+  [
+   36.773384,
+   10.053662
+  ],
+  [
+   36.774015,
+   10.054029
+  ],
+  [
+   36.776674,
+   10.05876
+  ],
+  [
+   36.778827,
+   10.06119
+  ],
+  [
+   36.779531,
+   10.062283
+  ],
+  [
+   36.780013,
+   10.063577
+  ],
+  [
+   36.781185,
+   10.068132
+  ],
+  [
+   36.782363,
+   10.070528
+  ],
+  [
+   36.782773,
+   10.07171
+  ],
+  [
+   36.782796,
+   10.072244
+  ],
+  [
+   36.783051,
+   10.072701
+  ],
+  [
+   36.783229,
+   10.07394
+  ],
+  [
+   36.783134,
+   10.075016
+  ],
+  [
+   36.783356,
+   10.076312
+  ],
+  [
+   36.783626,
+   10.077165
+  ],
+  [
+   36.785192,
+   10.079611
+  ],
+  [
+   36.785982,
+   10.081984
+  ],
+  [
+   36.78787,
+   10.084564
+  ],
+  [
+   36.788515,
+   10.085813
+  ],
+  [
+   36.788954,
+   10.086849
+  ],
+  [
+   36.79,
+   10.090515
+  ],
+  [
+   36.79234,
+   10.09412
+  ],
+  [
+   36.794028,
+   10.09641
+  ],
+  [
+   36.796058,
+   10.101052
+  ],
+  [
+   36.797524,
+   10.103175
+  ],
+  [
+   36.79878,
+   10.105747
+  ],
+  [
+   36.802065,
+   10.111688
+  ],
+  [
+   36.802387,
+   10.112797
+  ],
+  [
+   36.803032,
+   10.117766
+  ],
+  [
+   36.803093,
+   10.118496
+  ],
+  [
+   36.802958,
+   10.119011
+  ],
+  [
+   36.803193,
+   10.119342
+  ],
+  [
+   36.804325,
+   10.122443
+  ],
+  [
+   36.80641,
+   10.131757
+  ],
+  [
+   36.807181,
+   10.134501
+  ],
+  [
+   36.807534,
+   10.134702
+  ],
+  [
+   36.80772,
+   10.135153
+  ],
+  [
+   36.807698,
+   10.136634
+  ],
+  [
+   36.807303,
+   10.137048
+  ],
+  [
+   36.799518,
+   10.155296
+  ],
+  [
+   36.798935,
+   10.157354
+  ],
+  [
+   36.799074,
+   10.158529
+  ],
+  [
+   36.79943,
+   10.159166
+  ],
+  [
+   36.799995,
+   10.15983
+  ],
+  [
+   36.800213,
+   10.160991
+  ],
+  [
+   36.802804,
+   10.163946
+  ],
+  [
+   36.80306,
+   10.165395
+  ],
+  [
+   36.803487,
+   10.165633
+  ],
+  [
+   36.803799,
+   10.166515
+  ],
+  [
+   36.804529,
+   10.167556
+  ],
+  [
+   36.805177,
+   10.168173
+  ],
+  [
+   36.805321,
+   10.169187
+  ],
+  [
+   36.804382,
+   10.171647
+  ],
+  [
+   36.803746,
+   10.172699
+  ],
+  [
+   36.8029,
+   10.173445
+  ],
+  [
+   36.802476,
+   10.17421
+  ],
+  [
+   36.802227,
+   10.175105
+  ],
+  [
+   36.801638,
+   10.175942
+  ],
+  [
+   36.801165,
+   10.176239
+  ],
+  [
+   36.800349,
+   10.176299
+  ],
+  [
+   36.800106,
+   10.17627
+  ],
+  [
+   36.799179,
+   10.175764
+  ],
+  [
+   36.799448,
+   10.178517
+  ],
+  [
+   36.799411,
+   10.179426
+  ],
+  [
+   36.800088,
+   10.185707
+  ],
+  [
+   36.799962,
+   10.186272
+  ],
+  [
+   36.800148,
+   10.186737
+  ],
+  [
+   36.800316,
+   10.188298
+  ],
+  [
+   36.800204,
+   10.188823
+  ],
+  [
+   36.800417,
+   10.189311
+  ],
+  [
+   36.801325,
+   10.195471
+  ],
+  [
+   36.800969,
+   10.198197
+  ],
+  [
+   36.800005,
+   10.200976
+  ],
+  [
+   36.799727,
+   10.202095
+  ],
+  [
+   36.79962,
+   10.203686
+  ],
+  [
+   36.800026,
+   10.206778
+  ],
+  [
+   36.807739,
+   10.254101
+  ],
+  [
+   36.808479,
+   10.256668
+  ],
+  [
+   36.809911,
+   10.26028
+  ],
+  [
+   36.810476,
+   10.262618
+  ],
+  [
+   36.810558,
+   10.263543
+  ],
+  [
+   36.810444,
+   10.263964
+  ],
+  [
+   36.810026,
+   10.264127
+  ],
+  [
+   36.809827,
+   10.263982
+  ],
+  [
+   36.809717,
+   10.263712
+  ],
+  [
+   36.80993,
+   10.263072
+  ],
+  [
+   36.811152,
+   10.26199
+  ],
+  [
+   36.811452,
+   10.261078
+  ],
+  [
+   36.811414,
+   10.260585
+  ],
+  [
+   36.811114,
+   10.259947
+  ],
+  [
+   36.810664,
+   10.259627
+  ],
+  [
+   36.810117,
+   10.259549
+  ],
+  [
+   36.799661,
+   10.262105
+  ],
+  [
+   36.798914,
+   10.26243
+  ],
+  [
+   36.798234,
+   10.263119
+  ],
+  [
+   36.797776,
+   10.264386
+  ],
+  [
+   36.797753,
+   10.269862
+  ],
+  [
+   36.797619,
+   10.270551
+  ],
+  [
+   36.797257,
+   10.271329
+  ],
+  [
+   36.796947,
+   10.271711
+  ],
+  [
+   36.796257,
+   10.272151
+  ],
+  [
+   36.793894,
+   10.272602
+  ],
+  [
+   36.793244,
+   10.272898
+  ],
+  [
+   36.792498,
+   10.273515
+  ],
+  [
+   36.790824,
+   10.275485
+  ],
+  [
+   36.790495,
+   10.275722
+  ],
+  [
+   36.790589,
+   10.276044
+  ],
+  [
+   36.793864,
+   10.277702
+  ],
+  [
+   36.795678,
+   10.279018
+  ],
+  [
+   36.796572,
+   10.279515
+  ],
+  [
+   36.796934,
+   10.279971
+  ],
+  [
+   36.798405,
+   10.281041
+  ],
+  [
+   36.7999166,
+   10.2829875
+  ],
+  [
+   36.798405,
+   10.281041
+  ],
+  [
+   36.796934,
+   10.279971
+  ],
+  [
+   36.796572,
+   10.279515
+  ],
+  [
+   36.795678,
+   10.279018
+  ],
+  [
+   36.793864,
+   10.277702
+  ],
+  [
+   36.790589,
+   10.276044
+  ],
+  [
+   36.790495,
+   10.275722
+  ],
+  [
+   36.790824,
+   10.275485
+  ],
+  [
+   36.792498,
+   10.273515
+  ],
+  [
+   36.793244,
+   10.272898
+  ],
+  [
+   36.793894,
+   10.272602
+  ],
+  [
+   36.796257,
+   10.272151
+  ],
+  [
+   36.796947,
+   10.271711
+  ],
+  [
+   36.797257,
+   10.271329
+  ],
+  [
+   36.797619,
+   10.270551
+  ],
+  [
+   36.797753,
+   10.269862
+  ],
+  [
+   36.797776,
+   10.264386
+  ],
+  [
+   36.798234,
+   10.263119
+  ],
+  [
+   36.798914,
+   10.26243
+  ],
+  [
+   36.799661,
+   10.262105
+  ],
+  [
+   36.810117,
+   10.259549
+  ],
+  [
+   36.810664,
+   10.259627
+  ],
+  [
+   36.811114,
+   10.259947
+  ],
+  [
+   36.811414,
+   10.260585
+  ],
+  [
+   36.811452,
+   10.261078
+  ],
+  [
+   36.811152,
+   10.26199
+  ],
+  [
+   36.80993,
+   10.263072
+  ],
+  [
+   36.809717,
+   10.263712
+  ],
+  [
+   36.809827,
+   10.263982
+  ],
+  [
+   36.810026,
+   10.264127
+  ],
+  [
+   36.810444,
+   10.263964
+  ],
+  [
+   36.810558,
+   10.263543
+  ],
+  [
+   36.810476,
+   10.262618
+  ],
+  [
+   36.809911,
+   10.26028
+  ],
+  [
+   36.808479,
+   10.256668
+  ],
+  [
+   36.807739,
+   10.254101
+  ],
+  [
+   36.800026,
+   10.206778
+  ],
+  [
+   36.79962,
+   10.203686
+  ],
+  [
+   36.799727,
+   10.202095
+  ],
+  [
+   36.800005,
+   10.200976
+  ],
+  [
+   36.800969,
+   10.198197
+  ],
+  [
+   36.801325,
+   10.195471
+  ],
+  [
+   36.800417,
+   10.189311
+  ],
+  [
+   36.800204,
+   10.188823
+  ],
+  [
+   36.800316,
+   10.188298
+  ],
+  [
+   36.800148,
+   10.186737
+  ],
+  [
+   36.799962,
+   10.186272
+  ],
+  [
+   36.800088,
+   10.185707
+  ],
+  [
+   36.799411,
+   10.179426
+  ],
+  [
+   36.799448,
+   10.178517
+  ],
+  [
+   36.799179,
+   10.175764
+  ],
+  [
+   36.800106,
+   10.17627
+  ],
+  [
+   36.800349,
+   10.176299
+  ],
+  [
+   36.801165,
+   10.176239
+  ],
+  [
+   36.801638,
+   10.175942
+  ],
+  [
+   36.802227,
+   10.175105
+  ],
+  [
+   36.802476,
+   10.17421
+  ],
+  [
+   36.8029,
+   10.173445
+  ],
+  [
+   36.803746,
+   10.172699
+  ],
+  [
+   36.804382,
+   10.171647
+  ],
+  [
+   36.805321,
+   10.169187
+  ],
+  [
+   36.805177,
+   10.168173
+  ],
+  [
+   36.804529,
+   10.167556
+  ],
+  [
+   36.803799,
+   10.166515
+  ],
+  [
+   36.803487,
+   10.165633
+  ],
+  [
+   36.80306,
+   10.165395
+  ],
+  [
+   36.802804,
+   10.163946
+  ],
+  [
+   36.800213,
+   10.160991
+  ],
+  [
+   36.799995,
+   10.15983
+  ],
+  [
+   36.79943,
+   10.159166
+  ],
+  [
+   36.799074,
+   10.158529
+  ],
+  [
+   36.798935,
+   10.157354
+  ],
+  [
+   36.799518,
+   10.155296
+  ],
+  [
+   36.807303,
+   10.137048
+  ],
+  [
+   36.807698,
+   10.136634
+  ],
+  [
+   36.80772,
+   10.135153
+  ],
+  [
+   36.807534,
+   10.134702
+  ],
+  [
+   36.807181,
+   10.134501
+  ],
+  [
+   36.80641,
+   10.131757
+  ],
+  [
+   36.804325,
+   10.122443
+  ],
+  [
+   36.803193,
+   10.119342
+  ],
+  [
+   36.802958,
+   10.119011
+  ],
+  [
+   36.803093,
+   10.118496
+  ],
+  [
+   36.803032,
+   10.117766
+  ],
+  [
+   36.802387,
+   10.112797
+  ],
+  [
+   36.802065,
+   10.111688
+  ],
+  [
+   36.79878,
+   10.105747
+  ],
+  [
+   36.797524,
+   10.103175
+  ],
+  [
+   36.796058,
+   10.101052
+  ],
+  [
+   36.794028,
+   10.09641
+  ],
+  [
+   36.79234,
+   10.09412
+  ],
+  [
+   36.79,
+   10.090515
+  ],
+  [
+   36.788954,
+   10.086849
+  ],
+  [
+   36.788515,
+   10.085813
+  ],
+  [
+   36.78787,
+   10.084564
+  ],
+  [
+   36.785982,
+   10.081984
+  ],
+  [
+   36.785192,
+   10.079611
+  ],
+  [
+   36.783626,
+   10.077165
+  ],
+  [
+   36.783356,
+   10.076312
+  ],
+  [
+   36.783134,
+   10.075016
+  ],
+  [
+   36.783229,
+   10.07394
+  ],
+  [
+   36.783051,
+   10.072701
+  ],
+  [
+   36.782796,
+   10.072244
+  ],
+  [
+   36.782773,
+   10.07171
+  ],
+  [
+   36.782363,
+   10.070528
+  ],
+  [
+   36.781185,
+   10.068132
+  ],
+  [
+   36.780013,
+   10.063577
+  ],
+  [
+   36.779531,
+   10.062283
+  ],
+  [
+   36.778827,
+   10.06119
+  ],
+  [
+   36.776674,
+   10.05876
+  ],
+  [
+   36.774015,
+   10.054029
+  ],
+  [
+   36.773384,
+   10.053662
+  ],
+  [
+   36.773312,
+   10.052754
+  ],
+  [
+   36.77254,
+   10.049743
+  ],
+  [
+   36.769069,
+   10.039979
+  ],
+  [
+   36.768034,
+   10.036297
+  ],
+  [
+   36.767346,
+   10.033361
+  ],
+  [
+   36.765406,
+   10.023345
+  ],
+  [
+   36.762907,
+   10.005479
+  ],
+  [
+   36.762112,
+   10.002446
+  ],
+  [
+   36.75723,
+   9.989362
+  ],
+  [
+   36.756226,
+   9.987404
+  ],
+  [
+   36.752753,
+   9.981967
+  ],
+  [
+   36.751646,
+   9.979732
+  ],
+  [
+   36.748774,
+   9.973043
+  ],
+  [
+   36.75104,
+   9.971761
+  ],
+  [
+   36.75373,
+   9.971225
+  ],
+  [
+   36.75437,
+   9.970953
+  ],
+  [
+   36.754792,
+   9.970574
+  ],
+  [
+   36.757088,
+   9.967787
+  ],
+  [
+   36.760711,
+   9.964158
+  ],
+  [
+   36.761553,
+   9.962134
+  ],
+  [
+   36.762139,
+   9.961496
+  ],
+  [
+   36.766903,
+   9.958396
+  ],
+  [
+   36.775964,
+   9.951933
+  ],
+  [
+   36.778716,
+   9.950373
+  ],
+  [
+   36.7812289,
+   9.9487074
+  ],
+  [
+   36.7830373,
+   9.9475727
+  ],
+  [
+   36.784414,
+   9.947117
+  ],
+  [
+   36.7839271,
+   9.9426054
+  ],
+  [
+   36.783456,
+   9.938618
+  ],
+  [
+   36.781928,
+   9.938204
+  ],
+  [
+   36.781503,
+   9.937751
+  ],
+  [
+   36.779719,
+   9.927047
+  ],
+  [
+   36.779189,
+   9.925273
+  ],
+  [
+   36.7791962,
+   9.9245218
+  ],
+  [
+   36.778708,
+   9.923546
+  ],
+  [
+   36.778506,
+   9.923489
+  ],
+  [
+   36.778008,
+   9.923846
+  ],
+  [
+   36.777657,
+   9.923404
+  ],
+  [
+   36.777387,
+   9.923306
+  ],
+  [
+   36.7764961,
+   9.9224968
+  ],
+  [
+   36.775576,
+   9.921989
+  ],
+  [
+   36.775008,
+   9.923774
+  ],
+  [
+   36.771569,
+   9.924359
+  ],
+  [
+   36.764062,
+   9.9258575
+  ],
+  [
+   36.762225,
+   9.926396
+  ],
+  [
+   36.759983,
+   9.927942
+  ],
+  [
+   36.75634,
+   9.927215
+  ],
+  [
+   36.755802,
+   9.927287
+  ],
+  [
+   36.7558749,
+   9.9274668
+  ]
+ ],
+ "phase3a": {
+  "pairs": 34,
+  "resolved": 33,
+  "unresolved": 1
+ }
+}

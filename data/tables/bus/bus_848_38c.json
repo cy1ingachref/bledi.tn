@@ -1,0 +1,431 @@
+{
+ "line_id": "bus_848_38c",
+ "number": "38C",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 38C: Terminus Tunis Marine Bus - Terminus 38C",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "place_pasteur",
+  "patisserie_ben_yeder",
+  "cite_mahrajene",
+  "minist_re_de_quipement",
+  "menzeh1",
+  "ambassade_iraq",
+  "tat_unis",
+  "soned",
+  "clinique_taoufik",
+  "campus_rx",
+  "cit_ibn_khaldoun",
+  "omran_sup_rieur_x3",
+  "snit",
+  "les_jardins_el_menzah1",
+  "kiosque_shell_j_m_2",
+  "caf_chiraz",
+  "cit_errafeha",
+  "mercure",
+  "terminus_38c"
+ ],
+ "direction_retour": [
+  "terminus_38c",
+  "mercure",
+  "cit_errafeha",
+  "caf_chiraz",
+  "kiosque_shell_j_m_2",
+  "les_jardins_el_menzah1",
+  "snit",
+  "omran_sup_rieur_x3",
+  "cit_ibn_khaldoun",
+  "campus_rx",
+  "clinique_taoufik",
+  "soned",
+  "tat_unis",
+  "ambassade_iraq",
+  "menzeh1",
+  "minist_re_de_quipement",
+  "cite_mahrajene",
+  "patisserie_ben_yeder",
+  "place_pasteur",
+  "place_jeans_dark",
+  "la_fayette",
+  "passage_jeans_jaures",
+  "steg_jeans_jaures",
+  "jeans_jaures",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 25,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "terminus_38c",
+  "name": "Terminus 38C"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "place_pasteur",
+  "patisserie_ben_yeder",
+  "cite_mahrajene",
+  "minist_re_de_quipement",
+  "menzeh1",
+  "ambassade_iraq",
+  "tat_unis",
+  "soned",
+  "clinique_taoufik",
+  "campus_rx",
+  "cit_ibn_khaldoun",
+  "omran_sup_rieur_x3",
+  "snit",
+  "les_jardins_el_menzah1",
+  "kiosque_shell_j_m_2",
+  "caf_chiraz",
+  "cit_errafeha",
+  "mercure",
+  "terminus_38c"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jeans_jaures",
+   "name_en": "Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8016177,
+   "lon": 10.183899,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_jeans_jaures",
+   "name_en": "Steg Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8054996,
+   "lon": 10.1819977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "passage_jeans_jaures",
+   "name_en": "Passage Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8069114,
+   "lon": 10.1815361,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_fayette",
+   "name_en": "La Fayette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8105618,
+   "lon": 10.1807238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_jeans_dark",
+   "name_en": "Place Jeans Dark",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8183566,
+   "lon": 10.1795785,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_pasteur",
+   "name_en": "Place Pasteur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230935,
+   "lon": 10.1776738,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "patisserie_ben_yeder",
+   "name_en": "Patisserie Ben Yeder",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8265346,
+   "lon": 10.1795924,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_mahrajene",
+   "name_en": "Cite Mahrajene",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.828874,
+   "lon": 10.1800943,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "minist_re_de_quipement",
+   "name_en": "Ministére De  Équipement",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8319311,
+   "lon": 10.1801694,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzeh1",
+   "name_en": "Menzeh1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8335866,
+   "lon": 10.1792613,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ambassade_iraq",
+   "name_en": "Ambassade Iraq",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8353899,
+   "lon": 10.1756778,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tat_unis",
+   "name_en": "État Unis",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8369167,
+   "lon": 10.1737849,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soned",
+   "name_en": "Soned",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7652949,
+   "lon": 10.210255,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "clinique_taoufik",
+   "name_en": "Clinique Taoufik",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8321978,
+   "lon": 10.154312,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "campus_rx",
+   "name_en": "Campus(Rx)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8293858,
+   "lon": 10.149645,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ibn_khaldoun",
+   "name_en": "Cité Ibn Khaldoun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.832223,
+   "lon": 10.1406379,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "omran_sup_rieur_x3",
+   "name_en": "Omran Supérieur(X3)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.836672,
+   "lon": 10.1349143,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "snit",
+   "name_en": "SNIT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.838835,
+   "lon": 10.1339538,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_jardins_el_menzah1",
+   "name_en": "Les Jardins El Menzah1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8457382,
+   "lon": 10.1317222,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_shell_j_m_2",
+   "name_en": "Kiosque Shell J.M.2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8486625,
+   "lon": 10.1310841,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_chiraz",
+   "name_en": "Café Chiraz",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8513016,
+   "lon": 10.1283212,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_errafeha",
+   "name_en": "Cité Errafeha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.852579,
+   "lon": 10.1233855,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mercure",
+   "name_en": "Mercure",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8572647,
+   "lon": 10.1276455,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_38c",
+   "name_en": "Terminus 38C",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8597284,
+   "lon": 10.1276455,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

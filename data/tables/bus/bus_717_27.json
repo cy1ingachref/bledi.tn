@@ -1,0 +1,399 @@
+{
+ "line_id": "bus_717_27",
+ "number": "27",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 27: 10 Decembre - Terminus Raoued",
+ "direction_aller": [
+  "10_decembre",
+  "el_anbaria",
+  "lyc_e_kheredinne",
+  "la_poste",
+  "arr_t_bab_hadid",
+  "magro",
+  "caf_leskale",
+  "lakrade",
+  "enkhilette",
+  "el_ghazela",
+  "lyc_e_el_wafa",
+  "la_petite_ariana",
+  "jaafer1",
+  "jaafer_essebelle",
+  "mosqu_e_jaafer",
+  "orange",
+  "aichoucha",
+  "sidi_amor",
+  "lyc_e_sidi_amor",
+  "bureau_de_poste_raoued",
+  "caf_manachou",
+  "lyc_e_raoued",
+  "terminus_raoued"
+ ],
+ "direction_retour": [
+  "terminus_raoued",
+  "lyc_e_raoued",
+  "caf_manachou",
+  "bureau_de_poste_raoued",
+  "lyc_e_sidi_amor",
+  "sidi_amor",
+  "aichoucha",
+  "orange",
+  "mosqu_e_jaafer",
+  "jaafer_essebelle",
+  "jaafer1",
+  "la_petite_ariana",
+  "lyc_e_el_wafa",
+  "el_ghazela",
+  "enkhilette",
+  "lakrade",
+  "caf_leskale",
+  "magro",
+  "arr_t_bab_hadid",
+  "la_poste",
+  "lyc_e_kheredinne",
+  "el_anbaria",
+  "10_decembre"
+ ],
+ "stations_count": 23,
+ "start": {
+  "id": "10_decembre",
+  "name": "10 Decembre"
+ },
+ "end": {
+  "id": "terminus_raoued",
+  "name": "Terminus Raoued"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "10_decembre",
+  "el_anbaria",
+  "lyc_e_kheredinne",
+  "la_poste",
+  "arr_t_bab_hadid",
+  "magro",
+  "caf_leskale",
+  "lakrade",
+  "enkhilette",
+  "el_ghazela",
+  "lyc_e_el_wafa",
+  "la_petite_ariana",
+  "jaafer1",
+  "jaafer_essebelle",
+  "mosqu_e_jaafer",
+  "orange",
+  "aichoucha",
+  "sidi_amor",
+  "lyc_e_sidi_amor",
+  "bureau_de_poste_raoued",
+  "caf_manachou",
+  "lyc_e_raoued",
+  "terminus_raoued"
+ ],
+ "stations_detail": [
+  {
+   "id": "10_decembre",
+   "name_en": "10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421837,
+   "lon": 10.182519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_anbaria",
+   "name_en": "El Anbaria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8511265,
+   "lon": 10.1836125,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_kheredinne",
+   "name_en": "Lycée Kheredinne",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8531309,
+   "lon": 10.1852164,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_poste",
+   "name_en": "La Poste",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8557499,
+   "lon": 10.1878432,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arr_t_bab_hadid",
+   "name_en": "Arrét Bab Hadid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8581935,
+   "lon": 10.1885869,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magro",
+   "name_en": "MAGRO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8619428,
+   "lon": 10.1872281,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_leskale",
+   "name_en": "Café Leskale",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8730396,
+   "lon": 10.1853985,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lakrade",
+   "name_en": "Lakrade",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8771309,
+   "lon": 10.1861866,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "enkhilette",
+   "name_en": "Enkhilette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8799106,
+   "lon": 10.1856544,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_ghazela",
+   "name_en": "El Ghazela",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8897019,
+   "lon": 10.1820495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_el_wafa",
+   "name_en": "Lycée El Wafa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8920697,
+   "lon": 10.1812588,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_petite_ariana",
+   "name_en": "La Petite Ariana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8976474,
+   "lon": 10.1808157,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jaafer1",
+   "name_en": "Jaafer1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8998181,
+   "lon": 10.1808586,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jaafer_essebelle",
+   "name_en": "Jaafer Essebelle",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9031641,
+   "lon": 10.1806011,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_jaafer",
+   "name_en": "Mosquée Jaafer",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9044819,
+   "lon": 10.1803715,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "orange",
+   "name_en": "Orange",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9080465,
+   "lon": 10.179009,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "aichoucha",
+   "name_en": "Aichoucha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9372593,
+   "lon": 10.1793566,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_amor",
+   "name_en": "Sidi Amor",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9397719,
+   "lon": 10.178627,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_sidi_amor",
+   "name_en": "Lycée Sidi Amor",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9508484,
+   "lon": 10.1855235,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bureau_de_poste_raoued",
+   "name_en": "Bureau De Poste Raoued",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.953491,
+   "lon": 10.1889482,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_manachou",
+   "name_en": "Café Manachou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9565689,
+   "lon": 10.2020051,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_raoued",
+   "name_en": "Lycée Raoued",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9562841,
+   "lon": 10.2111654,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_raoued",
+   "name_en": "Terminus Raoued",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9564213,
+   "lon": 10.2286105,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

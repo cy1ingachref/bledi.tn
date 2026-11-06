@@ -1,0 +1,127 @@
+{
+ "line_id": "bus_728_43",
+ "number": "43",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 43: Hopital Des Enfants - Institut De La Nutrition",
+ "direction_aller": [
+  "hopital_des_enfants",
+  "charle_nicole",
+  "zouhaier_essafi",
+  "hopital_de_neurologie_rabta",
+  "terminus_rabta_l_43b_43",
+  "institut_de_la_nutrition"
+ ],
+ "direction_retour": [
+  "institut_de_la_nutrition",
+  "terminus_rabta_l_43b_43",
+  "hopital_de_neurologie_rabta",
+  "zouhaier_essafi",
+  "charle_nicole",
+  "hopital_des_enfants"
+ ],
+ "stations_count": 6,
+ "start": {
+  "id": "hopital_des_enfants",
+  "name": "Hopital Des Enfants"
+ },
+ "end": {
+  "id": "institut_de_la_nutrition",
+  "name": "Institut De La Nutrition"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "hopital_des_enfants",
+  "charle_nicole",
+  "zouhaier_essafi",
+  "hopital_de_neurologie_rabta",
+  "terminus_rabta_l_43b_43",
+  "institut_de_la_nutrition"
+ ],
+ "stations_detail": [
+  {
+   "id": "hopital_des_enfants",
+   "name_en": "Hopital Des Enfants",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.807514,
+   "lon": 10.1593545,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zouhaier_essafi",
+   "name_en": "Zouhaier Essafi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8010883,
+   "lon": 10.1619938,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_de_neurologie_rabta",
+   "name_en": "Hopital De Neurologie Rabta",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8008462,
+   "lon": 10.1578204,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_rabta_l_43b_43",
+   "name_en": "Terminus Rabta L ( 43B + 43 )",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8020149,
+   "lon": 10.1569488,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "institut_de_la_nutrition",
+   "name_en": "Institut De La Nutrition",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8056891,
+   "lon": 10.15752,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

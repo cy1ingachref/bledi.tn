@@ -1,0 +1,303 @@
+{
+ "line_id": "bus_887_47a",
+ "number": "47A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 47A: Menzeh5 - El Anbaria",
+ "direction_aller": [
+  "menzeh5",
+  "soula",
+  "menzeh9",
+  "centre_makni",
+  "shell_menzeh_7",
+  "lyc_e_nacer_2",
+  "cit_nacer_1",
+  "cite_ennasr_1",
+  "el_menzah_6",
+  "carnoie2",
+  "carnoie",
+  "les_abattoirs",
+  "foyer_ariana",
+  "place_sala_centre",
+  "la_poste",
+  "lyc_e_kheredinne",
+  "el_anbaria"
+ ],
+ "direction_retour": [
+  "el_anbaria",
+  "lyc_e_kheredinne",
+  "la_poste",
+  "place_sala_centre",
+  "foyer_ariana",
+  "les_abattoirs",
+  "carnoie",
+  "carnoie2",
+  "el_menzah_6",
+  "cite_ennasr_1",
+  "cit_nacer_1",
+  "lyc_e_nacer_2",
+  "shell_menzeh_7",
+  "centre_makni",
+  "menzeh9",
+  "soula",
+  "menzeh5"
+ ],
+ "stations_count": 17,
+ "start": {
+  "id": "menzeh5",
+  "name": "Menzeh5"
+ },
+ "end": {
+  "id": "el_anbaria",
+  "name": "El Anbaria"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 3,
+ "teleport_legs": [],
+ "original_stations": [
+  "menzeh5",
+  "soula",
+  "menzeh9",
+  "centre_makni",
+  "shell_menzeh_7",
+  "lyc_e_nacer_2",
+  "cit_nacer_1",
+  "cite_ennasr_1",
+  "el_menzah_6",
+  "carnoie2",
+  "carnoie",
+  "les_abattoirs",
+  "foyer_ariana",
+  "place_sala_centre",
+  "la_poste",
+  "lyc_e_kheredinne",
+  "el_anbaria"
+ ],
+ "stations_detail": [
+  {
+   "id": "menzeh5",
+   "name_en": "Menzeh5",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8535046,
+   "lon": 10.1730499,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soula",
+   "name_en": "Soula",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8390892,
+   "lon": 10.1568011,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzeh9",
+   "name_en": "Menzeh9",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8493013,
+   "lon": 10.1507016,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_makni",
+   "name_en": "Centre Makni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8462019,
+   "lon": 10.1531906,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "shell_menzeh_7",
+   "name_en": "Shell Menzeh 7",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8523919,
+   "lon": 10.1533516,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_nacer_2",
+   "name_en": "Lycée Nacer 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8573539,
+   "lon": 10.1535662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_nacer_1",
+   "name_en": "Cité Nacer 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8634753,
+   "lon": 10.1685385,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_ennasr_1",
+   "name_en": "Cite Ennasr 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8585478,
+   "lon": 10.1682756,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_menzah_6",
+   "name_en": "El Menzah 6",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8422175,
+   "lon": 10.1722235,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carnoie2",
+   "name_en": "Carnoie2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8456239,
+   "lon": 10.1769866,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carnoie",
+   "name_en": "Carnoie",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.84761,
+   "lon": 10.1780707,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_abattoirs",
+   "name_en": "Les Abattoirs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8601659,
+   "lon": 10.1981876,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_ariana",
+   "name_en": "Foyer Ariana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8584957,
+   "lon": 10.194707,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_sala_centre",
+   "name_en": "Place Sala Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85811,
+   "lon": 10.1914391,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_poste",
+   "name_en": "La Poste",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8557499,
+   "lon": 10.1878432,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_kheredinne",
+   "name_en": "Lycée Kheredinne",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8531309,
+   "lon": 10.1852164,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_anbaria",
+   "name_en": "El Anbaria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8511265,
+   "lon": 10.1836125,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

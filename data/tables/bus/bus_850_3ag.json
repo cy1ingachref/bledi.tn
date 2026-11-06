@@ -1,0 +1,255 @@
+{
+ "line_id": "bus_850_3ag",
+ "number": "3AG",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 3AG: Kasbah - Terminus Ksar Said 2",
+ "direction_aller": [
+  "kasbah",
+  "tribunal_taakib",
+  "charle_nicole",
+  "mefteh_saadallah",
+  "foyer_bardo_1",
+  "caf_el_haj",
+  "chebbi",
+  "saint_clement",
+  "bortal",
+  "bortal_3a",
+  "rue_hasen_ennouri",
+  "usine_my_mode",
+  "arr_t_ettadhamen",
+  "terminus_ksar_said_2"
+ ],
+ "direction_retour": [
+  "terminus_ksar_said_2",
+  "arr_t_ettadhamen",
+  "usine_my_mode",
+  "rue_hasen_ennouri",
+  "bortal_3a",
+  "bortal",
+  "saint_clement",
+  "chebbi",
+  "caf_el_haj",
+  "foyer_bardo_1",
+  "mefteh_saadallah",
+  "charle_nicole",
+  "tribunal_taakib",
+  "kasbah"
+ ],
+ "stations_count": 14,
+ "start": {
+  "id": "kasbah",
+  "name": "Kasbah"
+ },
+ "end": {
+  "id": "terminus_ksar_said_2",
+  "name": "Terminus Ksar Said 2"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "kasbah",
+  "tribunal_taakib",
+  "charle_nicole",
+  "mefteh_saadallah",
+  "foyer_bardo_1",
+  "caf_el_haj",
+  "chebbi",
+  "saint_clement",
+  "bortal",
+  "bortal_3a",
+  "rue_hasen_ennouri",
+  "usine_my_mode",
+  "arr_t_ettadhamen",
+  "terminus_ksar_said_2"
+ ],
+ "stations_detail": [
+  {
+   "id": "kasbah",
+   "name_en": "Kasbah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7963447,
+   "lon": 10.1681174,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tribunal_taakib",
+   "name_en": "Tribunal Taakib",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7996153,
+   "lon": 10.1651267,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mefteh_saadallah",
+   "name_en": "Mefteh Saadallah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8106456,
+   "lon": 10.1576166,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_bardo_1",
+   "name_en": "Foyer Bardo 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8141538,
+   "lon": 10.1462171,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_el_haj",
+   "name_en": "Café El Haj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8125757,
+   "lon": 10.1400783,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chebbi",
+   "name_en": "Chebbi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8096013,
+   "lon": 10.1313362,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "saint_clement",
+   "name_en": "Saint Clement",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8104848,
+   "lon": 10.126229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bortal",
+   "name_en": "Bortal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8120871,
+   "lon": 10.1174078,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bortal_3a",
+   "name_en": "Bortal 3A",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.816722,
+   "lon": 10.117555,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_hasen_ennouri",
+   "name_en": "Rue Hasen Ennouri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8203176,
+   "lon": 10.1171799,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "usine_my_mode",
+   "name_en": "Usine My Mode",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8241888,
+   "lon": 10.11582,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arr_t_ettadhamen",
+   "name_en": "Arrét Ettadhamen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8264861,
+   "lon": 10.1153908,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_ksar_said_2",
+   "name_en": "Terminus Ksar Said 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8246354,
+   "lon": 10.118867,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

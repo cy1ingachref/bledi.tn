@@ -1,0 +1,479 @@
+{
+ "line_id": "train_8_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Tunis Ville - Le Kef",
+ "direction_aller": [
+  "tunis_ville",
+  "depot_farhat_hached",
+  "djebal_jelloud",
+  "bir_kassa",
+  "nassen",
+  "khledia",
+  "oudna",
+  "cheylus",
+  "bir_mcherga",
+  "depienne",
+  "el_ouja",
+  "pont_du_fahs",
+  "thibica",
+  "tarf_echena",
+  "bou_arada",
+  "jelida",
+  "el_aroussa",
+  "sidi_ayed",
+  "gaafour",
+  "el_akhouat",
+  "le_krib",
+  "sidi_bou_rouis",
+  "trika",
+  "le_sers",
+  "les_salines",
+  "lorbeuss",
+  "zaafrane",
+  "le_kef"
+ ],
+ "direction_retour": [
+  "le_kef",
+  "zaafrane",
+  "lorbeuss",
+  "les_salines",
+  "le_sers",
+  "trika",
+  "sidi_bou_rouis",
+  "le_krib",
+  "el_akhouat",
+  "gaafour",
+  "sidi_ayed",
+  "el_aroussa",
+  "jelida",
+  "bou_arada",
+  "tarf_echena",
+  "thibica",
+  "pont_du_fahs",
+  "el_ouja",
+  "depienne",
+  "bir_mcherga",
+  "cheylus",
+  "oudna",
+  "khledia",
+  "nassen",
+  "bir_kassa",
+  "djebal_jelloud",
+  "depot_farhat_hached",
+  "tunis_ville"
+ ],
+ "stations_count": 28,
+ "start": {
+  "id": "tunis_ville",
+  "name": "Tunis Ville"
+ },
+ "end": {
+  "id": "le_kef",
+  "name": "Le Kef"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "tunis_ville",
+  "depot_farhat_hached",
+  "djebal_jelloud",
+  "bir_kassa",
+  "nassen",
+  "khledia",
+  "oudna",
+  "cheylus",
+  "bir_mcherga",
+  "depienne",
+  "el_ouja",
+  "pont_du_fahs",
+  "thibica",
+  "tarf_echena",
+  "bou_arada",
+  "jelida",
+  "el_aroussa",
+  "sidi_ayed",
+  "gaafour",
+  "el_akhouat",
+  "le_krib",
+  "sidi_bou_rouis",
+  "trika",
+  "le_sers",
+  "les_salines",
+  "lorbeuss",
+  "zaafrane",
+  "le_kef"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_ville",
+   "name_en": "Tunis Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7947693,
+   "lon": 10.1803806,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "depot_farhat_hached",
+   "name_en": "Depot Farhat Hached",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7840267,
+   "lon": 10.1919152,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebal_jelloud",
+   "name_en": "Djebal Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7727251,
+   "lon": 10.2082258,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_kassa",
+   "name_en": "Bir Kassa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7410751,
+   "lon": 10.2285076,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "nassen",
+   "name_en": "Nassen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7035756,
+   "lon": 10.2328041,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "khledia",
+   "name_en": "Khledia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6461424,
+   "lon": 10.1944904,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "oudna",
+   "name_en": "Oudna",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6253599,
+   "lon": 10.1511201,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "cheylus",
+   "name_en": "Cheylus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5554191,
+   "lon": 10.0608556,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_mcherga",
+   "name_en": "Bir MCherga",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5062105,
+   "lon": 10.0218831,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "depienne",
+   "name_en": "Depienne",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4572093,
+   "lon": 10.0235804,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_ouja",
+   "name_en": "El Ouja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4179661,
+   "lon": 9.9823781,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_du_fahs",
+   "name_en": "Pont Du Fahs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.3766759,
+   "lon": 9.9024049,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "thibica",
+   "name_en": "Thibica",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.3560495,
+   "lon": 9.8092549,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "tarf_echena",
+   "name_en": "Tarf Echena",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.355274,
+   "lon": 9.7173739,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bou_arada",
+   "name_en": "Bou Arada",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.3564626,
+   "lon": 9.6269026,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "jelida",
+   "name_en": "Jelida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.371689,
+   "lon": 9.5563711,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_aroussa",
+   "name_en": "El Aroussa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.3811585,
+   "lon": 9.4545564,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_ayed",
+   "name_en": "Sidi Ayed",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.3512125,
+   "lon": 9.3909172,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "gaafour",
+   "name_en": "Gaafour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.3226555,
+   "lon": 9.3265976,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_akhouat",
+   "name_en": "El Akhouat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.2550899,
+   "lon": 9.2549561,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_krib",
+   "name_en": "Le Krib",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.2534979,
+   "lon": 9.1851306,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bou_rouis",
+   "name_en": "Sidi Bou Rouis",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.1753222,
+   "lon": 9.1250941,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "trika",
+   "name_en": "Trika",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.1324521,
+   "lon": 9.1129085,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_sers",
+   "name_en": "Le Sers",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.0759795,
+   "lon": 9.0232335,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_salines",
+   "name_en": "Les Salines",
+   "name_ar": "الملاحة",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_177m"
+   ],
+   "lat": 36.0777744,
+   "lon": 8.9640175,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "lorbeuss",
+   "name_en": "Lorbeuss",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.1009371,
+   "lon": 8.9344431,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "zaafrane",
+   "name_en": "Zaafrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.1530523,
+   "lon": 8.8881448,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_kef",
+   "name_en": "Le Kef",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.1667329,
+   "lon": 8.7036816,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

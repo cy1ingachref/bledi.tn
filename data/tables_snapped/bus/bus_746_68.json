@@ -1,0 +1,1112 @@
+{
+ "line_id": "bus_746_68",
+ "number": "68",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 68: Ali Balahouan - Terminus 18 Janvier",
+ "direction_aller": [
+  "ali_balahouan",
+  "sidi_aloui",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "chebbi",
+  "bortal",
+  "champ_de_course_ksar_said",
+  "magazin_carrefour",
+  "caf_la_paix",
+  "mess_des_officiers",
+  "cit_sfar",
+  "terminus_18_janvier"
+ ],
+ "direction_retour": [
+  "terminus_18_janvier",
+  "cit_sfar",
+  "mess_des_officiers",
+  "caf_la_paix",
+  "magazin_carrefour",
+  "champ_de_course_ksar_said",
+  "bortal",
+  "chebbi",
+  "20_mars",
+  "bouchoucha",
+  "immeuble_chefia",
+  "sidi_aloui",
+  "ali_balahouan"
+ ],
+ "stations_count": 13,
+ "start": {
+  "id": "ali_balahouan",
+  "name": "Ali Balahouan"
+ },
+ "end": {
+  "id": "terminus_18_janvier",
+  "name": "Terminus 18 Janvier"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "ali_balahouan",
+  "sidi_aloui",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "chebbi",
+  "bortal",
+  "champ_de_course_ksar_said",
+  "magazin_carrefour",
+  "caf_la_paix",
+  "mess_des_officiers",
+  "cit_sfar",
+  "terminus_18_janvier"
+ ],
+ "stations_detail": [
+  {
+   "id": "ali_balahouan",
+   "name_en": "Ali Balahouan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8065135,
+   "lon": 10.1742408,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_aloui",
+   "name_en": "Sidi Aloui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8053372,
+   "lon": 10.1688404,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_chefia",
+   "name_en": "Immeuble Chefia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8098234,
+   "lon": 10.152579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchoucha",
+   "name_en": "BOUCHOUCHA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80953,
+   "lon": 10.15026,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "chebbi",
+   "name_en": "Chebbi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8096013,
+   "lon": 10.1313362,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bortal",
+   "name_en": "Bortal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8120871,
+   "lon": 10.1174078,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "champ_de_course_ksar_said",
+   "name_en": "Champ De Course Ksar Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8130249,
+   "lon": 10.1133431,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magazin_carrefour",
+   "name_en": "Magazin Carrefour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8174515,
+   "lon": 10.1044989,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_la_paix",
+   "name_en": "Café La Paix",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8198793,
+   "lon": 10.1045455,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mess_des_officiers",
+   "name_en": "Mess Des Officiers",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8235715,
+   "lon": 10.1082585,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_sfar",
+   "name_en": "Cité Sfar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8249659,
+   "lon": 10.1089556,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_18_janvier",
+   "name_en": "Terminus 18 Janvier",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8278944,
+   "lon": 10.1063056,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "ali_balahouan",
+   "to": "sidi_aloui",
+   "key": "ali_balahouan|sidi_aloui",
+   "straight_m": 498.27,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8065135,
+     10.1742408
+    ],
+    [
+     36.806256,
+     10.174217
+    ],
+    [
+     36.806011,
+     10.173767
+    ],
+    [
+     36.805622,
+     10.173648
+    ],
+    [
+     36.805712,
+     10.171289
+    ],
+    [
+     36.805316,
+     10.168299
+    ],
+    [
+     36.805375,
+     10.167966
+    ],
+    [
+     36.805232,
+     10.167829
+    ],
+    [
+     36.805123,
+     10.167987
+    ],
+    [
+     36.8053372,
+     10.1688404
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 750.37,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 90.8,
+   "length_ratio": 1.506,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sidi_aloui",
+   "to": "immeuble_chefia",
+   "key": "immeuble_chefia|sidi_aloui",
+   "straight_m": 1531.26,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8098234,
+     10.152579
+    ],
+    [
+     36.80976,
+     10.151654
+    ],
+    [
+     36.810328,
+     10.15152
+    ],
+    [
+     36.811037,
+     10.151975
+    ],
+    [
+     36.80973,
+     10.154894
+    ],
+    [
+     36.809592,
+     10.15603
+    ],
+    [
+     36.809893,
+     10.15788
+    ],
+    [
+     36.807755,
+     10.159105
+    ],
+    [
+     36.80605,
+     10.161448
+    ],
+    [
+     36.805223,
+     10.162241
+    ],
+    [
+     36.802836,
+     10.163643
+    ],
+    [
+     36.80306,
+     10.165395
+    ],
+    [
+     36.803487,
+     10.165633
+    ],
+    [
+     36.803799,
+     10.166515
+    ],
+    [
+     36.804656,
+     10.167622
+    ],
+    [
+     36.8052,
+     10.168131
+    ],
+    [
+     36.8053372,
+     10.1688404
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2329.8,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 413.69,
+   "length_ratio": 1.5215,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "immeuble_chefia",
+   "to": "bouchoucha",
+   "key": "bouchoucha|immeuble_chefia",
+   "straight_m": 209.01,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.80953,
+     10.15026
+    ],
+    [
+     36.809403,
+     10.149228
+    ],
+    [
+     36.809857,
+     10.149123
+    ],
+    [
+     36.809925,
+     10.149196
+    ],
+    [
+     36.809738,
+     10.15021
+    ],
+    [
+     36.810286,
+     10.15035
+    ],
+    [
+     36.811266,
+     10.151482
+    ],
+    [
+     36.81058,
+     10.15293
+    ],
+    [
+     36.809826,
+     10.152753
+    ],
+    [
+     36.8098234,
+     10.152579
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 708.11,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 173.69,
+   "length_ratio": 3.3879,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bouchoucha",
+   "to": "20_mars",
+   "key": "20_mars|bouchoucha",
+   "straight_m": 713.7,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.80835,
+     10.14238
+    ],
+    [
+     36.80953,
+     10.15026
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 713.7,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "20_mars",
+   "to": "chebbi",
+   "key": "20_mars|chebbi",
+   "straight_m": 992.99,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.80835,
+     10.14238
+    ],
+    [
+     36.80767,
+     10.138053
+    ],
+    [
+     36.807862,
+     10.137074
+    ],
+    [
+     36.80778,
+     10.137049
+    ],
+    [
+     36.807785,
+     10.135318
+    ],
+    [
+     36.809075,
+     10.132595
+    ],
+    [
+     36.8096013,
+     10.1313362
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1053.91,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 150.3,
+   "length_ratio": 1.0614,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "chebbi",
+   "to": "bortal",
+   "key": "bortal|chebbi",
+   "straight_m": 1270.41,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8120871,
+     10.1174078
+    ],
+    [
+     36.812299,
+     10.117093
+    ],
+    [
+     36.812038,
+     10.117057
+    ],
+    [
+     36.811796,
+     10.117736
+    ],
+    [
+     36.811094,
+     10.11894
+    ],
+    [
+     36.810485,
+     10.121035
+    ],
+    [
+     36.810349,
+     10.122231
+    ],
+    [
+     36.810451,
+     10.124694
+    ],
+    [
+     36.810155,
+     10.128231
+    ],
+    [
+     36.809801,
+     10.130013
+    ],
+    [
+     36.808926,
+     10.132637
+    ],
+    [
+     36.809075,
+     10.132595
+    ],
+    [
+     36.8096013,
+     10.1313362
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1666.62,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 138.02,
+   "length_ratio": 1.3119,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bortal",
+   "to": "champ_de_course_ksar_said",
+   "key": "bortal|champ_de_course_ksar_said",
+   "straight_m": 376.58,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8120871,
+     10.1174078
+    ],
+    [
+     36.812299,
+     10.117093
+    ],
+    [
+     36.81211,
+     10.117076
+    ],
+    [
+     36.8130249,
+     10.1133431
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 405.22,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 14.88,
+   "length_ratio": 1.0761,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "champ_de_course_ksar_said",
+   "to": "magazin_carrefour",
+   "key": "champ_de_course_ksar_said|magazin_carrefour",
+   "straight_m": 928.51,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8130249,
+     10.1133431
+    ],
+    [
+     36.814269,
+     10.109397
+    ],
+    [
+     36.814575,
+     10.108883
+    ],
+    [
+     36.815447,
+     10.108168
+    ],
+    [
+     36.815675,
+     10.107765
+    ],
+    [
+     36.815725,
+     10.107041
+    ],
+    [
+     36.815312,
+     10.105992
+    ],
+    [
+     36.815735,
+     10.104388
+    ],
+    [
+     36.815811,
+     10.10428
+    ],
+    [
+     36.8174515,
+     10.1044989
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1109.82,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 167.07,
+   "length_ratio": 1.1953,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "magazin_carrefour",
+   "to": "caf_la_paix",
+   "key": "caf_la_paix|magazin_carrefour",
+   "straight_m": 269.99,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8198793,
+     10.1045455
+    ],
+    [
+     36.8174515,
+     10.1044989
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 269.99,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "caf_la_paix",
+   "to": "mess_des_officiers",
+   "key": "caf_la_paix|mess_des_officiers",
+   "straight_m": 527.05,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8198793,
+     10.1045455
+    ],
+    [
+     36.820706,
+     10.104373
+    ],
+    [
+     36.82147,
+     10.104134
+    ],
+    [
+     36.821716,
+     10.104251
+    ],
+    [
+     36.8235715,
+     10.1082585
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 622.13,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 148.49,
+   "length_ratio": 1.1804,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mess_des_officiers",
+   "to": "cit_sfar",
+   "key": "cit_sfar|mess_des_officiers",
+   "straight_m": 167.0,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8249659,
+     10.1089556
+    ],
+    [
+     36.824106,
+     10.108944
+    ],
+    [
+     36.823862,
+     10.109149
+    ],
+    [
+     36.8235715,
+     10.1082585
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 213.91,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 61.59,
+   "length_ratio": 1.2809,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_sfar",
+   "to": "terminus_18_janvier",
+   "key": "cit_sfar|terminus_18_janvier",
+   "straight_m": 402.08,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8249659,
+     10.1089556
+    ],
+    [
+     36.827784,
+     10.107615
+    ],
+    [
+     36.828267,
+     10.107026
+    ],
+    [
+     36.8278944,
+     10.1063056
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 486.7,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 87.19,
+   "length_ratio": 1.2105,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8065135,
+   10.1742408
+  ],
+  [
+   36.806256,
+   10.174217
+  ],
+  [
+   36.806011,
+   10.173767
+  ],
+  [
+   36.805622,
+   10.173648
+  ],
+  [
+   36.805712,
+   10.171289
+  ],
+  [
+   36.805316,
+   10.168299
+  ],
+  [
+   36.805375,
+   10.167966
+  ],
+  [
+   36.805232,
+   10.167829
+  ],
+  [
+   36.805123,
+   10.167987
+  ],
+  [
+   36.8053372,
+   10.1688404
+  ],
+  [
+   36.8052,
+   10.168131
+  ],
+  [
+   36.804656,
+   10.167622
+  ],
+  [
+   36.803799,
+   10.166515
+  ],
+  [
+   36.803487,
+   10.165633
+  ],
+  [
+   36.80306,
+   10.165395
+  ],
+  [
+   36.802836,
+   10.163643
+  ],
+  [
+   36.805223,
+   10.162241
+  ],
+  [
+   36.80605,
+   10.161448
+  ],
+  [
+   36.807755,
+   10.159105
+  ],
+  [
+   36.809893,
+   10.15788
+  ],
+  [
+   36.809592,
+   10.15603
+  ],
+  [
+   36.80973,
+   10.154894
+  ],
+  [
+   36.811037,
+   10.151975
+  ],
+  [
+   36.810328,
+   10.15152
+  ],
+  [
+   36.80976,
+   10.151654
+  ],
+  [
+   36.8098234,
+   10.152579
+  ],
+  [
+   36.809826,
+   10.152753
+  ],
+  [
+   36.81058,
+   10.15293
+  ],
+  [
+   36.811266,
+   10.151482
+  ],
+  [
+   36.810286,
+   10.15035
+  ],
+  [
+   36.809738,
+   10.15021
+  ],
+  [
+   36.809925,
+   10.149196
+  ],
+  [
+   36.809857,
+   10.149123
+  ],
+  [
+   36.809403,
+   10.149228
+  ],
+  [
+   36.80953,
+   10.15026
+  ],
+  [
+   36.80835,
+   10.14238
+  ],
+  [
+   36.80767,
+   10.138053
+  ],
+  [
+   36.807862,
+   10.137074
+  ],
+  [
+   36.80778,
+   10.137049
+  ],
+  [
+   36.807785,
+   10.135318
+  ],
+  [
+   36.809075,
+   10.132595
+  ],
+  [
+   36.8096013,
+   10.1313362
+  ],
+  [
+   36.809075,
+   10.132595
+  ],
+  [
+   36.808926,
+   10.132637
+  ],
+  [
+   36.809801,
+   10.130013
+  ],
+  [
+   36.810155,
+   10.128231
+  ],
+  [
+   36.810451,
+   10.124694
+  ],
+  [
+   36.810349,
+   10.122231
+  ],
+  [
+   36.810485,
+   10.121035
+  ],
+  [
+   36.811094,
+   10.11894
+  ],
+  [
+   36.811796,
+   10.117736
+  ],
+  [
+   36.812038,
+   10.117057
+  ],
+  [
+   36.812299,
+   10.117093
+  ],
+  [
+   36.8120871,
+   10.1174078
+  ],
+  [
+   36.812299,
+   10.117093
+  ],
+  [
+   36.81211,
+   10.117076
+  ],
+  [
+   36.8130249,
+   10.1133431
+  ],
+  [
+   36.814269,
+   10.109397
+  ],
+  [
+   36.814575,
+   10.108883
+  ],
+  [
+   36.815447,
+   10.108168
+  ],
+  [
+   36.815675,
+   10.107765
+  ],
+  [
+   36.815725,
+   10.107041
+  ],
+  [
+   36.815312,
+   10.105992
+  ],
+  [
+   36.815735,
+   10.104388
+  ],
+  [
+   36.815811,
+   10.10428
+  ],
+  [
+   36.8174515,
+   10.1044989
+  ],
+  [
+   36.8198793,
+   10.1045455
+  ],
+  [
+   36.820706,
+   10.104373
+  ],
+  [
+   36.82147,
+   10.104134
+  ],
+  [
+   36.821716,
+   10.104251
+  ],
+  [
+   36.8235715,
+   10.1082585
+  ],
+  [
+   36.823862,
+   10.109149
+  ],
+  [
+   36.824106,
+   10.108944
+  ],
+  [
+   36.8249659,
+   10.1089556
+  ],
+  [
+   36.827784,
+   10.107615
+  ],
+  [
+   36.828267,
+   10.107026
+  ],
+  [
+   36.8278944,
+   10.1063056
+  ]
+ ],
+ "phase3a": {
+  "pairs": 12,
+  "resolved": 12,
+  "unresolved": 0
+ }
+}

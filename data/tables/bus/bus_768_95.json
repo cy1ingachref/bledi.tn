@@ -1,0 +1,271 @@
+{
+ "line_id": "bus_768_95",
+ "number": "95",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 95: Rabattement Slimen Kahia - Terminus 56 72",
+ "direction_aller": [
+  "rabattement_slimen_kahia",
+  "poste_police_manouba",
+  "dar_mocennine",
+  "gouvernorat_manouba",
+  "ibn_jazzar_mannouba",
+  "boudria",
+  "hopital_kassab",
+  "ineps",
+  "d_l_gation_daouar_hicher",
+  "caf_hammem",
+  "baigneur",
+  "mosqu_e_avenue_chebbi",
+  "sabbela_56",
+  "affaires_sociales",
+  "terminus_56_72"
+ ],
+ "direction_retour": [
+  "terminus_56_72",
+  "affaires_sociales",
+  "sabbela_56",
+  "mosqu_e_avenue_chebbi",
+  "baigneur",
+  "caf_hammem",
+  "d_l_gation_daouar_hicher",
+  "ineps",
+  "hopital_kassab",
+  "boudria",
+  "ibn_jazzar_mannouba",
+  "gouvernorat_manouba",
+  "dar_mocennine",
+  "poste_police_manouba",
+  "rabattement_slimen_kahia"
+ ],
+ "stations_count": 15,
+ "start": {
+  "id": "rabattement_slimen_kahia",
+  "name": "Rabattement Slimen Kahia"
+ },
+ "end": {
+  "id": "terminus_56_72",
+  "name": "Terminus 56 72"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_slimen_kahia",
+  "poste_police_manouba",
+  "dar_mocennine",
+  "gouvernorat_manouba",
+  "ibn_jazzar_mannouba",
+  "boudria",
+  "hopital_kassab",
+  "ineps",
+  "d_l_gation_daouar_hicher",
+  "caf_hammem",
+  "baigneur",
+  "mosqu_e_avenue_chebbi",
+  "sabbela_56",
+  "affaires_sociales",
+  "terminus_56_72"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_slimen_kahia",
+   "name_en": "Rabattement Slimen Kahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8038639,
+   "lon": 10.0985919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poste_police_manouba",
+   "name_en": "Poste Police Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8083952,
+   "lon": 10.0923558,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dar_mocennine",
+   "name_en": "Dar Mocennine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8095931,
+   "lon": 10.0910119,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gouvernorat_manouba",
+   "name_en": "Gouvernorat Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8114227,
+   "lon": 10.0885442,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ibn_jazzar_mannouba",
+   "name_en": "Ibn Jazzar Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8128095,
+   "lon": 10.0892791,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boudria",
+   "name_en": "Boudria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8161882,
+   "lon": 10.0961131,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_kassab",
+   "name_en": "Hopital Kassab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8155796,
+   "lon": 10.1003191,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ineps",
+   "name_en": "INEPS",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8164772,
+   "lon": 10.1016119,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "d_l_gation_daouar_hicher",
+   "name_en": "Délégation Daouar Hicher",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8177484,
+   "lon": 10.0952015,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_hammem",
+   "name_en": "Café Hammem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8205913,
+   "lon": 10.0927178,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "baigneur",
+   "name_en": "Baigneur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8221034,
+   "lon": 10.0893598,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_avenue_chebbi",
+   "name_en": "Mosquée Avenue Chebbi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8255253,
+   "lon": 10.081018,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sabbela_56",
+   "name_en": "Sabbela (56)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.828582,
+   "lon": 10.0762648,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "affaires_sociales",
+   "name_en": "Affaires Sociales",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8316312,
+   "lon": 10.0831315,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_56_72",
+   "name_en": "Terminus 56 72",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8326267,
+   "lon": 10.0886137,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

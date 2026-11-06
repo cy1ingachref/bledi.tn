@@ -1,0 +1,484 @@
+{
+ "line_id": "bus_835_31c",
+ "number": "31C/",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 31C/: Depot Charguia - Chorfech 3",
+ "direction_aller": [
+  "depot_charguia",
+  "charguia_2",
+  "les_abattoirs",
+  "place_sala_centre",
+  "arr_t_bab_hadid",
+  "magro",
+  "hopital_mahmoud_matri",
+  "touben_2",
+  "croisement_riadh_andalous",
+  "usine_de_carrelage",
+  "cit_el_ghazela",
+  "cit_populaire_ennahli",
+  "carri_re_nahli",
+  "nahli_3",
+  "geant",
+  "kiosque_agile",
+  "sabalet_ben_amar",
+  "mthalith",
+  "frachich",
+  "sanad",
+  "makfoufine_1",
+  "makfoufine_2",
+  "mrezgeya",
+  "chorfech_1",
+  "chorfech_2",
+  "soned",
+  "chorfech_3"
+ ],
+ "direction_retour": [
+  "chorfech_3",
+  "soned",
+  "chorfech_2",
+  "chorfech_1",
+  "mrezgeya",
+  "makfoufine_2",
+  "makfoufine_1",
+  "sanad",
+  "frachich",
+  "mthalith",
+  "sabalet_ben_amar",
+  "kiosque_agile",
+  "geant",
+  "nahli_3",
+  "carri_re_nahli",
+  "cit_populaire_ennahli",
+  "cit_el_ghazela",
+  "usine_de_carrelage",
+  "croisement_riadh_andalous",
+  "touben_2",
+  "hopital_mahmoud_matri",
+  "magro",
+  "arr_t_bab_hadid",
+  "place_sala_centre",
+  "les_abattoirs",
+  "charguia_2",
+  "depot_charguia"
+ ],
+ "stations_count": 27,
+ "start": {
+  "id": "depot_charguia",
+  "name": "Depot Charguia"
+ },
+ "end": {
+  "id": "chorfech_3",
+  "name": "Chorfech 3"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 5,
+ "teleport_legs": [
+  {
+   "from": "mthalith",
+   "to": "frachich",
+   "km": 40.9
+  },
+  {
+   "from": "frachich",
+   "to": "sanad",
+   "km": 40.9
+  },
+  {
+   "from": "chorfech_2",
+   "to": "soned",
+   "km": 24.3
+  },
+  {
+   "from": "soned",
+   "to": "chorfech_3",
+   "km": 25.7
+  }
+ ],
+ "original_stations": [
+  "depot_charguia",
+  "charguia_2",
+  "les_abattoirs",
+  "place_sala_centre",
+  "arr_t_bab_hadid",
+  "magro",
+  "hopital_mahmoud_matri",
+  "touben_2",
+  "croisement_riadh_andalous",
+  "usine_de_carrelage",
+  "cit_el_ghazela",
+  "cit_populaire_ennahli",
+  "carri_re_nahli",
+  "nahli_3",
+  "geant",
+  "kiosque_agile",
+  "sabalet_ben_amar",
+  "mthalith",
+  "frachich",
+  "sanad",
+  "makfoufine_1",
+  "makfoufine_2",
+  "mrezgeya",
+  "chorfech_1",
+  "chorfech_2",
+  "soned",
+  "chorfech_3"
+ ],
+ "stations_detail": [
+  {
+   "id": "depot_charguia",
+   "name_en": "Depot Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.839222,
+   "lon": 10.2045873,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia_2",
+   "name_en": "Charguia 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8543199,
+   "lon": 10.2028332,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_abattoirs",
+   "name_en": "Les Abattoirs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8601659,
+   "lon": 10.1981876,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_sala_centre",
+   "name_en": "Place Sala Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85811,
+   "lon": 10.1914391,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arr_t_bab_hadid",
+   "name_en": "Arrét Bab Hadid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8581935,
+   "lon": 10.1885869,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magro",
+   "name_en": "MAGRO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8619428,
+   "lon": 10.1872281,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_mahmoud_matri",
+   "name_en": "Hopital Mahmoud Matri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8678091,
+   "lon": 10.1839567,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "touben_2",
+   "name_en": "Touben 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8716035,
+   "lon": 10.1821533,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_riadh_andalous",
+   "name_en": "Croisement Riadh Andalous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8781743,
+   "lon": 10.1784243,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "usine_de_carrelage",
+   "name_en": "Usine De Carrelage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8842822,
+   "lon": 10.171149,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_ghazela",
+   "name_en": "Cité El Ghazela",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8817704,
+   "lon": 10.1754349,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_populaire_ennahli",
+   "name_en": "Cité Populaire Ennahli",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8874807,
+   "lon": 10.1669078,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carri_re_nahli",
+   "name_en": "Carriére Nahli",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8908012,
+   "lon": 10.1598052,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nahli_3",
+   "name_en": "Nahli 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8929593,
+   "lon": 10.1300863,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "geant",
+   "name_en": "GEANT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8982192,
+   "lon": 10.1204885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_agile",
+   "name_en": "Kiosque Agile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8985123,
+   "lon": 10.114386,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sabalet_ben_amar",
+   "name_en": "Sabalet Ben Amar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9080505,
+   "lon": 10.1084462,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mthalith",
+   "name_en": "Mthalith",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9138924,
+   "lon": 10.1007912,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "frachich",
+   "name_en": "Frachich",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5618227,
+   "lon": 9.9676782,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sanad",
+   "name_en": "Sanad",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9194455,
+   "lon": 10.0759644,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "makfoufine_1",
+   "name_en": "Makfoufine 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9205754,
+   "lon": 10.0848903,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "makfoufine_2",
+   "name_en": "Makfoufine 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9209311,
+   "lon": 10.0812415,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mrezgeya",
+   "name_en": "Mrezgeya",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9137498,
+   "lon": 10.0603003,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chorfech_1",
+   "name_en": "Chorfech 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.935996,
+   "lon": 10.0427474,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chorfech_2",
+   "name_en": "Chorfech 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9374389,
+   "lon": 10.042587,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soned",
+   "name_en": "Soned",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7652949,
+   "lon": 10.210255,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chorfech_3",
+   "name_en": "Chorfech 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9537735,
+   "lon": 10.0438316,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

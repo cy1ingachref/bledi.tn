@@ -1,0 +1,819 @@
+{
+ "line_id": "metro_51_2",
+ "number": "2",
+ "mode": "metro",
+ "operator": "Transtu",
+ "name": "Ligne 2: PLACE DE LA REPUBLIQUE - ARIANA",
+ "direction_aller": [
+  "place_de_la_republique",
+  "nelson_mandela",
+  "mohamed_v",
+  "palestine",
+  "les_jardins",
+  "cite_el_khadhra",
+  "la_jeunesse",
+  "cite_sportive",
+  "10_decembre_1948",
+  "cite_des_sciences",
+  "independance",
+  "ariana"
+ ],
+ "direction_retour": [
+  "ariana",
+  "independance",
+  "cite_des_sciences",
+  "10_decembre_1948",
+  "cite_sportive",
+  "la_jeunesse",
+  "cite_el_khadhra",
+  "les_jardins",
+  "palestine",
+  "mohamed_v",
+  "nelson_mandela",
+  "place_de_la_republique"
+ ],
+ "stations_count": 12,
+ "start": {
+  "id": "place_de_la_republique",
+  "name": "PLACE DE LA REPUBLIQUE"
+ },
+ "end": {
+  "id": "ariana",
+  "name": "ARIANA"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "place_de_la_republique",
+  "nelson_mandela",
+  "mohamed_v",
+  "palestine",
+  "les_jardins",
+  "cite_el_khadhra",
+  "la_jeunesse",
+  "cite_sportive",
+  "10_decembre_1948",
+  "cite_des_sciences",
+  "independance",
+  "ariana"
+ ],
+ "stations_detail": [
+  {
+   "id": "place_de_la_republique",
+   "name_en": "PLACE DE LA REPUBLIQUE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80649,
+   "lon": 10.18081,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "nelson_mandela",
+   "name_en": "NELSON MANDELA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81248,
+   "lon": 10.18333,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "mohamed_v",
+   "name_en": "MOHAMED V",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81568,
+   "lon": 10.18357,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "palestine",
+   "name_en": "PALESTINE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.82001,
+   "lon": 10.18206,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_jardins",
+   "name_en": "LES JARDINS",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.82346,
+   "lon": 10.18556,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_el_khadhra",
+   "name_en": "CITE EL KHADHRA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.82923,
+   "lon": 10.19037,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_jeunesse",
+   "name_en": "LA JEUNESSE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.83329,
+   "lon": 10.18277,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_sportive",
+   "name_en": "CITE SPORTIVE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.83852,
+   "lon": 10.18196,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "10_decembre_1948",
+   "name_en": "10 DECEMBRE 1948",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.84428,
+   "lon": 10.18406,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_des_sciences",
+   "name_en": "CITE DES SCIENCES",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.84699,
+   "lon": 10.19237,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "independance",
+   "name_en": "INDEPENDANCE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85441,
+   "lon": 10.19591,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "ariana",
+   "name_en": "ARIANA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85979,
+   "lon": 10.19748,
+   "mode": "metro",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "place_de_la_republique",
+   "to": "nelson_mandela",
+   "key": "nelson_mandela|place_de_la_republique",
+   "straight_m": 702.83,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.81248,
+     10.18333
+    ],
+    [
+     36.808361,
+     10.181395
+    ],
+    [
+     36.811101,
+     10.182564
+    ],
+    [
+     36.80649,
+     10.18081
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1347.27,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 17.05,
+   "length_ratio": 1.9169,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "nelson_mandela",
+   "to": "mohamed_v",
+   "key": "mohamed_v|nelson_mandela",
+   "straight_m": 356.47,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.81568,
+     10.18357
+    ],
+    [
+     36.813394,
+     10.183885
+    ],
+    [
+     36.813931,
+     10.183962
+    ],
+    [
+     36.815246,
+     10.183782
+    ],
+    [
+     36.81248,
+     10.18333
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 773.12,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 46.49,
+   "length_ratio": 2.1688,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mohamed_v",
+   "to": "palestine",
+   "key": "mohamed_v|palestine",
+   "straight_m": 499.89,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.81568,
+     10.18357
+    ],
+    [
+     36.81733,
+     10.181593
+    ],
+    [
+     36.819301,
+     10.181282
+    ],
+    [
+     36.82001,
+     10.18206
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 580.07,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 120.17,
+   "length_ratio": 1.1604,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "palestine",
+   "to": "les_jardins",
+   "key": "les_jardins|palestine",
+   "straight_m": 494.19,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.82346,
+     10.18556
+    ],
+    [
+     36.82284,
+     10.185228
+    ],
+    [
+     36.82001,
+     10.18206
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 497.55,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 20.52,
+   "length_ratio": 1.0068,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "les_jardins",
+   "to": "cite_el_khadhra",
+   "key": "cite_el_khadhra|les_jardins",
+   "straight_m": 771.32,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.82923,
+     10.19037
+    ],
+    [
+     36.828882,
+     10.190932
+    ],
+    [
+     36.828521,
+     10.190936
+    ],
+    [
+     36.825958,
+     10.188196
+    ],
+    [
+     36.824022,
+     10.18588
+    ],
+    [
+     36.82346,
+     10.18556
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 845.21,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 85.66,
+   "length_ratio": 1.0958,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_el_khadhra",
+   "to": "la_jeunesse",
+   "key": "cite_el_khadhra|la_jeunesse",
+   "straight_m": 813.23,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.82923,
+     10.19037
+    ],
+    [
+     36.832982,
+     10.183313
+    ],
+    [
+     36.832572,
+     10.184848
+    ],
+    [
+     36.830408,
+     10.187819
+    ],
+    [
+     36.83329,
+     10.18277
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1807.49,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 36.26,
+   "length_ratio": 2.2226,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "la_jeunesse",
+   "to": "cite_sportive",
+   "key": "cite_sportive|la_jeunesse",
+   "straight_m": 586.0,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.83852,
+     10.18196
+    ],
+    [
+     36.834084,
+     10.181496
+    ],
+    [
+     36.834584,
+     10.181223
+    ],
+    [
+     36.835093,
+     10.181225
+    ],
+    [
+     36.83688,
+     10.181748
+    ],
+    [
+     36.83329,
+     10.18277
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1225.77,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 118.93,
+   "length_ratio": 2.0917,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_sportive",
+   "to": "10_decembre_1948",
+   "key": "10_decembre_1948|cite_sportive",
+   "straight_m": 667.19,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.84428,
+     10.18406
+    ],
+    [
+     36.844043,
+     10.183298
+    ],
+    [
+     36.843636,
+     10.182934
+    ],
+    [
+     36.840872,
+     10.182203
+    ],
+    [
+     36.83852,
+     10.18196
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 704.98,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 76.13,
+   "length_ratio": 1.0566,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "10_decembre_1948",
+   "to": "cite_des_sciences",
+   "key": "10_decembre_1948|cite_des_sciences",
+   "straight_m": 798.5,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.84428,
+     10.18406
+    ],
+    [
+     36.846362,
+     10.190824
+    ],
+    [
+     36.845354,
+     10.187083
+    ],
+    [
+     36.8448,
+     10.186246
+    ],
+    [
+     36.84699,
+     10.19237
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1689.66,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 19.86,
+   "length_ratio": 2.116,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_des_sciences",
+   "to": "independance",
+   "key": "cite_des_sciences|independance",
+   "straight_m": 883.15,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.84699,
+     10.19237
+    ],
+    [
+     36.852161,
+     10.195787
+    ],
+    [
+     36.850231,
+     10.195437
+    ],
+    [
+     36.849484,
+     10.195161
+    ],
+    [
+     36.847658,
+     10.193647
+    ],
+    [
+     36.85441,
+     10.19591
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1974.89,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 133.1,
+   "length_ratio": 2.2362,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "independance",
+   "to": "ariana",
+   "key": "ariana|independance",
+   "straight_m": 614.32,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.85979,
+     10.19748
+    ],
+    [
+     36.855187,
+     10.195963
+    ],
+    [
+     36.855933,
+     10.196207
+    ],
+    [
+     36.85728,
+     10.197062
+    ],
+    [
+     36.859197,
+     10.197815
+    ],
+    [
+     36.85441,
+     10.19591
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1565.13,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 44.02,
+   "length_ratio": 2.5477,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.80649,
+   10.18081
+  ],
+  [
+   36.811101,
+   10.182564
+  ],
+  [
+   36.808361,
+   10.181395
+  ],
+  [
+   36.81248,
+   10.18333
+  ],
+  [
+   36.815246,
+   10.183782
+  ],
+  [
+   36.813931,
+   10.183962
+  ],
+  [
+   36.813394,
+   10.183885
+  ],
+  [
+   36.81568,
+   10.18357
+  ],
+  [
+   36.81733,
+   10.181593
+  ],
+  [
+   36.819301,
+   10.181282
+  ],
+  [
+   36.82001,
+   10.18206
+  ],
+  [
+   36.82284,
+   10.185228
+  ],
+  [
+   36.82346,
+   10.18556
+  ],
+  [
+   36.824022,
+   10.18588
+  ],
+  [
+   36.825958,
+   10.188196
+  ],
+  [
+   36.828521,
+   10.190936
+  ],
+  [
+   36.828882,
+   10.190932
+  ],
+  [
+   36.82923,
+   10.19037
+  ],
+  [
+   36.832982,
+   10.183313
+  ],
+  [
+   36.832572,
+   10.184848
+  ],
+  [
+   36.830408,
+   10.187819
+  ],
+  [
+   36.83329,
+   10.18277
+  ],
+  [
+   36.83688,
+   10.181748
+  ],
+  [
+   36.835093,
+   10.181225
+  ],
+  [
+   36.834584,
+   10.181223
+  ],
+  [
+   36.834084,
+   10.181496
+  ],
+  [
+   36.83852,
+   10.18196
+  ],
+  [
+   36.840872,
+   10.182203
+  ],
+  [
+   36.843636,
+   10.182934
+  ],
+  [
+   36.844043,
+   10.183298
+  ],
+  [
+   36.84428,
+   10.18406
+  ],
+  [
+   36.846362,
+   10.190824
+  ],
+  [
+   36.845354,
+   10.187083
+  ],
+  [
+   36.8448,
+   10.186246
+  ],
+  [
+   36.84699,
+   10.19237
+  ],
+  [
+   36.852161,
+   10.195787
+  ],
+  [
+   36.850231,
+   10.195437
+  ],
+  [
+   36.849484,
+   10.195161
+  ],
+  [
+   36.847658,
+   10.193647
+  ],
+  [
+   36.85441,
+   10.19591
+  ],
+  [
+   36.859197,
+   10.197815
+  ],
+  [
+   36.85728,
+   10.197062
+  ],
+  [
+   36.855933,
+   10.196207
+  ],
+  [
+   36.855187,
+   10.195963
+  ],
+  [
+   36.85979,
+   10.19748
+  ]
+ ],
+ "phase3a": {
+  "pairs": 11,
+  "resolved": 11,
+  "unresolved": 0
+ }
+}

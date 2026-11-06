@@ -1,0 +1,843 @@
+{
+ "line_id": "bus_810_23",
+ "number": "23/",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 23/: Cafe Medina 23/ - Ecole Fejja",
+ "direction_aller": [
+  "cafe_medina_23",
+  "cite_26_26",
+  "aalouine1",
+  "aalouine2",
+  "menzel_hbib_23d_23",
+  "croisement_borj_amri_23d_23",
+  "steg_menzel_hbib_23d_23",
+  "poulailler_menzel_hbib_23d_23",
+  "prison_civile_borj_amri_23d_23",
+  "entree_fejja",
+  "cite_fejja",
+  "ecole_fejja"
+ ],
+ "direction_retour": [
+  "ecole_fejja",
+  "cite_fejja",
+  "entree_fejja",
+  "prison_civile_borj_amri_23d_23",
+  "poulailler_menzel_hbib_23d_23",
+  "steg_menzel_hbib_23d_23",
+  "croisement_borj_amri_23d_23",
+  "menzel_hbib_23d_23",
+  "aalouine2",
+  "aalouine1",
+  "cite_26_26",
+  "cafe_medina_23"
+ ],
+ "stations_count": 12,
+ "start": {
+  "id": "cafe_medina_23",
+  "name": "Cafe Medina 23/"
+ },
+ "end": {
+  "id": "ecole_fejja",
+  "name": "Ecole Fejja"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "cafe_medina_23",
+  "cite_26_26",
+  "aalouine1",
+  "aalouine2",
+  "menzel_hbib_23d_23",
+  "croisement_borj_amri_23d_23",
+  "steg_menzel_hbib_23d_23",
+  "poulailler_menzel_hbib_23d_23",
+  "prison_civile_borj_amri_23d_23",
+  "entree_fejja",
+  "cite_fejja",
+  "ecole_fejja"
+ ],
+ "stations_detail": [
+  {
+   "id": "cafe_medina_23",
+   "name_en": "Cafe Medina 23/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7126728,
+   "lon": 9.8823682,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_26_26",
+   "name_en": "Cite 26/26",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.695612,
+   "lon": 9.8826363,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "aalouine1",
+   "name_en": "Aalouine1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6824414,
+   "lon": 9.8811064,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "aalouine2",
+   "name_en": "Aalouine2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6728266,
+   "lon": 9.8785214,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzel_hbib_23d_23",
+   "name_en": "Menzel Hbib 23D-23/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6620926,
+   "lon": 9.8987994,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_borj_amri_23d_23",
+   "name_en": "Croisement Borj Amri 23D-23/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6729273,
+   "lon": 9.9120334,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_menzel_hbib_23d_23",
+   "name_en": "Steg Menzel Hbib 23D-23/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6804994,
+   "lon": 9.9226603,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poulailler_menzel_hbib_23d_23",
+   "name_en": "Poulailler Menzel Hbib 23D-23/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6861437,
+   "lon": 9.9310127,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "prison_civile_borj_amri_23d_23",
+   "name_en": "Prison Civile Borj Amri 23D-23/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6901778,
+   "lon": 9.9409849,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entree_fejja",
+   "name_en": "Entree Fejja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6915973,
+   "lon": 9.9464673,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_fejja",
+   "name_en": "Cite Fejja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6864534,
+   "lon": 9.9495361,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_fejja",
+   "name_en": "Ecole Fejja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6820353,
+   "lon": 9.9526474,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "cafe_medina_23",
+   "to": "cite_26_26",
+   "key": "cafe_medina_23|cite_26_26",
+   "straight_m": 1897.23,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7126728,
+     9.8823682
+    ],
+    [
+     36.712891,
+     9.882964
+    ],
+    [
+     36.707941,
+     9.886034
+    ],
+    [
+     36.707515,
+     9.886185
+    ],
+    [
+     36.695612,
+     9.8826363
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 2083.17,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 333.01,
+   "length_ratio": 1.098,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_26_26",
+   "to": "aalouine1",
+   "key": "aalouine1|cite_26_26",
+   "straight_m": 1470.85,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6824414,
+     9.8811064
+    ],
+    [
+     36.683945,
+     9.880626
+    ],
+    [
+     36.688993,
+     9.881551
+    ],
+    [
+     36.690886,
+     9.882071
+    ],
+    [
+     36.693592,
+     9.882477
+    ],
+    [
+     36.695612,
+     9.8826363
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1483.6,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 58.16,
+   "length_ratio": 1.0087,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "aalouine1",
+   "to": "aalouine2",
+   "key": "aalouine1|aalouine2",
+   "straight_m": 1093.69,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6824414,
+     9.8811064
+    ],
+    [
+     36.67604,
+     9.88041
+    ],
+    [
+     36.675603,
+     9.880186
+    ],
+    [
+     36.673177,
+     9.878242
+    ],
+    [
+     36.6728266,
+     9.8785214
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1133.96,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 89.33,
+   "length_ratio": 1.0368,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "aalouine2",
+   "to": "menzel_hbib_23d_23",
+   "key": "aalouine2|menzel_hbib_23d_23",
+   "straight_m": 2166.96,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6728266,
+     9.8785214
+    ],
+    [
+     36.67208,
+     9.88099
+    ],
+    [
+     36.670898,
+     9.883382
+    ],
+    [
+     36.670503,
+     9.884918
+    ],
+    [
+     36.66956,
+     9.88729
+    ],
+    [
+     36.665214,
+     9.894591
+    ],
+    [
+     36.661867,
+     9.897795
+    ],
+    [
+     36.6620926,
+     9.8987994
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 2239.03,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 127.61,
+   "length_ratio": 1.0333,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "menzel_hbib_23d_23",
+   "to": "croisement_borj_amri_23d_23",
+   "key": "croisement_borj_amri_23d_23|menzel_hbib_23d_23",
+   "straight_m": 1686.62,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6729273,
+     9.9120334
+    ],
+    [
+     36.672067,
+     9.910129
+    ],
+    [
+     36.669184,
+     9.905212
+    ],
+    [
+     36.668726,
+     9.904748
+    ],
+    [
+     36.662997,
+     9.900216
+    ],
+    [
+     36.662537,
+     9.899676
+    ],
+    [
+     36.6620926,
+     9.8987994
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1720.98,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 143.29,
+   "length_ratio": 1.0204,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "croisement_borj_amri_23d_23",
+   "to": "steg_menzel_hbib_23d_23",
+   "key": "croisement_borj_amri_23d_23|steg_menzel_hbib_23d_23",
+   "straight_m": 1267.71,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6729273,
+     9.9120334
+    ],
+    [
+     36.674073,
+     9.914527
+    ],
+    [
+     36.674843,
+     9.915914
+    ],
+    [
+     36.6804994,
+     9.9226603
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1277.11,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 70.61,
+   "length_ratio": 1.0074,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "steg_menzel_hbib_23d_23",
+   "to": "poulailler_menzel_hbib_23d_23",
+   "key": "poulailler_menzel_hbib_23d_23|steg_menzel_hbib_23d_23",
+   "straight_m": 973.98,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6861437,
+     9.9310127
+    ],
+    [
+     36.684161,
+     9.926731
+    ],
+    [
+     36.6804994,
+     9.9226603
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 986.36,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 77.44,
+   "length_ratio": 1.0127,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "poulailler_menzel_hbib_23d_23",
+   "to": "prison_civile_borj_amri_23d_23",
+   "key": "poulailler_menzel_hbib_23d_23|prison_civile_borj_amri_23d_23",
+   "straight_m": 995.93,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6861437,
+     9.9310127
+    ],
+    [
+     36.688359,
+     9.935502
+    ],
+    [
+     36.689882,
+     9.939299
+    ],
+    [
+     36.6901778,
+     9.9409849
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1002.46,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 39.63,
+   "length_ratio": 1.0066,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "prison_civile_borj_amri_23d_23",
+   "to": "entree_fejja",
+   "key": "entree_fejja|prison_civile_borj_amri_23d_23",
+   "straight_m": 513.68,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6915973,
+     9.9464673
+    ],
+    [
+     36.692174,
+     9.946461
+    ],
+    [
+     36.692272,
+     9.946246
+    ],
+    [
+     36.691887,
+     9.945724
+    ],
+    [
+     36.690785,
+     9.942839
+    ],
+    [
+     36.6901778,
+     9.9409849
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 612.92,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 77.57,
+   "length_ratio": 1.1932,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "entree_fejja",
+   "to": "cite_fejja",
+   "key": "cite_fejja|entree_fejja",
+   "straight_m": 634.06,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6864534,
+     9.9495361
+    ],
+    [
+     36.691637,
+     9.94657
+    ],
+    [
+     36.692174,
+     9.946461
+    ],
+    [
+     36.692251,
+     9.946176
+    ],
+    [
+     36.69204,
+     9.946108
+    ],
+    [
+     36.6915973,
+     9.9464673
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 804.45,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 77.19,
+   "length_ratio": 1.2687,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_fejja",
+   "to": "ecole_fejja",
+   "key": "cite_fejja|ecole_fejja",
+   "straight_m": 564.2,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6864534,
+     9.9495361
+    ],
+    [
+     36.683472,
+     9.951384
+    ],
+    [
+     36.683026,
+     9.951698
+    ],
+    [
+     36.6820353,
+     9.9526474
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 566.1,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 19.55,
+   "length_ratio": 1.0034,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7126728,
+   9.8823682
+  ],
+  [
+   36.712891,
+   9.882964
+  ],
+  [
+   36.707941,
+   9.886034
+  ],
+  [
+   36.707515,
+   9.886185
+  ],
+  [
+   36.695612,
+   9.8826363
+  ],
+  [
+   36.693592,
+   9.882477
+  ],
+  [
+   36.690886,
+   9.882071
+  ],
+  [
+   36.688993,
+   9.881551
+  ],
+  [
+   36.683945,
+   9.880626
+  ],
+  [
+   36.6824414,
+   9.8811064
+  ],
+  [
+   36.67604,
+   9.88041
+  ],
+  [
+   36.675603,
+   9.880186
+  ],
+  [
+   36.673177,
+   9.878242
+  ],
+  [
+   36.6728266,
+   9.8785214
+  ],
+  [
+   36.67208,
+   9.88099
+  ],
+  [
+   36.670898,
+   9.883382
+  ],
+  [
+   36.670503,
+   9.884918
+  ],
+  [
+   36.66956,
+   9.88729
+  ],
+  [
+   36.665214,
+   9.894591
+  ],
+  [
+   36.661867,
+   9.897795
+  ],
+  [
+   36.6620926,
+   9.8987994
+  ],
+  [
+   36.662537,
+   9.899676
+  ],
+  [
+   36.662997,
+   9.900216
+  ],
+  [
+   36.668726,
+   9.904748
+  ],
+  [
+   36.669184,
+   9.905212
+  ],
+  [
+   36.672067,
+   9.910129
+  ],
+  [
+   36.6729273,
+   9.9120334
+  ],
+  [
+   36.674073,
+   9.914527
+  ],
+  [
+   36.674843,
+   9.915914
+  ],
+  [
+   36.6804994,
+   9.9226603
+  ],
+  [
+   36.684161,
+   9.926731
+  ],
+  [
+   36.6861437,
+   9.9310127
+  ],
+  [
+   36.688359,
+   9.935502
+  ],
+  [
+   36.689882,
+   9.939299
+  ],
+  [
+   36.6901778,
+   9.9409849
+  ],
+  [
+   36.690785,
+   9.942839
+  ],
+  [
+   36.691887,
+   9.945724
+  ],
+  [
+   36.692272,
+   9.946246
+  ],
+  [
+   36.692174,
+   9.946461
+  ],
+  [
+   36.6915973,
+   9.9464673
+  ],
+  [
+   36.69204,
+   9.946108
+  ],
+  [
+   36.692251,
+   9.946176
+  ],
+  [
+   36.692174,
+   9.946461
+  ],
+  [
+   36.691637,
+   9.94657
+  ],
+  [
+   36.6864534,
+   9.9495361
+  ],
+  [
+   36.683472,
+   9.951384
+  ],
+  [
+   36.683026,
+   9.951698
+  ],
+  [
+   36.6820353,
+   9.9526474
+  ]
+ ],
+ "phase3a": {
+  "pairs": 11,
+  "resolved": 11,
+  "unresolved": 0
+ }
+}

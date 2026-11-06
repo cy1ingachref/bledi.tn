@@ -1,0 +1,1252 @@
+{
+ "line_id": "bus_831_27a",
+ "number": "27A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 27A: 10 Decembre - Terminus Cité El Ghazela",
+ "direction_aller": [
+  "10_decembre",
+  "el_anbaria",
+  "lyc_e_kheredinne",
+  "la_poste",
+  "arr_t_bab_hadid",
+  "magro",
+  "caf_leskale",
+  "lakrade",
+  "enkhilette",
+  "el_ghazela",
+  "salon_bader",
+  "tunisie_t_l_com_el_ghazela",
+  "magazin_aziza",
+  "ecole_abu_el_kacem_echebi",
+  "terminus_cit_el_ghazela"
+ ],
+ "direction_retour": [
+  "terminus_cit_el_ghazela",
+  "ecole_abu_el_kacem_echebi",
+  "magazin_aziza",
+  "tunisie_t_l_com_el_ghazela",
+  "salon_bader",
+  "el_ghazela",
+  "enkhilette",
+  "lakrade",
+  "caf_leskale",
+  "magro",
+  "arr_t_bab_hadid",
+  "la_poste",
+  "lyc_e_kheredinne",
+  "el_anbaria",
+  "10_decembre"
+ ],
+ "stations_count": 15,
+ "start": {
+  "id": "10_decembre",
+  "name": "10 Decembre"
+ },
+ "end": {
+  "id": "terminus_cit_el_ghazela",
+  "name": "Terminus Cité El Ghazela"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "10_decembre",
+  "el_anbaria",
+  "lyc_e_kheredinne",
+  "la_poste",
+  "arr_t_bab_hadid",
+  "magro",
+  "caf_leskale",
+  "lakrade",
+  "enkhilette",
+  "el_ghazela",
+  "salon_bader",
+  "tunisie_t_l_com_el_ghazela",
+  "magazin_aziza",
+  "ecole_abu_el_kacem_echebi",
+  "terminus_cit_el_ghazela"
+ ],
+ "stations_detail": [
+  {
+   "id": "10_decembre",
+   "name_en": "10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421837,
+   "lon": 10.182519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_anbaria",
+   "name_en": "El Anbaria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8511265,
+   "lon": 10.1836125,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_kheredinne",
+   "name_en": "Lycée Kheredinne",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8531309,
+   "lon": 10.1852164,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_poste",
+   "name_en": "La Poste",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8557499,
+   "lon": 10.1878432,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arr_t_bab_hadid",
+   "name_en": "Arrét Bab Hadid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8581935,
+   "lon": 10.1885869,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magro",
+   "name_en": "MAGRO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8619428,
+   "lon": 10.1872281,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_leskale",
+   "name_en": "Café Leskale",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8730396,
+   "lon": 10.1853985,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lakrade",
+   "name_en": "Lakrade",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8771309,
+   "lon": 10.1861866,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "enkhilette",
+   "name_en": "Enkhilette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8799106,
+   "lon": 10.1856544,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_ghazela",
+   "name_en": "El Ghazela",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8897019,
+   "lon": 10.1820495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "salon_bader",
+   "name_en": "Salon Bader",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8902563,
+   "lon": 10.1800604,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tunisie_t_l_com_el_ghazela",
+   "name_en": "Tunisie Télécom El Ghazela",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8900809,
+   "lon": 10.172304,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magazin_aziza",
+   "name_en": "Magazin Aziza",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8911864,
+   "lon": 10.1713529,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_abu_el_kacem_echebi",
+   "name_en": "Ecole Abu El Kacem Echebi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8922513,
+   "lon": 10.1642193,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_cit_el_ghazela",
+   "name_en": "Terminus Cité El Ghazela",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8935117,
+   "lon": 10.165452,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "10_decembre",
+   "to": "el_anbaria",
+   "key": "10_decembre|el_anbaria",
+   "straight_m": 999.14,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8421837,
+     10.182519
+    ],
+    [
+     36.844054,
+     10.182981
+    ],
+    [
+     36.846597,
+     10.183512
+    ],
+    [
+     36.847251,
+     10.183541
+    ],
+    [
+     36.847999,
+     10.183417
+    ],
+    [
+     36.849144,
+     10.182981
+    ],
+    [
+     36.849653,
+     10.182922
+    ],
+    [
+     36.850307,
+     10.183016
+    ],
+    [
+     36.8511265,
+     10.1836125
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1023.95,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 45.19,
+   "length_ratio": 1.0248,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "el_anbaria",
+   "to": "lyc_e_kheredinne",
+   "key": "el_anbaria|lyc_e_kheredinne",
+   "straight_m": 264.65,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8511265,
+     10.1836125
+    ],
+    [
+     36.853103,
+     10.18542
+    ],
+    [
+     36.853363,
+     10.184999
+    ],
+    [
+     36.8531309,
+     10.1852164
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 351.91,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 32.25,
+   "length_ratio": 1.3297,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "lyc_e_kheredinne",
+   "to": "la_poste",
+   "key": "la_poste|lyc_e_kheredinne",
+   "straight_m": 373.41,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8557499,
+     10.1878432
+    ],
+    [
+     36.855461,
+     10.187599
+    ],
+    [
+     36.854749,
+     10.186696
+    ],
+    [
+     36.853297,
+     10.185473
+    ],
+    [
+     36.853175,
+     10.185327
+    ],
+    [
+     36.853363,
+     10.184999
+    ],
+    [
+     36.8531309,
+     10.1852164
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 433.21,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 31.24,
+   "length_ratio": 1.1602,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "la_poste",
+   "to": "arr_t_bab_hadid",
+   "key": "arr_t_bab_hadid|la_poste",
+   "straight_m": 279.66,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8581935,
+     10.1885869
+    ],
+    [
+     36.858353,
+     10.188429
+    ],
+    [
+     36.858835,
+     10.18837
+    ],
+    [
+     36.858873,
+     10.188199
+    ],
+    [
+     36.858762,
+     10.18806
+    ],
+    [
+     36.858311,
+     10.188284
+    ],
+    [
+     36.85687,
+     10.188212
+    ],
+    [
+     36.8557499,
+     10.1878432
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 452.86,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 83.07,
+   "length_ratio": 1.6193,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "arr_t_bab_hadid",
+   "to": "magro",
+   "key": "arr_t_bab_hadid|magro",
+   "straight_m": 434.08,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8581935,
+     10.1885869
+    ],
+    [
+     36.858353,
+     10.188429
+    ],
+    [
+     36.859058,
+     10.188333
+    ],
+    [
+     36.860452,
+     10.187631
+    ],
+    [
+     36.8619428,
+     10.1872281
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 438.2,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 11.74,
+   "length_ratio": 1.0095,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "magro",
+   "to": "caf_leskale",
+   "key": "caf_leskale|magro",
+   "straight_m": 1244.6,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8730396,
+     10.1853985
+    ],
+    [
+     36.873549,
+     10.185004
+    ],
+    [
+     36.874079,
+     10.184989
+    ],
+    [
+     36.874484,
+     10.185172
+    ],
+    [
+     36.874664,
+     10.185824
+    ],
+    [
+     36.87493,
+     10.185968
+    ],
+    [
+     36.875271,
+     10.185695
+    ],
+    [
+     36.875225,
+     10.18522
+    ],
+    [
+     36.875041,
+     10.185062
+    ],
+    [
+     36.874586,
+     10.185072
+    ],
+    [
+     36.874083,
+     10.184877
+    ],
+    [
+     36.873335,
+     10.184978
+    ],
+    [
+     36.872539,
+     10.18557
+    ],
+    [
+     36.871672,
+     10.185856
+    ],
+    [
+     36.868797,
+     10.185753
+    ],
+    [
+     36.867037,
+     10.185445
+    ],
+    [
+     36.865541,
+     10.185456
+    ],
+    [
+     36.865202,
+     10.185187
+    ],
+    [
+     36.862032,
+     10.186994
+    ],
+    [
+     36.860416,
+     10.187539
+    ],
+    [
+     36.859194,
+     10.188134
+    ],
+    [
+     36.85865,
+     10.188084
+    ],
+    [
+     36.858591,
+     10.188308
+    ],
+    [
+     36.858758,
+     10.188422
+    ],
+    [
+     36.860452,
+     10.187631
+    ],
+    [
+     36.8619428,
+     10.1872281
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2696.24,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 384.89,
+   "length_ratio": 2.1664,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "caf_leskale",
+   "to": "lakrade",
+   "key": "caf_leskale|lakrade",
+   "straight_m": 460.3,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8730396,
+     10.1853985
+    ],
+    [
+     36.873549,
+     10.185004
+    ],
+    [
+     36.874079,
+     10.184989
+    ],
+    [
+     36.874484,
+     10.185172
+    ],
+    [
+     36.874602,
+     10.185713
+    ],
+    [
+     36.874851,
+     10.185957
+    ],
+    [
+     36.875153,
+     10.185878
+    ],
+    [
+     36.875824,
+     10.186114
+    ],
+    [
+     36.8771309,
+     10.1861866
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 515.81,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 53.6,
+   "length_ratio": 1.1206,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "lakrade",
+   "to": "enkhilette",
+   "key": "enkhilette|lakrade",
+   "straight_m": 312.69,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 1928 m implausible vs 313 m straight"
+  },
+  {
+   "from": "enkhilette",
+   "to": "el_ghazela",
+   "key": "el_ghazela|enkhilette",
+   "straight_m": 1134.97,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8897019,
+     10.1820495
+    ],
+    [
+     36.890487,
+     10.18159
+    ],
+    [
+     36.890647,
+     10.181615
+    ],
+    [
+     36.890687,
+     10.181425
+    ],
+    [
+     36.890555,
+     10.181343
+    ],
+    [
+     36.890377,
+     10.181536
+    ],
+    [
+     36.887856,
+     10.18268
+    ],
+    [
+     36.886073,
+     10.183881
+    ],
+    [
+     36.883123,
+     10.184511
+    ],
+    [
+     36.879503,
+     10.18557
+    ],
+    [
+     36.879533,
+     10.185671
+    ],
+    [
+     36.8799106,
+     10.1856544
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1495.57,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 122.82,
+   "length_ratio": 1.3177,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "el_ghazela",
+   "to": "salon_bader",
+   "key": "el_ghazela|salon_bader",
+   "straight_m": 187.33,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8897019,
+     10.1820495
+    ],
+    [
+     36.890688,
+     10.181554
+    ],
+    [
+     36.8902563,
+     10.1800604
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 259.41,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 89.04,
+   "length_ratio": 1.3848,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "salon_bader",
+   "to": "tunisie_t_l_com_el_ghazela",
+   "key": "salon_bader|tunisie_t_l_com_el_ghazela",
+   "straight_m": 690.07,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8902563,
+     10.1800604
+    ],
+    [
+     36.889621,
+     10.177774
+    ],
+    [
+     36.8900809,
+     10.172304
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 704.4,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 64.87,
+   "length_ratio": 1.0208,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "tunisie_t_l_com_el_ghazela",
+   "to": "magazin_aziza",
+   "key": "magazin_aziza|tunisie_t_l_com_el_ghazela",
+   "straight_m": 149.22,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8911864,
+     10.1713529
+    ],
+    [
+     36.889983,
+     10.172084
+    ],
+    [
+     36.889945,
+     10.173493
+    ],
+    [
+     36.8900809,
+     10.172304
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 380.96,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 106.81,
+   "length_ratio": 2.553,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "magazin_aziza",
+   "to": "ecole_abu_el_kacem_echebi",
+   "key": "ecole_abu_el_kacem_echebi|magazin_aziza",
+   "straight_m": 645.35,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8922513,
+     10.1642193
+    ],
+    [
+     36.890481,
+     10.16505
+    ],
+    [
+     36.889983,
+     10.172084
+    ],
+    [
+     36.8911864,
+     10.1713529
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 987.02,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 179.95,
+   "length_ratio": 1.5294,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ecole_abu_el_kacem_echebi",
+   "to": "terminus_cit_el_ghazela",
+   "key": "ecole_abu_el_kacem_echebi|terminus_cit_el_ghazela",
+   "straight_m": 177.93,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8922513,
+     10.1642193
+    ],
+    [
+     36.892689,
+     10.164117
+    ],
+    [
+     36.893835,
+     10.164737
+    ],
+    [
+     36.8935117,
+     10.165452
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 261.4,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 72.23,
+   "length_ratio": 1.4691,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8421837,
+   10.182519
+  ],
+  [
+   36.844054,
+   10.182981
+  ],
+  [
+   36.846597,
+   10.183512
+  ],
+  [
+   36.847251,
+   10.183541
+  ],
+  [
+   36.847999,
+   10.183417
+  ],
+  [
+   36.849144,
+   10.182981
+  ],
+  [
+   36.849653,
+   10.182922
+  ],
+  [
+   36.850307,
+   10.183016
+  ],
+  [
+   36.8511265,
+   10.1836125
+  ],
+  [
+   36.853103,
+   10.18542
+  ],
+  [
+   36.853363,
+   10.184999
+  ],
+  [
+   36.8531309,
+   10.1852164
+  ],
+  [
+   36.853363,
+   10.184999
+  ],
+  [
+   36.853175,
+   10.185327
+  ],
+  [
+   36.853297,
+   10.185473
+  ],
+  [
+   36.854749,
+   10.186696
+  ],
+  [
+   36.855461,
+   10.187599
+  ],
+  [
+   36.8557499,
+   10.1878432
+  ],
+  [
+   36.85687,
+   10.188212
+  ],
+  [
+   36.858311,
+   10.188284
+  ],
+  [
+   36.858762,
+   10.18806
+  ],
+  [
+   36.858873,
+   10.188199
+  ],
+  [
+   36.858835,
+   10.18837
+  ],
+  [
+   36.858353,
+   10.188429
+  ],
+  [
+   36.8581935,
+   10.1885869
+  ],
+  [
+   36.858353,
+   10.188429
+  ],
+  [
+   36.859058,
+   10.188333
+  ],
+  [
+   36.860452,
+   10.187631
+  ],
+  [
+   36.8619428,
+   10.1872281
+  ],
+  [
+   36.860452,
+   10.187631
+  ],
+  [
+   36.858758,
+   10.188422
+  ],
+  [
+   36.858591,
+   10.188308
+  ],
+  [
+   36.85865,
+   10.188084
+  ],
+  [
+   36.859194,
+   10.188134
+  ],
+  [
+   36.860416,
+   10.187539
+  ],
+  [
+   36.862032,
+   10.186994
+  ],
+  [
+   36.865202,
+   10.185187
+  ],
+  [
+   36.865541,
+   10.185456
+  ],
+  [
+   36.867037,
+   10.185445
+  ],
+  [
+   36.868797,
+   10.185753
+  ],
+  [
+   36.871672,
+   10.185856
+  ],
+  [
+   36.872539,
+   10.18557
+  ],
+  [
+   36.873335,
+   10.184978
+  ],
+  [
+   36.874083,
+   10.184877
+  ],
+  [
+   36.874586,
+   10.185072
+  ],
+  [
+   36.875041,
+   10.185062
+  ],
+  [
+   36.875225,
+   10.18522
+  ],
+  [
+   36.875271,
+   10.185695
+  ],
+  [
+   36.87493,
+   10.185968
+  ],
+  [
+   36.874664,
+   10.185824
+  ],
+  [
+   36.874484,
+   10.185172
+  ],
+  [
+   36.874079,
+   10.184989
+  ],
+  [
+   36.873549,
+   10.185004
+  ],
+  [
+   36.8730396,
+   10.1853985
+  ],
+  [
+   36.873549,
+   10.185004
+  ],
+  [
+   36.874079,
+   10.184989
+  ],
+  [
+   36.874484,
+   10.185172
+  ],
+  [
+   36.874602,
+   10.185713
+  ],
+  [
+   36.874851,
+   10.185957
+  ],
+  [
+   36.875153,
+   10.185878
+  ],
+  [
+   36.875824,
+   10.186114
+  ],
+  [
+   36.8771309,
+   10.1861866
+  ],
+  [
+   36.8799106,
+   10.1856544
+  ],
+  [
+   36.879533,
+   10.185671
+  ],
+  [
+   36.879503,
+   10.18557
+  ],
+  [
+   36.883123,
+   10.184511
+  ],
+  [
+   36.886073,
+   10.183881
+  ],
+  [
+   36.887856,
+   10.18268
+  ],
+  [
+   36.890377,
+   10.181536
+  ],
+  [
+   36.890555,
+   10.181343
+  ],
+  [
+   36.890687,
+   10.181425
+  ],
+  [
+   36.890647,
+   10.181615
+  ],
+  [
+   36.890487,
+   10.18159
+  ],
+  [
+   36.8897019,
+   10.1820495
+  ],
+  [
+   36.890688,
+   10.181554
+  ],
+  [
+   36.8902563,
+   10.1800604
+  ],
+  [
+   36.889621,
+   10.177774
+  ],
+  [
+   36.8900809,
+   10.172304
+  ],
+  [
+   36.889945,
+   10.173493
+  ],
+  [
+   36.889983,
+   10.172084
+  ],
+  [
+   36.8911864,
+   10.1713529
+  ],
+  [
+   36.889983,
+   10.172084
+  ],
+  [
+   36.890481,
+   10.16505
+  ],
+  [
+   36.8922513,
+   10.1642193
+  ],
+  [
+   36.892689,
+   10.164117
+  ],
+  [
+   36.893835,
+   10.164737
+  ],
+  [
+   36.8935117,
+   10.165452
+  ]
+ ],
+ "phase3a": {
+  "pairs": 14,
+  "resolved": 13,
+  "unresolved": 1
+ }
+}

@@ -1,0 +1,469 @@
+{
+ "line_id": "bus_728_43",
+ "number": "43",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 43: Hopital Des Enfants - Institut De La Nutrition",
+ "direction_aller": [
+  "hopital_des_enfants",
+  "charle_nicole",
+  "zouhaier_essafi",
+  "hopital_de_neurologie_rabta",
+  "terminus_rabta_l_43b_43",
+  "institut_de_la_nutrition"
+ ],
+ "direction_retour": [
+  "institut_de_la_nutrition",
+  "terminus_rabta_l_43b_43",
+  "hopital_de_neurologie_rabta",
+  "zouhaier_essafi",
+  "charle_nicole",
+  "hopital_des_enfants"
+ ],
+ "stations_count": 6,
+ "start": {
+  "id": "hopital_des_enfants",
+  "name": "Hopital Des Enfants"
+ },
+ "end": {
+  "id": "institut_de_la_nutrition",
+  "name": "Institut De La Nutrition"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "hopital_des_enfants",
+  "charle_nicole",
+  "zouhaier_essafi",
+  "hopital_de_neurologie_rabta",
+  "terminus_rabta_l_43b_43",
+  "institut_de_la_nutrition"
+ ],
+ "stations_detail": [
+  {
+   "id": "hopital_des_enfants",
+   "name_en": "Hopital Des Enfants",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.807514,
+   "lon": 10.1593545,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zouhaier_essafi",
+   "name_en": "Zouhaier Essafi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8010883,
+   "lon": 10.1619938,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_de_neurologie_rabta",
+   "name_en": "Hopital De Neurologie Rabta",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8008462,
+   "lon": 10.1578204,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_rabta_l_43b_43",
+   "name_en": "Terminus Rabta L ( 43B + 43 )",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8020149,
+   "lon": 10.1569488,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "institut_de_la_nutrition",
+   "name_en": "Institut De La Nutrition",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8056891,
+   "lon": 10.15752,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "hopital_des_enfants",
+   "to": "charle_nicole",
+   "key": "charle_nicole|hopital_des_enfants",
+   "straight_m": 645.13,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8027802,
+     10.1635439
+    ],
+    [
+     36.80268,
+     10.163531
+    ],
+    [
+     36.802639,
+     10.163758
+    ],
+    [
+     36.802804,
+     10.163946
+    ],
+    [
+     36.804032,
+     10.163265
+    ],
+    [
+     36.805206,
+     10.162398
+    ],
+    [
+     36.806113,
+     10.161522
+    ],
+    [
+     36.807709,
+     10.1595
+    ],
+    [
+     36.808044,
+     10.159344
+    ],
+    [
+     36.808749,
+     10.15928
+    ],
+    [
+     36.808832,
+     10.158981
+    ],
+    [
+     36.808609,
+     10.158775
+    ],
+    [
+     36.807875,
+     10.159013
+    ],
+    [
+     36.807514,
+     10.1593545
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1050.14,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 150.28,
+   "length_ratio": 1.6278,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "charle_nicole",
+   "to": "zouhaier_essafi",
+   "key": "charle_nicole|zouhaier_essafi",
+   "straight_m": 233.33,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8027802,
+     10.1635439
+    ],
+    [
+     36.80268,
+     10.163531
+    ],
+    [
+     36.802639,
+     10.163758
+    ],
+    [
+     36.8010883,
+     10.1619938
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 265.17,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 24.66,
+   "length_ratio": 1.1365,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "zouhaier_essafi",
+   "to": "hopital_de_neurologie_rabta",
+   "key": "hopital_de_neurologie_rabta|zouhaier_essafi",
+   "straight_m": 372.56,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8008462,
+     10.1578204
+    ],
+    [
+     36.800288,
+     10.158039
+    ],
+    [
+     36.80015,
+     10.158475
+    ],
+    [
+     36.800438,
+     10.159701
+    ],
+    [
+     36.800371,
+     10.161149
+    ],
+    [
+     36.8010883,
+     10.1619938
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 459.33,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 81.42,
+   "length_ratio": 1.2329,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "hopital_de_neurologie_rabta",
+   "to": "terminus_rabta_l_43b_43",
+   "key": "hopital_de_neurologie_rabta|terminus_rabta_l_43b_43",
+   "straight_m": 151.36,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8008462,
+     10.1578204
+    ],
+    [
+     36.801971,
+     10.157388
+    ],
+    [
+     36.802125,
+     10.157052
+    ],
+    [
+     36.8020149,
+     10.1569488
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 180.64,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 31.07,
+   "length_ratio": 1.1935,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "terminus_rabta_l_43b_43",
+   "to": "institut_de_la_nutrition",
+   "key": "institut_de_la_nutrition|terminus_rabta_l_43b_43",
+   "straight_m": 411.71,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8056891,
+     10.15752
+    ],
+    [
+     36.803281,
+     10.158067
+    ],
+    [
+     36.801971,
+     10.157388
+    ],
+    [
+     36.802125,
+     10.157052
+    ],
+    [
+     36.8020149,
+     10.1569488
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 479.65,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 81.4,
+   "length_ratio": 1.165,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.807514,
+   10.1593545
+  ],
+  [
+   36.807875,
+   10.159013
+  ],
+  [
+   36.808609,
+   10.158775
+  ],
+  [
+   36.808832,
+   10.158981
+  ],
+  [
+   36.808749,
+   10.15928
+  ],
+  [
+   36.808044,
+   10.159344
+  ],
+  [
+   36.807709,
+   10.1595
+  ],
+  [
+   36.806113,
+   10.161522
+  ],
+  [
+   36.805206,
+   10.162398
+  ],
+  [
+   36.804032,
+   10.163265
+  ],
+  [
+   36.802804,
+   10.163946
+  ],
+  [
+   36.802639,
+   10.163758
+  ],
+  [
+   36.80268,
+   10.163531
+  ],
+  [
+   36.8027802,
+   10.1635439
+  ],
+  [
+   36.80268,
+   10.163531
+  ],
+  [
+   36.802639,
+   10.163758
+  ],
+  [
+   36.8010883,
+   10.1619938
+  ],
+  [
+   36.800371,
+   10.161149
+  ],
+  [
+   36.800438,
+   10.159701
+  ],
+  [
+   36.80015,
+   10.158475
+  ],
+  [
+   36.800288,
+   10.158039
+  ],
+  [
+   36.8008462,
+   10.1578204
+  ],
+  [
+   36.801971,
+   10.157388
+  ],
+  [
+   36.802125,
+   10.157052
+  ],
+  [
+   36.8020149,
+   10.1569488
+  ],
+  [
+   36.802125,
+   10.157052
+  ],
+  [
+   36.801971,
+   10.157388
+  ],
+  [
+   36.803281,
+   10.158067
+  ],
+  [
+   36.8056891,
+   10.15752
+  ]
+ ],
+ "phase3a": {
+  "pairs": 5,
+  "resolved": 5,
+  "unresolved": 0
+ }
+}

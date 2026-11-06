@@ -5,11 +5,14 @@ from collections.abc import Sequence
 from typing import TYPE_CHECKING, Any
 
 from bledi_transit.domain.fares import fare_for_itinerary
+from bledi_transit.domain.cities import nearest_city
 from bledi_transit.domain.geo import haversine_m
 from bledi_transit.domain.modes import USER_MODES, canonical_mode, label_modes_fr, resolve_allowed_modes
 from bledi_transit.domain.tunables import (
     FEWEST_TRANSFERS_PENALTY_SEC,
     GEOMETRY_REQUIRED_M,
+    MAX_DIRECT_WALK_M,
+    MAX_PURE_WALK_MIN,
     MAX_START_WALK_METERS,
     TRANSFER_PENALTY_SEC,
     WALK_SPEED_MS,
@@ -71,7 +74,20 @@ def plan(
     user_allowed = resolve_allowed_modes(include, exclude)
 
     # Walking only: no strategy can match the filter, so the direct walk is the answer.
+    # The same 1 km product cap applies here: asking for walk-only directions
+    # does not authorise a multi-kilometre pedestrian itinerary.
     if user_allowed is not None and not (user_allowed - {"walk"}):
+        direct_m = haversine_m(start_lat, start_lon, end_lat, end_lon)
+        if direct_m > MAX_DIRECT_WALK_M:
+            return {
+                "query": query,
+                "itineraries": [],
+                "available_modes": list(USER_MODES),
+                "message": (
+                    "La marche directe est limitee a 1 km; "
+                    "choisissez un mode de transport pour plus long."
+                ),
+            }
         return {
             "query": query,
             "itineraries": [_present(_walk_candidate(start_lat, start_lon, end_lat, end_lon), 1, objective)],
@@ -80,10 +96,12 @@ def plan(
         }
 
     bus_only = frozenset({"bus", "rfr", "tram"})
+    rural_only = frozenset({"rural"})
     rail_only = frozenset({"train", "rail", "metro"})
     metro_only = frozenset({"metro"})
     train_only = frozenset({"train", "rail"})
     louage_only = frozenset({"louage", "louaj"})
+    taxi_only = frozenset({"taxi"})
 
     # user_allowed is the base of every strategy: "fastest" with allowed=None
     # would return the metro journey the user just excluded.
@@ -93,10 +111,12 @@ def plan(
     ]
     for name, subset in (
         ("bus_preferred", bus_only),
+        ("rural_preferred", rural_only),
         ("rail_preferred", rail_only),
         ("metro_preferred", metro_only),
         ("train_only", train_only),
         ("louage_only", louage_only),
+        ("taxi_only", taxi_only),
     ):
         inter = subset if user_allowed is None else (user_allowed & subset)
         if not inter:
@@ -119,6 +139,12 @@ def plan(
             # Skip the degenerate pure-straight-line walk unless nothing
             # else was found; it is offered as a last resort below.
             continue
+        # Pure-walk via chained walk edges: only offered when no transit
+        # candidate exists (see MAX_PURE_WALK_MIN / shared_tunables.json).
+        # Defer: collect it, but do not let it win cheapest over a ride.
+        ride_steps = [s for s in steps if s.get("type") == "ride"]
+        if not ride_steps and float(raw.get("duration_min") or 0.0) > MAX_PURE_WALK_MIN:
+            continue
         transfers = count_transfers(steps)
         if max_transfers is not None and transfers > max_transfers:
             continue
@@ -138,7 +164,9 @@ def plan(
             }
         )
 
-    if not candidates and haversine_m(start_lat, start_lon, end_lat, end_lon) <= MAX_START_WALK_METERS * 2:
+    if not candidates and (
+        haversine_m(start_lat, start_lon, end_lat, end_lon) <= MAX_DIRECT_WALK_M
+    ):
         candidates.append(_walk_candidate(start_lat, start_lon, end_lat, end_lon))
 
     if not candidates:

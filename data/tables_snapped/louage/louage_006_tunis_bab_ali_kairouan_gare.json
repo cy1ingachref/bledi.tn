@@ -1,0 +1,88 @@
+{
+ "line_id": "louage_006_tunis_bab_ali_kairouan_gare",
+ "number": "L6",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage: Tunis - Bab Alioua → Kairouan - Gare des Louages",
+ "direction_aller": [
+  "louage_tunis_bab_alioua",
+  "louage_kairouan_gare_des_louages"
+ ],
+ "direction_retour": [
+  "louage_kairouan_gare_des_louages",
+  "louage_tunis_bab_alioua"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_tunis_bab_alioua",
+  "name": "Tunis - Bab Alioua"
+ },
+ "end": {
+  "id": "louage_kairouan_gare_des_louages",
+  "name": "Kairouan - Gare des Louages"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "louage_tunis_bab_alioua",
+   "to": "louage_kairouan_gare_des_louages",
+   "km": 122.3
+  }
+ ],
+ "original_stations": [
+  "louage_tunis_bab_alioua",
+  "louage_kairouan_gare_des_louages"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_tunis_bab_alioua",
+   "name_en": "Tunis - Bab Alioua",
+   "name_ar": null,
+   "name_fr": "Cimetiere Jallez",
+   "name_ar_fr_source": [
+    "station_reference_proximity_187m"
+   ],
+   "lat": 36.7865,
+   "lon": 10.1825,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "louage_kairouan_gare_des_louages",
+   "name_en": "Kairouan - Gare des Louages",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "no_source"
+   ],
+   "lat": 35.6885,
+   "lon": 10.0965,
+   "mode": "louage",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv",
+ "segments": [
+  {
+   "from": "louage_tunis_bab_alioua",
+   "to": "louage_kairouan_gare_des_louages",
+   "key": "louage_kairouan_gare_des_louages|louage_tunis_bab_alioua",
+   "straight_m": 122335.57,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": null
+  }
+ ],
+ "snapped_geometry": [],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 0,
+  "unresolved": 1
+ }
+}

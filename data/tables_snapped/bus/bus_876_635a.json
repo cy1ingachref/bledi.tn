@@ -1,0 +1,345 @@
+{
+ "line_id": "bus_876_635a",
+ "number": "635A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 635A: Terminus Tunis Marine Bus - Depot Charguia",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "charguia1",
+  "foire_la_charguia",
+  "depot_charguia"
+ ],
+ "direction_retour": [
+  "depot_charguia",
+  "foire_la_charguia",
+  "charguia1",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 4,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "depot_charguia",
+  "name": "Depot Charguia"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "charguia1",
+  "foire_la_charguia",
+  "depot_charguia"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia1",
+   "name_en": "Charguia1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8288636,
+   "lon": 10.2010967,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foire_la_charguia",
+   "name_en": "Foire La Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356665,
+   "lon": 10.2014554,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "depot_charguia",
+   "name_en": "Depot Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.839222,
+   "lon": 10.2045873,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "terminus_tunis_marine_bus",
+   "to": "charguia1",
+   "key": "charguia1|terminus_tunis_marine_bus",
+   "straight_m": 3307.16,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8288636,
+     10.2010967
+    ],
+    [
+     36.830707,
+     10.200932
+    ],
+    [
+     36.830942,
+     10.201089
+    ],
+    [
+     36.831015,
+     10.201282
+    ],
+    [
+     36.829565,
+     10.206522
+    ],
+    [
+     36.82908,
+     10.206747
+    ],
+    [
+     36.827235,
+     10.202765
+    ],
+    [
+     36.826992,
+     10.200571
+    ],
+    [
+     36.826705,
+     10.199501
+    ],
+    [
+     36.824822,
+     10.197087
+    ],
+    [
+     36.820668,
+     10.187697
+    ],
+    [
+     36.818179,
+     10.183107
+    ],
+    [
+     36.817206,
+     10.18357
+    ],
+    [
+     36.801826,
+     10.186115
+    ],
+    [
+     36.800975,
+     10.186206
+    ],
+    [
+     36.800156,
+     10.185869
+    ],
+    [
+     36.800008,
+     10.186004
+    ],
+    [
+     36.799962,
+     10.186272
+    ],
+    [
+     36.800148,
+     10.186737
+    ],
+    [
+     36.800322,
+     10.188411
+    ],
+    [
+     36.800204,
+     10.188823
+    ],
+    [
+     36.800417,
+     10.189311
+    ],
+    [
+     36.8003841,
+     10.1903877
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 5718.17,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 1191.0,
+   "length_ratio": 1.729,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "charguia1",
+   "to": "foire_la_charguia",
+   "key": "charguia1|foire_la_charguia",
+   "straight_m": 757.12,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8288636,
+     10.2010967
+    ],
+    [
+     36.8356665,
+     10.2014554
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 757.12,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "foire_la_charguia",
+   "to": "depot_charguia",
+   "key": "depot_charguia|foire_la_charguia",
+   "straight_m": 483.72,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 2292 m implausible vs 484 m straight"
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8003841,
+   10.1903877
+  ],
+  [
+   36.800417,
+   10.189311
+  ],
+  [
+   36.800204,
+   10.188823
+  ],
+  [
+   36.800322,
+   10.188411
+  ],
+  [
+   36.800148,
+   10.186737
+  ],
+  [
+   36.799962,
+   10.186272
+  ],
+  [
+   36.800008,
+   10.186004
+  ],
+  [
+   36.800156,
+   10.185869
+  ],
+  [
+   36.800975,
+   10.186206
+  ],
+  [
+   36.801826,
+   10.186115
+  ],
+  [
+   36.817206,
+   10.18357
+  ],
+  [
+   36.818179,
+   10.183107
+  ],
+  [
+   36.820668,
+   10.187697
+  ],
+  [
+   36.824822,
+   10.197087
+  ],
+  [
+   36.826705,
+   10.199501
+  ],
+  [
+   36.826992,
+   10.200571
+  ],
+  [
+   36.827235,
+   10.202765
+  ],
+  [
+   36.82908,
+   10.206747
+  ],
+  [
+   36.829565,
+   10.206522
+  ],
+  [
+   36.831015,
+   10.201282
+  ],
+  [
+   36.830942,
+   10.201089
+  ],
+  [
+   36.830707,
+   10.200932
+  ],
+  [
+   36.8288636,
+   10.2010967
+  ],
+  [
+   36.8356665,
+   10.2014554
+  ]
+ ],
+ "phase3a": {
+  "pairs": 3,
+  "resolved": 2,
+  "unresolved": 1
+ }
+}
