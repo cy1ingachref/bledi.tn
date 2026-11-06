@@ -1,0 +1,479 @@
+{
+ "line_id": "bus_853_42b",
+ "number": "42B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 42B: Rabattement Khaireddine Mannouba - Zouitina",
+ "direction_aller": [
+  "rabattement_khaireddine_mannouba",
+  "croisement_sanhaja",
+  "coop_rative_central",
+  "cit_torjmen",
+  "douar_el_bey",
+  "pompage",
+  "erriadh_manouba",
+  "zone_f",
+  "saida",
+  "oued_chafrou",
+  "stil",
+  "sidi_taleb",
+  "cite_enajet1",
+  "souassi",
+  "cit_omda",
+  "mosqu_e_ben_sassi",
+  "zehra_1",
+  "zehra_2",
+  "cit_nejiba",
+  "maasra",
+  "el_hathermine",
+  "cit_ben_ghenia",
+  "el_battan",
+  "mosqu_e_el_el_battan",
+  "eslaiaa",
+  "num_ro_7",
+  "ben_dhefallah",
+  "zouitina"
+ ],
+ "direction_retour": [
+  "zouitina",
+  "ben_dhefallah",
+  "num_ro_7",
+  "eslaiaa",
+  "mosqu_e_el_el_battan",
+  "el_battan",
+  "cit_ben_ghenia",
+  "el_hathermine",
+  "maasra",
+  "cit_nejiba",
+  "zehra_2",
+  "zehra_1",
+  "mosqu_e_ben_sassi",
+  "cit_omda",
+  "souassi",
+  "cite_enajet1",
+  "sidi_taleb",
+  "stil",
+  "oued_chafrou",
+  "saida",
+  "zone_f",
+  "erriadh_manouba",
+  "pompage",
+  "douar_el_bey",
+  "cit_torjmen",
+  "coop_rative_central",
+  "croisement_sanhaja",
+  "rabattement_khaireddine_mannouba"
+ ],
+ "stations_count": 28,
+ "start": {
+  "id": "rabattement_khaireddine_mannouba",
+  "name": "Rabattement Khaireddine Mannouba"
+ },
+ "end": {
+  "id": "zouitina",
+  "name": "Zouitina"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_khaireddine_mannouba",
+  "croisement_sanhaja",
+  "coop_rative_central",
+  "cit_torjmen",
+  "douar_el_bey",
+  "pompage",
+  "erriadh_manouba",
+  "zone_f",
+  "saida",
+  "oued_chafrou",
+  "stil",
+  "sidi_taleb",
+  "cite_enajet1",
+  "souassi",
+  "cit_omda",
+  "mosqu_e_ben_sassi",
+  "zehra_1",
+  "zehra_2",
+  "cit_nejiba",
+  "maasra",
+  "el_hathermine",
+  "cit_ben_ghenia",
+  "el_battan",
+  "mosqu_e_el_el_battan",
+  "eslaiaa",
+  "num_ro_7",
+  "ben_dhefallah",
+  "zouitina"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_khaireddine_mannouba",
+   "name_en": "Rabattement Khaireddine Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156704,
+   "lon": 10.0564588,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_sanhaja",
+   "name_en": "Croisement Sanhaja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230522,
+   "lon": 10.034149,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "coop_rative_central",
+   "name_en": "Coopérative Central",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.828223,
+   "lon": 10.0204221,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_torjmen",
+   "name_en": "Cité Torjmen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8318167,
+   "lon": 10.0130071,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "douar_el_bey",
+   "name_en": "Douar El Bey",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8354187,
+   "lon": 10.0063971,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pompage",
+   "name_en": "Pompage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356135,
+   "lon": 9.9975573,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "erriadh_manouba",
+   "name_en": "Erriadh Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8341505,
+   "lon": 9.9851857,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zone_f",
+   "name_en": "Zone F",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8333755,
+   "lon": 9.9786226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "saida",
+   "name_en": "Saida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8322184,
+   "lon": 9.9682448,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_chafrou",
+   "name_en": "Oued Chafrou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8336009,
+   "lon": 9.950274,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stil",
+   "name_en": "Stil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8339484,
+   "lon": 9.9456734,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_taleb",
+   "name_en": "Sidi Taleb",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8333958,
+   "lon": 9.9410066,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_enajet1",
+   "name_en": "Cite Enajet1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.831647,
+   "lon": 9.9395258,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "souassi",
+   "name_en": "Souassi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8299694,
+   "lon": 9.9389628,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_omda",
+   "name_en": "Cité Omda",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8177082,
+   "lon": 9.9198468,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_ben_sassi",
+   "name_en": "Mosquée Ben Sassi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8164848,
+   "lon": 9.9171434,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zehra_1",
+   "name_en": "Zehra 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8129061,
+   "lon": 9.9090232,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zehra_2",
+   "name_en": "Zehra 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8094157,
+   "lon": 9.9011681,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_nejiba",
+   "name_en": "Cité Nejiba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8070599,
+   "lon": 9.8958818,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "maasra",
+   "name_en": "Maasra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8066261,
+   "lon": 9.8867031,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_hathermine",
+   "name_en": "El Hathermine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.804253,
+   "lon": 9.8703442,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ben_ghenia",
+   "name_en": "Cité Ben Ghenia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8033618,
+   "lon": 9.8637219,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_battan",
+   "name_en": "El Battan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.806947,
+   "lon": 9.8489264,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_el_el_battan",
+   "name_en": "Mosquée El El Battan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8046923,
+   "lon": 9.844931,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "eslaiaa",
+   "name_en": "Eslaiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8059499,
+   "lon": 9.8400072,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "num_ro_7",
+   "name_en": "Numéro 7",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8071519,
+   "lon": 9.8382348,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_dhefallah",
+   "name_en": "Ben Dhefallah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8090559,
+   "lon": 9.829062,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zouitina",
+   "name_en": "Zouitina",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8176226,
+   "lon": 9.8108763,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

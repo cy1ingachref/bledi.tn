@@ -1,0 +1,511 @@
+{
+ "line_id": "bus_772_104",
+ "number": "104",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 104: Terminus Tunis Marine Bus - Rabattement Khaireddine Mannouba",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "rue_de_la_turquie",
+  "moncef_bey",
+  "hopital_militaire",
+  "hopital_habib_thameur",
+  "arret_essayda",
+  "gouvernorat_manouba",
+  "gorjani",
+  "mosqu_e_al_hawa",
+  "universit_ibn_charaf",
+  "la_rabta",
+  "cite_erraoudha",
+  "caserne_bouchoucha",
+  "bouchoucha",
+  "cnam_bardo",
+  "chebbi",
+  "saint_clement",
+  "bortal",
+  "champ_de_course_ksar_said",
+  "hopital_kassab",
+  "boudria",
+  "ibn_jazzar_mannouba",
+  "dar_mocennine",
+  "hedi_chaker_mannouba",
+  "municipalite_mannouba",
+  "sidi_amor_mannouba",
+  "palais_el_warda",
+  "faculte_des_lettres_mannouba",
+  "restaurant_universitaire_mannouba",
+  "rabattement_khaireddine_mannouba"
+ ],
+ "direction_retour": [
+  "rabattement_khaireddine_mannouba",
+  "restaurant_universitaire_mannouba",
+  "faculte_des_lettres_mannouba",
+  "palais_el_warda",
+  "sidi_amor_mannouba",
+  "municipalite_mannouba",
+  "hedi_chaker_mannouba",
+  "dar_mocennine",
+  "ibn_jazzar_mannouba",
+  "boudria",
+  "hopital_kassab",
+  "champ_de_course_ksar_said",
+  "bortal",
+  "saint_clement",
+  "chebbi",
+  "cnam_bardo",
+  "bouchoucha",
+  "caserne_bouchoucha",
+  "cite_erraoudha",
+  "la_rabta",
+  "universit_ibn_charaf",
+  "mosqu_e_al_hawa",
+  "gorjani",
+  "gouvernorat_manouba",
+  "arret_essayda",
+  "hopital_habib_thameur",
+  "hopital_militaire",
+  "moncef_bey",
+  "rue_de_la_turquie",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 30,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "rabattement_khaireddine_mannouba",
+  "name": "Rabattement Khaireddine Mannouba"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 4,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "rue_de_la_turquie",
+  "moncef_bey",
+  "hopital_militaire",
+  "hopital_habib_thameur",
+  "arret_essayda",
+  "gouvernorat_manouba",
+  "gorjani",
+  "mosqu_e_al_hawa",
+  "universit_ibn_charaf",
+  "la_rabta",
+  "cite_erraoudha",
+  "caserne_bouchoucha",
+  "bouchoucha",
+  "cnam_bardo",
+  "chebbi",
+  "saint_clement",
+  "bortal",
+  "champ_de_course_ksar_said",
+  "hopital_kassab",
+  "boudria",
+  "ibn_jazzar_mannouba",
+  "dar_mocennine",
+  "hedi_chaker_mannouba",
+  "municipalite_mannouba",
+  "sidi_amor_mannouba",
+  "palais_el_warda",
+  "faculte_des_lettres_mannouba",
+  "restaurant_universitaire_mannouba",
+  "rabattement_khaireddine_mannouba"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_de_la_turquie",
+   "name_en": "Rue De La Turquie",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7991033,
+   "lon": 10.1863693,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "moncef_bey",
+   "name_en": "MONCEF BEY",
+   "name_ar": "المنصف باي",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_3m"
+   ],
+   "lat": 36.80528,
+   "lon": 10.09065,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_militaire",
+   "name_en": "Hopital Militaire",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7856137,
+   "lon": 10.1799054,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_habib_thameur",
+   "name_en": "Hopital Habib Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.784376,
+   "lon": 10.1758234,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arret_essayda",
+   "name_en": "Arret Essayda",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7852839,
+   "lon": 10.1711724,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gouvernorat_manouba",
+   "name_en": "Gouvernorat Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8114227,
+   "lon": 10.0885442,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gorjani",
+   "name_en": "Gorjani",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7879938,
+   "lon": 10.1675136,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_al_hawa",
+   "name_en": "Mosquée Al Hawa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7931059,
+   "lon": 10.1629207,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "universit_ibn_charaf",
+   "name_en": "Université Ibn Charaf",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7989792,
+   "lon": 10.1617685,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_rabta",
+   "name_en": "La Rabta",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7999371,
+   "lon": 10.1546929,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_erraoudha",
+   "name_en": "Cite Erraoudha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8017744,
+   "lon": 10.1502187,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caserne_bouchoucha",
+   "name_en": "Caserne Bouchoucha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8039023,
+   "lon": 10.1452919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchoucha",
+   "name_en": "BOUCHOUCHA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80953,
+   "lon": 10.15026,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "cnam_bardo",
+   "name_en": "Cnam-Bardo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8068875,
+   "lon": 10.1383771,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chebbi",
+   "name_en": "Chebbi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8096013,
+   "lon": 10.1313362,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "saint_clement",
+   "name_en": "Saint Clement",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8104848,
+   "lon": 10.126229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bortal",
+   "name_en": "Bortal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8120871,
+   "lon": 10.1174078,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "champ_de_course_ksar_said",
+   "name_en": "Champ De Course Ksar Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8130249,
+   "lon": 10.1133431,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_kassab",
+   "name_en": "Hopital Kassab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8155796,
+   "lon": 10.1003191,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boudria",
+   "name_en": "Boudria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8161882,
+   "lon": 10.0961131,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ibn_jazzar_mannouba",
+   "name_en": "Ibn Jazzar Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8128095,
+   "lon": 10.0892791,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dar_mocennine",
+   "name_en": "Dar Mocennine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8095931,
+   "lon": 10.0910119,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hedi_chaker_mannouba",
+   "name_en": "Hedi Chaker Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8079266,
+   "lon": 10.0893006,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipalite_mannouba",
+   "name_en": "Municipalite Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8068099,
+   "lon": 10.0870475,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_amor_mannouba",
+   "name_en": "Sidi Amor Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.807287,
+   "lon": 10.0828732,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "palais_el_warda",
+   "name_en": "Palais El Warda",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.809297,
+   "lon": 10.0739254,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "faculte_des_lettres_mannouba",
+   "name_en": "Faculte Des Lettres Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8110837,
+   "lon": 10.0659002,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "restaurant_universitaire_mannouba",
+   "name_en": "Restaurant Universitaire Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.813901,
+   "lon": 10.0604714,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rabattement_khaireddine_mannouba",
+   "name_en": "Rabattement Khaireddine Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156704,
+   "lon": 10.0564588,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

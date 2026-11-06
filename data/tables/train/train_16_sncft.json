@@ -1,0 +1,437 @@
+{
+ "line_id": "train_16_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Tunis Ville - Mahdia",
+ "direction_aller": [
+  "tunis_ville",
+  "djebal_jelloud",
+  "rades",
+  "hammam_lif",
+  "borj_cedria",
+  "grombalia",
+  "bou_arkoub",
+  "bir_bourekba",
+  "bouficha",
+  "enfida",
+  "menzel_gare",
+  "sidi_bou_ali",
+  "kalaa_kebira",
+  "kalaa_sghira",
+  "sousse_marchandise",
+  "sahline_sebkha",
+  "monastir",
+  "ksiba_bennane",
+  "sayeda",
+  "ksar_helal",
+  "moknine_voyageurs",
+  "teboulba",
+  "bekalta",
+  "mahdia_zt",
+  "mahdia"
+ ],
+ "direction_retour": [
+  "mahdia",
+  "mahdia_zt",
+  "bekalta",
+  "teboulba",
+  "moknine_voyageurs",
+  "ksar_helal",
+  "sayeda",
+  "ksiba_bennane",
+  "monastir",
+  "sahline_sebkha",
+  "sousse_marchandise",
+  "kalaa_sghira",
+  "kalaa_kebira",
+  "sidi_bou_ali",
+  "menzel_gare",
+  "enfida",
+  "bouficha",
+  "bir_bourekba",
+  "bou_arkoub",
+  "grombalia",
+  "borj_cedria",
+  "hammam_lif",
+  "rades",
+  "djebal_jelloud",
+  "tunis_ville"
+ ],
+ "stations_count": 25,
+ "start": {
+  "id": "tunis_ville",
+  "name": "Tunis Ville"
+ },
+ "end": {
+  "id": "mahdia",
+  "name": "Mahdia"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "bouficha",
+   "to": "enfida",
+   "km": 20.1
+  }
+ ],
+ "original_stations": [
+  "tunis_ville",
+  "djebal_jelloud",
+  "rades",
+  "hammam_lif",
+  "borj_cedria",
+  "grombalia",
+  "bou_arkoub",
+  "bir_bourekba",
+  "bouficha",
+  "enfida",
+  "menzel_gare",
+  "sidi_bou_ali",
+  "kalaa_kebira",
+  "kalaa_sghira",
+  "sousse_marchandise",
+  "sahline_sebkha",
+  "monastir",
+  "ksiba_bennane",
+  "sayeda",
+  "ksar_helal",
+  "moknine_voyageurs",
+  "teboulba",
+  "bekalta",
+  "mahdia_zt",
+  "mahdia"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_ville",
+   "name_en": "Tunis Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7947693,
+   "lon": 10.1803806,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebal_jelloud",
+   "name_en": "Djebal Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7727251,
+   "lon": 10.2082258,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "rades",
+   "name_en": "Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7683604,
+   "lon": 10.269735,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_lif",
+   "name_en": "Hammam Lif",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7294393,
+   "lon": 10.3342066,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_cedria",
+   "name_en": "Borj Cedria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7034822,
+   "lon": 10.3974291,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "grombalia",
+   "name_en": "Grombalia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5963444,
+   "lon": 10.4977219,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bou_arkoub",
+   "name_en": "Bou Arkoub",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5310753,
+   "lon": 10.5514179,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_bourekba",
+   "name_en": "Bir Bourekba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4306822,
+   "lon": 10.5737451,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouficha",
+   "name_en": "Bouficha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.3033024,
+   "lon": 10.451222,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "enfida",
+   "name_en": "Enfida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.1307311,
+   "lon": 10.3836398,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzel_gare",
+   "name_en": "Menzel Gare",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.0105291,
+   "lon": 10.377545,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bou_ali",
+   "name_en": "Sidi Bou Ali",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.9531545,
+   "lon": 10.4513333,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "kalaa_kebira",
+   "name_en": "Kalaa Kebira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.867843,
+   "lon": 10.5534154,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "kalaa_sghira",
+   "name_en": "Kalaa Sghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.8220139,
+   "lon": 10.5711182,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_marchandise",
+   "name_en": "Sousse Marchandise",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7779299,
+   "lon": 10.5772365,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sahline_sebkha",
+   "name_en": "Sahline Sebkha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7576841,
+   "lon": 10.7165366,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "monastir",
+   "name_en": "Monastir",
+   "name_ar": "المنستير",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_77m"
+   ],
+   "lat": 35.7706263,
+   "lon": 10.8252907,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "ksiba_bennane",
+   "name_en": "Ksiba Bennane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6800414,
+   "lon": 10.8426818,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sayeda",
+   "name_en": "Sayeda",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6660635,
+   "lon": 10.8881796,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "ksar_helal",
+   "name_en": "Ksar Helal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6451442,
+   "lon": 10.9009117,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "moknine_voyageurs",
+   "name_en": "Moknine Voyageurs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6312829,
+   "lon": 10.9156069,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "teboulba",
+   "name_en": "Teboulba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6377169,
+   "lon": 10.9616318,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bekalta",
+   "name_en": "Bekalta",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.615241,
+   "lon": 10.9893645,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mahdia_zt",
+   "name_en": "Mahdia ZT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.5369097,
+   "lon": 11.027409,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mahdia",
+   "name_en": "Mahdia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.5007749,
+   "lon": 11.0642716,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

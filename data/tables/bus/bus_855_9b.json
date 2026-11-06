@@ -1,0 +1,63 @@
+{
+ "line_id": "bus_855_9b",
+ "number": "9B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 9B: Station Barcelone - Cité Thameur",
+ "direction_aller": [
+  "station_barcelone",
+  "cit_thameur"
+ ],
+ "direction_retour": [
+  "cit_thameur",
+  "station_barcelone"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "cit_thameur",
+  "name": "Cité Thameur"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_barcelone",
+  "cit_thameur"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_thameur",
+   "name_en": "Cité Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7647407,
+   "lon": 10.2086643,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

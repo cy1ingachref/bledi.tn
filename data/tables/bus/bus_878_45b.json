@@ -1,0 +1,255 @@
+{
+ "line_id": "bus_878_45b",
+ "number": "45B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 45B: Terminus Tebourba - Maafrine",
+ "direction_aller": [
+  "terminus_tebourba",
+  "steg_tebourba_45b",
+  "bir_zitoun",
+  "cit_elbrag",
+  "cit_bousabaa",
+  "gomeryen",
+  "gomeryen_2",
+  "sidi_salem",
+  "canal",
+  "frigo",
+  "canal_3",
+  "route_chaouat",
+  "manzel_shal",
+  "maafrine"
+ ],
+ "direction_retour": [
+  "maafrine",
+  "manzel_shal",
+  "route_chaouat",
+  "canal_3",
+  "frigo",
+  "canal",
+  "sidi_salem",
+  "gomeryen_2",
+  "gomeryen",
+  "cit_bousabaa",
+  "cit_elbrag",
+  "bir_zitoun",
+  "steg_tebourba_45b",
+  "terminus_tebourba"
+ ],
+ "stations_count": 14,
+ "start": {
+  "id": "terminus_tebourba",
+  "name": "Terminus Tebourba"
+ },
+ "end": {
+  "id": "maafrine",
+  "name": "Maafrine"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tebourba",
+  "steg_tebourba_45b",
+  "bir_zitoun",
+  "cit_elbrag",
+  "cit_bousabaa",
+  "gomeryen",
+  "gomeryen_2",
+  "sidi_salem",
+  "canal",
+  "frigo",
+  "canal_3",
+  "route_chaouat",
+  "manzel_shal",
+  "maafrine"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tebourba",
+   "name_en": "Terminus Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8275891,
+   "lon": 9.8438062,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_tebourba_45b",
+   "name_en": "Steg Tebourba 45B",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8310977,
+   "lon": 9.8412047,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_zitoun",
+   "name_en": "Bir Zitoun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8337565,
+   "lon": 9.8405472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_elbrag",
+   "name_en": "Cité Elbrag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.850139,
+   "lon": 9.850289,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_bousabaa",
+   "name_en": "Cité Bousabaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8676381,
+   "lon": 9.8571286,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gomeryen",
+   "name_en": "Gomeryen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8788943,
+   "lon": 9.8643062,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gomeryen_2",
+   "name_en": "Gomeryen 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8858497,
+   "lon": 9.8668328,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_salem",
+   "name_en": "Sidi Salem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8955851,
+   "lon": 9.8700141,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "canal",
+   "name_en": "Canal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9051809,
+   "lon": 9.8792086,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "frigo",
+   "name_en": "Frigo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9238596,
+   "lon": 9.8888109,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "canal_3",
+   "name_en": "Canal 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9384311,
+   "lon": 9.9115722,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "route_chaouat",
+   "name_en": "Route Chaouat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9445648,
+   "lon": 9.9156649,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "manzel_shal",
+   "name_en": "Manzel Shal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9569339,
+   "lon": 9.9226818,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "maafrine",
+   "name_en": "Maafrine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9577772,
+   "lon": 9.9230892,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

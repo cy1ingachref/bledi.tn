@@ -1,0 +1,335 @@
+{
+ "line_id": "bus_783_14c",
+ "number": "14C",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 14C: Ali Balahouan - Terminus Cité Elbasatine",
+ "direction_aller": [
+  "ali_balahouan",
+  "sidi_aloui",
+  "bab_saadoun",
+  "gare_routi_re_nord",
+  "foyer_bardo_1",
+  "foyer_bardo_2",
+  "center_de_formation_ras_tabia",
+  "r_sidence_yesmine",
+  "ettahrir_sup_rieur",
+  "omrane_sup_rieur",
+  "nogra",
+  "intilaka",
+  "lycee_cite_errafeha",
+  "cit_errafeha",
+  "bir_mnihla",
+  "route_elbasatine",
+  "caf_sirine",
+  "usine_lazreg",
+  "terminus_cit_elbasatine"
+ ],
+ "direction_retour": [
+  "terminus_cit_elbasatine",
+  "usine_lazreg",
+  "caf_sirine",
+  "route_elbasatine",
+  "bir_mnihla",
+  "cit_errafeha",
+  "lycee_cite_errafeha",
+  "intilaka",
+  "nogra",
+  "omrane_sup_rieur",
+  "ettahrir_sup_rieur",
+  "r_sidence_yesmine",
+  "center_de_formation_ras_tabia",
+  "foyer_bardo_2",
+  "foyer_bardo_1",
+  "gare_routi_re_nord",
+  "bab_saadoun",
+  "sidi_aloui",
+  "ali_balahouan"
+ ],
+ "stations_count": 19,
+ "start": {
+  "id": "ali_balahouan",
+  "name": "Ali Balahouan"
+ },
+ "end": {
+  "id": "terminus_cit_elbasatine",
+  "name": "Terminus Cité Elbasatine"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "ali_balahouan",
+  "sidi_aloui",
+  "bab_saadoun",
+  "gare_routi_re_nord",
+  "foyer_bardo_1",
+  "foyer_bardo_2",
+  "center_de_formation_ras_tabia",
+  "r_sidence_yesmine",
+  "ettahrir_sup_rieur",
+  "omrane_sup_rieur",
+  "nogra",
+  "intilaka",
+  "lycee_cite_errafeha",
+  "cit_errafeha",
+  "bir_mnihla",
+  "route_elbasatine",
+  "caf_sirine",
+  "usine_lazreg",
+  "terminus_cit_elbasatine"
+ ],
+ "stations_detail": [
+  {
+   "id": "ali_balahouan",
+   "name_en": "Ali Balahouan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8065135,
+   "lon": 10.1742408,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_aloui",
+   "name_en": "Sidi Aloui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8053372,
+   "lon": 10.1688404,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_saadoun",
+   "name_en": "BAB SAADOUN",
+   "name_ar": "باب سعدون",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80986,
+   "lon": 10.16219,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "gare_routi_re_nord",
+   "name_en": "Gare Routiére Nord",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.810572,
+   "lon": 10.1530031,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_bardo_1",
+   "name_en": "Foyer Bardo 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8141538,
+   "lon": 10.1462171,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_bardo_2",
+   "name_en": "Foyer Bardo 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81864,
+   "lon": 10.1414,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "center_de_formation_ras_tabia",
+   "name_en": "Center De Formation Ras Tabia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8200244,
+   "lon": 10.1397905,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "r_sidence_yesmine",
+   "name_en": "Résidence Yesmine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.826254,
+   "lon": 10.1342327,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ettahrir_sup_rieur",
+   "name_en": "Ettahrir Supérieur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8270723,
+   "lon": 10.131281,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "omrane_sup_rieur",
+   "name_en": "Omrane Supérieur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8301724,
+   "lon": 10.1245258,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nogra",
+   "name_en": "Nogra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8345164,
+   "lon": 10.1178661,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "intilaka",
+   "name_en": "Intilaka",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8396862,
+   "lon": 10.1168229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_cite_errafeha",
+   "name_en": "Lycee Cite Errafeha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8454003,
+   "lon": 10.1167978,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_errafeha",
+   "name_en": "Cité Errafeha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.852579,
+   "lon": 10.1233855,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_mnihla",
+   "name_en": "Bir Mnihla",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8567966,
+   "lon": 10.1157901,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "route_elbasatine",
+   "name_en": "Route Elbasatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8527617,
+   "lon": 10.1083443,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_sirine",
+   "name_en": "Café Sirine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8495257,
+   "lon": 10.1014914,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "usine_lazreg",
+   "name_en": "Usine Lazreg",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8472183,
+   "lon": 10.0960545,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_cit_elbasatine",
+   "name_en": "Terminus Cité Elbasatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8450177,
+   "lon": 10.0903467,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

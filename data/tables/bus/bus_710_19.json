@@ -1,0 +1,351 @@
+{
+ "line_id": "bus_710_19",
+ "number": "19",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 19: Station Barcelone - Terminus M-Coteaux",
+ "direction_aller": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "lyc_e_m_grine_riadh",
+  "biscuits_saida",
+  "cit_commerciale",
+  "silos_m_grine_coteaux",
+  "jardin_enfants",
+  "gare_sidi_rezig",
+  "av_r_publique_1",
+  "parc_municipal",
+  "salle_de_sport",
+  "stade_megrine_coteaux",
+  "av_r_publique_2",
+  "av_r_publique_3",
+  "terminus_m_coteaux"
+ ],
+ "direction_retour": [
+  "terminus_m_coteaux",
+  "av_r_publique_3",
+  "av_r_publique_2",
+  "stade_megrine_coteaux",
+  "salle_de_sport",
+  "parc_municipal",
+  "av_r_publique_1",
+  "gare_sidi_rezig",
+  "jardin_enfants",
+  "silos_m_grine_coteaux",
+  "cit_commerciale",
+  "biscuits_saida",
+  "lyc_e_m_grine_riadh",
+  "stoa",
+  "gare_djebel_jelloud",
+  "djebel_jelloud_gp1",
+  "el_afrane",
+  "centre_de_coordination_ouardia",
+  "dubosville",
+  "station_barcelone"
+ ],
+ "stations_count": 20,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "terminus_m_coteaux",
+  "name": "Terminus M-Coteaux"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "lyc_e_m_grine_riadh",
+  "biscuits_saida",
+  "cit_commerciale",
+  "silos_m_grine_coteaux",
+  "jardin_enfants",
+  "gare_sidi_rezig",
+  "av_r_publique_1",
+  "parc_municipal",
+  "salle_de_sport",
+  "stade_megrine_coteaux",
+  "av_r_publique_2",
+  "av_r_publique_3",
+  "terminus_m_coteaux"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dubosville",
+   "name_en": "Dubosville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839884,
+   "lon": 10.1917495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_coordination_ouardia",
+   "name_en": "Centre De Coordination Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7806046,
+   "lon": 10.1956231,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_afrane",
+   "name_en": "El Afrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7796674,
+   "lon": 10.1966209,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebel_jelloud_gp1",
+   "name_en": "Djebel Jelloud Gp1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7732433,
+   "lon": 10.2045236,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gare_djebel_jelloud",
+   "name_en": "Gare Djebel Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7715383,
+   "lon": 10.208723,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stoa",
+   "name_en": "Stoa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7686077,
+   "lon": 10.2157355,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_m_grine_riadh",
+   "name_en": "Lycée Mégrine Riadh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7691549,
+   "lon": 10.2206959,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "biscuits_saida",
+   "name_en": "Biscuits Saida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.771873,
+   "lon": 10.2244193,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_commerciale",
+   "name_en": "Cité Commerciale",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7700768,
+   "lon": 10.232187,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "silos_m_grine_coteaux",
+   "name_en": "SILOS Mégrine Coteaux",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7688971,
+   "lon": 10.2357807,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants",
+   "name_en": "Jardin Enfants",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7676613,
+   "lon": 10.2413284,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gare_sidi_rezig",
+   "name_en": "Gare Sidi Rezig",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7685705,
+   "lon": 10.2450075,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_r_publique_1",
+   "name_en": "Av République 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7703753,
+   "lon": 10.2436771,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "parc_municipal",
+   "name_en": "Parc Municipal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7712972,
+   "lon": 10.2418751,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "salle_de_sport",
+   "name_en": "Salle De Sport",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7730074,
+   "lon": 10.2410812,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_megrine_coteaux",
+   "name_en": "Stade Megrine Coteaux",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.773566,
+   "lon": 10.2390642,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_r_publique_2",
+   "name_en": "Av République 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7743964,
+   "lon": 10.2383671,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_r_publique_3",
+   "name_en": "Av République 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7740536,
+   "lon": 10.2335276,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_m_coteaux",
+   "name_en": "Terminus M-Coteaux",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7707311,
+   "lon": 10.2318386,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

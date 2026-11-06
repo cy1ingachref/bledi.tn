@@ -1,0 +1,1201 @@
+{
+ "line_id": "bus_777_635",
+ "number": "635",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 635: Terminus Tunis Marine Bus - Place Sala Centre",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "charguia1",
+  "foire_la_charguia",
+  "depot_charguia",
+  "onas",
+  "frette",
+  "a_roport_p_lerins",
+  "a_roport_tunis_carthage",
+  "centre_de_tri_postal",
+  "charguia_2",
+  "les_abattoirs",
+  "place_sala_centre"
+ ],
+ "direction_retour": [
+  "place_sala_centre",
+  "les_abattoirs",
+  "charguia_2",
+  "centre_de_tri_postal",
+  "a_roport_tunis_carthage",
+  "a_roport_p_lerins",
+  "frette",
+  "onas",
+  "depot_charguia",
+  "foire_la_charguia",
+  "charguia1",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 12,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "place_sala_centre",
+  "name": "Place Sala Centre"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "charguia1",
+  "foire_la_charguia",
+  "depot_charguia",
+  "onas",
+  "frette",
+  "a_roport_p_lerins",
+  "a_roport_tunis_carthage",
+  "centre_de_tri_postal",
+  "charguia_2",
+  "les_abattoirs",
+  "place_sala_centre"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia1",
+   "name_en": "Charguia1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8288636,
+   "lon": 10.2010967,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foire_la_charguia",
+   "name_en": "Foire La Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356665,
+   "lon": 10.2014554,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "depot_charguia",
+   "name_en": "Depot Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.839222,
+   "lon": 10.2045873,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "onas",
+   "name_en": "ONAS",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8368086,
+   "lon": 10.2086223,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "frette",
+   "name_en": "FRETTE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8365681,
+   "lon": 10.213343,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "a_roport_p_lerins",
+   "name_en": "Aéroport Pélerins",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8426027,
+   "lon": 10.2150442,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "a_roport_tunis_carthage",
+   "name_en": "Aéroport Tunis Carthage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8476666,
+   "lon": 10.2172345,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_tri_postal",
+   "name_en": "Centre De Tri Postal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8447054,
+   "lon": 10.2186747,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia_2",
+   "name_en": "Charguia 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8543199,
+   "lon": 10.2028332,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_abattoirs",
+   "name_en": "Les Abattoirs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8601659,
+   "lon": 10.1981876,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_sala_centre",
+   "name_en": "Place Sala Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85811,
+   "lon": 10.1914391,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "terminus_tunis_marine_bus",
+   "to": "charguia1",
+   "key": "charguia1|terminus_tunis_marine_bus",
+   "straight_m": 3307.16,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8288636,
+     10.2010967
+    ],
+    [
+     36.830707,
+     10.200932
+    ],
+    [
+     36.830942,
+     10.201089
+    ],
+    [
+     36.831015,
+     10.201282
+    ],
+    [
+     36.829565,
+     10.206522
+    ],
+    [
+     36.82908,
+     10.206747
+    ],
+    [
+     36.827235,
+     10.202765
+    ],
+    [
+     36.826992,
+     10.200571
+    ],
+    [
+     36.826705,
+     10.199501
+    ],
+    [
+     36.824822,
+     10.197087
+    ],
+    [
+     36.820668,
+     10.187697
+    ],
+    [
+     36.818179,
+     10.183107
+    ],
+    [
+     36.817206,
+     10.18357
+    ],
+    [
+     36.801826,
+     10.186115
+    ],
+    [
+     36.800975,
+     10.186206
+    ],
+    [
+     36.800156,
+     10.185869
+    ],
+    [
+     36.800008,
+     10.186004
+    ],
+    [
+     36.799962,
+     10.186272
+    ],
+    [
+     36.800148,
+     10.186737
+    ],
+    [
+     36.800322,
+     10.188411
+    ],
+    [
+     36.800204,
+     10.188823
+    ],
+    [
+     36.800417,
+     10.189311
+    ],
+    [
+     36.8003841,
+     10.1903877
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 5718.17,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 1191.0,
+   "length_ratio": 1.729,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "charguia1",
+   "to": "foire_la_charguia",
+   "key": "charguia1|foire_la_charguia",
+   "straight_m": 757.12,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8288636,
+     10.2010967
+    ],
+    [
+     36.8356665,
+     10.2014554
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 757.12,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "foire_la_charguia",
+   "to": "depot_charguia",
+   "key": "depot_charguia|foire_la_charguia",
+   "straight_m": 483.72,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 2292 m implausible vs 484 m straight"
+  },
+  {
+   "from": "depot_charguia",
+   "to": "onas",
+   "key": "depot_charguia|onas",
+   "straight_m": 448.29,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.839222,
+     10.2045873
+    ],
+    [
+     36.837833,
+     10.206538
+    ],
+    [
+     36.838296,
+     10.207627
+    ],
+    [
+     36.8368086,
+     10.2086223
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 529.72,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 79.46,
+   "length_ratio": 1.1816,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "onas",
+   "to": "frette",
+   "key": "frette|onas",
+   "straight_m": 420.97,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 2318 m implausible vs 421 m straight"
+  },
+  {
+   "from": "frette",
+   "to": "a_roport_p_lerins",
+   "key": "a_roport_p_lerins|frette",
+   "straight_m": 687.88,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8426027,
+     10.2150442
+    ],
+    [
+     36.84195,
+     10.214947
+    ],
+    [
+     36.841869,
+     10.214801
+    ],
+    [
+     36.841934,
+     10.214446
+    ],
+    [
+     36.841754,
+     10.214262
+    ],
+    [
+     36.841381,
+     10.214284
+    ],
+    [
+     36.839317,
+     10.213814
+    ],
+    [
+     36.835821,
+     10.212856
+    ],
+    [
+     36.835316,
+     10.212596
+    ],
+    [
+     36.83463,
+     10.212566
+    ],
+    [
+     36.832261,
+     10.212098
+    ],
+    [
+     36.831278,
+     10.212192
+    ],
+    [
+     36.829789,
+     10.212734
+    ],
+    [
+     36.829543,
+     10.212701
+    ],
+    [
+     36.829382,
+     10.212976
+    ],
+    [
+     36.829576,
+     10.213317
+    ],
+    [
+     36.829745,
+     10.2133
+    ],
+    [
+     36.830125,
+     10.212827
+    ],
+    [
+     36.830567,
+     10.212606
+    ],
+    [
+     36.831945,
+     10.212233
+    ],
+    [
+     36.832508,
+     10.212263
+    ],
+    [
+     36.834945,
+     10.212816
+    ],
+    [
+     36.835118,
+     10.212945
+    ],
+    [
+     36.835279,
+     10.213445
+    ],
+    [
+     36.835793,
+     10.21357
+    ],
+    [
+     36.835955,
+     10.213599
+    ],
+    [
+     36.836134,
+     10.213202
+    ],
+    [
+     36.8365681,
+     10.213343
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2464.37,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 799.73,
+   "length_ratio": 3.5826,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "a_roport_p_lerins",
+   "to": "a_roport_tunis_carthage",
+   "key": "a_roport_p_lerins|a_roport_tunis_carthage",
+   "straight_m": 595.86,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8426027,
+     10.2150442
+    ],
+    [
+     36.84195,
+     10.214947
+    ],
+    [
+     36.841869,
+     10.214801
+    ],
+    [
+     36.841934,
+     10.214446
+    ],
+    [
+     36.841754,
+     10.214262
+    ],
+    [
+     36.841483,
+     10.214421
+    ],
+    [
+     36.841543,
+     10.214806
+    ],
+    [
+     36.842992,
+     10.215512
+    ],
+    [
+     36.844199,
+     10.215564
+    ],
+    [
+     36.844476,
+     10.215752
+    ],
+    [
+     36.844691,
+     10.215588
+    ],
+    [
+     36.845282,
+     10.215644
+    ],
+    [
+     36.845639,
+     10.215902
+    ],
+    [
+     36.846293,
+     10.216793
+    ],
+    [
+     36.8476666,
+     10.2172345
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 962.71,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 136.3,
+   "length_ratio": 1.6157,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "a_roport_tunis_carthage",
+   "to": "centre_de_tri_postal",
+   "key": "a_roport_tunis_carthage|centre_de_tri_postal",
+   "straight_m": 353.33,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 1574 m implausible vs 353 m straight"
+  },
+  {
+   "from": "centre_de_tri_postal",
+   "to": "charguia_2",
+   "key": "centre_de_tri_postal|charguia_2",
+   "straight_m": 1769.14,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8447054,
+     10.2186747
+    ],
+    [
+     36.842734,
+     10.217097
+    ],
+    [
+     36.842992,
+     10.215512
+    ],
+    [
+     36.843134,
+     10.215424
+    ],
+    [
+     36.843171,
+     10.215117
+    ],
+    [
+     36.844342,
+     10.215201
+    ],
+    [
+     36.845721,
+     10.214864
+    ],
+    [
+     36.847917,
+     10.213701
+    ],
+    [
+     36.848277,
+     10.213274
+    ],
+    [
+     36.84966,
+     10.205755
+    ],
+    [
+     36.850084,
+     10.204441
+    ],
+    [
+     36.85191,
+     10.202711
+    ],
+    [
+     36.852584,
+     10.202555
+    ],
+    [
+     36.8543199,
+     10.2028332
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 2394.74,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 327.24,
+   "length_ratio": 1.3536,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "charguia_2",
+   "to": "les_abattoirs",
+   "key": "charguia_2|les_abattoirs",
+   "straight_m": 770.32,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8543199,
+     10.2028332
+    ],
+    [
+     36.859186,
+     10.202956
+    ],
+    [
+     36.85942,
+     10.199505
+    ],
+    [
+     36.859374,
+     10.19815
+    ],
+    [
+     36.859618,
+     10.197971
+    ],
+    [
+     36.860039,
+     10.198271
+    ],
+    [
+     36.8601659,
+     10.1981876
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1071.28,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 299.54,
+   "length_ratio": 1.3907,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "les_abattoirs",
+   "to": "place_sala_centre",
+   "key": "les_abattoirs|place_sala_centre",
+   "straight_m": 642.45,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8601659,
+     10.1981876
+    ],
+    [
+     36.860418,
+     10.197993
+    ],
+    [
+     36.860342,
+     10.197404
+    ],
+    [
+     36.860203,
+     10.197359
+    ],
+    [
+     36.859594,
+     10.197889
+    ],
+    [
+     36.8593,
+     10.197841
+    ],
+    [
+     36.858562,
+     10.194838
+    ],
+    [
+     36.858388,
+     10.192405
+    ],
+    [
+     36.85811,
+     10.1914391
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 805.62,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 79.01,
+   "length_ratio": 1.254,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8003841,
+   10.1903877
+  ],
+  [
+   36.800417,
+   10.189311
+  ],
+  [
+   36.800204,
+   10.188823
+  ],
+  [
+   36.800322,
+   10.188411
+  ],
+  [
+   36.800148,
+   10.186737
+  ],
+  [
+   36.799962,
+   10.186272
+  ],
+  [
+   36.800008,
+   10.186004
+  ],
+  [
+   36.800156,
+   10.185869
+  ],
+  [
+   36.800975,
+   10.186206
+  ],
+  [
+   36.801826,
+   10.186115
+  ],
+  [
+   36.817206,
+   10.18357
+  ],
+  [
+   36.818179,
+   10.183107
+  ],
+  [
+   36.820668,
+   10.187697
+  ],
+  [
+   36.824822,
+   10.197087
+  ],
+  [
+   36.826705,
+   10.199501
+  ],
+  [
+   36.826992,
+   10.200571
+  ],
+  [
+   36.827235,
+   10.202765
+  ],
+  [
+   36.82908,
+   10.206747
+  ],
+  [
+   36.829565,
+   10.206522
+  ],
+  [
+   36.831015,
+   10.201282
+  ],
+  [
+   36.830942,
+   10.201089
+  ],
+  [
+   36.830707,
+   10.200932
+  ],
+  [
+   36.8288636,
+   10.2010967
+  ],
+  [
+   36.8356665,
+   10.2014554
+  ],
+  [
+   36.839222,
+   10.2045873
+  ],
+  [
+   36.837833,
+   10.206538
+  ],
+  [
+   36.838296,
+   10.207627
+  ],
+  [
+   36.8368086,
+   10.2086223
+  ],
+  [
+   36.8365681,
+   10.213343
+  ],
+  [
+   36.836134,
+   10.213202
+  ],
+  [
+   36.835955,
+   10.213599
+  ],
+  [
+   36.835793,
+   10.21357
+  ],
+  [
+   36.835279,
+   10.213445
+  ],
+  [
+   36.835118,
+   10.212945
+  ],
+  [
+   36.834945,
+   10.212816
+  ],
+  [
+   36.832508,
+   10.212263
+  ],
+  [
+   36.831945,
+   10.212233
+  ],
+  [
+   36.830567,
+   10.212606
+  ],
+  [
+   36.830125,
+   10.212827
+  ],
+  [
+   36.829745,
+   10.2133
+  ],
+  [
+   36.829576,
+   10.213317
+  ],
+  [
+   36.829382,
+   10.212976
+  ],
+  [
+   36.829543,
+   10.212701
+  ],
+  [
+   36.829789,
+   10.212734
+  ],
+  [
+   36.831278,
+   10.212192
+  ],
+  [
+   36.832261,
+   10.212098
+  ],
+  [
+   36.83463,
+   10.212566
+  ],
+  [
+   36.835316,
+   10.212596
+  ],
+  [
+   36.835821,
+   10.212856
+  ],
+  [
+   36.839317,
+   10.213814
+  ],
+  [
+   36.841381,
+   10.214284
+  ],
+  [
+   36.841754,
+   10.214262
+  ],
+  [
+   36.841934,
+   10.214446
+  ],
+  [
+   36.841869,
+   10.214801
+  ],
+  [
+   36.84195,
+   10.214947
+  ],
+  [
+   36.8426027,
+   10.2150442
+  ],
+  [
+   36.84195,
+   10.214947
+  ],
+  [
+   36.841869,
+   10.214801
+  ],
+  [
+   36.841934,
+   10.214446
+  ],
+  [
+   36.841754,
+   10.214262
+  ],
+  [
+   36.841483,
+   10.214421
+  ],
+  [
+   36.841543,
+   10.214806
+  ],
+  [
+   36.842992,
+   10.215512
+  ],
+  [
+   36.844199,
+   10.215564
+  ],
+  [
+   36.844476,
+   10.215752
+  ],
+  [
+   36.844691,
+   10.215588
+  ],
+  [
+   36.845282,
+   10.215644
+  ],
+  [
+   36.845639,
+   10.215902
+  ],
+  [
+   36.846293,
+   10.216793
+  ],
+  [
+   36.8476666,
+   10.2172345
+  ],
+  [
+   36.8447054,
+   10.2186747
+  ],
+  [
+   36.842734,
+   10.217097
+  ],
+  [
+   36.842992,
+   10.215512
+  ],
+  [
+   36.843134,
+   10.215424
+  ],
+  [
+   36.843171,
+   10.215117
+  ],
+  [
+   36.844342,
+   10.215201
+  ],
+  [
+   36.845721,
+   10.214864
+  ],
+  [
+   36.847917,
+   10.213701
+  ],
+  [
+   36.848277,
+   10.213274
+  ],
+  [
+   36.84966,
+   10.205755
+  ],
+  [
+   36.850084,
+   10.204441
+  ],
+  [
+   36.85191,
+   10.202711
+  ],
+  [
+   36.852584,
+   10.202555
+  ],
+  [
+   36.8543199,
+   10.2028332
+  ],
+  [
+   36.859186,
+   10.202956
+  ],
+  [
+   36.85942,
+   10.199505
+  ],
+  [
+   36.859374,
+   10.19815
+  ],
+  [
+   36.859618,
+   10.197971
+  ],
+  [
+   36.860039,
+   10.198271
+  ],
+  [
+   36.8601659,
+   10.1981876
+  ],
+  [
+   36.860418,
+   10.197993
+  ],
+  [
+   36.860342,
+   10.197404
+  ],
+  [
+   36.860203,
+   10.197359
+  ],
+  [
+   36.859594,
+   10.197889
+  ],
+  [
+   36.8593,
+   10.197841
+  ],
+  [
+   36.858562,
+   10.194838
+  ],
+  [
+   36.858388,
+   10.192405
+  ],
+  [
+   36.85811,
+   10.1914391
+  ]
+ ],
+ "phase3a": {
+  "pairs": 11,
+  "resolved": 8,
+  "unresolved": 3
+ }
+}

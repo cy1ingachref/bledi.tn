@@ -1,0 +1,330 @@
+{
+ "line_id": "bus_734_52",
+ "number": "52",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 52: Terminus 20B - Terminus 52/52B",
+ "direction_aller": [
+  "terminus_20b",
+  "ecole_primaire_gammarth",
+  "mosqu_e_gammarth",
+  "centre_de_formation_gammarth",
+  "cit_el_habib",
+  "cit_el_khalille",
+  "ben_mahmoud",
+  "jbel_el_khaoui",
+  "teminus_cit_riadh",
+  "sidi_abd_aziz",
+  "nacer",
+  "lahweche",
+  "marsa_ville",
+  "palais_saada",
+  "parc_sidi_bou_said",
+  "sidi_bou_said",
+  "magasin_g_n_ral_sidi_bou_said",
+  "terminus_52_52b"
+ ],
+ "direction_retour": [
+  "terminus_52_52b",
+  "magasin_g_n_ral_sidi_bou_said",
+  "sidi_bou_said",
+  "parc_sidi_bou_said",
+  "palais_saada",
+  "marsa_ville",
+  "lahweche",
+  "nacer",
+  "sidi_abd_aziz",
+  "teminus_cit_riadh",
+  "jbel_el_khaoui",
+  "ben_mahmoud",
+  "cit_el_khalille",
+  "cit_el_habib",
+  "centre_de_formation_gammarth",
+  "mosqu_e_gammarth",
+  "ecole_primaire_gammarth",
+  "terminus_20b"
+ ],
+ "stations_count": 18,
+ "start": {
+  "id": "terminus_20b",
+  "name": "Terminus 20B"
+ },
+ "end": {
+  "id": "terminus_52_52b",
+  "name": "Terminus 52/52B"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [
+  {
+   "from": "cit_el_khalille",
+   "to": "ben_mahmoud",
+   "km": 22.5
+  },
+  {
+   "from": "ben_mahmoud",
+   "to": "jbel_el_khaoui",
+   "km": 23.2
+  }
+ ],
+ "original_stations": [
+  "terminus_20b",
+  "ecole_primaire_gammarth",
+  "mosqu_e_gammarth",
+  "centre_de_formation_gammarth",
+  "cit_el_habib",
+  "cit_el_khalille",
+  "ben_mahmoud",
+  "jbel_el_khaoui",
+  "teminus_cit_riadh",
+  "sidi_abd_aziz",
+  "nacer",
+  "lahweche",
+  "marsa_ville",
+  "palais_saada",
+  "parc_sidi_bou_said",
+  "sidi_bou_said",
+  "magasin_g_n_ral_sidi_bou_said",
+  "terminus_52_52b"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_20b",
+   "name_en": "Terminus 20B",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9057988,
+   "lon": 10.301458,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire_gammarth",
+   "name_en": "Ecole Primaire Gammarth",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9051811,
+   "lon": 10.2998594,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_gammarth",
+   "name_en": "Mosquée Gammarth",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9044853,
+   "lon": 10.2980299,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_gammarth",
+   "name_en": "Centre De Formation Gammarth",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9004737,
+   "lon": 10.2934383,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_habib",
+   "name_en": "Cité El Habib",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8974381,
+   "lon": 10.2936474,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_khalille",
+   "name_en": "Cité El Khalille",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8865322,
+   "lon": 10.3011415,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_mahmoud",
+   "name_en": "Ben Mahmoud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7859248,
+   "lon": 10.0814901,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jbel_el_khaoui",
+   "name_en": "Jbel El Khaoui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8841653,
+   "lon": 10.3112689,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "teminus_cit_riadh",
+   "name_en": "Teminus Cité Riadh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8857539,
+   "lon": 10.3142308,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_abd_aziz",
+   "name_en": "Sidi Abd Aziz",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8875448,
+   "lon": 10.3227065,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nacer",
+   "name_en": "Nacer",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8845156,
+   "lon": 10.3240154,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lahweche",
+   "name_en": "Lahweche",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8820904,
+   "lon": 10.3248842,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "marsa_ville",
+   "name_en": "Marsa Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8803817,
+   "lon": 10.326805,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "palais_saada",
+   "name_en": "Palais Saada",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8771996,
+   "lon": 10.3290472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "parc_sidi_bou_said",
+   "name_en": "Parc Sidi Bou Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8731288,
+   "lon": 10.3351083,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bou_said",
+   "name_en": "Sidi Bou Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8705051,
+   "lon": 10.3430162,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magasin_g_n_ral_sidi_bou_said",
+   "name_en": "Magasin Général Sidi Bou Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8692949,
+   "lon": 10.3429625,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_52_52b",
+   "name_en": "Terminus 52/52B",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8608391,
+   "lon": 10.3352268,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

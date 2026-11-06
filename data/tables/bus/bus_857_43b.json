@@ -1,0 +1,447 @@
+{
+ "line_id": "bus_857_43b",
+ "number": "43B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 43B: Terminus Tunis Marine Bus - Cité Monji Slim Terminus 44B 44D/",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "minist_re_du_tourisme",
+  "place_des_droits_de_homme",
+  "mohamed_v",
+  "kheireddine_bacha",
+  "schiling",
+  "le_belv_d_re",
+  "taieb_mhiri",
+  "mechtel",
+  "bab_abdeslem",
+  "hopital_des_enfants",
+  "charle_nicole",
+  "universit_ibn_charaf",
+  "hopital_de_neurologie_rabta",
+  "terminus_rabta_l_43b_43",
+  "sanad",
+  "makfoufine_1",
+  "makfoufine_2",
+  "mrezgeya",
+  "lyc_e_sidi_thabet",
+  "m_decine_v_t_rinaire",
+  "sidi_thabet_centre",
+  "inpfca",
+  "mbarka_1",
+  "cit_monji_slim",
+  "cit_monji_slim_terminus_44b_44d"
+ ],
+ "direction_retour": [
+  "cit_monji_slim_terminus_44b_44d",
+  "cit_monji_slim",
+  "mbarka_1",
+  "inpfca",
+  "sidi_thabet_centre",
+  "m_decine_v_t_rinaire",
+  "lyc_e_sidi_thabet",
+  "mrezgeya",
+  "makfoufine_2",
+  "makfoufine_1",
+  "sanad",
+  "terminus_rabta_l_43b_43",
+  "hopital_de_neurologie_rabta",
+  "universit_ibn_charaf",
+  "charle_nicole",
+  "hopital_des_enfants",
+  "bab_abdeslem",
+  "mechtel",
+  "taieb_mhiri",
+  "le_belv_d_re",
+  "schiling",
+  "kheireddine_bacha",
+  "mohamed_v",
+  "place_des_droits_de_homme",
+  "minist_re_du_tourisme",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 26,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "cit_monji_slim_terminus_44b_44d",
+  "name": "Cité Monji Slim Terminus 44B 44D/"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "minist_re_du_tourisme",
+  "place_des_droits_de_homme",
+  "mohamed_v",
+  "kheireddine_bacha",
+  "schiling",
+  "le_belv_d_re",
+  "taieb_mhiri",
+  "mechtel",
+  "bab_abdeslem",
+  "hopital_des_enfants",
+  "charle_nicole",
+  "universit_ibn_charaf",
+  "hopital_de_neurologie_rabta",
+  "terminus_rabta_l_43b_43",
+  "sanad",
+  "makfoufine_1",
+  "makfoufine_2",
+  "mrezgeya",
+  "lyc_e_sidi_thabet",
+  "m_decine_v_t_rinaire",
+  "sidi_thabet_centre",
+  "inpfca",
+  "mbarka_1",
+  "cit_monji_slim",
+  "cit_monji_slim_terminus_44b_44d"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "minist_re_du_tourisme",
+   "name_en": "Ministére Du Tourisme",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8024852,
+   "lon": 10.1860923,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_des_droits_de_homme",
+   "name_en": "Place Des Droits De Homme",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8072691,
+   "lon": 10.1853076,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mohamed_v",
+   "name_en": "MOHAMED V",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81568,
+   "lon": 10.18357,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "kheireddine_bacha",
+   "name_en": "Kheireddine Bacha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8187238,
+   "lon": 10.1827569,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "schiling",
+   "name_en": "Schiling",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8204253,
+   "lon": 10.1810438,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_belv_d_re",
+   "name_en": "Le Belvédére",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8184299,
+   "lon": 10.1770408,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "taieb_mhiri",
+   "name_en": "Taieb Mhiri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8139305,
+   "lon": 10.1750991,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mechtel",
+   "name_en": "Mechtel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8135314,
+   "lon": 10.1723472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_abdeslem",
+   "name_en": "Bab Abdeslem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8094634,
+   "lon": 10.161087,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_des_enfants",
+   "name_en": "Hopital Des Enfants",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.807514,
+   "lon": 10.1593545,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "universit_ibn_charaf",
+   "name_en": "Université Ibn Charaf",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7989792,
+   "lon": 10.1617685,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_de_neurologie_rabta",
+   "name_en": "Hopital De Neurologie Rabta",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8008462,
+   "lon": 10.1578204,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_rabta_l_43b_43",
+   "name_en": "Terminus Rabta L ( 43B + 43 )",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8020149,
+   "lon": 10.1569488,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sanad",
+   "name_en": "Sanad",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9194455,
+   "lon": 10.0759644,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "makfoufine_1",
+   "name_en": "Makfoufine 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9205754,
+   "lon": 10.0848903,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "makfoufine_2",
+   "name_en": "Makfoufine 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9209311,
+   "lon": 10.0812415,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mrezgeya",
+   "name_en": "Mrezgeya",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9137498,
+   "lon": 10.0603003,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_sidi_thabet",
+   "name_en": "Lycée Sidi Thabet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9128382,
+   "lon": 10.0555577,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "m_decine_v_t_rinaire",
+   "name_en": "Médecine Vétérinaire",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9115463,
+   "lon": 10.0496844,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_thabet_centre",
+   "name_en": "Sidi Thabet Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9077597,
+   "lon": 10.0415673,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "inpfca",
+   "name_en": "INPFCA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9057172,
+   "lon": 10.0395725,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mbarka_1",
+   "name_en": "Mbarka 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8988481,
+   "lon": 10.0285322,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_monji_slim",
+   "name_en": "Cité Monji Slim",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9018864,
+   "lon": 10.0247291,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_monji_slim_terminus_44b_44d",
+   "name_en": "Cité Monji Slim Terminus 44B 44D/",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9051251,
+   "lon": 10.0263224,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

@@ -84,9 +84,10 @@ def build_router(config: Config, data: SeedFileNetwork, network: Network, **opti
 def build_services(config: Config) -> Services:
     data = SeedFileNetwork(config.data_dir)
     network = data.load()
+    router = build_router(config, data, network)
     return Services(
-        catalog=Catalog(network, data),
-        router=build_router(config, data, network),
+        catalog=Catalog(network, data, paths=router.paths),
+        router=router,
         geocoder=NominatimGeocoder(),
     )
 

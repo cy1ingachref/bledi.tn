@@ -1,0 +1,2632 @@
+{
+  "generated_by": "scripts/fix_shared_ids.py",
+  "source": "data\\transport_map_corrected.json",
+  "teleport_threshold_km": 20.0,
+  "counts": {
+    "teleport_legs_found": 118,
+    "phase3a_teleport_legs": 116,
+    "affected_station_ids": 133,
+    "multi_mode_block_ids": 50,
+    "renamed_station_entries": 184,
+    "renamed_line_references": 576,
+    "lines_touched": 174
+  },
+  "mapping": {
+    "13_aout": [
+      {
+        "new_id": "13_aout__bus",
+        "mode": "bus",
+        "lat": 36.77504,
+        "lon": 10.1792,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.28
+      },
+      {
+        "new_id": "13_aout__metro",
+        "mode": "metro",
+        "lat": 36.77504,
+        "lon": 10.1792,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.79
+      }
+    ],
+    "20_mars": [
+      {
+        "new_id": "20_mars__bus",
+        "mode": "bus",
+        "lat": 36.80835,
+        "lon": 10.14238,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.26
+      },
+      {
+        "new_id": "20_mars__metro",
+        "mode": "metro",
+        "lat": 36.80835,
+        "lon": 10.14238,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.65
+      }
+    ],
+    "ali_ben_mbarek": [
+      {
+        "new_id": "ali_ben_mbarek__bus",
+        "mode": "bus",
+        "lat": 36.7812289,
+        "lon": 9.9487074,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.23
+      }
+    ],
+    "amen_banque": [
+      {
+        "new_id": "amen_banque__bus",
+        "mode": "bus",
+        "lat": 36.7152601,
+        "lon": 10.1822335,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.07
+      }
+    ],
+    "andorre": [
+      {
+        "new_id": "andorre__bus",
+        "mode": "bus",
+        "lat": 36.6377377,
+        "lon": 10.2149453,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.23
+      }
+    ],
+    "aouinet": [
+      {
+        "new_id": "aouinet__train",
+        "mode": "train",
+        "lat": 33.985519,
+        "lon": 10.0036881,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 9.81
+      }
+    ],
+    "artisanat": [
+      {
+        "new_id": "artisanat__bus",
+        "mode": "bus",
+        "lat": 36.80293,
+        "lon": 10.11601,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.48
+      },
+      {
+        "new_id": "artisanat__metro",
+        "mode": "metro",
+        "lat": 36.80293,
+        "lon": 10.11601,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.48
+      }
+    ],
+    "avenion": [
+      {
+        "new_id": "avenion__bus",
+        "mode": "bus",
+        "lat": 36.7749897,
+        "lon": 9.9527172,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.85
+      }
+    ],
+    "bab_alioua": [
+      {
+        "new_id": "bab_alioua__bus",
+        "mode": "bus",
+        "lat": 36.7858,
+        "lon": 10.17981,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.39
+      },
+      {
+        "new_id": "bab_alioua__metro",
+        "mode": "metro",
+        "lat": 36.7858,
+        "lon": 10.17981,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.41
+      }
+    ],
+    "bab_laassal": [
+      {
+        "new_id": "bab_laassal__bus",
+        "mode": "bus",
+        "lat": 36.81331,
+        "lon": 10.16817,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.37
+      },
+      {
+        "new_id": "bab_laassal__metro",
+        "mode": "metro",
+        "lat": 36.81331,
+        "lon": 10.16817,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.5
+      }
+    ],
+    "bab_saadoun": [
+      {
+        "new_id": "bab_saadoun__bus",
+        "mode": "bus",
+        "lat": 36.80986,
+        "lon": 10.16219,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.11
+      },
+      {
+        "new_id": "bab_saadoun__metro",
+        "mode": "metro",
+        "lat": 36.80986,
+        "lon": 10.16219,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.65
+      }
+    ],
+    "bab_saadoun_7348": [
+      {
+        "new_id": "bab_saadoun_7348__louage",
+        "mode": "louage",
+        "lat": 36.8092749,
+        "lon": 10.1565758,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.09
+      },
+      {
+        "new_id": "bab_saadoun_7348__unknown",
+        "mode": "unknown",
+        "lat": 36.8092749,
+        "lon": 10.1565758,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": null
+      }
+    ],
+    "bardo": [
+      {
+        "new_id": "bardo__bus",
+        "mode": "bus",
+        "lat": 36.80724,
+        "lon": 10.13523,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.14
+      },
+      {
+        "new_id": "bardo__metro",
+        "mode": "metro",
+        "lat": 36.80724,
+        "lon": 10.13523,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.65
+      }
+    ],
+    "ben_mahmoud": [
+      {
+        "new_id": "ben_mahmoud__bus",
+        "mode": "bus",
+        "lat": 36.7859248,
+        "lon": 10.0814901,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.45
+      }
+    ],
+    "bir_el_bey": [
+      {
+        "new_id": "bir_el_bey__bus",
+        "mode": "bus",
+        "lat": 36.7102497,
+        "lon": 10.3786432,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.28
+      },
+      {
+        "new_id": "bir_el_bey__rail",
+        "mode": "rail",
+        "lat": 36.7102497,
+        "lon": 10.3786432,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.9
+      },
+      {
+        "new_id": "bir_el_bey__train",
+        "mode": "train",
+        "lat": 36.7102497,
+        "lon": 10.3786432,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 15.4
+      }
+    ],
+    "borj_cedria": [
+      {
+        "new_id": "borj_cedria__rail",
+        "mode": "rail",
+        "lat": 36.7034822,
+        "lon": 10.3974291,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.61
+      },
+      {
+        "new_id": "borj_cedria__train",
+        "mode": "train",
+        "lat": 36.7034822,
+        "lon": 10.3974291,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 5.84
+      }
+    ],
+    "borj_jebbes": [
+      {
+        "new_id": "borj_jebbes__bus",
+        "mode": "bus",
+        "lat": 36.8717714,
+        "lon": 10.1157249,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.68
+      }
+    ],
+    "bou_arada": [
+      {
+        "new_id": "bou_arada__train",
+        "mode": "train",
+        "lat": 36.3564626,
+        "lon": 9.6269026,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 6.54
+      }
+    ],
+    "bouchoucha": [
+      {
+        "new_id": "bouchoucha__bus",
+        "mode": "bus",
+        "lat": 36.80953,
+        "lon": 10.15026,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.21
+      },
+      {
+        "new_id": "bouchoucha__metro",
+        "mode": "metro",
+        "lat": 36.80953,
+        "lon": 10.15026,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.71
+      }
+    ],
+    "bouficha": [
+      {
+        "new_id": "bouficha__train",
+        "mode": "train",
+        "lat": 36.3033024,
+        "lon": 10.451222,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 11.37
+      }
+    ],
+    "brimo": [
+      {
+        "new_id": "brimo__bus",
+        "mode": "bus",
+        "lat": 36.8520735,
+        "lon": 9.9360688,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.34
+      }
+    ],
+    "cafe_medina": [
+      {
+        "new_id": "cafe_medina__bus",
+        "mode": "bus",
+        "lat": 36.7131243,
+        "lon": 9.883205,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.61
+      }
+    ],
+    "carthage_byrsa": [
+      {
+        "new_id": "carthage_byrsa__bus",
+        "mode": "bus",
+        "lat": 36.8461259,
+        "lon": 10.3218453,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.55
+      },
+      {
+        "new_id": "carthage_byrsa__metro",
+        "mode": "metro",
+        "lat": 36.8461259,
+        "lon": 10.3218453,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.55
+      }
+    ],
+    "carthage_dermech": [
+      {
+        "new_id": "carthage_dermech__bus",
+        "mode": "bus",
+        "lat": 36.8501222,
+        "lon": 10.3255807,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.47
+      },
+      {
+        "new_id": "carthage_dermech__metro",
+        "mode": "metro",
+        "lat": 36.8501222,
+        "lon": 10.3255807,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.47
+      }
+    ],
+    "carthage_hannibal": [
+      {
+        "new_id": "carthage_hannibal__bus",
+        "mode": "bus",
+        "lat": 36.8533913,
+        "lon": 10.3289164,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.47
+      },
+      {
+        "new_id": "carthage_hannibal__metro",
+        "mode": "metro",
+        "lat": 36.8533913,
+        "lon": 10.3289164,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.47
+      }
+    ],
+    "carthage_salambo": [
+      {
+        "new_id": "carthage_salambo__bus",
+        "mode": "bus",
+        "lat": 36.8415416,
+        "lon": 10.3191045,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.57
+      },
+      {
+        "new_id": "carthage_salambo__metro",
+        "mode": "metro",
+        "lat": 36.8415416,
+        "lon": 10.3191045,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.57
+      }
+    ],
+    "chaouat": [
+      {
+        "new_id": "chaouat__bus",
+        "mode": "bus",
+        "lat": 36.8894814,
+        "lon": 9.944471,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.41
+      },
+      {
+        "new_id": "chaouat__train",
+        "mode": "train",
+        "lat": 36.8894814,
+        "lon": 9.944471,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 4.41
+      }
+    ],
+    "chorfech_2": [
+      {
+        "new_id": "chorfech_2__bus",
+        "mode": "bus",
+        "lat": 36.9374389,
+        "lon": 10.042587,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.16
+      }
+    ],
+    "chorfech_3": [
+      {
+        "new_id": "chorfech_3__bus",
+        "mode": "bus",
+        "lat": 36.9537735,
+        "lon": 10.0438316,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.82
+      }
+    ],
+    "cimetiere_jallez": [
+      {
+        "new_id": "cimetiere_jallez__bus",
+        "mode": "bus",
+        "lat": 36.786997,
+        "lon": 10.1804847,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.29
+      },
+      {
+        "new_id": "cimetiere_jallez__louage",
+        "mode": "louage",
+        "lat": 36.786997,
+        "lon": 10.1804847,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.19
+      }
+    ],
+    "cit_el_habib": [
+      {
+        "new_id": "cit_el_habib__bus",
+        "mode": "bus",
+        "lat": 36.8974381,
+        "lon": 10.2936474,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.34
+      }
+    ],
+    "cit_el_khalille": [
+      {
+        "new_id": "cit_el_khalille__bus",
+        "mode": "bus",
+        "lat": 36.8865322,
+        "lon": 10.3011415,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.61
+      }
+    ],
+    "cit_essalem": [
+      {
+        "new_id": "cit_essalem__bus",
+        "mode": "bus",
+        "lat": 36.8532762,
+        "lon": 10.2742226,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.72
+      }
+    ],
+    "cit_monji_slim_terminus_44b_44d": [
+      {
+        "new_id": "cit_monji_slim_terminus_44b_44d__bus",
+        "mode": "bus",
+        "lat": 36.9051251,
+        "lon": 10.0263224,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.39
+      }
+    ],
+    "cite_el_intilaka": [
+      {
+        "new_id": "cite_el_intilaka__bus",
+        "mode": "bus",
+        "lat": 36.83935,
+        "lon": 10.11695,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": 25.11,
+        "suggested_coord_from_neighbors": {
+          "lat": 36.7131243,
+          "lon": 9.883205,
+          "note": "nearest in-context neighbor; re-geocode this stop, do not use blindly"
+        }
+      },
+      {
+        "new_id": "cite_el_intilaka__metro",
+        "mode": "metro",
+        "lat": 36.83935,
+        "lon": 10.11695,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.39
+      }
+    ],
+    "cite_monji_slim": [
+      {
+        "new_id": "cite_monji_slim__bus",
+        "mode": "bus",
+        "lat": 36.7129764,
+        "lon": 10.1462581,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.44
+      }
+    ],
+    "degueche": [
+      {
+        "new_id": "degueche__train",
+        "mode": "train",
+        "lat": 33.9868565,
+        "lon": 8.2132722,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 9.8
+      }
+    ],
+    "denden": [
+      {
+        "new_id": "denden__bus",
+        "mode": "bus",
+        "lat": 36.80221,
+        "lon": 10.11075,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.48
+      },
+      {
+        "new_id": "denden__metro",
+        "mode": "metro",
+        "lat": 36.80221,
+        "lon": 10.11075,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.48
+      }
+    ],
+    "depot_farhat_hached": [
+      {
+        "new_id": "depot_farhat_hached__rail",
+        "mode": "rail",
+        "lat": 36.7840267,
+        "lon": 10.1919152,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.58
+      },
+      {
+        "new_id": "depot_farhat_hached__train",
+        "mode": "train",
+        "lat": 36.7840267,
+        "lon": 10.1919152,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.58
+      }
+    ],
+    "djebal_jelloud": [
+      {
+        "new_id": "djebal_jelloud__rail",
+        "mode": "rail",
+        "lat": 36.7727251,
+        "lon": 10.2082258,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.34
+      },
+      {
+        "new_id": "djebal_jelloud__train",
+        "mode": "train",
+        "lat": 36.7727251,
+        "lon": 10.2082258,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.92
+      }
+    ],
+    "dl_srtj_monastir_07506": [
+      {
+        "new_id": "dl_srtj_monastir_07506__bus",
+        "mode": "bus",
+        "lat": 35.7734575169,
+        "lon": 10.825990364,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": null
+      },
+      {
+        "new_id": "dl_srtj_monastir_07506__louage",
+        "mode": "louage",
+        "lat": 35.7734575169,
+        "lon": 10.825990364,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.14
+      }
+    ],
+    "ecole_el_hawaria": [
+      {
+        "new_id": "ecole_el_hawaria__bus",
+        "mode": "bus",
+        "lat": 36.8295026,
+        "lon": 9.6837409,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.65
+      }
+    ],
+    "ecole_primaire": [
+      {
+        "new_id": "ecole_primaire__bus",
+        "mode": "bus",
+        "lat": 36.8366171,
+        "lon": 10.0126596,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.29
+      }
+    ],
+    "el_jem": [
+      {
+        "new_id": "el_jem__train",
+        "mode": "train",
+        "lat": 35.2925658,
+        "lon": 10.7095802,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 17.33
+      }
+    ],
+    "el_mourouj_3": [
+      {
+        "new_id": "el_mourouj_3__bus",
+        "mode": "bus",
+        "lat": 36.7287,
+        "lon": 10.21073,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.19
+      },
+      {
+        "new_id": "el_mourouj_3__metro",
+        "mode": "metro",
+        "lat": 36.7287,
+        "lon": 10.21073,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.49
+      }
+    ],
+    "el_sherouia": [
+      {
+        "new_id": "el_sherouia__bus",
+        "mode": "bus",
+        "lat": 36.6783239,
+        "lon": 9.6542026,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": 23.84,
+        "suggested_coord_from_neighbors": {
+          "lat": 36.8291603,
+          "lon": 9.8443655,
+          "note": "nearest in-context neighbor; re-geocode this stop, do not use blindly"
+        }
+      }
+    ],
+    "enfida": [
+      {
+        "new_id": "enfida__train",
+        "mode": "train",
+        "lat": 36.1307311,
+        "lon": 10.3836398,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 8.79
+      }
+    ],
+    "ettadhamen": [
+      {
+        "new_id": "ettadhamen__bus",
+        "mode": "bus",
+        "lat": 36.83584,
+        "lon": 10.11759,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.15
+      },
+      {
+        "new_id": "ettadhamen__metro",
+        "mode": "metro",
+        "lat": 36.83584,
+        "lon": 10.11759,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.39
+      }
+    ],
+    "ez_zahra": [
+      {
+        "new_id": "ez_zahra__rail",
+        "mode": "rail",
+        "lat": 36.7468002,
+        "lon": 10.3070495,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.3
+      },
+      {
+        "new_id": "ez_zahra__train",
+        "mode": "train",
+        "lat": 36.7468002,
+        "lon": 10.3070495,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 3.1
+      }
+    ],
+    "frachich": [
+      {
+        "new_id": "frachich__bus",
+        "mode": "bus",
+        "lat": 36.5618227,
+        "lon": 9.9676782,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.65
+      }
+    ],
+    "gabes": [
+      {
+        "new_id": "gabes__louage",
+        "mode": "louage",
+        "lat": 33.8842247,
+        "lon": 10.0991946,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.58
+      },
+      {
+        "new_id": "gabes__train",
+        "mode": "train",
+        "lat": 33.8842247,
+        "lon": 10.0991946,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 4.63
+      }
+    ],
+    "google_places_gare_routiere_de_bizerte__ta_dedad51ee6": [
+      {
+        "new_id": "google_places_gare_routiere_de_bizerte__ta_dedad51ee6__bus",
+        "mode": "bus",
+        "lat": 37.269066,
+        "lon": 9.872583,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": null
+      },
+      {
+        "new_id": "google_places_gare_routiere_de_bizerte__ta_dedad51ee6__louage",
+        "mode": "louage",
+        "lat": 37.269066,
+        "lon": 9.872583,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.18
+      }
+    ],
+    "goulette_neuve": [
+      {
+        "new_id": "goulette_neuve__bus",
+        "mode": "bus",
+        "lat": 36.8198449,
+        "lon": 10.3056014,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.33
+      },
+      {
+        "new_id": "goulette_neuve__metro",
+        "mode": "metro",
+        "lat": 36.8198449,
+        "lon": 10.3056014,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.38
+      }
+    ],
+    "grombalia": [
+      {
+        "new_id": "grombalia__train",
+        "mode": "train",
+        "lat": 36.5963444,
+        "lon": 10.4977219,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 2.71
+      }
+    ],
+    "hammam_lif": [
+      {
+        "new_id": "hammam_lif__rail",
+        "mode": "rail",
+        "lat": 36.7294393,
+        "lon": 10.3342066,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.09
+      },
+      {
+        "new_id": "hammam_lif__train",
+        "mode": "train",
+        "lat": 36.7294393,
+        "lon": 10.3342066,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 3.1
+      }
+    ],
+    "ibn_sina": [
+      {
+        "new_id": "ibn_sina__bus",
+        "mode": "bus",
+        "lat": 36.75428,
+        "lon": 10.19393,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.31
+      },
+      {
+        "new_id": "ibn_sina__metro",
+        "mode": "metro",
+        "lat": 36.75428,
+        "lon": 10.19393,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.68
+      }
+    ],
+    "jbel_el_khaoui": [
+      {
+        "new_id": "jbel_el_khaoui__bus",
+        "mode": "bus",
+        "lat": 36.8841653,
+        "lon": 10.3112689,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.32
+      }
+    ],
+    "jelida": [
+      {
+        "new_id": "jelida__train",
+        "mode": "train",
+        "lat": 36.371689,
+        "lon": 9.5563711,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 6.54
+      }
+    ],
+    "jendouba_v": [
+      {
+        "new_id": "jendouba_v__train",
+        "mode": "train",
+        "lat": 36.5012361,
+        "lon": 8.7772554,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 15.25
+      }
+    ],
+    "kalaa_khasba": [
+      {
+        "new_id": "kalaa_khasba__train",
+        "mode": "train",
+        "lat": 35.6636728,
+        "lon": 8.5922552,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 11.66
+      }
+    ],
+    "kerker": [
+      {
+        "new_id": "kerker__train",
+        "mode": "train",
+        "lat": 35.4682761,
+        "lon": 10.6597043,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": 20.05,
+        "suggested_coord_from_neighbors": {
+          "lat": 35.2925658,
+          "lon": 10.7095802,
+          "note": "nearest in-context neighbor; re-geocode this stop, do not use blindly"
+        }
+      }
+    ],
+    "khaznadar": [
+      {
+        "new_id": "khaznadar__bus",
+        "mode": "bus",
+        "lat": 36.80421,
+        "lon": 10.12177,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.24
+      },
+      {
+        "new_id": "khaznadar__metro",
+        "mode": "metro",
+        "lat": 36.80421,
+        "lon": 10.12177,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.45
+      }
+    ],
+    "kiosque": [
+      {
+        "new_id": "kiosque__bus",
+        "mode": "bus",
+        "lat": 36.6744031,
+        "lon": 10.0638679,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.66
+      }
+    ],
+    "kiosque_agil_jallou": [
+      {
+        "new_id": "kiosque_agil_jallou__bus",
+        "mode": "bus",
+        "lat": 36.8931526,
+        "lon": 9.9438714,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.41
+      }
+    ],
+    "km30": [
+      {
+        "new_id": "km30__bus",
+        "mode": "bus",
+        "lat": 36.7048028,
+        "lon": 9.8555622,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.21
+      }
+    ],
+    "kochbati": [
+      {
+        "new_id": "kochbati__bus",
+        "mode": "bus",
+        "lat": 36.7999166,
+        "lon": 10.2829875,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.41
+      }
+    ],
+    "lac_de_rades": [
+      {
+        "new_id": "lac_de_rades__bus",
+        "mode": "bus",
+        "lat": 36.7861046,
+        "lon": 10.2828558,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.96
+      }
+    ],
+    "le_kram": [
+      {
+        "new_id": "le_kram__bus",
+        "mode": "bus",
+        "lat": 36.8361705,
+        "lon": 10.3166057,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.64
+      },
+      {
+        "new_id": "le_kram__metro",
+        "mode": "metro",
+        "lat": 36.8361705,
+        "lon": 10.3166057,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.53
+      }
+    ],
+    "les_salines": [
+      {
+        "new_id": "les_salines__bus",
+        "mode": "bus",
+        "lat": 36.0777744,
+        "lon": 8.9640175,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": 141.86,
+        "suggested_coord_from_neighbors": {
+          "lat": 36.7861046,
+          "lon": 10.2828558,
+          "note": "nearest in-context neighbor; re-geocode this stop, do not use blindly"
+        }
+      },
+      {
+        "new_id": "les_salines__train",
+        "mode": "train",
+        "lat": 36.0777744,
+        "lon": 8.9640175,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 3.7
+      }
+    ],
+    "louage_bizerte_central_station": [
+      {
+        "new_id": "louage_bizerte_central_station__louage",
+        "mode": "louage",
+        "lat": 37.2675,
+        "lon": 9.8722566,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.18
+      }
+    ],
+    "louage_djerba_houmt_souk_station": [
+      {
+        "new_id": "louage_djerba_houmt_souk_station__louage",
+        "mode": "louage",
+        "lat": 33.8765,
+        "lon": 10.8565,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.49
+      }
+    ],
+    "louage_gabès_central_station": [
+      {
+        "new_id": "louage_gabès_central_station__louage",
+        "mode": "louage",
+        "lat": 33.882,
+        "lon": 10.0935,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.58
+      }
+    ],
+    "louage_kairouan_gare_des_louages": [
+      {
+        "new_id": "louage_kairouan_gare_des_louages__louage",
+        "mode": "louage",
+        "lat": 35.6885,
+        "lon": 10.0965,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.36
+      }
+    ],
+    "louage_mahdia_central_station": [
+      {
+        "new_id": "louage_mahdia_central_station__louage",
+        "mode": "louage",
+        "lat": 35.505,
+        "lon": 11.0485,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.51
+      }
+    ],
+    "louage_monastir_central_station": [
+      {
+        "new_id": "louage_monastir_central_station__louage",
+        "mode": "louage",
+        "lat": 35.7725,
+        "lon": 10.825,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.14
+      }
+    ],
+    "louage_sfax_gare_routière": [
+      {
+        "new_id": "louage_sfax_gare_routière__louage",
+        "mode": "louage",
+        "lat": 34.7315,
+        "lon": 10.7545,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.22
+      }
+    ],
+    "louage_sousse_al_lawajat_taffala": [
+      {
+        "new_id": "louage_sousse_al_lawajat_taffala__louage",
+        "mode": "louage",
+        "lat": 35.8093,
+        "lon": 10.6363,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.82
+      }
+    ],
+    "louage_tataouine_intercity_hub": [
+      {
+        "new_id": "louage_tataouine_intercity_hub__louage",
+        "mode": "louage",
+        "lat": 32.935,
+        "lon": 10.4485,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.62
+      }
+    ],
+    "louage_tunis_bab_alioua": [
+      {
+        "new_id": "louage_tunis_bab_alioua__louage",
+        "mode": "louage",
+        "lat": 36.7865,
+        "lon": 10.1825,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.19
+      }
+    ],
+    "louage_tunis_bab_saadoun": [
+      {
+        "new_id": "louage_tunis_bab_saadoun__louage",
+        "mode": "louage",
+        "lat": 36.809,
+        "lon": 10.1575,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.09
+      }
+    ],
+    "louage_tunis_moncef_bey": [
+      {
+        "new_id": "louage_tunis_moncef_bey__louage",
+        "mode": "louage",
+        "lat": 36.7905,
+        "lon": 10.1915,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.25
+      }
+    ],
+    "lyc_e_chaouat": [
+      {
+        "new_id": "lyc_e_chaouat__bus",
+        "mode": "bus",
+        "lat": 36.8666038,
+        "lon": 9.9394778,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.37
+      }
+    ],
+    "lyc_e_kalaate_al_andalouss": [
+      {
+        "new_id": "lyc_e_kalaate_al_andalouss__bus",
+        "mode": "bus",
+        "lat": 37.053151,
+        "lon": 10.1222381,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": 25.97,
+        "suggested_coord_from_neighbors": {
+          "lat": 36.8366171,
+          "lon": 10.0126596,
+          "note": "nearest in-context neighbor; re-geocode this stop, do not use blindly"
+        }
+      }
+    ],
+    "lycee_hrairia": [
+      {
+        "new_id": "lycee_hrairia__bus",
+        "mode": "bus",
+        "lat": 36.7906915,
+        "lon": 10.0971109,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.47
+      }
+    ],
+    "maknassy": [
+      {
+        "new_id": "maknassy__train",
+        "mode": "train",
+        "lat": 34.6066931,
+        "lon": 9.6064385,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 14.01
+      }
+    ],
+    "mannouba": [
+      {
+        "new_id": "mannouba__rail",
+        "mode": "rail",
+        "lat": 36.8161297,
+        "lon": 10.1011079,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.37
+      },
+      {
+        "new_id": "mannouba__train",
+        "mode": "train",
+        "lat": 36.8161297,
+        "lon": 10.1011079,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 5.53
+      }
+    ],
+    "mansoura": [
+      {
+        "new_id": "mansoura__bus",
+        "mode": "bus",
+        "lat": 36.7861,
+        "lon": 9.9,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": 31.28,
+        "suggested_coord_from_neighbors": {
+          "lat": 36.555,
+          "lon": 10.1,
+          "note": "nearest in-context neighbor; re-geocode this stop, do not use blindly"
+        }
+      }
+    ],
+    "mbarka_1": [
+      {
+        "new_id": "mbarka_1__bus",
+        "mode": "bus",
+        "lat": 36.8988481,
+        "lon": 10.0285322,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.47
+      }
+    ],
+    "megrine_ryad": [
+      {
+        "new_id": "megrine_ryad__rail",
+        "mode": "rail",
+        "lat": 36.7702743,
+        "lon": 10.2229004,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.0
+      },
+      {
+        "new_id": "megrine_ryad__train",
+        "mode": "train",
+        "lat": 36.7702743,
+        "lon": 10.2229004,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 15.4
+      }
+    ],
+    "menzel_belhouane": [
+      {
+        "new_id": "menzel_belhouane__bus",
+        "mode": "bus",
+        "lat": 36.555,
+        "lon": 10.1,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": 31.28,
+        "suggested_coord_from_neighbors": {
+          "lat": 36.7861,
+          "lon": 9.9,
+          "note": "nearest in-context neighbor; re-geocode this stop, do not use blindly"
+        }
+      }
+    ],
+    "metlaoui": [
+      {
+        "new_id": "metlaoui__train",
+        "mode": "train",
+        "lat": 34.3157766,
+        "lon": 8.4164253,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 2.79
+      }
+    ],
+    "mezzouna": [
+      {
+        "new_id": "mezzouna__train",
+        "mode": "train",
+        "lat": 34.5739692,
+        "lon": 9.8418336,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 19.52
+      }
+    ],
+    "mghira": [
+      {
+        "new_id": "mghira__bus",
+        "mode": "bus",
+        "lat": 36.70647,
+        "lon": 10.1748521,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.48
+      }
+    ],
+    "mnihla": [
+      {
+        "new_id": "mnihla__bus",
+        "mode": "bus",
+        "lat": 36.8575912,
+        "lon": 10.1164759,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.83
+      }
+    ],
+    "mohamed_v": [
+      {
+        "new_id": "mohamed_v__bus",
+        "mode": "bus",
+        "lat": 36.81568,
+        "lon": 10.18357,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.13
+      },
+      {
+        "new_id": "mohamed_v__metro",
+        "mode": "metro",
+        "lat": 36.81568,
+        "lon": 10.18357,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.36
+      }
+    ],
+    "moncef_bey": [
+      {
+        "new_id": "moncef_bey__bus",
+        "mode": "bus",
+        "lat": 36.80528,
+        "lon": 10.09065,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 7.88
+      },
+      {
+        "new_id": "moncef_bey__metro",
+        "mode": "metro",
+        "lat": 36.80528,
+        "lon": 10.09065,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.77
+      }
+    ],
+    "mosqu_e_sidi_salah": [
+      {
+        "new_id": "mosqu_e_sidi_salah__bus",
+        "mode": "bus",
+        "lat": 36.8886294,
+        "lon": 10.2150317,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.5
+      }
+    ],
+    "msaken": [
+      {
+        "new_id": "msaken__train",
+        "mode": "train",
+        "lat": 35.7288961,
+        "lon": 10.6000327,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 5.83
+      }
+    ],
+    "mthalith": [
+      {
+        "new_id": "mthalith__bus",
+        "mode": "bus",
+        "lat": 36.9138924,
+        "lon": 10.1007912,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.94
+      }
+    ],
+    "nabeul_voyageurs": [
+      {
+        "new_id": "nabeul_voyageurs__train",
+        "mode": "train",
+        "lat": 36.4510322,
+        "lon": 10.7351045,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 4.23
+      }
+    ],
+    "oued_meliz": [
+      {
+        "new_id": "oued_meliz__train",
+        "mode": "train",
+        "lat": 36.4696166,
+        "lon": 8.5513348,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 10.49
+      }
+    ],
+    "oued_tessa": [
+      {
+        "new_id": "oued_tessa__train",
+        "mode": "train",
+        "lat": 36.0672643,
+        "lon": 8.9362588,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 16.67
+      }
+    ],
+    "parc_friguia": [
+      {
+        "new_id": "parc_friguia__train",
+        "mode": "train",
+        "lat": 36.2043374,
+        "lon": 10.4193379,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 2.55
+      }
+    ],
+    "pont_autoroute_sud_saint_gouban": [
+      {
+        "new_id": "pont_autoroute_sud_saint_gouban__bus",
+        "mode": "bus",
+        "lat": 36.7809122,
+        "lon": 10.2008261,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.34
+      }
+    ],
+    "pont_du_fahs": [
+      {
+        "new_id": "pont_du_fahs__train",
+        "mode": "train",
+        "lat": 36.3766759,
+        "lon": 9.9024049,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 8.5
+      }
+    ],
+    "rades": [
+      {
+        "new_id": "rades__rail",
+        "mode": "rail",
+        "lat": 36.7683604,
+        "lon": 10.269735,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.43
+      },
+      {
+        "new_id": "rades__train",
+        "mode": "train",
+        "lat": 36.7683604,
+        "lon": 10.269735,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 4.1
+      }
+    ],
+    "route_lyc_e": [
+      {
+        "new_id": "route_lyc_e__bus",
+        "mode": "bus",
+        "lat": 37.0613222,
+        "lon": 10.1186545,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.13
+      }
+    ],
+    "sakiet_ezzit": [
+      {
+        "new_id": "sakiet_ezzit__train",
+        "mode": "train",
+        "lat": 34.800716,
+        "lon": 10.7612703,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 6.4
+      }
+    ],
+    "sanad": [
+      {
+        "new_id": "sanad__bus",
+        "mode": "bus",
+        "lat": 36.9194455,
+        "lon": 10.0759644,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.8
+      }
+    ],
+    "sfax": [
+      {
+        "new_id": "sfax__train",
+        "mode": "train",
+        "lat": 34.7351507,
+        "lon": 10.7671236,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 7.31
+      }
+    ],
+    "sidi_bou_goubrine": [
+      {
+        "new_id": "sidi_bou_goubrine__train",
+        "mode": "train",
+        "lat": 35.5938773,
+        "lon": 10.6287182,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": 89.01,
+        "suggested_coord_from_neighbors": {
+          "lat": 34.800716,
+          "lon": 10.7612703,
+          "note": "nearest in-context neighbor; re-geocode this stop, do not use blindly"
+        }
+      }
+    ],
+    "sidi_mtir": [
+      {
+        "new_id": "sidi_mtir__train",
+        "mode": "train",
+        "lat": 36.3869585,
+        "lon": 10.5029636,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 19.11
+      }
+    ],
+    "sidi_salah": [
+      {
+        "new_id": "sidi_salah__bus",
+        "mode": "bus",
+        "lat": 34.8580193,
+        "lon": 10.7673434,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": 230.12,
+        "suggested_coord_from_neighbors": {
+          "lat": 36.880973,
+          "lon": 10.2283993,
+          "note": "nearest in-context neighbor; re-geocode this stop, do not use blindly"
+        }
+      },
+      {
+        "new_id": "sidi_salah__train",
+        "mode": "train",
+        "lat": 34.8580193,
+        "lon": 10.7673434,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 6.4
+      }
+    ],
+    "skhira": [
+      {
+        "new_id": "skhira__train",
+        "mode": "train",
+        "lat": 34.3004318,
+        "lon": 10.0688506,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 9.77
+      }
+    ],
+    "soned": [
+      {
+        "new_id": "soned__bus",
+        "mode": "bus",
+        "lat": 36.7652949,
+        "lon": 10.210255,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.15
+      }
+    ],
+    "soretras_gare_transport_terrestre_dje_0b821da1ad": [
+      {
+        "new_id": "soretras_gare_transport_terrestre_dje_0b821da1ad__bus",
+        "mode": "bus",
+        "lat": 33.872217,
+        "lon": 10.857876,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": null
+      },
+      {
+        "new_id": "soretras_gare_transport_terrestre_dje_0b821da1ad__louage",
+        "mode": "louage",
+        "lat": 33.872217,
+        "lon": 10.857876,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.49
+      }
+    ],
+    "soretras_gare_transport_terrestre_mah_475ca858f8": [
+      {
+        "new_id": "soretras_gare_transport_terrestre_mah_475ca858f8__bus",
+        "mode": "bus",
+        "lat": 35.500583,
+        "lon": 11.050044,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": null
+      },
+      {
+        "new_id": "soretras_gare_transport_terrestre_mah_475ca858f8__louage",
+        "mode": "louage",
+        "lat": 35.500583,
+        "lon": 11.050044,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.51
+      }
+    ],
+    "soretras_simka_999463fcf7": [
+      {
+        "new_id": "soretras_simka_999463fcf7__bus",
+        "mode": "bus",
+        "lat": 34.733091,
+        "lon": 10.755926,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": null
+      },
+      {
+        "new_id": "soretras_simka_999463fcf7__louage",
+        "mode": "louage",
+        "lat": 34.733091,
+        "lon": 10.755926,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.22
+      }
+    ],
+    "sousse_voyageurs": [
+      {
+        "new_id": "sousse_voyageurs__louage",
+        "mode": "louage",
+        "lat": 35.8304246,
+        "lon": 10.6380517,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.52
+      },
+      {
+        "new_id": "sousse_voyageurs__train",
+        "mode": "train",
+        "lat": 35.8304246,
+        "lon": 10.6380517,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 6.11
+      }
+    ],
+    "srtj_sousse_75d069d341": [
+      {
+        "new_id": "srtj_sousse_75d069d341__bus",
+        "mode": "bus",
+        "lat": 35.815078,
+        "lon": 10.630646,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": null
+      },
+      {
+        "new_id": "srtj_sousse_75d069d341__louage",
+        "mode": "louage",
+        "lat": 35.815078,
+        "lon": 10.630646,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.82
+      }
+    ],
+    "srtm_tatouine_4b2e67da9a": [
+      {
+        "new_id": "srtm_tatouine_4b2e67da9a__bus",
+        "mode": "bus",
+        "lat": 32.929609,
+        "lon": 10.446908,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": null
+      },
+      {
+        "new_id": "srtm_tatouine_4b2e67da9a__louage",
+        "mode": "louage",
+        "lat": 32.929609,
+        "lon": 10.446908,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.62
+      }
+    ],
+    "steg_rades": [
+      {
+        "new_id": "steg_rades__bus",
+        "mode": "bus",
+        "lat": 36.7962903,
+        "lon": 10.2797482,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.5
+      }
+    ],
+    "stil": [
+      {
+        "new_id": "stil__bus",
+        "mode": "bus",
+        "lat": 36.8339484,
+        "lon": 9.9456734,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.41
+      }
+    ],
+    "stil_7364": [
+      {
+        "new_id": "stil_7364__louage",
+        "mode": "louage",
+        "lat": 36.7925814,
+        "lon": 10.1904254,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.25
+      },
+      {
+        "new_id": "stil_7364__unknown",
+        "mode": "unknown",
+        "lat": 36.7925814,
+        "lon": 10.1904254,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": null
+      }
+    ],
+    "tahar_sfar": [
+      {
+        "new_id": "tahar_sfar__bus",
+        "mode": "bus",
+        "lat": 36.7175239,
+        "lon": 10.3596743,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.36
+      },
+      {
+        "new_id": "tahar_sfar__rail",
+        "mode": "rail",
+        "lat": 36.7175239,
+        "lon": 10.3596743,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.97
+      }
+    ],
+    "tarf_echena": [
+      {
+        "new_id": "tarf_echena__train",
+        "mode": "train",
+        "lat": 36.355274,
+        "lon": 9.7173739,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 8.1
+      }
+    ],
+    "tebourba": [
+      {
+        "new_id": "tebourba__bus",
+        "mode": "bus",
+        "lat": 36.8291603,
+        "lon": 9.8443655,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 13.69
+      },
+      {
+        "new_id": "tebourba__train",
+        "mode": "train",
+        "lat": 36.8291603,
+        "lon": 9.8443655,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 8.28
+      }
+    ],
+    "terminus_44_44a_77": [
+      {
+        "new_id": "terminus_44_44a_77__bus",
+        "mode": "bus",
+        "lat": 37.0531082,
+        "lon": 10.1219056,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": 25.96,
+        "suggested_coord_from_neighbors": {
+          "lat": 36.8366171,
+          "lon": 10.0126596,
+          "note": "nearest in-context neighbor; re-geocode this stop, do not use blindly"
+        }
+      }
+    ],
+    "tozeur": [
+      {
+        "new_id": "tozeur__train",
+        "mode": "train",
+        "lat": 33.9265547,
+        "lon": 8.1357808,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 9.8
+      }
+    ],
+    "transtu_hopital_urgences_3ed063910b": [
+      {
+        "new_id": "transtu_hopital_urgences_3ed063910b__bus",
+        "mode": "bus",
+        "lat": 35.685337,
+        "lon": 10.095612,
+        "coord_status": "coord_does_not_match_line_context",
+        "nearest_neighbor_km": null
+      },
+      {
+        "new_id": "transtu_hopital_urgences_3ed063910b__louage",
+        "mode": "louage",
+        "lat": 35.685337,
+        "lon": 10.095612,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.36
+      }
+    ],
+    "tunis_ville": [
+      {
+        "new_id": "tunis_ville__rail",
+        "mode": "rail",
+        "lat": 36.7947693,
+        "lon": 10.1803806,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.57
+      },
+      {
+        "new_id": "tunis_ville__train",
+        "mode": "train",
+        "lat": 36.7947693,
+        "lon": 10.1803806,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.58
+      }
+    ],
+    "turki": [
+      {
+        "new_id": "turki__train",
+        "mode": "train",
+        "lat": 36.5755004,
+        "lon": 10.5135323,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 1.95
+      }
+    ],
+    "universit_ibn_khaldoune": [
+      {
+        "new_id": "universit_ibn_khaldoune__bus",
+        "mode": "bus",
+        "lat": 36.880973,
+        "lon": 10.2283993,
+        "coord_status": "ok",
+        "nearest_neighbor_km": 0.6
+      }
+    ]
+  },
+  "teleport_legs": [
+    {
+      "line_id": "bus_700_23",
+      "mode": "bus",
+      "from": "cafe_medina",
+      "to": "cite_el_intilaka",
+      "km": 25.11
+    },
+    {
+      "line_id": "bus_708_17",
+      "mode": "bus",
+      "from": "lac_de_rades",
+      "to": "les_salines",
+      "km": 141.86
+    },
+    {
+      "line_id": "bus_708_17",
+      "mode": "bus",
+      "from": "les_salines",
+      "to": "steg_rades",
+      "km": 142.25
+    },
+    {
+      "line_id": "bus_714_24",
+      "mode": "bus",
+      "from": "amen_banque",
+      "to": "cit_el_habib",
+      "km": 22.56
+    },
+    {
+      "line_id": "bus_714_24",
+      "mode": "bus",
+      "from": "cit_el_habib",
+      "to": "mghira",
+      "km": 23.72
+    },
+    {
+      "line_id": "bus_719_31",
+      "mode": "bus",
+      "from": "chorfech_2",
+      "to": "soned",
+      "km": 24.27
+    },
+    {
+      "line_id": "bus_719_31",
+      "mode": "bus",
+      "from": "soned",
+      "to": "chorfech_3",
+      "km": 25.66
+    },
+    {
+      "line_id": "bus_729_44",
+      "mode": "bus",
+      "from": "mnihla",
+      "to": "kiosque",
+      "km": 20.9
+    },
+    {
+      "line_id": "bus_729_44",
+      "mode": "bus",
+      "from": "kiosque",
+      "to": "borj_jebbes",
+      "km": 22.43
+    },
+    {
+      "line_id": "bus_729_44",
+      "mode": "bus",
+      "from": "route_lyc_e",
+      "to": "ecole_primaire",
+      "km": 26.7
+    },
+    {
+      "line_id": "bus_729_44",
+      "mode": "bus",
+      "from": "ecole_primaire",
+      "to": "lyc_e_kalaate_al_andalouss",
+      "km": 25.97
+    },
+    {
+      "line_id": "bus_734_52",
+      "mode": "bus",
+      "from": "cit_el_khalille",
+      "to": "ben_mahmoud",
+      "km": 22.52
+    },
+    {
+      "line_id": "bus_734_52",
+      "mode": "bus",
+      "from": "ben_mahmoud",
+      "to": "jbel_el_khaoui",
+      "km": 23.18
+    },
+    {
+      "line_id": "bus_752_77",
+      "mode": "bus",
+      "from": "route_lyc_e",
+      "to": "ecole_primaire",
+      "km": 26.7
+    },
+    {
+      "line_id": "bus_752_77",
+      "mode": "bus",
+      "from": "ecole_primaire",
+      "to": "terminus_44_44a_77",
+      "km": 25.96
+    },
+    {
+      "line_id": "bus_754_79",
+      "mode": "bus",
+      "from": "lycee_hrairia",
+      "to": "cit_el_khalille",
+      "km": 21.05
+    },
+    {
+      "line_id": "bus_771_98",
+      "mode": "bus",
+      "from": "brimo",
+      "to": "cit_essalem",
+      "km": 30.09
+    },
+    {
+      "line_id": "bus_771_98",
+      "mode": "bus",
+      "from": "cit_essalem",
+      "to": "lyc_e_chaouat",
+      "km": 29.82
+    },
+    {
+      "line_id": "bus_792_17a",
+      "mode": "bus",
+      "from": "lac_de_rades",
+      "to": "les_salines",
+      "km": 141.86
+    },
+    {
+      "line_id": "bus_792_17a",
+      "mode": "bus",
+      "from": "les_salines",
+      "to": "steg_rades",
+      "km": 142.25
+    },
+    {
+      "line_id": "bus_793_17b",
+      "mode": "bus",
+      "from": "lac_de_rades",
+      "to": "les_salines",
+      "km": 141.86
+    },
+    {
+      "line_id": "bus_793_17b",
+      "mode": "bus",
+      "from": "les_salines",
+      "to": "steg_rades",
+      "km": 142.25
+    },
+    {
+      "line_id": "bus_794_18b",
+      "mode": "bus",
+      "from": "universit_ibn_khaldoune",
+      "to": "sidi_salah",
+      "km": 230.12
+    },
+    {
+      "line_id": "bus_794_18b",
+      "mode": "bus",
+      "from": "sidi_salah",
+      "to": "mosqu_e_sidi_salah",
+      "km": 231.21
+    },
+    {
+      "line_id": "bus_800_19e",
+      "mode": "bus",
+      "from": "stil",
+      "to": "pont_autoroute_sud_saint_gouban",
+      "km": 23.47
+    },
+    {
+      "line_id": "bus_814_23e",
+      "mode": "bus",
+      "from": "cafe_medina",
+      "to": "kiosque_agil_jallou",
+      "km": 20.73
+    },
+    {
+      "line_id": "bus_814_23e",
+      "mode": "bus",
+      "from": "kiosque_agil_jallou",
+      "to": "km30",
+      "km": 22.37
+    },
+    {
+      "line_id": "bus_815_23f",
+      "mode": "bus",
+      "from": "cafe_medina",
+      "to": "kiosque_agil_jallou",
+      "km": 20.73
+    },
+    {
+      "line_id": "bus_815_23f",
+      "mode": "bus",
+      "from": "kiosque_agil_jallou",
+      "to": "km30",
+      "km": 22.37
+    },
+    {
+      "line_id": "bus_816_23h",
+      "mode": "bus",
+      "from": "cafe_medina",
+      "to": "kiosque_agil_jallou",
+      "km": 20.73
+    },
+    {
+      "line_id": "bus_816_23h",
+      "mode": "bus",
+      "from": "kiosque_agil_jallou",
+      "to": "km30",
+      "km": 22.37
+    },
+    {
+      "line_id": "bus_817_23t",
+      "mode": "bus",
+      "from": "avenion",
+      "to": "kochbati",
+      "km": 29.54
+    },
+    {
+      "line_id": "bus_817_23t",
+      "mode": "bus",
+      "from": "kochbati",
+      "to": "ali_ben_mbarek",
+      "km": 29.84
+    },
+    {
+      "line_id": "bus_818_24",
+      "mode": "bus",
+      "from": "amen_banque",
+      "to": "cit_el_habib",
+      "km": 22.56
+    },
+    {
+      "line_id": "bus_818_24",
+      "mode": "bus",
+      "from": "cit_el_habib",
+      "to": "mghira",
+      "km": 23.72
+    },
+    {
+      "line_id": "bus_819_24a",
+      "mode": "bus",
+      "from": "amen_banque",
+      "to": "cit_el_habib",
+      "km": 22.56
+    },
+    {
+      "line_id": "bus_819_24a",
+      "mode": "bus",
+      "from": "cit_el_habib",
+      "to": "mghira",
+      "km": 23.72
+    },
+    {
+      "line_id": "bus_820_24d",
+      "mode": "bus",
+      "from": "amen_banque",
+      "to": "cit_el_habib",
+      "km": 22.56
+    },
+    {
+      "line_id": "bus_820_24d",
+      "mode": "bus",
+      "from": "cit_el_habib",
+      "to": "mghira",
+      "km": 23.72
+    },
+    {
+      "line_id": "bus_821_24e",
+      "mode": "bus",
+      "from": "amen_banque",
+      "to": "cit_el_habib",
+      "km": 22.56
+    },
+    {
+      "line_id": "bus_821_24e",
+      "mode": "bus",
+      "from": "cit_el_habib",
+      "to": "mghira",
+      "km": 23.72
+    },
+    {
+      "line_id": "bus_822_24h",
+      "mode": "bus",
+      "from": "amen_banque",
+      "to": "cit_el_habib",
+      "km": 22.56
+    },
+    {
+      "line_id": "bus_822_24h",
+      "mode": "bus",
+      "from": "cit_el_habib",
+      "to": "mghira",
+      "km": 23.72
+    },
+    {
+      "line_id": "bus_833_31a",
+      "mode": "bus",
+      "from": "chorfech_2",
+      "to": "soned",
+      "km": 24.27
+    },
+    {
+      "line_id": "bus_833_31a",
+      "mode": "bus",
+      "from": "soned",
+      "to": "chorfech_3",
+      "km": 25.66
+    },
+    {
+      "line_id": "bus_835_31c",
+      "mode": "bus",
+      "from": "mthalith",
+      "to": "frachich",
+      "km": 40.91
+    },
+    {
+      "line_id": "bus_835_31c",
+      "mode": "bus",
+      "from": "frachich",
+      "to": "sanad",
+      "km": 40.92
+    },
+    {
+      "line_id": "bus_835_31c",
+      "mode": "bus",
+      "from": "chorfech_2",
+      "to": "soned",
+      "km": 24.27
+    },
+    {
+      "line_id": "bus_835_31c",
+      "mode": "bus",
+      "from": "soned",
+      "to": "chorfech_3",
+      "km": 25.66
+    },
+    {
+      "line_id": "bus_836_31b",
+      "mode": "bus",
+      "from": "chorfech_2",
+      "to": "soned",
+      "km": 24.27
+    },
+    {
+      "line_id": "bus_836_31b",
+      "mode": "bus",
+      "from": "soned",
+      "to": "chorfech_3",
+      "km": 25.66
+    },
+    {
+      "line_id": "bus_836_31b",
+      "mode": "bus",
+      "from": "route_lyc_e",
+      "to": "ecole_primaire",
+      "km": 26.7
+    },
+    {
+      "line_id": "bus_836_31b",
+      "mode": "bus",
+      "from": "ecole_primaire",
+      "to": "lyc_e_kalaate_al_andalouss",
+      "km": 25.97
+    },
+    {
+      "line_id": "bus_858_44d",
+      "mode": "bus",
+      "from": "mthalith",
+      "to": "frachich",
+      "km": 40.91
+    },
+    {
+      "line_id": "bus_858_44d",
+      "mode": "bus",
+      "from": "frachich",
+      "to": "sanad",
+      "km": 40.92
+    },
+    {
+      "line_id": "bus_859_44d",
+      "mode": "bus",
+      "from": "mthalith",
+      "to": "frachich",
+      "km": 40.91
+    },
+    {
+      "line_id": "bus_859_44d",
+      "mode": "bus",
+      "from": "frachich",
+      "to": "sanad",
+      "km": 40.92
+    },
+    {
+      "line_id": "bus_859_44d",
+      "mode": "bus",
+      "from": "mbarka_1",
+      "to": "cite_monji_slim",
+      "km": 23.17
+    },
+    {
+      "line_id": "bus_859_44d",
+      "mode": "bus",
+      "from": "cite_monji_slim",
+      "to": "cit_monji_slim_terminus_44b_44d",
+      "km": 23.89
+    },
+    {
+      "line_id": "bus_860_54a",
+      "mode": "bus",
+      "from": "mghira",
+      "to": "cit_el_habib",
+      "km": 23.72
+    },
+    {
+      "line_id": "bus_860_54a",
+      "mode": "bus",
+      "from": "cit_el_habib",
+      "to": "amen_banque",
+      "km": 22.56
+    },
+    {
+      "line_id": "bus_861_54a",
+      "mode": "bus",
+      "from": "mghira",
+      "to": "cit_el_habib",
+      "km": 23.72
+    },
+    {
+      "line_id": "bus_861_54a",
+      "mode": "bus",
+      "from": "cit_el_habib",
+      "to": "amen_banque",
+      "km": 22.56
+    },
+    {
+      "line_id": "bus_872_44c",
+      "mode": "bus",
+      "from": "mnihla",
+      "to": "kiosque",
+      "km": 20.9
+    },
+    {
+      "line_id": "bus_872_44c",
+      "mode": "bus",
+      "from": "kiosque",
+      "to": "borj_jebbes",
+      "km": 22.43
+    },
+    {
+      "line_id": "bus_877_57a",
+      "mode": "bus",
+      "from": "mnihla",
+      "to": "kiosque",
+      "km": 20.9
+    },
+    {
+      "line_id": "bus_877_57a",
+      "mode": "bus",
+      "from": "kiosque",
+      "to": "borj_jebbes",
+      "km": 22.43
+    },
+    {
+      "line_id": "bus_881_66b",
+      "mode": "bus",
+      "from": "ecole_el_hawaria",
+      "to": "andorre",
+      "km": 51.92
+    },
+    {
+      "line_id": "bus_884_44a",
+      "mode": "bus",
+      "from": "route_lyc_e",
+      "to": "ecole_primaire",
+      "km": 26.7
+    },
+    {
+      "line_id": "bus_884_44a",
+      "mode": "bus",
+      "from": "ecole_primaire",
+      "to": "terminus_44_44a_77",
+      "km": 25.96
+    },
+    {
+      "line_id": "transtu_tebourba_542",
+      "mode": "bus",
+      "from": "tebourba",
+      "to": "el_sherouia",
+      "km": 23.84
+    },
+    {
+      "line_id": "transtu_tebourba_42a",
+      "mode": "bus",
+      "from": "menzel_belhouane",
+      "to": "mansoura",
+      "km": 31.28
+    },
+    {
+      "line_id": "louage_001_tunis_moncef_kairouan_gare",
+      "mode": "louage",
+      "from": "louage_tunis_moncef_bey",
+      "to": "louage_kairouan_gare_des_louages",
+      "km": 122.83
+    },
+    {
+      "line_id": "louage_002_tunis_moncef_sousse_al_law",
+      "mode": "louage",
+      "from": "louage_tunis_moncef_bey",
+      "to": "louage_sousse_al_lawajat_taffala",
+      "km": 116.16
+    },
+    {
+      "line_id": "louage_003_tunis_moncef_sfax_gare_rou",
+      "mode": "louage",
+      "from": "louage_tunis_moncef_bey",
+      "to": "louage_sfax_gare_routière",
+      "km": 234.52
+    },
+    {
+      "line_id": "louage_004_tunis_moncef_gabès_central",
+      "mode": "louage",
+      "from": "louage_tunis_moncef_bey",
+      "to": "louage_gabès_central_station",
+      "km": 323.53
+    },
+    {
+      "line_id": "louage_005_tunis_bab_saa_bizerte_centr",
+      "mode": "louage",
+      "from": "louage_tunis_bab_saadoun",
+      "to": "louage_bizerte_central_station",
+      "km": 56.92
+    },
+    {
+      "line_id": "louage_006_tunis_bab_ali_kairouan_gare",
+      "mode": "louage",
+      "from": "louage_tunis_bab_alioua",
+      "to": "louage_kairouan_gare_des_louages",
+      "km": 122.34
+    },
+    {
+      "line_id": "louage_007_sousse_al_law_kairouan_gare",
+      "mode": "louage",
+      "from": "louage_sousse_al_lawajat_taffala",
+      "to": "louage_kairouan_gare_des_louages",
+      "km": 50.53
+    },
+    {
+      "line_id": "louage_008_sousse_al_law_mahdia_centra",
+      "mode": "louage",
+      "from": "louage_sousse_al_lawajat_taffala",
+      "to": "louage_mahdia_central_station",
+      "km": 50.32
+    },
+    {
+      "line_id": "louage_010_monastir_cent_mahdia_centra",
+      "mode": "louage",
+      "from": "louage_monastir_central_station",
+      "to": "louage_mahdia_central_station",
+      "km": 35.95
+    },
+    {
+      "line_id": "louage_011_monastir_cent_sfax_gare_rou",
+      "mode": "louage",
+      "from": "louage_monastir_central_station",
+      "to": "louage_sfax_gare_routière",
+      "km": 115.93
+    },
+    {
+      "line_id": "louage_012_kairouan_gare_monastir_cent",
+      "mode": "louage",
+      "from": "louage_kairouan_gare_des_louages",
+      "to": "louage_monastir_central_station",
+      "km": 66.42
+    },
+    {
+      "line_id": "louage_013_sfax_gare_rou_djerba_houmt",
+      "mode": "louage",
+      "from": "louage_sfax_gare_routière",
+      "to": "louage_djerba_houmt_souk_station",
+      "km": 95.53
+    },
+    {
+      "line_id": "louage_014_sfax_gare_rou_mahdia_centra",
+      "mode": "louage",
+      "from": "louage_sfax_gare_routière",
+      "to": "louage_mahdia_central_station",
+      "km": 90.07
+    },
+    {
+      "line_id": "louage_015_gabès_central_tataouine_int",
+      "mode": "louage",
+      "from": "louage_gabès_central_station",
+      "to": "louage_tataouine_intercity_hub",
+      "km": 110.34
+    },
+    {
+      "line_id": "louage_016_gabès_central_djerba_houmt",
+      "mode": "louage",
+      "from": "louage_gabès_central_station",
+      "to": "louage_djerba_houmt_souk_station",
+      "km": 70.44
+    },
+    {
+      "line_id": "louage_017_tataouine_int_djerba_houmt",
+      "mode": "louage",
+      "from": "louage_tataouine_intercity_hub",
+      "to": "louage_djerba_houmt_souk_station",
+      "km": 111.33
+    },
+    {
+      "line_id": "train_5_sncft",
+      "mode": "train",
+      "from": "pont_du_fahs",
+      "to": "bou_arada",
+      "km": 24.77
+    },
+    {
+      "line_id": "train_5_sncft",
+      "mode": "train",
+      "from": "oued_tessa",
+      "to": "tarf_echena",
+      "km": 77.05
+    },
+    {
+      "line_id": "train_14_sncft",
+      "mode": "train",
+      "from": "jendouba_v",
+      "to": "oued_meliz",
+      "km": 20.5
+    },
+    {
+      "line_id": "train_16_sncft",
+      "mode": "train",
+      "from": "bouficha",
+      "to": "enfida",
+      "km": 20.12
+    },
+    {
+      "line_id": "train_17_sncft",
+      "mode": "train",
+      "from": "nabeul_voyageurs",
+      "to": "bir_el_bey",
+      "km": 42.94
+    },
+    {
+      "line_id": "train_18_sncft",
+      "mode": "train",
+      "from": "bouficha",
+      "to": "enfida",
+      "km": 20.12
+    },
+    {
+      "line_id": "train_18_sncft",
+      "mode": "train",
+      "from": "msaken",
+      "to": "kerker",
+      "km": 29.48
+    },
+    {
+      "line_id": "train_18_sncft",
+      "mode": "train",
+      "from": "kerker",
+      "to": "el_jem",
+      "km": 20.05
+    },
+    {
+      "line_id": "train_18_sncft",
+      "mode": "train",
+      "from": "sfax",
+      "to": "parc_friguia",
+      "km": 166.37
+    },
+    {
+      "line_id": "train_18_sncft",
+      "mode": "train",
+      "from": "parc_friguia",
+      "to": "turki",
+      "km": 42.12
+    },
+    {
+      "line_id": "train_18_sncft",
+      "mode": "train",
+      "from": "turki",
+      "to": "sidi_bou_goubrine",
+      "km": 109.64
+    },
+    {
+      "line_id": "train_20_sncft",
+      "mode": "train",
+      "from": "pont_du_fahs",
+      "to": "bou_arada",
+      "km": 24.77
+    },
+    {
+      "line_id": "train_20_sncft",
+      "mode": "train",
+      "from": "kalaa_khasba",
+      "to": "oued_tessa",
+      "km": 54.54
+    },
+    {
+      "line_id": "train_20_sncft",
+      "mode": "train",
+      "from": "oued_tessa",
+      "to": "jelida",
+      "km": 65.12
+    },
+    {
+      "line_id": "train_21_sncft",
+      "mode": "train",
+      "from": "bouficha",
+      "to": "enfida",
+      "km": 20.12
+    },
+    {
+      "line_id": "train_21_sncft",
+      "mode": "train",
+      "from": "msaken",
+      "to": "kerker",
+      "km": 29.48
+    },
+    {
+      "line_id": "train_21_sncft",
+      "mode": "train",
+      "from": "kerker",
+      "to": "el_jem",
+      "km": 20.05
+    },
+    {
+      "line_id": "train_21_sncft",
+      "mode": "train",
+      "from": "skhira",
+      "to": "aouinet",
+      "km": 35.53
+    },
+    {
+      "line_id": "train_21_sncft",
+      "mode": "train",
+      "from": "gabes",
+      "to": "parc_friguia",
+      "km": 259.63
+    },
+    {
+      "line_id": "train_22_sncft",
+      "mode": "train",
+      "from": "bouficha",
+      "to": "enfida",
+      "km": 20.12
+    },
+    {
+      "line_id": "train_23_sncft",
+      "mode": "train",
+      "from": "bouficha",
+      "to": "enfida",
+      "km": 20.12
+    },
+    {
+      "line_id": "train_23_sncft",
+      "mode": "train",
+      "from": "sousse_voyageurs",
+      "to": "sidi_mtir",
+      "km": 63.06
+    },
+    {
+      "line_id": "train_24_sncft",
+      "mode": "train",
+      "from": "hammam_lif",
+      "to": "grombalia",
+      "km": 20.78
+    },
+    {
+      "line_id": "train_24_sncft",
+      "mode": "train",
+      "from": "msaken",
+      "to": "kerker",
+      "km": 29.48
+    },
+    {
+      "line_id": "train_24_sncft",
+      "mode": "train",
+      "from": "kerker",
+      "to": "el_jem",
+      "km": 20.05
+    },
+    {
+      "line_id": "train_24_sncft",
+      "mode": "train",
+      "from": "mezzouna",
+      "to": "maknassy",
+      "km": 21.85
+    },
+    {
+      "line_id": "train_24_sncft",
+      "mode": "train",
+      "from": "metlaoui",
+      "to": "degueche",
+      "km": 41.07
+    },
+    {
+      "line_id": "train_24_sncft",
+      "mode": "train",
+      "from": "tozeur",
+      "to": "borj_cedria",
+      "km": 370.72
+    },
+    {
+      "line_id": "train_24_sncft",
+      "mode": "train",
+      "from": "borj_cedria",
+      "to": "sidi_bou_goubrine",
+      "km": 125.12
+    },
+    {
+      "line_id": "train_24_sncft",
+      "mode": "train",
+      "from": "sidi_bou_goubrine",
+      "to": "sakiet_ezzit",
+      "km": 89.01
+    }
+  ]
+}

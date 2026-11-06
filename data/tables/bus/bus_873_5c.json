@@ -1,0 +1,367 @@
+{
+ "line_id": "bus_873_5c",
+ "number": "5C",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 5C: Terminus Tunis Marine Bus - Menzeh 6",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "place_pasteur",
+  "patisserie_ben_yeder",
+  "cite_mahrajene",
+  "minist_re_de_quipement",
+  "pharmacie_central",
+  "cit_sportive",
+  "10_decembre",
+  "touta_10_decembre",
+  "carnoie",
+  "menzeh8",
+  "lycee_menzeh6",
+  "centre_amire",
+  "menzeh7",
+  "mentazeh_menzeh7",
+  "menzeh_6"
+ ],
+ "direction_retour": [
+  "menzeh_6",
+  "mentazeh_menzeh7",
+  "menzeh7",
+  "centre_amire",
+  "lycee_menzeh6",
+  "menzeh8",
+  "carnoie",
+  "touta_10_decembre",
+  "10_decembre",
+  "cit_sportive",
+  "pharmacie_central",
+  "minist_re_de_quipement",
+  "cite_mahrajene",
+  "patisserie_ben_yeder",
+  "place_pasteur",
+  "place_jeans_dark",
+  "la_fayette",
+  "passage_jeans_jaures",
+  "steg_jeans_jaures",
+  "jeans_jaures",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 21,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "menzeh_6",
+  "name": "Menzeh 6"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "place_pasteur",
+  "patisserie_ben_yeder",
+  "cite_mahrajene",
+  "minist_re_de_quipement",
+  "pharmacie_central",
+  "cit_sportive",
+  "10_decembre",
+  "touta_10_decembre",
+  "carnoie",
+  "menzeh8",
+  "lycee_menzeh6",
+  "centre_amire",
+  "menzeh7",
+  "mentazeh_menzeh7",
+  "menzeh_6"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jeans_jaures",
+   "name_en": "Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8016177,
+   "lon": 10.183899,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_jeans_jaures",
+   "name_en": "Steg Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8054996,
+   "lon": 10.1819977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "passage_jeans_jaures",
+   "name_en": "Passage Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8069114,
+   "lon": 10.1815361,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_fayette",
+   "name_en": "La Fayette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8105618,
+   "lon": 10.1807238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_jeans_dark",
+   "name_en": "Place Jeans Dark",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8183566,
+   "lon": 10.1795785,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_pasteur",
+   "name_en": "Place Pasteur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230935,
+   "lon": 10.1776738,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "patisserie_ben_yeder",
+   "name_en": "Patisserie Ben Yeder",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8265346,
+   "lon": 10.1795924,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_mahrajene",
+   "name_en": "Cite Mahrajene",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.828874,
+   "lon": 10.1800943,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "minist_re_de_quipement",
+   "name_en": "Ministére De  Équipement",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8319311,
+   "lon": 10.1801694,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pharmacie_central",
+   "name_en": "Pharmacie Central",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8350238,
+   "lon": 10.1811198,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_sportive",
+   "name_en": "Cité Sportive",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.838641,
+   "lon": 10.1818869,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "10_decembre",
+   "name_en": "10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421837,
+   "lon": 10.182519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "touta_10_decembre",
+   "name_en": "Touta 10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8454206,
+   "lon": 10.1834417,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carnoie",
+   "name_en": "Carnoie",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.84761,
+   "lon": 10.1780707,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzeh8",
+   "name_en": "Menzeh8",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8482694,
+   "lon": 10.1784886,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_menzeh6",
+   "name_en": "Lycee Menzeh6",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8524589,
+   "lon": 10.1775445,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_amire",
+   "name_en": "Centre Amire",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8534185,
+   "lon": 10.1774273,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzeh7",
+   "name_en": "Menzeh7",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8542635,
+   "lon": 10.1762254,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mentazeh_menzeh7",
+   "name_en": "Mentazeh Menzeh7",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.854212,
+   "lon": 10.1753671,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzeh_6",
+   "name_en": "Menzeh 6",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8553709,
+   "lon": 10.1748199,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

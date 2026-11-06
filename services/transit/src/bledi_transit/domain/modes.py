@@ -7,6 +7,7 @@ from __future__ import annotations
 # "unknown -> bus" default and be labelled as scheduled buses.
 MODE_ALIASES: dict[str, frozenset[str]] = {
     "bus": frozenset({"bus", "rfr"}),
+    "rural": frozenset({"rural", "transport_rural", "transport_rurale", "نقل_ريفي", "nakel_rifi"}),
     "tram": frozenset({"tram"}),
     "metro": frozenset({"metro"}),
     "train": frozenset({"train", "rail"}),
@@ -20,6 +21,7 @@ MODE_ALIASES: dict[str, frozenset[str]] = {
 # Display order used by labels and by the station and line listings.
 USER_MODES: tuple[str, ...] = (
     "bus",
+    "rural",
     "tram",
     "metro",
     "train",
@@ -30,19 +32,20 @@ USER_MODES: tuple[str, ...] = (
 
 MODE_LABELS_FR: dict[str, str] = {
     "bus": "Bus",
+    "rural": "Transport rural",
     "tram": "Tramway",
     "metro": "Metro",
     "train": "Train",
     # Taxi and louage are one rider-facing category (road for hire).
-    "louaj": "Taxi / Louage",
-    "taxi": "Taxi / Louage",
+    "louaj": "Louage",
+    "taxi": "Taxi",
     "walk": "Marche",
     # Station-only tag for a geocoded stop whose export carried no mode. It is
     # not routable, so it is absent from USER_MODES.
     "unclassified": "Non classé",
 }
 
-BUS_MODES: frozenset[str] = frozenset({"bus", "rfr", "tram"})
+BUS_MODES: frozenset[str] = frozenset({"bus", "rfr", "tram", "rural"})
 RAIL_MODES: frozenset[str] = frozenset({"train", "rail", "metro"})
 TAXI_MODES: frozenset[str] = frozenset({"taxi", "louaj"})
 

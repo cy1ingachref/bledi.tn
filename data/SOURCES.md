@@ -26,6 +26,9 @@ with a README explaining every subfolder. Layout:
 | `bizerteconnect_network.json` | `scripts/scrape_bizerteconnect.py` | Raw BizerteConnect API scrape |
 | `route_geometry.json`, `taxi_geometry.json` | `services/transit/tools/build_*_geometry.py` | Per-line geometry caches |
 | `rail_graph.npz` (641 KB) | `services/transit/tools/build_rail_graph.py` | Rail graph; **committed** because the test suite asserts long rail legs carry real geometry |
+| `transport_map_corrected.json` | `scripts/build_transport_catalog.py` | Mode-banded network + station mapping consumed by the frontend `transport_catalog.json` |
+| `transport_encyclopedia.json` | `scripts/build_encyclopedia.py` | Driver-facing guide + other-modes encyclopedia (louage, taxi, tram/metro, TGM, rail, ferry, airport) from the downloaded source guides |
+| `louage_corridors.example.json` | `scripts/import_louage_network.py` (ref) | Louage corridor definitions, not a seed file |
 
 **Not committed** (regenerable, large, or upstream third-party content):
 

@@ -1,0 +1,63 @@
+{
+ "line_id": "bus_889_bus_a_roport",
+ "number": "Bus Aéroport",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne Bus Aéroport: Terminus Tunis Marine Bus - Aéroport Tunis Carthage",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "a_roport_tunis_carthage"
+ ],
+ "direction_retour": [
+  "a_roport_tunis_carthage",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "a_roport_tunis_carthage",
+  "name": "Aéroport Tunis Carthage"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "a_roport_tunis_carthage"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "a_roport_tunis_carthage",
+   "name_en": "Aéroport Tunis Carthage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8476666,
+   "lon": 10.2172345,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

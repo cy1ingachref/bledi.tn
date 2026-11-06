@@ -1,0 +1,175 @@
+{
+ "line_id": "bus_764_91",
+ "number": "91",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 91: Rabattement Slimen Kahia - Terminus L91",
+ "direction_aller": [
+  "rabattement_slimen_kahia",
+  "onas_manouba",
+  "poste_police_manouba",
+  "hedi_chaker_mannouba",
+  "municipalite_mannouba",
+  "cite_hassen_belkhouja1",
+  "cite_hassen_belkhouja2",
+  "march_manouba",
+  "terminus_l91"
+ ],
+ "direction_retour": [
+  "terminus_l91",
+  "march_manouba",
+  "cite_hassen_belkhouja2",
+  "cite_hassen_belkhouja1",
+  "municipalite_mannouba",
+  "hedi_chaker_mannouba",
+  "poste_police_manouba",
+  "onas_manouba",
+  "rabattement_slimen_kahia"
+ ],
+ "stations_count": 9,
+ "start": {
+  "id": "rabattement_slimen_kahia",
+  "name": "Rabattement Slimen Kahia"
+ },
+ "end": {
+  "id": "terminus_l91",
+  "name": "Terminus L91"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_slimen_kahia",
+  "onas_manouba",
+  "poste_police_manouba",
+  "hedi_chaker_mannouba",
+  "municipalite_mannouba",
+  "cite_hassen_belkhouja1",
+  "cite_hassen_belkhouja2",
+  "march_manouba",
+  "terminus_l91"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_slimen_kahia",
+   "name_en": "Rabattement Slimen Kahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8038639,
+   "lon": 10.0985919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "onas_manouba",
+   "name_en": "ONAS Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8061167,
+   "lon": 10.0948744,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poste_police_manouba",
+   "name_en": "Poste Police Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8083952,
+   "lon": 10.0923558,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hedi_chaker_mannouba",
+   "name_en": "Hedi Chaker Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8079266,
+   "lon": 10.0893006,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipalite_mannouba",
+   "name_en": "Municipalite Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8068099,
+   "lon": 10.0870475,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_hassen_belkhouja1",
+   "name_en": "Cite Hassen Belkhouja1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8049076,
+   "lon": 10.0872542,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_hassen_belkhouja2",
+   "name_en": "Cite Hassen Belkhouja2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8032024,
+   "lon": 10.0883405,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "march_manouba",
+   "name_en": "Marché Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8007064,
+   "lon": 10.083566,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_l91",
+   "name_en": "Terminus L91",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7998258,
+   "lon": 10.0772092,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

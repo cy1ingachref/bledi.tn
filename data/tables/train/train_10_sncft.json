@@ -1,0 +1,111 @@
+{
+ "line_id": "train_10_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Tunis Ville - Tebourba",
+ "direction_aller": [
+  "tunis_ville",
+  "bir_aniba",
+  "mannouba",
+  "jedeida",
+  "tebourba"
+ ],
+ "direction_retour": [
+  "tebourba",
+  "jedeida",
+  "mannouba",
+  "bir_aniba",
+  "tunis_ville"
+ ],
+ "stations_count": 5,
+ "start": {
+  "id": "tunis_ville",
+  "name": "Tunis Ville"
+ },
+ "end": {
+  "id": "tebourba",
+  "name": "Tebourba"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "tunis_ville",
+  "bir_aniba",
+  "mannouba",
+  "jedeida",
+  "tebourba"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_ville",
+   "name_en": "Tunis Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7947693,
+   "lon": 10.1803806,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_aniba",
+   "name_en": "Bir Aniba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7953789,
+   "lon": 10.157609,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mannouba",
+   "name_en": "Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8161297,
+   "lon": 10.1011079,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "jedeida",
+   "name_en": "Jedeida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8507975,
+   "lon": 9.9334513,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "tebourba",
+   "name_en": "Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8291603,
+   "lon": 9.8443655,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

@@ -1,0 +1,431 @@
+{
+ "line_id": "bus_866_60a",
+ "number": "60A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 60A: Hopital Des Enfants - Ibn Sina",
+ "direction_aller": [
+  "hopital_des_enfants",
+  "charle_nicole",
+  "telecom",
+  "tribunal_taakib",
+  "faculte_9_avril",
+  "mosqu_e_al_hawa",
+  "gorjani",
+  "arret_essayda",
+  "salle_des_f_tes_kermess",
+  "rue_du_sahel",
+  "poste_police_rue_du_sahel",
+  "13_aout",
+  "lyc_e_2_mars_el_ouardia_l_g",
+  "la_cagna_section",
+  "hammam_la_cagna",
+  "cit_med_ali",
+  "ecole_primaire_kabaria",
+  "pont_m_tro_kabaria",
+  "immeuble_militaire_ibn_sina",
+  "mosqu_e_ibn_sina",
+  "ibn_sina_section",
+  "ecole_primaire_6_1",
+  "rue_10800_1",
+  "rue_10800_2",
+  "ibn_sina"
+ ],
+ "direction_retour": [
+  "ibn_sina",
+  "rue_10800_2",
+  "rue_10800_1",
+  "ecole_primaire_6_1",
+  "ibn_sina_section",
+  "mosqu_e_ibn_sina",
+  "immeuble_militaire_ibn_sina",
+  "pont_m_tro_kabaria",
+  "ecole_primaire_kabaria",
+  "cit_med_ali",
+  "hammam_la_cagna",
+  "la_cagna_section",
+  "lyc_e_2_mars_el_ouardia_l_g",
+  "13_aout",
+  "poste_police_rue_du_sahel",
+  "rue_du_sahel",
+  "salle_des_f_tes_kermess",
+  "arret_essayda",
+  "gorjani",
+  "mosqu_e_al_hawa",
+  "faculte_9_avril",
+  "tribunal_taakib",
+  "telecom",
+  "charle_nicole",
+  "hopital_des_enfants"
+ ],
+ "stations_count": 25,
+ "start": {
+  "id": "hopital_des_enfants",
+  "name": "Hopital Des Enfants"
+ },
+ "end": {
+  "id": "ibn_sina",
+  "name": "IBN SINA"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "hopital_des_enfants",
+  "charle_nicole",
+  "telecom",
+  "tribunal_taakib",
+  "faculte_9_avril",
+  "mosqu_e_al_hawa",
+  "gorjani",
+  "arret_essayda",
+  "salle_des_f_tes_kermess",
+  "rue_du_sahel",
+  "poste_police_rue_du_sahel",
+  "13_aout",
+  "lyc_e_2_mars_el_ouardia_l_g",
+  "la_cagna_section",
+  "hammam_la_cagna",
+  "cit_med_ali",
+  "ecole_primaire_kabaria",
+  "pont_m_tro_kabaria",
+  "immeuble_militaire_ibn_sina",
+  "mosqu_e_ibn_sina",
+  "ibn_sina_section",
+  "ecole_primaire_6_1",
+  "rue_10800_1",
+  "rue_10800_2",
+  "ibn_sina"
+ ],
+ "stations_detail": [
+  {
+   "id": "hopital_des_enfants",
+   "name_en": "Hopital Des Enfants",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.807514,
+   "lon": 10.1593545,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "telecom",
+   "name_en": "Telecom",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8002558,
+   "lon": 10.1651885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tribunal_taakib",
+   "name_en": "Tribunal Taakib",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7996153,
+   "lon": 10.1651267,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "faculte_9_avril",
+   "name_en": "Faculte 9 Avril",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.795139,
+   "lon": 10.1633135,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_al_hawa",
+   "name_en": "Mosquée Al Hawa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7931059,
+   "lon": 10.1629207,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gorjani",
+   "name_en": "Gorjani",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7879938,
+   "lon": 10.1675136,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arret_essayda",
+   "name_en": "Arret Essayda",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7852839,
+   "lon": 10.1711724,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "salle_des_f_tes_kermess",
+   "name_en": "Salle Des Fétes Kermess",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7838853,
+   "lon": 10.1732617,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_du_sahel",
+   "name_en": "Rue Du Sahel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7812675,
+   "lon": 10.1752006,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poste_police_rue_du_sahel",
+   "name_en": "Poste Police Rue Du Sahel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7778302,
+   "lon": 10.177046,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "13_aout",
+   "name_en": "13 AOUT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.77504,
+   "lon": 10.1792,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_2_mars_el_ouardia_l_g",
+   "name_en": "Lycée 2 Mars El Ouardia L(G)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7758433,
+   "lon": 10.1821306,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_cagna_section",
+   "name_en": "La Cagna (Section)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7729558,
+   "lon": 10.1875014,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_la_cagna",
+   "name_en": "Hammam La Cagna",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7703346,
+   "lon": 10.1897437,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_med_ali",
+   "name_en": "Cité Med Ali",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7668109,
+   "lon": 10.1919861,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire_kabaria",
+   "name_en": "Ecole Primaire Kabaria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7633472,
+   "lon": 10.1914818,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_m_tro_kabaria",
+   "name_en": "Pont Métro Kabaria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7622819,
+   "lon": 10.187555,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_militaire_ibn_sina",
+   "name_en": "Immeuble Militaire Ibn Sina",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7592742,
+   "lon": 10.1866594,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_ibn_sina",
+   "name_en": "Mosquée Ibn Sina",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7578651,
+   "lon": 10.1817136,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ibn_sina_section",
+   "name_en": "Ibn Sina(Section)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7552331,
+   "lon": 10.178693,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire_6_1",
+   "name_en": "Ecole Primaire 6,1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7520064,
+   "lon": 10.1801685,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_10800_1",
+   "name_en": "Rue 10800 (1)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7494102,
+   "lon": 10.1803402,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_10800_2",
+   "name_en": "Rue 10800 (2)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7463873,
+   "lon": 10.1829631,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ibn_sina",
+   "name_en": "IBN SINA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75428,
+   "lon": 10.19393,
+   "mode": "metro",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

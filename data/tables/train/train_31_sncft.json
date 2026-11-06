@@ -1,0 +1,127 @@
+{
+ "line_id": "train_31_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Metlaoui - Redeyef",
+ "direction_aller": [
+  "metlaoui",
+  "magroun",
+  "selja",
+  "el_ayoun",
+  "tabeddit",
+  "redeyef"
+ ],
+ "direction_retour": [
+  "redeyef",
+  "tabeddit",
+  "el_ayoun",
+  "selja",
+  "magroun",
+  "metlaoui"
+ ],
+ "stations_count": 6,
+ "start": {
+  "id": "metlaoui",
+  "name": "Metlaoui"
+ },
+ "end": {
+  "id": "redeyef",
+  "name": "Redeyef"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "metlaoui",
+  "magroun",
+  "selja",
+  "el_ayoun",
+  "tabeddit",
+  "redeyef"
+ ],
+ "stations_detail": [
+  {
+   "id": "metlaoui",
+   "name_en": "Metlaoui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3157766,
+   "lon": 8.4164253,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "magroun",
+   "name_en": "Magroun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3330461,
+   "lon": 8.3944411,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "selja",
+   "name_en": "Selja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3853424,
+   "lon": 8.3399541,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_ayoun",
+   "name_en": "El Ayoun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.4279671,
+   "lon": 8.2893843,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "tabeddit",
+   "name_en": "Tabeddit",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.4364956,
+   "lon": 8.2593299,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "redeyef",
+   "name_en": "Redeyef",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3880084,
+   "lon": 8.1524871,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

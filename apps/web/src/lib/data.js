@@ -1,7 +1,7 @@
 // Data module: connects to bledi.tn backend API
 // API base URL is configured in vite.config.js proxy
 
-export { fetchRoutePlan, fetchRouteGeometry, geocode, fetchStations, fetchLines, healthCheck } from './api.js';
+export { fetchRoutePlan, fetchRouteGeometry, fetchRustRoute, fetchRustHealth, geocode, fetchStations, fetchLines, healthCheck } from './api.js';
 
 // Dictionary translations
 export const dict = {
@@ -219,3 +219,99 @@ export function normalizeRoutes(apiResponse) {
 }
 
 export { modeLabelFr, modeBadge };
+
+// ---- Rust routing (:8081) adapter ----
+// Rust returns {found, objective, duration_s, fare, transfers, legs:[{from,to,line,mode,distance_m,time_s,fare}]}
+// with station ids (no geometry). Group consecutive hops on the same line/mode
+// into one step (Rust emits one leg per station hop), and resolve station ids
+// against the loaded stations list for a drawable path when available.
+function rustStationLookup(stations) {
+  const map = new Map();
+  if (Array.isArray(stations)) {
+    for (const s of stations) {
+      if (!s) continue;
+      if (s.id) map.set(String(s.id), s);
+      if (s.name) map.set(String(s.name), s);
+    }
+  }
+  return map;
+}
+
+export function normalizeRustRoutes(apiResponse, { startLat, startLon, endLat, endLon, stations = [] } = {}) {
+  if (!apiResponse) return [];
+  const list = Array.isArray(apiResponse) ? apiResponse : [apiResponse];
+  const lookup = rustStationLookup(stations);
+  const out = [];
+  for (const r of list) {
+    if (!r || r.found === false || !Array.isArray(r.legs) || !r.legs.length) continue;
+    const groups = [];
+    for (const leg of r.legs) {
+      const mode = normalizeMode(leg.mode || 'bus');
+      const last = groups[groups.length - 1];
+      if (last && last.line === leg.line && last.mode === mode) {
+        last.time_s += leg.time_s || 0;
+        last.distance_m += leg.distance_m || 0;
+        last.fare += leg.fare || 0;
+        if (leg.to && leg.to !== last.to) last.to = leg.to;
+        if (leg.to) last.stops.push(leg.to);
+      } else {
+        groups.push({ from: leg.from, to: leg.to, line: leg.line || '', mode, time_s: leg.time_s || 0, distance_m: leg.distance_m || 0, fare: leg.fare || 0, stops: [leg.from, leg.to].filter(Boolean) });
+      }
+    }
+    const primaryMode = groups.find((g) => g.mode !== 'walk')?.mode || 'bus';
+    const routeType = routeTypes[primaryMode] || routeTypes.bus;
+    const primaryGroup = groups.find((g) => g.mode === primaryMode);
+    // Path: start -> each leg endpoint resolvable in stations -> end.
+    const path = [];
+    if (Number.isFinite(startLat) && Number.isFinite(startLon)) path.push([startLat, startLon]);
+    for (const g of groups) {
+      for (const id of g.stops) {
+        const s = lookup.get(String(id));
+        if (s && Number.isFinite(s.lat) && Number.isFinite(s.lon)) path.push([s.lat, s.lon]);
+      }
+    }
+    if (Number.isFinite(endLat) && Number.isFinite(endLon)) path.push([endLat, endLon]);
+    for (let i = path.length - 1; i > 0; i--) {
+      if (path[i][0] === path[i - 1][0] && path[i][1] === path[i - 1][1]) path.splice(i, 1);
+    }
+    if (path.length < 2 && Number.isFinite(startLat) && Number.isFinite(endLat)) {
+      path.length = 0;
+      path.push([startLat, startLon], [endLat, endLon]);
+    }
+    const minutes = Math.max(1, Math.round((r.duration_s || groups.reduce((a, g) => a + g.time_s, 0)) / 60));
+    out.push({
+      id: primaryMode + '_rust_1',
+      rawMode: primaryGroup?.mode || 'bus',
+      mode: primaryMode,
+      badge: routeType.badge || modeBadge(primaryMode),
+      color: modeColors[primaryMode] || routeType.color || '#1F6F8B',
+      minutes,
+      depart: '--:--',
+      arrive: '--:--',
+      fare_dinars: typeof r.fare === 'number' && r.fare > 0 ? r.fare : (groups.reduce((a, g) => a + (g.fare || 0), 0) || null),
+      path,
+      label: r.objective ? `Rust · ${r.objective}` : 'Rust',
+      identifier: null,
+      objective: r.objective || 'fastest',
+      source: 'rust',
+      steps: groups.map((g, i) => {
+        const isWalk = g.mode === 'walk';
+        const labelText = isWalk
+          ? `Walk from ${g.from} to ${g.to}`
+          : `Take ${modeBadge(g.mode)}${g.line ? ' ' + g.line : ''} from ${g.from} to ${g.to}`;
+        return {
+          kind: isWalk ? 'walk' : 'ride',
+          mode: g.mode,
+          min: Math.max(0, Math.round((g.time_s || 0) / 60)),
+          identifier: g.line || null,
+          stations: g.stops,
+          fare_dinars: g.fare > 0 ? g.fare : null,
+          label: { fr: labelText, ar: labelText, en: labelText }
+        };
+      })
+    });
+  }
+  out.sort((a, b) => a.minutes - b.minutes);
+  out.forEach((it, idx) => { it.id = it.mode + '_rust_' + (idx + 1); });
+  return out;
+}

@@ -1,0 +1,79 @@
+{
+ "line_id": "train_41_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Monastir - Sousse Sud",
+ "direction_aller": [
+  "monastir",
+  "sahline_sebkha",
+  "sousse_sud"
+ ],
+ "direction_retour": [
+  "sousse_sud",
+  "sahline_sebkha",
+  "monastir"
+ ],
+ "stations_count": 3,
+ "start": {
+  "id": "monastir",
+  "name": "Monastir"
+ },
+ "end": {
+  "id": "sousse_sud",
+  "name": "Sousse Sud"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "monastir",
+  "sahline_sebkha",
+  "sousse_sud"
+ ],
+ "stations_detail": [
+  {
+   "id": "monastir",
+   "name_en": "Monastir",
+   "name_ar": "المنستير",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_77m"
+   ],
+   "lat": 35.7706263,
+   "lon": 10.8252907,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sahline_sebkha",
+   "name_en": "Sahline Sebkha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7576841,
+   "lon": 10.7165366,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_sud",
+   "name_en": "Sousse Sud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.800173,
+   "lon": 10.649924,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

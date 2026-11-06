@@ -1,0 +1,399 @@
+{
+ "line_id": "bus_863_54c",
+ "number": "54C",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 54C: Hopital De Traumatologie Et Des Grands Brulés - Terminus Cité Chaker",
+ "direction_aller": [
+  "hopital_de_traumatologie_et_des_grands_brul_s",
+  "ugtt_ben_arous",
+  "centre_ben_arous",
+  "bna_ben_arous",
+  "jardin_enfants_ben_arous",
+  "sntri",
+  "av_de_france",
+  "siefcol",
+  "centre_de_formation_snt",
+  "soci_t_nour",
+  "lustreries",
+  "chouchet_rades",
+  "imprimerie_officielle",
+  "croisement_sidi_rezig",
+  "lyc_e_sidi_rezig",
+  "sidi_rezig_section",
+  "jardin_enfants",
+  "silos_m_grine_coteaux",
+  "cit_commerciale",
+  "2_me_arr_t_ibn_jazzar",
+  "cit_jaouhara",
+  "caf_ayed",
+  "terminus_cit_chaker"
+ ],
+ "direction_retour": [
+  "terminus_cit_chaker",
+  "caf_ayed",
+  "cit_jaouhara",
+  "2_me_arr_t_ibn_jazzar",
+  "cit_commerciale",
+  "silos_m_grine_coteaux",
+  "jardin_enfants",
+  "sidi_rezig_section",
+  "lyc_e_sidi_rezig",
+  "croisement_sidi_rezig",
+  "imprimerie_officielle",
+  "chouchet_rades",
+  "lustreries",
+  "soci_t_nour",
+  "centre_de_formation_snt",
+  "siefcol",
+  "av_de_france",
+  "sntri",
+  "jardin_enfants_ben_arous",
+  "bna_ben_arous",
+  "centre_ben_arous",
+  "ugtt_ben_arous",
+  "hopital_de_traumatologie_et_des_grands_brul_s"
+ ],
+ "stations_count": 23,
+ "start": {
+  "id": "hopital_de_traumatologie_et_des_grands_brul_s",
+  "name": "Hopital De Traumatologie Et Des Grands Brulés"
+ },
+ "end": {
+  "id": "terminus_cit_chaker",
+  "name": "Terminus Cité Chaker"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "hopital_de_traumatologie_et_des_grands_brul_s",
+  "ugtt_ben_arous",
+  "centre_ben_arous",
+  "bna_ben_arous",
+  "jardin_enfants_ben_arous",
+  "sntri",
+  "av_de_france",
+  "siefcol",
+  "centre_de_formation_snt",
+  "soci_t_nour",
+  "lustreries",
+  "chouchet_rades",
+  "imprimerie_officielle",
+  "croisement_sidi_rezig",
+  "lyc_e_sidi_rezig",
+  "sidi_rezig_section",
+  "jardin_enfants",
+  "silos_m_grine_coteaux",
+  "cit_commerciale",
+  "2_me_arr_t_ibn_jazzar",
+  "cit_jaouhara",
+  "caf_ayed",
+  "terminus_cit_chaker"
+ ],
+ "stations_detail": [
+  {
+   "id": "hopital_de_traumatologie_et_des_grands_brul_s",
+   "name_en": "Hopital De Traumatologie Et Des Grands Brulés",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7471954,
+   "lon": 10.2111478,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ugtt_ben_arous",
+   "name_en": "UGTT Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7508158,
+   "lon": 10.2235076,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_ben_arous",
+   "name_en": "Centre Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75346,
+   "lon": 10.2224984,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bna_ben_arous",
+   "name_en": "Bna Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7561797,
+   "lon": 10.2204016,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants_ben_arous",
+   "name_en": "Jardin Enfants Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7587492,
+   "lon": 10.2224881,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sntri",
+   "name_en": "SNTRI",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7618359,
+   "lon": 10.2248863,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_de_france",
+   "name_en": "Av De France",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7631053,
+   "lon": 10.2259316,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "siefcol",
+   "name_en": "SIEFCOL",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7625689,
+   "lon": 10.2292994,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_snt",
+   "name_en": "Centre De Formation Snt",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.761611,
+   "lon": 10.2317686,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soci_t_nour",
+   "name_en": "Société Nour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7608128,
+   "lon": 10.2337966,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lustreries",
+   "name_en": "Lustreries",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7570187,
+   "lon": 10.2430977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chouchet_rades",
+   "name_en": "Chouchet Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7561763,
+   "lon": 10.2475395,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "imprimerie_officielle",
+   "name_en": "Imprimerie Officielle",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.760779,
+   "lon": 10.2500705,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_sidi_rezig",
+   "name_en": "Croisement Sidi Rezig",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7608207,
+   "lon": 10.2481837,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_sidi_rezig",
+   "name_en": "Lycée Sidi Rezig",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7633225,
+   "lon": 10.2461723,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_rezig_section",
+   "name_en": "Sidi Rezig (Section)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7653326,
+   "lon": 10.2445681,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants",
+   "name_en": "Jardin Enfants",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7676613,
+   "lon": 10.2413284,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "silos_m_grine_coteaux",
+   "name_en": "SILOS Mégrine Coteaux",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7688971,
+   "lon": 10.2357807,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_commerciale",
+   "name_en": "Cité Commerciale",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7700768,
+   "lon": 10.232187,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "2_me_arr_t_ibn_jazzar",
+   "name_en": "2Éme Arrét Ibn Jazzar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7721347,
+   "lon": 10.2305673,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_jaouhara",
+   "name_en": "Cité Jaouhara",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7756462,
+   "lon": 10.2278955,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_ayed",
+   "name_en": "Café Ayed",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7793924,
+   "lon": 10.2315647,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_cit_chaker",
+   "name_en": "Terminus Cité Chaker",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7819881,
+   "lon": 10.2340646,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

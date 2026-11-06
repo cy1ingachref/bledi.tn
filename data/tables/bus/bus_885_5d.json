@@ -1,0 +1,415 @@
+{
+ "line_id": "bus_885_5d",
+ "number": "5D",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne Bus 5D: Tunis Marine - Hedi Nouira",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "place_pasteur",
+  "patisserie_ben_yeder",
+  "cite_mahrajene",
+  "minist_re_de_quipement",
+  "menzeh1",
+  "ambassade_iraq",
+  "tat_unis",
+  "sour_seau",
+  "snit_menzeh_6",
+  "monoprix_menzeh_6",
+  "pharmacie_menzeh_6",
+  "lycee_menzeh6",
+  "centre_ikram",
+  "agil",
+  "caf_randa",
+  "cit_nacer_1",
+  "hedi_nouira",
+  "terminus_5d_51a"
+ ],
+ "direction_retour": [
+  "terminus_5d_51a",
+  "hedi_nouira",
+  "cit_nacer_1",
+  "caf_randa",
+  "agil",
+  "centre_ikram",
+  "lycee_menzeh6",
+  "pharmacie_menzeh_6",
+  "monoprix_menzeh_6",
+  "snit_menzeh_6",
+  "sour_seau",
+  "tat_unis",
+  "ambassade_iraq",
+  "menzeh1",
+  "minist_re_de_quipement",
+  "cite_mahrajene",
+  "patisserie_ben_yeder",
+  "place_pasteur",
+  "place_jeans_dark",
+  "la_fayette",
+  "passage_jeans_jaures",
+  "steg_jeans_jaures",
+  "jeans_jaures",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 24,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "terminus_5d_51a",
+  "name": "Terminus 5D/ 51A"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "place_pasteur",
+  "patisserie_ben_yeder",
+  "cite_mahrajene",
+  "minist_re_de_quipement",
+  "menzeh1",
+  "ambassade_iraq",
+  "tat_unis",
+  "sour_seau",
+  "snit_menzeh_6",
+  "monoprix_menzeh_6",
+  "pharmacie_menzeh_6",
+  "lycee_menzeh6",
+  "centre_ikram",
+  "agil",
+  "caf_randa",
+  "cit_nacer_1",
+  "hedi_nouira",
+  "terminus_5d_51a"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jeans_jaures",
+   "name_en": "Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8016177,
+   "lon": 10.183899,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_jeans_jaures",
+   "name_en": "Steg Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8054996,
+   "lon": 10.1819977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "passage_jeans_jaures",
+   "name_en": "Passage Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8069114,
+   "lon": 10.1815361,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_fayette",
+   "name_en": "La Fayette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8105618,
+   "lon": 10.1807238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_jeans_dark",
+   "name_en": "Place Jeans Dark",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8183566,
+   "lon": 10.1795785,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_pasteur",
+   "name_en": "Place Pasteur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230935,
+   "lon": 10.1776738,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "patisserie_ben_yeder",
+   "name_en": "Patisserie Ben Yeder",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8265346,
+   "lon": 10.1795924,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_mahrajene",
+   "name_en": "Cite Mahrajene",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.828874,
+   "lon": 10.1800943,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "minist_re_de_quipement",
+   "name_en": "Ministére De  Équipement",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8319311,
+   "lon": 10.1801694,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzeh1",
+   "name_en": "Menzeh1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8335866,
+   "lon": 10.1792613,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ambassade_iraq",
+   "name_en": "Ambassade Iraq",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8353899,
+   "lon": 10.1756778,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tat_unis",
+   "name_en": "État Unis",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8369167,
+   "lon": 10.1737849,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sour_seau",
+   "name_en": "Souréseau",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421244,
+   "lon": 10.1673476,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "snit_menzeh_6",
+   "name_en": "SNIT Menzeh 6",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.84421,
+   "lon": 10.1661189,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "monoprix_menzeh_6",
+   "name_en": "Monoprix Menzeh 6",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8461572,
+   "lon": 10.1662365,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pharmacie_menzeh_6",
+   "name_en": "Pharmacie Menzeh 6",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8469317,
+   "lon": 10.165282,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_menzeh6",
+   "name_en": "Lycee Menzeh6",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8524589,
+   "lon": 10.1775445,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_ikram",
+   "name_en": "Centre Ikram",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8560526,
+   "lon": 10.1682516,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "agil",
+   "name_en": "Agil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8585643,
+   "lon": 10.1660545,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_randa",
+   "name_en": "Café Randa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8595095,
+   "lon": 10.166736,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_nacer_1",
+   "name_en": "Cité Nacer 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8634753,
+   "lon": 10.1685385,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hedi_nouira",
+   "name_en": "Hedi Nouira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8619817,
+   "lon": 10.1644508,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_5d_51a",
+   "name_en": "Terminus 5D/ 51A",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8616813,
+   "lon": 10.1631472,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper.com ligne_details.php?route_id=885"
+}

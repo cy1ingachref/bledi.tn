@@ -1,0 +1,1174 @@
+{
+ "line_id": "bus_774_247",
+ "number": "247",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 247: Port La Goulette - Teminus Cité Riadh",
+ "direction_aller": [
+  "port_la_goulette",
+  "goulette_vieille",
+  "goulette_neuve",
+  "la_goulette_casino",
+  "le_kram",
+  "carthage_salambo",
+  "carthage_byrsa",
+  "carthage_dermech",
+  "carthage_hannibal",
+  "carthage_pr_sident",
+  "magasin_g_n_ral_sidi_bou_said",
+  "sidi_bou_said",
+  "parc_sidi_bou_said",
+  "palais_saada",
+  "marsa_ville",
+  "lahweche",
+  "nacer",
+  "sidi_abd_aziz",
+  "teminus_cit_riadh"
+ ],
+ "direction_retour": [
+  "teminus_cit_riadh",
+  "sidi_abd_aziz",
+  "nacer",
+  "lahweche",
+  "marsa_ville",
+  "palais_saada",
+  "parc_sidi_bou_said",
+  "sidi_bou_said",
+  "magasin_g_n_ral_sidi_bou_said",
+  "carthage_pr_sident",
+  "carthage_hannibal",
+  "carthage_dermech",
+  "carthage_byrsa",
+  "carthage_salambo",
+  "le_kram",
+  "la_goulette_casino",
+  "goulette_neuve",
+  "goulette_vieille",
+  "port_la_goulette"
+ ],
+ "stations_count": 19,
+ "start": {
+  "id": "port_la_goulette",
+  "name": "Port La Goulette"
+ },
+ "end": {
+  "id": "teminus_cit_riadh",
+  "name": "Teminus Cité Riadh"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "port_la_goulette",
+  "goulette_vieille",
+  "goulette_neuve",
+  "la_goulette_casino",
+  "le_kram",
+  "carthage_salambo",
+  "carthage_byrsa",
+  "carthage_dermech",
+  "carthage_hannibal",
+  "carthage_pr_sident",
+  "magasin_g_n_ral_sidi_bou_said",
+  "sidi_bou_said",
+  "parc_sidi_bou_said",
+  "palais_saada",
+  "marsa_ville",
+  "lahweche",
+  "nacer",
+  "sidi_abd_aziz",
+  "teminus_cit_riadh"
+ ],
+ "stations_detail": [
+  {
+   "id": "port_la_goulette",
+   "name_en": "Port La Goulette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8134042,
+   "lon": 10.3027502,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "goulette_vieille",
+   "name_en": "Goulette Vieille",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.816925,
+   "lon": 10.3047886,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "goulette_neuve",
+   "name_en": "GOULETTE NEUVE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8198449,
+   "lon": 10.3056014,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_goulette_casino",
+   "name_en": "La Goulette Casino",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8244511,
+   "lon": 10.3100784,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_kram",
+   "name_en": "LE KRAM",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8361705,
+   "lon": 10.3166057,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_salambo",
+   "name_en": "CARTHAGE SALAMBO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8415416,
+   "lon": 10.3191045,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_byrsa",
+   "name_en": "CARTHAGE BYRSA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8461259,
+   "lon": 10.3218453,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_dermech",
+   "name_en": "CARTHAGE DERMECH",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8501222,
+   "lon": 10.3255807,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_hannibal",
+   "name_en": "CARTHAGE HANNIBAL",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8533913,
+   "lon": 10.3289164,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_pr_sident",
+   "name_en": "Carthage Président",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8604611,
+   "lon": 10.3351946,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magasin_g_n_ral_sidi_bou_said",
+   "name_en": "Magasin Général Sidi Bou Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8692949,
+   "lon": 10.3429625,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bou_said",
+   "name_en": "Sidi Bou Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8705051,
+   "lon": 10.3430162,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "parc_sidi_bou_said",
+   "name_en": "Parc Sidi Bou Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8731288,
+   "lon": 10.3351083,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "palais_saada",
+   "name_en": "Palais Saada",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8771996,
+   "lon": 10.3290472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "marsa_ville",
+   "name_en": "Marsa Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8803817,
+   "lon": 10.326805,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lahweche",
+   "name_en": "Lahweche",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8820904,
+   "lon": 10.3248842,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nacer",
+   "name_en": "Nacer",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8845156,
+   "lon": 10.3240154,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_abd_aziz",
+   "name_en": "Sidi Abd Aziz",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8875448,
+   "lon": 10.3227065,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "teminus_cit_riadh",
+   "name_en": "Teminus Cité Riadh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8857539,
+   "lon": 10.3142308,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "port_la_goulette",
+   "to": "goulette_vieille",
+   "key": "goulette_vieille|port_la_goulette",
+   "straight_m": 431.5,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.816925,
+     10.3047886
+    ],
+    [
+     36.815244,
+     10.303587
+    ],
+    [
+     36.814379,
+     10.302629
+    ],
+    [
+     36.814062,
+     10.302001
+    ],
+    [
+     36.81389,
+     10.302064
+    ],
+    [
+     36.8134042,
+     10.3027502
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 511.47,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 91.27,
+   "length_ratio": 1.1853,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "goulette_vieille",
+   "to": "goulette_neuve",
+   "key": "goulette_neuve|goulette_vieille",
+   "straight_m": 332.64,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8198449,
+     10.3056014
+    ],
+    [
+     36.819143,
+     10.306474
+    ],
+    [
+     36.816925,
+     10.3047886
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 398.79,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 92.79,
+   "length_ratio": 1.1989,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "goulette_neuve",
+   "to": "la_goulette_casino",
+   "key": "goulette_neuve|la_goulette_casino",
+   "straight_m": 648.95,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8198449,
+     10.3056014
+    ],
+    [
+     36.819143,
+     10.306474
+    ],
+    [
+     36.8244511,
+     10.3100784
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 781.91,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 110.11,
+   "length_ratio": 1.2049,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "la_goulette_casino",
+   "to": "le_kram",
+   "key": "la_goulette_casino|le_kram",
+   "straight_m": 1426.77,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8244511,
+     10.3100784
+    ],
+    [
+     36.829444,
+     10.313796
+    ],
+    [
+     36.829805,
+     10.314242
+    ],
+    [
+     36.83019,
+     10.314331
+    ],
+    [
+     36.832153,
+     10.315736
+    ],
+    [
+     36.8361705,
+     10.3166057
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1451.24,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 111.2,
+   "length_ratio": 1.0172,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "le_kram",
+   "to": "carthage_salambo",
+   "key": "carthage_salambo|le_kram",
+   "straight_m": 637.3,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8415416,
+     10.3191045
+    ],
+    [
+     36.838057,
+     10.317301
+    ],
+    [
+     36.8361705,
+     10.3166057
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 638.1,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 15.21,
+   "length_ratio": 1.0013,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "carthage_salambo",
+   "to": "carthage_byrsa",
+   "key": "carthage_byrsa|carthage_salambo",
+   "straight_m": 565.09,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8461259,
+     10.3218453
+    ],
+    [
+     36.844872,
+     10.32081
+    ],
+    [
+     36.8415416,
+     10.3191045
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 567.33,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 22.93,
+   "length_ratio": 1.004,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "carthage_byrsa",
+   "to": "carthage_dermech",
+   "key": "carthage_byrsa|carthage_dermech",
+   "straight_m": 554.92,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8461259,
+     10.3218453
+    ],
+    [
+     36.8501222,
+     10.3255807
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 554.92,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "carthage_dermech",
+   "to": "carthage_hannibal",
+   "key": "carthage_dermech|carthage_hannibal",
+   "straight_m": 469.29,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8501222,
+     10.3255807
+    ],
+    [
+     36.8533913,
+     10.3289164
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 469.29,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "carthage_hannibal",
+   "to": "carthage_pr_sident",
+   "key": "carthage_hannibal|carthage_pr_sident",
+   "straight_m": 964.37,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8533913,
+     10.3289164
+    ],
+    [
+     36.855127,
+     10.330283
+    ],
+    [
+     36.854631,
+     10.331004
+    ],
+    [
+     36.857878,
+     10.333426
+    ],
+    [
+     36.8604611,
+     10.3351946
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1060.68,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 71.56,
+   "length_ratio": 1.0999,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "carthage_pr_sident",
+   "to": "magasin_g_n_ral_sidi_bou_said",
+   "key": "carthage_pr_sident|magasin_g_n_ral_sidi_bou_said",
+   "straight_m": 1201.0,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8604611,
+     10.3351946
+    ],
+    [
+     36.86607,
+     10.337174
+    ],
+    [
+     36.867655,
+     10.339202
+    ],
+    [
+     36.8692949,
+     10.3429625
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1281.27,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 214.84,
+   "length_ratio": 1.0668,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "magasin_g_n_ral_sidi_bou_said",
+   "to": "sidi_bou_said",
+   "key": "magasin_g_n_ral_sidi_bou_said|sidi_bou_said",
+   "straight_m": 134.65,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8692949,
+     10.3429625
+    ],
+    [
+     36.870003,
+     10.344151
+    ],
+    [
+     36.8705051,
+     10.3430162
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 247.18,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 102.86,
+   "length_ratio": 1.8357,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sidi_bou_said",
+   "to": "parc_sidi_bou_said",
+   "key": "parc_sidi_bou_said|sidi_bou_said",
+   "straight_m": 761.54,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8731288,
+     10.3351083
+    ],
+    [
+     36.873257,
+     10.338045
+    ],
+    [
+     36.873063,
+     10.338832
+    ],
+    [
+     36.872833,
+     10.339159
+    ],
+    [
+     36.872821,
+     10.339783
+    ],
+    [
+     36.871264,
+     10.341783
+    ],
+    [
+     36.8705051,
+     10.3430162
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 815.77,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 127.69,
+   "length_ratio": 1.0712,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "parc_sidi_bou_said",
+   "to": "palais_saada",
+   "key": "palais_saada|parc_sidi_bou_said",
+   "straight_m": 703.96,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8771996,
+     10.3290472
+    ],
+    [
+     36.873444,
+     10.331824
+    ],
+    [
+     36.873435,
+     10.333728
+    ],
+    [
+     36.8731288,
+     10.3351083
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 781.96,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 161.01,
+   "length_ratio": 1.1108,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "palais_saada",
+   "to": "marsa_ville",
+   "key": "marsa_ville|palais_saada",
+   "straight_m": 406.17,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8803817,
+     10.326805
+    ],
+    [
+     36.879318,
+     10.327533
+    ],
+    [
+     36.878959,
+     10.327934
+    ],
+    [
+     36.87793,
+     10.32867
+    ],
+    [
+     36.877526,
+     10.328723
+    ],
+    [
+     36.8771996,
+     10.3290472
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 411.72,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 10.65,
+   "length_ratio": 1.0137,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "marsa_ville",
+   "to": "lahweche",
+   "key": "lahweche|marsa_ville",
+   "straight_m": 255.51,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8820904,
+     10.3248842
+    ],
+    [
+     36.881364,
+     10.325412
+    ],
+    [
+     36.880939,
+     10.326343
+    ],
+    [
+     36.8803817,
+     10.326805
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 263.12,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 19.1,
+   "length_ratio": 1.0298,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "lahweche",
+   "to": "nacer",
+   "key": "lahweche|nacer",
+   "straight_m": 280.52,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8820904,
+     10.3248842
+    ],
+    [
+     36.882932,
+     10.324252
+    ],
+    [
+     36.8845156,
+     10.3240154
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 286.52,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 28.28,
+   "length_ratio": 1.0214,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "nacer",
+   "to": "sidi_abd_aziz",
+   "key": "nacer|sidi_abd_aziz",
+   "straight_m": 356.38,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8845156,
+     10.3240154
+    ],
+    [
+     36.885042,
+     10.323927
+    ],
+    [
+     36.886744,
+     10.322789
+    ],
+    [
+     36.8875448,
+     10.3227065
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 363.02,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 22.15,
+   "length_ratio": 1.0186,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sidi_abd_aziz",
+   "to": "teminus_cit_riadh",
+   "key": "sidi_abd_aziz|teminus_cit_riadh",
+   "straight_m": 779.66,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8875448,
+     10.3227065
+    ],
+    [
+     36.888598,
+     10.322447
+    ],
+    [
+     36.889076,
+     10.322246
+    ],
+    [
+     36.888544,
+     10.320656
+    ],
+    [
+     36.886788,
+     10.316463
+    ],
+    [
+     36.8857539,
+     10.3142308
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 979.07,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 175.12,
+   "length_ratio": 1.2558,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8134042,
+   10.3027502
+  ],
+  [
+   36.81389,
+   10.302064
+  ],
+  [
+   36.814062,
+   10.302001
+  ],
+  [
+   36.814379,
+   10.302629
+  ],
+  [
+   36.815244,
+   10.303587
+  ],
+  [
+   36.816925,
+   10.3047886
+  ],
+  [
+   36.819143,
+   10.306474
+  ],
+  [
+   36.8198449,
+   10.3056014
+  ],
+  [
+   36.819143,
+   10.306474
+  ],
+  [
+   36.8244511,
+   10.3100784
+  ],
+  [
+   36.829444,
+   10.313796
+  ],
+  [
+   36.829805,
+   10.314242
+  ],
+  [
+   36.83019,
+   10.314331
+  ],
+  [
+   36.832153,
+   10.315736
+  ],
+  [
+   36.8361705,
+   10.3166057
+  ],
+  [
+   36.838057,
+   10.317301
+  ],
+  [
+   36.8415416,
+   10.3191045
+  ],
+  [
+   36.844872,
+   10.32081
+  ],
+  [
+   36.8461259,
+   10.3218453
+  ],
+  [
+   36.8501222,
+   10.3255807
+  ],
+  [
+   36.8533913,
+   10.3289164
+  ],
+  [
+   36.855127,
+   10.330283
+  ],
+  [
+   36.854631,
+   10.331004
+  ],
+  [
+   36.857878,
+   10.333426
+  ],
+  [
+   36.8604611,
+   10.3351946
+  ],
+  [
+   36.86607,
+   10.337174
+  ],
+  [
+   36.867655,
+   10.339202
+  ],
+  [
+   36.8692949,
+   10.3429625
+  ],
+  [
+   36.870003,
+   10.344151
+  ],
+  [
+   36.8705051,
+   10.3430162
+  ],
+  [
+   36.871264,
+   10.341783
+  ],
+  [
+   36.872821,
+   10.339783
+  ],
+  [
+   36.872833,
+   10.339159
+  ],
+  [
+   36.873063,
+   10.338832
+  ],
+  [
+   36.873257,
+   10.338045
+  ],
+  [
+   36.8731288,
+   10.3351083
+  ],
+  [
+   36.873435,
+   10.333728
+  ],
+  [
+   36.873444,
+   10.331824
+  ],
+  [
+   36.8771996,
+   10.3290472
+  ],
+  [
+   36.877526,
+   10.328723
+  ],
+  [
+   36.87793,
+   10.32867
+  ],
+  [
+   36.878959,
+   10.327934
+  ],
+  [
+   36.879318,
+   10.327533
+  ],
+  [
+   36.8803817,
+   10.326805
+  ],
+  [
+   36.880939,
+   10.326343
+  ],
+  [
+   36.881364,
+   10.325412
+  ],
+  [
+   36.8820904,
+   10.3248842
+  ],
+  [
+   36.882932,
+   10.324252
+  ],
+  [
+   36.8845156,
+   10.3240154
+  ],
+  [
+   36.885042,
+   10.323927
+  ],
+  [
+   36.886744,
+   10.322789
+  ],
+  [
+   36.8875448,
+   10.3227065
+  ],
+  [
+   36.888598,
+   10.322447
+  ],
+  [
+   36.889076,
+   10.322246
+  ],
+  [
+   36.888544,
+   10.320656
+  ],
+  [
+   36.886788,
+   10.316463
+  ],
+  [
+   36.8857539,
+   10.3142308
+  ]
+ ],
+ "phase3a": {
+  "pairs": 18,
+  "resolved": 18,
+  "unresolved": 0
+ }
+}

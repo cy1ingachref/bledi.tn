@@ -1,0 +1,351 @@
+{
+ "line_id": "bus_856_4a",
+ "number": "4A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 4A: Jardin Thameur - Terminus L 4A Cité El Amal Mannouba",
+ "direction_aller": [
+  "jardin_thameur",
+  "sidi_aloui",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "chebbi",
+  "saint_clement",
+  "bortal",
+  "champ_de_course_ksar_said",
+  "hopital_kassab",
+  "el_farabi_mannouba",
+  "t_l_com_manouba",
+  "steg_mannouba",
+  "environnement_mannouba",
+  "lycee_ibn_abi_dhief_mannouba",
+  "cnss_mannouba",
+  "rue_de_kebilli",
+  "avenue_de_environnement_mannouba",
+  "monoprix_mannouba",
+  "terminus_l_4a_cit_el_amal_mannouba"
+ ],
+ "direction_retour": [
+  "terminus_l_4a_cit_el_amal_mannouba",
+  "monoprix_mannouba",
+  "avenue_de_environnement_mannouba",
+  "rue_de_kebilli",
+  "cnss_mannouba",
+  "lycee_ibn_abi_dhief_mannouba",
+  "environnement_mannouba",
+  "steg_mannouba",
+  "t_l_com_manouba",
+  "el_farabi_mannouba",
+  "hopital_kassab",
+  "champ_de_course_ksar_said",
+  "bortal",
+  "saint_clement",
+  "chebbi",
+  "20_mars",
+  "bouchoucha",
+  "immeuble_chefia",
+  "sidi_aloui",
+  "jardin_thameur"
+ ],
+ "stations_count": 20,
+ "start": {
+  "id": "jardin_thameur",
+  "name": "Jardin Thameur"
+ },
+ "end": {
+  "id": "terminus_l_4a_cit_el_amal_mannouba",
+  "name": "Terminus L 4A Cité El Amal Mannouba"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "jardin_thameur",
+  "sidi_aloui",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "chebbi",
+  "saint_clement",
+  "bortal",
+  "champ_de_course_ksar_said",
+  "hopital_kassab",
+  "el_farabi_mannouba",
+  "t_l_com_manouba",
+  "steg_mannouba",
+  "environnement_mannouba",
+  "lycee_ibn_abi_dhief_mannouba",
+  "cnss_mannouba",
+  "rue_de_kebilli",
+  "avenue_de_environnement_mannouba",
+  "monoprix_mannouba",
+  "terminus_l_4a_cit_el_amal_mannouba"
+ ],
+ "stations_detail": [
+  {
+   "id": "jardin_thameur",
+   "name_en": "Jardin Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8037336,
+   "lon": 10.1780922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_aloui",
+   "name_en": "Sidi Aloui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8053372,
+   "lon": 10.1688404,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_chefia",
+   "name_en": "Immeuble Chefia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8098234,
+   "lon": 10.152579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchoucha",
+   "name_en": "BOUCHOUCHA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80953,
+   "lon": 10.15026,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "chebbi",
+   "name_en": "Chebbi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8096013,
+   "lon": 10.1313362,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "saint_clement",
+   "name_en": "Saint Clement",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8104848,
+   "lon": 10.126229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bortal",
+   "name_en": "Bortal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8120871,
+   "lon": 10.1174078,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "champ_de_course_ksar_said",
+   "name_en": "Champ De Course Ksar Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8130249,
+   "lon": 10.1133431,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_kassab",
+   "name_en": "Hopital Kassab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8155796,
+   "lon": 10.1003191,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_farabi_mannouba",
+   "name_en": "El Farabi Mannouba -",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8113565,
+   "lon": 10.0992464,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "t_l_com_manouba",
+   "name_en": "Télécom Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8086353,
+   "lon": 10.1007516,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_mannouba",
+   "name_en": "Steg Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8077015,
+   "lon": 10.10125,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "environnement_mannouba",
+   "name_en": "Environnement Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8070893,
+   "lon": 10.1035594,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_ibn_abi_dhief_mannouba",
+   "name_en": "Lycee Ibn Abi Dhief Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8083515,
+   "lon": 10.1037523,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cnss_mannouba",
+   "name_en": "Cnss Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8100185,
+   "lon": 10.1054852,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_de_kebilli",
+   "name_en": "Rue De Kebilli",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8092307,
+   "lon": 10.1061142,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "avenue_de_environnement_mannouba",
+   "name_en": "Avenue De Environnement Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8094777,
+   "lon": 10.1107813,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "monoprix_mannouba",
+   "name_en": "Monoprix Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8115521,
+   "lon": 10.1134796,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_l_4a_cit_el_amal_mannouba",
+   "name_en": "Terminus L 4A Cité El Amal Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8117021,
+   "lon": 10.1116194,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

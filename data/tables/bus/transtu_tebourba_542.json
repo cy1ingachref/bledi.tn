@@ -1,0 +1,69 @@
+{
+ "line_id": "transtu_tebourba_542",
+ "number": "542",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Tebourba - El Charguia",
+ "direction_aller": [
+  "tebourba",
+  "el_sherouia"
+ ],
+ "direction_retour": [
+  "el_sherouia",
+  "tebourba"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "tebourba",
+  "name": "Tebourba"
+ },
+ "end": {
+  "id": "el_sherouia",
+  "name": "El Charguia"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "tebourba",
+   "to": "el_sherouia",
+   "km": 23.8
+  }
+ ],
+ "original_stations": [
+  "tebourba",
+  "el_sherouia"
+ ],
+ "stations_detail": [
+  {
+   "id": "tebourba",
+   "name_en": "Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8291603,
+   "lon": 9.8443655,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_sherouia",
+   "name_en": "El Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6783239,
+   "lon": 9.6542026,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "transtu.com.tn PDF (Tebourba.pdf)"
+}

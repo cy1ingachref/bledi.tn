@@ -1,0 +1,207 @@
+{
+ "line_id": "train_4_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Tunis Ville - Bizerte",
+ "direction_aller": [
+  "tunis_ville",
+  "bir_aniba",
+  "mannouba",
+  "jedeida",
+  "chaouat",
+  "sidi_othman",
+  "ain_ghelal",
+  "mateur",
+  "tinja",
+  "la_pecherie",
+  "bizerte"
+ ],
+ "direction_retour": [
+  "bizerte",
+  "la_pecherie",
+  "tinja",
+  "mateur",
+  "ain_ghelal",
+  "sidi_othman",
+  "chaouat",
+  "jedeida",
+  "mannouba",
+  "bir_aniba",
+  "tunis_ville"
+ ],
+ "stations_count": 11,
+ "start": {
+  "id": "tunis_ville",
+  "name": "Tunis Ville"
+ },
+ "end": {
+  "id": "bizerte",
+  "name": "Bizerte"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "tunis_ville",
+  "bir_aniba",
+  "mannouba",
+  "jedeida",
+  "chaouat",
+  "sidi_othman",
+  "ain_ghelal",
+  "mateur",
+  "tinja",
+  "la_pecherie",
+  "bizerte"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_ville",
+   "name_en": "Tunis Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7947693,
+   "lon": 10.1803806,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_aniba",
+   "name_en": "Bir Aniba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7953789,
+   "lon": 10.157609,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mannouba",
+   "name_en": "Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8161297,
+   "lon": 10.1011079,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "jedeida",
+   "name_en": "Jedeida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8507975,
+   "lon": 9.9334513,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "chaouat",
+   "name_en": "Chaouat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8894814,
+   "lon": 9.944471,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_othman",
+   "name_en": "Sidi Othman",
+   "name_ar": "سيدي عثمان",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_21m"
+   ],
+   "lat": 36.960039,
+   "lon": 9.924713,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "ain_ghelal",
+   "name_en": "Ain Ghelal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.0233607,
+   "lon": 9.8327899,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mateur",
+   "name_en": "Mateur",
+   "name_ar": "ماطر",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_15m"
+   ],
+   "lat": 37.0378884,
+   "lon": 9.6844909,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "tinja",
+   "name_en": "Tinja",
+   "name_ar": "تينجة",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_23m"
+   ],
+   "lat": 37.1594962,
+   "lon": 9.7572135,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_pecherie",
+   "name_en": "La Pecherie",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 37.2541232,
+   "lon": 9.8394025,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bizerte",
+   "name_en": "Bizerte",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "no_source"
+   ],
+   "lat": 37.266437,
+   "lon": 9.8639003,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

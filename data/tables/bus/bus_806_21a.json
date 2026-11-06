@@ -1,0 +1,335 @@
+{
+ "line_id": "bus_806_21a",
+ "number": "21A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 21A: Station De Bus Mornag - Jebel Rassas",
+ "direction_aller": [
+  "station_de_bus_mornag",
+  "garde_national_mornag",
+  "lyc_e_mornag",
+  "cit_abaab",
+  "coll_ge_mahmoud_al_messaadi_morneg",
+  "coop_rative_errissala",
+  "errissala",
+  "maallah",
+  "el_houemed_1",
+  "el_houemed_2",
+  "ancienne_gare_ahmed_zaied",
+  "croisement_ahmed_zaied_l21a",
+  "nuiji",
+  "erriahi",
+  "minoterie",
+  "ain_charchara",
+  "croisement_jebel_rassas",
+  "aviation_civile",
+  "jebel_rassas"
+ ],
+ "direction_retour": [
+  "jebel_rassas",
+  "aviation_civile",
+  "croisement_jebel_rassas",
+  "ain_charchara",
+  "minoterie",
+  "erriahi",
+  "nuiji",
+  "croisement_ahmed_zaied_l21a",
+  "ancienne_gare_ahmed_zaied",
+  "el_houemed_2",
+  "el_houemed_1",
+  "maallah",
+  "errissala",
+  "coop_rative_errissala",
+  "coll_ge_mahmoud_al_messaadi_morneg",
+  "cit_abaab",
+  "lyc_e_mornag",
+  "garde_national_mornag",
+  "station_de_bus_mornag"
+ ],
+ "stations_count": 19,
+ "start": {
+  "id": "station_de_bus_mornag",
+  "name": "Station De Bus Mornag"
+ },
+ "end": {
+  "id": "jebel_rassas",
+  "name": "Jebel Rassas"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_de_bus_mornag",
+  "garde_national_mornag",
+  "lyc_e_mornag",
+  "cit_abaab",
+  "coll_ge_mahmoud_al_messaadi_morneg",
+  "coop_rative_errissala",
+  "errissala",
+  "maallah",
+  "el_houemed_1",
+  "el_houemed_2",
+  "ancienne_gare_ahmed_zaied",
+  "croisement_ahmed_zaied_l21a",
+  "nuiji",
+  "erriahi",
+  "minoterie",
+  "ain_charchara",
+  "croisement_jebel_rassas",
+  "aviation_civile",
+  "jebel_rassas"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_de_bus_mornag",
+   "name_en": "Station De Bus Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6799098,
+   "lon": 10.2893849,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_mornag",
+   "name_en": "Garde National Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.679586,
+   "lon": 10.2924509,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_mornag",
+   "name_en": "Lycée Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6785792,
+   "lon": 10.2937169,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_abaab",
+   "name_en": "Cité Abaab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6755629,
+   "lon": 10.2977298,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "coll_ge_mahmoud_al_messaadi_morneg",
+   "name_en": "Collége Mahmoud Al-Messaadi Morneg",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6722585,
+   "lon": 10.3034027,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "coop_rative_errissala",
+   "name_en": "Coopérative Errissala",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6696527,
+   "lon": 10.3076753,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "errissala",
+   "name_en": "Errissala",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6623213,
+   "lon": 10.3221049,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "maallah",
+   "name_en": "Maallah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6551886,
+   "lon": 10.3175885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_houemed_1",
+   "name_en": "El Houemed 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6500726,
+   "lon": 10.3127072,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_houemed_2",
+   "name_en": "El Houemed 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6443945,
+   "lon": 10.3071387,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ancienne_gare_ahmed_zaied",
+   "name_en": "Ancienne Gare Ahmed Zaied",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6404363,
+   "lon": 10.3034188,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_ahmed_zaied_l21a",
+   "name_en": "Croisement Ahmed Zaied L21A",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6373944,
+   "lon": 10.3026213,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nuiji",
+   "name_en": "Nuiji",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6319349,
+   "lon": 10.3032865,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "erriahi",
+   "name_en": "Erriahi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6275783,
+   "lon": 10.3022351,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "minoterie",
+   "name_en": "Minoterie",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6186783,
+   "lon": 10.3037985,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ain_charchara",
+   "name_en": "Ain Charchara",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6094213,
+   "lon": 10.3031567,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_jebel_rassas",
+   "name_en": "Croisement Jebel Rassas",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5980913,
+   "lon": 10.3050675,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "aviation_civile",
+   "name_en": "Aviation Civile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5972925,
+   "lon": 10.3125889,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jebel_rassas",
+   "name_en": "Jebel Rassas",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6092441,
+   "lon": 10.3199545,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

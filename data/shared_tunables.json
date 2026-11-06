@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "description": "Single source of truth for routing tunables shared by Python (services/transit/src/bledi_transit/domain/{tunables,fares}.py) and Rust (services/routing/src/{graph,router}.rs). Both sides hard-code these exact values; scripts/reconcile_tunables.py diffs them and fails the audit if they drift. See data/tunables_reconcile.json for the audit output.",
+  "walk_speed_kmh": 4.5,
+  "speed_kmh_by_mode": {
+    "train": 60.0,
+    "rail": 55.0,
+    "metro": 30.0,
+    "bus": 22.0,
+    "rfr": 22.0,
+    "tram": 22.0,
+    "rural": 22.0,
+    "louage": 100.0,
+    "louaj": 100.0,
+    "taxi": 45.0,
+    "walk": 4.5,
+    "unknown": 22.0
+  },
+  "default_wait_s_by_mode": {
+    "train": 600.0,
+    "rail": 600.0,
+    "metro": 300.0,
+    "bus": 600.0,
+    "rfr": 600.0,
+    "tram": 600.0,
+    "rural": 600.0,
+    "louage": 600.0,
+    "louaj": 600.0,
+    "taxi": 0.0,
+    "walk": 0.0,
+    "unknown": 600.0
+  },
+  "boarding_wait_cap_s": 1200.0,
+  "wait_headway_factor": 0.5,
+  "max_headway_s": 43200.0,
+  "transfer_penalty_s": 180.0,
+  "fewest_transfers_penalty_s": 5400.0,
+  "cheapest_fare_weight_s_per_dt": 3600.0,
+  "max_start_walk_m": 2000.0,
+  "max_end_walk_m": 2000.0,
+  "max_walk_edge_m": 900.0,
+  "max_direct_walk_m": 1000.0,
+  "max_pure_walk_min": 120.0,
+  "pure_walk_rule": "A pure-walk itinerary (no ride leg) longer than max_pure_walk_min minutes is only returned when no transit itinerary exists; if a transit candidate exists it wins. Direct point-to-point walk is only offered at <= max_direct_walk_m.",
+  "dropoff_search_m": 100000.0,
+  "drop_off_candidates": 1,
+  "taxi_min_distance_m": 3000.0,
+  "max_direct_taxi_m": 150000.0,
+  "geometry_required_m": 300.0,
+  "fare_by_mode": {
+    "bus": {
+      "base_dt": 0.5,
+      "per_km_dt": 0.0,
+      "cap_dt": null,
+      "charging": "flat per boarding"
+    },
+    "tram": {
+      "base_dt": 0.5,
+      "per_km_dt": 0.0,
+      "cap_dt": null,
+      "charging": "flat per boarding"
+    },
+    "metro": {
+      "base_dt": 0.6,
+      "per_km_dt": 0.0,
+      "cap_dt": null,
+      "charging": "flat per boarding"
+    },
+    "rural": {
+      "base_dt": 0.5,
+      "per_km_dt": 0.0,
+      "cap_dt": null,
+      "charging": "flat per boarding (priced as bus)"
+    },
+    "train": {
+      "base_dt": 4.0,
+      "per_km_dt": 0.09,
+      "cap_dt": 15.0,
+      "charging": "base + per_km * km, charged once per boarding, capped"
+    },
+    "rail": {
+      "base_dt": 4.0,
+      "per_km_dt": 0.09,
+      "cap_dt": 15.0,
+      "charging": "base + per_km * km, charged once per boarding, capped"
+    },
+    "louage": {
+      "base_dt": 1.0,
+      "per_km_dt": 0.15,
+      "cap_dt": 20.0,
+      "charging": "base + per_km * km, charged once per boarding, capped"
+    },
+    "louaj": {
+      "base_dt": 1.0,
+      "per_km_dt": 0.15,
+      "cap_dt": 20.0,
+      "charging": "base + per_km * km, charged once per boarding, capped"
+    },
+    "taxi": {
+      "base_dt": 0.6,
+      "per_km_dt": 0.52,
+      "cap_dt": null,
+      "charging": "base + per_km * km per ride"
+    },
+    "walk": {
+      "base_dt": 0.0,
+      "per_km_dt": 0.0,
+      "cap_dt": null,
+      "charging": "free"
+    }
+  },
+  "fare_notes": [
+    "Fare is charged ONCE per boarding of a line (group consecutive legs on the same line), never per stop-pair edge. Charging per edge was the Rust bug that produced 69 DT Tunis->Sousse.",
+    "Caps: no single boarding costs more than cap_dt (train/rail 15 DT, louage/louaj 20 DT). Flat modes (bus/tram/metro/rural) are a flat ticket so the cap is a no-op.",
+    "Unknown modes are priced as bus (0.5 DT flat) on both sides.",
+    "Louage/louaj spelling: seed uses both; Python canonical_mode maps louage->louaj, Rust keeps both keys with identical values."
+  ],
+  "speed_notes": "Louage/louaj highway cruising 90-110 km/h (100 km/h modelled average after stands/traffic); train avg 60 km/h as measured."
+}

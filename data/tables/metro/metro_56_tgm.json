@@ -1,0 +1,319 @@
+{
+ "line_id": "metro_56_tgm",
+ "number": "TGM",
+ "mode": "metro",
+ "operator": "Transtu",
+ "name": "Ligne TGM: TUNIS MARINE NORD - MARSA PLAGE",
+ "direction_aller": [
+  "tunis_marine_nord",
+  "le_bac",
+  "la_goulette",
+  "goulette_neuve",
+  "goulette_casino",
+  "khiareddine",
+  "a_roport",
+  "le_kram",
+  "carthage_salambo",
+  "carthage_byrsa",
+  "carthage_dermech",
+  "carthage_hannibal",
+  "carthage_pr_sidence",
+  "carthage_amilcar",
+  "sidi_bousaid",
+  "sidi_dhrif",
+  "la_corniche",
+  "marsa_plage"
+ ],
+ "direction_retour": [
+  "marsa_plage",
+  "la_corniche",
+  "sidi_dhrif",
+  "sidi_bousaid",
+  "carthage_amilcar",
+  "carthage_pr_sidence",
+  "carthage_hannibal",
+  "carthage_dermech",
+  "carthage_byrsa",
+  "carthage_salambo",
+  "le_kram",
+  "a_roport",
+  "khiareddine",
+  "goulette_casino",
+  "goulette_neuve",
+  "la_goulette",
+  "le_bac",
+  "tunis_marine_nord"
+ ],
+ "stations_count": 18,
+ "start": {
+  "id": "tunis_marine_nord",
+  "name": "TUNIS MARINE NORD"
+ },
+ "end": {
+  "id": "marsa_plage",
+  "name": "MARSA PLAGE"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "tunis_marine_nord",
+  "le_bac",
+  "la_goulette",
+  "goulette_neuve",
+  "goulette_casino",
+  "khiareddine",
+  "a_roport",
+  "le_kram",
+  "carthage_salambo",
+  "carthage_byrsa",
+  "carthage_dermech",
+  "carthage_hannibal",
+  "carthage_pr_sidence",
+  "carthage_amilcar",
+  "sidi_bousaid",
+  "sidi_dhrif",
+  "la_corniche",
+  "marsa_plage"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_marine_nord",
+   "name_en": "TUNIS MARINE NORD",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8006935,
+   "lon": 10.1917429,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_bac",
+   "name_en": "LE BAC",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8141776,
+   "lon": 10.2924504,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_goulette",
+   "name_en": "LA GOULETTE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8180512,
+   "lon": 10.3019396,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "goulette_neuve",
+   "name_en": "GOULETTE NEUVE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8198449,
+   "lon": 10.3056014,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "goulette_casino",
+   "name_en": "GOULETTE CASINO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8242005,
+   "lon": 10.3087735,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "khiareddine",
+   "name_en": "KHIAREDDINE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8287832,
+   "lon": 10.3115529,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "a_roport",
+   "name_en": "AÉROPORT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8319472,
+   "lon": 10.3138745,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_kram",
+   "name_en": "LE KRAM",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8361705,
+   "lon": 10.3166057,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_salambo",
+   "name_en": "CARTHAGE SALAMBO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8415416,
+   "lon": 10.3191045,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_byrsa",
+   "name_en": "CARTHAGE BYRSA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8461259,
+   "lon": 10.3218453,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_dermech",
+   "name_en": "CARTHAGE DERMECH",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8501222,
+   "lon": 10.3255807,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_hannibal",
+   "name_en": "CARTHAGE HANNIBAL",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8533913,
+   "lon": 10.3289164,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_pr_sidence",
+   "name_en": "CARTHAGE PRÉSIDENCE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8616489,
+   "lon": 10.3349427,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_amilcar",
+   "name_en": "CARTHAGE AMILCAR",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8665856,
+   "lon": 10.3374424,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bousaid",
+   "name_en": "SIDI BOUSAID",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8704537,
+   "lon": 10.3421262,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_dhrif",
+   "name_en": "SIDI DHRIF",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8757409,
+   "lon": 10.3396704,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_corniche",
+   "name_en": "LA CORNICHE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8829771,
+   "lon": 10.3334871,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "marsa_plage",
+   "name_en": "MARSA PLAGE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8830424,
+   "lon": 10.333452,
+   "mode": "metro",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

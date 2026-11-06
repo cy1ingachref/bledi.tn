@@ -1,0 +1,143 @@
+{
+ "line_id": "rail_47_e",
+ "number": "E",
+ "mode": "rail",
+ "operator": "Transtu",
+ "name": "Ligne E: Tunis Ville - Bougatfa-Sidi Hassine",
+ "direction_aller": [
+  "tunis_ville",
+  "sa_da_manoubia",
+  "ennajah",
+  "ettayaran_ezzouhour_1",
+  "ezzouhour_2",
+  "el_hra_ria",
+  "bougatfa_sidi_hassine"
+ ],
+ "direction_retour": [
+  "bougatfa_sidi_hassine",
+  "el_hra_ria",
+  "ezzouhour_2",
+  "ettayaran_ezzouhour_1",
+  "ennajah",
+  "sa_da_manoubia",
+  "tunis_ville"
+ ],
+ "stations_count": 7,
+ "start": {
+  "id": "tunis_ville",
+  "name": "Tunis Ville"
+ },
+ "end": {
+  "id": "bougatfa_sidi_hassine",
+  "name": "Bougatfa-Sidi Hassine"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "tunis_ville",
+  "sa_da_manoubia",
+  "ennajah",
+  "ettayaran_ezzouhour_1",
+  "ezzouhour_2",
+  "el_hra_ria",
+  "bougatfa_sidi_hassine"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_ville",
+   "name_en": "Tunis Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7947693,
+   "lon": 10.1803806,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sa_da_manoubia",
+   "name_en": "Saïda Manoubia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7870675,
+   "lon": 10.1655399,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "ennajah",
+   "name_en": "Ennajah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7933228,
+   "lon": 10.1548445,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "ettayaran_ezzouhour_1",
+   "name_en": "Ettayaran-Ezzouhour 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7921247,
+   "lon": 10.1383966,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "ezzouhour_2",
+   "name_en": "Ezzouhour 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7878362,
+   "lon": 10.1275725,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_hra_ria",
+   "name_en": "El Hraïria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7840847,
+   "lon": 10.1169321,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "bougatfa_sidi_hassine",
+   "name_en": "Bougatfa-Sidi Hassine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7802399,
+   "lon": 10.1020439,
+   "mode": "rail",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

@@ -1,0 +1,442 @@
+{
+ "line_id": "bus_792_17a",
+ "number": "17A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 17A: Médina Jedida - Port La Goulette",
+ "direction_aller": [
+  "m_dina_jedida",
+  "mosqu_e_medina_jedida",
+  "chouchet_rades",
+  "imprimerie_officielle",
+  "stade_municipale",
+  "lyc_e_technique_rades",
+  "mongil",
+  "centre_rades",
+  "ptt_rades",
+  "avenue_de_la_r_publique_1",
+  "avenue_de_la_r_publique_2",
+  "souk_rades",
+  "village_enfants",
+  "casino_rad_s",
+  "les_bungalows",
+  "rades_plage_1",
+  "rades_plage_2",
+  "lac_de_rades",
+  "les_salines",
+  "steg_rades",
+  "kochbati",
+  "nord_gaz",
+  "av_h_di_nouira",
+  "mc_33",
+  "port_la_goulette"
+ ],
+ "direction_retour": [
+  "port_la_goulette",
+  "mc_33",
+  "av_h_di_nouira",
+  "nord_gaz",
+  "kochbati",
+  "steg_rades",
+  "les_salines",
+  "lac_de_rades",
+  "rades_plage_2",
+  "rades_plage_1",
+  "les_bungalows",
+  "casino_rad_s",
+  "village_enfants",
+  "souk_rades",
+  "avenue_de_la_r_publique_2",
+  "avenue_de_la_r_publique_1",
+  "ptt_rades",
+  "centre_rades",
+  "mongil",
+  "lyc_e_technique_rades",
+  "stade_municipale",
+  "imprimerie_officielle",
+  "chouchet_rades",
+  "mosqu_e_medina_jedida",
+  "m_dina_jedida"
+ ],
+ "stations_count": 25,
+ "start": {
+  "id": "m_dina_jedida",
+  "name": "Médina Jedida"
+ },
+ "end": {
+  "id": "port_la_goulette",
+  "name": "Port La Goulette"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 3,
+ "teleport_legs": [
+  {
+   "from": "lac_de_rades",
+   "to": "les_salines",
+   "km": 141.9
+  },
+  {
+   "from": "les_salines",
+   "to": "steg_rades",
+   "km": 142.3
+  }
+ ],
+ "original_stations": [
+  "m_dina_jedida",
+  "mosqu_e_medina_jedida",
+  "chouchet_rades",
+  "imprimerie_officielle",
+  "stade_municipale",
+  "lyc_e_technique_rades",
+  "mongil",
+  "centre_rades",
+  "ptt_rades",
+  "avenue_de_la_r_publique_1",
+  "avenue_de_la_r_publique_2",
+  "souk_rades",
+  "village_enfants",
+  "casino_rad_s",
+  "les_bungalows",
+  "rades_plage_1",
+  "rades_plage_2",
+  "lac_de_rades",
+  "les_salines",
+  "steg_rades",
+  "kochbati",
+  "nord_gaz",
+  "av_h_di_nouira",
+  "mc_33",
+  "port_la_goulette"
+ ],
+ "stations_detail": [
+  {
+   "id": "m_dina_jedida",
+   "name_en": "Médina Jedida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.747713,
+   "lon": 10.2514438,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_medina_jedida",
+   "name_en": "Mosquée Medina Jedida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.751312,
+   "lon": 10.2511658,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chouchet_rades",
+   "name_en": "Chouchet Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7561763,
+   "lon": 10.2475395,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "imprimerie_officielle",
+   "name_en": "Imprimerie Officielle",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.760779,
+   "lon": 10.2500705,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_municipale",
+   "name_en": "Stade Municipale",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7650639,
+   "lon": 10.2566804,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_technique_rades",
+   "name_en": "Lycée Technique Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.766439,
+   "lon": 10.2607145,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mongil",
+   "name_en": "Mongil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.767318,
+   "lon": 10.2661223,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_rades",
+   "name_en": "Centre Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7670773,
+   "lon": 10.2697916,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ptt_rades",
+   "name_en": "Ptt Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7678829,
+   "lon": 10.273117,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "avenue_de_la_r_publique_1",
+   "name_en": "Avenue De La République 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7683118,
+   "lon": 10.275859,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "avenue_de_la_r_publique_2",
+   "name_en": "Avenue De La République 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7677311,
+   "lon": 10.2771474,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "souk_rades",
+   "name_en": "Souk Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7716129,
+   "lon": 10.2861204,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "village_enfants",
+   "name_en": "Village Enfants",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7738164,
+   "lon": 10.2897099,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "casino_rad_s",
+   "name_en": "Casino Radés",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7673418,
+   "lon": 10.2846571,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_bungalows",
+   "name_en": "Les Bungalows",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7761355,
+   "lon": 10.2907557,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rades_plage_1",
+   "name_en": "Rades Plage 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7771152,
+   "lon": 10.2897687,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rades_plage_2",
+   "name_en": "Rades Plage 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7786104,
+   "lon": 10.2882559,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lac_de_rades",
+   "name_en": "Lac De Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7861046,
+   "lon": 10.2828558,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_salines",
+   "name_en": "Les Salines",
+   "name_ar": "الملاحة",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_177m"
+   ],
+   "lat": 36.0777744,
+   "lon": 8.9640175,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_rades",
+   "name_en": "Steg Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7962903,
+   "lon": 10.2797482,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kochbati",
+   "name_en": "Kochbati",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7999166,
+   "lon": 10.2829875,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nord_gaz",
+   "name_en": "Nord Gaz",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8025282,
+   "lon": 10.2861847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_h_di_nouira",
+   "name_en": "Av Hédi Nouira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8105022,
+   "lon": 10.2683003,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mc_33",
+   "name_en": "Mc 33",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.816903,
+   "lon": 10.2980069,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "port_la_goulette",
+   "name_en": "Port La Goulette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8134042,
+   "lon": 10.3027502,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

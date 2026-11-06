@@ -1,0 +1,687 @@
+{
+ "line_id": "bus_791_16d",
+ "number": "16D",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 16D: Ali Balahouan - Terminus Sidi Othman",
+ "direction_aller": [
+  "ali_balahouan",
+  "sidi_aloui",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "chebbi",
+  "bortal",
+  "champ_de_course_ksar_said",
+  "ineps",
+  "boudreya",
+  "gaaloul",
+  "inoplast",
+  "section_manouba",
+  "caserne_oued_elil_1",
+  "caserne_oued_elil_2",
+  "cite_militaire",
+  "moezeya",
+  "garde_national_oued_ellil",
+  "mosqu_e_oued_ellil",
+  "choco_tom",
+  "cite_el_bostane",
+  "ecole_primaire",
+  "bejawa_2",
+  "pompage",
+  "erriadh_manouba",
+  "zone_f",
+  "saida",
+  "oued_chafrou",
+  "stil",
+  "sidi_taleb_16d",
+  "stade_ejdaida",
+  "cit_rtt",
+  "ejedayda_gare",
+  "brimo",
+  "lyc_e_chaouat",
+  "route_chaouat_1",
+  "chaouat",
+  "kiosque_agil_jallou",
+  "jallou",
+  "caf_jallou_terminus",
+  "terminus_sidi_othman"
+ ],
+ "direction_retour": [
+  "terminus_sidi_othman",
+  "caf_jallou_terminus",
+  "jallou",
+  "kiosque_agil_jallou",
+  "chaouat",
+  "route_chaouat_1",
+  "lyc_e_chaouat",
+  "brimo",
+  "ejedayda_gare",
+  "cit_rtt",
+  "stade_ejdaida",
+  "sidi_taleb_16d",
+  "stil",
+  "oued_chafrou",
+  "saida",
+  "zone_f",
+  "erriadh_manouba",
+  "pompage",
+  "bejawa_2",
+  "ecole_primaire",
+  "cite_el_bostane",
+  "choco_tom",
+  "mosqu_e_oued_ellil",
+  "garde_national_oued_ellil",
+  "moezeya",
+  "cite_militaire",
+  "caserne_oued_elil_2",
+  "caserne_oued_elil_1",
+  "section_manouba",
+  "inoplast",
+  "gaaloul",
+  "boudreya",
+  "ineps",
+  "champ_de_course_ksar_said",
+  "bortal",
+  "chebbi",
+  "20_mars",
+  "bouchoucha",
+  "immeuble_chefia",
+  "sidi_aloui",
+  "ali_balahouan"
+ ],
+ "stations_count": 41,
+ "start": {
+  "id": "ali_balahouan",
+  "name": "Ali Balahouan"
+ },
+ "end": {
+  "id": "terminus_sidi_othman",
+  "name": "Terminus Sidi Othman"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "ali_balahouan",
+  "sidi_aloui",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "chebbi",
+  "bortal",
+  "champ_de_course_ksar_said",
+  "ineps",
+  "boudreya",
+  "gaaloul",
+  "inoplast",
+  "section_manouba",
+  "caserne_oued_elil_1",
+  "caserne_oued_elil_2",
+  "cite_militaire",
+  "moezeya",
+  "garde_national_oued_ellil",
+  "mosqu_e_oued_ellil",
+  "choco_tom",
+  "cite_el_bostane",
+  "ecole_primaire",
+  "bejawa_2",
+  "pompage",
+  "erriadh_manouba",
+  "zone_f",
+  "saida",
+  "oued_chafrou",
+  "stil",
+  "sidi_taleb_16d",
+  "stade_ejdaida",
+  "cit_rtt",
+  "ejedayda_gare",
+  "brimo",
+  "lyc_e_chaouat",
+  "route_chaouat_1",
+  "chaouat",
+  "kiosque_agil_jallou",
+  "jallou",
+  "caf_jallou_terminus",
+  "terminus_sidi_othman"
+ ],
+ "stations_detail": [
+  {
+   "id": "ali_balahouan",
+   "name_en": "Ali Balahouan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8065135,
+   "lon": 10.1742408,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_aloui",
+   "name_en": "Sidi Aloui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8053372,
+   "lon": 10.1688404,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_chefia",
+   "name_en": "Immeuble Chefia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8098234,
+   "lon": 10.152579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchoucha",
+   "name_en": "BOUCHOUCHA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80953,
+   "lon": 10.15026,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "chebbi",
+   "name_en": "Chebbi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8096013,
+   "lon": 10.1313362,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bortal",
+   "name_en": "Bortal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8120871,
+   "lon": 10.1174078,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "champ_de_course_ksar_said",
+   "name_en": "Champ De Course Ksar Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8130249,
+   "lon": 10.1133431,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ineps",
+   "name_en": "INEPS",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8164772,
+   "lon": 10.1016119,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boudreya",
+   "name_en": "Boudreya",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8184959,
+   "lon": 10.0879069,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gaaloul",
+   "name_en": "Gaaloul",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.819625,
+   "lon": 10.0852397,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "inoplast",
+   "name_en": "INOPLAST",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8217034,
+   "lon": 10.0775579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "section_manouba",
+   "name_en": "Section Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8227111,
+   "lon": 10.0738601,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caserne_oued_elil_1",
+   "name_en": "Caserne Oued Elil 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8235585,
+   "lon": 10.071142,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caserne_oued_elil_2",
+   "name_en": "Caserne Oued Elil 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8259859,
+   "lon": 10.0644584,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_militaire",
+   "name_en": "Cite Militaire",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.82815,
+   "lon": 10.0572057,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "moezeya",
+   "name_en": "Moezeya",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8257313,
+   "lon": 10.0649086,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_oued_ellil",
+   "name_en": "Garde National Oued Ellil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8318062,
+   "lon": 10.0415013,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_oued_ellil",
+   "name_en": "Mosquée Oued Ellil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8329836,
+   "lon": 10.0380811,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "choco_tom",
+   "name_en": "Choco Tom",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8336663,
+   "lon": 10.0342831,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_el_bostane",
+   "name_en": "Cite El Bostane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356725,
+   "lon": 10.0198694,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire",
+   "name_en": "Ecole Primaire",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8366171,
+   "lon": 10.0126596,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bejawa_2",
+   "name_en": "Bejawa 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8368404,
+   "lon": 10.0079175,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pompage",
+   "name_en": "Pompage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356135,
+   "lon": 9.9975573,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "erriadh_manouba",
+   "name_en": "Erriadh Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8341505,
+   "lon": 9.9851857,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zone_f",
+   "name_en": "Zone F",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8333755,
+   "lon": 9.9786226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "saida",
+   "name_en": "Saida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8322184,
+   "lon": 9.9682448,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_chafrou",
+   "name_en": "Oued Chafrou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8336009,
+   "lon": 9.950274,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stil",
+   "name_en": "Stil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8339484,
+   "lon": 9.9456734,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_taleb_16d",
+   "name_en": "Sidi Taleb 16D",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8360449,
+   "lon": 9.9413553,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_ejdaida",
+   "name_en": "Stade Ejdaida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8399507,
+   "lon": 9.9349768,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_rtt",
+   "name_en": "Cité RTT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8429957,
+   "lon": 9.9313561,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ejedayda_gare",
+   "name_en": "Ejedayda Gare",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8490133,
+   "lon": 9.9354897,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "brimo",
+   "name_en": "Brimo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8520735,
+   "lon": 9.9360688,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_chaouat",
+   "name_en": "Lycée Chaouat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8666038,
+   "lon": 9.9394778,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "route_chaouat_1",
+   "name_en": "Route Chaouat 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8787,
+   "lon": 9.9421007,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chaouat",
+   "name_en": "Chaouat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8894814,
+   "lon": 9.944471,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_agil_jallou",
+   "name_en": "Kiosque Agil Jallou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8931526,
+   "lon": 9.9438714,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jallou",
+   "name_en": "Jallou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9011272,
+   "lon": 9.9451963,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_jallou_terminus",
+   "name_en": "Café Jallou Terminus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9046447,
+   "lon": 9.9445525,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_sidi_othman",
+   "name_en": "Terminus Sidi Othman",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9666843,
+   "lon": 9.9201817,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

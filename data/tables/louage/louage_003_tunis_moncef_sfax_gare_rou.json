@@ -1,0 +1,69 @@
+{
+ "line_id": "louage_003_tunis_moncef_sfax_gare_rou",
+ "number": "L3",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage: Tunis - Moncef Bey → Sfax - Gare Routière",
+ "direction_aller": [
+  "louage_tunis_moncef_bey",
+  "louage_sfax_gare_routière"
+ ],
+ "direction_retour": [
+  "louage_sfax_gare_routière",
+  "louage_tunis_moncef_bey"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_tunis_moncef_bey",
+  "name": "Tunis - Moncef Bey"
+ },
+ "end": {
+  "id": "louage_sfax_gare_routière",
+  "name": "Sfax - Gare Routière"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "louage_tunis_moncef_bey",
+   "to": "louage_sfax_gare_routière",
+   "km": 233.8
+  }
+ ],
+ "original_stations": [
+  "louage_tunis_moncef_bey",
+  "louage_sfax_gare_routière"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_tunis_moncef_bey",
+   "name_en": "Tunis - Moncef Bey",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_233m"
+   ],
+   "lat": 36.7905,
+   "lon": 10.1915,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "louage_sfax_gare_routière",
+   "name_en": "Sfax - Gare Routière",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_219m"
+   ],
+   "lat": 34.7394,
+   "lon": 10.7604,
+   "mode": "louage",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv"
+}

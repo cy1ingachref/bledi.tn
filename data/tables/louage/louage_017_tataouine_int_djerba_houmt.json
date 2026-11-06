@@ -1,0 +1,69 @@
+{
+ "line_id": "louage_017_tataouine_int_djerba_houmt",
+ "number": "L17",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage: Tataouine - Intercity Hub → Djerba - Houmt Souk Station",
+ "direction_aller": [
+  "louage_tataouine_intercity_hub",
+  "louage_djerba_houmt_souk_station"
+ ],
+ "direction_retour": [
+  "louage_djerba_houmt_souk_station",
+  "louage_tataouine_intercity_hub"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_tataouine_intercity_hub",
+  "name": "Tataouine - Intercity Hub"
+ },
+ "end": {
+  "id": "louage_djerba_houmt_souk_station",
+  "name": "Djerba - Houmt Souk Station"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "louage_tataouine_intercity_hub",
+   "to": "louage_djerba_houmt_souk_station",
+   "km": 111.3
+  }
+ ],
+ "original_stations": [
+  "louage_tataouine_intercity_hub",
+  "louage_djerba_houmt_souk_station"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_tataouine_intercity_hub",
+   "name_en": "Tataouine - Intercity Hub",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "no_source"
+   ],
+   "lat": 32.935,
+   "lon": 10.4485,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "louage_djerba_houmt_souk_station",
+   "name_en": "Djerba - Houmt Souk Station",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_82m"
+   ],
+   "lat": 33.8765,
+   "lon": 10.8565,
+   "mode": "louage",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv"
+}

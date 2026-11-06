@@ -1,0 +1,495 @@
+{
+ "line_id": "bus_751_75",
+ "number": "75",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 75: Station Barcelone - Terminus 75 85",
+ "direction_aller": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud",
+  "protection_civile",
+  "sidi_fathallah1",
+  "sidi_fathallah2",
+  "soned",
+  "kiosque_mobil_ben_arous",
+  "centre_ben_arous",
+  "bata",
+  "croisement_yasminet_route_mourneg",
+  "yasminet_centre",
+  "jardin_enfants_amen",
+  "caf_yasminet",
+  "sidi_mosbah",
+  "hopital_r_gional_yesminet",
+  "pont_oued_miliyen",
+  "frigo_hadj_saleh",
+  "boujerdga_75_26a_37",
+  "pont_autoroute_sud",
+  "huilerie_bayrem",
+  "el_khelij",
+  "el_bahri",
+  "gan",
+  "place_14_janvier_boumhel",
+  "av_de_environnement",
+  "terminus_75_85"
+ ],
+ "direction_retour": [
+  "terminus_75_85",
+  "av_de_environnement",
+  "place_14_janvier_boumhel",
+  "gan",
+  "el_bahri",
+  "el_khelij",
+  "huilerie_bayrem",
+  "pont_autoroute_sud",
+  "boujerdga_75_26a_37",
+  "frigo_hadj_saleh",
+  "pont_oued_miliyen",
+  "hopital_r_gional_yesminet",
+  "sidi_mosbah",
+  "caf_yasminet",
+  "jardin_enfants_amen",
+  "yasminet_centre",
+  "croisement_yasminet_route_mourneg",
+  "bata",
+  "centre_ben_arous",
+  "kiosque_mobil_ben_arous",
+  "soned",
+  "sidi_fathallah2",
+  "sidi_fathallah1",
+  "protection_civile",
+  "djebel_jelloud",
+  "el_afrane",
+  "centre_de_coordination_ouardia",
+  "dubosville",
+  "station_barcelone"
+ ],
+ "stations_count": 29,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "terminus_75_85",
+  "name": "Terminus 75 85"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud",
+  "protection_civile",
+  "sidi_fathallah1",
+  "sidi_fathallah2",
+  "soned",
+  "kiosque_mobil_ben_arous",
+  "centre_ben_arous",
+  "bata",
+  "croisement_yasminet_route_mourneg",
+  "yasminet_centre",
+  "jardin_enfants_amen",
+  "caf_yasminet",
+  "sidi_mosbah",
+  "hopital_r_gional_yesminet",
+  "pont_oued_miliyen",
+  "frigo_hadj_saleh",
+  "boujerdga_75_26a_37",
+  "pont_autoroute_sud",
+  "huilerie_bayrem",
+  "el_khelij",
+  "el_bahri",
+  "gan",
+  "place_14_janvier_boumhel",
+  "av_de_environnement",
+  "terminus_75_85"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dubosville",
+   "name_en": "Dubosville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839884,
+   "lon": 10.1917495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_coordination_ouardia",
+   "name_en": "Centre De Coordination Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7806046,
+   "lon": 10.1956231,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_afrane",
+   "name_en": "El Afrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7796674,
+   "lon": 10.1966209,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebel_jelloud",
+   "name_en": "Djebel Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7731781,
+   "lon": 10.2025642,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "protection_civile",
+   "name_en": "Protection Civile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7719233,
+   "lon": 10.2037229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_fathallah1",
+   "name_en": "Sidi Fathallah1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7690357,
+   "lon": 10.2074351,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_fathallah2",
+   "name_en": "Sidi Fathallah2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7667667,
+   "lon": 10.2092375,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soned",
+   "name_en": "Soned",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7652949,
+   "lon": 10.210255,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_mobil_ben_arous",
+   "name_en": "Kiosque Mobil Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7570296,
+   "lon": 10.2187867,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_ben_arous",
+   "name_en": "Centre Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75346,
+   "lon": 10.2224984,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bata",
+   "name_en": "Bata",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7494197,
+   "lon": 10.2274336,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_yasminet_route_mourneg",
+   "name_en": "Croisement Yasminet Route Mourneg",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7434854,
+   "lon": 10.2344922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "yasminet_centre",
+   "name_en": "Yasminet Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7407195,
+   "lon": 10.2380766,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants_amen",
+   "name_en": "Jardin Enfants Amen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7386465,
+   "lon": 10.2401856,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_yasminet",
+   "name_en": "Café Yasminet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7380861,
+   "lon": 10.2408866,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_mosbah",
+   "name_en": "Sidi Mosbah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7350964,
+   "lon": 10.2437415,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_r_gional_yesminet",
+   "name_en": "Hopital Régional Yesminet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7322446,
+   "lon": 10.2468533,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_oued_miliyen",
+   "name_en": "Pont Oued Miliyen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7236021,
+   "lon": 10.2558334,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "frigo_hadj_saleh",
+   "name_en": "Frigo Hadj Saleh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7184993,
+   "lon": 10.2611605,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boujerdga_75_26a_37",
+   "name_en": "Boujerdga 75 26A 37",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7148915,
+   "lon": 10.2646742,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_autoroute_sud",
+   "name_en": "Pont Autoroute Sud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7160428,
+   "lon": 10.2750594,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "huilerie_bayrem",
+   "name_en": "Huilerie Bayrem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7157309,
+   "lon": 10.2821722,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_khelij",
+   "name_en": "El Khelij",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7172617,
+   "lon": 10.2886738,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_bahri",
+   "name_en": "El Bahri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7185251,
+   "lon": 10.2920488,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gan",
+   "name_en": "Gan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7210666,
+   "lon": 10.2965495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_14_janvier_boumhel",
+   "name_en": "Place 14 Janvier (Boumhel)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7243385,
+   "lon": 10.300766,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_de_environnement",
+   "name_en": "Av De Environnement",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7264523,
+   "lon": 10.3038721,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_75_85",
+   "name_en": "Terminus 75 85",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7251325,
+   "lon": 10.3061252,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

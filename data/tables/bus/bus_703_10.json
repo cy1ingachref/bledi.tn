@@ -1,0 +1,431 @@
+{
+ "line_id": "bus_703_10",
+ "number": "10",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 10: Avenue Carthage - Cité Ezitouna",
+ "direction_aller": [
+  "avenue_carthage",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "av_de_france",
+  "sntri",
+  "jardin_enfants_ben_arous",
+  "ben_yedder_ben_arous",
+  "centre_ben_arous",
+  "municipalit_ben_arous",
+  "centre_des_handicap_s",
+  "cellulose_silos",
+  "institut_ennour",
+  "coll_ge_mourouj_3",
+  "imprimerie_bouslama",
+  "depot_bir_el_kassaa",
+  "mourouj_4_l_3710_54",
+  "croisement_march_de_gros",
+  "march_de_gros",
+  "cit_ezitouna"
+ ],
+ "direction_retour": [
+  "cit_ezitouna",
+  "march_de_gros",
+  "croisement_march_de_gros",
+  "mourouj_4_l_3710_54",
+  "depot_bir_el_kassaa",
+  "imprimerie_bouslama",
+  "coll_ge_mourouj_3",
+  "institut_ennour",
+  "cellulose_silos",
+  "centre_des_handicap_s",
+  "municipalit_ben_arous",
+  "centre_ben_arous",
+  "ben_yedder_ben_arous",
+  "jardin_enfants_ben_arous",
+  "sntri",
+  "av_de_france",
+  "cnss",
+  "sofomeca",
+  "stoa",
+  "gare_djebel_jelloud",
+  "djebel_jelloud_gp1",
+  "el_afrane",
+  "centre_de_coordination_ouardia",
+  "dubosville",
+  "avenue_carthage"
+ ],
+ "stations_count": 25,
+ "start": {
+  "id": "avenue_carthage",
+  "name": "Avenue Carthage"
+ },
+ "end": {
+  "id": "cit_ezitouna",
+  "name": "Cité Ezitouna"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "avenue_carthage",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "av_de_france",
+  "sntri",
+  "jardin_enfants_ben_arous",
+  "ben_yedder_ben_arous",
+  "centre_ben_arous",
+  "municipalit_ben_arous",
+  "centre_des_handicap_s",
+  "cellulose_silos",
+  "institut_ennour",
+  "coll_ge_mourouj_3",
+  "imprimerie_bouslama",
+  "depot_bir_el_kassaa",
+  "mourouj_4_l_3710_54",
+  "croisement_march_de_gros",
+  "march_de_gros",
+  "cit_ezitouna"
+ ],
+ "stations_detail": [
+  {
+   "id": "avenue_carthage",
+   "name_en": "Avenue Carthage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7919242,
+   "lon": 10.1822642,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dubosville",
+   "name_en": "Dubosville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839884,
+   "lon": 10.1917495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_coordination_ouardia",
+   "name_en": "Centre De Coordination Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7806046,
+   "lon": 10.1956231,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_afrane",
+   "name_en": "El Afrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7796674,
+   "lon": 10.1966209,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebel_jelloud_gp1",
+   "name_en": "Djebel Jelloud Gp1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7732433,
+   "lon": 10.2045236,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gare_djebel_jelloud",
+   "name_en": "Gare Djebel Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7715383,
+   "lon": 10.208723,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stoa",
+   "name_en": "Stoa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7686077,
+   "lon": 10.2157355,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sofomeca",
+   "name_en": "SOFOMECA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7658672,
+   "lon": 10.2217893,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cnss",
+   "name_en": "Cnss",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.765065,
+   "lon": 10.2233996,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_de_france",
+   "name_en": "Av De France",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7631053,
+   "lon": 10.2259316,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sntri",
+   "name_en": "SNTRI",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7618359,
+   "lon": 10.2248863,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants_ben_arous",
+   "name_en": "Jardin Enfants Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7587492,
+   "lon": 10.2224881,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_yedder_ben_arous",
+   "name_en": "Ben Yedder Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7567029,
+   "lon": 10.220514,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_ben_arous",
+   "name_en": "Centre Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75346,
+   "lon": 10.2224984,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipalit_ben_arous",
+   "name_en": "Municipalité Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7483193,
+   "lon": 10.2253308,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_des_handicap_s",
+   "name_en": "Centre Des Handicapés",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7470814,
+   "lon": 10.2256741,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cellulose_silos",
+   "name_en": "Cellulose (Silos)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.745409,
+   "lon": 10.2258662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "institut_ennour",
+   "name_en": "Institut Ennour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.739619,
+   "lon": 10.2209534,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "coll_ge_mourouj_3",
+   "name_en": "Collége Mourouj 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7341334,
+   "lon": 10.2169623,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "imprimerie_bouslama",
+   "name_en": "Imprimerie Bouslama",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7299672,
+   "lon": 10.2187423,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "depot_bir_el_kassaa",
+   "name_en": "Depot Bir El Kassaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7254497,
+   "lon": 10.2219834,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mourouj_4_l_3710_54",
+   "name_en": "Mourouj 4 L(3710-54)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7213547,
+   "lon": 10.2208308,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_march_de_gros",
+   "name_en": "Croisement Marché De Gros",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7227804,
+   "lon": 10.2240638,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "march_de_gros",
+   "name_en": "Marché De Gros",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7243262,
+   "lon": 10.228484,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ezitouna",
+   "name_en": "Cité Ezitouna",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7204048,
+   "lon": 10.234578,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

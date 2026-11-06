@@ -1,0 +1,874 @@
+{
+ "line_id": "train_24_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Tunis Ville - Sakiet Ezzit",
+ "direction_aller": [
+  "tunis_ville",
+  "djebal_jelloud",
+  "rades",
+  "hammam_lif",
+  "grombalia",
+  "bou_arkoub",
+  "bir_bourekba",
+  "bouficha",
+  "parc_friguia",
+  "enfida",
+  "menzel_gare",
+  "sidi_bou_ali",
+  "kalaa_kebira",
+  "kalaa_sghira",
+  "sousse_marchandise",
+  "msaken",
+  "kerker",
+  "el_jem",
+  "la_hencha",
+  "dokhane",
+  "sidi_salah",
+  "sfax",
+  "sidi_abid",
+  "gargour",
+  "mahares",
+  "chaal",
+  "ghraiba",
+  "founi",
+  "mezzouna",
+  "maknassy",
+  "menzel_bouzaiane",
+  "sened",
+  "zannouch",
+  "oued_el_ksab_23_24",
+  "gafsa",
+  "aguila",
+  "cheria",
+  "mg_28_29",
+  "metlaoui",
+  "degueche",
+  "tozeur",
+  "borj_cedria",
+  "sidi_bou_goubrine",
+  "sakiet_ezzit"
+ ],
+ "direction_retour": [
+  "sakiet_ezzit",
+  "sidi_bou_goubrine",
+  "borj_cedria",
+  "tozeur",
+  "degueche",
+  "metlaoui",
+  "mg_28_29",
+  "cheria",
+  "aguila",
+  "gafsa",
+  "oued_el_ksab_23_24",
+  "zannouch",
+  "sened",
+  "menzel_bouzaiane",
+  "maknassy",
+  "mezzouna",
+  "founi",
+  "ghraiba",
+  "chaal",
+  "mahares",
+  "gargour",
+  "sidi_abid",
+  "sfax",
+  "sidi_salah",
+  "dokhane",
+  "la_hencha",
+  "el_jem",
+  "kerker",
+  "msaken",
+  "sousse_marchandise",
+  "kalaa_sghira",
+  "kalaa_kebira",
+  "sidi_bou_ali",
+  "menzel_gare",
+  "enfida",
+  "parc_friguia",
+  "bouficha",
+  "bir_bourekba",
+  "bou_arkoub",
+  "grombalia",
+  "hammam_lif",
+  "rades",
+  "djebal_jelloud",
+  "tunis_ville"
+ ],
+ "stations_count": 44,
+ "start": {
+  "id": "tunis_ville",
+  "name": "Tunis Ville"
+ },
+ "end": {
+  "id": "sakiet_ezzit",
+  "name": "Sakiet Ezzit"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [
+  {
+   "from": "hammam_lif",
+   "to": "grombalia",
+   "km": 20.8
+  },
+  {
+   "from": "msaken",
+   "to": "kerker",
+   "km": 29.5
+  },
+  {
+   "from": "kerker",
+   "to": "el_jem",
+   "km": 20.1
+  },
+  {
+   "from": "mezzouna",
+   "to": "maknassy",
+   "km": 21.9
+  },
+  {
+   "from": "metlaoui",
+   "to": "degueche",
+   "km": 41.1
+  },
+  {
+   "from": "tozeur",
+   "to": "borj_cedria",
+   "km": 370.7
+  },
+  {
+   "from": "borj_cedria",
+   "to": "sidi_bou_goubrine",
+   "km": 125.1
+  },
+  {
+   "from": "sidi_bou_goubrine",
+   "to": "sakiet_ezzit",
+   "km": 89.0
+  }
+ ],
+ "original_stations": [
+  "tunis_ville",
+  "djebal_jelloud",
+  "rades",
+  "hammam_lif",
+  "grombalia",
+  "bou_arkoub",
+  "bir_bourekba",
+  "bouficha",
+  "parc_friguia",
+  "enfida",
+  "menzel_gare",
+  "sidi_bou_ali",
+  "kalaa_kebira",
+  "kalaa_sghira",
+  "sousse_marchandise",
+  "msaken",
+  "kerker",
+  "el_jem",
+  "la_hencha",
+  "dokhane",
+  "sidi_salah",
+  "sfax",
+  "sidi_abid",
+  "gargour",
+  "mahares",
+  "chaal",
+  "ghraiba",
+  "founi",
+  "mezzouna",
+  "maknassy",
+  "menzel_bouzaiane",
+  "sened",
+  "zannouch",
+  "oued_el_ksab_23_24",
+  "gafsa",
+  "aguila",
+  "cheria",
+  "mg_28_29",
+  "metlaoui",
+  "degueche",
+  "tozeur",
+  "borj_cedria",
+  "sidi_bou_goubrine",
+  "sakiet_ezzit"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_ville",
+   "name_en": "Tunis Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7947693,
+   "lon": 10.1803806,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebal_jelloud",
+   "name_en": "Djebal Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7727251,
+   "lon": 10.2082258,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "rades",
+   "name_en": "Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7683604,
+   "lon": 10.269735,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_lif",
+   "name_en": "Hammam Lif",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7294393,
+   "lon": 10.3342066,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "grombalia",
+   "name_en": "Grombalia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5963444,
+   "lon": 10.4977219,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bou_arkoub",
+   "name_en": "Bou Arkoub",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5310753,
+   "lon": 10.5514179,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_bourekba",
+   "name_en": "Bir Bourekba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4306822,
+   "lon": 10.5737451,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouficha",
+   "name_en": "Bouficha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.3033024,
+   "lon": 10.451222,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "parc_friguia",
+   "name_en": "Parc Friguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.2043374,
+   "lon": 10.4193379,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "enfida",
+   "name_en": "Enfida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.1307311,
+   "lon": 10.3836398,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzel_gare",
+   "name_en": "Menzel Gare",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.0105291,
+   "lon": 10.377545,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bou_ali",
+   "name_en": "Sidi Bou Ali",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.9531545,
+   "lon": 10.4513333,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "kalaa_kebira",
+   "name_en": "Kalaa Kebira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.867843,
+   "lon": 10.5534154,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "kalaa_sghira",
+   "name_en": "Kalaa Sghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.8220139,
+   "lon": 10.5711182,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_marchandise",
+   "name_en": "Sousse Marchandise",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7779299,
+   "lon": 10.5772365,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "msaken",
+   "name_en": "MSaken",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7288961,
+   "lon": 10.6000327,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "kerker",
+   "name_en": "Kerker",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.4682761,
+   "lon": 10.6597043,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_jem",
+   "name_en": "El Jem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.2925658,
+   "lon": 10.7095802,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_hencha",
+   "name_en": "La Hencha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.1374614,
+   "lon": 10.7283988,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "dokhane",
+   "name_en": "Dokhane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.9909425,
+   "lon": 10.7608859,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_salah",
+   "name_en": "Sidi Salah",
+   "name_ar": "سيدي صالح",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_43m"
+   ],
+   "lat": 34.8580193,
+   "lon": 10.7673434,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sfax",
+   "name_en": "Sfax",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.7351507,
+   "lon": 10.7671236,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_abid",
+   "name_en": "Sidi Abid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.6954477,
+   "lon": 10.7023059,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "gargour",
+   "name_en": "Gargour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.572812,
+   "lon": 10.5778821,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mahares",
+   "name_en": "Mahares",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.5262626,
+   "lon": 10.4986932,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "chaal",
+   "name_en": "Chaal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.5164299,
+   "lon": 10.3442373,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "ghraiba",
+   "name_en": "Ghraiba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.499659,
+   "lon": 10.2137336,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "founi",
+   "name_en": "Founi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.5162228,
+   "lon": 10.0431376,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mezzouna",
+   "name_en": "Mezzouna",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.5739692,
+   "lon": 9.8418336,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "maknassy",
+   "name_en": "Maknassy",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.6066931,
+   "lon": 9.6064385,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzel_bouzaiane",
+   "name_en": "Menzel Bouzaiane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.5759482,
+   "lon": 9.4580005,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sened",
+   "name_en": "Sened",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.5380285,
+   "lon": 9.2535122,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "zannouch",
+   "name_en": "Zannouch",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.4686276,
+   "lon": 9.0522272,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_el_ksab_23_24",
+   "name_en": "Oued El Ksab (23/24)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.4505774,
+   "lon": 8.9566927,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "gafsa",
+   "name_en": "Gafsa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3947091,
+   "lon": 8.8038973,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "aguila",
+   "name_en": "Aguila",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3796334,
+   "lon": 8.7684013,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "cheria",
+   "name_en": "Cheria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3407875,
+   "lon": 8.6060841,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mg_28_29",
+   "name_en": "Mg 28/29",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3203719,
+   "lon": 8.5094551,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "metlaoui",
+   "name_en": "Metlaoui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3157766,
+   "lon": 8.4164253,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "degueche",
+   "name_en": "Degueche",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 33.9868565,
+   "lon": 8.2132722,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "tozeur",
+   "name_en": "Tozeur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 33.9265547,
+   "lon": 8.1357808,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_cedria",
+   "name_en": "Borj Cedria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7034822,
+   "lon": 10.3974291,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bou_goubrine",
+   "name_en": "Sidi Bou Goubrine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.5938773,
+   "lon": 10.6287182,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sakiet_ezzit",
+   "name_en": "Sakiet Ezzit",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.800716,
+   "lon": 10.7612703,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": {
+  "direction_aller_corrected": [
+   "tunis_ville",
+   "djebal_jelloud",
+   "rades",
+   "hammam_lif",
+   "borj_cedria",
+   "grombalia",
+   "bou_arkoub",
+   "bir_bourekba",
+   "bouficha",
+   "parc_friguia",
+   "enfida",
+   "menzel_gare",
+   "sidi_bou_ali",
+   "kalaa_kebira",
+   "kalaa_sghira",
+   "sousse_marchandise",
+   "msaken",
+   "sidi_bou_goubrine",
+   "kerker",
+   "el_jem",
+   "la_hencha",
+   "dokhane",
+   "sidi_salah",
+   "sakiet_ezzit",
+   "sfax",
+   "sidi_abid",
+   "gargour",
+   "mahares",
+   "chaal",
+   "ghraiba",
+   "founi",
+   "mezzouna",
+   "maknassy",
+   "menzel_bouzaiane",
+   "sened",
+   "zannouch",
+   "oued_el_ksab_23_24",
+   "gafsa",
+   "aguila",
+   "cheria",
+   "mg_28_29",
+   "metlaoui",
+   "degueche",
+   "tozeur"
+  ],
+  "direction_retour_corrected": [
+   "tozeur",
+   "degueche",
+   "metlaoui",
+   "mg_28_29",
+   "cheria",
+   "aguila",
+   "gafsa",
+   "oued_el_ksab_23_24",
+   "zannouch",
+   "sened",
+   "menzel_bouzaiane",
+   "maknassy",
+   "mezzouna",
+   "founi",
+   "ghraiba",
+   "chaal",
+   "mahares",
+   "gargour",
+   "sidi_abid",
+   "sfax",
+   "sakiet_ezzit",
+   "sidi_salah",
+   "dokhane",
+   "la_hencha",
+   "el_jem",
+   "kerker",
+   "sidi_bou_goubrine",
+   "msaken",
+   "sousse_marchandise",
+   "kalaa_sghira",
+   "kalaa_kebira",
+   "sidi_bou_ali",
+   "menzel_gare",
+   "enfida",
+   "parc_friguia",
+   "bouficha",
+   "bir_bourekba",
+   "bou_arkoub",
+   "grombalia",
+   "borj_cedria",
+   "hammam_lif",
+   "rades",
+   "djebal_jelloud",
+   "tunis_ville"
+  ],
+  "original_path_m": 1126452.9,
+  "corrected_path_m": 542100.0,
+  "original_reversals": 1,
+  "corrected_reversals": 0,
+  "note": "greedy nearest-neighbour from origin; original preserved"
+ },
+ "source": "tunismapper"
+}

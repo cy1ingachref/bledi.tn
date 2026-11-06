@@ -1,0 +1,69 @@
+{
+ "line_id": "louage_002_tunis_moncef_sousse_al_law",
+ "number": "L2",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage: Tunis - Moncef Bey → Sousse - Al Lawajat (Taffala)",
+ "direction_aller": [
+  "louage_tunis_moncef_bey",
+  "louage_sousse_al_lawajat_taffala"
+ ],
+ "direction_retour": [
+  "louage_sousse_al_lawajat_taffala",
+  "louage_tunis_moncef_bey"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_tunis_moncef_bey",
+  "name": "Tunis - Moncef Bey"
+ },
+ "end": {
+  "id": "louage_sousse_al_lawajat_taffala",
+  "name": "Sousse - Al Lawajat (Taffala)"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "louage_tunis_moncef_bey",
+   "to": "louage_sousse_al_lawajat_taffala",
+   "km": 116.2
+  }
+ ],
+ "original_stations": [
+  "louage_tunis_moncef_bey",
+  "louage_sousse_al_lawajat_taffala"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_tunis_moncef_bey",
+   "name_en": "Tunis - Moncef Bey",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_233m"
+   ],
+   "lat": 36.7905,
+   "lon": 10.1915,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "louage_sousse_al_lawajat_taffala",
+   "name_en": "Sousse - Al Lawajat (Taffala)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_44m"
+   ],
+   "lat": 35.8093,
+   "lon": 10.6363,
+   "mode": "louage",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv"
+}

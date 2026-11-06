@@ -1,0 +1,383 @@
+{
+ "line_id": "bus_781_10c",
+ "number": "10C",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 10C: Station Barcelone - Hopital Régional Yesminet",
+ "direction_aller": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "av_de_france",
+  "sntri",
+  "station_av_annaba",
+  "rue_gaza",
+  "magasin_g_n_ral_ben_arous",
+  "cit_hached",
+  "caf_mhedhbi",
+  "croisement_yasminet_route_mourneg",
+  "yasminet_centre",
+  "jardin_enfants_amen",
+  "caf_yasminet",
+  "sidi_mosbah",
+  "hopital_r_gional_yesminet"
+ ],
+ "direction_retour": [
+  "hopital_r_gional_yesminet",
+  "sidi_mosbah",
+  "caf_yasminet",
+  "jardin_enfants_amen",
+  "yasminet_centre",
+  "croisement_yasminet_route_mourneg",
+  "caf_mhedhbi",
+  "cit_hached",
+  "magasin_g_n_ral_ben_arous",
+  "rue_gaza",
+  "station_av_annaba",
+  "sntri",
+  "av_de_france",
+  "cnss",
+  "sofomeca",
+  "stoa",
+  "gare_djebel_jelloud",
+  "djebel_jelloud_gp1",
+  "el_afrane",
+  "centre_de_coordination_ouardia",
+  "dubosville",
+  "station_barcelone"
+ ],
+ "stations_count": 22,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "hopital_r_gional_yesminet",
+  "name": "Hopital Régional Yesminet"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "av_de_france",
+  "sntri",
+  "station_av_annaba",
+  "rue_gaza",
+  "magasin_g_n_ral_ben_arous",
+  "cit_hached",
+  "caf_mhedhbi",
+  "croisement_yasminet_route_mourneg",
+  "yasminet_centre",
+  "jardin_enfants_amen",
+  "caf_yasminet",
+  "sidi_mosbah",
+  "hopital_r_gional_yesminet"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dubosville",
+   "name_en": "Dubosville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839884,
+   "lon": 10.1917495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_coordination_ouardia",
+   "name_en": "Centre De Coordination Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7806046,
+   "lon": 10.1956231,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_afrane",
+   "name_en": "El Afrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7796674,
+   "lon": 10.1966209,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebel_jelloud_gp1",
+   "name_en": "Djebel Jelloud Gp1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7732433,
+   "lon": 10.2045236,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gare_djebel_jelloud",
+   "name_en": "Gare Djebel Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7715383,
+   "lon": 10.208723,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stoa",
+   "name_en": "Stoa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7686077,
+   "lon": 10.2157355,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sofomeca",
+   "name_en": "SOFOMECA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7658672,
+   "lon": 10.2217893,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cnss",
+   "name_en": "Cnss",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.765065,
+   "lon": 10.2233996,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_de_france",
+   "name_en": "Av De France",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7631053,
+   "lon": 10.2259316,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sntri",
+   "name_en": "SNTRI",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7618359,
+   "lon": 10.2248863,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "station_av_annaba",
+   "name_en": "Station Av Annaba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7607171,
+   "lon": 10.2247519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_gaza",
+   "name_en": "Rue Gaza",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7575516,
+   "lon": 10.2288069,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magasin_g_n_ral_ben_arous",
+   "name_en": "Magasin Général Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7550525,
+   "lon": 10.2319939,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_hached",
+   "name_en": "Cité Hached",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7504983,
+   "lon": 10.2377538,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_mhedhbi",
+   "name_en": "Café Mhedhbi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7478161,
+   "lon": 10.2383546,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_yasminet_route_mourneg",
+   "name_en": "Croisement Yasminet Route Mourneg",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7434854,
+   "lon": 10.2344922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "yasminet_centre",
+   "name_en": "Yasminet Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7407195,
+   "lon": 10.2380766,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants_amen",
+   "name_en": "Jardin Enfants Amen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7386465,
+   "lon": 10.2401856,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_yasminet",
+   "name_en": "Café Yasminet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7380861,
+   "lon": 10.2408866,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_mosbah",
+   "name_en": "Sidi Mosbah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7350964,
+   "lon": 10.2437415,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_r_gional_yesminet",
+   "name_en": "Hopital Régional Yesminet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7322446,
+   "lon": 10.2468533,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

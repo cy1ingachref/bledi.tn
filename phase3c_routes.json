@@ -1,0 +1,440 @@
+{
+  "python_base": "http://127.0.0.1:8000",
+  "routes": [
+    {
+      "route": "Tunis Centre->Sousse",
+      "from": {
+        "city": "Tunis Centre",
+        "latlon": [
+          36.8,
+          10.18
+        ],
+        "how": "fallback(200)"
+      },
+      "to": {
+        "city": "Sousse",
+        "latlon": [
+          35.815078,
+          10.630646
+        ],
+        "how": "geocode"
+      },
+      "python_fastest": {
+        "status": 200,
+        "ms": 0.333,
+        "error": null,
+        "duration_min": 204.9,
+        "fare_dinars": 18.42,
+        "transfers": 0,
+        "modes_used": [
+          "louaj"
+        ],
+        "legs": 3,
+        "label": "Louage \u00b7 3 h 25 \u00b7 direct"
+      },
+      "rust_fastest": {
+        "status": 200,
+        "ms": 0.098,
+        "error": null,
+        "duration_min": 142.7,
+        "fare_dinars": 15.0,
+        "transfers": 0,
+        "legs": 14,
+        "raw_keys": [
+          "distance_m",
+          "duration_s",
+          "fare",
+          "found",
+          "legs",
+          "message",
+          "objective",
+          "transfers"
+        ]
+      },
+      "python_cheapest": {
+        "status": 200,
+        "ms": 0.284,
+        "error": null,
+        "duration_min": 204.9,
+        "fare_dinars": 18.42,
+        "transfers": 0,
+        "modes_used": [
+          "louaj"
+        ],
+        "legs": 3,
+        "label": "Louage \u00b7 3 h 25 \u00b7 direct"
+      },
+      "rust_cheapest": {
+        "status": 200,
+        "ms": 0.111,
+        "error": null,
+        "duration_min": 200.8,
+        "fare_dinars": 17.0,
+        "transfers": 2,
+        "legs": 57,
+        "raw_keys": [
+          "distance_m",
+          "duration_s",
+          "fare",
+          "found",
+          "legs",
+          "message",
+          "objective",
+          "transfers"
+        ]
+      }
+    },
+    {
+      "route": "Tunis->Hammamet",
+      "from": {
+        "city": "Tunis",
+        "latlon": [
+          36.8065,
+          10.1815
+        ],
+        "how": "geocode"
+      },
+      "to": {
+        "city": "Hammamet",
+        "latlon": [
+          36.4076404,
+          10.612458
+        ],
+        "how": "geocode"
+      },
+      "python_fastest": {
+        "status": 200,
+        "ms": 0.357,
+        "error": null,
+        "duration_min": 139.9,
+        "fare_dinars": 16.4,
+        "transfers": 1,
+        "modes_used": [
+          "train"
+        ],
+        "legs": 23,
+        "label": "Train \u00b7 2 h 20 \u00b7 1 correspondance"
+      },
+      "rust_fastest": {
+        "status": 200,
+        "ms": 0.051,
+        "error": null,
+        "duration_min": 62.3,
+        "fare_dinars": 10.0,
+        "transfers": 0,
+        "legs": 12,
+        "raw_keys": [
+          "distance_m",
+          "duration_s",
+          "fare",
+          "found",
+          "legs",
+          "message",
+          "objective",
+          "transfers"
+        ]
+      },
+      "python_cheapest": {
+        "status": 200,
+        "ms": 0.32,
+        "error": null,
+        "duration_min": 139.9,
+        "fare_dinars": 16.4,
+        "transfers": 1,
+        "modes_used": [
+          "train"
+        ],
+        "legs": 23,
+        "label": "Train \u00b7 2 h 20 \u00b7 1 correspondance"
+      },
+      "rust_cheapest": {
+        "status": 200,
+        "ms": 0.09,
+        "error": null,
+        "duration_min": 128.1,
+        "fare_dinars": 11.0,
+        "transfers": 3,
+        "legs": 57,
+        "raw_keys": [
+          "distance_m",
+          "duration_s",
+          "fare",
+          "found",
+          "legs",
+          "message",
+          "objective",
+          "transfers"
+        ]
+      }
+    },
+    {
+      "route": "Bizerte->Tunis",
+      "from": {
+        "city": "Bizerte",
+        "latlon": [
+          37.274796,
+          9.8455946
+        ],
+        "how": "geocode"
+      },
+      "to": {
+        "city": "Tunis",
+        "latlon": [
+          36.8065,
+          10.1815
+        ],
+        "how": "geocode"
+      },
+      "python_fastest": {
+        "status": 200,
+        "ms": 0.125,
+        "error": null,
+        "duration_min": 150.4,
+        "fare_dinars": 11.29,
+        "transfers": 0,
+        "modes_used": [
+          "louaj",
+          "taxi"
+        ],
+        "legs": 6,
+        "label": "Louage + Taxi \u00b7 2 h 30 \u00b7 direct"
+      },
+      "rust_fastest": {
+        "status": 200,
+        "ms": 0.002,
+        "error": null,
+        "duration_min": 89.8,
+        "fare_dinars": 12.0,
+        "transfers": 0,
+        "legs": 10,
+        "raw_keys": [
+          "distance_m",
+          "duration_s",
+          "fare",
+          "found",
+          "legs",
+          "message",
+          "objective",
+          "transfers"
+        ]
+      },
+      "python_cheapest": {
+        "status": 200,
+        "ms": 0.124,
+        "error": null,
+        "duration_min": 689.2,
+        "fare_dinars": 1.0,
+        "transfers": 1,
+        "modes_used": [
+          "bus"
+        ],
+        "legs": 44,
+        "label": "Bus \u00b7 11 h 29 \u00b7 1 correspondance"
+      },
+      "rust_cheapest": {
+        "status": 200,
+        "ms": 0.016,
+        "error": null,
+        "duration_min": 177.6,
+        "fare_dinars": 11.0,
+        "transfers": 2,
+        "legs": 47,
+        "raw_keys": [
+          "distance_m",
+          "duration_s",
+          "fare",
+          "found",
+          "legs",
+          "message",
+          "objective",
+          "transfers"
+        ]
+      }
+    },
+    {
+      "route": "Sousse->Monastir",
+      "from": {
+        "city": "Sousse",
+        "latlon": [
+          35.815078,
+          10.630646
+        ],
+        "how": "geocode"
+      },
+      "to": {
+        "city": "Monastir",
+        "latlon": [
+          35.7706263,
+          10.8252907
+        ],
+        "how": "geocode"
+      },
+      "python_fastest": {
+        "status": 200,
+        "ms": 0.136,
+        "error": null,
+        "duration_min": 56.0,
+        "fare_dinars": 3.63,
+        "transfers": 0,
+        "modes_used": [
+          "louaj"
+        ],
+        "legs": 3,
+        "label": "Louage \u00b7 56 min \u00b7 direct"
+      },
+      "rust_fastest": {
+        "status": 200,
+        "ms": 0.002,
+        "error": null,
+        "duration_min": 20.0,
+        "fare_dinars": 6.0,
+        "transfers": 0,
+        "legs": 8,
+        "raw_keys": [
+          "distance_m",
+          "duration_s",
+          "fare",
+          "found",
+          "legs",
+          "message",
+          "objective",
+          "transfers"
+        ]
+      },
+      "python_cheapest": {
+        "status": 200,
+        "ms": 0.121,
+        "error": null,
+        "duration_min": 56.0,
+        "fare_dinars": 3.63,
+        "transfers": 0,
+        "modes_used": [
+          "louaj"
+        ],
+        "legs": 3,
+        "label": "Louage \u00b7 56 min \u00b7 direct"
+      },
+      "rust_cheapest": {
+        "status": 200,
+        "ms": 0.006,
+        "error": null,
+        "duration_min": 20.0,
+        "fare_dinars": 6.0,
+        "transfers": 0,
+        "legs": 8,
+        "raw_keys": [
+          "distance_m",
+          "duration_s",
+          "fare",
+          "found",
+          "legs",
+          "message",
+          "objective",
+          "transfers"
+        ]
+      }
+    },
+    {
+      "route": "Tunis local (Centre->S)",
+      "from": {
+        "city": "Tunis Centre",
+        "latlon": [
+          36.8,
+          10.18
+        ],
+        "how": "fallback(200)"
+      },
+      "to": {
+        "city": "Tunis local S",
+        "latlon": [
+          36.736,
+          10.183
+        ],
+        "how": "fallback(200)"
+      },
+      "python_fastest": {
+        "status": 200,
+        "ms": 0.247,
+        "error": null,
+        "duration_min": 70.9,
+        "fare_dinars": 0.5,
+        "transfers": 0,
+        "modes_used": [
+          "bus"
+        ],
+        "legs": 16,
+        "label": "Bus \u00b7 1 h 11 \u00b7 direct"
+      },
+      "rust_fastest": {
+        "status": 200,
+        "ms": 0.044,
+        "error": null,
+        "duration_min": 11.7,
+        "fare_dinars": 1.0,
+        "transfers": 0,
+        "legs": 8,
+        "raw_keys": [
+          "distance_m",
+          "duration_s",
+          "fare",
+          "found",
+          "legs",
+          "message",
+          "objective",
+          "transfers"
+        ]
+      },
+      "python_cheapest": {
+        "status": 200,
+        "ms": 0.288,
+        "error": null,
+        "duration_min": 111.9,
+        "fare_dinars": 0.0,
+        "transfers": 0,
+        "modes_used": [],
+        "legs": 9,
+        "label": "Marche \u00b7 1 h 52 \u00b7 direct"
+      },
+      "rust_cheapest": {
+        "status": 200,
+        "ms": 0.03,
+        "error": null,
+        "duration_min": 11.7,
+        "fare_dinars": 1.0,
+        "transfers": 0,
+        "legs": 8,
+        "raw_keys": [
+          "distance_m",
+          "duration_s",
+          "fare",
+          "found",
+          "legs",
+          "message",
+          "objective",
+          "transfers"
+        ]
+      }
+    }
+  ],
+  "python_health": {
+    "status": 200,
+    "data": {
+      "status": "ok",
+      "version": "0.2.0",
+      "service": "bledi.tn",
+      "seed_file": "seed_all_tunisia_routes.tagged.json",
+      "stations_count": 7452,
+      "lines_count": 379
+    },
+    "error": null
+  },
+  "rust_base": "http://127.0.0.1:18081",
+  "rust_health": {
+    "status": "ok",
+    "stations": 7444,
+    "lines": 379,
+    "edges": 35953,
+    "io_backend": "tokio::fs (fallback: io_uring unavailable on this OS)",
+    "data_source": "transport_map_corrected.json"
+  }
+}

@@ -1,0 +1,799 @@
+{
+ "line_id": "bus_725_37",
+ "number": "37",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 37: Station De Bus Mornag - Terminus Borj Cedria",
+ "direction_aller": [
+  "station_de_bus_mornag",
+  "caf_royal_mornag",
+  "cit_jaber",
+  "doukali",
+  "somag",
+  "bir_ezzanga",
+  "ezzaouia_mornag",
+  "boucherie_ezzaouia",
+  "dziri",
+  "touati",
+  "boujerdga_75_26a_37",
+  "pont_autoroute_sud",
+  "huilerie_bayrem",
+  "el_khelij",
+  "el_bahri",
+  "gan",
+  "place_14_janvier_boumhel",
+  "av_de_environnement",
+  "cit_sprols_boumhel",
+  "cit_bel_air",
+  "km_14_croisement_gp1_mc39",
+  "cit_miled",
+  "setcar",
+  "croisement_ezzahra",
+  "carrefour_ezzahra",
+  "clinique_ezzahraoui",
+  "steg",
+  "soci_t_de_chaussettes",
+  "lyc_e_ezzahra_section",
+  "lyc_e_hammam_lif",
+  "bou_karnine",
+  "chalet_vert",
+  "centre_hammam_lif",
+  "le_theatre",
+  "oued_trabelsia",
+  "echaabia_section",
+  "salle_de_sport_ghlala",
+  "tahar_sfar",
+  "foyer_hammam_chatt",
+  "kiosque_total_h_chatt",
+  "institut_sup_rieur_de_animation_pour_la_jeunesse_et_la_culture_bir_el_bey",
+  "bir_el_bey",
+  "soci_t_thalja",
+  "z_i_borj_cedria",
+  "henkel",
+  "sna",
+  "borj_cedria_village",
+  "terminus_borj_cedria"
+ ],
+ "direction_retour": [
+  "terminus_borj_cedria",
+  "borj_cedria_village",
+  "sna",
+  "henkel",
+  "z_i_borj_cedria",
+  "soci_t_thalja",
+  "bir_el_bey",
+  "institut_sup_rieur_de_animation_pour_la_jeunesse_et_la_culture_bir_el_bey",
+  "kiosque_total_h_chatt",
+  "foyer_hammam_chatt",
+  "tahar_sfar",
+  "salle_de_sport_ghlala",
+  "echaabia_section",
+  "oued_trabelsia",
+  "le_theatre",
+  "centre_hammam_lif",
+  "chalet_vert",
+  "bou_karnine",
+  "lyc_e_hammam_lif",
+  "lyc_e_ezzahra_section",
+  "soci_t_de_chaussettes",
+  "steg",
+  "clinique_ezzahraoui",
+  "carrefour_ezzahra",
+  "croisement_ezzahra",
+  "setcar",
+  "cit_miled",
+  "km_14_croisement_gp1_mc39",
+  "cit_bel_air",
+  "cit_sprols_boumhel",
+  "av_de_environnement",
+  "place_14_janvier_boumhel",
+  "gan",
+  "el_bahri",
+  "el_khelij",
+  "huilerie_bayrem",
+  "pont_autoroute_sud",
+  "boujerdga_75_26a_37",
+  "touati",
+  "dziri",
+  "boucherie_ezzaouia",
+  "ezzaouia_mornag",
+  "bir_ezzanga",
+  "somag",
+  "doukali",
+  "cit_jaber",
+  "caf_royal_mornag",
+  "station_de_bus_mornag"
+ ],
+ "stations_count": 48,
+ "start": {
+  "id": "station_de_bus_mornag",
+  "name": "Station De Bus Mornag"
+ },
+ "end": {
+  "id": "terminus_borj_cedria",
+  "name": "Terminus Borj Cedria"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_de_bus_mornag",
+  "caf_royal_mornag",
+  "cit_jaber",
+  "doukali",
+  "somag",
+  "bir_ezzanga",
+  "ezzaouia_mornag",
+  "boucherie_ezzaouia",
+  "dziri",
+  "touati",
+  "boujerdga_75_26a_37",
+  "pont_autoroute_sud",
+  "huilerie_bayrem",
+  "el_khelij",
+  "el_bahri",
+  "gan",
+  "place_14_janvier_boumhel",
+  "av_de_environnement",
+  "cit_sprols_boumhel",
+  "cit_bel_air",
+  "km_14_croisement_gp1_mc39",
+  "cit_miled",
+  "setcar",
+  "croisement_ezzahra",
+  "carrefour_ezzahra",
+  "clinique_ezzahraoui",
+  "steg",
+  "soci_t_de_chaussettes",
+  "lyc_e_ezzahra_section",
+  "lyc_e_hammam_lif",
+  "bou_karnine",
+  "chalet_vert",
+  "centre_hammam_lif",
+  "le_theatre",
+  "oued_trabelsia",
+  "echaabia_section",
+  "salle_de_sport_ghlala",
+  "tahar_sfar",
+  "foyer_hammam_chatt",
+  "kiosque_total_h_chatt",
+  "institut_sup_rieur_de_animation_pour_la_jeunesse_et_la_culture_bir_el_bey",
+  "bir_el_bey",
+  "soci_t_thalja",
+  "z_i_borj_cedria",
+  "henkel",
+  "sna",
+  "borj_cedria_village",
+  "terminus_borj_cedria"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_de_bus_mornag",
+   "name_en": "Station De Bus Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6799098,
+   "lon": 10.2893849,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_royal_mornag",
+   "name_en": "Café Royal Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.681158,
+   "lon": 10.2886876,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_jaber",
+   "name_en": "Cité Jaber",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6842471,
+   "lon": 10.2850475,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "doukali",
+   "name_en": "Doukali",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6883422,
+   "lon": 10.2820604,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "somag",
+   "name_en": "Somag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6924915,
+   "lon": 10.278954,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_ezzanga",
+   "name_en": "Bir Ezzanga",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6956206,
+   "lon": 10.2769579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ezzaouia_mornag",
+   "name_en": "Ezzaouia Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6990865,
+   "lon": 10.2749578,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boucherie_ezzaouia",
+   "name_en": "Boucherie Ezzaouia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.701586,
+   "lon": 10.2730731,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dziri",
+   "name_en": "Dziri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7065796,
+   "lon": 10.269319,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "touati",
+   "name_en": "Touati",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7132023,
+   "lon": 10.2651777,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boujerdga_75_26a_37",
+   "name_en": "Boujerdga 75 26A 37",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7148915,
+   "lon": 10.2646742,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_autoroute_sud",
+   "name_en": "Pont Autoroute Sud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7160428,
+   "lon": 10.2750594,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "huilerie_bayrem",
+   "name_en": "Huilerie Bayrem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7157309,
+   "lon": 10.2821722,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_khelij",
+   "name_en": "El Khelij",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7172617,
+   "lon": 10.2886738,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_bahri",
+   "name_en": "El Bahri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7185251,
+   "lon": 10.2920488,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gan",
+   "name_en": "Gan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7210666,
+   "lon": 10.2965495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_14_janvier_boumhel",
+   "name_en": "Place 14 Janvier (Boumhel)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7243385,
+   "lon": 10.300766,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_de_environnement",
+   "name_en": "Av De Environnement",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7264523,
+   "lon": 10.3038721,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_sprols_boumhel",
+   "name_en": "Cité Sprols Boumhel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7305565,
+   "lon": 10.3095307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_bel_air",
+   "name_en": "Cité Bel Air",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6869633,
+   "lon": 10.3202373,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "km_14_croisement_gp1_mc39",
+   "name_en": "Km 14 Croisement Gp1/Mc39",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7330621,
+   "lon": 10.3164086,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_miled",
+   "name_en": "Cité Miled",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7338239,
+   "lon": 10.3143372,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "setcar",
+   "name_en": "Setcar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7350792,
+   "lon": 10.3065266,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_ezzahra",
+   "name_en": "Croisement Ezzahra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7364498,
+   "lon": 10.2999881,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carrefour_ezzahra",
+   "name_en": "Carrefour Ezzahra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7375122,
+   "lon": 10.3002592,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "clinique_ezzahraoui",
+   "name_en": "Clinique Ezzahraoui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7292125,
+   "lon": 10.2963763,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg",
+   "name_en": "Steg",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7392398,
+   "lon": 10.3053096,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soci_t_de_chaussettes",
+   "name_en": "Société De Chaussettes",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7373772,
+   "lon": 10.3107328,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_ezzahra_section",
+   "name_en": "Lycée Ezzahra (Section)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7359499,
+   "lon": 10.315475,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_hammam_lif",
+   "name_en": "Lycée Hammam Lif",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7343851,
+   "lon": 10.3207643,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bou_karnine",
+   "name_en": "Bou Karnine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7318227,
+   "lon": 10.3275771,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chalet_vert",
+   "name_en": "Chalet Vert",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7303352,
+   "lon": 10.3297443,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_hammam_lif",
+   "name_en": "Centre Hammam Lif",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7277653,
+   "lon": 10.3348676,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_theatre",
+   "name_en": "Le Theatre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.726343,
+   "lon": 10.3380908,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_trabelsia",
+   "name_en": "Oued Trabelsia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7257402,
+   "lon": 10.3423563,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "echaabia_section",
+   "name_en": "Echaabia (Section)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7229743,
+   "lon": 10.3487665,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "salle_de_sport_ghlala",
+   "name_en": "Salle De Sport Ghlala",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7203913,
+   "lon": 10.3540507,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tahar_sfar",
+   "name_en": "Tahar Sfar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7175239,
+   "lon": 10.3596743,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_hammam_chatt",
+   "name_en": "Foyer Hammam Chatt",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7157246,
+   "lon": 10.362993,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_total_h_chatt",
+   "name_en": "Kiosque Total H-Chatt",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7135455,
+   "lon": 10.3689585,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "institut_sup_rieur_de_animation_pour_la_jeunesse_et_la_culture_bir_el_bey",
+   "name_en": "Institut Supérieur De Animation Pour La Jeunesse Et La Culture Bir El Bey",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7115791,
+   "lon": 10.3744943,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_el_bey",
+   "name_en": "Bir El Bey",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7102497,
+   "lon": 10.3786432,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "soci_t_thalja",
+   "name_en": "Société Thalja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7086031,
+   "lon": 10.380953,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "z_i_borj_cedria",
+   "name_en": "Z.I Borj Cedria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7051861,
+   "lon": 10.3821434,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "henkel",
+   "name_en": "Henkel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7020413,
+   "lon": 10.3832385,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sna",
+   "name_en": "SNA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6983585,
+   "lon": 10.384515,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_cedria_village",
+   "name_en": "Borj Cedria Village",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6955455,
+   "lon": 10.3874547,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_borj_cedria",
+   "name_en": "Terminus Borj Cedria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.69593,
+   "lon": 10.3886406,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

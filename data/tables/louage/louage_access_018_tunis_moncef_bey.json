@@ -1,0 +1,63 @@
+{
+ "line_id": "louage_access_018_tunis_moncef_bey",
+ "number": "LA18",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage access: Tunis - Moncef Bey → STIL",
+ "direction_aller": [
+  "louage_tunis_moncef_bey",
+  "stil_7364"
+ ],
+ "direction_retour": [
+  "stil_7364",
+  "louage_tunis_moncef_bey"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_tunis_moncef_bey",
+  "name": "Tunis - Moncef Bey"
+ },
+ "end": {
+  "id": "stil_7364",
+  "name": "STIL"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "louage_tunis_moncef_bey",
+  "stil_7364"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_tunis_moncef_bey",
+   "name_en": "Tunis - Moncef Bey",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_233m"
+   ],
+   "lat": 36.7905,
+   "lon": 10.1915,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "stil_7364",
+   "name_en": "STIL",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_0m"
+   ],
+   "lat": 36.7925814,
+   "lon": 10.1904254,
+   "mode": "louage",
+   "mode_resolution": "single_line_mode"
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv"
+}

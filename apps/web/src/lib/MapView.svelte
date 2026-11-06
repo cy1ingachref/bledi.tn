@@ -37,6 +37,23 @@
     });
   }
 
+  // Phase 2: per-mode SVG icons (apps/web/static/icons/*.svg). The coloured dot
+  // stays underneath as a fallback if the icon image fails to load.
+  const MODE_ICON = { bus: 'bus.svg', metro: 'metro.svg', train: 'train.svg',
+    rail: 'train.svg', louage: 'louage.svg', taxi: 'taxi.svg', walk: 'walk.svg',
+    unknown: 'bus.svg' };
+  function stationIcon(mode, color, extraClass = '') {
+    const icon = MODE_ICON[mode] ?? 'bus.svg';
+    const cls = `station-marker ${extraClass}`.trim();
+    return L.divIcon({
+      className: cls,
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+      html: `<span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:block;width:10px;height:10px;border-radius:50%;background:${color};border:2px solid #fff;box-shadow:0 1px 4px #0006"></span>`
+        + `<img src="/icons/${icon}" alt="" width="24" height="24" onerror="this.remove()" style="position:absolute;inset:0;display:block">`,
+    });
+  }
+
   function louageColor(routeType) {
     if (routeType === 'long_distance') return '#D7261E'; // red stripe
     if (routeType === 'regional') return '#1F6F8B';     // blue stripe
@@ -110,7 +127,7 @@
       const key = `station:${s.id}`;
       let m = existing[key];
       if (!m) {
-        m = L.marker([s.lat, s.lon], { icon: dot(modeColor(s.mode), 10, 'station-marker-pop station-marker') }).addTo(map);
+        m = L.marker([s.lat, s.lon], { icon: stationIcon(s.mode, modeColor(s.mode), 'station-marker-pop') }).addTo(map);
         m.stationId = key;
       }
       m.setLatLng([s.lat, s.lon]);

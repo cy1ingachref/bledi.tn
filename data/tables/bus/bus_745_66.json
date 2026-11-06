@@ -1,0 +1,223 @@
+{
+ "line_id": "bus_745_66",
+ "number": "66",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 66: Terminus Tebourba - Terminus Edkhila",
+ "direction_aller": [
+  "terminus_tebourba",
+  "cit_errajet",
+  "lyc_e_technique_tebourba",
+  "hopital_tebourba",
+  "frigo",
+  "route_chouigui",
+  "entree_chouigui",
+  "foret_de_tebourba",
+  "croisement_mateur",
+  "lyc_e_edkhila",
+  "edkhila",
+  "terminus_edkhila"
+ ],
+ "direction_retour": [
+  "terminus_edkhila",
+  "edkhila",
+  "lyc_e_edkhila",
+  "croisement_mateur",
+  "foret_de_tebourba",
+  "entree_chouigui",
+  "route_chouigui",
+  "frigo",
+  "hopital_tebourba",
+  "lyc_e_technique_tebourba",
+  "cit_errajet",
+  "terminus_tebourba"
+ ],
+ "stations_count": 12,
+ "start": {
+  "id": "terminus_tebourba",
+  "name": "Terminus Tebourba"
+ },
+ "end": {
+  "id": "terminus_edkhila",
+  "name": "Terminus Edkhila"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tebourba",
+  "cit_errajet",
+  "lyc_e_technique_tebourba",
+  "hopital_tebourba",
+  "frigo",
+  "route_chouigui",
+  "entree_chouigui",
+  "foret_de_tebourba",
+  "croisement_mateur",
+  "lyc_e_edkhila",
+  "edkhila",
+  "terminus_edkhila"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tebourba",
+   "name_en": "Terminus Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8275891,
+   "lon": 9.8438062,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_errajet",
+   "name_en": "Cité Errajet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8367438,
+   "lon": 9.8360227,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_technique_tebourba",
+   "name_en": "Lycée Technique Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8446187,
+   "lon": 9.8290137,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_tebourba",
+   "name_en": "Hopital Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8459266,
+   "lon": 9.8280961,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "frigo",
+   "name_en": "Frigo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9238596,
+   "lon": 9.8888109,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "route_chouigui",
+   "name_en": "Route Chouigui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8634396,
+   "lon": 9.7983129,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entree_chouigui",
+   "name_en": "Entree Chouigui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8768205,
+   "lon": 9.7992141,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foret_de_tebourba",
+   "name_en": "Foret De Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8832796,
+   "lon": 9.7878471,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_mateur",
+   "name_en": "Croisement Mateur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8887673,
+   "lon": 9.7372124,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_edkhila",
+   "name_en": "Lycée Edkhila",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8692072,
+   "lon": 9.7109805,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "edkhila",
+   "name_en": "Edkhila",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.865857,
+   "lon": 9.7101972,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_edkhila",
+   "name_en": "Terminus Edkhila",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8621559,
+   "lon": 9.7093497,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

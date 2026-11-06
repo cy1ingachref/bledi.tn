@@ -1,0 +1,319 @@
+{
+ "line_id": "bus_807_21b",
+ "number": "21B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 21B: Station De Bus Mornag - Tarhouna",
+ "direction_aller": [
+  "station_de_bus_mornag",
+  "cit_snit_mornag",
+  "cit_meziane",
+  "st_confection",
+  "canal_l_21b",
+  "allalga_1",
+  "allalga_2",
+  "croisement_ahmed_zaied",
+  "ancienne_gare_ahmed_zaied",
+  "el_houemed_2",
+  "el_houemed_1",
+  "maallah",
+  "errissala",
+  "cit_ousfane",
+  "croisement_prison_civile",
+  "prison_civile",
+  "douar_salem",
+  "tarhouna"
+ ],
+ "direction_retour": [
+  "tarhouna",
+  "douar_salem",
+  "prison_civile",
+  "croisement_prison_civile",
+  "cit_ousfane",
+  "errissala",
+  "maallah",
+  "el_houemed_1",
+  "el_houemed_2",
+  "ancienne_gare_ahmed_zaied",
+  "croisement_ahmed_zaied",
+  "allalga_2",
+  "allalga_1",
+  "canal_l_21b",
+  "st_confection",
+  "cit_meziane",
+  "cit_snit_mornag",
+  "station_de_bus_mornag"
+ ],
+ "stations_count": 18,
+ "start": {
+  "id": "station_de_bus_mornag",
+  "name": "Station De Bus Mornag"
+ },
+ "end": {
+  "id": "tarhouna",
+  "name": "Tarhouna"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_de_bus_mornag",
+  "cit_snit_mornag",
+  "cit_meziane",
+  "st_confection",
+  "canal_l_21b",
+  "allalga_1",
+  "allalga_2",
+  "croisement_ahmed_zaied",
+  "ancienne_gare_ahmed_zaied",
+  "el_houemed_2",
+  "el_houemed_1",
+  "maallah",
+  "errissala",
+  "cit_ousfane",
+  "croisement_prison_civile",
+  "prison_civile",
+  "douar_salem",
+  "tarhouna"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_de_bus_mornag",
+   "name_en": "Station De Bus Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6799098,
+   "lon": 10.2893849,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_snit_mornag",
+   "name_en": "Cité Snit Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6772627,
+   "lon": 10.2887602,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_meziane",
+   "name_en": "Cité Meziane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.674449,
+   "lon": 10.2896614,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "st_confection",
+   "name_en": "Sté Confection",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6692061,
+   "lon": 10.2910342,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "canal_l_21b",
+   "name_en": "Canal L(21B)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6622697,
+   "lon": 10.2929439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "allalga_1",
+   "name_en": "Allalga 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6575532,
+   "lon": 10.2955403,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "allalga_2",
+   "name_en": "Allalga 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6506158,
+   "lon": 10.3000464,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_ahmed_zaied",
+   "name_en": "Croisement Ahmed Zaied",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6422441,
+   "lon": 10.3026418,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ancienne_gare_ahmed_zaied",
+   "name_en": "Ancienne Gare Ahmed Zaied",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6404363,
+   "lon": 10.3034188,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_houemed_2",
+   "name_en": "El Houemed 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6443945,
+   "lon": 10.3071387,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_houemed_1",
+   "name_en": "El Houemed 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6500726,
+   "lon": 10.3127072,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "maallah",
+   "name_en": "Maallah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6551886,
+   "lon": 10.3175885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "errissala",
+   "name_en": "Errissala",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6623213,
+   "lon": 10.3221049,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ousfane",
+   "name_en": "Cité Ousfane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.65955,
+   "lon": 10.328864,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_prison_civile",
+   "name_en": "Croisement Prison Civile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6482251,
+   "lon": 10.3506441,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "prison_civile",
+   "name_en": "Prison Civile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.648425,
+   "lon": 10.3521733,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "douar_salem",
+   "name_en": "Douar Salem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6458321,
+   "lon": 10.3569526,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tarhouna",
+   "name_en": "Tarhouna",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6453822,
+   "lon": 10.3603854,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

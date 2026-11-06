@@ -1,0 +1,1087 @@
+{
+ "line_id": "metro_56_tgm",
+ "number": "TGM",
+ "mode": "metro",
+ "operator": "Transtu",
+ "name": "Ligne TGM: TUNIS MARINE NORD - MARSA PLAGE",
+ "direction_aller": [
+  "tunis_marine_nord",
+  "le_bac",
+  "la_goulette",
+  "goulette_neuve",
+  "goulette_casino",
+  "khiareddine",
+  "a_roport",
+  "le_kram",
+  "carthage_salambo",
+  "carthage_byrsa",
+  "carthage_dermech",
+  "carthage_hannibal",
+  "carthage_pr_sidence",
+  "carthage_amilcar",
+  "sidi_bousaid",
+  "sidi_dhrif",
+  "la_corniche",
+  "marsa_plage"
+ ],
+ "direction_retour": [
+  "marsa_plage",
+  "la_corniche",
+  "sidi_dhrif",
+  "sidi_bousaid",
+  "carthage_amilcar",
+  "carthage_pr_sidence",
+  "carthage_hannibal",
+  "carthage_dermech",
+  "carthage_byrsa",
+  "carthage_salambo",
+  "le_kram",
+  "a_roport",
+  "khiareddine",
+  "goulette_casino",
+  "goulette_neuve",
+  "la_goulette",
+  "le_bac",
+  "tunis_marine_nord"
+ ],
+ "stations_count": 18,
+ "start": {
+  "id": "tunis_marine_nord",
+  "name": "TUNIS MARINE NORD"
+ },
+ "end": {
+  "id": "marsa_plage",
+  "name": "MARSA PLAGE"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "tunis_marine_nord",
+  "le_bac",
+  "la_goulette",
+  "goulette_neuve",
+  "goulette_casino",
+  "khiareddine",
+  "a_roport",
+  "le_kram",
+  "carthage_salambo",
+  "carthage_byrsa",
+  "carthage_dermech",
+  "carthage_hannibal",
+  "carthage_pr_sidence",
+  "carthage_amilcar",
+  "sidi_bousaid",
+  "sidi_dhrif",
+  "la_corniche",
+  "marsa_plage"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_marine_nord",
+   "name_en": "TUNIS MARINE NORD",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8006935,
+   "lon": 10.1917429,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_bac",
+   "name_en": "LE BAC",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8141776,
+   "lon": 10.2924504,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_goulette",
+   "name_en": "LA GOULETTE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8180512,
+   "lon": 10.3019396,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "goulette_neuve",
+   "name_en": "GOULETTE NEUVE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8198449,
+   "lon": 10.3056014,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "goulette_casino",
+   "name_en": "GOULETTE CASINO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8242005,
+   "lon": 10.3087735,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "khiareddine",
+   "name_en": "KHIAREDDINE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8287832,
+   "lon": 10.3115529,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "a_roport",
+   "name_en": "AÉROPORT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8319472,
+   "lon": 10.3138745,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_kram",
+   "name_en": "LE KRAM",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8361705,
+   "lon": 10.3166057,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_salambo",
+   "name_en": "CARTHAGE SALAMBO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8415416,
+   "lon": 10.3191045,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_byrsa",
+   "name_en": "CARTHAGE BYRSA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8461259,
+   "lon": 10.3218453,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_dermech",
+   "name_en": "CARTHAGE DERMECH",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8501222,
+   "lon": 10.3255807,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_hannibal",
+   "name_en": "CARTHAGE HANNIBAL",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8533913,
+   "lon": 10.3289164,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_pr_sidence",
+   "name_en": "CARTHAGE PRÉSIDENCE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8616489,
+   "lon": 10.3349427,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_amilcar",
+   "name_en": "CARTHAGE AMILCAR",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8665856,
+   "lon": 10.3374424,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bousaid",
+   "name_en": "SIDI BOUSAID",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8704537,
+   "lon": 10.3421262,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_dhrif",
+   "name_en": "SIDI DHRIF",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8757409,
+   "lon": 10.3396704,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_corniche",
+   "name_en": "LA CORNICHE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8829771,
+   "lon": 10.3334871,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "marsa_plage",
+   "name_en": "MARSA PLAGE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8830424,
+   "lon": 10.333452,
+   "mode": "metro",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "tunis_marine_nord",
+   "to": "le_bac",
+   "key": "le_bac|tunis_marine_nord",
+   "straight_m": 9090.37,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8141776,
+     10.2924504
+    ],
+    [
+     36.813498,
+     10.290096
+    ],
+    [
+     36.813432,
+     10.288536
+    ],
+    [
+     36.813001,
+     10.287124
+    ],
+    [
+     36.799444,
+     10.203813
+    ],
+    [
+     36.799434,
+     10.202993
+    ],
+    [
+     36.799664,
+     10.201471
+    ],
+    [
+     36.800814,
+     10.198225
+    ],
+    [
+     36.801131,
+     10.196712
+    ],
+    [
+     36.80111,
+     10.195509
+    ],
+    [
+     36.8006935,
+     10.1917429
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 9177.08,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 314.28,
+   "length_ratio": 1.0095,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "le_bac",
+   "to": "la_goulette",
+   "key": "la_goulette|le_bac",
+   "straight_m": 948.19,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8180512,
+     10.3019396
+    ],
+    [
+     36.81736,
+     10.300514
+    ],
+    [
+     36.8141776,
+     10.2924504
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 948.66,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 10.82,
+   "length_ratio": 1.0005,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "la_goulette",
+   "to": "goulette_neuve",
+   "key": "goulette_neuve|la_goulette",
+   "straight_m": 382.14,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8198449,
+     10.3056014
+    ],
+    [
+     36.819501,
+     10.304999
+    ],
+    [
+     36.8180512,
+     10.3019396
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 382.33,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 4.63,
+   "length_ratio": 1.0005,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "goulette_neuve",
+   "to": "goulette_casino",
+   "key": "goulette_casino|goulette_neuve",
+   "straight_m": 560.62,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8242005,
+     10.3087735
+    ],
+    [
+     36.820857,
+     10.306721
+    ],
+    [
+     36.8198449,
+     10.3056014
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 564.57,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 29.41,
+   "length_ratio": 1.007,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "goulette_casino",
+   "to": "khiareddine",
+   "key": "goulette_casino|khiareddine",
+   "straight_m": 566.45,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8242005,
+     10.3087735
+    ],
+    [
+     36.8287832,
+     10.3115529
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 566.45,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "khiareddine",
+   "to": "a_roport",
+   "key": "a_roport|khiareddine",
+   "straight_m": 408.01,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8319472,
+     10.3138745
+    ],
+    [
+     36.8287832,
+     10.3115529
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 408.01,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "a_roport",
+   "to": "le_kram",
+   "key": "a_roport|le_kram",
+   "straight_m": 528.79,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8319472,
+     10.3138745
+    ],
+    [
+     36.834566,
+     10.31569
+    ],
+    [
+     36.8361705,
+     10.3166057
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 529.16,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 9.64,
+   "length_ratio": 1.0007,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "le_kram",
+   "to": "carthage_salambo",
+   "key": "carthage_salambo|le_kram",
+   "straight_m": 637.3,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8415416,
+     10.3191045
+    ],
+    [
+     36.838057,
+     10.317301
+    ],
+    [
+     36.8361705,
+     10.3166057
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 638.1,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 15.21,
+   "length_ratio": 1.0013,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "carthage_salambo",
+   "to": "carthage_byrsa",
+   "key": "carthage_byrsa|carthage_salambo",
+   "straight_m": 565.09,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8461259,
+     10.3218453
+    ],
+    [
+     36.844872,
+     10.32081
+    ],
+    [
+     36.8415416,
+     10.3191045
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 567.33,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 22.93,
+   "length_ratio": 1.004,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "carthage_byrsa",
+   "to": "carthage_dermech",
+   "key": "carthage_byrsa|carthage_dermech",
+   "straight_m": 554.92,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8461259,
+     10.3218453
+    ],
+    [
+     36.8501222,
+     10.3255807
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 554.92,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "carthage_dermech",
+   "to": "carthage_hannibal",
+   "key": "carthage_dermech|carthage_hannibal",
+   "straight_m": 469.29,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8501222,
+     10.3255807
+    ],
+    [
+     36.8533913,
+     10.3289164
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 469.29,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "carthage_hannibal",
+   "to": "carthage_pr_sidence",
+   "key": "carthage_hannibal|carthage_pr_sidence",
+   "straight_m": 1063.28,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8533913,
+     10.3289164
+    ],
+    [
+     36.859925,
+     10.334368
+    ],
+    [
+     36.858482,
+     10.333614
+    ],
+    [
+     36.857416,
+     10.33276
+    ],
+    [
+     36.8616489,
+     10.3349427
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1697.42,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 75.48,
+   "length_ratio": 1.5964,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "carthage_pr_sidence",
+   "to": "carthage_amilcar",
+   "key": "carthage_amilcar|carthage_pr_sidence",
+   "straight_m": 592.27,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8665856,
+     10.3374424
+    ],
+    [
+     36.866134,
+     10.336885
+    ],
+    [
+     36.865553,
+     10.336427
+    ],
+    [
+     36.8616489,
+     10.3349427
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 600.71,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 40.61,
+   "length_ratio": 1.0142,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "carthage_amilcar",
+   "to": "sidi_bousaid",
+   "key": "carthage_amilcar|sidi_bousaid",
+   "straight_m": 598.83,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8665856,
+     10.3374424
+    ],
+    [
+     36.868814,
+     10.340405
+    ],
+    [
+     36.869408,
+     10.341538
+    ],
+    [
+     36.869864,
+     10.341941
+    ],
+    [
+     36.8704537,
+     10.3421262
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 611.95,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 43.32,
+   "length_ratio": 1.0219,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sidi_bousaid",
+   "to": "sidi_dhrif",
+   "key": "sidi_bousaid|sidi_dhrif",
+   "straight_m": 627.18,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8704537,
+     10.3421262
+    ],
+    [
+     36.873307,
+     10.340542
+    ],
+    [
+     36.872735,
+     10.340947
+    ],
+    [
+     36.871674,
+     10.34202
+    ],
+    [
+     36.871177,
+     10.342143
+    ],
+    [
+     36.8757409,
+     10.3396704
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1181.44,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 38.41,
+   "length_ratio": 1.8837,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sidi_dhrif",
+   "to": "la_corniche",
+   "key": "la_corniche|sidi_dhrif",
+   "straight_m": 974.63,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8829771,
+     10.3334871
+    ],
+    [
+     36.882184,
+     10.334324
+    ],
+    [
+     36.881763,
+     10.334982
+    ],
+    [
+     36.880727,
+     10.338009
+    ],
+    [
+     36.880406,
+     10.338612
+    ],
+    [
+     36.879935,
+     10.339115
+    ],
+    [
+     36.879351,
+     10.339482
+    ],
+    [
+     36.878662,
+     10.339708
+    ],
+    [
+     36.876656,
+     10.339501
+    ],
+    [
+     36.8757409,
+     10.3396704
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1095.06,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 222.38,
+   "length_ratio": 1.1236,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "la_corniche",
+   "to": "marsa_plage",
+   "key": "la_corniche|marsa_plage",
+   "straight_m": 7.9,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "no OSM rail track joins these stops"
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8006935,
+   10.1917429
+  ],
+  [
+   36.80111,
+   10.195509
+  ],
+  [
+   36.801131,
+   10.196712
+  ],
+  [
+   36.800814,
+   10.198225
+  ],
+  [
+   36.799664,
+   10.201471
+  ],
+  [
+   36.799434,
+   10.202993
+  ],
+  [
+   36.799444,
+   10.203813
+  ],
+  [
+   36.813001,
+   10.287124
+  ],
+  [
+   36.813432,
+   10.288536
+  ],
+  [
+   36.813498,
+   10.290096
+  ],
+  [
+   36.8141776,
+   10.2924504
+  ],
+  [
+   36.81736,
+   10.300514
+  ],
+  [
+   36.8180512,
+   10.3019396
+  ],
+  [
+   36.819501,
+   10.304999
+  ],
+  [
+   36.8198449,
+   10.3056014
+  ],
+  [
+   36.820857,
+   10.306721
+  ],
+  [
+   36.8242005,
+   10.3087735
+  ],
+  [
+   36.8287832,
+   10.3115529
+  ],
+  [
+   36.8319472,
+   10.3138745
+  ],
+  [
+   36.834566,
+   10.31569
+  ],
+  [
+   36.8361705,
+   10.3166057
+  ],
+  [
+   36.838057,
+   10.317301
+  ],
+  [
+   36.8415416,
+   10.3191045
+  ],
+  [
+   36.844872,
+   10.32081
+  ],
+  [
+   36.8461259,
+   10.3218453
+  ],
+  [
+   36.8501222,
+   10.3255807
+  ],
+  [
+   36.8533913,
+   10.3289164
+  ],
+  [
+   36.859925,
+   10.334368
+  ],
+  [
+   36.858482,
+   10.333614
+  ],
+  [
+   36.857416,
+   10.33276
+  ],
+  [
+   36.8616489,
+   10.3349427
+  ],
+  [
+   36.865553,
+   10.336427
+  ],
+  [
+   36.866134,
+   10.336885
+  ],
+  [
+   36.8665856,
+   10.3374424
+  ],
+  [
+   36.868814,
+   10.340405
+  ],
+  [
+   36.869408,
+   10.341538
+  ],
+  [
+   36.869864,
+   10.341941
+  ],
+  [
+   36.8704537,
+   10.3421262
+  ],
+  [
+   36.873307,
+   10.340542
+  ],
+  [
+   36.872735,
+   10.340947
+  ],
+  [
+   36.871674,
+   10.34202
+  ],
+  [
+   36.871177,
+   10.342143
+  ],
+  [
+   36.8757409,
+   10.3396704
+  ],
+  [
+   36.876656,
+   10.339501
+  ],
+  [
+   36.878662,
+   10.339708
+  ],
+  [
+   36.879351,
+   10.339482
+  ],
+  [
+   36.879935,
+   10.339115
+  ],
+  [
+   36.880406,
+   10.338612
+  ],
+  [
+   36.880727,
+   10.338009
+  ],
+  [
+   36.881763,
+   10.334982
+  ],
+  [
+   36.882184,
+   10.334324
+  ],
+  [
+   36.8829771,
+   10.3334871
+  ]
+ ],
+ "phase3a": {
+  "pairs": 17,
+  "resolved": 16,
+  "unresolved": 1
+ }
+}

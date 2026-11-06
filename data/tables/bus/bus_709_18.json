@@ -1,0 +1,479 @@
+{
+ "line_id": "bus_709_18",
+ "number": "18",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 18: 10 Decembre - Mongi Slim",
+ "direction_aller": [
+  "10_decembre",
+  "touta_10_decembre",
+  "el_anbaria",
+  "lyc_e_kheredinne",
+  "la_poste",
+  "place_sala_centre",
+  "foyer_ariana",
+  "caf_hamied_18c",
+  "monoprix",
+  "hamadi_abid",
+  "shell_soukra",
+  "rue_a_roport",
+  "p_t_t_soukra",
+  "ecole_primaire_soukra",
+  "golfe_de_carthage",
+  "club_des_avocat",
+  "caf_balbouli",
+  "tv_hannibal",
+  "chotrana_2",
+  "chotrana_3",
+  "club_de_garde_national",
+  "soukra",
+  "mosqu_e_sidi_fraj",
+  "pharmacie_de_nuit",
+  "parc_soukra",
+  "rue_iraq",
+  "ezoidia",
+  "mongi_slim"
+ ],
+ "direction_retour": [
+  "mongi_slim",
+  "ezoidia",
+  "rue_iraq",
+  "parc_soukra",
+  "pharmacie_de_nuit",
+  "mosqu_e_sidi_fraj",
+  "soukra",
+  "club_de_garde_national",
+  "chotrana_3",
+  "chotrana_2",
+  "tv_hannibal",
+  "caf_balbouli",
+  "club_des_avocat",
+  "golfe_de_carthage",
+  "ecole_primaire_soukra",
+  "p_t_t_soukra",
+  "rue_a_roport",
+  "shell_soukra",
+  "hamadi_abid",
+  "monoprix",
+  "caf_hamied_18c",
+  "foyer_ariana",
+  "place_sala_centre",
+  "la_poste",
+  "lyc_e_kheredinne",
+  "el_anbaria",
+  "touta_10_decembre",
+  "10_decembre"
+ ],
+ "stations_count": 28,
+ "start": {
+  "id": "10_decembre",
+  "name": "10 Decembre"
+ },
+ "end": {
+  "id": "mongi_slim",
+  "name": "Mongi Slim"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "10_decembre",
+  "touta_10_decembre",
+  "el_anbaria",
+  "lyc_e_kheredinne",
+  "la_poste",
+  "place_sala_centre",
+  "foyer_ariana",
+  "caf_hamied_18c",
+  "monoprix",
+  "hamadi_abid",
+  "shell_soukra",
+  "rue_a_roport",
+  "p_t_t_soukra",
+  "ecole_primaire_soukra",
+  "golfe_de_carthage",
+  "club_des_avocat",
+  "caf_balbouli",
+  "tv_hannibal",
+  "chotrana_2",
+  "chotrana_3",
+  "club_de_garde_national",
+  "soukra",
+  "mosqu_e_sidi_fraj",
+  "pharmacie_de_nuit",
+  "parc_soukra",
+  "rue_iraq",
+  "ezoidia",
+  "mongi_slim"
+ ],
+ "stations_detail": [
+  {
+   "id": "10_decembre",
+   "name_en": "10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421837,
+   "lon": 10.182519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "touta_10_decembre",
+   "name_en": "Touta 10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8454206,
+   "lon": 10.1834417,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_anbaria",
+   "name_en": "El Anbaria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8511265,
+   "lon": 10.1836125,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_kheredinne",
+   "name_en": "Lycée Kheredinne",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8531309,
+   "lon": 10.1852164,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_poste",
+   "name_en": "La Poste",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8557499,
+   "lon": 10.1878432,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_sala_centre",
+   "name_en": "Place Sala Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85811,
+   "lon": 10.1914391,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_ariana",
+   "name_en": "Foyer Ariana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8584957,
+   "lon": 10.194707,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_hamied_18c",
+   "name_en": "Café Hamied 18C",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8593094,
+   "lon": 10.2056327,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "monoprix",
+   "name_en": "Monoprix",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8635327,
+   "lon": 10.2153531,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hamadi_abid",
+   "name_en": "Hamadi Abid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8671893,
+   "lon": 10.2237216,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "shell_soukra",
+   "name_en": "Shell Soukra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.870324,
+   "lon": 10.230685,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_a_roport",
+   "name_en": "Rue Aéroport",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8736198,
+   "lon": 10.237927,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "p_t_t_soukra",
+   "name_en": "P.T.T Soukra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8747021,
+   "lon": 10.2436779,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire_soukra",
+   "name_en": "Ecole Primaire Soukra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8760812,
+   "lon": 10.2451363,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "golfe_de_carthage",
+   "name_en": "Golfe De Carthage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8782782,
+   "lon": 10.2426687,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "club_des_avocat",
+   "name_en": "Club Des Avocat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8804581,
+   "lon": 10.239493,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_balbouli",
+   "name_en": "Café Balbouli",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.881028,
+   "lon": 10.2367687,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tv_hannibal",
+   "name_en": "Tv Hannibal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8835235,
+   "lon": 10.2390857,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chotrana_2",
+   "name_en": "Chotrana 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8852466,
+   "lon": 10.2438059,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chotrana_3",
+   "name_en": "Chotrana 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8832865,
+   "lon": 10.2482682,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "club_de_garde_national",
+   "name_en": "Club De Garde National",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8807997,
+   "lon": 10.2515904,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soukra",
+   "name_en": "Soukra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8799224,
+   "lon": 10.2607995,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_sidi_fraj",
+   "name_en": "Mosquée Sidi Fraj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8778008,
+   "lon": 10.2660771,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pharmacie_de_nuit",
+   "name_en": "Pharmacie De Nuit",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.875755,
+   "lon": 10.2689114,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "parc_soukra",
+   "name_en": "Parc Soukra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8741623,
+   "lon": 10.2725601,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_iraq",
+   "name_en": "Rue Iraq",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8681696,
+   "lon": 10.286475,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ezoidia",
+   "name_en": "Ezoidia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.867325,
+   "lon": 10.2882347,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mongi_slim",
+   "name_en": "Mongi Slim",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.866126,
+   "lon": 10.2901204,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

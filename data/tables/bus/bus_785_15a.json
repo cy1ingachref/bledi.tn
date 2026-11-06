@@ -1,0 +1,271 @@
+{
+ "line_id": "bus_785_15a",
+ "number": "15A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 15A: Jardin Thameur - Terminus L 15 A",
+ "direction_aller": [
+  "jardin_thameur",
+  "sidi_aloui",
+  "hopital_des_enfants",
+  "charle_nicole",
+  "darghouth_bacha",
+  "universit_ibn_charaf",
+  "stade_mellassine",
+  "souk_mellassine",
+  "centre_de_formation_zouhour",
+  "kharouba",
+  "office_de_huile",
+  "mizanetta",
+  "caserne_ezzouhour",
+  "cafe_rabaa",
+  "terminus_l_15_a"
+ ],
+ "direction_retour": [
+  "terminus_l_15_a",
+  "cafe_rabaa",
+  "caserne_ezzouhour",
+  "mizanetta",
+  "office_de_huile",
+  "kharouba",
+  "centre_de_formation_zouhour",
+  "souk_mellassine",
+  "stade_mellassine",
+  "universit_ibn_charaf",
+  "darghouth_bacha",
+  "charle_nicole",
+  "hopital_des_enfants",
+  "sidi_aloui",
+  "jardin_thameur"
+ ],
+ "stations_count": 15,
+ "start": {
+  "id": "jardin_thameur",
+  "name": "Jardin Thameur"
+ },
+ "end": {
+  "id": "terminus_l_15_a",
+  "name": "Terminus L 15 A"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "jardin_thameur",
+  "sidi_aloui",
+  "hopital_des_enfants",
+  "charle_nicole",
+  "darghouth_bacha",
+  "universit_ibn_charaf",
+  "stade_mellassine",
+  "souk_mellassine",
+  "centre_de_formation_zouhour",
+  "kharouba",
+  "office_de_huile",
+  "mizanetta",
+  "caserne_ezzouhour",
+  "cafe_rabaa",
+  "terminus_l_15_a"
+ ],
+ "stations_detail": [
+  {
+   "id": "jardin_thameur",
+   "name_en": "Jardin Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8037336,
+   "lon": 10.1780922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_aloui",
+   "name_en": "Sidi Aloui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8053372,
+   "lon": 10.1688404,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_des_enfants",
+   "name_en": "Hopital Des Enfants",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.807514,
+   "lon": 10.1593545,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "darghouth_bacha",
+   "name_en": "Darghouth Bacha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7976742,
+   "lon": 10.162871,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "universit_ibn_charaf",
+   "name_en": "Université Ibn Charaf",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7989792,
+   "lon": 10.1617685,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_mellassine",
+   "name_en": "Stade Mellassine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7981849,
+   "lon": 10.1535288,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "souk_mellassine",
+   "name_en": "Souk Mellassine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7979787,
+   "lon": 10.1506964,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_zouhour",
+   "name_en": "Centre De Formation Zouhour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7972038,
+   "lon": 10.146185,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kharouba",
+   "name_en": "Kharouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7967029,
+   "lon": 10.1437226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "office_de_huile",
+   "name_en": "Office De Huile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7960371,
+   "lon": 10.1386318,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mizanetta",
+   "name_en": "Mizanetta",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7943601,
+   "lon": 10.1316662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caserne_ezzouhour",
+   "name_en": "Caserne Ezzouhour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7929466,
+   "lon": 10.1275034,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cafe_rabaa",
+   "name_en": "Cafe Rabaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7907879,
+   "lon": 10.1207309,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_l_15_a",
+   "name_en": "Terminus L 15 A",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7883379,
+   "lon": 10.1208968,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

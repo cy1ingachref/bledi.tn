@@ -1,0 +1,431 @@
+{
+ "line_id": "bus_742_63",
+ "number": "63",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 63: Jardin Thameur - Terminus Enkhilette",
+ "direction_aller": [
+  "jardin_thameur",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "place_pasteur",
+  "patisserie_ben_yeder",
+  "cite_mahrajene",
+  "minist_re_de_quipement",
+  "pharmacie_central",
+  "cit_sportive",
+  "10_decembre",
+  "touta_10_decembre",
+  "lycee_ariana",
+  "la_poste",
+  "place_sala_centre",
+  "foyer_ariana",
+  "les_abattoirs",
+  "cit_ennozha",
+  "borje_louzir",
+  "borje_louzir2",
+  "poste_police_borje_louzir_section",
+  "caf_hmied",
+  "cit_ezheni",
+  "el_mansoura",
+  "terminus_enkhilette"
+ ],
+ "direction_retour": [
+  "terminus_enkhilette",
+  "el_mansoura",
+  "cit_ezheni",
+  "caf_hmied",
+  "poste_police_borje_louzir_section",
+  "borje_louzir2",
+  "borje_louzir",
+  "cit_ennozha",
+  "les_abattoirs",
+  "foyer_ariana",
+  "place_sala_centre",
+  "la_poste",
+  "lycee_ariana",
+  "touta_10_decembre",
+  "10_decembre",
+  "cit_sportive",
+  "pharmacie_central",
+  "minist_re_de_quipement",
+  "cite_mahrajene",
+  "patisserie_ben_yeder",
+  "place_pasteur",
+  "place_jeans_dark",
+  "la_fayette",
+  "passage_jeans_jaures",
+  "jardin_thameur"
+ ],
+ "stations_count": 25,
+ "start": {
+  "id": "jardin_thameur",
+  "name": "Jardin Thameur"
+ },
+ "end": {
+  "id": "terminus_enkhilette",
+  "name": "Terminus Enkhilette"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "jardin_thameur",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "place_pasteur",
+  "patisserie_ben_yeder",
+  "cite_mahrajene",
+  "minist_re_de_quipement",
+  "pharmacie_central",
+  "cit_sportive",
+  "10_decembre",
+  "touta_10_decembre",
+  "lycee_ariana",
+  "la_poste",
+  "place_sala_centre",
+  "foyer_ariana",
+  "les_abattoirs",
+  "cit_ennozha",
+  "borje_louzir",
+  "borje_louzir2",
+  "poste_police_borje_louzir_section",
+  "caf_hmied",
+  "cit_ezheni",
+  "el_mansoura",
+  "terminus_enkhilette"
+ ],
+ "stations_detail": [
+  {
+   "id": "jardin_thameur",
+   "name_en": "Jardin Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8037336,
+   "lon": 10.1780922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "passage_jeans_jaures",
+   "name_en": "Passage Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8069114,
+   "lon": 10.1815361,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_fayette",
+   "name_en": "La Fayette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8105618,
+   "lon": 10.1807238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_jeans_dark",
+   "name_en": "Place Jeans Dark",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8183566,
+   "lon": 10.1795785,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_pasteur",
+   "name_en": "Place Pasteur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230935,
+   "lon": 10.1776738,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "patisserie_ben_yeder",
+   "name_en": "Patisserie Ben Yeder",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8265346,
+   "lon": 10.1795924,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_mahrajene",
+   "name_en": "Cite Mahrajene",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.828874,
+   "lon": 10.1800943,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "minist_re_de_quipement",
+   "name_en": "Ministére De  Équipement",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8319311,
+   "lon": 10.1801694,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pharmacie_central",
+   "name_en": "Pharmacie Central",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8350238,
+   "lon": 10.1811198,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_sportive",
+   "name_en": "Cité Sportive",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.838641,
+   "lon": 10.1818869,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "10_decembre",
+   "name_en": "10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421837,
+   "lon": 10.182519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "touta_10_decembre",
+   "name_en": "Touta 10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8454206,
+   "lon": 10.1834417,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_ariana",
+   "name_en": "Lycee Ariana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8518082,
+   "lon": 10.1843751,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_poste",
+   "name_en": "La Poste",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8557499,
+   "lon": 10.1878432,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_sala_centre",
+   "name_en": "Place Sala Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85811,
+   "lon": 10.1914391,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_ariana",
+   "name_en": "Foyer Ariana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8584957,
+   "lon": 10.194707,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_abattoirs",
+   "name_en": "Les Abattoirs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8601659,
+   "lon": 10.1981876,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ennozha",
+   "name_en": "Cité Ennozha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.860076,
+   "lon": 10.1990933,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "borje_louzir",
+   "name_en": "Borje Louzir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.864771,
+   "lon": 10.2011313,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "borje_louzir2",
+   "name_en": "Borje Louzir2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.865677,
+   "lon": 10.2013464,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poste_police_borje_louzir_section",
+   "name_en": "Poste Police Borje Louzir (Section)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8658408,
+   "lon": 10.199982,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_hmied",
+   "name_en": "Café Hmied",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8673379,
+   "lon": 10.2001019,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ezheni",
+   "name_en": "Cité Ezheni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8672168,
+   "lon": 10.1996663,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_mansoura",
+   "name_en": "El Mansoura",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8670375,
+   "lon": 10.1990772,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_enkhilette",
+   "name_en": "Terminus Enkhilette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8668598,
+   "lon": 10.1985092,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

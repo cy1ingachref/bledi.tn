@@ -1,0 +1,655 @@
+{
+ "line_id": "bus_845_34a",
+ "number": "34A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 34A: Jardin Thameur - Prison Civile Mornagiaa",
+ "direction_aller": [
+  "jardin_thameur",
+  "mechtel",
+  "bab_abdeslem",
+  "charle_nicole",
+  "darghouth_bacha",
+  "stade_mellassine",
+  "souk_mellassine",
+  "centre_de_formation_zouhour",
+  "kharouba",
+  "office_de_huile",
+  "mizanetta",
+  "ecole_zouhour4",
+  "immeubles_hrairia",
+  "cite_essalama",
+  "ben_daha",
+  "sidi_hsin_section",
+  "rond_point_sidi_hsin",
+  "poste_police_attar",
+  "salle_nile",
+  "lycee_emtiez",
+  "cite_berhouma",
+  "bounaouira",
+  "entree_attar",
+  "attar",
+  "ecole_attar",
+  "croisement_mornagiaa",
+  "route_mornagiaa",
+  "bouragba",
+  "mosqu_e_bouragba",
+  "le_moulin_l34a",
+  "cite_ghallama",
+  "lycee_mornagiaa",
+  "mornagiaa",
+  "20_mars",
+  "lycee_20_mars",
+  "firma",
+  "guitouni",
+  "croisement_sidi_ali_hattab",
+  "prison_civile_mornagiaa"
+ ],
+ "direction_retour": [
+  "prison_civile_mornagiaa",
+  "croisement_sidi_ali_hattab",
+  "guitouni",
+  "firma",
+  "lycee_20_mars",
+  "20_mars",
+  "mornagiaa",
+  "lycee_mornagiaa",
+  "cite_ghallama",
+  "le_moulin_l34a",
+  "mosqu_e_bouragba",
+  "bouragba",
+  "route_mornagiaa",
+  "croisement_mornagiaa",
+  "ecole_attar",
+  "attar",
+  "entree_attar",
+  "bounaouira",
+  "cite_berhouma",
+  "lycee_emtiez",
+  "salle_nile",
+  "poste_police_attar",
+  "rond_point_sidi_hsin",
+  "sidi_hsin_section",
+  "ben_daha",
+  "cite_essalama",
+  "immeubles_hrairia",
+  "ecole_zouhour4",
+  "mizanetta",
+  "office_de_huile",
+  "kharouba",
+  "centre_de_formation_zouhour",
+  "souk_mellassine",
+  "stade_mellassine",
+  "darghouth_bacha",
+  "charle_nicole",
+  "bab_abdeslem",
+  "mechtel",
+  "jardin_thameur"
+ ],
+ "stations_count": 39,
+ "start": {
+  "id": "jardin_thameur",
+  "name": "Jardin Thameur"
+ },
+ "end": {
+  "id": "prison_civile_mornagiaa",
+  "name": "Prison Civile Mornagiaa"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "jardin_thameur",
+  "mechtel",
+  "bab_abdeslem",
+  "charle_nicole",
+  "darghouth_bacha",
+  "stade_mellassine",
+  "souk_mellassine",
+  "centre_de_formation_zouhour",
+  "kharouba",
+  "office_de_huile",
+  "mizanetta",
+  "ecole_zouhour4",
+  "immeubles_hrairia",
+  "cite_essalama",
+  "ben_daha",
+  "sidi_hsin_section",
+  "rond_point_sidi_hsin",
+  "poste_police_attar",
+  "salle_nile",
+  "lycee_emtiez",
+  "cite_berhouma",
+  "bounaouira",
+  "entree_attar",
+  "attar",
+  "ecole_attar",
+  "croisement_mornagiaa",
+  "route_mornagiaa",
+  "bouragba",
+  "mosqu_e_bouragba",
+  "le_moulin_l34a",
+  "cite_ghallama",
+  "lycee_mornagiaa",
+  "mornagiaa",
+  "20_mars",
+  "lycee_20_mars",
+  "firma",
+  "guitouni",
+  "croisement_sidi_ali_hattab",
+  "prison_civile_mornagiaa"
+ ],
+ "stations_detail": [
+  {
+   "id": "jardin_thameur",
+   "name_en": "Jardin Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8037336,
+   "lon": 10.1780922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mechtel",
+   "name_en": "Mechtel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8135314,
+   "lon": 10.1723472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_abdeslem",
+   "name_en": "Bab Abdeslem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8094634,
+   "lon": 10.161087,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "darghouth_bacha",
+   "name_en": "Darghouth Bacha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7976742,
+   "lon": 10.162871,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_mellassine",
+   "name_en": "Stade Mellassine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7981849,
+   "lon": 10.1535288,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "souk_mellassine",
+   "name_en": "Souk Mellassine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7979787,
+   "lon": 10.1506964,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_zouhour",
+   "name_en": "Centre De Formation Zouhour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7972038,
+   "lon": 10.146185,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kharouba",
+   "name_en": "Kharouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7967029,
+   "lon": 10.1437226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "office_de_huile",
+   "name_en": "Office De Huile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7960371,
+   "lon": 10.1386318,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mizanetta",
+   "name_en": "Mizanetta",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7943601,
+   "lon": 10.1316662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_zouhour4",
+   "name_en": "Ecole Zouhour4",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7909852,
+   "lon": 10.1273826,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeubles_hrairia",
+   "name_en": "Immeubles Hrairia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7870148,
+   "lon": 10.1238794,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_essalama",
+   "name_en": "Cite Essalama",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7841114,
+   "lon": 10.117158,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_daha",
+   "name_en": "Ben Daha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.781323,
+   "lon": 10.1112679,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_hsin_section",
+   "name_en": "Sidi Hsin Section",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7747534,
+   "lon": 10.1145885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rond_point_sidi_hsin",
+   "name_en": "Rond-Point Sidi Hsin",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7702931,
+   "lon": 10.1125822,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poste_police_attar",
+   "name_en": "Poste Police Attar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7669627,
+   "lon": 10.1112357,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "salle_nile",
+   "name_en": "Salle Nile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7617491,
+   "lon": 10.1081187,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_emtiez",
+   "name_en": "Lycee Emtiez",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7587063,
+   "lon": 10.1051683,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_berhouma",
+   "name_en": "Cite Berhouma",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7510301,
+   "lon": 10.1000614,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bounaouira",
+   "name_en": "Bounaouira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7460612,
+   "lon": 10.0952441,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entree_attar",
+   "name_en": "Entree Attar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7377475,
+   "lon": 10.0837213,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "attar",
+   "name_en": "Attar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7321931,
+   "lon": 10.0710935,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_attar",
+   "name_en": "Ecole Attar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7304785,
+   "lon": 10.0681648,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_mornagiaa",
+   "name_en": "Croisement Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7271198,
+   "lon": 10.0637013,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "route_mornagiaa",
+   "name_en": "Route Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7334295,
+   "lon": 10.0505794,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouragba",
+   "name_en": "Bouragba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7372815,
+   "lon": 10.0390137,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_bouragba",
+   "name_en": "Mosquée Bouragba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7384491,
+   "lon": 10.0355438,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_moulin_l34a",
+   "name_en": "Le Moulin L34A",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7420472,
+   "lon": 10.0299004,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_ghallama",
+   "name_en": "Cite Ghallama",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.749028,
+   "lon": 10.0249544,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_mornagiaa",
+   "name_en": "Lycee Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7566356,
+   "lon": 10.019472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mornagiaa",
+   "name_en": "Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7563433,
+   "lon": 10.0135175,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_20_mars",
+   "name_en": "Lycee 20 Mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.757778,
+   "lon": 10.0002617,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "firma",
+   "name_en": "Firma",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7547273,
+   "lon": 9.9921939,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "guitouni",
+   "name_en": "Guitouni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7518734,
+   "lon": 9.9800703,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_sidi_ali_hattab",
+   "name_en": "Croisement Sidi Ali Hattab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7491217,
+   "lon": 9.9732358,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "prison_civile_mornagiaa",
+   "name_en": "Prison Civile Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7398368,
+   "lon": 9.9755639,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

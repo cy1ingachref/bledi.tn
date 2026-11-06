@@ -1,0 +1,572 @@
+{
+ "line_id": "bus_764_91",
+ "number": "91",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 91: Rabattement Slimen Kahia - Terminus L91",
+ "direction_aller": [
+  "rabattement_slimen_kahia",
+  "onas_manouba",
+  "poste_police_manouba",
+  "hedi_chaker_mannouba",
+  "municipalite_mannouba",
+  "cite_hassen_belkhouja1",
+  "cite_hassen_belkhouja2",
+  "march_manouba",
+  "terminus_l91"
+ ],
+ "direction_retour": [
+  "terminus_l91",
+  "march_manouba",
+  "cite_hassen_belkhouja2",
+  "cite_hassen_belkhouja1",
+  "municipalite_mannouba",
+  "hedi_chaker_mannouba",
+  "poste_police_manouba",
+  "onas_manouba",
+  "rabattement_slimen_kahia"
+ ],
+ "stations_count": 9,
+ "start": {
+  "id": "rabattement_slimen_kahia",
+  "name": "Rabattement Slimen Kahia"
+ },
+ "end": {
+  "id": "terminus_l91",
+  "name": "Terminus L91"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_slimen_kahia",
+  "onas_manouba",
+  "poste_police_manouba",
+  "hedi_chaker_mannouba",
+  "municipalite_mannouba",
+  "cite_hassen_belkhouja1",
+  "cite_hassen_belkhouja2",
+  "march_manouba",
+  "terminus_l91"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_slimen_kahia",
+   "name_en": "Rabattement Slimen Kahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8038639,
+   "lon": 10.0985919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "onas_manouba",
+   "name_en": "ONAS Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8061167,
+   "lon": 10.0948744,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poste_police_manouba",
+   "name_en": "Poste Police Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8083952,
+   "lon": 10.0923558,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hedi_chaker_mannouba",
+   "name_en": "Hedi Chaker Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8079266,
+   "lon": 10.0893006,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipalite_mannouba",
+   "name_en": "Municipalite Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8068099,
+   "lon": 10.0870475,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_hassen_belkhouja1",
+   "name_en": "Cite Hassen Belkhouja1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8049076,
+   "lon": 10.0872542,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_hassen_belkhouja2",
+   "name_en": "Cite Hassen Belkhouja2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8032024,
+   "lon": 10.0883405,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "march_manouba",
+   "name_en": "Marché Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8007064,
+   "lon": 10.083566,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_l91",
+   "name_en": "Terminus L91",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7998258,
+   "lon": 10.0772092,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "rabattement_slimen_kahia",
+   "to": "onas_manouba",
+   "key": "onas_manouba|rabattement_slimen_kahia",
+   "straight_m": 415.08,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8061167,
+     10.0948744
+    ],
+    [
+     36.805487,
+     10.096039
+    ],
+    [
+     36.804363,
+     10.096908
+    ],
+    [
+     36.803638,
+     10.097825
+    ],
+    [
+     36.803574,
+     10.098264
+    ],
+    [
+     36.803395,
+     10.098537
+    ],
+    [
+     36.801962,
+     10.100273
+    ],
+    [
+     36.802073,
+     10.100337
+    ],
+    [
+     36.8038639,
+     10.0985919
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 946.15,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 259.09,
+   "length_ratio": 2.2794,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "onas_manouba",
+   "to": "poste_police_manouba",
+   "key": "onas_manouba|poste_police_manouba",
+   "straight_m": 338.33,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8061167,
+     10.0948744
+    ],
+    [
+     36.807063,
+     10.093073
+    ],
+    [
+     36.8083952,
+     10.0923558
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 353.12,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 50.36,
+   "length_ratio": 1.0437,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "poste_police_manouba",
+   "to": "hedi_chaker_mannouba",
+   "key": "hedi_chaker_mannouba|poste_police_manouba",
+   "straight_m": 276.94,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8079266,
+     10.0893006
+    ],
+    [
+     36.808782,
+     10.091286
+    ],
+    [
+     36.808848,
+     10.091639
+    ],
+    [
+     36.808615,
+     10.092102
+    ],
+    [
+     36.8083952,
+     10.0923558
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 314.97,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 61.46,
+   "length_ratio": 1.1373,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "hedi_chaker_mannouba",
+   "to": "municipalite_mannouba",
+   "key": "hedi_chaker_mannouba|municipalite_mannouba",
+   "straight_m": 235.91,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8079266,
+     10.0893006
+    ],
+    [
+     36.8068099,
+     10.0870475
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 235.91,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "municipalite_mannouba",
+   "to": "cite_hassen_belkhouja1",
+   "key": "cite_hassen_belkhouja1|municipalite_mannouba",
+   "straight_m": 212.33,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8049076,
+     10.0872542
+    ],
+    [
+     36.805325,
+     10.086792
+    ],
+    [
+     36.806132,
+     10.086466
+    ],
+    [
+     36.806287,
+     10.086463
+    ],
+    [
+     36.80655,
+     10.086689
+    ],
+    [
+     36.8068099,
+     10.0870475
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 252.13,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 58.11,
+   "length_ratio": 1.1875,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_hassen_belkhouja1",
+   "to": "cite_hassen_belkhouja2",
+   "key": "cite_hassen_belkhouja1|cite_hassen_belkhouja2",
+   "straight_m": 212.85,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8049076,
+     10.0872542
+    ],
+    [
+     36.803875,
+     10.08884
+    ],
+    [
+     36.8032024,
+     10.0883405
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 269.0,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 73.6,
+   "length_ratio": 1.2638,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_hassen_belkhouja2",
+   "to": "march_manouba",
+   "key": "cite_hassen_belkhouja2|march_manouba",
+   "straight_m": 507.68,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8032024,
+     10.0883405
+    ],
+    [
+     36.802331,
+     10.087759
+    ],
+    [
+     36.801033,
+     10.086432
+    ],
+    [
+     36.8007064,
+     10.083566
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 554.13,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 109.09,
+   "length_ratio": 1.0915,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "march_manouba",
+   "to": "terminus_l91",
+   "key": "march_manouba|terminus_l91",
+   "straight_m": 574.4,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8007064,
+     10.083566
+    ],
+    [
+     36.799973,
+     10.079004
+    ],
+    [
+     36.7998258,
+     10.0772092
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 574.93,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 11.11,
+   "length_ratio": 1.0009,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8038639,
+   10.0985919
+  ],
+  [
+   36.802073,
+   10.100337
+  ],
+  [
+   36.801962,
+   10.100273
+  ],
+  [
+   36.803395,
+   10.098537
+  ],
+  [
+   36.803574,
+   10.098264
+  ],
+  [
+   36.803638,
+   10.097825
+  ],
+  [
+   36.804363,
+   10.096908
+  ],
+  [
+   36.805487,
+   10.096039
+  ],
+  [
+   36.8061167,
+   10.0948744
+  ],
+  [
+   36.807063,
+   10.093073
+  ],
+  [
+   36.8083952,
+   10.0923558
+  ],
+  [
+   36.808615,
+   10.092102
+  ],
+  [
+   36.808848,
+   10.091639
+  ],
+  [
+   36.808782,
+   10.091286
+  ],
+  [
+   36.8079266,
+   10.0893006
+  ],
+  [
+   36.8068099,
+   10.0870475
+  ],
+  [
+   36.80655,
+   10.086689
+  ],
+  [
+   36.806287,
+   10.086463
+  ],
+  [
+   36.806132,
+   10.086466
+  ],
+  [
+   36.805325,
+   10.086792
+  ],
+  [
+   36.8049076,
+   10.0872542
+  ],
+  [
+   36.803875,
+   10.08884
+  ],
+  [
+   36.8032024,
+   10.0883405
+  ],
+  [
+   36.802331,
+   10.087759
+  ],
+  [
+   36.801033,
+   10.086432
+  ],
+  [
+   36.8007064,
+   10.083566
+  ],
+  [
+   36.799973,
+   10.079004
+  ],
+  [
+   36.7998258,
+   10.0772092
+  ]
+ ],
+ "phase3a": {
+  "pairs": 8,
+  "resolved": 8,
+  "unresolved": 0
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "line_id": "train_29_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Gafsa - Aguila",
+ "direction_aller": [
+  "gafsa",
+  "aguila"
+ ],
+ "direction_retour": [
+  "aguila",
+  "gafsa"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "gafsa",
+  "name": "Gafsa"
+ },
+ "end": {
+  "id": "aguila",
+  "name": "Aguila"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "gafsa",
+  "aguila"
+ ],
+ "stations_detail": [
+  {
+   "id": "gafsa",
+   "name_en": "Gafsa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3947091,
+   "lon": 8.8038973,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "aguila",
+   "name_en": "Aguila",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3796334,
+   "lon": 8.7684013,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

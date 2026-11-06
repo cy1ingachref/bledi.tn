@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "paths": {
+      "vitest": ["../web/node_modules/vitest/dist/index.d.ts"],
+      "vitest/*": ["../web/node_modules/vitest/*"]
+    }
+  },
+  "include": ["src", "vite.config.ts"],
+  "exclude": []
+}

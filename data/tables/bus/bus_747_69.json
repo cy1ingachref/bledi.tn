@@ -1,0 +1,223 @@
+{
+ "line_id": "bus_747_69",
+ "number": "69",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 69: Avenue Carthage - Cité Hellal (Terminus 69)",
+ "direction_aller": [
+  "avenue_carthage",
+  "cimetiere_jallez",
+  "monopoles",
+  "lyc_e_2_mars_el_ouardia_l_g",
+  "13_aout_l_69",
+  "rue_des_martyrs",
+  "cit_des_martyrs_69",
+  "cit_hellal_ptt",
+  "cit_hellal",
+  "march_cit_hellal",
+  "planning_familial_cit_hellal",
+  "cit_hellal_terminus_69"
+ ],
+ "direction_retour": [
+  "cit_hellal_terminus_69",
+  "planning_familial_cit_hellal",
+  "march_cit_hellal",
+  "cit_hellal",
+  "cit_hellal_ptt",
+  "cit_des_martyrs_69",
+  "rue_des_martyrs",
+  "13_aout_l_69",
+  "lyc_e_2_mars_el_ouardia_l_g",
+  "monopoles",
+  "cimetiere_jallez",
+  "avenue_carthage"
+ ],
+ "stations_count": 12,
+ "start": {
+  "id": "avenue_carthage",
+  "name": "Avenue Carthage"
+ },
+ "end": {
+  "id": "cit_hellal_terminus_69",
+  "name": "Cité Hellal (Terminus 69)"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "avenue_carthage",
+  "cimetiere_jallez",
+  "monopoles",
+  "lyc_e_2_mars_el_ouardia_l_g",
+  "13_aout_l_69",
+  "rue_des_martyrs",
+  "cit_des_martyrs_69",
+  "cit_hellal_ptt",
+  "cit_hellal",
+  "march_cit_hellal",
+  "planning_familial_cit_hellal",
+  "cit_hellal_terminus_69"
+ ],
+ "stations_detail": [
+  {
+   "id": "avenue_carthage",
+   "name_en": "Avenue Carthage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7919242,
+   "lon": 10.1822642,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cimetiere_jallez",
+   "name_en": "Cimetiere Jallez",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.786997,
+   "lon": 10.1804847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "monopoles",
+   "name_en": "Monopoles",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7803904,
+   "lon": 10.1816705,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_2_mars_el_ouardia_l_g",
+   "name_en": "Lycée 2 Mars El Ouardia L(G)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7758433,
+   "lon": 10.1821306,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "13_aout_l_69",
+   "name_en": "13 Aout L( 69)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7747967,
+   "lon": 10.1777637,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_des_martyrs",
+   "name_en": "Rue Des Martyrs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7754018,
+   "lon": 10.1752085,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_des_martyrs_69",
+   "name_en": "Cité Des Martyrs 69",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7767173,
+   "lon": 10.1706222,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_hellal_ptt",
+   "name_en": "Cité Hellal Ptt",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7785906,
+   "lon": 10.1692477,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_hellal",
+   "name_en": "Cité Hellal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7813515,
+   "lon": 10.1675393,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "march_cit_hellal",
+   "name_en": "Marché Cité Hellal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7836685,
+   "lon": 10.1665075,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "planning_familial_cit_hellal",
+   "name_en": "Planning Familial Cité Hellal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7870024,
+   "lon": 10.1648552,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_hellal_terminus_69",
+   "name_en": "Cité Hellal (Terminus 69)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7905712,
+   "lon": 10.1622607,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

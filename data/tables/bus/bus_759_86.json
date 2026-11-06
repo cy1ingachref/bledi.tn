@@ -1,0 +1,255 @@
+{
+ "line_id": "bus_759_86",
+ "number": "86",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 86: Rabattement Mourouj 2 - Aerolia Terminus",
+ "direction_aller": [
+  "rabattement_mourouj_2",
+  "le_souk_des_voitures",
+  "croisement_mourouj_2_l24",
+  "feraille_1",
+  "feraille_2",
+  "ferme_loukil",
+  "zone_industrielle_mghira",
+  "amen_banque",
+  "protection_civile",
+  "garde_national_z_i_mghira",
+  "citroen",
+  "aerolia_1",
+  "mecaprotec_aerolia",
+  "aerolia_terminus"
+ ],
+ "direction_retour": [
+  "aerolia_terminus",
+  "mecaprotec_aerolia",
+  "aerolia_1",
+  "citroen",
+  "garde_national_z_i_mghira",
+  "protection_civile",
+  "amen_banque",
+  "zone_industrielle_mghira",
+  "ferme_loukil",
+  "feraille_2",
+  "feraille_1",
+  "croisement_mourouj_2_l24",
+  "le_souk_des_voitures",
+  "rabattement_mourouj_2"
+ ],
+ "stations_count": 14,
+ "start": {
+  "id": "rabattement_mourouj_2",
+  "name": "Rabattement Mourouj 2"
+ },
+ "end": {
+  "id": "aerolia_terminus",
+  "name": "Aerolia Terminus"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 4,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_mourouj_2",
+  "le_souk_des_voitures",
+  "croisement_mourouj_2_l24",
+  "feraille_1",
+  "feraille_2",
+  "ferme_loukil",
+  "zone_industrielle_mghira",
+  "amen_banque",
+  "protection_civile",
+  "garde_national_z_i_mghira",
+  "citroen",
+  "aerolia_1",
+  "mecaprotec_aerolia",
+  "aerolia_terminus"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_mourouj_2",
+   "name_en": "Rabattement Mourouj 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7432425,
+   "lon": 10.1921777,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_souk_des_voitures",
+   "name_en": "Le Souk Des Voitures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7349887,
+   "lon": 10.1936368,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_mourouj_2_l24",
+   "name_en": "Croisement Mourouj 2 L24",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7326912,
+   "lon": 10.1940245,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "feraille_1",
+   "name_en": "Feraille 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.730208,
+   "lon": 10.1923922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "feraille_2",
+   "name_en": "Feraille 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7289571,
+   "lon": 10.1913847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ferme_loukil",
+   "name_en": "Ferme Loukil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7264932,
+   "lon": 10.1898173,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zone_industrielle_mghira",
+   "name_en": "Zone Industrielle Mghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7237311,
+   "lon": 10.1878662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "amen_banque",
+   "name_en": "Amen Banque",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7152601,
+   "lon": 10.1822335,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "protection_civile",
+   "name_en": "Protection Civile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7719233,
+   "lon": 10.2037229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_z_i_mghira",
+   "name_en": "Garde National Z.I Mghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.717467,
+   "lon": 10.1735114,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "citroen",
+   "name_en": "Citroen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7160208,
+   "lon": 10.170805,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "aerolia_1",
+   "name_en": "Aerolia 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7211308,
+   "lon": 10.1648209,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mecaprotec_aerolia",
+   "name_en": "Mecaprotec Aerolia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7180392,
+   "lon": 10.168458,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "aerolia_terminus",
+   "name_en": "Aerolia Terminus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7222279,
+   "lon": 10.1677419,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

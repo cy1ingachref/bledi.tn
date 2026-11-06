@@ -1,0 +1,482 @@
+{
+  "generated_by": "scripts/phase1_audit.py",
+  "tunisia_bbox": {
+    "lat": [
+      30.2,
+      37.6
+    ],
+    "lon": [
+      7.3,
+      11.7
+    ]
+  },
+  "inventory": {
+    "transport_map_corrected": {
+      "metadata": {
+        "seed": "seed_all_tunisia_routes.CLEANED.corrected.json (corrected)",
+        "covered_modes": [
+          "bus",
+          "louage",
+          "metro",
+          "rail",
+          "taxi",
+          "train",
+          "unknown"
+        ],
+        "stations_total": 7451,
+        "lines_total": 379
+      },
+      "stations_by_band": {
+        "bus": 7033,
+        "louage": 42,
+        "metro": 85,
+        "rail": 33,
+        "taxi": 13,
+        "train": 221,
+        "unknown": 75
+      },
+      "total_stations_flattened": 7502
+    },
+    "seed_tagged": {
+      "metadata_total_stations": 7452,
+      "metadata_total_lines": 379,
+      "metadata_coordinate_coverage_STALE": 1534,
+      "actual_with_coords": 7444,
+      "actual_missing_coords": 8,
+      "modes": {
+        "train": 220,
+        "rail": 24,
+        "metro": 85,
+        "bus": 6987,
+        "unknown": 76,
+        "louage": 29,
+        "taxi": 13,
+        "rural": 18
+      },
+      "quarantined": 8
+    },
+    "station_reference": {
+      "metadata": {
+        "description": "Comprehensive reference database of all transit station coordinates from all available data sources",
+        "generated": "2026-10-16",
+        "total_stations": 11801,
+        "sources": {
+          "BLEDI_transport": 5318,
+          "gtfs_sntri": 157,
+          "gtfs_soretrak": 192,
+          "gtfs_transtu": 92,
+          "itineraire_results": 14,
+          "rail_map_exports": 1984,
+          "rail_network_exports": 460,
+          "rfr_stations": 46,
+          "seed_all_tunisia_routes": 1711,
+          "seed_lines_bizerte": 1293,
+          "seed_routes_destination_tunis": 18,
+          "sncft_banlieue_sahel_gtfs": 32,
+          "sncft_banlieue_sud_gtfs": 14,
+          "sntri_stations_csv": 0,
+          "sntri_stations_geocoded": 186,
+          "sntri_stations_xlsx": 8144,
+          "tebourba_stations_geocoded": 2,
+          "transtu_bus_stations": 8941,
+          "transtu_metro_cartographie": 62,
+          "transtu_metro_stations": 91,
+          "tunismapper_all_routes_stops": 4993,
+          "tunismapper_line_stops": 4415,
+          "tunismapper_station_details": 1663
+        },
+        "source_count": 23
+      },
+      "total_stations": 11801,
+      "with_name_ar_field": 1307,
+      "with_name_ar_arabic_script": 106,
+      "with_name_en_field": 1631,
+      "raw_name_arabic_script": 1801,
+      "with_mode": 2560,
+      "with_gouvernorat": 5030
+    },
+    "station_name_mapping_conflicts": 83,
+    "station_name_mapping_entries": 83,
+    "water_stations_prev_audit": {
+      "description": "Stations identified as being in water bodies",
+      "source_file": "seed_all_tunisia_routes.tagged.json",
+      "total_stations_checked": 7452,
+      "total_water_stations": 772,
+      "water_polygons_used": [
+        "Gulf_of_Tunis",
+        "Lake_of_Tunis_Sebkha",
+        "Bizerte_Lagoon"
+      ],
+      "offshore_criteria": [
+        "lat > 37.3 and lon > 9.8",
+        "lat > 36.9 and lon > 10.0"
+      ],
+      "breakdown": {
+        "Lake_of_Tunis_Sebkha": 276,
+        "Gulf_of_Tunis": 310,
+        "Mediterranean_offshore": 207,
+        "Bizerte_Lagoon": 15
+      }
+    }
+  },
+  "water_polys_land_polygons": 2180,
+  "geolocation": {
+    "transport_map_corrected": {
+      "label": "transport_map_corrected",
+      "total": 7502,
+      "missing": 7,
+      "out_of_bbox": 0,
+      "in_water": 14,
+      "in_water_sample": [
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_lebherat_2",
+          "name": "LEBHERAT 2",
+          "lat": 33.873997394,
+          "lon": 10.896813376,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_arway",
+          "name": "ARWAY",
+          "lat": 33.873496849,
+          "lon": 10.916265497,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_bledi_curated_workbook_ain_drahem",
+          "name": "Ain Drahem",
+          "lat": 36.827,
+          "lon": 10.35,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_sidi_smaaen",
+          "name": "SIDI SMAAEN",
+          "lat": 33.873313757,
+          "lon": 10.908740382,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_محطة_سيارات_اجرة_لواج_خطوط_داخلية_ميدون",
+          "name": "محطة سيارات اجرة لواج خطوط داخلية ميدون",
+          "lat": 33.8631,
+          "lon": 10.990429,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_sidi_zeyed",
+          "name": "SIDI ZEYED",
+          "lat": 33.8774439,
+          "lon": 10.879004767,
+          "mode": "bus"
+        },
+        {
+          "id": "soretras_mosquee_bonouma_135fa10e42",
+          "name": "Mosquée bonouma",
+          "lat": 34.764736,
+          "lon": 11.233219,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_restaurent_chourouk",
+          "name": "RESTAURENT CHOUROUK",
+          "lat": 33.544730286,
+          "lon": 10.939725145,
+          "mode": "bus"
+        },
+        {
+          "id": "soretras_sidi_youssef_529b6f105b",
+          "name": "Sidi youssef",
+          "lat": 34.655505,
+          "lon": 10.97019,
+          "mode": "bus"
+        },
+        {
+          "id": "soretras_kantra_c60a3d66b0",
+          "name": "Kantra",
+          "lat": 34.664593,
+          "lon": 11.127527,
+          "mode": "bus"
+        },
+        {
+          "id": "srtm_massret_kssiba_9473c17046",
+          "name": "MASSRET KSSIBA",
+          "lat": 33.207309,
+          "lon": 11.213375,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_rsifat",
+          "name": "RSIFAT",
+          "lat": 33.552161641,
+          "lon": 10.943987916,
+          "mode": "bus"
+        },
+        {
+          "id": "soretras_dahmanin_fc3af24491",
+          "name": "Dahmanin",
+          "lat": 34.768609,
+          "lon": 11.230831,
+          "mode": "bus"
+        },
+        {
+          "id": "srtgn_port_sidi_daoued_613623fb5e",
+          "name": "Port sidi daoued",
+          "lat": 37.021145,
+          "lon": 10.910494,
+          "mode": "bus"
+        }
+      ],
+      "out_of_bbox_sample": [],
+      "missing_sample": [
+        {
+          "id": "dl_bledi_curated_workbook_douane_bir_mouzaina",
+          "name": "Douane Bir Mouzaina",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "Coordinate is 7.51 km offshore in Lake Ichkeul. Same unresolvable provenance as Bir Mouzaina: no source anywhere carries a position for it."
+        },
+        {
+          "id": "dl_bledi_curated_workbook_bir_mouzaina",
+          "name": "Bir Mouzaina",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "Coordinate is 6.08 km offshore in Lake Ichkeul. The place appears in NO source with a usable position: absent from the TNRP registry, _geolocated.json, the tunismapper dumps (0 matches for 'mouzaina' across 45 MB), and the OSM bus_station exports. Serving a lake point is worse than serving nothing, so it is retired pending a real position."
+        },
+        {
+          "id": "ajim",
+          "name": "Ajim",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "inside the Lake Ichkeul extent; SNTRI lists an Ajim 393 km away near Gabès"
+        },
+        {
+          "id": "bir_mouzaina",
+          "name": "Bir Mouzaina",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "inside Lake Ichkeul (OSM relation بحيرة إشكل); not in the SRT Bizerte stop list"
+        },
+        {
+          "id": "dl_bledi_curated_workbook_ajim",
+          "name": "Ajim",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "Coordinate is 4.86 km offshore in Lake Ichkeul. The same place already exists correctly as dl_sntri_ajim_85358 and dl_tnrp_national_bus_stop_registry_lycee_ajim at 33.7249, 10.7483 (Ajim, Djerba). Correcting this row would only duplicate the good one, so it is retired."
+        },
+        {
+          "id": "srtgn_croisement_ghorfa_8e1674a84b",
+          "name": "Croisement ghorfa",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "user-reported as a faulty point: 13.5 km from the nearest other station in the seed, outside the area any other SRTGN stop clusters in, and Nominatim reverse-geocodes it to no feature at all, so the position cannot be corroborated"
+        },
+        {
+          "id": "douane_bir_mouzaina",
+          "name": "Douane Bir Mouzaina",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "inside the Lake Ichkeul extent; not in the SRT Bizerte stop list"
+        }
+      ],
+      "with_coords": 7495
+    },
+    "seed_tagged": {
+      "label": "seed_tagged",
+      "total": 7452,
+      "missing": 8,
+      "out_of_bbox": 0,
+      "in_water": 14,
+      "in_water_sample": [
+        {
+          "id": "soretras_sidi_youssef_529b6f105b",
+          "name": "Sidi youssef",
+          "lat": 34.655505,
+          "lon": 10.97019,
+          "mode": "bus"
+        },
+        {
+          "id": "soretras_kantra_c60a3d66b0",
+          "name": "Kantra",
+          "lat": 34.664593,
+          "lon": 11.127527,
+          "mode": "bus"
+        },
+        {
+          "id": "soretras_mosquee_bonouma_135fa10e42",
+          "name": "Mosquée bonouma",
+          "lat": 34.764736,
+          "lon": 11.233219,
+          "mode": "bus"
+        },
+        {
+          "id": "soretras_dahmanin_fc3af24491",
+          "name": "Dahmanin",
+          "lat": 34.768609,
+          "lon": 11.230831,
+          "mode": "bus"
+        },
+        {
+          "id": "srtm_massret_kssiba_9473c17046",
+          "name": "MASSRET KSSIBA",
+          "lat": 33.207309,
+          "lon": 11.213375,
+          "mode": "bus"
+        },
+        {
+          "id": "srtgn_port_sidi_daoued_613623fb5e",
+          "name": "Port sidi daoued",
+          "lat": 37.021145,
+          "lon": 10.910494,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_محطة_سيارات_اجرة_لواج_خطوط_داخلية_ميدون",
+          "name": "محطة سيارات اجرة لواج خطوط داخلية ميدون",
+          "lat": 33.8631,
+          "lon": 10.990429,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_arway",
+          "name": "ARWAY",
+          "lat": 33.873496849,
+          "lon": 10.916265497,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_lebherat_2",
+          "name": "LEBHERAT 2",
+          "lat": 33.873997394,
+          "lon": 10.896813376,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_sidi_smaaen",
+          "name": "SIDI SMAAEN",
+          "lat": 33.873313757,
+          "lon": 10.908740382,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_sidi_zeyed",
+          "name": "SIDI ZEYED",
+          "lat": 33.8774439,
+          "lon": 10.879004767,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_restaurent_chourouk",
+          "name": "RESTAURENT CHOUROUK",
+          "lat": 33.544730286,
+          "lon": 10.939725145,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_tnrp_national_bus_stop_registry_rsifat",
+          "name": "RSIFAT",
+          "lat": 33.552161641,
+          "lon": 10.943987916,
+          "mode": "bus"
+        },
+        {
+          "id": "dl_bledi_curated_workbook_ain_drahem",
+          "name": "Ain Drahem",
+          "lat": 36.827,
+          "lon": 10.35,
+          "mode": "bus"
+        }
+      ],
+      "out_of_bbox_sample": [],
+      "missing_sample": [
+        {
+          "id": "bir_mouzaina",
+          "name": "Bir Mouzaina",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "inside Lake Ichkeul (OSM relation بحيرة إشكل); not in the SRT Bizerte stop list"
+        },
+        {
+          "id": "ajim",
+          "name": "Ajim",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "inside the Lake Ichkeul extent; SNTRI lists an Ajim 393 km away near Gabès"
+        },
+        {
+          "id": "douane_bir_mouzaina",
+          "name": "Douane Bir Mouzaina",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "inside the Lake Ichkeul extent; not in the SRT Bizerte stop list"
+        },
+        {
+          "id": "ain_drahem",
+          "name": "Ain Drahem",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "coordinate 36.827,10.350 is inside Tunis, 3 km from Carthage; Ain Drahem is a Bizerte-area town"
+        },
+        {
+          "id": "srtgn_croisement_ghorfa_8e1674a84b",
+          "name": "Croisement ghorfa",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "user-reported as a faulty point: 13.5 km from the nearest other station in the seed, outside the area any other SRTGN stop clusters in, and Nominatim reverse-geocodes it to no feature at all, so the position cannot be corroborated"
+        },
+        {
+          "id": "dl_bledi_curated_workbook_ajim",
+          "name": "Ajim",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "Coordinate is 4.86 km offshore in Lake Ichkeul. The same place already exists correctly as dl_sntri_ajim_85358 and dl_tnrp_national_bus_stop_registry_lycee_ajim at 33.7249, 10.7483 (Ajim, Djerba). Correcting this row would only duplicate the good one, so it is retired."
+        },
+        {
+          "id": "dl_bledi_curated_workbook_bir_mouzaina",
+          "name": "Bir Mouzaina",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "Coordinate is 6.08 km offshore in Lake Ichkeul. The place appears in NO source with a usable position: absent from the TNRP registry, _geolocated.json, the tunismapper dumps (0 matches for 'mouzaina' across 45 MB), and the OSM bus_station exports. Serving a lake point is worse than serving nothing, so it is retired pending a real position."
+        },
+        {
+          "id": "dl_bledi_curated_workbook_douane_bir_mouzaina",
+          "name": "Douane Bir Mouzaina",
+          "mode": "bus",
+          "quarantined": true,
+          "quarantine_reason": "Coordinate is 7.51 km offshore in Lake Ichkeul. Same unresolvable provenance as Bir Mouzaina: no source anywhere carries a position for it."
+        }
+      ],
+      "with_coords": 7444
+    },
+    "note": "Water = point inside no GSHHG land polygon (pure-python ray casting). Commune >30km check NOT computable from repo data alone (no commune centroid dataset); only the 5 documented corrections in station_corrections.json use it.",
+    "commune_gt30km": "uncomputable_in_repo"
+  },
+  "icon_mapping": {
+    "bus": "bus.svg",
+    "metro": "metro.svg",
+    "train": "train.svg",
+    "rail": "train.svg",
+    "louage": "louage.svg",
+    "taxi": "taxi.svg",
+    "unknown": "bus.svg",
+    "rural": "louage.svg"
+  },
+  "modes_present_tm": {
+    "bus": 7014,
+    "metro": 107,
+    "train": 236,
+    "rail": 26,
+    "louage": 29,
+    "unknown": 77,
+    "taxi": 13
+  },
+  "modes_missing_icon": [],
+  "prev_water_overlap": {
+    "prev_flagged_in_tm": 772,
+    "note": "Previous water_stations.json used bbox heuristics (lat>37.3 & lon>9.8 etc.) and is known to false-positive on northern towns; do not treat the 772 count as ground truth. Land-polygon result above is authoritative."
+  },
+  "bizerteconnect": {
+    "lines": 131,
+    "lines_no_stops": 131
+  }
+}

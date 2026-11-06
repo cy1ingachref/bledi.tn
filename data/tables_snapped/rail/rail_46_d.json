@@ -1,0 +1,649 @@
+{
+ "line_id": "rail_46_d",
+ "number": "D",
+ "mode": "rail",
+ "operator": "Transtu",
+ "name": "Ligne D: Tunis Ville - Gobaa Ville",
+ "direction_aller": [
+  "tunis_ville",
+  "sa_da_manoubia",
+  "mellassine",
+  "erraoudha",
+  "le_bardo",
+  "el_bortal",
+  "mannouba",
+  "cit_des_orangers",
+  "gobaa",
+  "gobaa_ville"
+ ],
+ "direction_retour": [
+  "gobaa_ville",
+  "gobaa",
+  "cit_des_orangers",
+  "mannouba",
+  "el_bortal",
+  "le_bardo",
+  "erraoudha",
+  "mellassine",
+  "sa_da_manoubia",
+  "tunis_ville"
+ ],
+ "stations_count": 10,
+ "start": {
+  "id": "tunis_ville",
+  "name": "Tunis Ville"
+ },
+ "end": {
+  "id": "gobaa_ville",
+  "name": "Gobaa Ville"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "tunis_ville",
+  "sa_da_manoubia",
+  "mellassine",
+  "erraoudha",
+  "le_bardo",
+  "el_bortal",
+  "mannouba",
+  "cit_des_orangers",
+  "gobaa",
+  "gobaa_ville"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_ville",
+   "name_en": "Tunis Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7947693,
+   "lon": 10.1803806,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sa_da_manoubia",
+   "name_en": "Saïda Manoubia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7870675,
+   "lon": 10.1655399,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "mellassine",
+   "name_en": "Mellassine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7964883,
+   "lon": 10.1553505,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "erraoudha",
+   "name_en": "Erraoudha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8018747,
+   "lon": 10.1478132,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_bardo",
+   "name_en": "Le Bardo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8075477,
+   "lon": 10.1343723,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_bortal",
+   "name_en": "El Bortal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8115007,
+   "lon": 10.1173367,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "mannouba",
+   "name_en": "Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8161297,
+   "lon": 10.1011079,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_des_orangers",
+   "name_en": "Cité des Orangers",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8184848,
+   "lon": 10.0860288,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "gobaa",
+   "name_en": "Gobaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8200508,
+   "lon": 10.0754979,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "gobaa_ville",
+   "name_en": "Gobaa Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8222878,
+   "lon": 10.0601549,
+   "mode": "rail",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "tunis_ville",
+   "to": "sa_da_manoubia",
+   "key": "sa_da_manoubia|tunis_ville",
+   "straight_m": 1574.76,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7870675,
+     10.1655399
+    ],
+    [
+     36.790887,
+     10.180979
+    ],
+    [
+     36.79027,
+     10.180965
+    ],
+    [
+     36.789408,
+     10.180521
+    ],
+    [
+     36.788438,
+     10.179526
+    ],
+    [
+     36.787938,
+     10.178775
+    ],
+    [
+     36.787352,
+     10.177428
+    ],
+    [
+     36.785425,
+     10.171876
+    ],
+    [
+     36.785116,
+     10.170092
+    ],
+    [
+     36.785087,
+     10.168598
+    ],
+    [
+     36.785347,
+     10.16745
+    ],
+    [
+     36.785948,
+     10.166464
+    ],
+    [
+     36.7947693,
+     10.1803806
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 4605.88,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 559.7,
+   "length_ratio": 2.9248,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sa_da_manoubia",
+   "to": "mellassine",
+   "key": "mellassine|sa_da_manoubia",
+   "straight_m": 1385.86,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7964883,
+     10.1553505
+    ],
+    [
+     36.790269,
+     10.163023
+    ],
+    [
+     36.79122,
+     10.161913
+    ],
+    [
+     36.794093,
+     10.159546
+    ],
+    [
+     36.794587,
+     10.158972
+    ],
+    [
+     36.7870675,
+     10.1655399
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2595.01,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 108.02,
+   "length_ratio": 1.8725,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mellassine",
+   "to": "erraoudha",
+   "key": "erraoudha|mellassine",
+   "straight_m": 899.51,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8018747,
+     10.1478132
+    ],
+    [
+     36.798813,
+     10.151786
+    ],
+    [
+     36.7964883,
+     10.1553505
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 900.27,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 18.47,
+   "length_ratio": 1.0009,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "erraoudha",
+   "to": "le_bardo",
+   "key": "erraoudha|le_bardo",
+   "straight_m": 1352.75,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8018747,
+     10.1478132
+    ],
+    [
+     36.806545,
+     10.138381
+    ],
+    [
+     36.804123,
+     10.144192
+    ],
+    [
+     36.803574,
+     10.145132
+    ],
+    [
+     36.8075477,
+     10.1343723
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 2729.16,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 70.81,
+   "length_ratio": 2.0175,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "le_bardo",
+   "to": "el_bortal",
+   "key": "el_bortal|le_bardo",
+   "straight_m": 1579.03,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8115007,
+     10.1173367
+    ],
+    [
+     36.808814,
+     10.126187
+    ],
+    [
+     36.808485,
+     10.1281
+    ],
+    [
+     36.808141,
+     10.131676
+    ],
+    [
+     36.8075477,
+     10.1343723
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1586.43,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 67.61,
+   "length_ratio": 1.0047,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "el_bortal",
+   "to": "mannouba",
+   "key": "el_bortal|mannouba",
+   "straight_m": 1533.66,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8115007,
+     10.1173367
+    ],
+    [
+     36.815725,
+     10.103242
+    ],
+    [
+     36.8161297,
+     10.1011079
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1535.0,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 21.37,
+   "length_ratio": 1.0009,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mannouba",
+   "to": "cit_des_orangers",
+   "key": "cit_des_orangers|mannouba",
+   "straight_m": 1367.61,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8184848,
+     10.0860288
+    ],
+    [
+     36.8161297,
+     10.1011079
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1367.61,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_des_orangers",
+   "to": "gobaa",
+   "key": "cit_des_orangers|gobaa",
+   "straight_m": 953.44,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8184848,
+     10.0860288
+    ],
+    [
+     36.8200508,
+     10.0754979
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 953.44,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "gobaa",
+   "to": "gobaa_ville",
+   "key": "gobaa|gobaa_ville",
+   "straight_m": 1388.19,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.8200508,
+     10.0754979
+    ],
+    [
+     36.8222878,
+     10.0601549
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1388.19,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7947693,
+   10.1803806
+  ],
+  [
+   36.785948,
+   10.166464
+  ],
+  [
+   36.785347,
+   10.16745
+  ],
+  [
+   36.785087,
+   10.168598
+  ],
+  [
+   36.785116,
+   10.170092
+  ],
+  [
+   36.785425,
+   10.171876
+  ],
+  [
+   36.787352,
+   10.177428
+  ],
+  [
+   36.787938,
+   10.178775
+  ],
+  [
+   36.788438,
+   10.179526
+  ],
+  [
+   36.789408,
+   10.180521
+  ],
+  [
+   36.79027,
+   10.180965
+  ],
+  [
+   36.790887,
+   10.180979
+  ],
+  [
+   36.7870675,
+   10.1655399
+  ],
+  [
+   36.794587,
+   10.158972
+  ],
+  [
+   36.794093,
+   10.159546
+  ],
+  [
+   36.79122,
+   10.161913
+  ],
+  [
+   36.790269,
+   10.163023
+  ],
+  [
+   36.7964883,
+   10.1553505
+  ],
+  [
+   36.798813,
+   10.151786
+  ],
+  [
+   36.8018747,
+   10.1478132
+  ],
+  [
+   36.806545,
+   10.138381
+  ],
+  [
+   36.804123,
+   10.144192
+  ],
+  [
+   36.803574,
+   10.145132
+  ],
+  [
+   36.8075477,
+   10.1343723
+  ],
+  [
+   36.808141,
+   10.131676
+  ],
+  [
+   36.808485,
+   10.1281
+  ],
+  [
+   36.808814,
+   10.126187
+  ],
+  [
+   36.8115007,
+   10.1173367
+  ],
+  [
+   36.815725,
+   10.103242
+  ],
+  [
+   36.8161297,
+   10.1011079
+  ],
+  [
+   36.8184848,
+   10.0860288
+  ],
+  [
+   36.8200508,
+   10.0754979
+  ],
+  [
+   36.8222878,
+   10.0601549
+  ]
+ ],
+ "phase3a": {
+  "pairs": 9,
+  "resolved": 9,
+  "unresolved": 0
+ }
+}

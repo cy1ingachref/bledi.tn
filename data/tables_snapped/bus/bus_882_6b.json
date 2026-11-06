@@ -1,0 +1,352 @@
+{
+ "line_id": "bus_882_6b",
+ "number": "6B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 6B: 10 Decembre - Terminus Cité El Mallaha",
+ "direction_aller": [
+  "10_decembre",
+  "el_anbaria",
+  "mosqu_e_ariana_el_jadida",
+  "ariana_sup_rieur",
+  "terminus_cit_el_mallaha"
+ ],
+ "direction_retour": [
+  "terminus_cit_el_mallaha",
+  "ariana_sup_rieur",
+  "mosqu_e_ariana_el_jadida",
+  "el_anbaria",
+  "10_decembre"
+ ],
+ "stations_count": 5,
+ "start": {
+  "id": "10_decembre",
+  "name": "10 Decembre"
+ },
+ "end": {
+  "id": "terminus_cit_el_mallaha",
+  "name": "Terminus Cité El Mallaha"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "10_decembre",
+  "el_anbaria",
+  "mosqu_e_ariana_el_jadida",
+  "ariana_sup_rieur",
+  "terminus_cit_el_mallaha"
+ ],
+ "stations_detail": [
+  {
+   "id": "10_decembre",
+   "name_en": "10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421837,
+   "lon": 10.182519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_anbaria",
+   "name_en": "El Anbaria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8511265,
+   "lon": 10.1836125,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_ariana_el_jadida",
+   "name_en": "Mosquée Ariana El Jadida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8531569,
+   "lon": 10.1825924,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ariana_sup_rieur",
+   "name_en": "Ariana Supérieur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8558868,
+   "lon": 10.1837136,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_cit_el_mallaha",
+   "name_en": "Terminus Cité El Mallaha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85702,
+   "lon": 10.1833541,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "10_decembre",
+   "to": "el_anbaria",
+   "key": "10_decembre|el_anbaria",
+   "straight_m": 999.14,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8421837,
+     10.182519
+    ],
+    [
+     36.844054,
+     10.182981
+    ],
+    [
+     36.846597,
+     10.183512
+    ],
+    [
+     36.847251,
+     10.183541
+    ],
+    [
+     36.847999,
+     10.183417
+    ],
+    [
+     36.849144,
+     10.182981
+    ],
+    [
+     36.849653,
+     10.182922
+    ],
+    [
+     36.850307,
+     10.183016
+    ],
+    [
+     36.8511265,
+     10.1836125
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1023.95,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 45.19,
+   "length_ratio": 1.0248,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "el_anbaria",
+   "to": "mosqu_e_ariana_el_jadida",
+   "key": "el_anbaria|mosqu_e_ariana_el_jadida",
+   "straight_m": 243.33,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8511265,
+     10.1836125
+    ],
+    [
+     36.853103,
+     10.18542
+    ],
+    [
+     36.853397,
+     10.185052
+    ],
+    [
+     36.852605,
+     10.183026
+    ],
+    [
+     36.8531569,
+     10.1825924
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 591.72,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 231.2,
+   "length_ratio": 2.4318,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mosqu_e_ariana_el_jadida",
+   "to": "ariana_sup_rieur",
+   "key": "ariana_sup_rieur|mosqu_e_ariana_el_jadida",
+   "straight_m": 319.52,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8558868,
+     10.1837136
+    ],
+    [
+     36.855112,
+     10.184127
+    ],
+    [
+     36.854328,
+     10.181978
+    ],
+    [
+     36.854165,
+     10.181988
+    ],
+    [
+     36.8531569,
+     10.1825924
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 446.29,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 92.59,
+   "length_ratio": 1.3968,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ariana_sup_rieur",
+   "to": "terminus_cit_el_mallaha",
+   "key": "ariana_sup_rieur|terminus_cit_el_mallaha",
+   "straight_m": 130.0,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8558868,
+     10.1837136
+    ],
+    [
+     36.85687,
+     10.183149
+    ],
+    [
+     36.85702,
+     10.1833541
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 145.04,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 21.79,
+   "length_ratio": 1.1157,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8421837,
+   10.182519
+  ],
+  [
+   36.844054,
+   10.182981
+  ],
+  [
+   36.846597,
+   10.183512
+  ],
+  [
+   36.847251,
+   10.183541
+  ],
+  [
+   36.847999,
+   10.183417
+  ],
+  [
+   36.849144,
+   10.182981
+  ],
+  [
+   36.849653,
+   10.182922
+  ],
+  [
+   36.850307,
+   10.183016
+  ],
+  [
+   36.8511265,
+   10.1836125
+  ],
+  [
+   36.853103,
+   10.18542
+  ],
+  [
+   36.853397,
+   10.185052
+  ],
+  [
+   36.852605,
+   10.183026
+  ],
+  [
+   36.8531569,
+   10.1825924
+  ],
+  [
+   36.854165,
+   10.181988
+  ],
+  [
+   36.854328,
+   10.181978
+  ],
+  [
+   36.855112,
+   10.184127
+  ],
+  [
+   36.8558868,
+   10.1837136
+  ],
+  [
+   36.85687,
+   10.183149
+  ],
+  [
+   36.85702,
+   10.1833541
+  ]
+ ],
+ "phase3a": {
+  "pairs": 4,
+  "resolved": 4,
+  "unresolved": 0
+ }
+}

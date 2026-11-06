@@ -1,0 +1,463 @@
+{
+ "line_id": "bus_748_71",
+ "number": "71",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 71: Bab Alioua - Terminus 32C-71-515",
+ "direction_aller": [
+  "bab_alioua",
+  "sidi_bechir",
+  "bab_jdid",
+  "bab_mnara",
+  "kasbah",
+  "telecom",
+  "charle_nicole",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "bardo",
+  "municipalite_bardo",
+  "lycee_saoueb",
+  "lycee_khaznadar",
+  "khaznadar",
+  "artisanat",
+  "denden",
+  "oued_gueriana_l71",
+  "cite_el_antit",
+  "zahrouni",
+  "mosqu_e_zahrouni",
+  "lycee_zahrouni",
+  "ben_daha_32c",
+  "cafe_zied",
+  "jayara",
+  "depot_zahrouni",
+  "terminus_32c_71_515"
+ ],
+ "direction_retour": [
+  "terminus_32c_71_515",
+  "depot_zahrouni",
+  "jayara",
+  "cafe_zied",
+  "ben_daha_32c",
+  "lycee_zahrouni",
+  "mosqu_e_zahrouni",
+  "zahrouni",
+  "cite_el_antit",
+  "oued_gueriana_l71",
+  "denden",
+  "artisanat",
+  "khaznadar",
+  "lycee_khaznadar",
+  "lycee_saoueb",
+  "municipalite_bardo",
+  "bardo",
+  "20_mars",
+  "bouchoucha",
+  "immeuble_chefia",
+  "charle_nicole",
+  "telecom",
+  "kasbah",
+  "bab_mnara",
+  "bab_jdid",
+  "sidi_bechir",
+  "bab_alioua"
+ ],
+ "stations_count": 27,
+ "start": {
+  "id": "bab_alioua",
+  "name": "BAB ALIOUA"
+ },
+ "end": {
+  "id": "terminus_32c_71_515",
+  "name": "Terminus 32C-71-515"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "bab_alioua",
+  "sidi_bechir",
+  "bab_jdid",
+  "bab_mnara",
+  "kasbah",
+  "telecom",
+  "charle_nicole",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "bardo",
+  "municipalite_bardo",
+  "lycee_saoueb",
+  "lycee_khaznadar",
+  "khaznadar",
+  "artisanat",
+  "denden",
+  "oued_gueriana_l71",
+  "cite_el_antit",
+  "zahrouni",
+  "mosqu_e_zahrouni",
+  "lycee_zahrouni",
+  "ben_daha_32c",
+  "cafe_zied",
+  "jayara",
+  "depot_zahrouni",
+  "terminus_32c_71_515"
+ ],
+ "stations_detail": [
+  {
+   "id": "bab_alioua",
+   "name_en": "BAB ALIOUA",
+   "name_ar": "باب علوية",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7858,
+   "lon": 10.17981,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bechir",
+   "name_en": "Sidi Bechir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7914689,
+   "lon": 10.1774998,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_jdid",
+   "name_en": "Bab Jdid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7921584,
+   "lon": 10.17213,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_mnara",
+   "name_en": "Bab Mnara",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7932496,
+   "lon": 10.1700674,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kasbah",
+   "name_en": "Kasbah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7963447,
+   "lon": 10.1681174,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "telecom",
+   "name_en": "Telecom",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8002558,
+   "lon": 10.1651885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_chefia",
+   "name_en": "Immeuble Chefia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8098234,
+   "lon": 10.152579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchoucha",
+   "name_en": "BOUCHOUCHA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80953,
+   "lon": 10.15026,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "bardo",
+   "name_en": "BARDO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80724,
+   "lon": 10.13523,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipalite_bardo",
+   "name_en": "Municipalite Bardo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8071673,
+   "lon": 10.1336858,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_saoueb",
+   "name_en": "Lycee Saoueb",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8059724,
+   "lon": 10.1288632,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_khaznadar",
+   "name_en": "Lycee Khaznadar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8049673,
+   "lon": 10.1243088,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "khaznadar",
+   "name_en": "KHAZNADAR",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80421,
+   "lon": 10.12177,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "artisanat",
+   "name_en": "ARTISANAT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80293,
+   "lon": 10.11601,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "denden",
+   "name_en": "DENDEN",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80221,
+   "lon": 10.11075,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_gueriana_l71",
+   "name_en": "Oued Gueriana L71",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7984512,
+   "lon": 10.106279,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_el_antit",
+   "name_en": "Cite El Antit",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7971196,
+   "lon": 10.1073519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zahrouni",
+   "name_en": "Zahrouni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7922783,
+   "lon": 10.1078508,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_zahrouni",
+   "name_en": "Mosquée Zahrouni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7903305,
+   "lon": 10.1093127,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_zahrouni",
+   "name_en": "Lycee Zahrouni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7850183,
+   "lon": 10.1088138,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_daha_32c",
+   "name_en": "Ben Daha-32C",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.781714,
+   "lon": 10.1085857,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cafe_zied",
+   "name_en": "Cafe Zied",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7800555,
+   "lon": 10.1023415,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jayara",
+   "name_en": "Jayara",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7784133,
+   "lon": 10.0963385,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "depot_zahrouni",
+   "name_en": "Depot Zahrouni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7770178,
+   "lon": 10.0911674,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_32c_71_515",
+   "name_en": "Terminus 32C-71-515",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7773478,
+   "lon": 10.0889034,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

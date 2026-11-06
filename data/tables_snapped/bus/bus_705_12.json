@@ -1,0 +1,761 @@
+{
+ "line_id": "bus_705_12",
+ "number": "12",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 12: Jardin Thameur - Terminus L12 Zayatine",
+ "direction_aller": [
+  "jardin_thameur",
+  "mechtel",
+  "arbi_kebbedi_omrane",
+  "caf_kawekeb",
+  "terminus_jbel_lahmer_l_11",
+  "ecole_francaise_omarane",
+  "restaurant_bou_feres",
+  "march_zayatine",
+  "cite_zayatine",
+  "terminus_l12_zayatine"
+ ],
+ "direction_retour": [
+  "terminus_l12_zayatine",
+  "cite_zayatine",
+  "march_zayatine",
+  "restaurant_bou_feres",
+  "ecole_francaise_omarane",
+  "terminus_jbel_lahmer_l_11",
+  "caf_kawekeb",
+  "arbi_kebbedi_omrane",
+  "mechtel",
+  "jardin_thameur"
+ ],
+ "stations_count": 10,
+ "start": {
+  "id": "jardin_thameur",
+  "name": "Jardin Thameur"
+ },
+ "end": {
+  "id": "terminus_l12_zayatine",
+  "name": "Terminus L12 Zayatine"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "jardin_thameur",
+  "mechtel",
+  "arbi_kebbedi_omrane",
+  "caf_kawekeb",
+  "terminus_jbel_lahmer_l_11",
+  "ecole_francaise_omarane",
+  "restaurant_bou_feres",
+  "march_zayatine",
+  "cite_zayatine",
+  "terminus_l12_zayatine"
+ ],
+ "stations_detail": [
+  {
+   "id": "jardin_thameur",
+   "name_en": "Jardin Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8037336,
+   "lon": 10.1780922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mechtel",
+   "name_en": "Mechtel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8135314,
+   "lon": 10.1723472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arbi_kebbedi_omrane",
+   "name_en": "Arbi Kebbedi Omrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8149099,
+   "lon": 10.1684472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_kawekeb",
+   "name_en": "Café Kawekeb",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8181657,
+   "lon": 10.1665966,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_jbel_lahmer_l_11",
+   "name_en": "Terminus Jbel Lahmer L 11",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8196302,
+   "lon": 10.1631796,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_francaise_omarane",
+   "name_en": "Ecole Francaise Omarane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8179723,
+   "lon": 10.1655425,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "restaurant_bou_feres",
+   "name_en": "Restaurant Bou Feres",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8187861,
+   "lon": 10.1577534,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "march_zayatine",
+   "name_en": "Marché Zayatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8203386,
+   "lon": 10.1567342,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_zayatine",
+   "name_en": "Cite Zayatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8237867,
+   "lon": 10.1549585,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_l12_zayatine",
+   "name_en": "Terminus L12 Zayatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8252062,
+   "lon": 10.1538557,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "jardin_thameur",
+   "to": "mechtel",
+   "key": "jardin_thameur|mechtel",
+   "straight_m": 1203.55,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8037336,
+     10.1780922
+    ],
+    [
+     36.804012,
+     10.177958
+    ],
+    [
+     36.80448,
+     10.17665
+    ],
+    [
+     36.80463,
+     10.176496
+    ],
+    [
+     36.806982,
+     10.176065
+    ],
+    [
+     36.809608,
+     10.178033
+    ],
+    [
+     36.810523,
+     10.177944
+    ],
+    [
+     36.812676,
+     10.174542
+    ],
+    [
+     36.8135314,
+     10.1723472
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1492.6,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 308.88,
+   "length_ratio": 1.2402,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mechtel",
+   "to": "arbi_kebbedi_omrane",
+   "key": "arbi_kebbedi_omrane|mechtel",
+   "straight_m": 379.51,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8149099,
+     10.1684472
+    ],
+    [
+     36.815449,
+     10.16783
+    ],
+    [
+     36.815197,
+     10.167363
+    ],
+    [
+     36.813511,
+     10.168791
+    ],
+    [
+     36.813307,
+     10.169145
+    ],
+    [
+     36.813576,
+     10.17016
+    ],
+    [
+     36.813533,
+     10.171641
+    ],
+    [
+     36.813213,
+     10.173049
+    ],
+    [
+     36.812602,
+     10.174499
+    ],
+    [
+     36.812676,
+     10.174542
+    ],
+    [
+     36.812872,
+     10.174102
+    ],
+    [
+     36.8135314,
+     10.1723472
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1126.53,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 217.65,
+   "length_ratio": 2.9684,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "arbi_kebbedi_omrane",
+   "to": "caf_kawekeb",
+   "key": "arbi_kebbedi_omrane|caf_kawekeb",
+   "straight_m": 397.75,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8149099,
+     10.1684472
+    ],
+    [
+     36.815567,
+     10.167723
+    ],
+    [
+     36.817098,
+     10.166712
+    ],
+    [
+     36.817966,
+     10.166499
+    ],
+    [
+     36.8181657,
+     10.1665966
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 412.21,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 39.82,
+   "length_ratio": 1.0364,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "caf_kawekeb",
+   "to": "terminus_jbel_lahmer_l_11",
+   "key": "caf_kawekeb|terminus_jbel_lahmer_l_11",
+   "straight_m": 345.01,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8181657,
+     10.1665966
+    ],
+    [
+     36.820006,
+     10.166181
+    ],
+    [
+     36.820217,
+     10.164925
+    ],
+    [
+     36.820071,
+     10.164236
+    ],
+    [
+     36.8196302,
+     10.1631796
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 491.67,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 162.94,
+   "length_ratio": 1.4251,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "terminus_jbel_lahmer_l_11",
+   "to": "ecole_francaise_omarane",
+   "key": "ecole_francaise_omarane|terminus_jbel_lahmer_l_11",
+   "straight_m": 279.69,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8179723,
+     10.1655425
+    ],
+    [
+     36.818011,
+     10.166559
+    ],
+    [
+     36.818253,
+     10.166594
+    ],
+    [
+     36.820006,
+     10.166181
+    ],
+    [
+     36.820217,
+     10.164925
+    ],
+    [
+     36.820071,
+     10.164236
+    ],
+    [
+     36.8196302,
+     10.1631796
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 599.76,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 207.52,
+   "length_ratio": 2.1444,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ecole_francaise_omarane",
+   "to": "restaurant_bou_feres",
+   "key": "ecole_francaise_omarane|restaurant_bou_feres",
+   "straight_m": 699.23,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8179723,
+     10.1655425
+    ],
+    [
+     36.818001,
+     10.164621
+    ],
+    [
+     36.81723,
+     10.162498
+    ],
+    [
+     36.816898,
+     10.161197
+    ],
+    [
+     36.816954,
+     10.160773
+    ],
+    [
+     36.816867,
+     10.160646
+    ],
+    [
+     36.816739,
+     10.160697
+    ],
+    [
+     36.81652,
+     10.159541
+    ],
+    [
+     36.8187861,
+     10.1577534
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 883.0,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 229.27,
+   "length_ratio": 1.2628,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "restaurant_bou_feres",
+   "to": "march_zayatine",
+   "key": "march_zayatine|restaurant_bou_feres",
+   "straight_m": 195.02,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8203386,
+     10.1567342
+    ],
+    [
+     36.8187861,
+     10.1577534
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 195.02,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "march_zayatine",
+   "to": "cite_zayatine",
+   "key": "cite_zayatine|march_zayatine",
+   "straight_m": 414.71,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8237867,
+     10.1549585
+    ],
+    [
+     36.822847,
+     10.155579
+    ],
+    [
+     36.821507,
+     10.155979
+    ],
+    [
+     36.8203386,
+     10.1567342
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 417.67,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 12.63,
+   "length_ratio": 1.0071,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_zayatine",
+   "to": "terminus_l12_zayatine",
+   "key": "cite_zayatine|terminus_l12_zayatine",
+   "straight_m": 185.87,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8237867,
+     10.1549585
+    ],
+    [
+     36.8252062,
+     10.1538557
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 185.87,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8037336,
+   10.1780922
+  ],
+  [
+   36.804012,
+   10.177958
+  ],
+  [
+   36.80448,
+   10.17665
+  ],
+  [
+   36.80463,
+   10.176496
+  ],
+  [
+   36.806982,
+   10.176065
+  ],
+  [
+   36.809608,
+   10.178033
+  ],
+  [
+   36.810523,
+   10.177944
+  ],
+  [
+   36.812676,
+   10.174542
+  ],
+  [
+   36.8135314,
+   10.1723472
+  ],
+  [
+   36.812872,
+   10.174102
+  ],
+  [
+   36.812676,
+   10.174542
+  ],
+  [
+   36.812602,
+   10.174499
+  ],
+  [
+   36.813213,
+   10.173049
+  ],
+  [
+   36.813533,
+   10.171641
+  ],
+  [
+   36.813576,
+   10.17016
+  ],
+  [
+   36.813307,
+   10.169145
+  ],
+  [
+   36.813511,
+   10.168791
+  ],
+  [
+   36.815197,
+   10.167363
+  ],
+  [
+   36.815449,
+   10.16783
+  ],
+  [
+   36.8149099,
+   10.1684472
+  ],
+  [
+   36.815567,
+   10.167723
+  ],
+  [
+   36.817098,
+   10.166712
+  ],
+  [
+   36.817966,
+   10.166499
+  ],
+  [
+   36.8181657,
+   10.1665966
+  ],
+  [
+   36.820006,
+   10.166181
+  ],
+  [
+   36.820217,
+   10.164925
+  ],
+  [
+   36.820071,
+   10.164236
+  ],
+  [
+   36.8196302,
+   10.1631796
+  ],
+  [
+   36.820071,
+   10.164236
+  ],
+  [
+   36.820217,
+   10.164925
+  ],
+  [
+   36.820006,
+   10.166181
+  ],
+  [
+   36.818253,
+   10.166594
+  ],
+  [
+   36.818011,
+   10.166559
+  ],
+  [
+   36.8179723,
+   10.1655425
+  ],
+  [
+   36.818001,
+   10.164621
+  ],
+  [
+   36.81723,
+   10.162498
+  ],
+  [
+   36.816898,
+   10.161197
+  ],
+  [
+   36.816954,
+   10.160773
+  ],
+  [
+   36.816867,
+   10.160646
+  ],
+  [
+   36.816739,
+   10.160697
+  ],
+  [
+   36.81652,
+   10.159541
+  ],
+  [
+   36.8187861,
+   10.1577534
+  ],
+  [
+   36.8203386,
+   10.1567342
+  ],
+  [
+   36.821507,
+   10.155979
+  ],
+  [
+   36.822847,
+   10.155579
+  ],
+  [
+   36.8237867,
+   10.1549585
+  ],
+  [
+   36.8252062,
+   10.1538557
+  ]
+ ],
+ "phase3a": {
+  "pairs": 9,
+  "resolved": 9,
+  "unresolved": 0
+ }
+}

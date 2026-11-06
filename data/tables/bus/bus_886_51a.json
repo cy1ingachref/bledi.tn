@@ -1,0 +1,463 @@
+{
+ "line_id": "bus_886_51a",
+ "number": "51A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 51A: Terminus Tunis Marine Bus - Terminus 5D/ 51A",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "place_pasteur",
+  "patisserie_ben_yeder",
+  "cite_mahrajene",
+  "minist_re_de_quipement",
+  "menzeh1",
+  "ambassade_iraq",
+  "tat_unis",
+  "sour_seau",
+  "snit",
+  "sprols_manar",
+  "soula",
+  "banque",
+  "centre_makni",
+  "menzeh9",
+  "clinique_el_amel",
+  "shell_menzeh_7",
+  "lyc_e_nacer_2",
+  "clinique_cit_nacer",
+  "camoune_m_dicale",
+  "mosqu_e_cit_nacer",
+  "terminus_5d_51a"
+ ],
+ "direction_retour": [
+  "terminus_5d_51a",
+  "mosqu_e_cit_nacer",
+  "camoune_m_dicale",
+  "clinique_cit_nacer",
+  "lyc_e_nacer_2",
+  "shell_menzeh_7",
+  "clinique_el_amel",
+  "menzeh9",
+  "centre_makni",
+  "banque",
+  "soula",
+  "sprols_manar",
+  "snit",
+  "sour_seau",
+  "tat_unis",
+  "ambassade_iraq",
+  "menzeh1",
+  "minist_re_de_quipement",
+  "cite_mahrajene",
+  "patisserie_ben_yeder",
+  "place_pasteur",
+  "place_jeans_dark",
+  "la_fayette",
+  "passage_jeans_jaures",
+  "steg_jeans_jaures",
+  "jeans_jaures",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 27,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "terminus_5d_51a",
+  "name": "Terminus 5D/ 51A"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "place_pasteur",
+  "patisserie_ben_yeder",
+  "cite_mahrajene",
+  "minist_re_de_quipement",
+  "menzeh1",
+  "ambassade_iraq",
+  "tat_unis",
+  "sour_seau",
+  "snit",
+  "sprols_manar",
+  "soula",
+  "banque",
+  "centre_makni",
+  "menzeh9",
+  "clinique_el_amel",
+  "shell_menzeh_7",
+  "lyc_e_nacer_2",
+  "clinique_cit_nacer",
+  "camoune_m_dicale",
+  "mosqu_e_cit_nacer",
+  "terminus_5d_51a"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jeans_jaures",
+   "name_en": "Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8016177,
+   "lon": 10.183899,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_jeans_jaures",
+   "name_en": "Steg Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8054996,
+   "lon": 10.1819977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "passage_jeans_jaures",
+   "name_en": "Passage Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8069114,
+   "lon": 10.1815361,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_fayette",
+   "name_en": "La Fayette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8105618,
+   "lon": 10.1807238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_jeans_dark",
+   "name_en": "Place Jeans Dark",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8183566,
+   "lon": 10.1795785,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_pasteur",
+   "name_en": "Place Pasteur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230935,
+   "lon": 10.1776738,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "patisserie_ben_yeder",
+   "name_en": "Patisserie Ben Yeder",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8265346,
+   "lon": 10.1795924,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_mahrajene",
+   "name_en": "Cite Mahrajene",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.828874,
+   "lon": 10.1800943,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "minist_re_de_quipement",
+   "name_en": "Ministére De  Équipement",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8319311,
+   "lon": 10.1801694,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzeh1",
+   "name_en": "Menzeh1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8335866,
+   "lon": 10.1792613,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ambassade_iraq",
+   "name_en": "Ambassade Iraq",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8353899,
+   "lon": 10.1756778,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tat_unis",
+   "name_en": "État Unis",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8369167,
+   "lon": 10.1737849,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sour_seau",
+   "name_en": "Souréseau",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421244,
+   "lon": 10.1673476,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "snit",
+   "name_en": "SNIT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.838835,
+   "lon": 10.1339538,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sprols_manar",
+   "name_en": "Sprols Manar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8410674,
+   "lon": 10.1621385,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soula",
+   "name_en": "Soula",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8390892,
+   "lon": 10.1568011,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "banque",
+   "name_en": "Banque",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8416341,
+   "lon": 10.1552506,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_makni",
+   "name_en": "Centre Makni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8462019,
+   "lon": 10.1531906,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzeh9",
+   "name_en": "Menzeh9",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8493013,
+   "lon": 10.1507016,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "clinique_el_amel",
+   "name_en": "Clinique El Amel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8503229,
+   "lon": 10.149575,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "shell_menzeh_7",
+   "name_en": "Shell Menzeh 7",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8523919,
+   "lon": 10.1533516,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_nacer_2",
+   "name_en": "Lycée Nacer 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8573539,
+   "lon": 10.1535662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "clinique_cit_nacer",
+   "name_en": "Clinique Cité Nacer",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8599292,
+   "lon": 10.1531585,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "camoune_m_dicale",
+   "name_en": "Camoune Médicale",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8603379,
+   "lon": 10.1607118,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_cit_nacer",
+   "name_en": "Mosquée Cité Nacer",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8600408,
+   "lon": 10.1625247,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_5d_51a",
+   "name_en": "Terminus 5D/ 51A",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8616813,
+   "lon": 10.1631472,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

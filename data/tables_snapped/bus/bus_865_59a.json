@@ -1,0 +1,1295 @@
+{
+ "line_id": "bus_865_59a",
+ "number": "59A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 59A: Station Barcelone - Mourouj 1",
+ "direction_aller": [
+  "station_barcelone",
+  "cimetiere_jallez",
+  "monopoles",
+  "lyc_e_ouardia",
+  "la_cagna_section",
+  "hammam_la_cagna",
+  "pont_mourouj_2",
+  "croisement_mourouj_2",
+  "les_roses_mourouj_1",
+  "batam",
+  "immeuble_oasis",
+  "complexe_commercial_mourouj_1",
+  "mosqu_e_mourouj_1",
+  "mourouj_1"
+ ],
+ "direction_retour": [
+  "mourouj_1",
+  "mosqu_e_mourouj_1",
+  "complexe_commercial_mourouj_1",
+  "immeuble_oasis",
+  "batam",
+  "les_roses_mourouj_1",
+  "croisement_mourouj_2",
+  "pont_mourouj_2",
+  "hammam_la_cagna",
+  "la_cagna_section",
+  "lyc_e_ouardia",
+  "monopoles",
+  "cimetiere_jallez",
+  "station_barcelone"
+ ],
+ "stations_count": 14,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "mourouj_1",
+  "name": "Mourouj 1"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_barcelone",
+  "cimetiere_jallez",
+  "monopoles",
+  "lyc_e_ouardia",
+  "la_cagna_section",
+  "hammam_la_cagna",
+  "pont_mourouj_2",
+  "croisement_mourouj_2",
+  "les_roses_mourouj_1",
+  "batam",
+  "immeuble_oasis",
+  "complexe_commercial_mourouj_1",
+  "mosqu_e_mourouj_1",
+  "mourouj_1"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cimetiere_jallez",
+   "name_en": "Cimetiere Jallez",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.786997,
+   "lon": 10.1804847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "monopoles",
+   "name_en": "Monopoles",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7803904,
+   "lon": 10.1816705,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_ouardia",
+   "name_en": "Lycée Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7769364,
+   "lon": 10.1838728,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_cagna_section",
+   "name_en": "La Cagna (Section)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7729558,
+   "lon": 10.1875014,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_la_cagna",
+   "name_en": "Hammam La Cagna",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7703346,
+   "lon": 10.1897437,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_mourouj_2",
+   "name_en": "Pont Mourouj 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7431611,
+   "lon": 10.207993,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_mourouj_2",
+   "name_en": "Croisement Mourouj 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.74025,
+   "lon": 10.2059713,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_roses_mourouj_1",
+   "name_en": "Les Roses Mourouj 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7390079,
+   "lon": 10.2055154,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "batam",
+   "name_en": "BATAM",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7374523,
+   "lon": 10.208229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_oasis",
+   "name_en": "Immeuble Oasis",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7349698,
+   "lon": 10.2096672,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "complexe_commercial_mourouj_1",
+   "name_en": "Complexe Commercial Mourouj 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7333361,
+   "lon": 10.2081866,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_mourouj_1",
+   "name_en": "Mosquée Mourouj 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.73268,
+   "lon": 10.2035924,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mourouj_1",
+   "name_en": "Mourouj 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7339807,
+   "lon": 10.201983,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "station_barcelone",
+   "to": "cimetiere_jallez",
+   "key": "cimetiere_jallez|station_barcelone",
+   "straight_m": 1117.33,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.786997,
+     10.1804847
+    ],
+    [
+     36.787473,
+     10.18055
+    ],
+    [
+     36.787858,
+     10.18083
+    ],
+    [
+     36.788492,
+     10.181737
+    ],
+    [
+     36.788875,
+     10.181437
+    ],
+    [
+     36.789304,
+     10.180734
+    ],
+    [
+     36.789869,
+     10.180366
+    ],
+    [
+     36.790182,
+     10.179976
+    ],
+    [
+     36.791083,
+     10.180544
+    ],
+    [
+     36.791469,
+     10.180642
+    ],
+    [
+     36.793638,
+     10.180093
+    ],
+    [
+     36.796245,
+     10.179685
+    ],
+    [
+     36.796959,
+     10.179666
+    ],
+    [
+     36.7970414,
+     10.1801307
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1275.06,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 116.16,
+   "length_ratio": 1.1412,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cimetiere_jallez",
+   "to": "monopoles",
+   "key": "cimetiere_jallez|monopoles",
+   "straight_m": 742.17,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.786997,
+     10.1804847
+    ],
+    [
+     36.787703,
+     10.180696
+    ],
+    [
+     36.788079,
+     10.181094
+    ],
+    [
+     36.788403,
+     10.181698
+    ],
+    [
+     36.788551,
+     10.181728
+    ],
+    [
+     36.788543,
+     10.181465
+    ],
+    [
+     36.788335,
+     10.181063
+    ],
+    [
+     36.787805,
+     10.180543
+    ],
+    [
+     36.786634,
+     10.18017
+    ],
+    [
+     36.785482,
+     10.180034
+    ],
+    [
+     36.783505,
+     10.180495
+    ],
+    [
+     36.778238,
+     10.182026
+    ],
+    [
+     36.777545,
+     10.182435
+    ],
+    [
+     36.776982,
+     10.183012
+    ],
+    [
+     36.776796,
+     10.182924
+    ],
+    [
+     36.776558,
+     10.183031
+    ],
+    [
+     36.776477,
+     10.183477
+    ],
+    [
+     36.776725,
+     10.183728
+    ],
+    [
+     36.777009,
+     10.183614
+    ],
+    [
+     36.777272,
+     10.183024
+    ],
+    [
+     36.777914,
+     10.182414
+    ],
+    [
+     36.7803904,
+     10.1816705
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 2204.9,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 463.94,
+   "length_ratio": 2.9709,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "monopoles",
+   "to": "lyc_e_ouardia",
+   "key": "lyc_e_ouardia|monopoles",
+   "straight_m": 431.25,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7769364,
+     10.1838728
+    ],
+    [
+     36.777272,
+     10.183024
+    ],
+    [
+     36.777914,
+     10.182414
+    ],
+    [
+     36.7803904,
+     10.1816705
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 457.23,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 66.27,
+   "length_ratio": 1.0602,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "lyc_e_ouardia",
+   "to": "la_cagna_section",
+   "key": "la_cagna_section|lyc_e_ouardia",
+   "straight_m": 548.06,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7729558,
+     10.1875014
+    ],
+    [
+     36.77349,
+     10.187237
+    ],
+    [
+     36.773512,
+     10.186802
+    ],
+    [
+     36.775419,
+     10.184907
+    ],
+    [
+     36.777042,
+     10.183091
+    ],
+    [
+     36.776796,
+     10.182924
+    ],
+    [
+     36.776558,
+     10.183031
+    ],
+    [
+     36.776477,
+     10.183477
+    ],
+    [
+     36.776855,
+     10.183984
+    ],
+    [
+     36.7769364,
+     10.1838728
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 791.19,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 85.98,
+   "length_ratio": 1.4436,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "la_cagna_section",
+   "to": "hammam_la_cagna",
+   "key": "hammam_la_cagna|la_cagna_section",
+   "straight_m": 353.33,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7703346,
+     10.1897437
+    ],
+    [
+     36.7729558,
+     10.1875014
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 353.33,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "hammam_la_cagna",
+   "to": "pont_mourouj_2",
+   "key": "hammam_la_cagna|pont_mourouj_2",
+   "straight_m": 3431.18,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7703346,
+     10.1897437
+    ],
+    [
+     36.773053,
+     10.187366
+    ],
+    [
+     36.77349,
+     10.187237
+    ],
+    [
+     36.773512,
+     10.186802
+    ],
+    [
+     36.773369,
+     10.186671
+    ],
+    [
+     36.773145,
+     10.186702
+    ],
+    [
+     36.773023,
+     10.18712
+    ],
+    [
+     36.772474,
+     10.187639
+    ],
+    [
+     36.76962,
+     10.190029
+    ],
+    [
+     36.766949,
+     10.19338
+    ],
+    [
+     36.764626,
+     10.195825
+    ],
+    [
+     36.762116,
+     10.197505
+    ],
+    [
+     36.761341,
+     10.198248
+    ],
+    [
+     36.755876,
+     10.201492
+    ],
+    [
+     36.753864,
+     10.202888
+    ],
+    [
+     36.747768,
+     10.208492
+    ],
+    [
+     36.747311,
+     10.208657
+    ],
+    [
+     36.746497,
+     10.208525
+    ],
+    [
+     36.745849,
+     10.208752
+    ],
+    [
+     36.745646,
+     10.208356
+    ],
+    [
+     36.744089,
+     10.208026
+    ],
+    [
+     36.742662,
+     10.207492
+    ],
+    [
+     36.741047,
+     10.206329
+    ],
+    [
+     36.739668,
+     10.204841
+    ],
+    [
+     36.73951,
+     10.204819
+    ],
+    [
+     36.739483,
+     10.205128
+    ],
+    [
+     36.741027,
+     10.206682
+    ],
+    [
+     36.741897,
+     10.207256
+    ],
+    [
+     36.7431611,
+     10.207993
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 5498.73,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 494.75,
+   "length_ratio": 1.6026,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "pont_mourouj_2",
+   "to": "croisement_mourouj_2",
+   "key": "croisement_mourouj_2|pont_mourouj_2",
+   "straight_m": 370.45,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.74025,
+     10.2059713
+    ],
+    [
+     36.74144,
+     10.206984
+    ],
+    [
+     36.7431611,
+     10.207993
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 371.61,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 14.5,
+   "length_ratio": 1.0031,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "croisement_mourouj_2",
+   "to": "les_roses_mourouj_1",
+   "key": "croisement_mourouj_2|les_roses_mourouj_1",
+   "straight_m": 143.97,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 1545 m implausible vs 144 m straight"
+  },
+  {
+   "from": "les_roses_mourouj_1",
+   "to": "batam",
+   "key": "batam|les_roses_mourouj_1",
+   "straight_m": 297.31,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7374523,
+     10.208229
+    ],
+    [
+     36.739681,
+     10.205113
+    ],
+    [
+     36.73969,
+     10.204869
+    ],
+    [
+     36.73951,
+     10.204819
+    ],
+    [
+     36.7390079,
+     10.2055154
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 497.92,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 95.24,
+   "length_ratio": 1.6747,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "batam",
+   "to": "immeuble_oasis",
+   "key": "batam|immeuble_oasis",
+   "straight_m": 304.34,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7374523,
+     10.208229
+    ],
+    [
+     36.737934,
+     10.207488
+    ],
+    [
+     36.737837,
+     10.207364
+    ],
+    [
+     36.737174,
+     10.208195
+    ],
+    [
+     36.736489,
+     10.208738
+    ],
+    [
+     36.734192,
+     10.209696
+    ],
+    [
+     36.734396,
+     10.209862
+    ],
+    [
+     36.7349698,
+     10.2096672
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 657.7,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 88.16,
+   "length_ratio": 2.1611,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "immeuble_oasis",
+   "to": "complexe_commercial_mourouj_1",
+   "key": "complexe_commercial_mourouj_1|immeuble_oasis",
+   "straight_m": 224.52,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7333361,
+     10.2081866
+    ],
+    [
+     36.734243,
+     10.209827
+    ],
+    [
+     36.734457,
+     10.209845
+    ],
+    [
+     36.7349698,
+     10.2096672
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 260.62,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 59.02,
+   "length_ratio": 1.1608,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "complexe_commercial_mourouj_1",
+   "to": "mosqu_e_mourouj_1",
+   "key": "complexe_commercial_mourouj_1|mosqu_e_mourouj_1",
+   "straight_m": 415.86,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7333361,
+     10.2081866
+    ],
+    [
+     36.732667,
+     10.205732
+    ],
+    [
+     36.732465,
+     10.203841
+    ],
+    [
+     36.73268,
+     10.2035924
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 433.65,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 34.87,
+   "length_ratio": 1.0428,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mosqu_e_mourouj_1",
+   "to": "mourouj_1",
+   "key": "mosqu_e_mourouj_1|mourouj_1",
+   "straight_m": 203.69,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.73268,
+     10.2035924
+    ],
+    [
+     36.7339807,
+     10.201983
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 203.69,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7970414,
+   10.1801307
+  ],
+  [
+   36.796959,
+   10.179666
+  ],
+  [
+   36.796245,
+   10.179685
+  ],
+  [
+   36.793638,
+   10.180093
+  ],
+  [
+   36.791469,
+   10.180642
+  ],
+  [
+   36.791083,
+   10.180544
+  ],
+  [
+   36.790182,
+   10.179976
+  ],
+  [
+   36.789869,
+   10.180366
+  ],
+  [
+   36.789304,
+   10.180734
+  ],
+  [
+   36.788875,
+   10.181437
+  ],
+  [
+   36.788492,
+   10.181737
+  ],
+  [
+   36.787858,
+   10.18083
+  ],
+  [
+   36.787473,
+   10.18055
+  ],
+  [
+   36.786997,
+   10.1804847
+  ],
+  [
+   36.787703,
+   10.180696
+  ],
+  [
+   36.788079,
+   10.181094
+  ],
+  [
+   36.788403,
+   10.181698
+  ],
+  [
+   36.788551,
+   10.181728
+  ],
+  [
+   36.788543,
+   10.181465
+  ],
+  [
+   36.788335,
+   10.181063
+  ],
+  [
+   36.787805,
+   10.180543
+  ],
+  [
+   36.786634,
+   10.18017
+  ],
+  [
+   36.785482,
+   10.180034
+  ],
+  [
+   36.783505,
+   10.180495
+  ],
+  [
+   36.778238,
+   10.182026
+  ],
+  [
+   36.777545,
+   10.182435
+  ],
+  [
+   36.776982,
+   10.183012
+  ],
+  [
+   36.776796,
+   10.182924
+  ],
+  [
+   36.776558,
+   10.183031
+  ],
+  [
+   36.776477,
+   10.183477
+  ],
+  [
+   36.776725,
+   10.183728
+  ],
+  [
+   36.777009,
+   10.183614
+  ],
+  [
+   36.777272,
+   10.183024
+  ],
+  [
+   36.777914,
+   10.182414
+  ],
+  [
+   36.7803904,
+   10.1816705
+  ],
+  [
+   36.777914,
+   10.182414
+  ],
+  [
+   36.777272,
+   10.183024
+  ],
+  [
+   36.7769364,
+   10.1838728
+  ],
+  [
+   36.776855,
+   10.183984
+  ],
+  [
+   36.776477,
+   10.183477
+  ],
+  [
+   36.776558,
+   10.183031
+  ],
+  [
+   36.776796,
+   10.182924
+  ],
+  [
+   36.777042,
+   10.183091
+  ],
+  [
+   36.775419,
+   10.184907
+  ],
+  [
+   36.773512,
+   10.186802
+  ],
+  [
+   36.77349,
+   10.187237
+  ],
+  [
+   36.7729558,
+   10.1875014
+  ],
+  [
+   36.7703346,
+   10.1897437
+  ],
+  [
+   36.773053,
+   10.187366
+  ],
+  [
+   36.77349,
+   10.187237
+  ],
+  [
+   36.773512,
+   10.186802
+  ],
+  [
+   36.773369,
+   10.186671
+  ],
+  [
+   36.773145,
+   10.186702
+  ],
+  [
+   36.773023,
+   10.18712
+  ],
+  [
+   36.772474,
+   10.187639
+  ],
+  [
+   36.76962,
+   10.190029
+  ],
+  [
+   36.766949,
+   10.19338
+  ],
+  [
+   36.764626,
+   10.195825
+  ],
+  [
+   36.762116,
+   10.197505
+  ],
+  [
+   36.761341,
+   10.198248
+  ],
+  [
+   36.755876,
+   10.201492
+  ],
+  [
+   36.753864,
+   10.202888
+  ],
+  [
+   36.747768,
+   10.208492
+  ],
+  [
+   36.747311,
+   10.208657
+  ],
+  [
+   36.746497,
+   10.208525
+  ],
+  [
+   36.745849,
+   10.208752
+  ],
+  [
+   36.745646,
+   10.208356
+  ],
+  [
+   36.744089,
+   10.208026
+  ],
+  [
+   36.742662,
+   10.207492
+  ],
+  [
+   36.741047,
+   10.206329
+  ],
+  [
+   36.739668,
+   10.204841
+  ],
+  [
+   36.73951,
+   10.204819
+  ],
+  [
+   36.739483,
+   10.205128
+  ],
+  [
+   36.741027,
+   10.206682
+  ],
+  [
+   36.741897,
+   10.207256
+  ],
+  [
+   36.7431611,
+   10.207993
+  ],
+  [
+   36.74144,
+   10.206984
+  ],
+  [
+   36.74025,
+   10.2059713
+  ],
+  [
+   36.7390079,
+   10.2055154
+  ],
+  [
+   36.73951,
+   10.204819
+  ],
+  [
+   36.73969,
+   10.204869
+  ],
+  [
+   36.739681,
+   10.205113
+  ],
+  [
+   36.7374523,
+   10.208229
+  ],
+  [
+   36.737934,
+   10.207488
+  ],
+  [
+   36.737837,
+   10.207364
+  ],
+  [
+   36.737174,
+   10.208195
+  ],
+  [
+   36.736489,
+   10.208738
+  ],
+  [
+   36.734192,
+   10.209696
+  ],
+  [
+   36.734396,
+   10.209862
+  ],
+  [
+   36.7349698,
+   10.2096672
+  ],
+  [
+   36.734457,
+   10.209845
+  ],
+  [
+   36.734243,
+   10.209827
+  ],
+  [
+   36.7333361,
+   10.2081866
+  ],
+  [
+   36.732667,
+   10.205732
+  ],
+  [
+   36.732465,
+   10.203841
+  ],
+  [
+   36.73268,
+   10.2035924
+  ],
+  [
+   36.7339807,
+   10.201983
+  ]
+ ],
+ "phase3a": {
+  "pairs": 13,
+  "resolved": 12,
+  "unresolved": 1
+ }
+}

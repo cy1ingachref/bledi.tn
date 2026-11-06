@@ -1,0 +1,143 @@
+{
+ "line_id": "bus_718_29",
+ "number": "29",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 29: Station Barcelone - Bellevue",
+ "direction_aller": [
+  "station_barcelone",
+  "dubosville",
+  "d_l_gation_elouardia",
+  "hammam_bellevue",
+  "caf_el_quods",
+  "salle_des_f_tes_bellevue",
+  "bellevue"
+ ],
+ "direction_retour": [
+  "bellevue",
+  "salle_des_f_tes_bellevue",
+  "caf_el_quods",
+  "hammam_bellevue",
+  "d_l_gation_elouardia",
+  "dubosville",
+  "station_barcelone"
+ ],
+ "stations_count": 7,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "bellevue",
+  "name": "Bellevue"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_barcelone",
+  "dubosville",
+  "d_l_gation_elouardia",
+  "hammam_bellevue",
+  "caf_el_quods",
+  "salle_des_f_tes_bellevue",
+  "bellevue"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dubosville",
+   "name_en": "Dubosville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839884,
+   "lon": 10.1917495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "d_l_gation_elouardia",
+   "name_en": "Délégation Elouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7816305,
+   "lon": 10.1944809,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_bellevue",
+   "name_en": "Hammam Bellevue",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7810337,
+   "lon": 10.1939065,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_el_quods",
+   "name_en": "Café El Quods",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7804161,
+   "lon": 10.1929036,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "salle_des_f_tes_bellevue",
+   "name_en": "Salle Des Fétes Bellevue",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7783795,
+   "lon": 10.1907096,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bellevue",
+   "name_en": "Bellevue",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7740312,
+   "lon": 10.1870189,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

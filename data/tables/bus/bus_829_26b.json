@@ -1,0 +1,703 @@
+{
+ "line_id": "bus_829_26b",
+ "number": "26B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 26B: Station Barcelone - Station De Bus Mornag",
+ "direction_aller": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "siefcol",
+  "centre_de_formation_snt",
+  "soci_t_nour",
+  "lustreries",
+  "gouvernorat_de_ben_arous",
+  "cite_sprols",
+  "mosqu_e_medina_jedida",
+  "medina_jadida_1",
+  "stade_rades",
+  "usine_de_tomate",
+  "oued_meliane_l_26a_b_82",
+  "oncv_borj_louzir",
+  "gp1_kiosque_esso",
+  "comptoir_sfaxien",
+  "poulina",
+  "croisement_ezzahra",
+  "setcar",
+  "cit_miled",
+  "cit_bel_air",
+  "km_14_croisement_gp1_mc39",
+  "cit_sprols_boumhel",
+  "av_de_environnement",
+  "place_14_janvier_boumhel",
+  "gan",
+  "cit_snit_boumhel",
+  "espace_ranine",
+  "espace_chrif",
+  "le_canal",
+  "ecole_primaire_chala",
+  "carri_re_mornag",
+  "cit_echikh_2",
+  "cit_echikh_1",
+  "station_de_bus_mornag"
+ ],
+ "direction_retour": [
+  "station_de_bus_mornag",
+  "cit_echikh_1",
+  "cit_echikh_2",
+  "carri_re_mornag",
+  "ecole_primaire_chala",
+  "le_canal",
+  "espace_chrif",
+  "espace_ranine",
+  "cit_snit_boumhel",
+  "gan",
+  "place_14_janvier_boumhel",
+  "av_de_environnement",
+  "cit_sprols_boumhel",
+  "km_14_croisement_gp1_mc39",
+  "cit_bel_air",
+  "cit_miled",
+  "setcar",
+  "croisement_ezzahra",
+  "poulina",
+  "comptoir_sfaxien",
+  "gp1_kiosque_esso",
+  "oncv_borj_louzir",
+  "oued_meliane_l_26a_b_82",
+  "usine_de_tomate",
+  "stade_rades",
+  "medina_jadida_1",
+  "mosqu_e_medina_jedida",
+  "cite_sprols",
+  "gouvernorat_de_ben_arous",
+  "lustreries",
+  "soci_t_nour",
+  "centre_de_formation_snt",
+  "siefcol",
+  "cnss",
+  "sofomeca",
+  "stoa",
+  "gare_djebel_jelloud",
+  "djebel_jelloud_gp1",
+  "el_afrane",
+  "centre_de_coordination_ouardia",
+  "dubosville",
+  "station_barcelone"
+ ],
+ "stations_count": 42,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "station_de_bus_mornag",
+  "name": "Station De Bus Mornag"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "siefcol",
+  "centre_de_formation_snt",
+  "soci_t_nour",
+  "lustreries",
+  "gouvernorat_de_ben_arous",
+  "cite_sprols",
+  "mosqu_e_medina_jedida",
+  "medina_jadida_1",
+  "stade_rades",
+  "usine_de_tomate",
+  "oued_meliane_l_26a_b_82",
+  "oncv_borj_louzir",
+  "gp1_kiosque_esso",
+  "comptoir_sfaxien",
+  "poulina",
+  "croisement_ezzahra",
+  "setcar",
+  "cit_miled",
+  "cit_bel_air",
+  "km_14_croisement_gp1_mc39",
+  "cit_sprols_boumhel",
+  "av_de_environnement",
+  "place_14_janvier_boumhel",
+  "gan",
+  "cit_snit_boumhel",
+  "espace_ranine",
+  "espace_chrif",
+  "le_canal",
+  "ecole_primaire_chala",
+  "carri_re_mornag",
+  "cit_echikh_2",
+  "cit_echikh_1",
+  "station_de_bus_mornag"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dubosville",
+   "name_en": "Dubosville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839884,
+   "lon": 10.1917495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_coordination_ouardia",
+   "name_en": "Centre De Coordination Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7806046,
+   "lon": 10.1956231,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_afrane",
+   "name_en": "El Afrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7796674,
+   "lon": 10.1966209,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebel_jelloud_gp1",
+   "name_en": "Djebel Jelloud Gp1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7732433,
+   "lon": 10.2045236,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gare_djebel_jelloud",
+   "name_en": "Gare Djebel Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7715383,
+   "lon": 10.208723,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stoa",
+   "name_en": "Stoa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7686077,
+   "lon": 10.2157355,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sofomeca",
+   "name_en": "SOFOMECA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7658672,
+   "lon": 10.2217893,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cnss",
+   "name_en": "Cnss",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.765065,
+   "lon": 10.2233996,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "siefcol",
+   "name_en": "SIEFCOL",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7625689,
+   "lon": 10.2292994,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_snt",
+   "name_en": "Centre De Formation Snt",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.761611,
+   "lon": 10.2317686,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soci_t_nour",
+   "name_en": "Société Nour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7608128,
+   "lon": 10.2337966,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lustreries",
+   "name_en": "Lustreries",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7570187,
+   "lon": 10.2430977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gouvernorat_de_ben_arous",
+   "name_en": "Gouvernorat De Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7544571,
+   "lon": 10.2481832,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_sprols",
+   "name_en": "Cite Sprols",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7530502,
+   "lon": 10.2496172,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_medina_jedida",
+   "name_en": "Mosquée Medina Jedida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.751312,
+   "lon": 10.2511658,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "medina_jadida_1",
+   "name_en": "Medina Jadida 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.749955,
+   "lon": 10.2534516,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_rades",
+   "name_en": "Stade Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.743678,
+   "lon": 10.2668514,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "usine_de_tomate",
+   "name_en": "Usine De Tomate",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7413385,
+   "lon": 10.2730526,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_meliane_l_26a_b_82",
+   "name_en": "Oued Meliane L(26A-B-82)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7398941,
+   "lon": 10.2785458,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oncv_borj_louzir",
+   "name_en": "Oncv Borj Louzir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7389483,
+   "lon": 10.2857556,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gp1_kiosque_esso",
+   "name_en": "Gp1 Kiosque Esso",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7382198,
+   "lon": 10.2917535,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "comptoir_sfaxien",
+   "name_en": "Comptoir Sfaxien",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7378091,
+   "lon": 10.2948398,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poulina",
+   "name_en": "Poulina",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7370587,
+   "lon": 10.2976601,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_ezzahra",
+   "name_en": "Croisement Ezzahra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7364498,
+   "lon": 10.2999881,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "setcar",
+   "name_en": "Setcar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7350792,
+   "lon": 10.3065266,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_miled",
+   "name_en": "Cité Miled",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7338239,
+   "lon": 10.3143372,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_bel_air",
+   "name_en": "Cité Bel Air",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6869633,
+   "lon": 10.3202373,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "km_14_croisement_gp1_mc39",
+   "name_en": "Km 14 Croisement Gp1/Mc39",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7330621,
+   "lon": 10.3164086,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_sprols_boumhel",
+   "name_en": "Cité Sprols Boumhel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7305565,
+   "lon": 10.3095307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_de_environnement",
+   "name_en": "Av De Environnement",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7264523,
+   "lon": 10.3038721,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_14_janvier_boumhel",
+   "name_en": "Place 14 Janvier (Boumhel)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7243385,
+   "lon": 10.300766,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gan",
+   "name_en": "Gan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7210666,
+   "lon": 10.2965495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_snit_boumhel",
+   "name_en": "Cité Snit Boumhel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7191021,
+   "lon": 10.2956476,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "espace_ranine",
+   "name_en": "Espace Ranine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7060055,
+   "lon": 10.2952296,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "espace_chrif",
+   "name_en": "Espace Chrif",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7021365,
+   "lon": 10.2950028,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_canal",
+   "name_en": "Le Canal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6990644,
+   "lon": 10.3000254,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire_chala",
+   "name_en": "Ecole Primaire Chala",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6933174,
+   "lon": 10.3040917,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carri_re_mornag",
+   "name_en": "Carriére Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6894609,
+   "lon": 10.3065481,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_echikh_2",
+   "name_en": "Cité Echikh 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6849893,
+   "lon": 10.2995534,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_echikh_1",
+   "name_en": "Cité Echikh 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6826835,
+   "lon": 10.2939851,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "station_de_bus_mornag",
+   "name_en": "Station De Bus Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6799098,
+   "lon": 10.2893849,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

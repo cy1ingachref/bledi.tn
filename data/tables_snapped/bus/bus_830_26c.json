@@ -1,0 +1,1461 @@
+{
+ "line_id": "bus_830_26c",
+ "number": "26C",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 26C: Cité Thameur - Station De Bus Mornag",
+ "direction_aller": [
+  "cit_thameur",
+  "soned",
+  "kiosque_mobil_ben_arous",
+  "centre_ben_arous",
+  "bata",
+  "croisement_yasminet_route_mourneg",
+  "yasminet_centre",
+  "caf_yasminet",
+  "sidi_mosbah",
+  "hopital_r_gional_yesminet",
+  "frigo_hadj_saleh",
+  "boujerdga",
+  "touati",
+  "dziri",
+  "boucherie_ezzaouia",
+  "ezzaouia_mornag",
+  "bir_ezzanga",
+  "somag",
+  "cit_jaber",
+  "doukali",
+  "poste_police_mornag",
+  "station_de_bus_mornag"
+ ],
+ "direction_retour": [
+  "station_de_bus_mornag",
+  "poste_police_mornag",
+  "doukali",
+  "cit_jaber",
+  "somag",
+  "bir_ezzanga",
+  "ezzaouia_mornag",
+  "boucherie_ezzaouia",
+  "dziri",
+  "touati",
+  "boujerdga",
+  "frigo_hadj_saleh",
+  "hopital_r_gional_yesminet",
+  "sidi_mosbah",
+  "caf_yasminet",
+  "yasminet_centre",
+  "croisement_yasminet_route_mourneg",
+  "bata",
+  "centre_ben_arous",
+  "kiosque_mobil_ben_arous",
+  "soned",
+  "cit_thameur"
+ ],
+ "stations_count": 22,
+ "start": {
+  "id": "cit_thameur",
+  "name": "Cité Thameur"
+ },
+ "end": {
+  "id": "station_de_bus_mornag",
+  "name": "Station De Bus Mornag"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "cit_thameur",
+  "soned",
+  "kiosque_mobil_ben_arous",
+  "centre_ben_arous",
+  "bata",
+  "croisement_yasminet_route_mourneg",
+  "yasminet_centre",
+  "caf_yasminet",
+  "sidi_mosbah",
+  "hopital_r_gional_yesminet",
+  "frigo_hadj_saleh",
+  "boujerdga",
+  "touati",
+  "dziri",
+  "boucherie_ezzaouia",
+  "ezzaouia_mornag",
+  "bir_ezzanga",
+  "somag",
+  "cit_jaber",
+  "doukali",
+  "poste_police_mornag",
+  "station_de_bus_mornag"
+ ],
+ "stations_detail": [
+  {
+   "id": "cit_thameur",
+   "name_en": "Cité Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7647407,
+   "lon": 10.2086643,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soned",
+   "name_en": "Soned",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7652949,
+   "lon": 10.210255,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_mobil_ben_arous",
+   "name_en": "Kiosque Mobil Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7570296,
+   "lon": 10.2187867,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_ben_arous",
+   "name_en": "Centre Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75346,
+   "lon": 10.2224984,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bata",
+   "name_en": "Bata",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7494197,
+   "lon": 10.2274336,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_yasminet_route_mourneg",
+   "name_en": "Croisement Yasminet Route Mourneg",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7434854,
+   "lon": 10.2344922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "yasminet_centre",
+   "name_en": "Yasminet Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7407195,
+   "lon": 10.2380766,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_yasminet",
+   "name_en": "Café Yasminet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7380861,
+   "lon": 10.2408866,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_mosbah",
+   "name_en": "Sidi Mosbah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7350964,
+   "lon": 10.2437415,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_r_gional_yesminet",
+   "name_en": "Hopital Régional Yesminet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7322446,
+   "lon": 10.2468533,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "frigo_hadj_saleh",
+   "name_en": "Frigo Hadj Saleh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7184993,
+   "lon": 10.2611605,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boujerdga",
+   "name_en": "Boujerdga",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7144861,
+   "lon": 10.2643306,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "touati",
+   "name_en": "Touati",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7132023,
+   "lon": 10.2651777,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dziri",
+   "name_en": "Dziri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7065796,
+   "lon": 10.269319,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boucherie_ezzaouia",
+   "name_en": "Boucherie Ezzaouia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.701586,
+   "lon": 10.2730731,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ezzaouia_mornag",
+   "name_en": "Ezzaouia Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6990865,
+   "lon": 10.2749578,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_ezzanga",
+   "name_en": "Bir Ezzanga",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6956206,
+   "lon": 10.2769579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "somag",
+   "name_en": "Somag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6924915,
+   "lon": 10.278954,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_jaber",
+   "name_en": "Cité Jaber",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6842471,
+   "lon": 10.2850475,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "doukali",
+   "name_en": "Doukali",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6883422,
+   "lon": 10.2820604,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poste_police_mornag",
+   "name_en": "Poste Police Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6825257,
+   "lon": 10.2863701,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "station_de_bus_mornag",
+   "name_en": "Station De Bus Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6799098,
+   "lon": 10.2893849,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "cit_thameur",
+   "to": "soned",
+   "key": "cit_thameur|soned",
+   "straight_m": 154.52,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7647407,
+     10.2086643
+    ],
+    [
+     36.7652949,
+     10.210255
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 154.52,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "soned",
+   "to": "kiosque_mobil_ben_arous",
+   "key": "kiosque_mobil_ben_arous|soned",
+   "straight_m": 1192.61,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7570296,
+     10.2187867
+    ],
+    [
+     36.758205,
+     10.217088
+    ],
+    [
+     36.759649,
+     10.215738
+    ],
+    [
+     36.760752,
+     10.214351
+    ],
+    [
+     36.764763,
+     10.210683
+    ],
+    [
+     36.7652949,
+     10.210255
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1197.92,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 40.73,
+   "length_ratio": 1.0045,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "kiosque_mobil_ben_arous",
+   "to": "centre_ben_arous",
+   "key": "centre_ben_arous|kiosque_mobil_ben_arous",
+   "straight_m": 516.62,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.75346,
+     10.2224984
+    ],
+    [
+     36.756071,
+     10.219769
+    ],
+    [
+     36.7570296,
+     10.2187867
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 516.62,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.99,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "centre_ben_arous",
+   "to": "bata",
+   "key": "bata|centre_ben_arous",
+   "straight_m": 628.62,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7494197,
+     10.2274336
+    ],
+    [
+     36.751573,
+     10.225049
+    ],
+    [
+     36.751766,
+     10.224476
+    ],
+    [
+     36.751153,
+     10.224184
+    ],
+    [
+     36.751965,
+     10.223696
+    ],
+    [
+     36.75346,
+     10.2224984
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 746.19,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 72.1,
+   "length_ratio": 1.187,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bata",
+   "to": "croisement_yasminet_route_mourneg",
+   "key": "bata|croisement_yasminet_route_mourneg",
+   "straight_m": 911.57,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7494197,
+     10.2274336
+    ],
+    [
+     36.747263,
+     10.230566
+    ],
+    [
+     36.74599,
+     10.232801
+    ],
+    [
+     36.744963,
+     10.233618
+    ],
+    [
+     36.744293,
+     10.233768
+    ],
+    [
+     36.743963,
+     10.234349
+    ],
+    [
+     36.74271,
+     10.2356
+    ],
+    [
+     36.742497,
+     10.235173
+    ],
+    [
+     36.7434854,
+     10.2344922
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1235.64,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 131.06,
+   "length_ratio": 1.3555,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "croisement_yasminet_route_mourneg",
+   "to": "yasminet_centre",
+   "key": "croisement_yasminet_route_mourneg|yasminet_centre",
+   "straight_m": 443.39,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7434854,
+     10.2344922
+    ],
+    [
+     36.742497,
+     10.235173
+    ],
+    [
+     36.74271,
+     10.2356
+    ],
+    [
+     36.741869,
+     10.236487
+    ],
+    [
+     36.7407195,
+     10.2380766
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 483.58,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 37.09,
+   "length_ratio": 1.0906,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "yasminet_centre",
+   "to": "caf_yasminet",
+   "key": "caf_yasminet|yasminet_centre",
+   "straight_m": 385.28,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7380861,
+     10.2408866
+    ],
+    [
+     36.738155,
+     10.24106
+    ],
+    [
+     36.738384,
+     10.240964
+    ],
+    [
+     36.739378,
+     10.240279
+    ],
+    [
+     36.7407195,
+     10.2380766
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 416.88,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 52.21,
+   "length_ratio": 1.082,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "caf_yasminet",
+   "to": "sidi_mosbah",
+   "key": "caf_yasminet|sidi_mosbah",
+   "straight_m": 418.61,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7380861,
+     10.2408866
+    ],
+    [
+     36.738155,
+     10.24106
+    ],
+    [
+     36.737246,
+     10.241594
+    ],
+    [
+     36.7350964,
+     10.2437415
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 435.16,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 16.93,
+   "length_ratio": 1.0395,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sidi_mosbah",
+   "to": "hopital_r_gional_yesminet",
+   "key": "hopital_r_gional_yesminet|sidi_mosbah",
+   "straight_m": 421.25,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7322446,
+     10.2468533
+    ],
+    [
+     36.732247,
+     10.246995
+    ],
+    [
+     36.733586,
+     10.245606
+    ],
+    [
+     36.734058,
+     10.245426
+    ],
+    [
+     36.73422,
+     10.244995
+    ],
+    [
+     36.7350964,
+     10.2437415
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 451.8,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 36.99,
+   "length_ratio": 1.0725,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "hopital_r_gional_yesminet",
+   "to": "frigo_hadj_saleh",
+   "key": "frigo_hadj_saleh|hopital_r_gional_yesminet",
+   "straight_m": 1990.47,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7184993,
+     10.2611605
+    ],
+    [
+     36.723363,
+     10.256334
+    ],
+    [
+     36.723819,
+     10.255658
+    ],
+    [
+     36.725537,
+     10.252226
+    ],
+    [
+     36.725785,
+     10.25193
+    ],
+    [
+     36.726229,
+     10.251655
+    ],
+    [
+     36.727782,
+     10.251396
+    ],
+    [
+     36.728495,
+     10.251046
+    ],
+    [
+     36.731356,
+     10.248024
+    ],
+    [
+     36.732247,
+     10.246995
+    ],
+    [
+     36.7322446,
+     10.2468533
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2047.57,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 112.71,
+   "length_ratio": 1.0287,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "frigo_hadj_saleh",
+   "to": "boujerdga",
+   "key": "boujerdga|frigo_hadj_saleh",
+   "straight_m": 528.19,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7144861,
+     10.2643306
+    ],
+    [
+     36.714891,
+     10.264307
+    ],
+    [
+     36.716342,
+     10.26315
+    ],
+    [
+     36.7184993,
+     10.2611605
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 534.87,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 22.31,
+   "length_ratio": 1.0126,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "boujerdga",
+   "to": "touati",
+   "key": "boujerdga|touati",
+   "straight_m": 161.49,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7144861,
+     10.2643306
+    ],
+    [
+     36.7132023,
+     10.2651777
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 161.49,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "touati",
+   "to": "dziri",
+   "key": "dziri|touati",
+   "straight_m": 823.76,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7065796,
+     10.269319
+    ],
+    [
+     36.7132023,
+     10.2651777
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 823.76,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "dziri",
+   "to": "boucherie_ezzaouia",
+   "key": "boucherie_ezzaouia|dziri",
+   "straight_m": 648.32,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.701586,
+     10.2730731
+    ],
+    [
+     36.704307,
+     10.270999
+    ],
+    [
+     36.7065796,
+     10.269319
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 648.34,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 2.18,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "boucherie_ezzaouia",
+   "to": "ezzaouia_mornag",
+   "key": "boucherie_ezzaouia|ezzaouia_mornag",
+   "straight_m": 324.78,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.701586,
+     10.2730731
+    ],
+    [
+     36.699998,
+     10.274428
+    ],
+    [
+     36.6990865,
+     10.2749578
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 325.76,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 12.02,
+   "length_ratio": 1.003,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ezzaouia_mornag",
+   "to": "bir_ezzanga",
+   "key": "bir_ezzanga|ezzaouia_mornag",
+   "straight_m": 424.65,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6956206,
+     10.2769579
+    ],
+    [
+     36.6990865,
+     10.2749578
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 424.65,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bir_ezzanga",
+   "to": "somag",
+   "key": "bir_ezzanga|somag",
+   "straight_m": 390.82,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6956206,
+     10.2769579
+    ],
+    [
+     36.6924915,
+     10.278954
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 390.82,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "somag",
+   "to": "cit_jaber",
+   "key": "cit_jaber|somag",
+   "straight_m": 1065.66,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6842471,
+     10.2850475
+    ],
+    [
+     36.682972,
+     10.285948
+    ],
+    [
+     36.682841,
+     10.286106
+    ],
+    [
+     36.682945,
+     10.286198
+    ],
+    [
+     36.685413,
+     10.284582
+    ],
+    [
+     36.690659,
+     10.280321
+    ],
+    [
+     36.6924915,
+     10.278954
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1440.94,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 182.63,
+   "length_ratio": 1.3522,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_jaber",
+   "to": "doukali",
+   "key": "cit_jaber|doukali",
+   "straight_m": 527.54,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6842471,
+     10.2850475
+    ],
+    [
+     36.682972,
+     10.285948
+    ],
+    [
+     36.682841,
+     10.286106
+    ],
+    [
+     36.682945,
+     10.286198
+    ],
+    [
+     36.685413,
+     10.284582
+    ],
+    [
+     36.6883422,
+     10.2820604
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 903.14,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 182.63,
+   "length_ratio": 1.712,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "doukali",
+   "to": "poste_police_mornag",
+   "key": "doukali|poste_police_mornag",
+   "straight_m": 752.32,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6883422,
+     10.2820604
+    ],
+    [
+     36.685183,
+     10.284652
+    ],
+    [
+     36.6825257,
+     10.2863701
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 753.32,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 19.23,
+   "length_ratio": 1.0013,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "poste_police_mornag",
+   "to": "station_de_bus_mornag",
+   "key": "poste_police_mornag|station_de_bus_mornag",
+   "straight_m": 396.09,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.6825257,
+     10.2863701
+    ],
+    [
+     36.682882,
+     10.286197
+    ],
+    [
+     36.682711,
+     10.286609
+    ],
+    [
+     36.680787,
+     10.290007
+    ],
+    [
+     36.680719,
+     10.290065
+    ],
+    [
+     36.680514,
+     10.289897
+    ],
+    [
+     36.680041,
+     10.289139
+    ],
+    [
+     36.6799098,
+     10.2893849
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 603.24,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 106.95,
+   "length_ratio": 1.523,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7647407,
+   10.2086643
+  ],
+  [
+   36.7652949,
+   10.210255
+  ],
+  [
+   36.764763,
+   10.210683
+  ],
+  [
+   36.760752,
+   10.214351
+  ],
+  [
+   36.759649,
+   10.215738
+  ],
+  [
+   36.758205,
+   10.217088
+  ],
+  [
+   36.7570296,
+   10.2187867
+  ],
+  [
+   36.756071,
+   10.219769
+  ],
+  [
+   36.75346,
+   10.2224984
+  ],
+  [
+   36.751965,
+   10.223696
+  ],
+  [
+   36.751153,
+   10.224184
+  ],
+  [
+   36.751766,
+   10.224476
+  ],
+  [
+   36.751573,
+   10.225049
+  ],
+  [
+   36.7494197,
+   10.2274336
+  ],
+  [
+   36.747263,
+   10.230566
+  ],
+  [
+   36.74599,
+   10.232801
+  ],
+  [
+   36.744963,
+   10.233618
+  ],
+  [
+   36.744293,
+   10.233768
+  ],
+  [
+   36.743963,
+   10.234349
+  ],
+  [
+   36.74271,
+   10.2356
+  ],
+  [
+   36.742497,
+   10.235173
+  ],
+  [
+   36.7434854,
+   10.2344922
+  ],
+  [
+   36.742497,
+   10.235173
+  ],
+  [
+   36.74271,
+   10.2356
+  ],
+  [
+   36.741869,
+   10.236487
+  ],
+  [
+   36.7407195,
+   10.2380766
+  ],
+  [
+   36.739378,
+   10.240279
+  ],
+  [
+   36.738384,
+   10.240964
+  ],
+  [
+   36.738155,
+   10.24106
+  ],
+  [
+   36.7380861,
+   10.2408866
+  ],
+  [
+   36.738155,
+   10.24106
+  ],
+  [
+   36.737246,
+   10.241594
+  ],
+  [
+   36.7350964,
+   10.2437415
+  ],
+  [
+   36.73422,
+   10.244995
+  ],
+  [
+   36.734058,
+   10.245426
+  ],
+  [
+   36.733586,
+   10.245606
+  ],
+  [
+   36.732247,
+   10.246995
+  ],
+  [
+   36.7322446,
+   10.2468533
+  ],
+  [
+   36.732247,
+   10.246995
+  ],
+  [
+   36.731356,
+   10.248024
+  ],
+  [
+   36.728495,
+   10.251046
+  ],
+  [
+   36.727782,
+   10.251396
+  ],
+  [
+   36.726229,
+   10.251655
+  ],
+  [
+   36.725785,
+   10.25193
+  ],
+  [
+   36.725537,
+   10.252226
+  ],
+  [
+   36.723819,
+   10.255658
+  ],
+  [
+   36.723363,
+   10.256334
+  ],
+  [
+   36.7184993,
+   10.2611605
+  ],
+  [
+   36.716342,
+   10.26315
+  ],
+  [
+   36.714891,
+   10.264307
+  ],
+  [
+   36.7144861,
+   10.2643306
+  ],
+  [
+   36.7132023,
+   10.2651777
+  ],
+  [
+   36.7065796,
+   10.269319
+  ],
+  [
+   36.704307,
+   10.270999
+  ],
+  [
+   36.701586,
+   10.2730731
+  ],
+  [
+   36.699998,
+   10.274428
+  ],
+  [
+   36.6990865,
+   10.2749578
+  ],
+  [
+   36.6956206,
+   10.2769579
+  ],
+  [
+   36.6924915,
+   10.278954
+  ],
+  [
+   36.690659,
+   10.280321
+  ],
+  [
+   36.685413,
+   10.284582
+  ],
+  [
+   36.682945,
+   10.286198
+  ],
+  [
+   36.682841,
+   10.286106
+  ],
+  [
+   36.682972,
+   10.285948
+  ],
+  [
+   36.6842471,
+   10.2850475
+  ],
+  [
+   36.682972,
+   10.285948
+  ],
+  [
+   36.682841,
+   10.286106
+  ],
+  [
+   36.682945,
+   10.286198
+  ],
+  [
+   36.685413,
+   10.284582
+  ],
+  [
+   36.6883422,
+   10.2820604
+  ],
+  [
+   36.685183,
+   10.284652
+  ],
+  [
+   36.6825257,
+   10.2863701
+  ],
+  [
+   36.682882,
+   10.286197
+  ],
+  [
+   36.682711,
+   10.286609
+  ],
+  [
+   36.680787,
+   10.290007
+  ],
+  [
+   36.680719,
+   10.290065
+  ],
+  [
+   36.680514,
+   10.289897
+  ],
+  [
+   36.680041,
+   10.289139
+  ],
+  [
+   36.6799098,
+   10.2893849
+  ]
+ ],
+ "phase3a": {
+  "pairs": 21,
+  "resolved": 21,
+  "unresolved": 0
+ }
+}

@@ -1,0 +1,447 @@
+{
+ "line_id": "bus_883_62a",
+ "number": "62A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 62A: 10 Decembre - Sidi Amor",
+ "direction_aller": [
+  "10_decembre",
+  "touta_10_decembre",
+  "lycee_ariana",
+  "la_poste",
+  "arr_t_bab_hadid",
+  "magro",
+  "cit_ellil",
+  "hopital_mahmoud_matri",
+  "touben_2",
+  "croisement_riadh_andalous",
+  "cit_el_ghazela",
+  "usine_de_carrelage",
+  "cit_populaire_ennahli",
+  "carri_re_nahli",
+  "nahli",
+  "nahli_2",
+  "nahli_3",
+  "guichet_g_ant",
+  "cit_26_26",
+  "mosqu_e_borje_touile",
+  "ejlame",
+  "ecole_nationale_des_prisons",
+  "stade_essiebe",
+  "cit_chaker_raoued",
+  "mosqu_e_cit_chaker_raoued",
+  "sidi_amor"
+ ],
+ "direction_retour": [
+  "sidi_amor",
+  "mosqu_e_cit_chaker_raoued",
+  "cit_chaker_raoued",
+  "stade_essiebe",
+  "ecole_nationale_des_prisons",
+  "ejlame",
+  "mosqu_e_borje_touile",
+  "cit_26_26",
+  "guichet_g_ant",
+  "nahli_3",
+  "nahli_2",
+  "nahli",
+  "carri_re_nahli",
+  "cit_populaire_ennahli",
+  "usine_de_carrelage",
+  "cit_el_ghazela",
+  "croisement_riadh_andalous",
+  "touben_2",
+  "hopital_mahmoud_matri",
+  "cit_ellil",
+  "magro",
+  "arr_t_bab_hadid",
+  "la_poste",
+  "lycee_ariana",
+  "touta_10_decembre",
+  "10_decembre"
+ ],
+ "stations_count": 26,
+ "start": {
+  "id": "10_decembre",
+  "name": "10 Decembre"
+ },
+ "end": {
+  "id": "sidi_amor",
+  "name": "Sidi Amor"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "10_decembre",
+  "touta_10_decembre",
+  "lycee_ariana",
+  "la_poste",
+  "arr_t_bab_hadid",
+  "magro",
+  "cit_ellil",
+  "hopital_mahmoud_matri",
+  "touben_2",
+  "croisement_riadh_andalous",
+  "cit_el_ghazela",
+  "usine_de_carrelage",
+  "cit_populaire_ennahli",
+  "carri_re_nahli",
+  "nahli",
+  "nahli_2",
+  "nahli_3",
+  "guichet_g_ant",
+  "cit_26_26",
+  "mosqu_e_borje_touile",
+  "ejlame",
+  "ecole_nationale_des_prisons",
+  "stade_essiebe",
+  "cit_chaker_raoued",
+  "mosqu_e_cit_chaker_raoued",
+  "sidi_amor"
+ ],
+ "stations_detail": [
+  {
+   "id": "10_decembre",
+   "name_en": "10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421837,
+   "lon": 10.182519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "touta_10_decembre",
+   "name_en": "Touta 10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8454206,
+   "lon": 10.1834417,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_ariana",
+   "name_en": "Lycee Ariana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8518082,
+   "lon": 10.1843751,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_poste",
+   "name_en": "La Poste",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8557499,
+   "lon": 10.1878432,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arr_t_bab_hadid",
+   "name_en": "Arrét Bab Hadid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8581935,
+   "lon": 10.1885869,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magro",
+   "name_en": "MAGRO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8619428,
+   "lon": 10.1872281,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ellil",
+   "name_en": "Cité Ellil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8665297,
+   "lon": 10.184551,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_mahmoud_matri",
+   "name_en": "Hopital Mahmoud Matri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8678091,
+   "lon": 10.1839567,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "touben_2",
+   "name_en": "Touben 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8716035,
+   "lon": 10.1821533,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_riadh_andalous",
+   "name_en": "Croisement Riadh Andalous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8781743,
+   "lon": 10.1784243,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_ghazela",
+   "name_en": "Cité El Ghazela",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8817704,
+   "lon": 10.1754349,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "usine_de_carrelage",
+   "name_en": "Usine De Carrelage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8842822,
+   "lon": 10.171149,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_populaire_ennahli",
+   "name_en": "Cité Populaire Ennahli",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8874807,
+   "lon": 10.1669078,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carri_re_nahli",
+   "name_en": "Carriére Nahli",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8908012,
+   "lon": 10.1598052,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nahli",
+   "name_en": "Nahli",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.893211,
+   "lon": 10.146882,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nahli_2",
+   "name_en": "Nahli 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8923498,
+   "lon": 10.1384548,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nahli_3",
+   "name_en": "Nahli 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8929593,
+   "lon": 10.1300863,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "guichet_g_ant",
+   "name_en": "Guichet Géant",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9004193,
+   "lon": 10.1215676,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_26_26",
+   "name_en": "Cité 26/26",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9278899,
+   "lon": 10.1404195,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_borje_touile",
+   "name_en": "Mosquée Borje Touile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9308188,
+   "lon": 10.1415052,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ejlame",
+   "name_en": "Ejlame",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9316474,
+   "lon": 10.1432551,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_nationale_des_prisons",
+   "name_en": "Ecole Nationale Des Prisons",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9341653,
+   "lon": 10.1452518,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_essiebe",
+   "name_en": "Stade Essiebe",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9386485,
+   "lon": 10.1582208,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_chaker_raoued",
+   "name_en": "Cité Chaker Raoued",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9427885,
+   "lon": 10.1696234,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_cit_chaker_raoued",
+   "name_en": "Mosquée Cité Chaker Raoued",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9441537,
+   "lon": 10.1734235,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_amor",
+   "name_en": "Sidi Amor",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9397719,
+   "lon": 10.178627,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

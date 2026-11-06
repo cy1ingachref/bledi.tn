@@ -1,0 +1,175 @@
+{
+ "line_id": "bus_765_92",
+ "number": "92",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 92: Rabattement Slimen Kahia - Terminus L92",
+ "direction_aller": [
+  "rabattement_slimen_kahia",
+  "onas_manouba",
+  "dar_mocennine",
+  "gouvernorat_manouba",
+  "hopital_errazi",
+  "cite_orangers_1",
+  "cite_orangers_2",
+  "chemin_de_fer",
+  "terminus_l92"
+ ],
+ "direction_retour": [
+  "terminus_l92",
+  "chemin_de_fer",
+  "cite_orangers_2",
+  "cite_orangers_1",
+  "hopital_errazi",
+  "gouvernorat_manouba",
+  "dar_mocennine",
+  "onas_manouba",
+  "rabattement_slimen_kahia"
+ ],
+ "stations_count": 9,
+ "start": {
+  "id": "rabattement_slimen_kahia",
+  "name": "Rabattement Slimen Kahia"
+ },
+ "end": {
+  "id": "terminus_l92",
+  "name": "Terminus L92"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_slimen_kahia",
+  "onas_manouba",
+  "dar_mocennine",
+  "gouvernorat_manouba",
+  "hopital_errazi",
+  "cite_orangers_1",
+  "cite_orangers_2",
+  "chemin_de_fer",
+  "terminus_l92"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_slimen_kahia",
+   "name_en": "Rabattement Slimen Kahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8038639,
+   "lon": 10.0985919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "onas_manouba",
+   "name_en": "ONAS Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8061167,
+   "lon": 10.0948744,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dar_mocennine",
+   "name_en": "Dar Mocennine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8095931,
+   "lon": 10.0910119,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gouvernorat_manouba",
+   "name_en": "Gouvernorat Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8114227,
+   "lon": 10.0885442,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_errazi",
+   "name_en": "Hopital Errazi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8112853,
+   "lon": 10.0863877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_orangers_1",
+   "name_en": "Cite Orangers 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8150895,
+   "lon": 10.0834317,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_orangers_2",
+   "name_en": "Cite Orangers 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8167781,
+   "lon": 10.0812057,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chemin_de_fer",
+   "name_en": "Chemin De Fer",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8190027,
+   "lon": 10.0793496,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_l92",
+   "name_en": "Terminus L92",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8214032,
+   "lon": 10.076721,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

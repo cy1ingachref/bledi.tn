@@ -1,0 +1,618 @@
+{
+ "line_id": "bus_815_23f",
+ "number": "23F",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 23F: Rabattement Slimen Kahia - Frinech",
+ "direction_aller": [
+  "rabattement_slimen_kahia",
+  "abdelmoula",
+  "p_pini_re",
+  "garde_national_agba",
+  "agba_superieur",
+  "canal_agba",
+  "ben_mahmoud",
+  "cite_elwaha",
+  "sonede_agba",
+  "ghdir_elgollah",
+  "cite_jabri",
+  "croisement_ben_yedder",
+  "bir_ed_drouj",
+  "huilerie_loukil",
+  "lycee_chebi",
+  "mosqu_e_mornagiaa",
+  "mornagiaa",
+  "20_mars",
+  "lycee_20_mars",
+  "firma",
+  "guitouni",
+  "croisement_sidi_ali_hattab",
+  "zone_industrielle_sidi_ali_el_hattab",
+  "aeroport_borj_el_amri",
+  "borj_khalsi",
+  "bouhalleb",
+  "cimetiere_anglais",
+  "relais_borj_el_amri",
+  "mosqu_e_borj_el_amri",
+  "cafe_medina",
+  "kiosque_agil_jallou",
+  "km30",
+  "messaadine",
+  "furna",
+  "entree_borj_ennour",
+  "frinech"
+ ],
+ "direction_retour": [
+  "frinech",
+  "entree_borj_ennour",
+  "furna",
+  "messaadine",
+  "km30",
+  "kiosque_agil_jallou",
+  "cafe_medina",
+  "mosqu_e_borj_el_amri",
+  "relais_borj_el_amri",
+  "cimetiere_anglais",
+  "bouhalleb",
+  "borj_khalsi",
+  "aeroport_borj_el_amri",
+  "zone_industrielle_sidi_ali_el_hattab",
+  "croisement_sidi_ali_hattab",
+  "guitouni",
+  "firma",
+  "lycee_20_mars",
+  "20_mars",
+  "mornagiaa",
+  "mosqu_e_mornagiaa",
+  "lycee_chebi",
+  "huilerie_loukil",
+  "bir_ed_drouj",
+  "croisement_ben_yedder",
+  "cite_jabri",
+  "ghdir_elgollah",
+  "sonede_agba",
+  "cite_elwaha",
+  "ben_mahmoud",
+  "canal_agba",
+  "agba_superieur",
+  "garde_national_agba",
+  "p_pini_re",
+  "abdelmoula",
+  "rabattement_slimen_kahia"
+ ],
+ "stations_count": 36,
+ "start": {
+  "id": "rabattement_slimen_kahia",
+  "name": "Rabattement Slimen Kahia"
+ },
+ "end": {
+  "id": "frinech",
+  "name": "Frinech"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 3,
+ "teleport_legs": [
+  {
+   "from": "cafe_medina",
+   "to": "kiosque_agil_jallou",
+   "km": 20.7
+  },
+  {
+   "from": "kiosque_agil_jallou",
+   "to": "km30",
+   "km": 22.4
+  }
+ ],
+ "original_stations": [
+  "rabattement_slimen_kahia",
+  "abdelmoula",
+  "p_pini_re",
+  "garde_national_agba",
+  "agba_superieur",
+  "canal_agba",
+  "ben_mahmoud",
+  "cite_elwaha",
+  "sonede_agba",
+  "ghdir_elgollah",
+  "cite_jabri",
+  "croisement_ben_yedder",
+  "bir_ed_drouj",
+  "huilerie_loukil",
+  "lycee_chebi",
+  "mosqu_e_mornagiaa",
+  "mornagiaa",
+  "20_mars",
+  "lycee_20_mars",
+  "firma",
+  "guitouni",
+  "croisement_sidi_ali_hattab",
+  "zone_industrielle_sidi_ali_el_hattab",
+  "aeroport_borj_el_amri",
+  "borj_khalsi",
+  "bouhalleb",
+  "cimetiere_anglais",
+  "relais_borj_el_amri",
+  "mosqu_e_borj_el_amri",
+  "cafe_medina",
+  "kiosque_agil_jallou",
+  "km30",
+  "messaadine",
+  "furna",
+  "entree_borj_ennour",
+  "frinech"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_slimen_kahia",
+   "name_en": "Rabattement Slimen Kahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8038639,
+   "lon": 10.0985919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "abdelmoula",
+   "name_en": "Abdelmoula",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7959899,
+   "lon": 10.1005552,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "p_pini_re",
+   "name_en": "Pépiniére",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7927629,
+   "lon": 10.094418,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_agba",
+   "name_en": "Garde National Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7904465,
+   "lon": 10.0909771,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "agba_superieur",
+   "name_en": "Agba Superieur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7895551,
+   "lon": 10.0884129,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "canal_agba",
+   "name_en": "Canal Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.788472,
+   "lon": 10.0854329,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_mahmoud",
+   "name_en": "Ben Mahmoud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7859248,
+   "lon": 10.0814901,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_elwaha",
+   "name_en": "Cite Elwaha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7834695,
+   "lon": 10.0760318,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sonede_agba",
+   "name_en": "Sonede Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7822278,
+   "lon": 10.0699352,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ghdir_elgollah",
+   "name_en": "Ghdir Elgollah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7801114,
+   "lon": 10.0632993,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_jabri",
+   "name_en": "Cite Jabri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7765133,
+   "lon": 10.0582461,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_ben_yedder",
+   "name_en": "Croisement Ben Yedder",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7745368,
+   "lon": 10.0545903,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_ed_drouj",
+   "name_en": "Bir Ed Drouj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7705509,
+   "lon": 10.0472972,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "huilerie_loukil",
+   "name_en": "Huilerie Loukil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7667221,
+   "lon": 10.0393847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_chebi",
+   "name_en": "Lycee Chebi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7613159,
+   "lon": 10.0275132,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_mornagiaa",
+   "name_en": "Mosquée Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7587678,
+   "lon": 10.0194667,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mornagiaa",
+   "name_en": "Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7563433,
+   "lon": 10.0135175,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_20_mars",
+   "name_en": "Lycee 20 Mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.757778,
+   "lon": 10.0002617,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "firma",
+   "name_en": "Firma",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7547273,
+   "lon": 9.9921939,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "guitouni",
+   "name_en": "Guitouni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7518734,
+   "lon": 9.9800703,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_sidi_ali_hattab",
+   "name_en": "Croisement Sidi Ali Hattab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7491217,
+   "lon": 9.9732358,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zone_industrielle_sidi_ali_el_hattab",
+   "name_en": "Zone Industrielle Sidi Ali El Hattab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7362428,
+   "lon": 9.9450511,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "aeroport_borj_el_amri",
+   "name_en": "Aeroport Borj El Amri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7307966,
+   "lon": 9.934285,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_khalsi",
+   "name_en": "Borj Khalsi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7269701,
+   "lon": 9.9259004,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouhalleb",
+   "name_en": "Bouhalleb",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7229156,
+   "lon": 9.9159065,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cimetiere_anglais",
+   "name_en": "Cimetiere Anglais",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7219739,
+   "lon": 9.9110356,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "relais_borj_el_amri",
+   "name_en": "Relais Borj El Amri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7181986,
+   "lon": 9.8944488,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_borj_el_amri",
+   "name_en": "Mosquée Borj El Amri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7163538,
+   "lon": 9.8887947,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cafe_medina",
+   "name_en": "Cafe Medina",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7131243,
+   "lon": 9.883205,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_agil_jallou",
+   "name_en": "Kiosque Agil Jallou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8931526,
+   "lon": 9.9438714,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "km30",
+   "name_en": "Km30",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7048028,
+   "lon": 9.8555622,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "messaadine",
+   "name_en": "Messaadine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.700618,
+   "lon": 9.842988,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "furna",
+   "name_en": "Furna",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.693422,
+   "lon": 9.8318461,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entree_borj_ennour",
+   "name_en": "Entree Borj Ennour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6804031,
+   "lon": 9.8197253,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "frinech",
+   "name_en": "Frinech",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6896371,
+   "lon": 9.8107614,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

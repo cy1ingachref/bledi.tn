@@ -1,0 +1,514 @@
+{
+ "line_id": "bus_718_29",
+ "number": "29",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 29: Station Barcelone - Bellevue",
+ "direction_aller": [
+  "station_barcelone",
+  "dubosville",
+  "d_l_gation_elouardia",
+  "hammam_bellevue",
+  "caf_el_quods",
+  "salle_des_f_tes_bellevue",
+  "bellevue"
+ ],
+ "direction_retour": [
+  "bellevue",
+  "salle_des_f_tes_bellevue",
+  "caf_el_quods",
+  "hammam_bellevue",
+  "d_l_gation_elouardia",
+  "dubosville",
+  "station_barcelone"
+ ],
+ "stations_count": 7,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "bellevue",
+  "name": "Bellevue"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_barcelone",
+  "dubosville",
+  "d_l_gation_elouardia",
+  "hammam_bellevue",
+  "caf_el_quods",
+  "salle_des_f_tes_bellevue",
+  "bellevue"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dubosville",
+   "name_en": "Dubosville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839884,
+   "lon": 10.1917495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "d_l_gation_elouardia",
+   "name_en": "Délégation Elouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7816305,
+   "lon": 10.1944809,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_bellevue",
+   "name_en": "Hammam Bellevue",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7810337,
+   "lon": 10.1939065,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_el_quods",
+   "name_en": "Café El Quods",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7804161,
+   "lon": 10.1929036,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "salle_des_f_tes_bellevue",
+   "name_en": "Salle Des Fétes Bellevue",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7783795,
+   "lon": 10.1907096,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bellevue",
+   "name_en": "Bellevue",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7740312,
+   "lon": 10.1870189,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "station_barcelone",
+   "to": "dubosville",
+   "key": "dubosville|station_barcelone",
+   "straight_m": 1782.45,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7839884,
+     10.1917495
+    ],
+    [
+     36.784491,
+     10.191064
+    ],
+    [
+     36.785848,
+     10.190303
+    ],
+    [
+     36.786389,
+     10.189873
+    ],
+    [
+     36.787648,
+     10.18841
+    ],
+    [
+     36.788433,
+     10.187181
+    ],
+    [
+     36.788775,
+     10.186106
+    ],
+    [
+     36.788856,
+     10.185368
+    ],
+    [
+     36.788639,
+     10.182079
+    ],
+    [
+     36.788999,
+     10.18116
+    ],
+    [
+     36.789304,
+     10.180734
+    ],
+    [
+     36.789869,
+     10.180366
+    ],
+    [
+     36.790182,
+     10.179976
+    ],
+    [
+     36.791083,
+     10.180544
+    ],
+    [
+     36.791469,
+     10.180642
+    ],
+    [
+     36.793638,
+     10.180093
+    ],
+    [
+     36.796245,
+     10.179685
+    ],
+    [
+     36.796959,
+     10.179666
+    ],
+    [
+     36.7970414,
+     10.1801307
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2192.01,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 455.66,
+   "length_ratio": 1.2298,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "dubosville",
+   "to": "d_l_gation_elouardia",
+   "key": "d_l_gation_elouardia|dubosville",
+   "straight_m": 357.65,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7816305,
+     10.1944809
+    ],
+    [
+     36.781458,
+     10.194801
+    ],
+    [
+     36.78152,
+     10.194889
+    ],
+    [
+     36.781801,
+     10.194548
+    ],
+    [
+     36.7839884,
+     10.1917495
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 436.61,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 38.37,
+   "length_ratio": 1.2208,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "d_l_gation_elouardia",
+   "to": "hammam_bellevue",
+   "key": "d_l_gation_elouardia|hammam_bellevue",
+   "straight_m": 83.79,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7816305,
+     10.1944809
+    ],
+    [
+     36.781458,
+     10.194801
+    ],
+    [
+     36.7810337,
+     10.1939065
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 126.95,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 34.36,
+   "length_ratio": 1.5151,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "hammam_bellevue",
+   "to": "caf_el_quods",
+   "key": "caf_el_quods|hammam_bellevue",
+   "straight_m": 112.67,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7804161,
+     10.1929036
+    ],
+    [
+     36.7810337,
+     10.1939065
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 112.67,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "caf_el_quods",
+   "to": "salle_des_f_tes_bellevue",
+   "key": "caf_el_quods|salle_des_f_tes_bellevue",
+   "straight_m": 299.11,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7804161,
+     10.1929036
+    ],
+    [
+     36.780032,
+     10.192391
+    ],
+    [
+     36.7783795,
+     10.1907096
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 299.56,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 6.66,
+   "length_ratio": 1.0015,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "salle_des_f_tes_bellevue",
+   "to": "bellevue",
+   "key": "bellevue|salle_des_f_tes_bellevue",
+   "straight_m": 584.67,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7740312,
+     10.1870189
+    ],
+    [
+     36.775607,
+     10.188151
+    ],
+    [
+     36.7783795,
+     10.1907096
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 585.53,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 15.13,
+   "length_ratio": 1.0015,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7970414,
+   10.1801307
+  ],
+  [
+   36.796959,
+   10.179666
+  ],
+  [
+   36.796245,
+   10.179685
+  ],
+  [
+   36.793638,
+   10.180093
+  ],
+  [
+   36.791469,
+   10.180642
+  ],
+  [
+   36.791083,
+   10.180544
+  ],
+  [
+   36.790182,
+   10.179976
+  ],
+  [
+   36.789869,
+   10.180366
+  ],
+  [
+   36.789304,
+   10.180734
+  ],
+  [
+   36.788999,
+   10.18116
+  ],
+  [
+   36.788639,
+   10.182079
+  ],
+  [
+   36.788856,
+   10.185368
+  ],
+  [
+   36.788775,
+   10.186106
+  ],
+  [
+   36.788433,
+   10.187181
+  ],
+  [
+   36.787648,
+   10.18841
+  ],
+  [
+   36.786389,
+   10.189873
+  ],
+  [
+   36.785848,
+   10.190303
+  ],
+  [
+   36.784491,
+   10.191064
+  ],
+  [
+   36.7839884,
+   10.1917495
+  ],
+  [
+   36.781801,
+   10.194548
+  ],
+  [
+   36.78152,
+   10.194889
+  ],
+  [
+   36.781458,
+   10.194801
+  ],
+  [
+   36.7816305,
+   10.1944809
+  ],
+  [
+   36.781458,
+   10.194801
+  ],
+  [
+   36.7810337,
+   10.1939065
+  ],
+  [
+   36.7804161,
+   10.1929036
+  ],
+  [
+   36.780032,
+   10.192391
+  ],
+  [
+   36.7783795,
+   10.1907096
+  ],
+  [
+   36.775607,
+   10.188151
+  ],
+  [
+   36.7740312,
+   10.1870189
+  ]
+ ],
+ "phase3a": {
+  "pairs": 6,
+  "resolved": 6,
+  "unresolved": 0
+ }
+}

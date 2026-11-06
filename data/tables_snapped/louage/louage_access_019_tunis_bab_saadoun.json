@@ -1,0 +1,82 @@
+{
+ "line_id": "louage_access_019_tunis_bab_saadoun",
+ "number": "LA19",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage access: Tunis - Bab Saadoun → Bab Saadoun ",
+ "direction_aller": [
+  "louage_tunis_bab_saadoun",
+  "bab_saadoun_7348"
+ ],
+ "direction_retour": [
+  "bab_saadoun_7348",
+  "louage_tunis_bab_saadoun"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_tunis_bab_saadoun",
+  "name": "Tunis - Bab Saadoun"
+ },
+ "end": {
+  "id": "bab_saadoun_7348",
+  "name": "Bab Saadoun "
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "louage_tunis_bab_saadoun",
+  "bab_saadoun_7348"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_tunis_bab_saadoun",
+   "name_en": "Tunis - Bab Saadoun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_39m"
+   ],
+   "lat": 36.809,
+   "lon": 10.1575,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_saadoun_7348",
+   "name_en": "Bab Saadoun ",
+   "name_ar": "باب سعدون",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8092749,
+   "lon": 10.1565758,
+   "mode": "louage",
+   "mode_resolution": "single_line_mode"
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv",
+ "segments": [
+  {
+   "from": "louage_tunis_bab_saadoun",
+   "to": "bab_saadoun_7348",
+   "key": "bab_saadoun_7348|louage_tunis_bab_saadoun",
+   "straight_m": 87.77,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": null
+  }
+ ],
+ "snapped_geometry": [],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 0,
+  "unresolved": 1
+ }
+}

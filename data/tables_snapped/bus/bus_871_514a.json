@@ -1,0 +1,1963 @@
+{
+ "line_id": "bus_871_514a",
+ "number": "514A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 514A: Depot Charguia - Terminus Cité Elbasatine",
+ "direction_aller": [
+  "depot_charguia",
+  "charguia_2",
+  "les_abattoirs",
+  "place_sala_centre",
+  "arr_t_bab_hadid",
+  "magro",
+  "hopital_mahmoud_matri",
+  "cite_ennasr_1",
+  "centre_ikram",
+  "ennaser_2_x20",
+  "cit_elamen",
+  "cit_dridi",
+  "x20",
+  "bir_mnihla",
+  "route_elbasatine",
+  "caf_sirine",
+  "usine_lazreg",
+  "terminus_cit_elbasatine"
+ ],
+ "direction_retour": [
+  "terminus_cit_elbasatine",
+  "usine_lazreg",
+  "caf_sirine",
+  "route_elbasatine",
+  "bir_mnihla",
+  "x20",
+  "cit_dridi",
+  "cit_elamen",
+  "ennaser_2_x20",
+  "centre_ikram",
+  "cite_ennasr_1",
+  "hopital_mahmoud_matri",
+  "magro",
+  "arr_t_bab_hadid",
+  "place_sala_centre",
+  "les_abattoirs",
+  "charguia_2",
+  "depot_charguia"
+ ],
+ "stations_count": 18,
+ "start": {
+  "id": "depot_charguia",
+  "name": "Depot Charguia"
+ },
+ "end": {
+  "id": "terminus_cit_elbasatine",
+  "name": "Terminus Cité Elbasatine"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "depot_charguia",
+  "charguia_2",
+  "les_abattoirs",
+  "place_sala_centre",
+  "arr_t_bab_hadid",
+  "magro",
+  "hopital_mahmoud_matri",
+  "cite_ennasr_1",
+  "centre_ikram",
+  "ennaser_2_x20",
+  "cit_elamen",
+  "cit_dridi",
+  "x20",
+  "bir_mnihla",
+  "route_elbasatine",
+  "caf_sirine",
+  "usine_lazreg",
+  "terminus_cit_elbasatine"
+ ],
+ "stations_detail": [
+  {
+   "id": "depot_charguia",
+   "name_en": "Depot Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.839222,
+   "lon": 10.2045873,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia_2",
+   "name_en": "Charguia 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8543199,
+   "lon": 10.2028332,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_abattoirs",
+   "name_en": "Les Abattoirs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8601659,
+   "lon": 10.1981876,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_sala_centre",
+   "name_en": "Place Sala Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85811,
+   "lon": 10.1914391,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arr_t_bab_hadid",
+   "name_en": "Arrét Bab Hadid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8581935,
+   "lon": 10.1885869,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magro",
+   "name_en": "MAGRO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8619428,
+   "lon": 10.1872281,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_mahmoud_matri",
+   "name_en": "Hopital Mahmoud Matri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8678091,
+   "lon": 10.1839567,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_ennasr_1",
+   "name_en": "Cite Ennasr 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8585478,
+   "lon": 10.1682756,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_ikram",
+   "name_en": "Centre Ikram",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8560526,
+   "lon": 10.1682516,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ennaser_2_x20",
+   "name_en": "Ennaser 2 X20",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8550241,
+   "lon": 10.1516566,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_elamen",
+   "name_en": "Cité Elamen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.853895,
+   "lon": 10.1388303,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_dridi",
+   "name_en": "Cité Dridi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8558952,
+   "lon": 10.1289329,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "x20",
+   "name_en": "X20",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8537603,
+   "lon": 10.1195695,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_mnihla",
+   "name_en": "Bir Mnihla",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8567966,
+   "lon": 10.1157901,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "route_elbasatine",
+   "name_en": "Route Elbasatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8527617,
+   "lon": 10.1083443,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_sirine",
+   "name_en": "Café Sirine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8495257,
+   "lon": 10.1014914,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "usine_lazreg",
+   "name_en": "Usine Lazreg",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8472183,
+   "lon": 10.0960545,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_cit_elbasatine",
+   "name_en": "Terminus Cité Elbasatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8450177,
+   "lon": 10.0903467,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "depot_charguia",
+   "to": "charguia_2",
+   "key": "charguia_2|depot_charguia",
+   "straight_m": 1686.05,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8543199,
+     10.2028332
+    ],
+    [
+     36.859097,
+     10.202997
+    ],
+    [
+     36.859243,
+     10.202796
+    ],
+    [
+     36.859107,
+     10.202617
+    ],
+    [
+     36.856116,
+     10.202612
+    ],
+    [
+     36.853579,
+     10.202465
+    ],
+    [
+     36.846895,
+     10.202007
+    ],
+    [
+     36.840818,
+     10.20139
+    ],
+    [
+     36.840539,
+     10.201183
+    ],
+    [
+     36.840238,
+     10.200664
+    ],
+    [
+     36.840149,
+     10.200386
+    ],
+    [
+     36.840232,
+     10.199912
+    ],
+    [
+     36.840042,
+     10.199648
+    ],
+    [
+     36.839732,
+     10.199872
+    ],
+    [
+     36.839163,
+     10.200597
+    ],
+    [
+     36.838489,
+     10.2021
+    ],
+    [
+     36.837917,
+     10.202787
+    ],
+    [
+     36.837933,
+     10.202952
+    ],
+    [
+     36.839381,
+     10.204337
+    ],
+    [
+     36.839222,
+     10.2045873
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 3427.07,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 547.43,
+   "length_ratio": 2.0326,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "charguia_2",
+   "to": "les_abattoirs",
+   "key": "charguia_2|les_abattoirs",
+   "straight_m": 770.32,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8543199,
+     10.2028332
+    ],
+    [
+     36.859186,
+     10.202956
+    ],
+    [
+     36.85942,
+     10.199505
+    ],
+    [
+     36.859374,
+     10.19815
+    ],
+    [
+     36.859618,
+     10.197971
+    ],
+    [
+     36.860039,
+     10.198271
+    ],
+    [
+     36.8601659,
+     10.1981876
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1071.28,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 299.54,
+   "length_ratio": 1.3907,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "les_abattoirs",
+   "to": "place_sala_centre",
+   "key": "les_abattoirs|place_sala_centre",
+   "straight_m": 642.45,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8601659,
+     10.1981876
+    ],
+    [
+     36.860418,
+     10.197993
+    ],
+    [
+     36.860342,
+     10.197404
+    ],
+    [
+     36.860203,
+     10.197359
+    ],
+    [
+     36.859594,
+     10.197889
+    ],
+    [
+     36.8593,
+     10.197841
+    ],
+    [
+     36.858562,
+     10.194838
+    ],
+    [
+     36.858388,
+     10.192405
+    ],
+    [
+     36.85811,
+     10.1914391
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 805.62,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 79.01,
+   "length_ratio": 1.254,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "place_sala_centre",
+   "to": "arr_t_bab_hadid",
+   "key": "arr_t_bab_hadid|place_sala_centre",
+   "straight_m": 253.93,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8581935,
+     10.1885869
+    ],
+    [
+     36.858353,
+     10.188429
+    ],
+    [
+     36.858835,
+     10.18837
+    ],
+    [
+     36.858873,
+     10.188199
+    ],
+    [
+     36.858762,
+     10.18806
+    ],
+    [
+     36.858311,
+     10.188284
+    ],
+    [
+     36.856796,
+     10.188201
+    ],
+    [
+     36.857527,
+     10.190415
+    ],
+    [
+     36.85811,
+     10.1914391
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 657.24,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 159.14,
+   "length_ratio": 2.5883,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "arr_t_bab_hadid",
+   "to": "magro",
+   "key": "arr_t_bab_hadid|magro",
+   "straight_m": 434.08,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8581935,
+     10.1885869
+    ],
+    [
+     36.858353,
+     10.188429
+    ],
+    [
+     36.859058,
+     10.188333
+    ],
+    [
+     36.860452,
+     10.187631
+    ],
+    [
+     36.8619428,
+     10.1872281
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 438.2,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 11.74,
+   "length_ratio": 1.0095,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "magro",
+   "to": "hopital_mahmoud_matri",
+   "key": "hopital_mahmoud_matri|magro",
+   "straight_m": 714.28,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8678091,
+     10.1839567
+    ],
+    [
+     36.868042,
+     10.183812
+    ],
+    [
+     36.868058,
+     10.183988
+    ],
+    [
+     36.867649,
+     10.185527
+    ],
+    [
+     36.865541,
+     10.185456
+    ],
+    [
+     36.865158,
+     10.185198
+    ],
+    [
+     36.862032,
+     10.186994
+    ],
+    [
+     36.860416,
+     10.187539
+    ],
+    [
+     36.859194,
+     10.188134
+    ],
+    [
+     36.85865,
+     10.188084
+    ],
+    [
+     36.858591,
+     10.188308
+    ],
+    [
+     36.858758,
+     10.188422
+    ],
+    [
+     36.860452,
+     10.187631
+    ],
+    [
+     36.8619428,
+     10.1872281
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1659.78,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 384.89,
+   "length_ratio": 2.3237,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "hopital_mahmoud_matri",
+   "to": "cite_ennasr_1",
+   "key": "cite_ennasr_1|hopital_mahmoud_matri",
+   "straight_m": 1733.98,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8585478,
+     10.1682756
+    ],
+    [
+     36.85783,
+     10.166932
+    ],
+    [
+     36.857759,
+     10.166515
+    ],
+    [
+     36.857607,
+     10.166396
+    ],
+    [
+     36.857399,
+     10.166472
+    ],
+    [
+     36.857358,
+     10.166853
+    ],
+    [
+     36.857736,
+     10.16728
+    ],
+    [
+     36.858965,
+     10.169721
+    ],
+    [
+     36.860305,
+     10.17143
+    ],
+    [
+     36.863183,
+     10.174443
+    ],
+    [
+     36.864744,
+     10.177363
+    ],
+    [
+     36.865849,
+     10.179044
+    ],
+    [
+     36.866082,
+     10.180035
+    ],
+    [
+     36.865671,
+     10.181933
+    ],
+    [
+     36.865675,
+     10.182395
+    ],
+    [
+     36.865895,
+     10.183152
+    ],
+    [
+     36.866589,
+     10.184
+    ],
+    [
+     36.867603,
+     10.184036
+    ],
+    [
+     36.8678091,
+     10.1839567
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2333.72,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 205.09,
+   "length_ratio": 1.3459,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_ennasr_1",
+   "to": "centre_ikram",
+   "key": "centre_ikram|cite_ennasr_1",
+   "straight_m": 277.46,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 4024 m implausible vs 277 m straight"
+  },
+  {
+   "from": "centre_ikram",
+   "to": "ennaser_2_x20",
+   "key": "centre_ikram|ennaser_2_x20",
+   "straight_m": 1480.93,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8560526,
+     10.1682516
+    ],
+    [
+     36.857202,
+     10.167076
+    ],
+    [
+     36.857728,
+     10.166915
+    ],
+    [
+     36.857806,
+     10.166698
+    ],
+    [
+     36.855903,
+     10.162998
+    ],
+    [
+     36.85542,
+     10.161207
+    ],
+    [
+     36.855124,
+     10.159465
+    ],
+    [
+     36.855034,
+     10.158175
+    ],
+    [
+     36.8550241,
+     10.1516566
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1659.65,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 205.06,
+   "length_ratio": 1.1207,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ennaser_2_x20",
+   "to": "cit_elamen",
+   "key": "cit_elamen|ennaser_2_x20",
+   "straight_m": 1148.09,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.853895,
+     10.1388303
+    ],
+    [
+     36.853557,
+     10.138217
+    ],
+    [
+     36.853465,
+     10.138267
+    ],
+    [
+     36.854344,
+     10.139969
+    ],
+    [
+     36.854616,
+     10.141291
+    ],
+    [
+     36.854903,
+     10.147918
+    ],
+    [
+     36.854922,
+     10.15785
+    ],
+    [
+     36.855031,
+     10.15949
+    ],
+    [
+     36.855515,
+     10.162097
+    ],
+    [
+     36.855826,
+     10.163059
+    ],
+    [
+     36.857189,
+     10.166162
+    ],
+    [
+     36.857358,
+     10.166853
+    ],
+    [
+     36.85766,
+     10.166972
+    ],
+    [
+     36.857806,
+     10.166698
+    ],
+    [
+     36.855903,
+     10.162998
+    ],
+    [
+     36.85542,
+     10.161207
+    ],
+    [
+     36.855124,
+     10.159465
+    ],
+    [
+     36.855034,
+     10.158175
+    ],
+    [
+     36.8550241,
+     10.1516566
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 4186.98,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 1393.84,
+   "length_ratio": 3.6469,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_elamen",
+   "to": "cit_dridi",
+   "key": "cit_dridi|cit_elamen",
+   "straight_m": 908.26,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8558952,
+     10.1289329
+    ],
+    [
+     36.855944,
+     10.126597
+    ],
+    [
+     36.856258,
+     10.126265
+    ],
+    [
+     36.856441,
+     10.12629
+    ],
+    [
+     36.85661,
+     10.126494
+    ],
+    [
+     36.856606,
+     10.126879
+    ],
+    [
+     36.856312,
+     10.127114
+    ],
+    [
+     36.855099,
+     10.126815
+    ],
+    [
+     36.854982,
+     10.126491
+    ],
+    [
+     36.855338,
+     10.12603
+    ],
+    [
+     36.855517,
+     10.126036
+    ],
+    [
+     36.855653,
+     10.126242
+    ],
+    [
+     36.855784,
+     10.1279
+    ],
+    [
+     36.855622,
+     10.130108
+    ],
+    [
+     36.85507,
+     10.132495
+    ],
+    [
+     36.854486,
+     10.133973
+    ],
+    [
+     36.853541,
+     10.135783
+    ],
+    [
+     36.853261,
+     10.137011
+    ],
+    [
+     36.853465,
+     10.138267
+    ],
+    [
+     36.853651,
+     10.138159
+    ],
+    [
+     36.854462,
+     10.13965
+    ],
+    [
+     36.854777,
+     10.139853
+    ],
+    [
+     36.855089,
+     10.141409
+    ],
+    [
+     36.855603,
+     10.141529
+    ],
+    [
+     36.8557,
+     10.144229
+    ],
+    [
+     36.855187,
+     10.14486
+    ],
+    [
+     36.855053,
+     10.144882
+    ],
+    [
+     36.854946,
+     10.144742
+    ],
+    [
+     36.854605,
+     10.140473
+    ],
+    [
+     36.854318,
+     10.13968
+    ],
+    [
+     36.853895,
+     10.1388303
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 3100.7,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 555.39,
+   "length_ratio": 3.4139,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_dridi",
+   "to": "x20",
+   "key": "cit_dridi|x20",
+   "straight_m": 866.26,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8558952,
+     10.1289329
+    ],
+    [
+     36.855931,
+     10.126857
+    ],
+    [
+     36.8555,
+     10.124445
+    ],
+    [
+     36.855091,
+     10.122987
+    ],
+    [
+     36.854034,
+     10.120542
+    ],
+    [
+     36.8537603,
+     10.1195695
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 881.08,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 67.16,
+   "length_ratio": 1.0171,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "x20",
+   "to": "bir_mnihla",
+   "key": "bir_mnihla|x20",
+   "straight_m": 476.51,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8567966,
+     10.1157901
+    ],
+    [
+     36.857053,
+     10.11663
+    ],
+    [
+     36.855703,
+     10.117045
+    ],
+    [
+     36.85605,
+     10.119316
+    ],
+    [
+     36.856593,
+     10.121348
+    ],
+    [
+     36.854751,
+     10.122153
+    ],
+    [
+     36.854034,
+     10.120542
+    ],
+    [
+     36.8537603,
+     10.1195695
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1103.61,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 334.39,
+   "length_ratio": 2.316,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bir_mnihla",
+   "to": "route_elbasatine",
+   "key": "bir_mnihla|route_elbasatine",
+   "straight_m": 800.11,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8567966,
+     10.1157901
+    ],
+    [
+     36.855877,
+     10.113735
+    ],
+    [
+     36.854874,
+     10.112349
+    ],
+    [
+     36.854725,
+     10.111929
+    ],
+    [
+     36.85445,
+     10.111698
+    ],
+    [
+     36.853433,
+     10.10997
+    ],
+    [
+     36.852831,
+     10.108727
+    ],
+    [
+     36.852716,
+     10.108442
+    ],
+    [
+     36.8527617,
+     10.1083443
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 812.09,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 19.3,
+   "length_ratio": 1.015,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "route_elbasatine",
+   "to": "caf_sirine",
+   "key": "caf_sirine|route_elbasatine",
+   "straight_m": 708.01,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8495257,
+     10.1014914
+    ],
+    [
+     36.850283,
+     10.102959
+    ],
+    [
+     36.851006,
+     10.105177
+    ],
+    [
+     36.852083,
+     10.106957
+    ],
+    [
+     36.852716,
+     10.108442
+    ],
+    [
+     36.8527617,
+     10.1083443
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 726.82,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 24.91,
+   "length_ratio": 1.0266,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "caf_sirine",
+   "to": "usine_lazreg",
+   "key": "caf_sirine|usine_lazreg",
+   "straight_m": 547.61,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8495257,
+     10.1014914
+    ],
+    [
+     36.8472183,
+     10.0960545
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 547.61,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "usine_lazreg",
+   "to": "terminus_cit_elbasatine",
+   "key": "terminus_cit_elbasatine|usine_lazreg",
+   "straight_m": 563.77,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8450177,
+     10.0903467
+    ],
+    [
+     36.844818,
+     10.090468
+    ],
+    [
+     36.8472183,
+     10.0960545
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 588.92,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 24.69,
+   "length_ratio": 1.0446,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.839222,
+   10.2045873
+  ],
+  [
+   36.839381,
+   10.204337
+  ],
+  [
+   36.837933,
+   10.202952
+  ],
+  [
+   36.837917,
+   10.202787
+  ],
+  [
+   36.838489,
+   10.2021
+  ],
+  [
+   36.839163,
+   10.200597
+  ],
+  [
+   36.839732,
+   10.199872
+  ],
+  [
+   36.840042,
+   10.199648
+  ],
+  [
+   36.840232,
+   10.199912
+  ],
+  [
+   36.840149,
+   10.200386
+  ],
+  [
+   36.840238,
+   10.200664
+  ],
+  [
+   36.840539,
+   10.201183
+  ],
+  [
+   36.840818,
+   10.20139
+  ],
+  [
+   36.846895,
+   10.202007
+  ],
+  [
+   36.853579,
+   10.202465
+  ],
+  [
+   36.856116,
+   10.202612
+  ],
+  [
+   36.859107,
+   10.202617
+  ],
+  [
+   36.859243,
+   10.202796
+  ],
+  [
+   36.859097,
+   10.202997
+  ],
+  [
+   36.8543199,
+   10.2028332
+  ],
+  [
+   36.859186,
+   10.202956
+  ],
+  [
+   36.85942,
+   10.199505
+  ],
+  [
+   36.859374,
+   10.19815
+  ],
+  [
+   36.859618,
+   10.197971
+  ],
+  [
+   36.860039,
+   10.198271
+  ],
+  [
+   36.8601659,
+   10.1981876
+  ],
+  [
+   36.860418,
+   10.197993
+  ],
+  [
+   36.860342,
+   10.197404
+  ],
+  [
+   36.860203,
+   10.197359
+  ],
+  [
+   36.859594,
+   10.197889
+  ],
+  [
+   36.8593,
+   10.197841
+  ],
+  [
+   36.858562,
+   10.194838
+  ],
+  [
+   36.858388,
+   10.192405
+  ],
+  [
+   36.85811,
+   10.1914391
+  ],
+  [
+   36.857527,
+   10.190415
+  ],
+  [
+   36.856796,
+   10.188201
+  ],
+  [
+   36.858311,
+   10.188284
+  ],
+  [
+   36.858762,
+   10.18806
+  ],
+  [
+   36.858873,
+   10.188199
+  ],
+  [
+   36.858835,
+   10.18837
+  ],
+  [
+   36.858353,
+   10.188429
+  ],
+  [
+   36.8581935,
+   10.1885869
+  ],
+  [
+   36.858353,
+   10.188429
+  ],
+  [
+   36.859058,
+   10.188333
+  ],
+  [
+   36.860452,
+   10.187631
+  ],
+  [
+   36.8619428,
+   10.1872281
+  ],
+  [
+   36.860452,
+   10.187631
+  ],
+  [
+   36.858758,
+   10.188422
+  ],
+  [
+   36.858591,
+   10.188308
+  ],
+  [
+   36.85865,
+   10.188084
+  ],
+  [
+   36.859194,
+   10.188134
+  ],
+  [
+   36.860416,
+   10.187539
+  ],
+  [
+   36.862032,
+   10.186994
+  ],
+  [
+   36.865158,
+   10.185198
+  ],
+  [
+   36.865541,
+   10.185456
+  ],
+  [
+   36.867649,
+   10.185527
+  ],
+  [
+   36.868058,
+   10.183988
+  ],
+  [
+   36.868042,
+   10.183812
+  ],
+  [
+   36.8678091,
+   10.1839567
+  ],
+  [
+   36.867603,
+   10.184036
+  ],
+  [
+   36.866589,
+   10.184
+  ],
+  [
+   36.865895,
+   10.183152
+  ],
+  [
+   36.865675,
+   10.182395
+  ],
+  [
+   36.865671,
+   10.181933
+  ],
+  [
+   36.866082,
+   10.180035
+  ],
+  [
+   36.865849,
+   10.179044
+  ],
+  [
+   36.864744,
+   10.177363
+  ],
+  [
+   36.863183,
+   10.174443
+  ],
+  [
+   36.860305,
+   10.17143
+  ],
+  [
+   36.858965,
+   10.169721
+  ],
+  [
+   36.857736,
+   10.16728
+  ],
+  [
+   36.857358,
+   10.166853
+  ],
+  [
+   36.857399,
+   10.166472
+  ],
+  [
+   36.857607,
+   10.166396
+  ],
+  [
+   36.857759,
+   10.166515
+  ],
+  [
+   36.85783,
+   10.166932
+  ],
+  [
+   36.8585478,
+   10.1682756
+  ],
+  [
+   36.8560526,
+   10.1682516
+  ],
+  [
+   36.857202,
+   10.167076
+  ],
+  [
+   36.857728,
+   10.166915
+  ],
+  [
+   36.857806,
+   10.166698
+  ],
+  [
+   36.855903,
+   10.162998
+  ],
+  [
+   36.85542,
+   10.161207
+  ],
+  [
+   36.855124,
+   10.159465
+  ],
+  [
+   36.855034,
+   10.158175
+  ],
+  [
+   36.8550241,
+   10.1516566
+  ],
+  [
+   36.855034,
+   10.158175
+  ],
+  [
+   36.855124,
+   10.159465
+  ],
+  [
+   36.85542,
+   10.161207
+  ],
+  [
+   36.855903,
+   10.162998
+  ],
+  [
+   36.857806,
+   10.166698
+  ],
+  [
+   36.85766,
+   10.166972
+  ],
+  [
+   36.857358,
+   10.166853
+  ],
+  [
+   36.857189,
+   10.166162
+  ],
+  [
+   36.855826,
+   10.163059
+  ],
+  [
+   36.855515,
+   10.162097
+  ],
+  [
+   36.855031,
+   10.15949
+  ],
+  [
+   36.854922,
+   10.15785
+  ],
+  [
+   36.854903,
+   10.147918
+  ],
+  [
+   36.854616,
+   10.141291
+  ],
+  [
+   36.854344,
+   10.139969
+  ],
+  [
+   36.853465,
+   10.138267
+  ],
+  [
+   36.853557,
+   10.138217
+  ],
+  [
+   36.853895,
+   10.1388303
+  ],
+  [
+   36.854318,
+   10.13968
+  ],
+  [
+   36.854605,
+   10.140473
+  ],
+  [
+   36.854946,
+   10.144742
+  ],
+  [
+   36.855053,
+   10.144882
+  ],
+  [
+   36.855187,
+   10.14486
+  ],
+  [
+   36.8557,
+   10.144229
+  ],
+  [
+   36.855603,
+   10.141529
+  ],
+  [
+   36.855089,
+   10.141409
+  ],
+  [
+   36.854777,
+   10.139853
+  ],
+  [
+   36.854462,
+   10.13965
+  ],
+  [
+   36.853651,
+   10.138159
+  ],
+  [
+   36.853465,
+   10.138267
+  ],
+  [
+   36.853261,
+   10.137011
+  ],
+  [
+   36.853541,
+   10.135783
+  ],
+  [
+   36.854486,
+   10.133973
+  ],
+  [
+   36.85507,
+   10.132495
+  ],
+  [
+   36.855622,
+   10.130108
+  ],
+  [
+   36.855784,
+   10.1279
+  ],
+  [
+   36.855653,
+   10.126242
+  ],
+  [
+   36.855517,
+   10.126036
+  ],
+  [
+   36.855338,
+   10.12603
+  ],
+  [
+   36.854982,
+   10.126491
+  ],
+  [
+   36.855099,
+   10.126815
+  ],
+  [
+   36.856312,
+   10.127114
+  ],
+  [
+   36.856606,
+   10.126879
+  ],
+  [
+   36.85661,
+   10.126494
+  ],
+  [
+   36.856441,
+   10.12629
+  ],
+  [
+   36.856258,
+   10.126265
+  ],
+  [
+   36.855944,
+   10.126597
+  ],
+  [
+   36.8558952,
+   10.1289329
+  ],
+  [
+   36.855931,
+   10.126857
+  ],
+  [
+   36.8555,
+   10.124445
+  ],
+  [
+   36.855091,
+   10.122987
+  ],
+  [
+   36.854034,
+   10.120542
+  ],
+  [
+   36.8537603,
+   10.1195695
+  ],
+  [
+   36.854034,
+   10.120542
+  ],
+  [
+   36.854751,
+   10.122153
+  ],
+  [
+   36.856593,
+   10.121348
+  ],
+  [
+   36.85605,
+   10.119316
+  ],
+  [
+   36.855703,
+   10.117045
+  ],
+  [
+   36.857053,
+   10.11663
+  ],
+  [
+   36.8567966,
+   10.1157901
+  ],
+  [
+   36.855877,
+   10.113735
+  ],
+  [
+   36.854874,
+   10.112349
+  ],
+  [
+   36.854725,
+   10.111929
+  ],
+  [
+   36.85445,
+   10.111698
+  ],
+  [
+   36.853433,
+   10.10997
+  ],
+  [
+   36.852831,
+   10.108727
+  ],
+  [
+   36.852716,
+   10.108442
+  ],
+  [
+   36.8527617,
+   10.1083443
+  ],
+  [
+   36.852716,
+   10.108442
+  ],
+  [
+   36.852083,
+   10.106957
+  ],
+  [
+   36.851006,
+   10.105177
+  ],
+  [
+   36.850283,
+   10.102959
+  ],
+  [
+   36.8495257,
+   10.1014914
+  ],
+  [
+   36.8472183,
+   10.0960545
+  ],
+  [
+   36.844818,
+   10.090468
+  ],
+  [
+   36.8450177,
+   10.0903467
+  ]
+ ],
+ "phase3a": {
+  "pairs": 17,
+  "resolved": 16,
+  "unresolved": 1
+ }
+}

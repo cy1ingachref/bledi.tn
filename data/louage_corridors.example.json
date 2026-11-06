@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "purpose": "Louage and rural-transport corridors: designated lines with boardable stops.",
+    "how_to_use": "Copy to louage_corridors.json and set verified=true. Use include_unverified draft mode only for testing.",
+    "stops": "'stops' lists station ids in order of travel. An id is a station already in the seed, or one defined in the top-level 'stops' list.",
+    "wait_min": "Optional boarding wait in minutes."
+  },
+  "stops": [],
+  "corridors": [
+    {
+      "id": "louage_bab_saadoun_mateur",
+      "number": "L31",
+      "mode": "louage",
+      "name": "Tunis - Bab Saadoun → Mateur",
+      "stops": [
+        "louage_tunis_bab_saadoun",
+        "djedaida_nouvelle",
+        "google_places_mateur_louage_station_e19bc9667b"
+      ],
+      "wait_min": 15,
+      "verified": false
+    },
+    {
+      "id": "rural_tebourba_edkhila",
+      "number": "66",
+      "mode": "rural",
+      "name": "Tebourba → Edkhila",
+      "stops": [
+        "terminus_tebourba",
+        "edkhila"
+      ],
+      "wait_min": 20,
+      "verified": false
+    },
+    {
+      "id": "rural_edkhila_mateur",
+      "number": "RR-T2",
+      "mode": "rural",
+      "name": "Edkhila → Mateur",
+      "stops": [
+        "edkhila",
+        "google_places_محطة_نقل_ريفي__rural_transpo_c9bb65bf97"
+      ],
+      "wait_min": 25,
+      "verified": false
+    }
+  ]
+}

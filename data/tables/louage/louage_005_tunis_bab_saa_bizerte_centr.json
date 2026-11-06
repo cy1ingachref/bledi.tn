@@ -1,0 +1,69 @@
+{
+ "line_id": "louage_005_tunis_bab_saa_bizerte_centr",
+ "number": "L5",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage: Tunis - Bab Saadoun → Bizerte - Central Station",
+ "direction_aller": [
+  "louage_tunis_bab_saadoun",
+  "louage_bizerte_central_station"
+ ],
+ "direction_retour": [
+  "louage_bizerte_central_station",
+  "louage_tunis_bab_saadoun"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_tunis_bab_saadoun",
+  "name": "Tunis - Bab Saadoun"
+ },
+ "end": {
+  "id": "louage_bizerte_central_station",
+  "name": "Bizerte - Central Station"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "louage_tunis_bab_saadoun",
+   "to": "louage_bizerte_central_station",
+   "km": 56.9
+  }
+ ],
+ "original_stations": [
+  "louage_tunis_bab_saadoun",
+  "louage_bizerte_central_station"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_tunis_bab_saadoun",
+   "name_en": "Tunis - Bab Saadoun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_39m"
+   ],
+   "lat": 36.809,
+   "lon": 10.1575,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "louage_bizerte_central_station",
+   "name_en": "Bizerte - Central Station",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_184m"
+   ],
+   "lat": 37.2675,
+   "lon": 9.8722566,
+   "mode": "louage",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv"
+}

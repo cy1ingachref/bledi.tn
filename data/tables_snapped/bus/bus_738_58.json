@@ -1,0 +1,713 @@
+{
+ "line_id": "bus_738_58",
+ "number": "58",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 58: Rabattement Khaireddine Mannouba - Cité Elward 16C",
+ "direction_aller": [
+  "rabattement_khaireddine_mannouba",
+  "croisement_sanhaja",
+  "p_t_t_oued_ellil",
+  "oued_ellil_16c_58",
+  "cit_ennajet",
+  "cit_ennejet_2",
+  "lyc_e_ibn_fourat",
+  "cit_elward_1",
+  "arr_t_onas",
+  "cit_elward_16c"
+ ],
+ "direction_retour": [
+  "cit_elward_16c",
+  "arr_t_onas",
+  "cit_elward_1",
+  "lyc_e_ibn_fourat",
+  "cit_ennejet_2",
+  "cit_ennajet",
+  "oued_ellil_16c_58",
+  "p_t_t_oued_ellil",
+  "croisement_sanhaja",
+  "rabattement_khaireddine_mannouba"
+ ],
+ "stations_count": 10,
+ "start": {
+  "id": "rabattement_khaireddine_mannouba",
+  "name": "Rabattement Khaireddine Mannouba"
+ },
+ "end": {
+  "id": "cit_elward_16c",
+  "name": "Cité Elward 16C"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_khaireddine_mannouba",
+  "croisement_sanhaja",
+  "p_t_t_oued_ellil",
+  "oued_ellil_16c_58",
+  "cit_ennajet",
+  "cit_ennejet_2",
+  "lyc_e_ibn_fourat",
+  "cit_elward_1",
+  "arr_t_onas",
+  "cit_elward_16c"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_khaireddine_mannouba",
+   "name_en": "Rabattement Khaireddine Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156704,
+   "lon": 10.0564588,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_sanhaja",
+   "name_en": "Croisement Sanhaja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230522,
+   "lon": 10.034149,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "p_t_t_oued_ellil",
+   "name_en": "P.T.T Oued Ellil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8334109,
+   "lon": 10.0395124,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_ellil_16c_58",
+   "name_en": "Oued Ellil (16C 58)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8353865,
+   "lon": 10.0406428,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ennajet",
+   "name_en": "Cité Ennajet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8376323,
+   "lon": 10.0421257,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ennejet_2",
+   "name_en": "Cité Ennejet 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8383536,
+   "lon": 10.0387568,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_ibn_fourat",
+   "name_en": "Lycée Ibn Fourat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8390374,
+   "lon": 10.0355974,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_elward_1",
+   "name_en": "Cité Elward 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8437691,
+   "lon": 10.0266417,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arr_t_onas",
+   "name_en": "Arrét Onas",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8407836,
+   "lon": 10.0267083,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_elward_16c",
+   "name_en": "Cité Elward 16C",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8471286,
+   "lon": 10.0266225,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "rabattement_khaireddine_mannouba",
+   "to": "croisement_sanhaja",
+   "key": "croisement_sanhaja|rabattement_khaireddine_mannouba",
+   "straight_m": 2148.85,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8230522,
+     10.034149
+    ],
+    [
+     36.819641,
+     10.044664
+    ],
+    [
+     36.819451,
+     10.045345
+    ],
+    [
+     36.81959,
+     10.045729
+    ],
+    [
+     36.819541,
+     10.046036
+    ],
+    [
+     36.818818,
+     10.047138
+    ],
+    [
+     36.816604,
+     10.053835
+    ],
+    [
+     36.814764,
+     10.057296
+    ],
+    [
+     36.81482,
+     10.057443
+    ],
+    [
+     36.815149,
+     10.057518
+    ],
+    [
+     36.8156704,
+     10.0564588
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2443.5,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 128.91,
+   "length_ratio": 1.1371,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "croisement_sanhaja",
+   "to": "p_t_t_oued_ellil",
+   "key": "croisement_sanhaja|p_t_t_oued_ellil",
+   "straight_m": 1246.84,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8230522,
+     10.034149
+    ],
+    [
+     36.823159,
+     10.03411
+    ],
+    [
+     36.82498,
+     10.034971
+    ],
+    [
+     36.827321,
+     10.035732
+    ],
+    [
+     36.832147,
+     10.038958
+    ],
+    [
+     36.832465,
+     10.039138
+    ],
+    [
+     36.832718,
+     10.039012
+    ],
+    [
+     36.8334109,
+     10.0395124
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1264.56,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 51.57,
+   "length_ratio": 1.0142,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "p_t_t_oued_ellil",
+   "to": "oued_ellil_16c_58",
+   "key": "oued_ellil_16c_58|p_t_t_oued_ellil",
+   "straight_m": 241.62,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8353865,
+     10.0406428
+    ],
+    [
+     36.835683,
+     10.040808
+    ],
+    [
+     36.835712,
+     10.04072
+    ],
+    [
+     36.832736,
+     10.03893
+    ],
+    [
+     36.832534,
+     10.038939
+    ],
+    [
+     36.832465,
+     10.039138
+    ],
+    [
+     36.832718,
+     10.039012
+    ],
+    [
+     36.8334109,
+     10.0395124
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 572.89,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 110.33,
+   "length_ratio": 2.371,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "oued_ellil_16c_58",
+   "to": "cit_ennajet",
+   "key": "cit_ennajet|oued_ellil_16c_58",
+   "straight_m": 282.45,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8376323,
+     10.0421257
+    ],
+    [
+     36.837724,
+     10.042107
+    ],
+    [
+     36.835818,
+     10.04078
+    ],
+    [
+     36.83441,
+     10.03997
+    ],
+    [
+     36.834373,
+     10.04006
+    ],
+    [
+     36.8353865,
+     10.0406428
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 558.38,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 124.06,
+   "length_ratio": 1.9769,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_ennajet",
+   "to": "cit_ennejet_2",
+   "key": "cit_ennajet|cit_ennejet_2",
+   "straight_m": 310.35,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8376323,
+     10.0421257
+    ],
+    [
+     36.837692,
+     10.04218
+    ],
+    [
+     36.837856,
+     10.041653
+    ],
+    [
+     36.8383536,
+     10.0387568
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 322.14,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 13.16,
+   "length_ratio": 1.038,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_ennejet_2",
+   "to": "lyc_e_ibn_fourat",
+   "key": "cit_ennejet_2|lyc_e_ibn_fourat",
+   "straight_m": 291.26,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8383536,
+     10.0387568
+    ],
+    [
+     36.8390374,
+     10.0355974
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 291.26,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "lyc_e_ibn_fourat",
+   "to": "cit_elward_1",
+   "key": "cit_elward_1|lyc_e_ibn_fourat",
+   "straight_m": 954.97,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8437691,
+     10.0266417
+    ],
+    [
+     36.841012,
+     10.025394
+    ],
+    [
+     36.8390374,
+     10.0355974
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1260.24,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 317.02,
+   "length_ratio": 1.3197,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_elward_1",
+   "to": "arr_t_onas",
+   "key": "arr_t_onas|cit_elward_1",
+   "straight_m": 332.03,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8407836,
+     10.0267083
+    ],
+    [
+     36.841012,
+     10.025394
+    ],
+    [
+     36.8437691,
+     10.0266417
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 445.75,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 116.49,
+   "length_ratio": 1.3425,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "arr_t_onas",
+   "to": "cit_elward_16c",
+   "key": "arr_t_onas|cit_elward_16c",
+   "straight_m": 705.57,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8407836,
+     10.0267083
+    ],
+    [
+     36.841012,
+     10.025394
+    ],
+    [
+     36.846578,
+     10.027865
+    ],
+    [
+     36.8471286,
+     10.0266225
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 902.88,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 116.67,
+   "length_ratio": 1.2796,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8156704,
+   10.0564588
+  ],
+  [
+   36.815149,
+   10.057518
+  ],
+  [
+   36.81482,
+   10.057443
+  ],
+  [
+   36.814764,
+   10.057296
+  ],
+  [
+   36.816604,
+   10.053835
+  ],
+  [
+   36.818818,
+   10.047138
+  ],
+  [
+   36.819541,
+   10.046036
+  ],
+  [
+   36.81959,
+   10.045729
+  ],
+  [
+   36.819451,
+   10.045345
+  ],
+  [
+   36.819641,
+   10.044664
+  ],
+  [
+   36.8230522,
+   10.034149
+  ],
+  [
+   36.823159,
+   10.03411
+  ],
+  [
+   36.82498,
+   10.034971
+  ],
+  [
+   36.827321,
+   10.035732
+  ],
+  [
+   36.832147,
+   10.038958
+  ],
+  [
+   36.832465,
+   10.039138
+  ],
+  [
+   36.832718,
+   10.039012
+  ],
+  [
+   36.8334109,
+   10.0395124
+  ],
+  [
+   36.832718,
+   10.039012
+  ],
+  [
+   36.832465,
+   10.039138
+  ],
+  [
+   36.832534,
+   10.038939
+  ],
+  [
+   36.832736,
+   10.03893
+  ],
+  [
+   36.835712,
+   10.04072
+  ],
+  [
+   36.835683,
+   10.040808
+  ],
+  [
+   36.8353865,
+   10.0406428
+  ],
+  [
+   36.834373,
+   10.04006
+  ],
+  [
+   36.83441,
+   10.03997
+  ],
+  [
+   36.835818,
+   10.04078
+  ],
+  [
+   36.837724,
+   10.042107
+  ],
+  [
+   36.8376323,
+   10.0421257
+  ],
+  [
+   36.837692,
+   10.04218
+  ],
+  [
+   36.837856,
+   10.041653
+  ],
+  [
+   36.8383536,
+   10.0387568
+  ],
+  [
+   36.8390374,
+   10.0355974
+  ],
+  [
+   36.841012,
+   10.025394
+  ],
+  [
+   36.8437691,
+   10.0266417
+  ],
+  [
+   36.841012,
+   10.025394
+  ],
+  [
+   36.8407836,
+   10.0267083
+  ],
+  [
+   36.841012,
+   10.025394
+  ],
+  [
+   36.846578,
+   10.027865
+  ],
+  [
+   36.8471286,
+   10.0266225
+  ]
+ ],
+ "phase3a": {
+  "pairs": 9,
+  "resolved": 9,
+  "unresolved": 0
+ }
+}

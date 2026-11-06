@@ -1,0 +1,410 @@
+{
+ "line_id": "bus_771_98",
+ "number": "98",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 98: Rabattement Khaireddine Mannouba - Café Jallou Terminus",
+ "direction_aller": [
+  "rabattement_khaireddine_mannouba",
+  "croisement_sanhaja",
+  "coop_rative_central",
+  "cit_torjmen",
+  "douar_el_bey",
+  "pompage",
+  "erriadh_manouba",
+  "zone_f",
+  "saida",
+  "oued_chafrou",
+  "stil",
+  "sidi_taleb_16d",
+  "stade_ejdaida",
+  "cit_rtt",
+  "djedaida_nouvelle",
+  "brimo",
+  "cit_essalem",
+  "lyc_e_chaouat",
+  "route_chaouat_1",
+  "chaouat",
+  "kiosque_agil_jallou",
+  "jallou",
+  "caf_jallou_terminus"
+ ],
+ "direction_retour": [
+  "caf_jallou_terminus",
+  "jallou",
+  "kiosque_agil_jallou",
+  "chaouat",
+  "route_chaouat_1",
+  "lyc_e_chaouat",
+  "cit_essalem",
+  "brimo",
+  "djedaida_nouvelle",
+  "cit_rtt",
+  "stade_ejdaida",
+  "sidi_taleb_16d",
+  "stil",
+  "oued_chafrou",
+  "saida",
+  "zone_f",
+  "erriadh_manouba",
+  "pompage",
+  "douar_el_bey",
+  "cit_torjmen",
+  "coop_rative_central",
+  "croisement_sanhaja",
+  "rabattement_khaireddine_mannouba"
+ ],
+ "stations_count": 23,
+ "start": {
+  "id": "rabattement_khaireddine_mannouba",
+  "name": "Rabattement Khaireddine Mannouba"
+ },
+ "end": {
+  "id": "caf_jallou_terminus",
+  "name": "Café Jallou Terminus"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [
+  {
+   "from": "brimo",
+   "to": "cit_essalem",
+   "km": 30.1
+  },
+  {
+   "from": "cit_essalem",
+   "to": "lyc_e_chaouat",
+   "km": 29.8
+  }
+ ],
+ "original_stations": [
+  "rabattement_khaireddine_mannouba",
+  "croisement_sanhaja",
+  "coop_rative_central",
+  "cit_torjmen",
+  "douar_el_bey",
+  "pompage",
+  "erriadh_manouba",
+  "zone_f",
+  "saida",
+  "oued_chafrou",
+  "stil",
+  "sidi_taleb_16d",
+  "stade_ejdaida",
+  "cit_rtt",
+  "djedaida_nouvelle",
+  "brimo",
+  "cit_essalem",
+  "lyc_e_chaouat",
+  "route_chaouat_1",
+  "chaouat",
+  "kiosque_agil_jallou",
+  "jallou",
+  "caf_jallou_terminus"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_khaireddine_mannouba",
+   "name_en": "Rabattement Khaireddine Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156704,
+   "lon": 10.0564588,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_sanhaja",
+   "name_en": "Croisement Sanhaja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230522,
+   "lon": 10.034149,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "coop_rative_central",
+   "name_en": "Coopérative Central",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.828223,
+   "lon": 10.0204221,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_torjmen",
+   "name_en": "Cité Torjmen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8318167,
+   "lon": 10.0130071,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "douar_el_bey",
+   "name_en": "Douar El Bey",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8354187,
+   "lon": 10.0063971,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pompage",
+   "name_en": "Pompage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356135,
+   "lon": 9.9975573,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "erriadh_manouba",
+   "name_en": "Erriadh Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8341505,
+   "lon": 9.9851857,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zone_f",
+   "name_en": "Zone F",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8333755,
+   "lon": 9.9786226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "saida",
+   "name_en": "Saida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8322184,
+   "lon": 9.9682448,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_chafrou",
+   "name_en": "Oued Chafrou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8336009,
+   "lon": 9.950274,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stil",
+   "name_en": "Stil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8339484,
+   "lon": 9.9456734,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_taleb_16d",
+   "name_en": "Sidi Taleb 16D",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8360449,
+   "lon": 9.9413553,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_ejdaida",
+   "name_en": "Stade Ejdaida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8399507,
+   "lon": 9.9349768,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_rtt",
+   "name_en": "Cité RTT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8429957,
+   "lon": 9.9313561,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "djedaida_nouvelle",
+   "name_en": "Djedaida Nouvelle",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8499452,
+   "lon": 9.9317367,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "brimo",
+   "name_en": "Brimo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8520735,
+   "lon": 9.9360688,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_essalem",
+   "name_en": "Cité Essalem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8532762,
+   "lon": 10.2742226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_chaouat",
+   "name_en": "Lycée Chaouat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8666038,
+   "lon": 9.9394778,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "route_chaouat_1",
+   "name_en": "Route Chaouat 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8787,
+   "lon": 9.9421007,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chaouat",
+   "name_en": "Chaouat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8894814,
+   "lon": 9.944471,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_agil_jallou",
+   "name_en": "Kiosque Agil Jallou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8931526,
+   "lon": 9.9438714,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jallou",
+   "name_en": "Jallou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9011272,
+   "lon": 9.9451963,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_jallou_terminus",
+   "name_en": "Café Jallou Terminus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9046447,
+   "lon": 9.9445525,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

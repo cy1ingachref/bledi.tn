@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING, Any
 
 from bledi_transit.application.routing.graph import transit_speed_kmh
 from bledi_transit.application.routing.legs import resolve_walk_geometry
+from bledi_transit.domain.cities import nearest_city
 from bledi_transit.domain.geo import haversine_m
 from bledi_transit.domain.modes import TAXI_MODES
 from bledi_transit.domain.tunables import (
@@ -137,7 +138,7 @@ def expand_path(
         # The raw seed mode, not the canonical one: canonical_mode() folds
         # "rail" into "train", which SPEED_BY_MODE times differently.
         raw_mode = router.mode_of_line.get(line_used or "", "bus") or "bus"
-        if not seg_geom and mode in ("bus", "louaj", "taxi") and straight_m >= GEOMETRY_REQUIRED_M:
+        if not seg_geom and mode in ("bus", "louaj", "taxi", "rural") and straight_m >= GEOMETRY_REQUIRED_M:
             live_road = paths.road(a["lat"], a["lon"], b["lat"], b["lon"], "car")
             if live_road is not None and live_road[1] >= 0.95 * straight_m:
                 seg_geom = live_road[0]
@@ -220,7 +221,10 @@ def expand_path(
             # leg and the cost agree. A taxi hop also needs a taxi mode
             # selected: "bus only" must not return a bus and taxi itinerary.
             hop_permitted = allowed_modes is None or bool(allowed_modes & TAXI_MODES)
-            if walk_m > MAX_END_WALK_METERS and hop_permitted:
+            end_city = nearest_city(end_lat, end_lon)
+            prev_city = nearest_city(prev_lat, prev_lon)
+            gap_city_ok = (prev_city is None or end_city is None or prev_city == end_city)
+            if walk_m > MAX_END_WALK_METERS and hop_permitted and gap_city_ok:
                 hop_min = walk_m / 1000 / TAXI_SPEED_KMH * 60
                 steps.append({
                     "type": "taxi",

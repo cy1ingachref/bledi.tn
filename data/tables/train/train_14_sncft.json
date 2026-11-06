@@ -1,0 +1,309 @@
+{
+ "line_id": "train_14_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Tunis Ville - Ghardimaou",
+ "direction_aller": [
+  "tunis_ville",
+  "bir_aniba",
+  "mannouba",
+  "jedeida",
+  "tebourba",
+  "borj_ettoum",
+  "mejez_el_bab",
+  "oued_zarga",
+  "sidi_mhimech",
+  "beja_voy",
+  "mastouta",
+  "sidi_smail",
+  "bou_salem",
+  "benbachir",
+  "jendouba_v",
+  "oued_meliz",
+  "ghardimaou"
+ ],
+ "direction_retour": [
+  "ghardimaou",
+  "oued_meliz",
+  "jendouba_v",
+  "benbachir",
+  "bou_salem",
+  "sidi_smail",
+  "mastouta",
+  "beja_voy",
+  "sidi_mhimech",
+  "oued_zarga",
+  "mejez_el_bab",
+  "borj_ettoum",
+  "tebourba",
+  "jedeida",
+  "mannouba",
+  "bir_aniba",
+  "tunis_ville"
+ ],
+ "stations_count": 17,
+ "start": {
+  "id": "tunis_ville",
+  "name": "Tunis Ville"
+ },
+ "end": {
+  "id": "ghardimaou",
+  "name": "Ghardimaou"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "jendouba_v",
+   "to": "oued_meliz",
+   "km": 20.5
+  }
+ ],
+ "original_stations": [
+  "tunis_ville",
+  "bir_aniba",
+  "mannouba",
+  "jedeida",
+  "tebourba",
+  "borj_ettoum",
+  "mejez_el_bab",
+  "oued_zarga",
+  "sidi_mhimech",
+  "beja_voy",
+  "mastouta",
+  "sidi_smail",
+  "bou_salem",
+  "benbachir",
+  "jendouba_v",
+  "oued_meliz",
+  "ghardimaou"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_ville",
+   "name_en": "Tunis Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7947693,
+   "lon": 10.1803806,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_aniba",
+   "name_en": "Bir Aniba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7953789,
+   "lon": 10.157609,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mannouba",
+   "name_en": "Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8161297,
+   "lon": 10.1011079,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "jedeida",
+   "name_en": "Jedeida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8507975,
+   "lon": 9.9334513,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "tebourba",
+   "name_en": "Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8291603,
+   "lon": 9.8443655,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_ettoum",
+   "name_en": "Borj Ettoum",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7876599,
+   "lon": 9.7615566,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mejez_el_bab",
+   "name_en": "Mejez El Bab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6657253,
+   "lon": 9.6065106,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_zarga",
+   "name_en": "Oued Zarga",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6732537,
+   "lon": 9.4266499,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_mhimech",
+   "name_en": "Sidi MHimech",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7825473,
+   "lon": 9.2793081,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "beja_voy",
+   "name_en": "Beja Voy",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7248682,
+   "lon": 9.1901878,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mastouta",
+   "name_en": "Mastouta",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6616127,
+   "lon": 9.2090789,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_smail",
+   "name_en": "Sidi Smail",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5955176,
+   "lon": 9.111899,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bou_salem",
+   "name_en": "Bou Salem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6112381,
+   "lon": 8.9688798,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "benbachir",
+   "name_en": "Benbachir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5918189,
+   "lon": 8.905504,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "jendouba_v",
+   "name_en": "Jendouba V",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5012361,
+   "lon": 8.7772554,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_meliz",
+   "name_en": "Oued Meliz",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4696166,
+   "lon": 8.5513348,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "ghardimaou",
+   "name_en": "Ghardimaou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4477683,
+   "lon": 8.4372042,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

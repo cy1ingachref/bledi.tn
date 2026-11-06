@@ -1,0 +1,586 @@
+{
+ "line_id": "bus_708_17",
+ "number": "17",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 17: Station Barcelone - Bac Terminus 17",
+ "direction_aller": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "centre_de_formation_snt",
+  "soci_t_nour",
+  "lustreries",
+  "chouchet_rades",
+  "croisement_sidi_rezig",
+  "stade_municipale",
+  "lyc_e_technique_rades",
+  "mongil",
+  "centre_rades",
+  "ptt_rades",
+  "avenue_de_la_r_publique_1",
+  "avenue_de_la_r_publique_2",
+  "souk_rades",
+  "lyc_e_ibn_khaldoun",
+  "village_enfants",
+  "casino_rad_s",
+  "les_bungalows",
+  "rades_plage_1",
+  "rades_plage_2",
+  "lac_de_rades",
+  "les_salines",
+  "steg_rades",
+  "kochbati",
+  "nord_gaz",
+  "bac_terminus_17"
+ ],
+ "direction_retour": [
+  "bac_terminus_17",
+  "nord_gaz",
+  "kochbati",
+  "steg_rades",
+  "les_salines",
+  "lac_de_rades",
+  "rades_plage_2",
+  "rades_plage_1",
+  "les_bungalows",
+  "casino_rad_s",
+  "village_enfants",
+  "lyc_e_ibn_khaldoun",
+  "souk_rades",
+  "avenue_de_la_r_publique_2",
+  "avenue_de_la_r_publique_1",
+  "ptt_rades",
+  "centre_rades",
+  "mongil",
+  "lyc_e_technique_rades",
+  "stade_municipale",
+  "croisement_sidi_rezig",
+  "chouchet_rades",
+  "lustreries",
+  "soci_t_nour",
+  "centre_de_formation_snt",
+  "cnss",
+  "sofomeca",
+  "stoa",
+  "gare_djebel_jelloud",
+  "djebel_jelloud_gp1",
+  "el_afrane",
+  "centre_de_coordination_ouardia",
+  "dubosville",
+  "station_barcelone"
+ ],
+ "stations_count": 34,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "bac_terminus_17",
+  "name": "Bac Terminus 17"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 5,
+ "teleport_legs": [
+  {
+   "from": "lac_de_rades",
+   "to": "les_salines",
+   "km": 141.9
+  },
+  {
+   "from": "les_salines",
+   "to": "steg_rades",
+   "km": 142.3
+  }
+ ],
+ "original_stations": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "centre_de_formation_snt",
+  "soci_t_nour",
+  "lustreries",
+  "chouchet_rades",
+  "croisement_sidi_rezig",
+  "stade_municipale",
+  "lyc_e_technique_rades",
+  "mongil",
+  "centre_rades",
+  "ptt_rades",
+  "avenue_de_la_r_publique_1",
+  "avenue_de_la_r_publique_2",
+  "souk_rades",
+  "lyc_e_ibn_khaldoun",
+  "village_enfants",
+  "casino_rad_s",
+  "les_bungalows",
+  "rades_plage_1",
+  "rades_plage_2",
+  "lac_de_rades",
+  "les_salines",
+  "steg_rades",
+  "kochbati",
+  "nord_gaz",
+  "bac_terminus_17"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dubosville",
+   "name_en": "Dubosville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839884,
+   "lon": 10.1917495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_coordination_ouardia",
+   "name_en": "Centre De Coordination Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7806046,
+   "lon": 10.1956231,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_afrane",
+   "name_en": "El Afrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7796674,
+   "lon": 10.1966209,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebel_jelloud_gp1",
+   "name_en": "Djebel Jelloud Gp1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7732433,
+   "lon": 10.2045236,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gare_djebel_jelloud",
+   "name_en": "Gare Djebel Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7715383,
+   "lon": 10.208723,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stoa",
+   "name_en": "Stoa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7686077,
+   "lon": 10.2157355,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sofomeca",
+   "name_en": "SOFOMECA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7658672,
+   "lon": 10.2217893,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cnss",
+   "name_en": "Cnss",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.765065,
+   "lon": 10.2233996,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_snt",
+   "name_en": "Centre De Formation Snt",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.761611,
+   "lon": 10.2317686,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soci_t_nour",
+   "name_en": "Société Nour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7608128,
+   "lon": 10.2337966,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lustreries",
+   "name_en": "Lustreries",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7570187,
+   "lon": 10.2430977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chouchet_rades",
+   "name_en": "Chouchet Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7561763,
+   "lon": 10.2475395,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_sidi_rezig",
+   "name_en": "Croisement Sidi Rezig",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7608207,
+   "lon": 10.2481837,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_municipale",
+   "name_en": "Stade Municipale",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7650639,
+   "lon": 10.2566804,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_technique_rades",
+   "name_en": "Lycée Technique Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.766439,
+   "lon": 10.2607145,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mongil",
+   "name_en": "Mongil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.767318,
+   "lon": 10.2661223,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_rades",
+   "name_en": "Centre Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7670773,
+   "lon": 10.2697916,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ptt_rades",
+   "name_en": "Ptt Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7678829,
+   "lon": 10.273117,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "avenue_de_la_r_publique_1",
+   "name_en": "Avenue De La République 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7683118,
+   "lon": 10.275859,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "avenue_de_la_r_publique_2",
+   "name_en": "Avenue De La République 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7677311,
+   "lon": 10.2771474,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "souk_rades",
+   "name_en": "Souk Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7716129,
+   "lon": 10.2861204,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_ibn_khaldoun",
+   "name_en": "Lycée Ibn Khaldoun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7680571,
+   "lon": 10.2820976,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "village_enfants",
+   "name_en": "Village Enfants",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7738164,
+   "lon": 10.2897099,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "casino_rad_s",
+   "name_en": "Casino Radés",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7673418,
+   "lon": 10.2846571,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_bungalows",
+   "name_en": "Les Bungalows",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7761355,
+   "lon": 10.2907557,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rades_plage_1",
+   "name_en": "Rades Plage 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7771152,
+   "lon": 10.2897687,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rades_plage_2",
+   "name_en": "Rades Plage 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7786104,
+   "lon": 10.2882559,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lac_de_rades",
+   "name_en": "Lac De Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7861046,
+   "lon": 10.2828558,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_salines",
+   "name_en": "Les Salines",
+   "name_ar": "الملاحة",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_177m"
+   ],
+   "lat": 36.0777744,
+   "lon": 8.9640175,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_rades",
+   "name_en": "Steg Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7962903,
+   "lon": 10.2797482,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kochbati",
+   "name_en": "Kochbati",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7999166,
+   "lon": 10.2829875,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nord_gaz",
+   "name_en": "Nord Gaz",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8025282,
+   "lon": 10.2861847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bac_terminus_17",
+   "name_en": "Bac Terminus 17",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.805977,
+   "lon": 10.290368,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

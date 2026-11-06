@@ -24,9 +24,29 @@ def _by_count(counts: dict[str, int]) -> dict[str, int]:
 
 
 class Catalog:
-    def __init__(self, network: Network, layers: MapLayers) -> None:
+    def __init__(self, network: Network, layers: MapLayers, paths: Any = None) -> None:
         self.network = network
         self.layers = layers
+        # Live OSM track graph, when the app was started with one. Used to draw
+        # rail lines that the cached station-pair geometry does not cover.
+        self.paths = paths
+
+    def _live_track(self, a_lat: float, a_lon: float, b_lat: float, b_lon: float) -> list[list[float]]:
+        """Real OSM rail/track polyline between two points, [] when unavailable."""
+        if self.paths is None:
+            return []
+        try:
+            got = self.paths.rail(a_lat, a_lon, b_lat, b_lon)
+        except Exception:  # pragma: no cover - defensive
+            return []
+        if not got:
+            return []
+        pts, dist_m = got
+        straight = haversine_m(a_lat, a_lon, b_lat, b_lon)
+        # A path shorter than the straight line is a bad snap, not a track.
+        if dist_m < 0.95 * straight:
+            return []
+        return list(pts)
 
     def stations(self) -> Json:
         """Every stop as a GeoJSON feature, louage hubs appended after the transit stops."""
@@ -342,7 +362,9 @@ class Catalog:
                     "id": ln.get("id", ""),
                     "number": ln.get("number"),
                     "short_name": ln.get("short_name"),
-                    "long_name": ln.get("long_name"),
+                    # The seed's display name ("Ligne 23: A - B") lives on the line
+                    # itself; without it the client can only show the raw id.
+                    "long_name": ln.get("name"),
                     "mode": ln.get("mode", "bus"),
                     "color": ln.get("color"),
                     "route_id": ln.get("route_id"),
@@ -382,7 +404,10 @@ class Catalog:
                         "name": st.get("name"),
                         "lat": st.get("lat"),
                         "lon": st.get("lon"),
-                        "lines": st.get("lines_served"),
+                        # Every line whose own stop array calls here, not just the
+                        # station's own lines_served fragments: a stop can be a
+                        # bus/metro interchange while its tags mention only one.
+                        "lines": self.network.lines_by_station.get(sid) or st.get("lines_served") or [],
                     }
                 )
             return stops
@@ -424,6 +449,13 @@ class Catalog:
             if a.get("lat") is None or a.get("lon") is None or b.get("lat") is None or b.get("lon") is None:
                 continue
             pts = self.network.segment_geometry(a.get("stop_id"), b.get("stop_id"))
+            source = "cache"
+            if not pts and mode in ("train", "metro", "rail", "tram"):
+                # The cache misses most rail station pairs; the live track graph
+                # is what makes a train line sit on its rails.
+                live = self._live_track(a["lat"], a["lon"], b["lat"], b["lon"])
+                if live:
+                    pts, source = live, "osm-rail"
             gap_m = haversine_m(a["lat"], a["lon"], b["lat"], b["lon"])
             pair = {
                 "from_stop_id": a.get("stop_id"),
@@ -437,6 +469,7 @@ class Catalog:
                     "has_geometry": bool(pts),
                     "needs_geometry": (not pts) and gap_m >= GEOMETRY_REQUIRED_M,
                     "gap_m": round(gap_m),
+                    "source": source,
                     "geometry": pts,
                 }
             )
@@ -519,7 +552,9 @@ class Catalog:
                     "modes": ["louaj"],
                     "city": s.get("governorate") or nearest_city(lat, lon),
                     "score": score(name),
-                    "display_name": f"{name.strip()} · Taxi / Louage",
+                    "display_name": name.strip()
+                if ("louage" in name.strip().lower() or "لواج" in name.strip())
+                else f"{name.strip()} · Louage",
                 }
             )
         for name, slat, slon in CITY_SEATS:

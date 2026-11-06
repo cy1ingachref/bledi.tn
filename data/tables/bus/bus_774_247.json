@@ -1,0 +1,335 @@
+{
+ "line_id": "bus_774_247",
+ "number": "247",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 247: Port La Goulette - Teminus Cité Riadh",
+ "direction_aller": [
+  "port_la_goulette",
+  "goulette_vieille",
+  "goulette_neuve",
+  "la_goulette_casino",
+  "le_kram",
+  "carthage_salambo",
+  "carthage_byrsa",
+  "carthage_dermech",
+  "carthage_hannibal",
+  "carthage_pr_sident",
+  "magasin_g_n_ral_sidi_bou_said",
+  "sidi_bou_said",
+  "parc_sidi_bou_said",
+  "palais_saada",
+  "marsa_ville",
+  "lahweche",
+  "nacer",
+  "sidi_abd_aziz",
+  "teminus_cit_riadh"
+ ],
+ "direction_retour": [
+  "teminus_cit_riadh",
+  "sidi_abd_aziz",
+  "nacer",
+  "lahweche",
+  "marsa_ville",
+  "palais_saada",
+  "parc_sidi_bou_said",
+  "sidi_bou_said",
+  "magasin_g_n_ral_sidi_bou_said",
+  "carthage_pr_sident",
+  "carthage_hannibal",
+  "carthage_dermech",
+  "carthage_byrsa",
+  "carthage_salambo",
+  "le_kram",
+  "la_goulette_casino",
+  "goulette_neuve",
+  "goulette_vieille",
+  "port_la_goulette"
+ ],
+ "stations_count": 19,
+ "start": {
+  "id": "port_la_goulette",
+  "name": "Port La Goulette"
+ },
+ "end": {
+  "id": "teminus_cit_riadh",
+  "name": "Teminus Cité Riadh"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "port_la_goulette",
+  "goulette_vieille",
+  "goulette_neuve",
+  "la_goulette_casino",
+  "le_kram",
+  "carthage_salambo",
+  "carthage_byrsa",
+  "carthage_dermech",
+  "carthage_hannibal",
+  "carthage_pr_sident",
+  "magasin_g_n_ral_sidi_bou_said",
+  "sidi_bou_said",
+  "parc_sidi_bou_said",
+  "palais_saada",
+  "marsa_ville",
+  "lahweche",
+  "nacer",
+  "sidi_abd_aziz",
+  "teminus_cit_riadh"
+ ],
+ "stations_detail": [
+  {
+   "id": "port_la_goulette",
+   "name_en": "Port La Goulette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8134042,
+   "lon": 10.3027502,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "goulette_vieille",
+   "name_en": "Goulette Vieille",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.816925,
+   "lon": 10.3047886,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "goulette_neuve",
+   "name_en": "GOULETTE NEUVE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8198449,
+   "lon": 10.3056014,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_goulette_casino",
+   "name_en": "La Goulette Casino",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8244511,
+   "lon": 10.3100784,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_kram",
+   "name_en": "LE KRAM",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8361705,
+   "lon": 10.3166057,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_salambo",
+   "name_en": "CARTHAGE SALAMBO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8415416,
+   "lon": 10.3191045,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_byrsa",
+   "name_en": "CARTHAGE BYRSA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8461259,
+   "lon": 10.3218453,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_dermech",
+   "name_en": "CARTHAGE DERMECH",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8501222,
+   "lon": 10.3255807,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_hannibal",
+   "name_en": "CARTHAGE HANNIBAL",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8533913,
+   "lon": 10.3289164,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_pr_sident",
+   "name_en": "Carthage Président",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8604611,
+   "lon": 10.3351946,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magasin_g_n_ral_sidi_bou_said",
+   "name_en": "Magasin Général Sidi Bou Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8692949,
+   "lon": 10.3429625,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bou_said",
+   "name_en": "Sidi Bou Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8705051,
+   "lon": 10.3430162,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "parc_sidi_bou_said",
+   "name_en": "Parc Sidi Bou Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8731288,
+   "lon": 10.3351083,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "palais_saada",
+   "name_en": "Palais Saada",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8771996,
+   "lon": 10.3290472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "marsa_ville",
+   "name_en": "Marsa Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8803817,
+   "lon": 10.326805,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lahweche",
+   "name_en": "Lahweche",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8820904,
+   "lon": 10.3248842,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nacer",
+   "name_en": "Nacer",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8845156,
+   "lon": 10.3240154,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_abd_aziz",
+   "name_en": "Sidi Abd Aziz",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8875448,
+   "lon": 10.3227065,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "teminus_cit_riadh",
+   "name_en": "Teminus Cité Riadh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8857539,
+   "lon": 10.3142308,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

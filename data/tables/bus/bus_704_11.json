@@ -1,0 +1,255 @@
+{
+ "line_id": "bus_704_11",
+ "number": "11",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 11: Terminus Tunis Marine Bus - Terminus Jbel Lahmer L 11",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "rue_de_la_turquie",
+  "moncef_bey",
+  "sidi_bechir",
+  "bab_jdid",
+  "bab_mnara",
+  "kasbah",
+  "telecom",
+  "charle_nicole",
+  "mefteh_saadallah",
+  "cimetiere_sidi_yahia",
+  "ecole_francaise_omarane",
+  "cite_zayatine",
+  "terminus_jbel_lahmer_l_11"
+ ],
+ "direction_retour": [
+  "terminus_jbel_lahmer_l_11",
+  "cite_zayatine",
+  "ecole_francaise_omarane",
+  "cimetiere_sidi_yahia",
+  "mefteh_saadallah",
+  "charle_nicole",
+  "telecom",
+  "kasbah",
+  "bab_mnara",
+  "bab_jdid",
+  "sidi_bechir",
+  "moncef_bey",
+  "rue_de_la_turquie",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 14,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "terminus_jbel_lahmer_l_11",
+  "name": "Terminus Jbel Lahmer L 11"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 3,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "rue_de_la_turquie",
+  "moncef_bey",
+  "sidi_bechir",
+  "bab_jdid",
+  "bab_mnara",
+  "kasbah",
+  "telecom",
+  "charle_nicole",
+  "mefteh_saadallah",
+  "cimetiere_sidi_yahia",
+  "ecole_francaise_omarane",
+  "cite_zayatine",
+  "terminus_jbel_lahmer_l_11"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_de_la_turquie",
+   "name_en": "Rue De La Turquie",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7991033,
+   "lon": 10.1863693,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "moncef_bey",
+   "name_en": "MONCEF BEY",
+   "name_ar": "المنصف باي",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_3m"
+   ],
+   "lat": 36.80528,
+   "lon": 10.09065,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bechir",
+   "name_en": "Sidi Bechir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7914689,
+   "lon": 10.1774998,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_jdid",
+   "name_en": "Bab Jdid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7921584,
+   "lon": 10.17213,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_mnara",
+   "name_en": "Bab Mnara",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7932496,
+   "lon": 10.1700674,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kasbah",
+   "name_en": "Kasbah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7963447,
+   "lon": 10.1681174,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "telecom",
+   "name_en": "Telecom",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8002558,
+   "lon": 10.1651885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mefteh_saadallah",
+   "name_en": "Mefteh Saadallah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8106456,
+   "lon": 10.1576166,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cimetiere_sidi_yahia",
+   "name_en": "Cimetiere Sidi Yahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8163312,
+   "lon": 10.1593545,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_francaise_omarane",
+   "name_en": "Ecole Francaise Omarane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8179723,
+   "lon": 10.1655425,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_zayatine",
+   "name_en": "Cite Zayatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8237867,
+   "lon": 10.1549585,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_jbel_lahmer_l_11",
+   "name_en": "Terminus Jbel Lahmer L 11",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8196302,
+   "lon": 10.1631796,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

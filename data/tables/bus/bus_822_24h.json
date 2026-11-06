@@ -1,0 +1,378 @@
+{
+ "line_id": "bus_822_24h",
+ "number": "24H",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 24H: Rabattement Mourouj 2 - Terminus Taieb Mhiri",
+ "direction_aller": [
+  "rabattement_mourouj_2",
+  "le_souk_des_voitures",
+  "feraille_1",
+  "feraille_2",
+  "ferme_loukil",
+  "zone_industrielle_mghira",
+  "amen_banque",
+  "cit_el_habib",
+  "mghira",
+  "cit_el_ouifak_gn",
+  "fouchana",
+  "garde_national_fouchana",
+  "cit_zitoun",
+  "dispensaire",
+  "terminus_cit_ennassim",
+  "cit_ayari",
+  "ecole_primaire_cit_hached",
+  "rue_mongi_slim",
+  "taieb_mhiri_2",
+  "taieb_mhiri_1",
+  "terminus_taieb_mhiri"
+ ],
+ "direction_retour": [
+  "terminus_taieb_mhiri",
+  "taieb_mhiri_1",
+  "taieb_mhiri_2",
+  "rue_mongi_slim",
+  "ecole_primaire_cit_hached",
+  "cit_ayari",
+  "terminus_cit_ennassim",
+  "dispensaire",
+  "cit_zitoun",
+  "garde_national_fouchana",
+  "fouchana",
+  "cit_el_ouifak_gn",
+  "mghira",
+  "cit_el_habib",
+  "amen_banque",
+  "zone_industrielle_mghira",
+  "ferme_loukil",
+  "feraille_2",
+  "feraille_1",
+  "le_souk_des_voitures",
+  "rabattement_mourouj_2"
+ ],
+ "stations_count": 21,
+ "start": {
+  "id": "rabattement_mourouj_2",
+  "name": "Rabattement Mourouj 2"
+ },
+ "end": {
+  "id": "terminus_taieb_mhiri",
+  "name": "Terminus Taieb Mhiri"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [
+  {
+   "from": "amen_banque",
+   "to": "cit_el_habib",
+   "km": 22.6
+  },
+  {
+   "from": "cit_el_habib",
+   "to": "mghira",
+   "km": 23.7
+  }
+ ],
+ "original_stations": [
+  "rabattement_mourouj_2",
+  "le_souk_des_voitures",
+  "feraille_1",
+  "feraille_2",
+  "ferme_loukil",
+  "zone_industrielle_mghira",
+  "amen_banque",
+  "cit_el_habib",
+  "mghira",
+  "cit_el_ouifak_gn",
+  "fouchana",
+  "garde_national_fouchana",
+  "cit_zitoun",
+  "dispensaire",
+  "terminus_cit_ennassim",
+  "cit_ayari",
+  "ecole_primaire_cit_hached",
+  "rue_mongi_slim",
+  "taieb_mhiri_2",
+  "taieb_mhiri_1",
+  "terminus_taieb_mhiri"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_mourouj_2",
+   "name_en": "Rabattement Mourouj 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7432425,
+   "lon": 10.1921777,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_souk_des_voitures",
+   "name_en": "Le Souk Des Voitures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7349887,
+   "lon": 10.1936368,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "feraille_1",
+   "name_en": "Feraille 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.730208,
+   "lon": 10.1923922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "feraille_2",
+   "name_en": "Feraille 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7289571,
+   "lon": 10.1913847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ferme_loukil",
+   "name_en": "Ferme Loukil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7264932,
+   "lon": 10.1898173,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zone_industrielle_mghira",
+   "name_en": "Zone Industrielle Mghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7237311,
+   "lon": 10.1878662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "amen_banque",
+   "name_en": "Amen Banque",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7152601,
+   "lon": 10.1822335,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_habib",
+   "name_en": "Cité El Habib",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8974381,
+   "lon": 10.2936474,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mghira",
+   "name_en": "Mghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.70647,
+   "lon": 10.1748521,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_ouifak_gn",
+   "name_en": "Cité El Ouifak (Gn)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7026939,
+   "lon": 10.1721377,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "fouchana",
+   "name_en": "Fouchana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7000451,
+   "lon": 10.1661939,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_fouchana",
+   "name_en": "Garde National Fouchana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6951733,
+   "lon": 10.1661505,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_zitoun",
+   "name_en": "Cité Zitoun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6916805,
+   "lon": 10.1635112,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dispensaire",
+   "name_en": "Dispensaire",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6855033,
+   "lon": 10.1599493,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_cit_ennassim",
+   "name_en": "Terminus Cité Ennassim",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6806027,
+   "lon": 10.1570425,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ayari",
+   "name_en": "Cité Ayari",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6873395,
+   "lon": 10.147585,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire_cit_hached",
+   "name_en": "Ecole Primaire Cité Hached",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6893427,
+   "lon": 10.1469142,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_mongi_slim",
+   "name_en": "Rue Mongi Slim",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6902977,
+   "lon": 10.1404876,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "taieb_mhiri_2",
+   "name_en": "Taieb Mhiri 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6952203,
+   "lon": 10.1381472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "taieb_mhiri_1",
+   "name_en": "Taieb Mhiri 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7005956,
+   "lon": 10.1333208,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_taieb_mhiri",
+   "name_en": "Terminus Taieb Mhiri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6972871,
+   "lon": 10.1298217,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

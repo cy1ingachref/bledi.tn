@@ -1,0 +1,313 @@
+{
+ "line_id": "bus_855_9b",
+ "number": "9B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 9B: Station Barcelone - Cité Thameur",
+ "direction_aller": [
+  "station_barcelone",
+  "cit_thameur"
+ ],
+ "direction_retour": [
+  "cit_thameur",
+  "station_barcelone"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "cit_thameur",
+  "name": "Cité Thameur"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_barcelone",
+  "cit_thameur"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_thameur",
+   "name_en": "Cité Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7647407,
+   "lon": 10.2086643,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "station_barcelone",
+   "to": "cit_thameur",
+   "key": "cit_thameur|station_barcelone",
+   "straight_m": 4399.75,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7647407,
+     10.2086643
+    ],
+    [
+     36.765369,
+     10.21028
+    ],
+    [
+     36.767686,
+     10.208902
+    ],
+    [
+     36.770236,
+     10.206458
+    ],
+    [
+     36.772339,
+     10.203498
+    ],
+    [
+     36.774044,
+     10.202164
+    ],
+    [
+     36.774281,
+     10.202117
+    ],
+    [
+     36.774693,
+     10.20159
+    ],
+    [
+     36.779288,
+     10.197323
+    ],
+    [
+     36.781529,
+     10.194879
+    ],
+    [
+     36.784227,
+     10.191317
+    ],
+    [
+     36.784649,
+     10.190954
+    ],
+    [
+     36.786009,
+     10.190198
+    ],
+    [
+     36.786647,
+     10.189603
+    ],
+    [
+     36.78809,
+     10.18779
+    ],
+    [
+     36.788697,
+     10.18644
+    ],
+    [
+     36.788849,
+     10.184569
+    ],
+    [
+     36.788639,
+     10.182079
+    ],
+    [
+     36.788999,
+     10.18116
+    ],
+    [
+     36.789304,
+     10.180734
+    ],
+    [
+     36.789869,
+     10.180366
+    ],
+    [
+     36.790182,
+     10.179976
+    ],
+    [
+     36.791083,
+     10.180544
+    ],
+    [
+     36.791469,
+     10.180642
+    ],
+    [
+     36.793638,
+     10.180093
+    ],
+    [
+     36.796245,
+     10.179685
+    ],
+    [
+     36.796959,
+     10.179666
+    ],
+    [
+     36.7970414,
+     10.1801307
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 5020.6,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 453.06,
+   "length_ratio": 1.1411,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7970414,
+   10.1801307
+  ],
+  [
+   36.796959,
+   10.179666
+  ],
+  [
+   36.796245,
+   10.179685
+  ],
+  [
+   36.793638,
+   10.180093
+  ],
+  [
+   36.791469,
+   10.180642
+  ],
+  [
+   36.791083,
+   10.180544
+  ],
+  [
+   36.790182,
+   10.179976
+  ],
+  [
+   36.789869,
+   10.180366
+  ],
+  [
+   36.789304,
+   10.180734
+  ],
+  [
+   36.788999,
+   10.18116
+  ],
+  [
+   36.788639,
+   10.182079
+  ],
+  [
+   36.788849,
+   10.184569
+  ],
+  [
+   36.788697,
+   10.18644
+  ],
+  [
+   36.78809,
+   10.18779
+  ],
+  [
+   36.786647,
+   10.189603
+  ],
+  [
+   36.786009,
+   10.190198
+  ],
+  [
+   36.784649,
+   10.190954
+  ],
+  [
+   36.784227,
+   10.191317
+  ],
+  [
+   36.781529,
+   10.194879
+  ],
+  [
+   36.779288,
+   10.197323
+  ],
+  [
+   36.774693,
+   10.20159
+  ],
+  [
+   36.774281,
+   10.202117
+  ],
+  [
+   36.774044,
+   10.202164
+  ],
+  [
+   36.772339,
+   10.203498
+  ],
+  [
+   36.770236,
+   10.206458
+  ],
+  [
+   36.767686,
+   10.208902
+  ],
+  [
+   36.765369,
+   10.21028
+  ],
+  [
+   36.7647407,
+   10.2086643
+  ]
+ ],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 1,
+  "unresolved": 0
+ }
+}

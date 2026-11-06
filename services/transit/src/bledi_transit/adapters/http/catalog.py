@@ -198,3 +198,23 @@ def search(
 ) -> dict[str, Any]:
     """Stops, louage hubs and governorates by name; `kind` is `stop` or `city`."""
     return catalog.search(q, limit, near_lat, near_lon)
+
+
+@router.get("/encyclopedia", tags=["Guide"])
+def encyclopedia() -> dict[str, Any]:
+    """Rider-facing transport guide + other-modes encyclopedia.
+
+    Sourced from the downloaded reference guides (louage_tunisia.json and
+    tunisia_transport_other_modes.json) as data/transport_encyclopedia.json.
+    Provides rider-facing reference: what each mode is, how it runs, fares,
+    operating hours, key stations, connections and tips.
+    """
+    import json
+    from pathlib import Path
+
+    p = (
+        Path(__file__).resolve().parents[6] / "data" / "transport_encyclopedia.json"
+    )
+    if not p.exists():
+        return {"error": "encyclopedia not generated", "generated_by": "scripts/build_encyclopedia.py"}
+    return json.loads(p.read_text(encoding="utf-8"))

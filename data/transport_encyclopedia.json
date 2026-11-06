@@ -1,0 +1,1160 @@
+{
+ "generated_by": "scripts/build_encyclopedia.py",
+ "source_files": [
+  "louage_tunisia.json",
+  "tunisia_transport_other_modes.json"
+ ],
+ "sections": {
+  "louage__meta": {
+   "source_url": "https://destination-tunis.fr/se-deplacer/principe-fonctionnement-louage-tunisie/",
+   "publisher": "Destination Tunis",
+   "page_last_modified": "2026-09-14",
+   "retrieved": "2026-11-03",
+   "source_language": "fr",
+   "currency": "TND",
+   "price_note": "Prices are reader-reported observations from the page's table and comments, not official data. Always keep the 'observed' date and treat old entries as stale.",
+   "official_tariff_page": "http://www.transport.tn/fr/article/110/tarif-du-transport-non-regulier-des-personnes-par-les-voitures-louage (Arabic only; the source says it is out of date but still a good indication)"
+  },
+  "louage_concept": {
+   "summary": "Louage = shared intercity taxi network. Minibuses run a fixed route and leave when full. Described as one of the most widely used and convenient ways to travel in Tunisia.",
+   "vehicle": "White minibus/estafette with a red or blue stripe, usually Japanese-made, very high mileage (rarely under 400,000 km).",
+   "capacity": {
+    "total_seats": 9,
+    "passengers": 8,
+    "driver": 1
+   },
+   "departure_rule": "Departs once all 8 passenger seats are taken (no fixed timetable).",
+   "route_signage": "Route is shown on a sign on the roof and a card at the rear. Drivers stand in front of the vehicle and shout the destination.",
+   "tourist_pricing": "Fares are state-regulated and posted in the vehicle; the source says there is no tourist overcharging."
+  },
+  "louage_vehicle_types": [
+   {
+    "id": "white_red",
+    "name_fr": "Louage blanc à bande rouge",
+    "color": "white",
+    "stripe": "red",
+    "scope": "inter-governorate (big city to big city, e.g. Tunis-Nabeul, Sousse-Sfax)",
+    "departs_only_when_full": true,
+    "stops_en_route": false,
+    "note": "Non-stop to the final destination."
+   },
+   {
+    "id": "white_blue",
+    "name_fr": "Louage blanc à bande bleue",
+    "color": "white",
+    "stripe": "blue",
+    "scope": "within one governorate, shorter links",
+    "departs_only_when_full": false,
+    "stops_en_route": true,
+    "note": "Can leave half full; drops off and picks up in villages along the way."
+   },
+   {
+    "id": "yellow_blue",
+    "name_fr": "Louage jaune à bande bleue",
+    "nickname": "Doliprane",
+    "color": "yellow",
+    "stripe": "blue",
+    "scope": "rural, serves almost all villages",
+    "departs_only_when_full": null,
+    "stops_en_route": true,
+    "note": "Common in the countryside; can be completely full when there is a souk nearby."
+   }
+  ],
+  "louage_operating_hours": {
+   "start": "around 06:00",
+   "main_service": "daytime",
+   "hard_to_fill_after": {
+    "summer": "19:00-20:00",
+    "winter": "17:00-18:00"
+   },
+   "quiet_periods": [
+    "summer afternoons and evenings",
+    "Ramadan afternoons and evenings"
+   ],
+   "advice": "Travel in the morning, especially in summer and during Ramadan; avoid returning late.",
+   "empty_seat_option": "You can pay for the empty seats so the louage leaves, as long as a louage is available for that trip."
+  },
+  "louage_stations": {
+   "general": "Every town, and often every village, has one or more louage stations. Easy to spot by watching where louages arrive and depart. Locals and taxi drivers know where they are.",
+   "tunis": [
+    {
+     "id": "tunis_bab_saadoun",
+     "name": "Bab Saadoun",
+     "region_served": "North",
+     "destinations": [
+      "Bizerte",
+      "Le Kef",
+      "Tabarka",
+      "Béja"
+     ]
+    },
+    {
+     "id": "tunis_bab_alioua",
+     "name": "Bab Alioua",
+     "region_served": "Near south and Cap Bon",
+     "destinations": [
+      "Hammamet",
+      "Nabeul",
+      "Kélibia",
+      "Zaghouan"
+     ]
+    },
+    {
+     "id": "tunis_moncef_bey",
+     "name": "Moncef Bey",
+     "region_served": "Centre and south",
+     "destinations": [
+      "Sousse",
+      "Monastir",
+      "Kairouan",
+      "El Jem",
+      "Mahdia",
+      "Sfax",
+      "Gabès",
+      "Sidi Bouzid"
+     ]
+    }
+   ],
+   "other_stations_mentioned": [
+    "Nabeul (blue-stripe local louages)",
+    "Yasmine Hammamet Sud (Barakat Sahel)",
+    "Yasmine Hammamet (station El Lemdina, bus line 115 stop)",
+    "Tunis Marine (to La Marsa)"
+   ]
+  },
+  "louage_tickets": {
+   "options": [
+    "Pay the driver directly, often inside the louage at the end of the trip.",
+    "Buy at the station counter (guichet): tell the driver first so he holds your seat, go buy the ticket, then give the ticket to the driver."
+   ],
+   "tariffs": "Set by the state and displayed inside the vehicle."
+  },
+  "louage_pricing_rules": {
+   "rule_of_thumb": "About 7 TND per hour of travel.",
+   "example": "From Tunis, about 7 TND gets you roughly one hour away: Bizerte, Zaghouan, Hammamet, Nabeul.",
+   "warning": "The rule of thumb is rough. Observed fares below range from ~0.7 TND (very short hops) to 40 TND (Tunis-Médenine)."
+  },
+  "louage_no_direct_connections": [
+   {
+    "from": "Kairouan",
+    "to": "El Jem",
+    "via": "Sousse"
+   },
+   {
+    "from": "Kairouan",
+    "to": "Mahdia",
+    "via": "Sousse"
+   },
+   {
+    "from": "Sfax",
+    "to": "Tozeur",
+    "via": "Gafsa"
+   }
+  ],
+  "louage_multi_leg_routes": [
+   {
+    "from": "Monastir",
+    "to": "Douz",
+    "options": [
+     "via Sfax",
+     "via Sousse and Gabès"
+    ]
+   },
+   {
+    "from": "Sousse",
+    "to": "Djerba",
+    "via": [
+     "Gabès"
+    ]
+   },
+   {
+    "from": "Hammamet",
+    "to": "Djerba",
+    "via": [
+     "Sousse",
+     "Gabès"
+    ],
+    "duration_hours": 8,
+    "price_tnd_approx": 40,
+    "observed": "2022-11"
+   },
+   {
+    "from": "Tunis",
+    "to": "Djerba",
+    "note": "Likely a direct louage exists, but go to the station the day before to confirm and reserve."
+   }
+  ],
+  "louage_fare_observations": [
+   {
+    "from": "Tunis (Bab Saadoun)",
+    "to": "Bizerte",
+    "price_tnd": 6.5,
+    "mode": "louage",
+    "observed": "2025-02"
+   },
+   {
+    "from": "Tunis (Bab Saadoun)",
+    "to": "Jendouba",
+    "price_tnd": 14.5,
+    "mode": "louage",
+    "observed": "2025-10"
+   },
+   {
+    "from": "Tunis (Bab Saadoun)",
+    "to": "Tabarka",
+    "price_tnd": 15,
+    "mode": "louage",
+    "observed": "2023-09"
+   },
+   {
+    "from": "Tunis (Bab Saadoun)",
+    "to": "Le Kef",
+    "price_tnd": 15,
+    "mode": "louage",
+    "observed": "2024-10"
+   },
+   {
+    "from": "Tunis (Bab Saadoun)",
+    "to": "Ras Jebel",
+    "price_tnd": 5.7,
+    "mode": "louage",
+    "observed": "2025-10"
+   },
+   {
+    "from": "Tunis (Bab Alioua)",
+    "to": "Nabeul",
+    "price_tnd": 4.7,
+    "mode": "louage",
+    "observed": "2015-01",
+    "note": "Very old, likely outdated."
+   },
+   {
+    "from": "Tunis (Bab Alioua)",
+    "to": "Korba",
+    "price_tnd": 6.8,
+    "mode": "louage",
+    "observed": "2023-07"
+   },
+   {
+    "from": "Tunis (Bab Alioua)",
+    "to": "Kélibia",
+    "price_tnd": 8.8,
+    "mode": "louage",
+    "observed": "2022-08"
+   },
+   {
+    "from": "Tunis (Bab Alioua)",
+    "to": "Hammamet Nord",
+    "price_tnd": 6.8,
+    "mode": "louage",
+    "observed": "2025-02"
+   },
+   {
+    "from": "Tunis (Bab Alioua)",
+    "to": "Yasmine Hammamet Sud (Barakat Sahel)",
+    "price_tnd": 4.75,
+    "mode": "louage",
+    "observed": "2022-08"
+   },
+   {
+    "from": "Tunis (Bab Alioua)",
+    "to": "Zaghouan",
+    "price_tnd": 5.35,
+    "mode": "louage",
+    "observed": "2025-07"
+   },
+   {
+    "from": "Tunis Airport",
+    "to": "Yasmine Hammamet",
+    "price_tnd": 35,
+    "mode": "taxi_private",
+    "observed": "2023-11",
+    "note": "Private taxi, not a louage."
+   },
+   {
+    "from": "Tunis (Moncef Bey)",
+    "to": "Sousse",
+    "price_tnd": 13.5,
+    "mode": "louage",
+    "observed": "2024-10"
+   },
+   {
+    "from": "Tunis (Moncef Bey)",
+    "to": "Monastir",
+    "price_tnd": 14.85,
+    "mode": "louage",
+    "observed": "2025-02"
+   },
+   {
+    "from": "Tunis (Moncef Bey)",
+    "to": "Kairouan",
+    "price_tnd": 14.6,
+    "mode": "louage",
+    "observed": "2025-12",
+    "note": "Also reported 2024-12. Same price in the Kairouan to Tunis direction."
+   },
+   {
+    "from": "Tunis (Moncef Bey)",
+    "to": "Mahdia",
+    "price_tnd": 17.65,
+    "mode": "louage",
+    "observed": "2024-08",
+    "note": "Also reported 2023-08."
+   },
+   {
+    "from": "Tunis Marine",
+    "to": "La Marsa",
+    "price_tnd": 1.7,
+    "mode": "louage",
+    "observed": "2023-10",
+    "note": "Source text reads '1,.700 Dt' (typo); 1.7 is the likely value."
+   },
+   {
+    "from": "Tunis",
+    "to": "Médenine",
+    "price_tnd": 40,
+    "mode": "louage",
+    "observed": "2026-05"
+   },
+   {
+    "from": "Hammamet",
+    "to": "Tunis",
+    "price_tnd": 6.8,
+    "mode": "louage",
+    "observed": "2024-04"
+   },
+   {
+    "from": "Yasmine Hammamet Sud (Barakat Sahel)",
+    "to": "Tunis",
+    "price_tnd": 5.5,
+    "mode": "louage",
+    "observed": "2024-05"
+   },
+   {
+    "from": "Yasmine Hammamet Sud (Barakat Sahel)",
+    "to": "Sousse (centre)",
+    "price_tnd": 8.6,
+    "mode": "louage",
+    "observed": "2023-02"
+   },
+   {
+    "from": "Yasmine Hammamet Sud (Barakat Sahel)",
+    "to": "Kairouan",
+    "price_tnd": 11,
+    "mode": "louage",
+    "observed": "2024-03"
+   },
+   {
+    "from": "Yasmine Hammamet Sud (Barakat Sahel)",
+    "to": "Nabeul",
+    "price_tnd": 2.0,
+    "mode": "louage",
+    "observed": "2024-10"
+   },
+   {
+    "from": "Médina Hammamet",
+    "to": "Yasmine Hammamet Sud (Barakat Sahel)",
+    "price_tnd": 0.7,
+    "mode": "louage",
+    "observed": "2024-03"
+   },
+   {
+    "from": "Yasmine Hammamet Sud (Barakat Sahel)",
+    "to": "Hammamet Nord",
+    "price_tnd": 0.8,
+    "mode": "louage",
+    "observed": "2017-11",
+    "note": "Old, likely outdated."
+   },
+   {
+    "from": "Yasmine Hammamet (station El Lemdina)",
+    "to": "Nabeul",
+    "price_tnd": 1.7,
+    "mode": "bus",
+    "line": "115",
+    "observed": "2024-03"
+   },
+   {
+    "from": "Yasmine Hammamet (station El Lemdina)",
+    "to": "Hammamet Centre",
+    "price_tnd": 0.8,
+    "mode": "bus",
+    "line": "115",
+    "observed": "2024-03"
+   },
+   {
+    "from": "Nabeul",
+    "to": "Tunis",
+    "price_tnd": 6.6,
+    "mode": "louage",
+    "observed": "2025-10"
+   },
+   {
+    "from": "Nabeul",
+    "to": "Tunis",
+    "price_tnd": 5.3,
+    "mode": "bus",
+    "line": "102",
+    "observed": "2022-09"
+   },
+   {
+    "from": "Nabeul",
+    "to": "Kélibia",
+    "price_tnd": 5.35,
+    "mode": "louage",
+    "observed": "2025-10"
+   },
+   {
+    "from": "Nabeul",
+    "to": "Sousse",
+    "price_tnd": 8.3,
+    "mode": "louage",
+    "observed": "2022-09"
+   },
+   {
+    "from": "Nabeul",
+    "to": "Kairouan",
+    "price_tnd": 10.6,
+    "mode": "louage",
+    "observed": "2025-10"
+   },
+   {
+    "from": "Nabeul",
+    "to": "Monastir",
+    "price_tnd": 10.9,
+    "mode": "louage",
+    "observed": "2025-10"
+   },
+   {
+    "from": "Nabeul",
+    "to": "Zaghouan",
+    "price_tnd": 6.5,
+    "mode": "louage",
+    "observed": "2025-10"
+   },
+   {
+    "from": "Sousse",
+    "to": "Médenine",
+    "price_tnd": 27,
+    "mode": "louage",
+    "observed": "2026-06"
+   },
+   {
+    "from": "Sousse",
+    "to": "Tunis",
+    "price_tnd": 13.5,
+    "mode": "louage",
+    "observed": "2025-12"
+   },
+   {
+    "from": "Sousse",
+    "to": "Le Kef",
+    "price_tnd": 19,
+    "mode": "louage",
+    "observed": "2024-10"
+   },
+   {
+    "from": "Sousse",
+    "to": "Béja / Jendouba",
+    "price_tnd": 21,
+    "mode": "louage",
+    "observed": "2025-07",
+    "note": "The source lists one price on a row covering both Béja and Jendouba; unclear whether it applies to both."
+   },
+   {
+    "from": "Sousse (centre)",
+    "to": "Yasmine Hammamet Sud (Barakat Sahel)",
+    "price_tnd": 7.5,
+    "mode": "louage",
+    "observed": "2022-09"
+   },
+   {
+    "from": "Sousse",
+    "to": "El Jem",
+    "price_tnd": 8.6,
+    "mode": "louage",
+    "observed": "2025-02",
+    "note": "Seems high versus other Sousse fares; verify."
+   },
+   {
+    "from": "Sousse",
+    "to": "Monastir",
+    "price_tnd": 2.4,
+    "mode": "louage",
+    "observed": "2025-12"
+   },
+   {
+    "from": "Sousse",
+    "to": "Mahdia",
+    "price_tnd": 5.9,
+    "mode": "louage",
+    "observed": "2024-12"
+   },
+   {
+    "from": "Sousse",
+    "to": "Kairouan",
+    "price_tnd": 6.2,
+    "mode": "louage",
+    "observed": "2025-12",
+    "note": "Also reported 2024-12, same price in both directions."
+   },
+   {
+    "from": "Monastir",
+    "to": "Kairouan",
+    "price_tnd": 7.95,
+    "mode": "louage",
+    "observed": "2025-02"
+   },
+   {
+    "from": "Sousse",
+    "to": "Sfax",
+    "price_tnd": 12.4,
+    "mode": "louage",
+    "observed": "2025-02"
+   },
+   {
+    "from": "Sousse",
+    "to": "Gabès",
+    "price_tnd": 22.3,
+    "mode": "louage",
+    "observed": "2025-02"
+   },
+   {
+    "from": "Mahdia",
+    "to": "El Jem",
+    "price_tnd": 8.0,
+    "mode": "louage",
+    "observed": "2024-04"
+   },
+   {
+    "from": "Sfax",
+    "to": "Tunis",
+    "price_tnd": 22.75,
+    "mode": "louage",
+    "observed": "2023-03"
+   },
+   {
+    "from": "Sfax",
+    "to": "Kebili",
+    "price_tnd": 21,
+    "mode": "louage",
+    "observed": "2025-01"
+   },
+   {
+    "from": "Gabès",
+    "to": "Hammamet",
+    "price_tnd": 25,
+    "price_unit": "per_person",
+    "full_vehicle_tnd": 200,
+    "mode": "louage_private",
+    "observed": "2019-11",
+    "note": "Privately chartered louage; old data."
+   },
+   {
+    "from": "Gabès",
+    "to": "Sousse",
+    "price_tnd": 22.3,
+    "mode": "louage",
+    "observed": "2025-02"
+   },
+   {
+    "from": "Gabès",
+    "to": "Tozeur",
+    "price_tnd": 17.6,
+    "mode": "louage",
+    "observed": "2025-02"
+   },
+   {
+    "from": "Gabès",
+    "to": "Médenine",
+    "price_tnd": 7.05,
+    "mode": "louage",
+    "observed": "2026-08"
+   },
+   {
+    "from": "Gabès",
+    "to": "Djerba",
+    "price_tnd": 14.55,
+    "mode": "louage",
+    "observed": "2025-02"
+   },
+   {
+    "from": "Bizerte",
+    "to": "Béja",
+    "price_tnd": 9.25,
+    "mode": "louage",
+    "observed": "2025-07"
+   },
+   {
+    "from": "Béja",
+    "to": "Tabarka",
+    "price_tnd": 6.5,
+    "mode": "louage",
+    "observed": "2025-07"
+   },
+   {
+    "from": "Le Kef",
+    "to": "Kasserine",
+    "price_tnd": 11.5,
+    "mode": "louage",
+    "observed": "2023-10"
+   },
+   {
+    "from": "Jendouba",
+    "to": "Bousalem",
+    "price_tnd": 1.8,
+    "mode": "louage",
+    "observed": "2023-10"
+   },
+   {
+    "from": "Bousalem",
+    "to": "Béja",
+    "price_tnd": 2.4,
+    "mode": "louage",
+    "observed": "2023-10"
+   }
+  ],
+  "louage_tips_for_travelers": [
+   "Travel in the morning, especially in summer and during Ramadan.",
+   "Ask locals or taxi drivers where the station is; everyone knows.",
+   "For long or unusual routes (Djerba, the south), go to the station the day before to confirm and reserve.",
+   "Check the posted tariff inside the vehicle.",
+   "Taking a louage is also a good way to meet and talk with Tunisians."
+  ],
+  "louage_data_quality_notes": [
+   "All prices come from readers' comments, not an official source; some entries are from 2015-2019.",
+   "Station names are as written on the source page (some are neighborhoods or stops, not formal stations); expect to reconcile them with your existing station seed.",
+   "No timetable data exists: departures depend on the vehicle filling up.",
+   "The source does not give coordinates for any station."
+  ],
+  "louage_modeling_notes_not_from_source": [
+   "Model louage as a 'departs when full' service: show estimated wait/frequency rather than a schedule, with lower confidence in the evening, in summer and during Ramadan.",
+   "Store fare observations with their observed date and a confidence or staleness flag, and prefer the newest per route and direction.",
+   "Keep louage type (white_red / white_blue / yellow_blue) as an attribute on routes: it determines whether the trip is non-stop and whether it can leave before full.",
+   "Represent missing direct links (Kairouan-El Jem, Kairouan-Mahdia, Sfax-Tozeur) as forced transfers in the routing graph."
+  ],
+  "_meta": {
+   "source_site": "https://destination-tunis.fr",
+   "pages_used": {
+    "taxi": {
+     "url": "https://destination-tunis.fr/se-deplacer/taxi-tunisien/",
+     "page_last_modified": "2025-09-21",
+     "tariff_as_of": "2022-12"
+    },
+    "tunis_tram_metro": {
+     "url": "https://destination-tunis.fr/se-deplacer/metro-tramway-de-tunis/",
+     "page_last_modified": "2024-08-14"
+    },
+    "tgm": {
+     "url": "https://destination-tunis.fr/se-deplacer/tgm-tunis-carthage-la-marsa/",
+     "page_last_modified": "2025-02-14"
+    },
+    "train": {
+     "url": "https://destination-tunis.fr/se-deplacer/train-en-tunisie/",
+     "page_last_modified": "2025-09-04"
+    },
+    "kerkennah_ferry": {
+     "url": "https://destination-tunis.fr/se-deplacer/le-bac-sfax-kerkennah/",
+     "page_last_modified": "2025-09-04"
+    },
+    "tunis_carthage_airport": {
+     "url": "https://destination-tunis.fr/se-deplacer/tout-savoir-aeroport-tunis-carthage/",
+     "page_last_modified": "2025-08-08"
+    },
+    "transport_index": {
+     "url": "https://destination-tunis.fr/se-deplacer/",
+     "page_last_modified": "2023-01-07"
+    }
+   },
+   "not_included": "Homepage is only a navigation hub (no transport data). Louage data is in louage_tunisia.json. The international ferry page and the covid travel page were not fetched.",
+   "retrieved": "2026-11-03",
+   "source_language": "fr",
+   "currency": "TND",
+   "caveat": "The source is a tourist blog fed by reader comments. Fares and timetables can be stale; always keep the source date and check the operator site (links in each section)."
+  },
+  "taxi": {
+   "type_id": "taxi_yellow",
+   "description": "City taxis. All yellow, with a roof number and a meter, in every town, at almost any hour.",
+   "availability_light": "Windshield light: red = free, green = occupied (as stated by the source).",
+   "restrictions": [
+    "Cannot leave their own city (e.g. no Tunis-Hammamet by yellow taxi).",
+    "Max 3 adults; a 4th passenger is tolerated only if under 10 years old."
+   ],
+   "how_to": [
+    "Hail anywhere with a raised hand, after checking the light shows free.",
+    "Custom: men sit in front, women in back; board from the right (left door is locked).",
+    "State the destination and check the meter starts at 0."
+   ],
+   "tariff_dec_2022": {
+    "pickup_tnd": 0.9,
+    "per_km_tnd": 0.6,
+    "per_minute_waiting_tnd": 0.15,
+    "night_surcharge": {
+     "hours": "21:00-05:00",
+     "percent": 50
+    },
+    "luggage_or_parcel_supplement_tnd": 1.0,
+    "luggage_supplement_note": "Not always applied.",
+    "tunis_airport_departure_supplement_tnd": 4.5,
+    "pricing_model": "Per ride in big cities; per person (shared ride, can board an occupied taxi) in smaller towns."
+   },
+   "tips": [
+    "Avoid office hours in big cities.",
+    "Easier to find a taxi on popular streets than on major arteries.",
+    "At Tunis airport, go up to the departures level and hail a taxi that just dropped someone off; waiting taxis below quote inflated fares.",
+    "Chatting with the driver and showing you know the area reduces scam risk."
+   ],
+   "dispatch_service": {
+    "name": "Allo Taxi (Tunis)",
+    "phones": [
+     "+216 71 783 311",
+     "+216 71 840 840"
+    ]
+   },
+   "scams_reported_rare": [
+    "Taking a longer route (check road signs).",
+    "Quietly adding luggage supplements.",
+    "Charging per person at 3x the meter, or quoting a flat price at the start."
+   ],
+   "other_taxi_types": [
+    {
+     "id": "taxi_touristique",
+     "name_fr": "Taxi touristique (white)",
+     "description": "Larger white taxi that can go anywhere in Tunisia. Fares are described as exorbitant for most people.",
+     "example": "About 50 TND for airport to Hammamet (airport page)."
+    },
+    {
+     "id": "taxi_collectif",
+     "description": "Shared taxi on fixed corridors in Tunis, priced per seat (see observed fares)."
+    }
+   ],
+   "fare_observations": [
+    {
+     "from": "Tunis Airport",
+     "to": "Moncef Bey louage station",
+     "price_tnd": 5,
+     "type": "taxi",
+     "observed": "2017-08"
+    },
+    {
+     "from": "Bab Alioua louage station",
+     "to": "Tunis Airport",
+     "price_tnd": 8,
+     "extra_tnd": 2,
+     "extra_note": "luggage",
+     "type": "taxi",
+     "observed": "2023-08",
+     "note": "Source writes 'août 20234'; 2023 assumed."
+    },
+    {
+     "from": "Tunis Airport",
+     "to": "TGM Tunis Marine",
+     "price_tnd": 3.8,
+     "type": "taxi",
+     "observed": "2017-11"
+    },
+    {
+     "from": "Yasmine Hammamet",
+     "to": "Hammamet Nord",
+     "price_tnd": 6,
+     "type": "taxi",
+     "observed": "2017-10"
+    },
+    {
+     "from": "Avenue Bourguiba (Tunis)",
+     "to": "Tunis Airport",
+     "price_tnd": 4.7,
+     "type": "taxi",
+     "observed": "2018-03"
+    },
+    {
+     "from": "Tunis Airport",
+     "to": "La Marsa",
+     "price_tnd": 20,
+     "type": "taxi",
+     "observed": "2018-11",
+     "note": "17 TND on the meter plus luggage/airport supplement."
+    },
+    {
+     "from": "La Marsa Plage",
+     "to": "Tunis Airport",
+     "price_tnd": 10,
+     "type": "taxi",
+     "observed": "2025-09"
+    },
+    {
+     "from": "La Marsa Plage",
+     "to": "Tunis Bab Bhar (medina)",
+     "price_tnd": 20,
+     "type": "taxi",
+     "observed": "2025-09",
+     "note": "Looks high relative to the neighbouring entry; verify."
+    },
+    {
+     "from": "Avenue Habib Bourguiba (Tunis)",
+     "to": "Lac 1",
+     "price_tnd": 1.5,
+     "type": "taxi_collectif"
+    },
+    {
+     "from": "Avenue Habib Bourguiba (Tunis)",
+     "to": "La Goulette",
+     "price_tnd": 1.5,
+     "type": "taxi_collectif"
+    },
+    {
+     "from": "Avenue Habib Bourguiba (Tunis)",
+     "to": "La Marsa",
+     "price_tnd": 1.5,
+     "type": "taxi_collectif"
+    },
+    {
+     "from": "Avenue Habib Bourguiba (Tunis)",
+     "to": "Yasmine Hammamet",
+     "price_eur": 35,
+     "quoted_eur": 45,
+     "type": "taxi_private",
+     "note": "Quoted 45 EUR, negotiated to 35 EUR; this is a private taxi, in euros."
+    }
+   ]
+  },
+  "tunis_tram_metro": {
+   "type_id": "tram_tunis",
+   "naming": "Locals call it the Métro, but it is a surface tramway (not underground).",
+   "network": {
+    "first_line_opened": 1985,
+    "lines": 6,
+    "stations": 66,
+    "network_note": "Figures from the page (2024); the network is under almost constant extension.",
+    "map_image": "https://destination-tunis.fr/wp-content/uploads/Tunis_Rapid_Transit_Map.png",
+    "rolling_stock": "Citadis trams since 2007, running alongside older trains."
+   },
+   "fares": {
+    "model": "Zone-based, paid at a gated station area.",
+    "min_tnd": 0.5,
+    "max_tnd": 1.0
+   },
+   "tips": [
+    "Overcrowded at office hours; very popular with urban buses.",
+    "Pickpockets reported; stay alert."
+   ]
+  },
+  "tgm": {
+   "type_id": "tgm",
+   "name_fr": "TGM (Tunis-La Goulette-La Marsa)",
+   "description": "Suburban rail hybrid (not exactly tram, metro or train) running from central Tunis to La Goulette, Carthage, Sidi Bou Saïd and La Marsa.",
+   "stations": {
+    "count": 18,
+    "terminus_south": "Tunis Marine (end of Avenue Bourguiba)",
+    "terminus_north": "La Marsa",
+    "notable_stops": [
+     "La Goulette (port)",
+     "Le Kram",
+     "Carthage Byrsa (archaeological sites)",
+     "Carthage Présidence",
+     "Sidi Bou Saïd (about 3 min walk to the village)"
+    ]
+   },
+   "airport_stop_warning": "A TGM stop is named 'Aéroport' but it is NOT at Tunis-Carthage airport (historical leftover). No rail reaches the airport.",
+   "hours": {
+    "first": "03:30",
+    "last": "00:00"
+   },
+   "journey_time_minutes": {
+    "full_line": 35,
+    "tunis_to_la_goulette": 15
+   },
+   "frequency": "About 20 minutes between trains, depending on time of day.",
+   "fares": {
+    "min_tnd": 0.5,
+    "max_tnd": 1.5,
+    "note": "Depends on distance and class; source says about 20x cheaper than a taxi for a similar trip."
+   },
+   "crowding": "Kram/Tunis section packed during office hours.",
+   "history": "First trains in 1872; electrified since 1908. Connection projects to the tram network keep being discussed."
+  },
+  "national_rail": {
+   "type_id": "train_sncft",
+   "operator": "SNCFT (Société Nationale des Chemins de Fer Tunisiens)",
+   "official_site": "https://www.sncft.com.tn/",
+   "discounts_page": "https://www.sncft.com.tn/grandes-lignes/incitations-tarifaires/",
+   "network": {
+    "main_axis": "Tunis - Hammamet - Sousse - El Jem - Sfax - Gabès (east coast)",
+    "branches": [
+     "Nabeul",
+     "Tozeur",
+     "Mahdia"
+    ],
+    "western_line": [
+     "Béja",
+     "Jendouba",
+     "Le Kef"
+    ],
+    "dead_link": "The former line to Algeria is out of service (viaducts remain near Béja)."
+   },
+   "rolling_stock": [
+    {
+     "id": "autorail_express",
+     "description": "Most modern trains, single class like French TER, good condition. Used mainly between Sousse and Tunis (2h20)."
+    },
+    {
+     "id": "direct",
+     "description": "Older trains, 3 classes: Seconde, Première, Confort. Confort recommended (calmer, slightly pricier). Rolling stock is dated; probably air-conditioned but bring water in summer."
+    }
+   ],
+   "reliability": [
+    "Trains usually depart on time but often arrive late.",
+    "Intermediate stops may still be served even if the official time has passed.",
+    "Old track and level-crossing accidents regularly cause delays."
+   ],
+   "fares": {
+    "rule_of_thumb": "About 6-7 TND per hour of travel in Confort class (close to louage prices).",
+    "examples_tnd": [
+     {
+      "from": "Tunis",
+      "to": "Hammamet (Bir Bou Regba station)",
+      "price_tnd": 6
+     },
+     {
+      "from": "Tunis",
+      "to": "Sousse",
+      "price_tnd": 11
+     },
+     {
+      "from": "Tunis",
+      "to": "Sfax",
+      "price_tnd": 18
+     }
+    ],
+    "online_tickets": "Possible via SNCFT (not tested by the source).",
+    "discounts": [
+     "return trip",
+     "children",
+     "subscriptions",
+     "loyalty"
+    ]
+   },
+   "stations": [
+    {
+     "id": "tunis_gare",
+     "city": "Tunis",
+     "name": "Gare de Tunis (Barcelone)",
+     "location_note": "Place Barcelone, about 300 m south of Avenue Habib Bourguiba. Reachable on foot, by taxi or tram. Ask taxis for 'Barchelone'.",
+     "services": "Departure point for urban and national lines; ticket needed to access platforms; left-luggage office on the left when entering."
+    },
+    {
+     "id": "sousse_gare_nationale",
+     "city": "Sousse",
+     "name": "National station",
+     "location_note": "About 400 m north-east of the medina (also described as in the city centre, about 100 m from the medina on the route page). Small station with a snack on the outside wall. About 5 minutes on foot to the medina walls.",
+     "note": "Louage station in Sousse is out of the centre."
+    },
+    {
+     "id": "sousse_gare_metro_sahel",
+     "city": "Sousse",
+     "name": "Métro du Sahel station",
+     "location_note": "About 400 m south-east of the medina."
+    },
+    {
+     "id": "sfax_gare",
+     "city": "Sfax",
+     "name": "Sfax station",
+     "location_note": "About 500 m north-east of the medina, in the colonial quarter. Walk south to reach the municipality building and the Bab Diwan esplanade."
+    },
+    {
+     "id": "bir_bou_regba",
+     "city": "Hammamet",
+     "name": "Hammamet station (Bir Bou Regba)",
+     "location_note": "Several km from the beaches and tourist area; a taxi is needed to reach Hammamet."
+    }
+   ],
+   "route_notes": [
+    {
+     "route": "Tunis - Hammamet",
+     "note": "About one train per hour; good in summer to avoid traffic jams, but the station is far from the beach."
+    },
+    {
+     "route": "Tunis - Sousse",
+     "year": 2025,
+     "tunis_to_sousse_departures": [
+      "07:35",
+      "17:20",
+      "21:15"
+     ],
+     "sousse_to_tunis_departures": [
+      "04:50",
+      "05:10",
+      "07:20",
+      "14:00",
+      "15:55"
+     ],
+     "note": "Excellent option between these two cities."
+    },
+    {
+     "route": "Tunis - El Jem, then Mahdia - Tunis (weekend idea)",
+     "note": "Express at 07:35 from Tunis arrives El Jem about 11:30. Then louage El Jem to Mahdia (about 1 h). Return to Tunis by louage."
+    },
+    {
+     "route": "Tunis - Tozeur",
+     "year": 2025,
+     "tunis_to_tozeur": "07:35 - 18:30",
+     "tozeur_to_tunis": "06:00 - 16:30",
+     "note": "Only one train each way per day; night trains no longer run."
+    }
+   ],
+   "metro_du_sahel": {
+    "id": "metro_sahel",
+    "description": "A commuter train (not a metro) linking Sousse, Monastir and Mahdia, about 2 hours end to end, about 30 stations. Electrified, recent and comfortable (unlike the main network).",
+    "official_page": "https://www.sncft.com.tn/banlieue-du-sahel/presentation/",
+    "notable_stops": [
+     "Sousse (next to the medina)",
+     "Monastir airport",
+     "Mahdia (near the centre)"
+    ],
+    "fare_example": {
+     "from": "Sousse",
+     "to": "Mahdia",
+     "price_tnd": 2.5
+    }
+   },
+   "lezard_rouge": {
+    "id": "lezard_rouge",
+    "description": "Historic tourist train at Metlaoui (between Gafsa and Tozeur), dated 1924, running through a gorge to phosphate quarries.",
+    "status": "Out of service since the 2010 floods; reopening announced every year, still uncertain in 2025."
+   }
+  },
+  "kerkennah_ferry": {
+   "type_id": "ferry_kerkennah",
+   "route": "Sfax - Kerkennah islands (only transport to the island)",
+   "operator": "SONOTRAK (Société Nouvelle de Transport de Kerkennah)",
+   "official_site": "http://www.sonotrak.tn/",
+   "info_phone": "+216 74 212 220",
+   "info_phone_note": "Automatic voice recorder giving the day's timetable.",
+   "distance_km": 15,
+   "terminals": {
+    "sfax": "Large white building on the railway line, near the Sfax train station and the International Fair (look for the SONOTRAK sign).",
+    "kerkennah": "Sidi Youssef"
+   },
+   "crossing_time": "1h to 1h20",
+   "schedule": {
+    "frequency": "A boat every 1h to 1h30 during the day, both directions.",
+    "first_departure_sfax": "around 04:00",
+    "last_return_kerkennah": "around 21:30",
+    "seasonality": "Times vary by season; more sailings in summer, especially early and late in the day."
+   },
+   "fares": {
+    "car_tnd": 6.0,
+    "person_tnd": 1.0,
+    "note": "Check the official site for the full tariff."
+   },
+   "boarding": {
+    "pedestrians": "Buy tickets at the counter inside the terminal.",
+    "cars": "Pay at the gate when entering; queue along the railway line. Vehicles enter at the bow and exit at the stern (some boats have a single door, so reverse in).",
+    "also_allowed": [
+     "bicycles",
+     "motorbikes"
+    ]
+   },
+   "reservations": {
+    "online": true,
+    "note": "Only 20 vehicle spots can be reserved; they go fast, especially on weekends. Weekend-evening returns to Sfax are very busy."
+   },
+   "tips": [
+    "Arrive early to find the terminal and get a good queue position.",
+    "Reserve both outbound and return in summer and on Sundays.",
+    "Best time for the islands: summer, but autumn to spring is quiet and less touristy."
+   ]
+  },
+  "tunis_carthage_airport": {
+   "type_id": "airport_tunis",
+   "name": "Tunis-Carthage airport",
+   "rail_access": "None (the TGM stop named 'Aéroport' is not at the airport).",
+   "taxi_yellow_estimates_tnd": [
+    {
+     "to": "Tunis city centre",
+     "price_tnd_range": [
+      8,
+      10
+     ]
+    },
+    {
+     "to": "Menzah / Nasser districts",
+     "price_tnd_range": [
+      4,
+      5
+     ]
+    },
+    {
+     "to": "Carthage / La Marsa / Sidi Bou Saïd",
+     "price_tnd_range": [
+      12,
+      15
+     ]
+    }
+   ],
+   "taxi_tip": "Go up to the departures level and take a taxi leaving after a drop-off; make sure the meter runs (no supplement in that case).",
+   "to_hammamet": [
+    {
+     "mode": "bus",
+     "line": "SRTGN line 104",
+     "departures": [
+      "13:30",
+      "14:30 (summer only)"
+     ],
+     "price_tnd": 7,
+     "info": "Bus stop is on the right when exiting the airport. Operator site: http://www.srtgn.com.tn/site/ih_action.php"
+    },
+    {
+     "mode": "taxi + louage or bus",
+     "note": "Taxi to Bab Alioua station, then louage or bus."
+    },
+    {
+     "mode": "taxi_touristique",
+     "price_tnd_approx": 50,
+     "note": "Fastest and most expensive."
+    }
+   ],
+   "parking": {
+    "short_term_tnd_per_hour": 2,
+    "long_term_tnd_per_24h": 25,
+    "long_term_source": "OACA official site (https://www.oaca.nat.tn/web/aeroport-tunis-carthage/parking)"
+   },
+   "drop_off": "Dépose-minute on the departures level, 10 m from the check-in hall; police forbid stopping there.",
+   "left_luggage": "None known at the airport; use the left-luggage office at Tunis train station.",
+   "sim_cards": "Tunisie Télécom, Ooredoo and Orange have shops at the airport; SIM about 5 TND."
+  },
+  "other_modes_overview": [
+   {
+    "id": "regional_buses",
+    "description": "Each region has its own bus network. Schedules are respected, vehicles often good, fares very low."
+   },
+   {
+    "id": "car_rental",
+    "description": "Many agencies; cars of fairly good quality; economical when several people travel; gives autonomy. Rental desks are in the arrivals hall at Tunis airport."
+   },
+   {
+    "id": "flights",
+    "description": "8 airports in Tunisia served by Tunisair and Tunisair Express; much faster, but expensive."
+   },
+   {
+    "id": "taxi_touristique",
+    "description": "See taxi section."
+   }
+  ],
+  "interchange_notes": [
+   "Tunis Marine (end of Avenue Bourguiba) is the TGM terminus.",
+   "Tunis train station (place Barcelone) is about 300 m south of Avenue Habib Bourguiba and reachable by tram.",
+   "Bab Alioua louage station (Cap Bon / Hammamet) is the usual taxi transfer from the airport for Hammamet.",
+   "Sousse train station is close to the medina; the louage station is out of the centre.",
+   "Hammamet train station (Bir Bou Regba) is several km from the beaches; plan a taxi.",
+   "Monastir airport is served by the Métro du Sahel.",
+   "Sfax ferry terminal is next to the railway line and train station."
+  ],
+  "modeling_notes_not_from_source": [
+   "TGM, tram and ferry are frequency-based services: model headways (TGM about 20 min, ferry 60-90 min) rather than fixed timetables unless you import official ones.",
+   "Yellow taxis can be modeled with the tariff formula (0.9 + 0.6/km + 0.15/min, +50% at night) but are restricted to the city: do not use them for inter-city edges.",
+   "Train timetables on the page are sparse and dated 2025; import official SNCFT data instead if you can.",
+   "For hubs, add walking/taxi transfer edges (for example Tunis train station to Avenue Bourguiba, Bir Bou Regba to Hammamet)."
+  ]
+ }
+}

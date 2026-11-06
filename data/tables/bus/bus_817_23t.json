@@ -1,0 +1,602 @@
+{
+ "line_id": "bus_817_23t",
+ "number": "23T",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 23T: Rabattement Slimen Kahia - Ksar Hdid",
+ "direction_aller": [
+  "rabattement_slimen_kahia",
+  "abdelmoula",
+  "p_pini_re",
+  "garde_national_agba",
+  "agba_superieur",
+  "canal_agba",
+  "ben_mahmoud",
+  "cite_elwaha",
+  "sonede_agba",
+  "ghdir_elgollah",
+  "cite_jabri",
+  "croisement_ben_yedder",
+  "bir_ed_drouj",
+  "huilerie_loukil",
+  "lycee_chebi",
+  "mosqu_e_mornagiaa",
+  "mornagiaa",
+  "20_mars",
+  "lycee_20_mars",
+  "firma",
+  "guitouni",
+  "croisement_sidi_ali_hattab",
+  "sidi_amara",
+  "sidi_ali_hattab",
+  "ecole_hattab",
+  "jnaieh",
+  "avenion",
+  "kochbati",
+  "ali_ben_mbarek",
+  "entree_bassatine",
+  "cite_des_immeubles",
+  "tebaltech",
+  "cite_tebaltech",
+  "ahmed_laouini",
+  "ksar_hdid"
+ ],
+ "direction_retour": [
+  "ksar_hdid",
+  "ahmed_laouini",
+  "cite_tebaltech",
+  "tebaltech",
+  "cite_des_immeubles",
+  "entree_bassatine",
+  "ali_ben_mbarek",
+  "kochbati",
+  "avenion",
+  "jnaieh",
+  "ecole_hattab",
+  "sidi_ali_hattab",
+  "sidi_amara",
+  "croisement_sidi_ali_hattab",
+  "guitouni",
+  "firma",
+  "lycee_20_mars",
+  "20_mars",
+  "mornagiaa",
+  "mosqu_e_mornagiaa",
+  "lycee_chebi",
+  "huilerie_loukil",
+  "bir_ed_drouj",
+  "croisement_ben_yedder",
+  "cite_jabri",
+  "ghdir_elgollah",
+  "sonede_agba",
+  "cite_elwaha",
+  "ben_mahmoud",
+  "canal_agba",
+  "agba_superieur",
+  "garde_national_agba",
+  "p_pini_re",
+  "abdelmoula",
+  "rabattement_slimen_kahia"
+ ],
+ "stations_count": 35,
+ "start": {
+  "id": "rabattement_slimen_kahia",
+  "name": "Rabattement Slimen Kahia"
+ },
+ "end": {
+  "id": "ksar_hdid",
+  "name": "Ksar Hdid"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 3,
+ "teleport_legs": [
+  {
+   "from": "avenion",
+   "to": "kochbati",
+   "km": 29.5
+  },
+  {
+   "from": "kochbati",
+   "to": "ali_ben_mbarek",
+   "km": 29.8
+  }
+ ],
+ "original_stations": [
+  "rabattement_slimen_kahia",
+  "abdelmoula",
+  "p_pini_re",
+  "garde_national_agba",
+  "agba_superieur",
+  "canal_agba",
+  "ben_mahmoud",
+  "cite_elwaha",
+  "sonede_agba",
+  "ghdir_elgollah",
+  "cite_jabri",
+  "croisement_ben_yedder",
+  "bir_ed_drouj",
+  "huilerie_loukil",
+  "lycee_chebi",
+  "mosqu_e_mornagiaa",
+  "mornagiaa",
+  "20_mars",
+  "lycee_20_mars",
+  "firma",
+  "guitouni",
+  "croisement_sidi_ali_hattab",
+  "sidi_amara",
+  "sidi_ali_hattab",
+  "ecole_hattab",
+  "jnaieh",
+  "avenion",
+  "kochbati",
+  "ali_ben_mbarek",
+  "entree_bassatine",
+  "cite_des_immeubles",
+  "tebaltech",
+  "cite_tebaltech",
+  "ahmed_laouini",
+  "ksar_hdid"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_slimen_kahia",
+   "name_en": "Rabattement Slimen Kahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8038639,
+   "lon": 10.0985919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "abdelmoula",
+   "name_en": "Abdelmoula",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7959899,
+   "lon": 10.1005552,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "p_pini_re",
+   "name_en": "Pépiniére",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7927629,
+   "lon": 10.094418,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_agba",
+   "name_en": "Garde National Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7904465,
+   "lon": 10.0909771,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "agba_superieur",
+   "name_en": "Agba Superieur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7895551,
+   "lon": 10.0884129,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "canal_agba",
+   "name_en": "Canal Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.788472,
+   "lon": 10.0854329,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_mahmoud",
+   "name_en": "Ben Mahmoud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7859248,
+   "lon": 10.0814901,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_elwaha",
+   "name_en": "Cite Elwaha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7834695,
+   "lon": 10.0760318,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sonede_agba",
+   "name_en": "Sonede Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7822278,
+   "lon": 10.0699352,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ghdir_elgollah",
+   "name_en": "Ghdir Elgollah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7801114,
+   "lon": 10.0632993,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_jabri",
+   "name_en": "Cite Jabri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7765133,
+   "lon": 10.0582461,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_ben_yedder",
+   "name_en": "Croisement Ben Yedder",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7745368,
+   "lon": 10.0545903,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_ed_drouj",
+   "name_en": "Bir Ed Drouj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7705509,
+   "lon": 10.0472972,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "huilerie_loukil",
+   "name_en": "Huilerie Loukil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7667221,
+   "lon": 10.0393847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_chebi",
+   "name_en": "Lycee Chebi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7613159,
+   "lon": 10.0275132,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_mornagiaa",
+   "name_en": "Mosquée Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7587678,
+   "lon": 10.0194667,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mornagiaa",
+   "name_en": "Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7563433,
+   "lon": 10.0135175,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_20_mars",
+   "name_en": "Lycee 20 Mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.757778,
+   "lon": 10.0002617,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "firma",
+   "name_en": "Firma",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7547273,
+   "lon": 9.9921939,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "guitouni",
+   "name_en": "Guitouni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7518734,
+   "lon": 9.9800703,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_sidi_ali_hattab",
+   "name_en": "Croisement Sidi Ali Hattab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7491217,
+   "lon": 9.9732358,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_amara",
+   "name_en": "Sidi Amara",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7536446,
+   "lon": 9.9712755,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_ali_hattab",
+   "name_en": "Sidi Ali Hattab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7568165,
+   "lon": 9.9681507,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_hattab",
+   "name_en": "Ecole Hattab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7613055,
+   "lon": 9.9630331,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jnaieh",
+   "name_en": "Jnaieh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7683164,
+   "lon": 9.95747,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "avenion",
+   "name_en": "Avenion",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7749897,
+   "lon": 9.9527172,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kochbati",
+   "name_en": "Kochbati",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7999166,
+   "lon": 10.2829875,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ali_ben_mbarek",
+   "name_en": "Ali Ben Mbarek",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7812289,
+   "lon": 9.9487074,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entree_bassatine",
+   "name_en": "Entree Bassatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7830373,
+   "lon": 9.9475727,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_des_immeubles",
+   "name_en": "Cite Des Immeubles",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839271,
+   "lon": 9.9426054,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tebaltech",
+   "name_en": "Tebaltech",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7791962,
+   "lon": 9.9245218,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_tebaltech",
+   "name_en": "Cite Tebaltech",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7764961,
+   "lon": 9.9224968,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ahmed_laouini",
+   "name_en": "Ahmed Laouini",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.764062,
+   "lon": 9.9258575,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ksar_hdid",
+   "name_en": "Ksar Hdid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7558749,
+   "lon": 9.9274668,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

@@ -1,0 +1,554 @@
+{
+ "line_id": "rail_47_e",
+ "number": "E",
+ "mode": "rail",
+ "operator": "Transtu",
+ "name": "Ligne E: Tunis Ville - Bougatfa-Sidi Hassine",
+ "direction_aller": [
+  "tunis_ville",
+  "sa_da_manoubia",
+  "ennajah",
+  "ettayaran_ezzouhour_1",
+  "ezzouhour_2",
+  "el_hra_ria",
+  "bougatfa_sidi_hassine"
+ ],
+ "direction_retour": [
+  "bougatfa_sidi_hassine",
+  "el_hra_ria",
+  "ezzouhour_2",
+  "ettayaran_ezzouhour_1",
+  "ennajah",
+  "sa_da_manoubia",
+  "tunis_ville"
+ ],
+ "stations_count": 7,
+ "start": {
+  "id": "tunis_ville",
+  "name": "Tunis Ville"
+ },
+ "end": {
+  "id": "bougatfa_sidi_hassine",
+  "name": "Bougatfa-Sidi Hassine"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "tunis_ville",
+  "sa_da_manoubia",
+  "ennajah",
+  "ettayaran_ezzouhour_1",
+  "ezzouhour_2",
+  "el_hra_ria",
+  "bougatfa_sidi_hassine"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_ville",
+   "name_en": "Tunis Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7947693,
+   "lon": 10.1803806,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sa_da_manoubia",
+   "name_en": "Saïda Manoubia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7870675,
+   "lon": 10.1655399,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "ennajah",
+   "name_en": "Ennajah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7933228,
+   "lon": 10.1548445,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "ettayaran_ezzouhour_1",
+   "name_en": "Ettayaran-Ezzouhour 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7921247,
+   "lon": 10.1383966,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "ezzouhour_2",
+   "name_en": "Ezzouhour 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7878362,
+   "lon": 10.1275725,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_hra_ria",
+   "name_en": "El Hraïria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7840847,
+   "lon": 10.1169321,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "bougatfa_sidi_hassine",
+   "name_en": "Bougatfa-Sidi Hassine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7802399,
+   "lon": 10.1020439,
+   "mode": "rail",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "tunis_ville",
+   "to": "sa_da_manoubia",
+   "key": "sa_da_manoubia|tunis_ville",
+   "straight_m": 1574.76,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7870675,
+     10.1655399
+    ],
+    [
+     36.790887,
+     10.180979
+    ],
+    [
+     36.79027,
+     10.180965
+    ],
+    [
+     36.789408,
+     10.180521
+    ],
+    [
+     36.788438,
+     10.179526
+    ],
+    [
+     36.787938,
+     10.178775
+    ],
+    [
+     36.787352,
+     10.177428
+    ],
+    [
+     36.785425,
+     10.171876
+    ],
+    [
+     36.785116,
+     10.170092
+    ],
+    [
+     36.785087,
+     10.168598
+    ],
+    [
+     36.785347,
+     10.16745
+    ],
+    [
+     36.785948,
+     10.166464
+    ],
+    [
+     36.7947693,
+     10.1803806
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 4605.88,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 559.7,
+   "length_ratio": 2.9248,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sa_da_manoubia",
+   "to": "ennajah",
+   "key": "ennajah|sa_da_manoubia",
+   "straight_m": 1179.36,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7933228,
+     10.1548445
+    ],
+    [
+     36.790113,
+     10.163079
+    ],
+    [
+     36.790769,
+     10.162313
+    ],
+    [
+     36.791298,
+     10.160896
+    ],
+    [
+     36.79166,
+     10.158187
+    ],
+    [
+     36.791919,
+     10.157136
+    ],
+    [
+     36.7870675,
+     10.1655399
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2319.61,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 162.91,
+   "length_ratio": 1.9668,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ennajah",
+   "to": "ettayaran_ezzouhour_1",
+   "key": "ennajah|ettayaran_ezzouhour_1",
+   "straight_m": 1470.66,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7933228,
+     10.1548445
+    ],
+    [
+     36.793869,
+     10.153558
+    ],
+    [
+     36.794379,
+     10.152014
+    ],
+    [
+     36.794568,
+     10.150519
+    ],
+    [
+     36.794525,
+     10.149425
+    ],
+    [
+     36.794377,
+     10.148388
+    ],
+    [
+     36.793063,
+     10.143358
+    ],
+    [
+     36.7921247,
+     10.1383966
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1529.54,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 176.84,
+   "length_ratio": 1.04,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ettayaran_ezzouhour_1",
+   "to": "ezzouhour_2",
+   "key": "ettayaran_ezzouhour_1|ezzouhour_2",
+   "straight_m": 1075.38,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7921247,
+     10.1383966
+    ],
+    [
+     36.791654,
+     10.136842
+    ],
+    [
+     36.791363,
+     10.136042
+    ],
+    [
+     36.789635,
+     10.132506
+    ],
+    [
+     36.7878362,
+     10.1275725
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1077.83,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 17.06,
+   "length_ratio": 1.0023,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ezzouhour_2",
+   "to": "el_hra_ria",
+   "key": "el_hra_ria|ezzouhour_2",
+   "straight_m": 1035.32,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7840847,
+     10.1169321
+    ],
+    [
+     36.786447,
+     10.124311
+    ],
+    [
+     36.7878362,
+     10.1275725
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1036.65,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 24.35,
+   "length_ratio": 1.0013,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "el_hra_ria",
+   "to": "bougatfa_sidi_hassine",
+   "key": "bougatfa_sidi_hassine|el_hra_ria",
+   "straight_m": 1393.14,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7802399,
+     10.1020439
+    ],
+    [
+     36.782434,
+     10.111157
+    ],
+    [
+     36.78099,
+     10.105953
+    ],
+    [
+     36.7840847,
+     10.1169321
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2374.53,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 27.45,
+   "length_ratio": 1.7044,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7947693,
+   10.1803806
+  ],
+  [
+   36.785948,
+   10.166464
+  ],
+  [
+   36.785347,
+   10.16745
+  ],
+  [
+   36.785087,
+   10.168598
+  ],
+  [
+   36.785116,
+   10.170092
+  ],
+  [
+   36.785425,
+   10.171876
+  ],
+  [
+   36.787352,
+   10.177428
+  ],
+  [
+   36.787938,
+   10.178775
+  ],
+  [
+   36.788438,
+   10.179526
+  ],
+  [
+   36.789408,
+   10.180521
+  ],
+  [
+   36.79027,
+   10.180965
+  ],
+  [
+   36.790887,
+   10.180979
+  ],
+  [
+   36.7870675,
+   10.1655399
+  ],
+  [
+   36.791919,
+   10.157136
+  ],
+  [
+   36.79166,
+   10.158187
+  ],
+  [
+   36.791298,
+   10.160896
+  ],
+  [
+   36.790769,
+   10.162313
+  ],
+  [
+   36.790113,
+   10.163079
+  ],
+  [
+   36.7933228,
+   10.1548445
+  ],
+  [
+   36.793869,
+   10.153558
+  ],
+  [
+   36.794379,
+   10.152014
+  ],
+  [
+   36.794568,
+   10.150519
+  ],
+  [
+   36.794525,
+   10.149425
+  ],
+  [
+   36.794377,
+   10.148388
+  ],
+  [
+   36.793063,
+   10.143358
+  ],
+  [
+   36.7921247,
+   10.1383966
+  ],
+  [
+   36.791654,
+   10.136842
+  ],
+  [
+   36.791363,
+   10.136042
+  ],
+  [
+   36.789635,
+   10.132506
+  ],
+  [
+   36.7878362,
+   10.1275725
+  ],
+  [
+   36.786447,
+   10.124311
+  ],
+  [
+   36.7840847,
+   10.1169321
+  ],
+  [
+   36.78099,
+   10.105953
+  ],
+  [
+   36.782434,
+   10.111157
+  ],
+  [
+   36.7802399,
+   10.1020439
+  ]
+ ],
+ "phase3a": {
+  "pairs": 6,
+  "resolved": 6,
+  "unresolved": 0
+ }
+}

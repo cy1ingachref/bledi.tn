@@ -1,0 +1,431 @@
+{
+ "line_id": "bus_854_88a",
+ "number": "88A",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 88A: Jardin Thameur - Terminus L88A",
+ "direction_aller": [
+  "jardin_thameur",
+  "mechtel",
+  "bab_abdeslem",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "bardo",
+  "municipalite_bardo",
+  "lycee_saoueb",
+  "lycee_khaznadar",
+  "khaznadar",
+  "artisanat",
+  "denden",
+  "abdelmoula",
+  "p_pini_re",
+  "garde_national_agba",
+  "agba_superieur",
+  "canal_agba",
+  "ben_mahmoud",
+  "cite_elwaha",
+  "sonede_agba",
+  "ghdir_elgollah",
+  "cite_jabri",
+  "croisement_ben_yedder",
+  "terminus_l88a"
+ ],
+ "direction_retour": [
+  "terminus_l88a",
+  "croisement_ben_yedder",
+  "cite_jabri",
+  "ghdir_elgollah",
+  "sonede_agba",
+  "cite_elwaha",
+  "ben_mahmoud",
+  "canal_agba",
+  "agba_superieur",
+  "garde_national_agba",
+  "p_pini_re",
+  "abdelmoula",
+  "denden",
+  "artisanat",
+  "khaznadar",
+  "lycee_khaznadar",
+  "lycee_saoueb",
+  "municipalite_bardo",
+  "bardo",
+  "20_mars",
+  "bouchoucha",
+  "immeuble_chefia",
+  "bab_abdeslem",
+  "mechtel",
+  "jardin_thameur"
+ ],
+ "stations_count": 25,
+ "start": {
+  "id": "jardin_thameur",
+  "name": "Jardin Thameur"
+ },
+ "end": {
+  "id": "terminus_l88a",
+  "name": "Terminus L88A"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "jardin_thameur",
+  "mechtel",
+  "bab_abdeslem",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "bardo",
+  "municipalite_bardo",
+  "lycee_saoueb",
+  "lycee_khaznadar",
+  "khaznadar",
+  "artisanat",
+  "denden",
+  "abdelmoula",
+  "p_pini_re",
+  "garde_national_agba",
+  "agba_superieur",
+  "canal_agba",
+  "ben_mahmoud",
+  "cite_elwaha",
+  "sonede_agba",
+  "ghdir_elgollah",
+  "cite_jabri",
+  "croisement_ben_yedder",
+  "terminus_l88a"
+ ],
+ "stations_detail": [
+  {
+   "id": "jardin_thameur",
+   "name_en": "Jardin Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8037336,
+   "lon": 10.1780922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mechtel",
+   "name_en": "Mechtel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8135314,
+   "lon": 10.1723472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_abdeslem",
+   "name_en": "Bab Abdeslem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8094634,
+   "lon": 10.161087,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_chefia",
+   "name_en": "Immeuble Chefia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8098234,
+   "lon": 10.152579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchoucha",
+   "name_en": "BOUCHOUCHA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80953,
+   "lon": 10.15026,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "bardo",
+   "name_en": "BARDO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80724,
+   "lon": 10.13523,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipalite_bardo",
+   "name_en": "Municipalite Bardo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8071673,
+   "lon": 10.1336858,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_saoueb",
+   "name_en": "Lycee Saoueb",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8059724,
+   "lon": 10.1288632,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_khaznadar",
+   "name_en": "Lycee Khaznadar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8049673,
+   "lon": 10.1243088,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "khaznadar",
+   "name_en": "KHAZNADAR",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80421,
+   "lon": 10.12177,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "artisanat",
+   "name_en": "ARTISANAT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80293,
+   "lon": 10.11601,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "denden",
+   "name_en": "DENDEN",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80221,
+   "lon": 10.11075,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "abdelmoula",
+   "name_en": "Abdelmoula",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7959899,
+   "lon": 10.1005552,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "p_pini_re",
+   "name_en": "Pépiniére",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7927629,
+   "lon": 10.094418,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_agba",
+   "name_en": "Garde National Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7904465,
+   "lon": 10.0909771,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "agba_superieur",
+   "name_en": "Agba Superieur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7895551,
+   "lon": 10.0884129,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "canal_agba",
+   "name_en": "Canal Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.788472,
+   "lon": 10.0854329,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_mahmoud",
+   "name_en": "Ben Mahmoud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7859248,
+   "lon": 10.0814901,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_elwaha",
+   "name_en": "Cite Elwaha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7834695,
+   "lon": 10.0760318,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sonede_agba",
+   "name_en": "Sonede Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7822278,
+   "lon": 10.0699352,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ghdir_elgollah",
+   "name_en": "Ghdir Elgollah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7801114,
+   "lon": 10.0632993,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_jabri",
+   "name_en": "Cite Jabri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7765133,
+   "lon": 10.0582461,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_ben_yedder",
+   "name_en": "Croisement Ben Yedder",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7745368,
+   "lon": 10.0545903,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_l88a",
+   "name_en": "Terminus L88A",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7709368,
+   "lon": 10.0465137,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

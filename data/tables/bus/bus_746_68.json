@@ -1,0 +1,239 @@
+{
+ "line_id": "bus_746_68",
+ "number": "68",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 68: Ali Balahouan - Terminus 18 Janvier",
+ "direction_aller": [
+  "ali_balahouan",
+  "sidi_aloui",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "chebbi",
+  "bortal",
+  "champ_de_course_ksar_said",
+  "magazin_carrefour",
+  "caf_la_paix",
+  "mess_des_officiers",
+  "cit_sfar",
+  "terminus_18_janvier"
+ ],
+ "direction_retour": [
+  "terminus_18_janvier",
+  "cit_sfar",
+  "mess_des_officiers",
+  "caf_la_paix",
+  "magazin_carrefour",
+  "champ_de_course_ksar_said",
+  "bortal",
+  "chebbi",
+  "20_mars",
+  "bouchoucha",
+  "immeuble_chefia",
+  "sidi_aloui",
+  "ali_balahouan"
+ ],
+ "stations_count": 13,
+ "start": {
+  "id": "ali_balahouan",
+  "name": "Ali Balahouan"
+ },
+ "end": {
+  "id": "terminus_18_janvier",
+  "name": "Terminus 18 Janvier"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "ali_balahouan",
+  "sidi_aloui",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "chebbi",
+  "bortal",
+  "champ_de_course_ksar_said",
+  "magazin_carrefour",
+  "caf_la_paix",
+  "mess_des_officiers",
+  "cit_sfar",
+  "terminus_18_janvier"
+ ],
+ "stations_detail": [
+  {
+   "id": "ali_balahouan",
+   "name_en": "Ali Balahouan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8065135,
+   "lon": 10.1742408,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_aloui",
+   "name_en": "Sidi Aloui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8053372,
+   "lon": 10.1688404,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_chefia",
+   "name_en": "Immeuble Chefia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8098234,
+   "lon": 10.152579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchoucha",
+   "name_en": "BOUCHOUCHA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80953,
+   "lon": 10.15026,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "chebbi",
+   "name_en": "Chebbi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8096013,
+   "lon": 10.1313362,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bortal",
+   "name_en": "Bortal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8120871,
+   "lon": 10.1174078,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "champ_de_course_ksar_said",
+   "name_en": "Champ De Course Ksar Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8130249,
+   "lon": 10.1133431,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magazin_carrefour",
+   "name_en": "Magazin Carrefour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8174515,
+   "lon": 10.1044989,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_la_paix",
+   "name_en": "Café La Paix",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8198793,
+   "lon": 10.1045455,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mess_des_officiers",
+   "name_en": "Mess Des Officiers",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8235715,
+   "lon": 10.1082585,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_sfar",
+   "name_en": "Cité Sfar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8249659,
+   "lon": 10.1089556,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_18_janvier",
+   "name_en": "Terminus 18 Janvier",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8278944,
+   "lon": 10.1063056,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}
