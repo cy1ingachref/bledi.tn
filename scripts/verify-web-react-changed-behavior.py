@@ -22,6 +22,7 @@ Ad-hoc (not suite green). Reports PASS/FAIL counts explicitly.
 import json
 import socket
 import sys
+import time
 import urllib.request
 from pathlib import Path
 
