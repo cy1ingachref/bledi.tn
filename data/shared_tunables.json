@@ -115,5 +115,23 @@
     "Unknown modes are priced as bus (0.5 DT flat) on both sides.",
     "Louage/louaj spelling: seed uses both; Python canonical_mode maps louage->louaj, Rust keeps both keys with identical values."
   ],
-  "speed_notes": "Louage/louaj highway cruising 90-110 km/h (100 km/h modelled average after stands/traffic); train avg 60 km/h as measured."
+  "speed_notes": "Louage/louaj highway cruising 90-120 km/h (100 km/h modelled average after stands/traffic); train avg 60 km/h as measured. Bus-family (bus/rfr/tram/rural) is distance-based: 22 km/h urban for hops <=2 km, 45 km/h for hops >=5 km, linearly interpolated between; speed_kmh_by_mode[bus]=22 is the urban base. Metro boarding wait is capped at 420 s, all other modes at 1200 s (boarding_wait_cap_s_by_mode). Taxi is city-local only and never crosses governorates; inter-governorate main rides use louage/bus/train.",
+  "boarding_wait_cap_s_by_mode": {
+    "metro": 420.0,
+    "train": 1200.0,
+    "rail": 1200.0,
+    "bus": 1200.0,
+    "rfr": 1200.0,
+    "tram": 1200.0,
+    "rural": 1200.0,
+    "louage": 1200.0,
+    "louaj": 1200.0,
+    "taxi": 1200.0,
+    "walk": 1200.0,
+    "unknown": 1200.0
+  },
+  "bus_speed_kmh_urban": 22.0,
+  "bus_speed_kmh_intercity": 45.0,
+  "bus_speed_urban_max_m": 2000.0,
+  "bus_speed_intercity_min_m": 5000.0
 }

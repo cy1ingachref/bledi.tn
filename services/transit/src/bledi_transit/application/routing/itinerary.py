@@ -124,7 +124,6 @@ def expand_path(
             continue
 
         mode = router.user_mode_of_line.get(line_used or "", "bus") or "bus"
-        ride_m = seg_m
         # Real track first: the cache covers only 1 776 of ~3 900 station
         # pairs and its gaps are almost all rail. The cache stays the fallback
         # when the points are not on one connected track.
@@ -138,16 +137,23 @@ def expand_path(
         # The raw seed mode, not the canonical one: canonical_mode() folds
         # "rail" into "train", which SPEED_BY_MODE times differently.
         raw_mode = router.mode_of_line.get(line_used or "", "bus") or "bus"
-        if not seg_geom and mode in ("bus", "louaj", "taxi", "rural") and straight_m >= GEOMETRY_REQUIRED_M:
+        # Live road first for road modes: the cached geometry may be from an
+        # older seed or missing, but the live graph is the drawn line. When
+        # live road exists, distance must follow it, not the cached straight
+        # line. The old "if not seg_geom" guard kept the cached distance
+        # while drawing the live geometry, making the reported distance
+        # disagree with the drawn line.
+        if mode in ("bus", "louaj", "taxi", "rural") and straight_m >= GEOMETRY_REQUIRED_M:
             live_road = paths.road(a["lat"], a["lon"], b["lat"], b["lon"], "car")
             if live_road is not None and live_road[1] >= 0.95 * straight_m:
                 seg_geom = live_road[0]
                 seg_m = live_road[1]
                 edge = None  # force re-timing from the real road distance
+        ride_m = seg_m
         ride_min = (
             (edge.time_s / 60.0)
             if edge
-            else (ride_m / 1000 / transit_speed_kmh(raw_mode) * 60)
+            else (ride_m / 1000 / transit_speed_kmh(raw_mode, ride_m) * 60)
         )
 
         prev_line = path_lines[i]  # line arrived on at a
@@ -221,9 +227,15 @@ def expand_path(
             # leg and the cost agree. A taxi hop also needs a taxi mode
             # selected: "bus only" must not return a bus and taxi itinerary.
             hop_permitted = allowed_modes is None or bool(allowed_modes & TAXI_MODES)
-            end_city = nearest_city(end_lat, end_lon)
-            prev_city = nearest_city(prev_lat, prev_lon)
-            gap_city_ok = (prev_city is None or end_city is None or prev_city == end_city)
+            from bledi_transit.domain.cities import UNASSIGNED_CITY
+
+            def _crosses(a_lat: float, a_lon: float, b_lat: float, b_lon: float) -> bool:
+                ca, cb = nearest_city(a_lat, a_lon), nearest_city(b_lat, b_lon)
+                return ca != cb and ca != UNASSIGNED_CITY and cb != UNASSIGNED_CITY
+
+            # A gap taxi hop must not cross governorates either (same rule as
+            # the direct taxi gate in router.py). Cross-gov gaps are walk.
+            gap_city_ok = not _crosses(prev_lat, prev_lon, end_lat, end_lon)
             if walk_m > MAX_END_WALK_METERS and hop_permitted and gap_city_ok:
                 hop_min = walk_m / 1000 / TAXI_SPEED_KMH * 60
                 steps.append({

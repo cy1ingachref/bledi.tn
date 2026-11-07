@@ -36,7 +36,7 @@ from bledi_transit.domain.geo import haversine_m, polyline_length
 from bledi_transit.domain.modes import BUS_MODES, MODE_LABELS_FR, canonical_mode
 from bledi_transit.domain.timetable import expected_wait
 from bledi_transit.domain.tunables import (
-    BOARDING_WAIT_CAP,
+    boarding_wait_cap_for_mode,
     DROP_OFF_CANDIDATES,
     DROPOFF_SEARCH_METERS,
     MAX_END_WALK_METERS,
@@ -91,7 +91,7 @@ class Router:
             self.line_wait[ln_id] = (
                 float(explicit_wait)
                 if explicit_wait is not None
-                else min(expected_wait(ln.get("departures"), mode), BOARDING_WAIT_CAP)
+                else min(expected_wait(ln.get("departures"), mode), boarding_wait_cap_for_mode(mode))
             )
         # From the lines' stop arrays, not the station's lines_served fragments,
         # which are direction-oriented and often lack route_short_name.
@@ -141,6 +141,7 @@ class Router:
         allowed_modes: frozenset[str] | None = None,
         transfer_penalty_sec: float | None = None,
         max_walk_m: float | None = None,
+        banned_walks: frozenset[tuple[str, str]] | None = None,
     ) -> dict[str, Any]:
         """Find the best itinerary for one mode set and transfer penalty.
 
@@ -152,6 +153,7 @@ class Router:
         walk-to-station cost as the initial label) so one pass covers every
         (start, end) pair instead of N*M separate Dijkstras.
         """
+        banned = set(banned_walks) if banned_walks else set()
         transfer_penalty = (
             TRANSFER_PENALTY_SEC
             if transfer_penalty_sec is None
@@ -159,21 +161,22 @@ class Router:
         )
         start_cap = MAX_START_WALK_METERS if max_walk_m is None else float(max_walk_m)
         end_cap = MAX_END_WALK_METERS if max_walk_m is None else float(max_walk_m)
-        # Expand START walk radius for bus-restricted searches to ensure the origin
-        # can reach a bus stop. Do NOT expand end_cap unconditionally - that would
-        # make stations near the origin become end candidates, producing fake
-        # "bus then taxi" paths when the destination has no bus service.
+        # An access walk longer than this is not a walk: the origin is not
+        # served by the restricted network, so that network cannot answer.
+        # The old *500 expansion walked 22 km to a bus stop and reported
+        # the walk as part of the bus itinerary.
+        bus_start_cap = 3000.0
         if allowed_modes is not None and (allowed_modes & BUS_MODES):
-            start_cap = max(start_cap, MAX_START_WALK_METERS * 20)
+            start_cap = max(start_cap, bus_start_cap)
         start_candidates = self._nearest_stations(start_lat, start_lon, start_cap)
         end_candidates = self._nearest_stations(end_lat, end_lon, end_cap)
-        # A bus-restricted search needs at least one start station with a bus edge.
         if allowed_modes is not None and (allowed_modes & BUS_MODES):
             def has_bus_edge(st_id):
                 return any(e.mode in BUS_MODES for e in self.adj.get(st_id, []))
             if not any(has_bus_edge(sc['id']) for sc in start_candidates):
-                start_cap = MAX_START_WALK_METERS * 500
-                start_candidates = self._nearest_stations(start_lat, start_lon, start_cap)
+                # No bus stop within walking distance: do not fabricate a
+                # bus itinerary by walking across the country.
+                start_candidates = []
 
         # No stop to walk to: a town with no station of its own still gets a
         # ride then a final gap, instead of one taxi line across the country.
@@ -287,6 +290,8 @@ class Router:
                         and edge.mode not in allowed_modes
                     ):
                         continue
+                    if banned and (cur, edge.to_id) in banned:
+                        continue
                     is_walk = edge.mode == "walk"
                     arrived_line = None if is_walk else edge.line
                     segment_cost = edge.time_s
@@ -305,6 +310,17 @@ class Router:
         # A direct taxi is only an alternative when transit exists, or one taxi
         # line would replace every transit route it beats on time. It also needs
         # taxi or louaj in the mode selection.
+        # Inter-governorate taxi gate: a taxi may NOT cross from one
+        # governorate to another (e.g. Tunis->Bizerte, Sousse->Sfax).
+        # Only scheduled/louage/rail carry the main ride across governorates;
+        # taxi is city-local only. "Other" (unassigned) never counts as a
+        # governorate change — it is not a real seat.
+        from bledi_transit.domain.cities import UNASSIGNED_CITY
+
+        def _crosses_governorate(a_lat: float, a_lon: float, b_lat: float, b_lon: float) -> bool:
+            ca, cb = nearest_city(a_lat, a_lon), nearest_city(b_lat, b_lon)
+            return ca != cb and ca != UNASSIGNED_CITY and cb != UNASSIGNED_CITY
+
         have_transit = best is not None and best.get("mode") == "transit"
         direct_km = direct_m / 1000.0
         # Only TAXI can go point to point. Louage runs on its own designated corridors and
@@ -312,16 +328,15 @@ class Router:
         # data/louage_corridors.json). It used to be offered "direct" between any two points,
         # which sent riders to a Tebourba-Mateur louage that does not exist.
         taxi_permitted = allowed_modes is None or "taxi" in allowed_modes
+        if _crosses_governorate(start_lat, start_lon, end_lat, end_lon):
+            taxi_permitted = False
         road_mode = "taxi"
         def road_fare_for(km: float) -> float:
             base, per_km = FARE_DINARS[road_mode]
             return base + per_km * km
-        start_city = nearest_city(start_lat, start_lon)
-        end_city = nearest_city(end_lat, end_lon)
-        same_city_taxi = (start_city is None or end_city is None or start_city == end_city)
         if have_transit:
             taxi_s = direct_m / TAXI_SPEED_MS
-            if same_city_taxi and TAXI_MIN_DISTANCE_M <= direct_km * 1000 <= MAX_DIRECT_TAXI_M:
+            if taxi_permitted and TAXI_MIN_DISTANCE_M <= direct_km * 1000 <= MAX_DIRECT_TAXI_M:
                 taxi_fare = road_fare_for(direct_km)
                 road_label = MODE_LABELS_FR.get(road_mode, road_mode.capitalize())
                 best["alternatives"] = best.get("alternatives", []) + [{
@@ -331,7 +346,7 @@ class Router:
                     "fare_dinars": round(taxi_fare, 2),
                     "label": f"{road_label} direct - {round(direct_km, 1)} km (~{round(taxi_s / 60)} min, {round(taxi_fare, 2)} DT)",
                 }]
-        elif taxi_permitted and same_city_taxi and TAXI_MIN_DISTANCE_M <= direct_km * 1000 <= MAX_DIRECT_TAXI_M:
+        elif taxi_permitted and TAXI_MIN_DISTANCE_M <= direct_km * 1000 <= MAX_DIRECT_TAXI_M:
             # Cost the trip on the same real road distance the leg is drawn
             # with: live road graph first, precomputed taxi cache second.
             # Pricing the straight line and drawing the road would make the

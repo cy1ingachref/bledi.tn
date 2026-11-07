@@ -8,6 +8,7 @@ from bledi_transit.domain.fares import fare_for_itinerary
 from bledi_transit.domain.cities import nearest_city
 from bledi_transit.domain.geo import haversine_m
 from bledi_transit.domain.modes import USER_MODES, canonical_mode, label_modes_fr, resolve_allowed_modes
+from bledi_transit.application.routing.steps import group_steps  # re-exported for tests/callers
 from bledi_transit.domain.tunables import (
     FEWEST_TRANSFERS_PENALTY_SEC,
     GEOMETRY_REQUIRED_M,
@@ -243,28 +244,70 @@ def _walk_candidate(start_lat: float, start_lon: float, end_lat: float, end_lon:
 
 
 def _itinerary_signature(result: dict[str, Any]) -> tuple:
-    """Distinctness key: the ordered (mode, line_id) of every ride leg.
+    """Distinctness key: ride (mode, line, from_id, to_id) per hop, plus the
+    access/egress walk station.
 
-    Walks are excluded: two itineraries that differ only in how far the
-    rider walks to the same bus are one choice for the rider.
+    The station sequence distinguishes variants that share a line but
+    board/alight at different stops (e.g. Tunis -> Ben Arous via different
+    access stations); the access/egress anchors keep two walks to the same
+    line but from different stations distinct as well.
     """
-    sig: list[tuple[str, str]] = []
-    for step in result.get("steps") or ():
+    steps = list(result.get("steps") or ())
+    sig: list[tuple] = []
+    for step in steps:
         if step.get("type") != "ride":
             continue
-        entry = (step.get("mode") or "", step.get("line") or "")
-        # Steps are per stop, so one ride on a line is several equal entries.
-        if sig and sig[-1] == entry:
+        sig.append(
+            (
+                step.get("mode") or "",
+                step.get("line") or "",
+                step.get("from_id") or "",
+                step.get("to_id") or "",
+            )
+        )
+    if sig:
+        # Access station: the station the first walk arrives at (or, when
+        # the walk carries no ids, its endpoint coordinates).
+        for step in steps:
+            if step.get("type") == "walk":
+                to = step.get("to") or {}
+                sig.append(
+                    (
+                        "access",
+                        step.get("to_id") or "",
+                        round(float(to.get("lat") or 0.0), 5),
+                        round(float(to.get("lon") or 0.0), 5),
+                    )
+                )
+                break
+        for step in reversed(steps):
+            if step.get("type") == "walk":
+                frm = step.get("from") or {}
+                sig.append(
+                    (
+                        "egress",
+                        step.get("from_id") or "",
+                        round(float(frm.get("lat") or 0.0), 5),
+                        round(float(frm.get("lon") or 0.0), 5),
+                    )
+                )
+                break
+        return tuple(sig)
+    # No rides at all (pure walk / pure taxi): fall back on mode+shape,
+    # including station ids/coords so different endpoints stay distinct.
+    out: list[tuple] = []
+    for step in steps:
+        if step.get("type") not in ("taxi", "walk"):
             continue
-        sig.append(entry)
-    if not sig:
-        # No rides at all (pure walk / pure taxi): fall back on mode+shape.
-        sig = [
-            (step.get("type") or "", "")
-            for step in result.get("steps") or ()
-            if step.get("type") in ("taxi", "walk")
-        ]
-    return tuple(sig)
+        frm, to = step.get("from") or {}, step.get("to") or {}
+        out.append(
+            (
+                step.get("type") or "",
+                step.get("from_id") or round(float(frm.get("lat") or 0.0), 5),
+                step.get("to_id") or round(float(to.get("lat") or 0.0), 5),
+            )
+        )
+    return tuple(out)
 
 
 def _modes_used(steps: Sequence[dict[str, Any]]) -> list[str]:

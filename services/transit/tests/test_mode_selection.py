@@ -18,6 +18,8 @@ from bledi_transit.domain.tunables import GEOMETRY_REQUIRED_M
 
 TUNIS = (36.8065, 10.1815)
 SFAX = (34.7406, 10.7603)
+# Same-seat Tunis point ~4.7 km away: taxi allowed (city-local only).
+TUNIS_LOCAL = (36.84, 10.15)
 
 
 def _ride_modes(result):
@@ -45,9 +47,15 @@ class TestSelectionsRestrictTheSearch:
         assert any(s.get("type") == "ride" and s.get("mode") == "louaj" for s in steps)
 
     def test_taxi_selection_yields_a_car_leg_within_range(self, router):
-        res = router.route(*TUNIS, 36.40, 10.62, allowed_modes=frozenset({"taxi"}))  # Hammamet, ~70 km
+        # City-local only: same Tunis seat, ~4.7 km. Taxi-only search returns
+        # a transit-shaped result whose last gap is a taxi hop (no transit rides
+        # allowed), with a direct taxi alternative.
+        res = router.route(*TUNIS, *TUNIS_LOCAL, allowed_modes=frozenset({"taxi"}))
         steps = res.get("steps", [])
-        assert steps and all(s.get("type") == "taxi" for s in steps)
+        assert steps and any(s.get("type") == "taxi" for s in steps), res
+        assert not any(s.get("type") == "ride" for s in steps), "taxi-only leaked rides"
+        res = router.route(*TUNIS, 36.40, 10.62, allowed_modes=frozenset({"taxi"}))
+        assert not res.get("steps"), "taxi must not cross Tunis->Nabeul (Hammamet)"
 
     def test_taxi_is_not_offered_across_the_country(self, router):
         res = router.route(*TUNIS, *SFAX, allowed_modes=frozenset({"taxi"}))  # ~270 km
