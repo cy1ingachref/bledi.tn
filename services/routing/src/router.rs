@@ -2,7 +2,7 @@
 //! Objectives: fastest (time + transfer penalty), cheapest (fare-weighted),
 //! preference (only the requested mode(s), fastest among them).
 
-use crate::graph::{fare_for, haversine_m, wait_for_mode, Graph, Station, MAX_PURE_WALK_SEC, TRANSFER_PENALTY_SEC, WALK_SPEED_MS};
+use crate::graph::{capped_wait_for_mode, crosses_governorate, fare_for, haversine_m, Graph, Station, MAX_PURE_WALK_SEC, TRANSFER_PENALTY_SEC, WALK_SPEED_MS};
 use serde::Serialize;
 use std::cmp::Ordering;
 use std::collections::{BinaryHeap, HashMap, HashSet};
@@ -24,7 +24,10 @@ pub struct Leg { pub from: String, pub to: String, pub line: String, pub mode: S
     pub distance_m: f64, pub time_s: f64, pub fare: f64 }
 #[derive(Serialize)]
 pub struct RouteResult { pub found: bool, pub objective: String, pub duration_s: f64,
-    pub fare: f64, pub transfers: usize, pub distance_m: f64, pub legs: Vec<Leg>, pub message: Option<String> }
+    pub fare: f64, pub transfers: usize, pub distance_m: f64, pub legs: Vec<Leg>, pub message: Option<String>,
+    /// Direct-taxi alternative gate (mirrors Python router.py): false when
+    /// start/end sit in different governorates — taxi is city-local only.
+    pub taxi_permitted: bool }
 
 #[derive(Eq, PartialEq)]
 struct QItem { cost: u64, station: String, line: String }
@@ -50,11 +53,24 @@ pub fn route(g: &Graph, from_lat: f64, from_lon: f64, to_lat: f64, to_lon: f64,
 fn route_inner(g: &Graph, from_lat: f64, from_lon: f64, to_lat: f64, to_lon: f64,
              objective: Objective, allowed_modes: Option<&HashSet<String>>, allow_walk_edges: bool) -> RouteResult {
     let obj_name = match objective { Objective::Fastest => "fastest", Objective::Cheapest => "cheapest", Objective::FewestTransfers => "fewest_transfers" };
+    // Inter-governorate taxi gate (mirrors Python router.py): taxi is
+    // city-local only. Strip "taxi" from the effective allowed modes when
+    // start/end sit in different governorates.
+    let crosses = crosses_governorate(from_lat, from_lon, to_lat, to_lon);
+    let taxi_allowed = allowed_modes.is_none() || allowed_modes.is_some_and(|a| a.contains("taxi"));
+    let taxi_permitted = taxi_allowed && !crosses;
+    let effective_allowed: Option<HashSet<String>> = if crosses {
+        allowed_modes.map(|a| a.iter().filter(|m| *m != "taxi").cloned().collect())
+    } else {
+        allowed_modes.cloned()
+    };
+    let allowed_modes = effective_allowed.as_ref();
     let starts = g.nearest(from_lat, from_lon, 2000.0);
     let ends: HashSet<String> = g.nearest(to_lat, to_lon, 2000.0).into_iter().map(|(id, _)| id).collect();
     if starts.is_empty() || ends.is_empty() {
         return RouteResult { found: false, objective: obj_name.into(), duration_s: 0.0, fare: 0.0,
             transfers: 0, distance_m: 0.0, legs: vec![],
+            taxi_permitted,
             message: Some("no station within 2 km of origin/destination".into()) };
     }
     // A* heuristic: straight line at fastest possible speed (train 60 km/h)
@@ -93,7 +109,7 @@ fn route_inner(g: &Graph, from_lat: f64, from_lon: f64, to_lat: f64, to_lon: f64
             }
             let is_transfer = !e.line.is_empty() && e.line != item.line && !item.line.is_empty();
             let is_boarding = !e.line.is_empty() && e.line != item.line;
-            let wait = if is_boarding && e.mode != "walk" { wait_for_mode(&e.mode) } else { 0.0 };
+            let wait = if is_boarding && e.mode != "walk" { capped_wait_for_mode(&e.mode) } else { 0.0 };
             let c = edge_cost(objective, e.time_s + wait, e.fare, is_transfer || is_boarding, TRANSFER_PENALTY_SEC);
             let ns = (e.to.clone(), e.line.clone());
             let nc = cost + c;
@@ -107,7 +123,7 @@ fn route_inner(g: &Graph, from_lat: f64, from_lon: f64, to_lat: f64, to_lon: f64
     }
     let Some(best) = best_state else {
         return RouteResult { found: false, objective: obj_name.into(), duration_s: 0.0, fare: 0.0,
-            transfers: 0, distance_m: 0.0, legs: vec![], message: Some("no route found".into()) };
+            transfers: 0, distance_m: 0.0, legs: vec![], taxi_permitted, message: Some("no route found".into()) };
     };
     let mut legs = Vec::new();
     let mut cur = best;
@@ -143,7 +159,7 @@ fn route_inner(g: &Graph, from_lat: f64, from_lon: f64, to_lat: f64, to_lon: f64
     }
     fare = (fare * 100.0).round() / 100.0;
     let distance_m: f64 = legs.iter().map(|l| l.distance_m).sum();
-    let result = RouteResult { found: true, objective: obj_name.into(), duration_s, fare, transfers, distance_m, legs, message: None };
+    let result = RouteResult { found: true, objective: obj_name.into(), duration_s, fare, transfers, distance_m, legs, taxi_permitted, message: None };
     // Pure-walk cap: a walk-only itinerary over MAX_PURE_WALK_SEC (120 min) is
     // only returned when no transit route exists (shared_tunables.json).
     if result.legs.iter().all(|l| l.mode == "walk") && duration_s > MAX_PURE_WALK_SEC && allow_walk_edges {

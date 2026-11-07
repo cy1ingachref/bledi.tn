@@ -22,7 +22,7 @@ import math
 import sys
 
 BAND_KMH = {"walk": (3.0, 6.0), "metro": (15, 45), "tram": (10, 40), "train": (35, 110),
-            "bus": (10, 90), "louaj": (45, 110), "taxi": (25, 110)}
+            "bus": (10, 90), "louaj": (90, 120), "taxi": (25, 110)}
 
 
 def hav(a, b):

@@ -102,6 +102,18 @@ def main():
         mismatches.append({"kind": "boarding_wait", "key": "router.rs hardcoded 300s",
                            "shared": "per-mode table", "actual": "300.0 flat"})
 
+    # per-mode boarding-wait caps (metro 420 s, others 1200 s)
+    rs_wcap = rust_tuples(rs_g, "WAIT_CAP_S_BY_MODE")
+    py_wcap = dict(tun.get("BOARDING_WAIT_CAP_BY_MODE", {}))
+    for mode, v in SHARED.get("boarding_wait_cap_s_by_mode", {}).items():
+        cmp("boarding_wait_cap_s", mode, v, py_wcap.get(mode))
+        cmp("boarding_wait_cap_s", mode, v, rs_wcap.get(mode))
+    # distance-based bus speed scalars
+    cmp("scalar", "BUS_SPEED_URBAN_KMH (python)", SHARED.get("bus_speed_kmh_urban"), tun.get("BUS_SPEED_URBAN_KMH"))
+    cmp("scalar", "BUS_SPEED_INTERCITY_KMH (python)", SHARED.get("bus_speed_kmh_intercity"), tun.get("BUS_SPEED_INTERCITY_KMH"))
+    cmp("scalar", "BUS_SPEED_URBAN_KMH (rust)", SHARED.get("bus_speed_kmh_urban"), rust_const(rs_g, "BUS_SPEED_URBAN_KMH"))
+    cmp("scalar", "BUS_SPEED_INTERCITY_KMH (rust)", SHARED.get("bus_speed_kmh_intercity"), rust_const(rs_g, "BUS_SPEED_INTERCITY_KMH"))
+
     # fares
     rs_fare = rust_tuples(rs_g, "FARE")
     py_fare = {k: tuple(v) for k, v in far.get("FARE_DINARS", {}).items()}
@@ -144,6 +156,7 @@ def main():
         "notes": notes,
         "python_speed_by_mode": py_speed, "rust_speed_kmh": rs_speed,
         "python_default_wait_by_mode": py_wait, "rust_wait_s_by_mode": rs_wait,
+        "python_boarding_wait_cap_by_mode": py_wcap, "rust_wait_cap_s_by_mode": rs_wcap,
         "python_fare_dinars": {k: list(v) for k, v in py_fare.items()},
         "rust_fare": {k: list(v) for k, v in rs_fare.items()},
         "python_fare_caps_dt": py_caps, "rust_fare_cap_dt": rs_caps,

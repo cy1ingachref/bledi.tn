@@ -21,7 +21,7 @@ from bledi_transit.application.routing.router import Router
 from bledi_transit.domain.fares import FARE_DINARS
 from bledi_transit.domain.geo import haversine_m
 from bledi_transit.domain.timetable import expected_wait
-from bledi_transit.domain.tunables import WALK_SPEED_KMH
+from bledi_transit.domain.tunables import WALK_SPEED_KMH, bus_speed_kmh
 
 
 # ── helpers ───────────────────────────────────────────────────────────────
@@ -172,8 +172,9 @@ class TestWaitChargedOncePerBoarding:
                       stations["Q"]["lat"], stations["Q"]["lon"])
         assert res.get("error") is None, res
         dur = res["duration_min"]
-        # wait 300 s + ride 2.5 km at 22 km/h: 300/60 + 2.5/22*60 = 5 + 6.82 = 11.82 min
-        expected = 300 / 60 + 2500 / 1000 / 22.0 * 60
+        # wait 300 s + ride 2.5 km at the distance-based bus speed
+        # (22 km/h urban .. 45 km/h intercity, interpolated): see tunables.
+        expected = 300 / 60 + 2500 / 1000 / bus_speed_kmh(2500.0) * 60
         assert dur == pytest.approx(expected, abs=0.5), (
             f"duration {dur} not ~{expected:.2f} (single boarding + 2.5km ride)"
         )

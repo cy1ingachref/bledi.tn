@@ -204,11 +204,14 @@ class ObjectiveTests(unittest.TestCase):
         # Tunis->Ben Arous: 4 distinct itineraries (bus, train+bus, train, etc.)
         plan = self.router.route_plan(36.8065, 10.1815, 36.7531, 10.2219, max_itineraries=8)
         sigs = [
+            # Mirror planner._itinerary_signature: a taxi/walk itinerary has
+            # no ride steps, so ride-only sigs collide (both ()). Include
+            # non-ride vehicle steps (e.g. a gap taxi hop) and walk.
             tuple(
-                (s.get("mode"), s.get("line"))
+                (s.get("type"), s.get("mode"), s.get("line"))
                 for s in it["legs"]
-                if s.get("type") == "ride"
-            )
+                if s.get("type") in ("ride", "taxi")
+            ) or (("walk",),)
             for it in plan["itineraries"]
         ]
         self.assertEqual(len(sigs), len(set(sigs)), "duplicate itineraries returned")

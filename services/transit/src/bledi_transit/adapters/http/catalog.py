@@ -166,26 +166,9 @@ def line(catalog: CatalogDep, line_identifier: str) -> Any:
     return catalog.line(line_identifier)
 
 
-@router.get("/geocode", tags=["Search"])
-def geocode(
-    catalog: CatalogDep,
-    q: str = Query(..., min_length=1, description="Place name to search"),
-    limit: int = Query(8, ge=1, le=25, description="Max results"),
-) -> dict[str, Any]:
-    """Search-backed geocoding for the frontend autocomplete."""
-    payload = catalog.search(q, limit, near_lat=None, near_lon=None)
-    results = []
-    for r in payload.get("results", []):
-        results.append(
-            {
-                "display_name": r.get("display_name") or r.get("name") or q,
-                "name": r.get("name") or q,
-                "lat": r.get("lat"),
-                "lon": r.get("lon"),
-                "type": "city" if r.get("kind") == "city" else "administrative",
-            }
-        )
-    return {"results": results, "query": q, "count": len(results)}
+# NOTE: /geocode lives in routing.py (Nominatim + 503-on-outage). A second
+# /geocode here shadowed it because catalog routes register first, so the
+# geocoder outage branch was unreachable. Do not re-add a duplicate route.
 
 
 @router.get("/search", tags=["Stations"])
