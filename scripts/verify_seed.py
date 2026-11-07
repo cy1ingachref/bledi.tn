@@ -28,7 +28,7 @@ SOURCE_SEED = DATA / "seed_all_tunisia_routes.tagged.json"
 CORRECTED_SEED = DATA / "seed_all_tunisia_routes.CLEANED.corrected.json"
 
 EXPECTED_SHA256 = {
-    SOURCE_SEED: "ebcaf874e812982a7178ab7a92f3407c53cf2228b03a471a534d67d8a76bce08",
+    SOURCE_SEED: "28ecec780d60c3c354fae314cee4f94018b6822fdb22f4e3ed701dc80710784a",
     CORRECTED_SEED: "ef5afdc8bd45c2a2ff0771946ebd4378aec455e0abd7ba4d0d5f6abe5757af7b",
 }
 

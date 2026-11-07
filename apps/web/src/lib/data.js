@@ -294,7 +294,7 @@ export function normalizeRustRoutes(apiResponse, { startLat, startLon, endLat, e
       identifier: null,
       objective: r.objective || 'fastest',
       source: 'rust',
-      steps: groups.map((g, i) => {
+      steps: groups.map((g) => {
         const isWalk = g.mode === 'walk';
         const labelText = isWalk
           ? `Walk from ${g.from} to ${g.to}`
