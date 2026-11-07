@@ -7,6 +7,7 @@ spec:
   template:
     metadata: {labels: {app: transit-api}}
     spec:
+      securityContext: {runAsNonRoot: true, runAsUser: 1000, seccompProfile: {type: RuntimeDefault}}
       containers:
         - name: transit
           image: bledi-transit:latest
@@ -17,6 +18,8 @@ spec:
           resources:
             requests: {cpu: 250m, memory: 512Mi}
             limits: {cpu: "1", memory: 2Gi}
+          securityContext: {allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, runAsNonRoot: true, runAsUser: 1000, capabilities: {drop: [ALL]}}
+          volumeMounts: [{name: tmp, mountPath: /tmp}]
           livenessProbe:
             httpGet: {path: /api/v1/health, port: http}
             initialDelaySeconds: 30
@@ -25,6 +28,7 @@ spec:
             httpGet: {path: /api/v1/health, port: http}
             initialDelaySeconds: 10
             periodSeconds: 5
+      volumes: [{name: tmp, emptyDir: {}}]
 ---
 apiVersion: v1
 kind: Service

@@ -10,6 +10,7 @@ spec:
   template:
     metadata: {labels: {app: transit-routing}}
     spec:
+      securityContext: {runAsNonRoot: true, runAsUser: 1000, seccompProfile: {type: RuntimeDefault}}
       containers:
         - name: routing
           image: bledi-routing:latest
@@ -22,6 +23,8 @@ spec:
           resources:
             requests: {cpu: 100m, memory: 128Mi}
             limits: {cpu: 500m, memory: 512Mi}
+          securityContext: {allowPrivilegeEscalation: false, readOnlyRootFilesystem: true, runAsNonRoot: true, runAsUser: 1000, capabilities: {drop: [ALL]}}
+          volumeMounts: [{name: tmp, mountPath: /tmp}]
           livenessProbe:
             httpGet: {path: /health, port: http}
             initialDelaySeconds: 20
@@ -30,6 +33,7 @@ spec:
             httpGet: {path: /health, port: http}
             initialDelaySeconds: 5
             periodSeconds: 5
+      volumes: [{name: tmp, emptyDir: {}}]
 ---
 apiVersion: v1
 kind: Service
