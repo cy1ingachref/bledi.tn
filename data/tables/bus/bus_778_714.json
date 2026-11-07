@@ -1,0 +1,335 @@
+{
+ "line_id": "bus_778_714",
+ "number": "714",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 714: Station Barcelone - Cite Olympique Rades",
+ "direction_aller": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "siefcol",
+  "centre_de_formation_snt",
+  "soci_t_nour",
+  "lustreries",
+  "gouvernorat_de_ben_arous",
+  "cite_sprols",
+  "medina_jadida_1",
+  "piscine_olympique_rades",
+  "stade_athl_tisme_de_rad_s",
+  "cite_olympique_rades"
+ ],
+ "direction_retour": [
+  "cite_olympique_rades",
+  "stade_athl_tisme_de_rad_s",
+  "piscine_olympique_rades",
+  "medina_jadida_1",
+  "cite_sprols",
+  "gouvernorat_de_ben_arous",
+  "lustreries",
+  "soci_t_nour",
+  "centre_de_formation_snt",
+  "siefcol",
+  "cnss",
+  "sofomeca",
+  "stoa",
+  "gare_djebel_jelloud",
+  "djebel_jelloud_gp1",
+  "el_afrane",
+  "centre_de_coordination_ouardia",
+  "dubosville",
+  "station_barcelone"
+ ],
+ "stations_count": 19,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "cite_olympique_rades",
+  "name": "Cite Olympique Rades"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "siefcol",
+  "centre_de_formation_snt",
+  "soci_t_nour",
+  "lustreries",
+  "gouvernorat_de_ben_arous",
+  "cite_sprols",
+  "medina_jadida_1",
+  "piscine_olympique_rades",
+  "stade_athl_tisme_de_rad_s",
+  "cite_olympique_rades"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dubosville",
+   "name_en": "Dubosville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839884,
+   "lon": 10.1917495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_coordination_ouardia",
+   "name_en": "Centre De Coordination Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7806046,
+   "lon": 10.1956231,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_afrane",
+   "name_en": "El Afrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7796674,
+   "lon": 10.1966209,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebel_jelloud_gp1",
+   "name_en": "Djebel Jelloud Gp1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7732433,
+   "lon": 10.2045236,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gare_djebel_jelloud",
+   "name_en": "Gare Djebel Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7715383,
+   "lon": 10.208723,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stoa",
+   "name_en": "Stoa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7686077,
+   "lon": 10.2157355,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sofomeca",
+   "name_en": "SOFOMECA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7658672,
+   "lon": 10.2217893,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cnss",
+   "name_en": "Cnss",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.765065,
+   "lon": 10.2233996,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "siefcol",
+   "name_en": "SIEFCOL",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7625689,
+   "lon": 10.2292994,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_snt",
+   "name_en": "Centre De Formation Snt",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.761611,
+   "lon": 10.2317686,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soci_t_nour",
+   "name_en": "Société Nour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7608128,
+   "lon": 10.2337966,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lustreries",
+   "name_en": "Lustreries",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7570187,
+   "lon": 10.2430977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gouvernorat_de_ben_arous",
+   "name_en": "Gouvernorat De Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7544571,
+   "lon": 10.2481832,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_sprols",
+   "name_en": "Cite Sprols",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7530502,
+   "lon": 10.2496172,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "medina_jadida_1",
+   "name_en": "Medina Jadida 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.749955,
+   "lon": 10.2534516,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "piscine_olympique_rades",
+   "name_en": "Piscine Olympique Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7493537,
+   "lon": 10.2653928,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_athl_tisme_de_rad_s",
+   "name_en": "Stade Athlétisme De Radés",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7528691,
+   "lon": 10.2729029,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_olympique_rades",
+   "name_en": "Cite Olympique Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7546313,
+   "lon": 10.2758426,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

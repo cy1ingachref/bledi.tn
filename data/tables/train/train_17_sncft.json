@@ -1,0 +1,341 @@
+{
+ "line_id": "train_17_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Tunis Ville - Megrine Ryad",
+ "direction_aller": [
+  "tunis_ville",
+  "djebal_jelloud",
+  "rades",
+  "hammam_lif",
+  "borj_cedria",
+  "fondouk_jedid",
+  "khanguet",
+  "grombalia",
+  "turki",
+  "belli",
+  "bou_arkoub",
+  "bir_bourekba",
+  "hammamet",
+  "omar_khayem",
+  "mrazka",
+  "nabeul_pv",
+  "nabeul_voyageurs",
+  "bir_el_bey",
+  "megrine_ryad"
+ ],
+ "direction_retour": [
+  "megrine_ryad",
+  "bir_el_bey",
+  "nabeul_voyageurs",
+  "nabeul_pv",
+  "mrazka",
+  "omar_khayem",
+  "hammamet",
+  "bir_bourekba",
+  "bou_arkoub",
+  "belli",
+  "turki",
+  "grombalia",
+  "khanguet",
+  "fondouk_jedid",
+  "borj_cedria",
+  "hammam_lif",
+  "rades",
+  "djebal_jelloud",
+  "tunis_ville"
+ ],
+ "stations_count": 19,
+ "start": {
+  "id": "tunis_ville",
+  "name": "Tunis Ville"
+ },
+ "end": {
+  "id": "megrine_ryad",
+  "name": "Megrine Ryad"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "nabeul_voyageurs",
+   "to": "bir_el_bey",
+   "km": 42.9
+  }
+ ],
+ "original_stations": [
+  "tunis_ville",
+  "djebal_jelloud",
+  "rades",
+  "hammam_lif",
+  "borj_cedria",
+  "fondouk_jedid",
+  "khanguet",
+  "grombalia",
+  "turki",
+  "belli",
+  "bou_arkoub",
+  "bir_bourekba",
+  "hammamet",
+  "omar_khayem",
+  "mrazka",
+  "nabeul_pv",
+  "nabeul_voyageurs",
+  "bir_el_bey",
+  "megrine_ryad"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_ville",
+   "name_en": "Tunis Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7947693,
+   "lon": 10.1803806,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebal_jelloud",
+   "name_en": "Djebal Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7727251,
+   "lon": 10.2082258,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "rades",
+   "name_en": "Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7683604,
+   "lon": 10.269735,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_lif",
+   "name_en": "Hammam Lif",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7294393,
+   "lon": 10.3342066,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_cedria",
+   "name_en": "Borj Cedria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7034822,
+   "lon": 10.3974291,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "fondouk_jedid",
+   "name_en": "Fondouk Jedid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6689169,
+   "lon": 10.4467133,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "khanguet",
+   "name_en": "Khanguet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6248312,
+   "lon": 10.4613473,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "grombalia",
+   "name_en": "Grombalia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5963444,
+   "lon": 10.4977219,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "turki",
+   "name_en": "Turki",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5755004,
+   "lon": 10.5135323,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "belli",
+   "name_en": "Belli",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5606093,
+   "lon": 10.524965,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bou_arkoub",
+   "name_en": "Bou Arkoub",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5310753,
+   "lon": 10.5514179,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_bourekba",
+   "name_en": "Bir Bourekba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4306822,
+   "lon": 10.5737451,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammamet",
+   "name_en": "Hammamet",
+   "name_ar": "الحمامات",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_37m"
+   ],
+   "lat": 36.4076404,
+   "lon": 10.612458,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "omar_khayem",
+   "name_en": "Omar Khayem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4239685,
+   "lon": 10.6689255,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mrazka",
+   "name_en": "Mrazka",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4292401,
+   "lon": 10.6847555,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "nabeul_pv",
+   "name_en": "Nabeul PV",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4321876,
+   "lon": 10.6939653,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "nabeul_voyageurs",
+   "name_en": "Nabeul Voyageurs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4510322,
+   "lon": 10.7351045,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_el_bey",
+   "name_en": "Bir El Bey",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7102497,
+   "lon": 10.3786432,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "megrine_ryad",
+   "name_en": "Megrine Ryad",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7702743,
+   "lon": 10.2229004,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

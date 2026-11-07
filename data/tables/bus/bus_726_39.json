@@ -1,0 +1,335 @@
+{
+ "line_id": "bus_726_39",
+ "number": "39",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 39: Lycée Ezzahra (Section) - Terminus Rades Foret 19D , 39",
+ "direction_aller": [
+  "lyc_e_ezzahra_section",
+  "soci_t_de_chaussettes",
+  "steg",
+  "kiosque_total",
+  "cit_18_janvier_terminus_39",
+  "borj_louzir_ben_arous",
+  "eloulija",
+  "noubou",
+  "bir_ettarraz",
+  "avenue_de_la_r_publique_2",
+  "avenue_de_la_r_publique_1",
+  "ptt_rades",
+  "centre_rades",
+  "mongil",
+  "lyc_e_technique_rades",
+  "stade_municipale",
+  "immeuble_rades_foret",
+  "immeuble_rades_foret_1",
+  "terminus_rades_foret_19d_39"
+ ],
+ "direction_retour": [
+  "terminus_rades_foret_19d_39",
+  "immeuble_rades_foret_1",
+  "immeuble_rades_foret",
+  "stade_municipale",
+  "lyc_e_technique_rades",
+  "mongil",
+  "centre_rades",
+  "ptt_rades",
+  "avenue_de_la_r_publique_1",
+  "avenue_de_la_r_publique_2",
+  "bir_ettarraz",
+  "noubou",
+  "eloulija",
+  "borj_louzir_ben_arous",
+  "cit_18_janvier_terminus_39",
+  "kiosque_total",
+  "steg",
+  "soci_t_de_chaussettes",
+  "lyc_e_ezzahra_section"
+ ],
+ "stations_count": 19,
+ "start": {
+  "id": "lyc_e_ezzahra_section",
+  "name": "Lycée Ezzahra (Section)"
+ },
+ "end": {
+  "id": "terminus_rades_foret_19d_39",
+  "name": "Terminus Rades Foret 19D , 39"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "lyc_e_ezzahra_section",
+  "soci_t_de_chaussettes",
+  "steg",
+  "kiosque_total",
+  "cit_18_janvier_terminus_39",
+  "borj_louzir_ben_arous",
+  "eloulija",
+  "noubou",
+  "bir_ettarraz",
+  "avenue_de_la_r_publique_2",
+  "avenue_de_la_r_publique_1",
+  "ptt_rades",
+  "centre_rades",
+  "mongil",
+  "lyc_e_technique_rades",
+  "stade_municipale",
+  "immeuble_rades_foret",
+  "immeuble_rades_foret_1",
+  "terminus_rades_foret_19d_39"
+ ],
+ "stations_detail": [
+  {
+   "id": "lyc_e_ezzahra_section",
+   "name_en": "Lycée Ezzahra (Section)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7359499,
+   "lon": 10.315475,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soci_t_de_chaussettes",
+   "name_en": "Société De Chaussettes",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7373772,
+   "lon": 10.3107328,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg",
+   "name_en": "Steg",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7392398,
+   "lon": 10.3053096,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_total",
+   "name_en": "Kiosque Total",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7419758,
+   "lon": 10.2997889,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_18_janvier_terminus_39",
+   "name_en": "Cité 18 Janvier Terminus 39",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7434768,
+   "lon": 10.2867274,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_louzir_ben_arous",
+   "name_en": "Borj Louzir (Ben Arous)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7473232,
+   "lon": 10.2893176,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "eloulija",
+   "name_en": "Eloulija",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7511538,
+   "lon": 10.2840594,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "noubou",
+   "name_en": "Noubou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7571843,
+   "lon": 10.2774949,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_ettarraz",
+   "name_en": "Bir Ettarraz",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7625914,
+   "lon": 10.2738471,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "avenue_de_la_r_publique_2",
+   "name_en": "Avenue De La République 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7677311,
+   "lon": 10.2771474,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "avenue_de_la_r_publique_1",
+   "name_en": "Avenue De La République 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7683118,
+   "lon": 10.275859,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ptt_rades",
+   "name_en": "Ptt Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7678829,
+   "lon": 10.273117,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_rades",
+   "name_en": "Centre Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7670773,
+   "lon": 10.2697916,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mongil",
+   "name_en": "Mongil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.767318,
+   "lon": 10.2661223,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_technique_rades",
+   "name_en": "Lycée Technique Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.766439,
+   "lon": 10.2607145,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_municipale",
+   "name_en": "Stade Municipale",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7650639,
+   "lon": 10.2566804,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_rades_foret",
+   "name_en": "Immeuble Rades Foret",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7619353,
+   "lon": 10.2573456,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_rades_foret_1",
+   "name_en": "Immeuble Rades Foret 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7617827,
+   "lon": 10.2557418,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_rades_foret_19d_39",
+   "name_en": "Terminus Rades Foret 19D , 39",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7603944,
+   "lon": 10.2580604,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

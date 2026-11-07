@@ -1,0 +1,751 @@
+{
+ "line_id": "bus_727_42",
+ "number": "42",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 42: Ali Balahouan - Terminus Tebourba",
+ "direction_aller": [
+  "ali_balahouan",
+  "sidi_aloui",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "bardo",
+  "chebbi",
+  "bortal",
+  "champ_de_course_ksar_said",
+  "ineps",
+  "boudreya",
+  "gaaloul",
+  "inoplast",
+  "section_manouba",
+  "caserne_oued_elil_1",
+  "caserne_oued_elil_2",
+  "cite_militaire",
+  "moezeya",
+  "garde_national_oued_ellil",
+  "mosqu_e_oued_ellil",
+  "choco_tom",
+  "cite_el_bostane",
+  "ecole_primaire",
+  "bejawa_2",
+  "pompage",
+  "erriadh_manouba",
+  "zone_f",
+  "saida",
+  "oued_chafrou",
+  "stil",
+  "sidi_taleb",
+  "cite_enajet1",
+  "souassi",
+  "cit_omda",
+  "mosqu_e_ben_sassi",
+  "zehra_1",
+  "zehra_2",
+  "cit_nejiba",
+  "maasra",
+  "el_hathermine",
+  "cit_ben_ghenia",
+  "el_battan",
+  "cite_errimel",
+  "piscine",
+  "terminus_tebourba"
+ ],
+ "direction_retour": [
+  "terminus_tebourba",
+  "piscine",
+  "cite_errimel",
+  "el_battan",
+  "cit_ben_ghenia",
+  "el_hathermine",
+  "maasra",
+  "cit_nejiba",
+  "zehra_2",
+  "zehra_1",
+  "mosqu_e_ben_sassi",
+  "cit_omda",
+  "souassi",
+  "cite_enajet1",
+  "sidi_taleb",
+  "stil",
+  "oued_chafrou",
+  "saida",
+  "zone_f",
+  "erriadh_manouba",
+  "pompage",
+  "bejawa_2",
+  "ecole_primaire",
+  "cite_el_bostane",
+  "choco_tom",
+  "mosqu_e_oued_ellil",
+  "garde_national_oued_ellil",
+  "moezeya",
+  "cite_militaire",
+  "caserne_oued_elil_2",
+  "caserne_oued_elil_1",
+  "section_manouba",
+  "inoplast",
+  "gaaloul",
+  "boudreya",
+  "ineps",
+  "champ_de_course_ksar_said",
+  "bortal",
+  "chebbi",
+  "bardo",
+  "20_mars",
+  "bouchoucha",
+  "immeuble_chefia",
+  "sidi_aloui",
+  "ali_balahouan"
+ ],
+ "stations_count": 45,
+ "start": {
+  "id": "ali_balahouan",
+  "name": "Ali Balahouan"
+ },
+ "end": {
+  "id": "terminus_tebourba",
+  "name": "Terminus Tebourba"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "ali_balahouan",
+  "sidi_aloui",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "bardo",
+  "chebbi",
+  "bortal",
+  "champ_de_course_ksar_said",
+  "ineps",
+  "boudreya",
+  "gaaloul",
+  "inoplast",
+  "section_manouba",
+  "caserne_oued_elil_1",
+  "caserne_oued_elil_2",
+  "cite_militaire",
+  "moezeya",
+  "garde_national_oued_ellil",
+  "mosqu_e_oued_ellil",
+  "choco_tom",
+  "cite_el_bostane",
+  "ecole_primaire",
+  "bejawa_2",
+  "pompage",
+  "erriadh_manouba",
+  "zone_f",
+  "saida",
+  "oued_chafrou",
+  "stil",
+  "sidi_taleb",
+  "cite_enajet1",
+  "souassi",
+  "cit_omda",
+  "mosqu_e_ben_sassi",
+  "zehra_1",
+  "zehra_2",
+  "cit_nejiba",
+  "maasra",
+  "el_hathermine",
+  "cit_ben_ghenia",
+  "el_battan",
+  "cite_errimel",
+  "piscine",
+  "terminus_tebourba"
+ ],
+ "stations_detail": [
+  {
+   "id": "ali_balahouan",
+   "name_en": "Ali Balahouan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8065135,
+   "lon": 10.1742408,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_aloui",
+   "name_en": "Sidi Aloui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8053372,
+   "lon": 10.1688404,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_chefia",
+   "name_en": "Immeuble Chefia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8098234,
+   "lon": 10.152579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchoucha",
+   "name_en": "BOUCHOUCHA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80953,
+   "lon": 10.15026,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "bardo",
+   "name_en": "BARDO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80724,
+   "lon": 10.13523,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "chebbi",
+   "name_en": "Chebbi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8096013,
+   "lon": 10.1313362,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bortal",
+   "name_en": "Bortal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8120871,
+   "lon": 10.1174078,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "champ_de_course_ksar_said",
+   "name_en": "Champ De Course Ksar Said",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8130249,
+   "lon": 10.1133431,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ineps",
+   "name_en": "INEPS",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8164772,
+   "lon": 10.1016119,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boudreya",
+   "name_en": "Boudreya",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8184959,
+   "lon": 10.0879069,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gaaloul",
+   "name_en": "Gaaloul",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.819625,
+   "lon": 10.0852397,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "inoplast",
+   "name_en": "INOPLAST",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8217034,
+   "lon": 10.0775579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "section_manouba",
+   "name_en": "Section Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8227111,
+   "lon": 10.0738601,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caserne_oued_elil_1",
+   "name_en": "Caserne Oued Elil 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8235585,
+   "lon": 10.071142,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caserne_oued_elil_2",
+   "name_en": "Caserne Oued Elil 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8259859,
+   "lon": 10.0644584,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_militaire",
+   "name_en": "Cite Militaire",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.82815,
+   "lon": 10.0572057,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "moezeya",
+   "name_en": "Moezeya",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8257313,
+   "lon": 10.0649086,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_oued_ellil",
+   "name_en": "Garde National Oued Ellil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8318062,
+   "lon": 10.0415013,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_oued_ellil",
+   "name_en": "Mosquée Oued Ellil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8329836,
+   "lon": 10.0380811,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "choco_tom",
+   "name_en": "Choco Tom",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8336663,
+   "lon": 10.0342831,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_el_bostane",
+   "name_en": "Cite El Bostane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356725,
+   "lon": 10.0198694,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire",
+   "name_en": "Ecole Primaire",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8366171,
+   "lon": 10.0126596,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bejawa_2",
+   "name_en": "Bejawa 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8368404,
+   "lon": 10.0079175,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pompage",
+   "name_en": "Pompage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356135,
+   "lon": 9.9975573,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "erriadh_manouba",
+   "name_en": "Erriadh Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8341505,
+   "lon": 9.9851857,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zone_f",
+   "name_en": "Zone F",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8333755,
+   "lon": 9.9786226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "saida",
+   "name_en": "Saida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8322184,
+   "lon": 9.9682448,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_chafrou",
+   "name_en": "Oued Chafrou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8336009,
+   "lon": 9.950274,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stil",
+   "name_en": "Stil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8339484,
+   "lon": 9.9456734,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_taleb",
+   "name_en": "Sidi Taleb",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8333958,
+   "lon": 9.9410066,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_enajet1",
+   "name_en": "Cite Enajet1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.831647,
+   "lon": 9.9395258,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "souassi",
+   "name_en": "Souassi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8299694,
+   "lon": 9.9389628,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_omda",
+   "name_en": "Cité Omda",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8177082,
+   "lon": 9.9198468,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_ben_sassi",
+   "name_en": "Mosquée Ben Sassi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8164848,
+   "lon": 9.9171434,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zehra_1",
+   "name_en": "Zehra 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8129061,
+   "lon": 9.9090232,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zehra_2",
+   "name_en": "Zehra 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8094157,
+   "lon": 9.9011681,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_nejiba",
+   "name_en": "Cité Nejiba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8070599,
+   "lon": 9.8958818,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "maasra",
+   "name_en": "Maasra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8066261,
+   "lon": 9.8867031,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_hathermine",
+   "name_en": "El Hathermine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.804253,
+   "lon": 9.8703442,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ben_ghenia",
+   "name_en": "Cité Ben Ghenia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8033618,
+   "lon": 9.8637219,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_battan",
+   "name_en": "El Battan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.806947,
+   "lon": 9.8489264,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_errimel",
+   "name_en": "Cite Errimel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8201649,
+   "lon": 9.8428268,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "piscine",
+   "name_en": "Piscine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8250615,
+   "lon": 9.8426178,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_tebourba",
+   "name_en": "Terminus Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8275891,
+   "lon": 9.8438062,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

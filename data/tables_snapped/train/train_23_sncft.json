@@ -1,0 +1,2120 @@
+{
+ "line_id": "train_23_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Tunis Ville - Parc Friguia",
+ "direction_aller": [
+  "tunis_ville",
+  "djebal_jelloud",
+  "rades",
+  "hammam_lif",
+  "borj_cedria",
+  "grombalia",
+  "bou_arkoub",
+  "bir_bourekba",
+  "bouficha",
+  "enfida",
+  "menzel_gare",
+  "sidi_bou_ali",
+  "kalaa_kebira",
+  "kalaa_sghira",
+  "sousse_voyageurs",
+  "sidi_mtir",
+  "ain_rahma",
+  "parc_friguia"
+ ],
+ "direction_retour": [
+  "parc_friguia",
+  "ain_rahma",
+  "sidi_mtir",
+  "sousse_voyageurs",
+  "kalaa_sghira",
+  "kalaa_kebira",
+  "sidi_bou_ali",
+  "menzel_gare",
+  "enfida",
+  "bouficha",
+  "bir_bourekba",
+  "bou_arkoub",
+  "grombalia",
+  "borj_cedria",
+  "hammam_lif",
+  "rades",
+  "djebal_jelloud",
+  "tunis_ville"
+ ],
+ "stations_count": 18,
+ "start": {
+  "id": "tunis_ville",
+  "name": "Tunis Ville"
+ },
+ "end": {
+  "id": "parc_friguia",
+  "name": "Parc Friguia"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [
+  {
+   "from": "bouficha",
+   "to": "enfida",
+   "km": 20.1
+  },
+  {
+   "from": "sousse_voyageurs",
+   "to": "sidi_mtir",
+   "km": 63.1
+  }
+ ],
+ "original_stations": [
+  "tunis_ville",
+  "djebal_jelloud",
+  "rades",
+  "hammam_lif",
+  "borj_cedria",
+  "grombalia",
+  "bou_arkoub",
+  "bir_bourekba",
+  "bouficha",
+  "enfida",
+  "menzel_gare",
+  "sidi_bou_ali",
+  "kalaa_kebira",
+  "kalaa_sghira",
+  "sousse_voyageurs",
+  "sidi_mtir",
+  "ain_rahma",
+  "parc_friguia"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_ville",
+   "name_en": "Tunis Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7947693,
+   "lon": 10.1803806,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebal_jelloud",
+   "name_en": "Djebal Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7727251,
+   "lon": 10.2082258,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "rades",
+   "name_en": "Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7683604,
+   "lon": 10.269735,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_lif",
+   "name_en": "Hammam Lif",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7294393,
+   "lon": 10.3342066,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_cedria",
+   "name_en": "Borj Cedria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7034822,
+   "lon": 10.3974291,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "grombalia",
+   "name_en": "Grombalia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5963444,
+   "lon": 10.4977219,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bou_arkoub",
+   "name_en": "Bou Arkoub",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5310753,
+   "lon": 10.5514179,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_bourekba",
+   "name_en": "Bir Bourekba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4306822,
+   "lon": 10.5737451,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouficha",
+   "name_en": "Bouficha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.3033024,
+   "lon": 10.451222,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "enfida",
+   "name_en": "Enfida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.1307311,
+   "lon": 10.3836398,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "menzel_gare",
+   "name_en": "Menzel Gare",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.0105291,
+   "lon": 10.377545,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bou_ali",
+   "name_en": "Sidi Bou Ali",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.9531545,
+   "lon": 10.4513333,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "kalaa_kebira",
+   "name_en": "Kalaa Kebira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.867843,
+   "lon": 10.5534154,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "kalaa_sghira",
+   "name_en": "Kalaa Sghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.8220139,
+   "lon": 10.5711182,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_voyageurs",
+   "name_en": "Sousse Voyageurs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.8304246,
+   "lon": 10.6380517,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_mtir",
+   "name_en": "Sidi Mtir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.3869585,
+   "lon": 10.5029636,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "ain_rahma",
+   "name_en": "Ain Rahma",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.2263937,
+   "lon": 10.4269494,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "parc_friguia",
+   "name_en": "Parc Friguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.2043374,
+   "lon": 10.4193379,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "tunis_ville",
+   "to": "djebal_jelloud",
+   "key": "djebal_jelloud|tunis_ville",
+   "straight_m": 3486.8,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "rail path 303321 m implausible vs 3487 m straight"
+  },
+  {
+   "from": "djebal_jelloud",
+   "to": "rades",
+   "key": "djebal_jelloud|rades",
+   "straight_m": 5500.18,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7727251,
+     10.2082258
+    ],
+    [
+     36.772176,
+     10.211512
+    ],
+    [
+     36.771824,
+     10.214499
+    ],
+    [
+     36.767196,
+     10.24067
+    ],
+    [
+     36.767187,
+     10.242037
+    ],
+    [
+     36.767612,
+     10.247649
+    ],
+    [
+     36.766833,
+     10.256608
+    ],
+    [
+     36.76679,
+     10.2602
+    ],
+    [
+     36.767072,
+     10.263125
+    ],
+    [
+     36.7683604,
+     10.269735
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 5570.16,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 357.41,
+   "length_ratio": 1.0127,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "rades",
+   "to": "hammam_lif",
+   "key": "hammam_lif|rades",
+   "straight_m": 7192.09,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7294393,
+     10.3342066
+    ],
+    [
+     36.768917,
+     10.272567
+    ],
+    [
+     36.768949,
+     10.274338
+    ],
+    [
+     36.768655,
+     10.275717
+    ],
+    [
+     36.76804,
+     10.277058
+    ],
+    [
+     36.732951,
+     10.32661
+    ],
+    [
+     36.73213,
+     10.328005
+    ],
+    [
+     36.7683604,
+     10.269735
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 20070.65,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 364.16,
+   "length_ratio": 2.7907,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "hammam_lif",
+   "to": "borj_cedria",
+   "key": "borj_cedria|hammam_lif",
+   "straight_m": 6331.46,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7034822,
+     10.3974291
+    ],
+    [
+     36.722371,
+     10.350869
+    ],
+    [
+     36.716183,
+     10.3624
+    ],
+    [
+     36.7294393,
+     10.3342066
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 8801.56,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 166.37,
+   "length_ratio": 1.3901,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "borj_cedria",
+   "to": "grombalia",
+   "key": "borj_cedria|grombalia",
+   "straight_m": 14898.92,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7034822,
+     10.3974291
+    ],
+    [
+     36.702464,
+     10.40042
+    ],
+    [
+     36.701826,
+     10.401758
+    ],
+    [
+     36.683052,
+     10.432795
+    ],
+    [
+     36.681895,
+     10.434087
+    ],
+    [
+     36.667286,
+     10.448299
+    ],
+    [
+     36.65912,
+     10.455594
+    ],
+    [
+     36.65829,
+     10.456129
+    ],
+    [
+     36.657393,
+     10.456479
+    ],
+    [
+     36.654842,
+     10.456869
+    ],
+    [
+     36.628372,
+     10.459777
+    ],
+    [
+     36.626924,
+     10.460168
+    ],
+    [
+     36.625427,
+     10.460926
+    ],
+    [
+     36.624351,
+     10.461744
+    ],
+    [
+     36.623387,
+     10.462872
+    ],
+    [
+     36.604777,
+     10.487897
+    ],
+    [
+     36.600882,
+     10.493302
+    ],
+    [
+     36.598785,
+     10.495819
+    ],
+    [
+     36.59734,
+     10.497049
+    ],
+    [
+     36.5963444,
+     10.4977219
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 15663.24,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 1211.69,
+   "length_ratio": 1.0513,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "grombalia",
+   "to": "bou_arkoub",
+   "key": "bou_arkoub|grombalia",
+   "straight_m": 8698.92,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.5310753,
+     10.5514179
+    ],
+    [
+     36.586853,
+     10.504748
+    ],
+    [
+     36.576533,
+     10.512825
+    ],
+    [
+     36.544856,
+     10.537076
+    ],
+    [
+     36.543453,
+     10.538378
+    ],
+    [
+     36.541785,
+     10.540332
+    ],
+    [
+     36.536969,
+     10.547087
+    ],
+    [
+     36.535601,
+     10.548371
+    ],
+    [
+     36.5963444,
+     10.4977219
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 22538.93,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 223.89,
+   "length_ratio": 2.591,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bou_arkoub",
+   "to": "bir_bourekba",
+   "key": "bir_bourekba|bou_arkoub",
+   "straight_m": 11340.3,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.4306822,
+     10.5737451
+    ],
+    [
+     36.517163,
+     10.561139
+    ],
+    [
+     36.508515,
+     10.56784
+    ],
+    [
+     36.506945,
+     10.568579
+    ],
+    [
+     36.498166,
+     10.571203
+    ],
+    [
+     36.496995,
+     10.571434
+    ],
+    [
+     36.495937,
+     10.571482
+    ],
+    [
+     36.486027,
+     10.571394
+    ],
+    [
+     36.476322,
+     10.570815
+    ],
+    [
+     36.47493,
+     10.570605
+    ],
+    [
+     36.473354,
+     10.570201
+    ],
+    [
+     36.467788,
+     10.568266
+    ],
+    [
+     36.466321,
+     10.567978
+    ],
+    [
+     36.465399,
+     10.56796
+    ],
+    [
+     36.444246,
+     10.570699
+    ],
+    [
+     36.442824,
+     10.571081
+    ],
+    [
+     36.439534,
+     10.57239
+    ],
+    [
+     36.438309,
+     10.572416
+    ],
+    [
+     36.435634,
+     10.57182
+    ],
+    [
+     36.434452,
+     10.571805
+    ],
+    [
+     36.43338,
+     10.572139
+    ],
+    [
+     36.5310753,
+     10.5514179
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 30306.16,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 1097.16,
+   "length_ratio": 2.6724,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bir_bourekba",
+   "to": "bouficha",
+   "key": "bir_bourekba|bouficha",
+   "straight_m": 17915.66,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.4306822,
+     10.5737451
+    ],
+    [
+     36.428976,
+     10.574846
+    ],
+    [
+     36.428069,
+     10.57514
+    ],
+    [
+     36.426885,
+     10.575222
+    ],
+    [
+     36.423775,
+     10.574999
+    ],
+    [
+     36.422723,
+     10.574739
+    ],
+    [
+     36.421753,
+     10.574249
+    ],
+    [
+     36.420821,
+     10.573459
+    ],
+    [
+     36.419907,
+     10.572237
+    ],
+    [
+     36.419369,
+     10.571095
+    ],
+    [
+     36.417476,
+     10.565328
+    ],
+    [
+     36.416965,
+     10.564211
+    ],
+    [
+     36.415457,
+     10.561838
+    ],
+    [
+     36.414666,
+     10.560303
+    ],
+    [
+     36.409608,
+     10.547032
+    ],
+    [
+     36.403446,
+     10.534285
+    ],
+    [
+     36.395295,
+     10.510811
+    ],
+    [
+     36.394401,
+     10.509123
+    ],
+    [
+     36.393648,
+     10.508073
+    ],
+    [
+     36.392857,
+     10.507227
+    ],
+    [
+     36.391766,
+     10.506337
+    ],
+    [
+     36.376966,
+     10.495869
+    ],
+    [
+     36.349216,
+     10.470582
+    ],
+    [
+     36.347424,
+     10.46908
+    ],
+    [
+     36.345582,
+     10.468128
+    ],
+    [
+     36.3033024,
+     10.451222
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 19154.37,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 2133.21,
+   "length_ratio": 1.0691,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bouficha",
+   "to": "enfida",
+   "key": "bouficha|enfida",
+   "straight_m": 20124.08,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "rail path 286457 m implausible vs 20124 m straight"
+  },
+  {
+   "from": "enfida",
+   "to": "menzel_gare",
+   "key": "enfida|menzel_gare",
+   "straight_m": 13377.09,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "rail path 320998 m implausible vs 13377 m straight"
+  },
+  {
+   "from": "menzel_gare",
+   "to": "sidi_bou_ali",
+   "key": "menzel_gare|sidi_bou_ali",
+   "straight_m": 9207.8,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "rail path 298058 m implausible vs 9208 m straight"
+  },
+  {
+   "from": "sidi_bou_ali",
+   "to": "kalaa_kebira",
+   "key": "kalaa_kebira|sidi_bou_ali",
+   "straight_m": 13210.24,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.867843,
+     10.5534154
+    ],
+    [
+     35.869295,
+     10.551532
+    ],
+    [
+     35.870167,
+     10.550695
+    ],
+    [
+     35.871019,
+     10.550071
+    ],
+    [
+     35.872739,
+     10.549181
+    ],
+    [
+     35.875238,
+     10.548553
+    ],
+    [
+     35.87744,
+     10.547626
+    ],
+    [
+     35.879036,
+     10.546379
+    ],
+    [
+     35.881123,
+     10.544028
+    ],
+    [
+     35.882284,
+     10.542901
+    ],
+    [
+     35.883537,
+     10.542067
+    ],
+    [
+     35.888396,
+     10.539609
+    ],
+    [
+     35.889825,
+     10.53851
+    ],
+    [
+     35.890982,
+     10.53721
+    ],
+    [
+     35.891483,
+     10.536467
+    ],
+    [
+     35.896427,
+     10.526925
+    ],
+    [
+     35.897532,
+     10.525459
+    ],
+    [
+     35.898723,
+     10.524354
+    ],
+    [
+     35.900112,
+     10.523481
+    ],
+    [
+     35.901744,
+     10.522878
+    ],
+    [
+     35.902718,
+     10.522713
+    ],
+    [
+     35.908946,
+     10.52231
+    ],
+    [
+     35.91078,
+     10.521877
+    ],
+    [
+     35.912585,
+     10.520922
+    ],
+    [
+     35.914355,
+     10.519343
+    ],
+    [
+     35.91577,
+     10.517217
+    ],
+    [
+     35.920665,
+     10.506847
+    ],
+    [
+     35.921928,
+     10.504815
+    ],
+    [
+     35.923544,
+     10.503184
+    ],
+    [
+     35.931316,
+     10.496719
+    ],
+    [
+     35.932942,
+     10.494548
+    ],
+    [
+     35.933554,
+     10.493312
+    ],
+    [
+     35.934534,
+     10.490771
+    ],
+    [
+     35.946007,
+     10.459632
+    ],
+    [
+     35.946678,
+     10.458408
+    ],
+    [
+     35.947479,
+     10.457329
+    ],
+    [
+     35.9531545,
+     10.4513333
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 13955.31,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 1395.82,
+   "length_ratio": 1.0564,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "kalaa_kebira",
+   "to": "kalaa_sghira",
+   "key": "kalaa_kebira|kalaa_sghira",
+   "straight_m": 5339.94,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.867843,
+     10.5534154
+    ],
+    [
+     35.822901,
+     10.56772
+    ],
+    [
+     35.823579,
+     10.566614
+    ],
+    [
+     35.824412,
+     10.565732
+    ],
+    [
+     35.825093,
+     10.565293
+    ],
+    [
+     35.825934,
+     10.564953
+    ],
+    [
+     35.826829,
+     10.564824
+    ],
+    [
+     35.827963,
+     10.564966
+    ],
+    [
+     35.834399,
+     10.567696
+    ],
+    [
+     35.836164,
+     10.568035
+    ],
+    [
+     35.837339,
+     10.568028
+    ],
+    [
+     35.838572,
+     10.567808
+    ],
+    [
+     35.839708,
+     10.567429
+    ],
+    [
+     35.847776,
+     10.562754
+    ],
+    [
+     35.848988,
+     10.562302
+    ],
+    [
+     35.849853,
+     10.56215
+    ],
+    [
+     35.858714,
+     10.561995
+    ],
+    [
+     35.859644,
+     10.561844
+    ],
+    [
+     35.86061,
+     10.561515
+    ],
+    [
+     35.862534,
+     10.560436
+    ],
+    [
+     35.86385,
+     10.559262
+    ],
+    [
+     35.864891,
+     10.557961
+    ],
+    [
+     35.8220139,
+     10.5711182
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 15097.88,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 456.38,
+   "length_ratio": 2.8274,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "kalaa_sghira",
+   "to": "sousse_voyageurs",
+   "key": "kalaa_sghira|sousse_voyageurs",
+   "straight_m": 6106.53,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.8220139,
+     10.5711182
+    ],
+    [
+     35.821236,
+     10.574367
+    ],
+    [
+     35.821903,
+     10.576042
+    ],
+    [
+     35.822411,
+     10.576928
+    ],
+    [
+     35.824398,
+     10.579071
+    ],
+    [
+     35.82508,
+     10.58007
+    ],
+    [
+     35.825528,
+     10.581181
+    ],
+    [
+     35.826324,
+     10.58469
+    ],
+    [
+     35.826356,
+     10.585847
+    ],
+    [
+     35.826253,
+     10.586642
+    ],
+    [
+     35.825227,
+     10.589775
+    ],
+    [
+     35.825007,
+     10.591261
+    ],
+    [
+     35.825474,
+     10.595533
+    ],
+    [
+     35.825446,
+     10.600663
+    ],
+    [
+     35.82576,
+     10.602049
+    ],
+    [
+     35.82658,
+     10.603604
+    ],
+    [
+     35.830464,
+     10.608158
+    ],
+    [
+     35.831434,
+     10.60968
+    ],
+    [
+     35.831749,
+     10.610467
+    ],
+    [
+     35.832058,
+     10.611896
+    ],
+    [
+     35.832213,
+     10.614869
+    ],
+    [
+     35.832456,
+     10.61625
+    ],
+    [
+     35.832954,
+     10.617494
+    ],
+    [
+     35.834395,
+     10.620027
+    ],
+    [
+     35.834669,
+     10.620833
+    ],
+    [
+     35.834833,
+     10.621805
+    ],
+    [
+     35.835391,
+     10.627342
+    ],
+    [
+     35.835224,
+     10.62877
+    ],
+    [
+     35.833237,
+     10.633399
+    ],
+    [
+     35.8304246,
+     10.6380517
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 6768.61,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 708.74,
+   "length_ratio": 1.1084,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sousse_voyageurs",
+   "to": "sidi_mtir",
+   "key": "sidi_mtir|sousse_voyageurs",
+   "straight_m": 63062.49,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "no OSM rail track joins these stops"
+  },
+  {
+   "from": "sidi_mtir",
+   "to": "ain_rahma",
+   "key": "ain_rahma|sidi_mtir",
+   "straight_m": 19109.2,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "no OSM rail track joins these stops"
+  },
+  {
+   "from": "ain_rahma",
+   "to": "parc_friguia",
+   "key": "ain_rahma|parc_friguia",
+   "straight_m": 2545.84,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.2263937,
+     10.4269494
+    ],
+    [
+     36.219912,
+     10.425464
+    ],
+    [
+     36.20793,
+     10.41987
+    ],
+    [
+     36.206256,
+     10.419396
+    ],
+    [
+     36.20526,
+     10.419294
+    ],
+    [
+     36.2043374,
+     10.4193379
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 2561.4,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 64.94,
+   "length_ratio": 1.0061,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7727251,
+   10.2082258
+  ],
+  [
+   36.772176,
+   10.211512
+  ],
+  [
+   36.771824,
+   10.214499
+  ],
+  [
+   36.767196,
+   10.24067
+  ],
+  [
+   36.767187,
+   10.242037
+  ],
+  [
+   36.767612,
+   10.247649
+  ],
+  [
+   36.766833,
+   10.256608
+  ],
+  [
+   36.76679,
+   10.2602
+  ],
+  [
+   36.767072,
+   10.263125
+  ],
+  [
+   36.7683604,
+   10.269735
+  ],
+  [
+   36.73213,
+   10.328005
+  ],
+  [
+   36.732951,
+   10.32661
+  ],
+  [
+   36.76804,
+   10.277058
+  ],
+  [
+   36.768655,
+   10.275717
+  ],
+  [
+   36.768949,
+   10.274338
+  ],
+  [
+   36.768917,
+   10.272567
+  ],
+  [
+   36.7294393,
+   10.3342066
+  ],
+  [
+   36.716183,
+   10.3624
+  ],
+  [
+   36.722371,
+   10.350869
+  ],
+  [
+   36.7034822,
+   10.3974291
+  ],
+  [
+   36.702464,
+   10.40042
+  ],
+  [
+   36.701826,
+   10.401758
+  ],
+  [
+   36.683052,
+   10.432795
+  ],
+  [
+   36.681895,
+   10.434087
+  ],
+  [
+   36.667286,
+   10.448299
+  ],
+  [
+   36.65912,
+   10.455594
+  ],
+  [
+   36.65829,
+   10.456129
+  ],
+  [
+   36.657393,
+   10.456479
+  ],
+  [
+   36.654842,
+   10.456869
+  ],
+  [
+   36.628372,
+   10.459777
+  ],
+  [
+   36.626924,
+   10.460168
+  ],
+  [
+   36.625427,
+   10.460926
+  ],
+  [
+   36.624351,
+   10.461744
+  ],
+  [
+   36.623387,
+   10.462872
+  ],
+  [
+   36.604777,
+   10.487897
+  ],
+  [
+   36.600882,
+   10.493302
+  ],
+  [
+   36.598785,
+   10.495819
+  ],
+  [
+   36.59734,
+   10.497049
+  ],
+  [
+   36.5963444,
+   10.4977219
+  ],
+  [
+   36.535601,
+   10.548371
+  ],
+  [
+   36.536969,
+   10.547087
+  ],
+  [
+   36.541785,
+   10.540332
+  ],
+  [
+   36.543453,
+   10.538378
+  ],
+  [
+   36.544856,
+   10.537076
+  ],
+  [
+   36.576533,
+   10.512825
+  ],
+  [
+   36.586853,
+   10.504748
+  ],
+  [
+   36.5310753,
+   10.5514179
+  ],
+  [
+   36.43338,
+   10.572139
+  ],
+  [
+   36.434452,
+   10.571805
+  ],
+  [
+   36.435634,
+   10.57182
+  ],
+  [
+   36.438309,
+   10.572416
+  ],
+  [
+   36.439534,
+   10.57239
+  ],
+  [
+   36.442824,
+   10.571081
+  ],
+  [
+   36.444246,
+   10.570699
+  ],
+  [
+   36.465399,
+   10.56796
+  ],
+  [
+   36.466321,
+   10.567978
+  ],
+  [
+   36.467788,
+   10.568266
+  ],
+  [
+   36.473354,
+   10.570201
+  ],
+  [
+   36.47493,
+   10.570605
+  ],
+  [
+   36.476322,
+   10.570815
+  ],
+  [
+   36.486027,
+   10.571394
+  ],
+  [
+   36.495937,
+   10.571482
+  ],
+  [
+   36.496995,
+   10.571434
+  ],
+  [
+   36.498166,
+   10.571203
+  ],
+  [
+   36.506945,
+   10.568579
+  ],
+  [
+   36.508515,
+   10.56784
+  ],
+  [
+   36.517163,
+   10.561139
+  ],
+  [
+   36.4306822,
+   10.5737451
+  ],
+  [
+   36.428976,
+   10.574846
+  ],
+  [
+   36.428069,
+   10.57514
+  ],
+  [
+   36.426885,
+   10.575222
+  ],
+  [
+   36.423775,
+   10.574999
+  ],
+  [
+   36.422723,
+   10.574739
+  ],
+  [
+   36.421753,
+   10.574249
+  ],
+  [
+   36.420821,
+   10.573459
+  ],
+  [
+   36.419907,
+   10.572237
+  ],
+  [
+   36.419369,
+   10.571095
+  ],
+  [
+   36.417476,
+   10.565328
+  ],
+  [
+   36.416965,
+   10.564211
+  ],
+  [
+   36.415457,
+   10.561838
+  ],
+  [
+   36.414666,
+   10.560303
+  ],
+  [
+   36.409608,
+   10.547032
+  ],
+  [
+   36.403446,
+   10.534285
+  ],
+  [
+   36.395295,
+   10.510811
+  ],
+  [
+   36.394401,
+   10.509123
+  ],
+  [
+   36.393648,
+   10.508073
+  ],
+  [
+   36.392857,
+   10.507227
+  ],
+  [
+   36.391766,
+   10.506337
+  ],
+  [
+   36.376966,
+   10.495869
+  ],
+  [
+   36.349216,
+   10.470582
+  ],
+  [
+   36.347424,
+   10.46908
+  ],
+  [
+   36.345582,
+   10.468128
+  ],
+  [
+   36.3033024,
+   10.451222
+  ],
+  [
+   35.9531545,
+   10.4513333
+  ],
+  [
+   35.947479,
+   10.457329
+  ],
+  [
+   35.946678,
+   10.458408
+  ],
+  [
+   35.946007,
+   10.459632
+  ],
+  [
+   35.934534,
+   10.490771
+  ],
+  [
+   35.933554,
+   10.493312
+  ],
+  [
+   35.932942,
+   10.494548
+  ],
+  [
+   35.931316,
+   10.496719
+  ],
+  [
+   35.923544,
+   10.503184
+  ],
+  [
+   35.921928,
+   10.504815
+  ],
+  [
+   35.920665,
+   10.506847
+  ],
+  [
+   35.91577,
+   10.517217
+  ],
+  [
+   35.914355,
+   10.519343
+  ],
+  [
+   35.912585,
+   10.520922
+  ],
+  [
+   35.91078,
+   10.521877
+  ],
+  [
+   35.908946,
+   10.52231
+  ],
+  [
+   35.902718,
+   10.522713
+  ],
+  [
+   35.901744,
+   10.522878
+  ],
+  [
+   35.900112,
+   10.523481
+  ],
+  [
+   35.898723,
+   10.524354
+  ],
+  [
+   35.897532,
+   10.525459
+  ],
+  [
+   35.896427,
+   10.526925
+  ],
+  [
+   35.891483,
+   10.536467
+  ],
+  [
+   35.890982,
+   10.53721
+  ],
+  [
+   35.889825,
+   10.53851
+  ],
+  [
+   35.888396,
+   10.539609
+  ],
+  [
+   35.883537,
+   10.542067
+  ],
+  [
+   35.882284,
+   10.542901
+  ],
+  [
+   35.881123,
+   10.544028
+  ],
+  [
+   35.879036,
+   10.546379
+  ],
+  [
+   35.87744,
+   10.547626
+  ],
+  [
+   35.875238,
+   10.548553
+  ],
+  [
+   35.872739,
+   10.549181
+  ],
+  [
+   35.871019,
+   10.550071
+  ],
+  [
+   35.870167,
+   10.550695
+  ],
+  [
+   35.869295,
+   10.551532
+  ],
+  [
+   35.867843,
+   10.5534154
+  ],
+  [
+   35.822901,
+   10.56772
+  ],
+  [
+   35.823579,
+   10.566614
+  ],
+  [
+   35.824412,
+   10.565732
+  ],
+  [
+   35.825093,
+   10.565293
+  ],
+  [
+   35.825934,
+   10.564953
+  ],
+  [
+   35.826829,
+   10.564824
+  ],
+  [
+   35.827963,
+   10.564966
+  ],
+  [
+   35.834399,
+   10.567696
+  ],
+  [
+   35.836164,
+   10.568035
+  ],
+  [
+   35.837339,
+   10.568028
+  ],
+  [
+   35.838572,
+   10.567808
+  ],
+  [
+   35.839708,
+   10.567429
+  ],
+  [
+   35.847776,
+   10.562754
+  ],
+  [
+   35.848988,
+   10.562302
+  ],
+  [
+   35.849853,
+   10.56215
+  ],
+  [
+   35.858714,
+   10.561995
+  ],
+  [
+   35.859644,
+   10.561844
+  ],
+  [
+   35.86061,
+   10.561515
+  ],
+  [
+   35.862534,
+   10.560436
+  ],
+  [
+   35.86385,
+   10.559262
+  ],
+  [
+   35.864891,
+   10.557961
+  ],
+  [
+   35.8220139,
+   10.5711182
+  ],
+  [
+   35.821236,
+   10.574367
+  ],
+  [
+   35.821903,
+   10.576042
+  ],
+  [
+   35.822411,
+   10.576928
+  ],
+  [
+   35.824398,
+   10.579071
+  ],
+  [
+   35.82508,
+   10.58007
+  ],
+  [
+   35.825528,
+   10.581181
+  ],
+  [
+   35.826324,
+   10.58469
+  ],
+  [
+   35.826356,
+   10.585847
+  ],
+  [
+   35.826253,
+   10.586642
+  ],
+  [
+   35.825227,
+   10.589775
+  ],
+  [
+   35.825007,
+   10.591261
+  ],
+  [
+   35.825474,
+   10.595533
+  ],
+  [
+   35.825446,
+   10.600663
+  ],
+  [
+   35.82576,
+   10.602049
+  ],
+  [
+   35.82658,
+   10.603604
+  ],
+  [
+   35.830464,
+   10.608158
+  ],
+  [
+   35.831434,
+   10.60968
+  ],
+  [
+   35.831749,
+   10.610467
+  ],
+  [
+   35.832058,
+   10.611896
+  ],
+  [
+   35.832213,
+   10.614869
+  ],
+  [
+   35.832456,
+   10.61625
+  ],
+  [
+   35.832954,
+   10.617494
+  ],
+  [
+   35.834395,
+   10.620027
+  ],
+  [
+   35.834669,
+   10.620833
+  ],
+  [
+   35.834833,
+   10.621805
+  ],
+  [
+   35.835391,
+   10.627342
+  ],
+  [
+   35.835224,
+   10.62877
+  ],
+  [
+   35.833237,
+   10.633399
+  ],
+  [
+   35.8304246,
+   10.6380517
+  ],
+  [
+   36.2263937,
+   10.4269494
+  ],
+  [
+   36.219912,
+   10.425464
+  ],
+  [
+   36.20793,
+   10.41987
+  ],
+  [
+   36.206256,
+   10.419396
+  ],
+  [
+   36.20526,
+   10.419294
+  ],
+  [
+   36.2043374,
+   10.4193379
+  ]
+ ],
+ "phase3a": {
+  "pairs": 17,
+  "resolved": 11,
+  "unresolved": 6
+ }
+}

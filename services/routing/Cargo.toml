@@ -1,0 +1,19 @@
+[package]
+name = "bledi-routing"
+version = "0.1.0"
+edition = "2021"
+description = "Bledi.tn fast routing service (axum 0.7 + io_uring on Linux, tokio fs fallback elsewhere)"
+
+[dependencies]
+axum = { version = "0.7", features = ["macros"] }
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# io_uring is Linux-only; on Windows/macOS the crate must still compile
+# via the tokio::fs fallback in src/io.rs, so gate the dep to unix.
+[target.'cfg(unix)'.dependencies]
+tokio-uring = "0.5"

@@ -1,0 +1,415 @@
+{
+ "line_id": "bus_803_20b",
+ "number": "20B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 20B: Jardin Thameur - Terminus 20B",
+ "direction_aller": [
+  "jardin_thameur",
+  "place_des_droits_de_homme",
+  "mohamed_v",
+  "maison_blanche",
+  "banque_de_habitat",
+  "montplaisir",
+  "cit_el_khadhra",
+  "charguia",
+  "dah_dah",
+  "lac_palace",
+  "cit_taieb_mhiri",
+  "cit_essalem",
+  "chtioui",
+  "carrefour_tunis",
+  "sidi_daoued_n9",
+  "relais_gammarth",
+  "cit_tabek",
+  "imprimerie_ben_mahmoud",
+  "cit_el_khalille",
+  "cit_el_habib",
+  "centre_de_formation_gammarth",
+  "mosqu_e_gammarth",
+  "ecole_primaire_gammarth",
+  "terminus_20b"
+ ],
+ "direction_retour": [
+  "terminus_20b",
+  "ecole_primaire_gammarth",
+  "mosqu_e_gammarth",
+  "centre_de_formation_gammarth",
+  "cit_el_habib",
+  "cit_el_khalille",
+  "imprimerie_ben_mahmoud",
+  "cit_tabek",
+  "relais_gammarth",
+  "sidi_daoued_n9",
+  "carrefour_tunis",
+  "chtioui",
+  "cit_essalem",
+  "cit_taieb_mhiri",
+  "lac_palace",
+  "dah_dah",
+  "charguia",
+  "cit_el_khadhra",
+  "montplaisir",
+  "banque_de_habitat",
+  "maison_blanche",
+  "mohamed_v",
+  "place_des_droits_de_homme",
+  "jardin_thameur"
+ ],
+ "stations_count": 24,
+ "start": {
+  "id": "jardin_thameur",
+  "name": "Jardin Thameur"
+ },
+ "end": {
+  "id": "terminus_20b",
+  "name": "Terminus 20B"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "jardin_thameur",
+  "place_des_droits_de_homme",
+  "mohamed_v",
+  "maison_blanche",
+  "banque_de_habitat",
+  "montplaisir",
+  "cit_el_khadhra",
+  "charguia",
+  "dah_dah",
+  "lac_palace",
+  "cit_taieb_mhiri",
+  "cit_essalem",
+  "chtioui",
+  "carrefour_tunis",
+  "sidi_daoued_n9",
+  "relais_gammarth",
+  "cit_tabek",
+  "imprimerie_ben_mahmoud",
+  "cit_el_khalille",
+  "cit_el_habib",
+  "centre_de_formation_gammarth",
+  "mosqu_e_gammarth",
+  "ecole_primaire_gammarth",
+  "terminus_20b"
+ ],
+ "stations_detail": [
+  {
+   "id": "jardin_thameur",
+   "name_en": "Jardin Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8037336,
+   "lon": 10.1780922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_des_droits_de_homme",
+   "name_en": "Place Des Droits De Homme",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8072691,
+   "lon": 10.1853076,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mohamed_v",
+   "name_en": "MOHAMED V",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81568,
+   "lon": 10.18357,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "maison_blanche",
+   "name_en": "Maison Blanche",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156186,
+   "lon": 10.1850609,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "banque_de_habitat",
+   "name_en": "Banque De Habitat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8194235,
+   "lon": 10.1855061,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "montplaisir",
+   "name_en": "Montplaisir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8233261,
+   "lon": 10.1939602,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_khadhra",
+   "name_en": "Cité El Khadhra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.823838,
+   "lon": 10.1950601,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia",
+   "name_en": "Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8285742,
+   "lon": 10.2061645,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dah_dah",
+   "name_en": "Dah Dah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8353384,
+   "lon": 10.2242795,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lac_palace",
+   "name_en": "Lac Palace",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8393019,
+   "lon": 10.238269,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_taieb_mhiri",
+   "name_en": "Cité Taieb Mhiri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8487843,
+   "lon": 10.264062,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_essalem",
+   "name_en": "Cité Essalem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8532762,
+   "lon": 10.2742226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chtioui",
+   "name_en": "Chtioui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8594606,
+   "lon": 10.2884521,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carrefour_tunis",
+   "name_en": "Carrefour Tunis",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8645764,
+   "lon": 10.3002387,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_daoued_n9",
+   "name_en": "Sidi Daoued (N9)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8660676,
+   "lon": 10.3030673,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "relais_gammarth",
+   "name_en": "Relais Gammarth",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.871807,
+   "lon": 10.3115049,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_tabek",
+   "name_en": "Cité Tabek",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8763901,
+   "lon": 10.3082219,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "imprimerie_ben_mahmoud",
+   "name_en": "Imprimerie Ben Mahmoud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8816879,
+   "lon": 10.304446,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_khalille",
+   "name_en": "Cité El Khalille",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8865322,
+   "lon": 10.3011415,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_habib",
+   "name_en": "Cité El Habib",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8974381,
+   "lon": 10.2936474,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_gammarth",
+   "name_en": "Centre De Formation Gammarth",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9004737,
+   "lon": 10.2934383,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_gammarth",
+   "name_en": "Mosquée Gammarth",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9044853,
+   "lon": 10.2980299,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire_gammarth",
+   "name_en": "Ecole Primaire Gammarth",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9051811,
+   "lon": 10.2998594,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_20b",
+   "name_en": "Terminus 20B",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9057988,
+   "lon": 10.301458,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

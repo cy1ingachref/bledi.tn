@@ -1,0 +1,1674 @@
+{
+ "line_id": "bus_778_714",
+ "number": "714",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 714: Station Barcelone - Cite Olympique Rades",
+ "direction_aller": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "siefcol",
+  "centre_de_formation_snt",
+  "soci_t_nour",
+  "lustreries",
+  "gouvernorat_de_ben_arous",
+  "cite_sprols",
+  "medina_jadida_1",
+  "piscine_olympique_rades",
+  "stade_athl_tisme_de_rad_s",
+  "cite_olympique_rades"
+ ],
+ "direction_retour": [
+  "cite_olympique_rades",
+  "stade_athl_tisme_de_rad_s",
+  "piscine_olympique_rades",
+  "medina_jadida_1",
+  "cite_sprols",
+  "gouvernorat_de_ben_arous",
+  "lustreries",
+  "soci_t_nour",
+  "centre_de_formation_snt",
+  "siefcol",
+  "cnss",
+  "sofomeca",
+  "stoa",
+  "gare_djebel_jelloud",
+  "djebel_jelloud_gp1",
+  "el_afrane",
+  "centre_de_coordination_ouardia",
+  "dubosville",
+  "station_barcelone"
+ ],
+ "stations_count": 19,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "cite_olympique_rades",
+  "name": "Cite Olympique Rades"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_barcelone",
+  "dubosville",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "siefcol",
+  "centre_de_formation_snt",
+  "soci_t_nour",
+  "lustreries",
+  "gouvernorat_de_ben_arous",
+  "cite_sprols",
+  "medina_jadida_1",
+  "piscine_olympique_rades",
+  "stade_athl_tisme_de_rad_s",
+  "cite_olympique_rades"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dubosville",
+   "name_en": "Dubosville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7839884,
+   "lon": 10.1917495,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_coordination_ouardia",
+   "name_en": "Centre De Coordination Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7806046,
+   "lon": 10.1956231,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_afrane",
+   "name_en": "El Afrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7796674,
+   "lon": 10.1966209,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebel_jelloud_gp1",
+   "name_en": "Djebel Jelloud Gp1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7732433,
+   "lon": 10.2045236,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gare_djebel_jelloud",
+   "name_en": "Gare Djebel Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7715383,
+   "lon": 10.208723,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stoa",
+   "name_en": "Stoa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7686077,
+   "lon": 10.2157355,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sofomeca",
+   "name_en": "SOFOMECA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7658672,
+   "lon": 10.2217893,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cnss",
+   "name_en": "Cnss",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.765065,
+   "lon": 10.2233996,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "siefcol",
+   "name_en": "SIEFCOL",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7625689,
+   "lon": 10.2292994,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_snt",
+   "name_en": "Centre De Formation Snt",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.761611,
+   "lon": 10.2317686,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soci_t_nour",
+   "name_en": "Société Nour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7608128,
+   "lon": 10.2337966,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lustreries",
+   "name_en": "Lustreries",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7570187,
+   "lon": 10.2430977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gouvernorat_de_ben_arous",
+   "name_en": "Gouvernorat De Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7544571,
+   "lon": 10.2481832,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_sprols",
+   "name_en": "Cite Sprols",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7530502,
+   "lon": 10.2496172,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "medina_jadida_1",
+   "name_en": "Medina Jadida 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.749955,
+   "lon": 10.2534516,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "piscine_olympique_rades",
+   "name_en": "Piscine Olympique Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7493537,
+   "lon": 10.2653928,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_athl_tisme_de_rad_s",
+   "name_en": "Stade Athlétisme De Radés",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7528691,
+   "lon": 10.2729029,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_olympique_rades",
+   "name_en": "Cite Olympique Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7546313,
+   "lon": 10.2758426,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "station_barcelone",
+   "to": "dubosville",
+   "key": "dubosville|station_barcelone",
+   "straight_m": 1782.45,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7839884,
+     10.1917495
+    ],
+    [
+     36.784491,
+     10.191064
+    ],
+    [
+     36.785848,
+     10.190303
+    ],
+    [
+     36.786389,
+     10.189873
+    ],
+    [
+     36.787648,
+     10.18841
+    ],
+    [
+     36.788433,
+     10.187181
+    ],
+    [
+     36.788775,
+     10.186106
+    ],
+    [
+     36.788856,
+     10.185368
+    ],
+    [
+     36.788639,
+     10.182079
+    ],
+    [
+     36.788999,
+     10.18116
+    ],
+    [
+     36.789304,
+     10.180734
+    ],
+    [
+     36.789869,
+     10.180366
+    ],
+    [
+     36.790182,
+     10.179976
+    ],
+    [
+     36.791083,
+     10.180544
+    ],
+    [
+     36.791469,
+     10.180642
+    ],
+    [
+     36.793638,
+     10.180093
+    ],
+    [
+     36.796245,
+     10.179685
+    ],
+    [
+     36.796959,
+     10.179666
+    ],
+    [
+     36.7970414,
+     10.1801307
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2192.01,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 455.66,
+   "length_ratio": 1.2298,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "dubosville",
+   "to": "centre_de_coordination_ouardia",
+   "key": "centre_de_coordination_ouardia|dubosville",
+   "straight_m": 510.47,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7806046,
+     10.1956231
+    ],
+    [
+     36.780475,
+     10.195881
+    ],
+    [
+     36.779708,
+     10.194807
+    ],
+    [
+     36.779771,
+     10.194605
+    ],
+    [
+     36.780722,
+     10.193564
+    ],
+    [
+     36.78152,
+     10.194889
+    ],
+    [
+     36.7839884,
+     10.1917495
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 854.65,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 129.66,
+   "length_ratio": 1.6742,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "centre_de_coordination_ouardia",
+   "to": "el_afrane",
+   "key": "centre_de_coordination_ouardia|el_afrane",
+   "straight_m": 136.96,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7806046,
+     10.1956231
+    ],
+    [
+     36.7796674,
+     10.1966209
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 136.96,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "el_afrane",
+   "to": "djebel_jelloud_gp1",
+   "key": "djebel_jelloud_gp1|el_afrane",
+   "straight_m": 1002.83,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7732433,
+     10.2045236
+    ],
+    [
+     36.77438,
+     10.201926
+    ],
+    [
+     36.779083,
+     10.197536
+    ],
+    [
+     36.78152,
+     10.194889
+    ],
+    [
+     36.781458,
+     10.194801
+    ],
+    [
+     36.7796674,
+     10.1966209
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1542.94,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 257.35,
+   "length_ratio": 1.5386,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "djebel_jelloud_gp1",
+   "to": "gare_djebel_jelloud",
+   "key": "djebel_jelloud_gp1|gare_djebel_jelloud",
+   "straight_m": 419.34,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7732433,
+     10.2045236
+    ],
+    [
+     36.774301,
+     10.202084
+    ],
+    [
+     36.774253,
+     10.201915
+    ],
+    [
+     36.774127,
+     10.20198
+    ],
+    [
+     36.77394,
+     10.202665
+    ],
+    [
+     36.770244,
+     10.21154
+    ],
+    [
+     36.770297,
+     10.211615
+    ],
+    [
+     36.7715383,
+     10.208723
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1534.76,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 292.24,
+   "length_ratio": 3.6599,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "gare_djebel_jelloud",
+   "to": "stoa",
+   "key": "gare_djebel_jelloud|stoa",
+   "straight_m": 704.51,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7715383,
+     10.208723
+    ],
+    [
+     36.772995,
+     10.205223
+    ],
+    [
+     36.772954,
+     10.205112
+    ],
+    [
+     36.772868,
+     10.205163
+    ],
+    [
+     36.768257,
+     10.216232
+    ],
+    [
+     36.7686077,
+     10.2157355
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1543.03,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 358.1,
+   "length_ratio": 2.1902,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "stoa",
+   "to": "sofomeca",
+   "key": "sofomeca|stoa",
+   "straight_m": 619.39,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7658672,
+     10.2217893
+    ],
+    [
+     36.765037,
+     10.224206
+    ],
+    [
+     36.766658,
+     10.220194
+    ],
+    [
+     36.767003,
+     10.219416
+    ],
+    [
+     36.767172,
+     10.219266
+    ],
+    [
+     36.767359,
+     10.218531
+    ],
+    [
+     36.7686077,
+     10.2157355
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1090.56,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 234.23,
+   "length_ratio": 1.7607,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sofomeca",
+   "to": "cnss",
+   "key": "cnss|sofomeca",
+   "straight_m": 168.91,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 892 m implausible vs 169 m straight"
+  },
+  {
+   "from": "cnss",
+   "to": "siefcol",
+   "key": "cnss|siefcol",
+   "straight_m": 594.34,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.765065,
+     10.2233996
+    ],
+    [
+     36.764798,
+     10.22408
+    ],
+    [
+     36.76498,
+     10.224152
+    ],
+    [
+     36.764136,
+     10.226181
+    ],
+    [
+     36.763861,
+     10.226583
+    ],
+    [
+     36.763463,
+     10.227799
+    ],
+    [
+     36.763305,
+     10.227892
+    ],
+    [
+     36.7625689,
+     10.2292994
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 625.62,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 25.5,
+   "length_ratio": 1.0526,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "siefcol",
+   "to": "centre_de_formation_snt",
+   "key": "centre_de_formation_snt|siefcol",
+   "straight_m": 244.39,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 1130 m implausible vs 244 m straight"
+  },
+  {
+   "from": "centre_de_formation_snt",
+   "to": "soci_t_nour",
+   "key": "centre_de_formation_snt|soci_t_nour",
+   "straight_m": 201.28,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.761611,
+     10.2317686
+    ],
+    [
+     36.761153,
+     10.232334
+    ],
+    [
+     36.76103,
+     10.232655
+    ],
+    [
+     36.761213,
+     10.232661
+    ],
+    [
+     36.761224,
+     10.232876
+    ],
+    [
+     36.7608128,
+     10.2337966
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 236.77,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 23.5,
+   "length_ratio": 1.1763,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "soci_t_nour",
+   "to": "lustreries",
+   "key": "lustreries|soci_t_nour",
+   "straight_m": 929.81,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7570187,
+     10.2430977
+    ],
+    [
+     36.756606,
+     10.2443
+    ],
+    [
+     36.757764,
+     10.241819
+    ],
+    [
+     36.757963,
+     10.241044
+    ],
+    [
+     36.761027,
+     10.233706
+    ],
+    [
+     36.761518,
+     10.23279
+    ],
+    [
+     36.761488,
+     10.232627
+    ],
+    [
+     36.761119,
+     10.232429
+    ],
+    [
+     36.76103,
+     10.232655
+    ],
+    [
+     36.761213,
+     10.232661
+    ],
+    [
+     36.761224,
+     10.232876
+    ],
+    [
+     36.7608128,
+     10.2337966
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1495.6,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 128.43,
+   "length_ratio": 1.6085,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "lustreries",
+   "to": "gouvernorat_de_ben_arous",
+   "key": "gouvernorat_de_ben_arous|lustreries",
+   "straight_m": 535.16,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7544571,
+     10.2481832
+    ],
+    [
+     36.754664,
+     10.247673
+    ],
+    [
+     36.754597,
+     10.247072
+    ],
+    [
+     36.755158,
+     10.246882
+    ],
+    [
+     36.755533,
+     10.24709
+    ],
+    [
+     36.755735,
+     10.246973
+    ],
+    [
+     36.755788,
+     10.246359
+    ],
+    [
+     36.757779,
+     10.241777
+    ],
+    [
+     36.757721,
+     10.241621
+    ],
+    [
+     36.757579,
+     10.24167
+    ],
+    [
+     36.75747,
+     10.242169
+    ],
+    [
+     36.7570187,
+     10.2430977
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 933.96,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 152.99,
+   "length_ratio": 1.7452,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "gouvernorat_de_ben_arous",
+   "to": "cite_sprols",
+   "key": "cite_sprols|gouvernorat_de_ben_arous",
+   "straight_m": 201.98,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 938 m implausible vs 202 m straight"
+  },
+  {
+   "from": "cite_sprols",
+   "to": "medina_jadida_1",
+   "key": "cite_sprols|medina_jadida_1",
+   "straight_m": 484.93,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7530502,
+     10.2496172
+    ],
+    [
+     36.751372,
+     10.251301
+    ],
+    [
+     36.750958,
+     10.251565
+    ],
+    [
+     36.750933,
+     10.251859
+    ],
+    [
+     36.749955,
+     10.2534516
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 496.24,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 40.73,
+   "length_ratio": 1.0233,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "medina_jadida_1",
+   "to": "piscine_olympique_rades",
+   "key": "medina_jadida_1|piscine_olympique_rades",
+   "straight_m": 1066.01,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.749955,
+     10.2534516
+    ],
+    [
+     36.747658,
+     10.257535
+    ],
+    [
+     36.746863,
+     10.259137
+    ],
+    [
+     36.746627,
+     10.259351
+    ],
+    [
+     36.746576,
+     10.259894
+    ],
+    [
+     36.745704,
+     10.261828
+    ],
+    [
+     36.745415,
+     10.262004
+    ],
+    [
+     36.745151,
+     10.261884
+    ],
+    [
+     36.744732,
+     10.261117
+    ],
+    [
+     36.744682,
+     10.260754
+    ],
+    [
+     36.744943,
+     10.260345
+    ],
+    [
+     36.745227,
+     10.260313
+    ],
+    [
+     36.745397,
+     10.260426
+    ],
+    [
+     36.745757,
+     10.260843
+    ],
+    [
+     36.746433,
+     10.262103
+    ],
+    [
+     36.746452,
+     10.262644
+    ],
+    [
+     36.746083,
+     10.264584
+    ],
+    [
+     36.745691,
+     10.265228
+    ],
+    [
+     36.745729,
+     10.265624
+    ],
+    [
+     36.746227,
+     10.265749
+    ],
+    [
+     36.74697,
+     10.265155
+    ],
+    [
+     36.747911,
+     10.264978
+    ],
+    [
+     36.74873,
+     10.265045
+    ],
+    [
+     36.7493537,
+     10.2653928
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 2124.4,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 544.37,
+   "length_ratio": 1.9929,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "piscine_olympique_rades",
+   "to": "stade_athl_tisme_de_rad_s",
+   "key": "piscine_olympique_rades|stade_athl_tisme_de_rad_s",
+   "straight_m": 774.92,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7493537,
+     10.2653928
+    ],
+    [
+     36.750059,
+     10.266124
+    ],
+    [
+     36.75031,
+     10.26669
+    ],
+    [
+     36.750458,
+     10.267557
+    ],
+    [
+     36.750394,
+     10.268443
+    ],
+    [
+     36.750204,
+     10.269032
+    ],
+    [
+     36.749726,
+     10.269785
+    ],
+    [
+     36.749752,
+     10.270112
+    ],
+    [
+     36.749908,
+     10.270281
+    ],
+    [
+     36.750388,
+     10.270364
+    ],
+    [
+     36.751477,
+     10.271454
+    ],
+    [
+     36.751622,
+     10.271772
+    ],
+    [
+     36.751892,
+     10.271857
+    ],
+    [
+     36.7528691,
+     10.2729029
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 928.04,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 173.85,
+   "length_ratio": 1.1976,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "stade_athl_tisme_de_rad_s",
+   "to": "cite_olympique_rades",
+   "key": "cite_olympique_rades|stade_athl_tisme_de_rad_s",
+   "straight_m": 327.09,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 1489 m implausible vs 327 m straight"
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7970414,
+   10.1801307
+  ],
+  [
+   36.796959,
+   10.179666
+  ],
+  [
+   36.796245,
+   10.179685
+  ],
+  [
+   36.793638,
+   10.180093
+  ],
+  [
+   36.791469,
+   10.180642
+  ],
+  [
+   36.791083,
+   10.180544
+  ],
+  [
+   36.790182,
+   10.179976
+  ],
+  [
+   36.789869,
+   10.180366
+  ],
+  [
+   36.789304,
+   10.180734
+  ],
+  [
+   36.788999,
+   10.18116
+  ],
+  [
+   36.788639,
+   10.182079
+  ],
+  [
+   36.788856,
+   10.185368
+  ],
+  [
+   36.788775,
+   10.186106
+  ],
+  [
+   36.788433,
+   10.187181
+  ],
+  [
+   36.787648,
+   10.18841
+  ],
+  [
+   36.786389,
+   10.189873
+  ],
+  [
+   36.785848,
+   10.190303
+  ],
+  [
+   36.784491,
+   10.191064
+  ],
+  [
+   36.7839884,
+   10.1917495
+  ],
+  [
+   36.78152,
+   10.194889
+  ],
+  [
+   36.780722,
+   10.193564
+  ],
+  [
+   36.779771,
+   10.194605
+  ],
+  [
+   36.779708,
+   10.194807
+  ],
+  [
+   36.780475,
+   10.195881
+  ],
+  [
+   36.7806046,
+   10.1956231
+  ],
+  [
+   36.7796674,
+   10.1966209
+  ],
+  [
+   36.781458,
+   10.194801
+  ],
+  [
+   36.78152,
+   10.194889
+  ],
+  [
+   36.779083,
+   10.197536
+  ],
+  [
+   36.77438,
+   10.201926
+  ],
+  [
+   36.7732433,
+   10.2045236
+  ],
+  [
+   36.774301,
+   10.202084
+  ],
+  [
+   36.774253,
+   10.201915
+  ],
+  [
+   36.774127,
+   10.20198
+  ],
+  [
+   36.77394,
+   10.202665
+  ],
+  [
+   36.770244,
+   10.21154
+  ],
+  [
+   36.770297,
+   10.211615
+  ],
+  [
+   36.7715383,
+   10.208723
+  ],
+  [
+   36.772995,
+   10.205223
+  ],
+  [
+   36.772954,
+   10.205112
+  ],
+  [
+   36.772868,
+   10.205163
+  ],
+  [
+   36.768257,
+   10.216232
+  ],
+  [
+   36.7686077,
+   10.2157355
+  ],
+  [
+   36.767359,
+   10.218531
+  ],
+  [
+   36.767172,
+   10.219266
+  ],
+  [
+   36.767003,
+   10.219416
+  ],
+  [
+   36.766658,
+   10.220194
+  ],
+  [
+   36.765037,
+   10.224206
+  ],
+  [
+   36.7658672,
+   10.2217893
+  ],
+  [
+   36.765065,
+   10.2233996
+  ],
+  [
+   36.764798,
+   10.22408
+  ],
+  [
+   36.76498,
+   10.224152
+  ],
+  [
+   36.764136,
+   10.226181
+  ],
+  [
+   36.763861,
+   10.226583
+  ],
+  [
+   36.763463,
+   10.227799
+  ],
+  [
+   36.763305,
+   10.227892
+  ],
+  [
+   36.7625689,
+   10.2292994
+  ],
+  [
+   36.761611,
+   10.2317686
+  ],
+  [
+   36.761153,
+   10.232334
+  ],
+  [
+   36.76103,
+   10.232655
+  ],
+  [
+   36.761213,
+   10.232661
+  ],
+  [
+   36.761224,
+   10.232876
+  ],
+  [
+   36.7608128,
+   10.2337966
+  ],
+  [
+   36.761224,
+   10.232876
+  ],
+  [
+   36.761213,
+   10.232661
+  ],
+  [
+   36.76103,
+   10.232655
+  ],
+  [
+   36.761119,
+   10.232429
+  ],
+  [
+   36.761488,
+   10.232627
+  ],
+  [
+   36.761518,
+   10.23279
+  ],
+  [
+   36.761027,
+   10.233706
+  ],
+  [
+   36.757963,
+   10.241044
+  ],
+  [
+   36.757764,
+   10.241819
+  ],
+  [
+   36.756606,
+   10.2443
+  ],
+  [
+   36.7570187,
+   10.2430977
+  ],
+  [
+   36.75747,
+   10.242169
+  ],
+  [
+   36.757579,
+   10.24167
+  ],
+  [
+   36.757721,
+   10.241621
+  ],
+  [
+   36.757779,
+   10.241777
+  ],
+  [
+   36.755788,
+   10.246359
+  ],
+  [
+   36.755735,
+   10.246973
+  ],
+  [
+   36.755533,
+   10.24709
+  ],
+  [
+   36.755158,
+   10.246882
+  ],
+  [
+   36.754597,
+   10.247072
+  ],
+  [
+   36.754664,
+   10.247673
+  ],
+  [
+   36.7544571,
+   10.2481832
+  ],
+  [
+   36.7530502,
+   10.2496172
+  ],
+  [
+   36.751372,
+   10.251301
+  ],
+  [
+   36.750958,
+   10.251565
+  ],
+  [
+   36.750933,
+   10.251859
+  ],
+  [
+   36.749955,
+   10.2534516
+  ],
+  [
+   36.747658,
+   10.257535
+  ],
+  [
+   36.746863,
+   10.259137
+  ],
+  [
+   36.746627,
+   10.259351
+  ],
+  [
+   36.746576,
+   10.259894
+  ],
+  [
+   36.745704,
+   10.261828
+  ],
+  [
+   36.745415,
+   10.262004
+  ],
+  [
+   36.745151,
+   10.261884
+  ],
+  [
+   36.744732,
+   10.261117
+  ],
+  [
+   36.744682,
+   10.260754
+  ],
+  [
+   36.744943,
+   10.260345
+  ],
+  [
+   36.745227,
+   10.260313
+  ],
+  [
+   36.745397,
+   10.260426
+  ],
+  [
+   36.745757,
+   10.260843
+  ],
+  [
+   36.746433,
+   10.262103
+  ],
+  [
+   36.746452,
+   10.262644
+  ],
+  [
+   36.746083,
+   10.264584
+  ],
+  [
+   36.745691,
+   10.265228
+  ],
+  [
+   36.745729,
+   10.265624
+  ],
+  [
+   36.746227,
+   10.265749
+  ],
+  [
+   36.74697,
+   10.265155
+  ],
+  [
+   36.747911,
+   10.264978
+  ],
+  [
+   36.74873,
+   10.265045
+  ],
+  [
+   36.7493537,
+   10.2653928
+  ],
+  [
+   36.750059,
+   10.266124
+  ],
+  [
+   36.75031,
+   10.26669
+  ],
+  [
+   36.750458,
+   10.267557
+  ],
+  [
+   36.750394,
+   10.268443
+  ],
+  [
+   36.750204,
+   10.269032
+  ],
+  [
+   36.749726,
+   10.269785
+  ],
+  [
+   36.749752,
+   10.270112
+  ],
+  [
+   36.749908,
+   10.270281
+  ],
+  [
+   36.750388,
+   10.270364
+  ],
+  [
+   36.751477,
+   10.271454
+  ],
+  [
+   36.751622,
+   10.271772
+  ],
+  [
+   36.751892,
+   10.271857
+  ],
+  [
+   36.7528691,
+   10.2729029
+  ]
+ ],
+ "phase3a": {
+  "pairs": 18,
+  "resolved": 14,
+  "unresolved": 4
+ }
+}

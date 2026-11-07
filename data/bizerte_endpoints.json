@@ -1,0 +1,1949 @@
+{
+ "generated_by": "scripts/phase2_build_tables.py",
+ "network": "nominatim_attempted",
+ "note": "cached bizerteconnect_geocoded.json reused first; Nominatim 1.1s spacing",
+ "cached_places": {
+  "bc_el_alia": [
+   37.1689041,
+   10.0338705
+  ],
+  "bc_ras_el_jebel": [
+   37.268285,
+   10.0682718
+  ],
+  "bc_metline": [
+   37.2508153,
+   10.0526893
+  ],
+  "bc_rafraf": [
+   37.1922811,
+   10.1693513
+  ],
+  "bc_utique": [
+   37.0345742,
+   9.9599024
+  ],
+  "bc_el_garia": [
+   37.2188437,
+   10.0349806
+  ],
+  "bc_beni_toun": [
+   37.1905691,
+   9.7290395
+  ],
+  "bc_oumhani": [
+   37.1199793,
+   9.8398607
+  ],
+  "bc_sidi_yahia": [
+   36.7662882,
+   10.2731862
+  ]
+ },
+ "lines": [
+  {
+   "line_id": "bc_bus_23_ligne_ain_el_berda",
+   "name": "BizerteConnect 23: Bizerte - Ain El Berda",
+   "origin": "Bizerte",
+   "destination": "Ain El Berda",
+   "origin_ar": "بنزرت",
+   "destination_ar": "عين الباردة",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "origin_source": "nominatim",
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_5_ligne_ain_meriem",
+   "name": "BizerteConnect 5: Bizerte - Ain Meriem",
+   "origin": "Bizerte",
+   "destination": "Ain Meriem",
+   "origin_ar": "بنزرت",
+   "destination_ar": "عين مريم",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.2952743,
+    9.8726101
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_7_4_ligne_amila",
+   "name": "BizerteConnect 7/4: Bizerte - Amila",
+   "origin": "Bizerte",
+   "destination": "Amila",
+   "origin_ar": "بنزرت",
+   "destination_ar": "عميلة",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_bazina_el_garia_ré",
+   "name": "BizerteConnect : Bazina - El Garia",
+   "origin": "Bazina",
+   "destination": "El Garia",
+   "origin_ar": "بازينة",
+   "destination_ar": "القرية",
+   "origin_coords": [
+    36.9589431,
+    9.3005179
+   ],
+   "origin_source": "nominatim",
+   "destination_coords": [
+    37.2188437,
+    10.0349806
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_bazina_el_khetrach",
+   "name": "BizerteConnect : Bazina - El Khetracha",
+   "origin": "Bazina",
+   "destination": "El Khetracha",
+   "origin_ar": "بازينة",
+   "destination_ar": "الخترشة",
+   "origin_coords": [
+    36.9589431,
+    9.3005179
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_bazina_ettouajnia_",
+   "name": "BizerteConnect : Bazina - Ettouajnia",
+   "origin": "Bazina",
+   "destination": "Ettouajnia",
+   "origin_ar": "بازينة",
+   "destination_ar": "الطواجنية",
+   "origin_coords": [
+    36.9589431,
+    9.3005179
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_bazina_joumine_tun",
+   "name": "BizerteConnect : Bazina - Tunis",
+   "origin": "Bazina",
+   "destination": "Tunis",
+   "origin_ar": "بازينة",
+   "destination_ar": "تونس",
+   "origin_coords": [
+    36.9589431,
+    9.3005179
+   ],
+   "destination_coords": [
+    36.8002068,
+    10.1857757
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_bazina_joumine_pla",
+   "name": "BizerteConnect : Bazina - Plage Sidi Gharib Sejnane",
+   "origin": "Bazina",
+   "destination": "Plage Sidi Gharib Sejnane",
+   "origin_ar": "بازينة",
+   "destination_ar": "شاطئ سيدي غريب سجنان",
+   "origin_coords": [
+    36.9589431,
+    9.3005179
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_6_ligne_bechater",
+   "name": "BizerteConnect 6: Bizerte - Bechater",
+   "origin": "Bizerte",
+   "destination": "Bechater",
+   "origin_ar": "بنزرت",
+   "destination_ar": "بشاطر",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    36.8423274,
+    10.306473
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_bizerte_aéroport_t",
+   "name": "BizerteConnect : Bizerte - Aéroport Tunis-Carthage",
+   "origin": "Bizerte",
+   "destination": "Aéroport Tunis-Carthage",
+   "origin_ar": "بنزرت",
+   "destination_ar": "مطار تونس قرطاج",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    36.8476666,
+    10.2172345
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_bizerte_bab_saâdou",
+   "name": "BizerteConnect : Bizerte - Bab Saadoun",
+   "origin": "Bizerte",
+   "destination": "Bab Saadoun",
+   "origin_ar": "بنزرت",
+   "destination_ar": "باب سعدون",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    36.8085956,
+    10.1590082
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_ب_4_ligne_bizerte_louata_via",
+   "name": "BizerteConnect ب 4: Bizerte - Louata",
+   "origin": "Bizerte",
+   "destination": "Louata",
+   "origin_ar": "بنزرت",
+   "destination_ar": "لواتة",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.2145479,
+    9.7195588
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_8_ligne_bizerte_menzel_jem",
+   "name": "BizerteConnect 8: Bizerte - Menzel Jemil",
+   "origin": "Bizerte",
+   "destination": "Menzel Jemil",
+   "origin_ar": "بنزرت",
+   "destination_ar": "منزل جميل",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.239323,
+    9.9129702
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_bizerte_sejnane",
+   "name": "BizerteConnect : Bizerte - Sejnane",
+   "origin": "Bizerte",
+   "destination": "Sejnane",
+   "origin_ar": "بنزرت",
+   "destination_ar": "سجنان",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.1368875,
+    9.2440025
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_bizerte_sousse_mon",
+   "name": "BizerteConnect : Bizerte - Monastir",
+   "origin": "Bizerte",
+   "destination": "Monastir",
+   "origin_ar": "بنزرت",
+   "destination_ar": "المنستير",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    35.7707582,
+    10.8280511
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_bizerte_tunis",
+   "name": "BizerteConnect : Bizerte - Tunis",
+   "origin": "Bizerte",
+   "destination": "Tunis",
+   "origin_ar": "بنزرت",
+   "destination_ar": "تونس",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    36.8002068,
+    10.1857757
+   ]
+  },
+  {
+   "line_id": "bc_bus_515_ligne_bizerte_el_kantara",
+   "name": "BizerteConnect 515: Bizerte - El Kantara",
+   "origin": "Bizerte",
+   "destination": "El Kantara",
+   "origin_ar": "بنزرت",
+   "destination_ar": "باش حامبة",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    33.6801927,
+    10.9156056
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_bizerte_joumine_se",
+   "name": "BizerteConnect : Bizerte - Joumine",
+   "origin": "Bizerte",
+   "destination": "Joumine",
+   "origin_ar": "بنزرت",
+   "destination_ar": "جومين",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    36.8783116,
+    9.4474129
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_9_ligne_bizerte_menzel_abd",
+   "name": "BizerteConnect 9: Bizerte - Menzel Abderrahmane",
+   "origin": "Bizerte",
+   "destination": "Menzel Abderrahmane",
+   "origin_ar": "بنزرت",
+   "destination_ar": "منزل عبد الرحمان",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.2361332,
+    9.8631083
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_12_ligne_bouzaria_réservée_",
+   "name": "BizerteConnect 12: Bizerte - Bouzaria",
+   "origin": "Bizerte",
+   "destination": "Bouzaria",
+   "origin_ar": "بنزرت",
+   "destination_ar": "بوزارية",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.2776487,
+    9.7480075
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_29_ligne_béni_aouf",
+   "name": "BizerteConnect 29: Bizerte - Béni Aouf",
+   "origin": "Bizerte",
+   "destination": "Béni Aouf",
+   "origin_ar": "بنزرت",
+   "destination_ar": "بني عوف",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.314624,
+    9.7845
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_6_29_ligne_béni_aouf_bechater",
+   "name": "BizerteConnect 6-29: Bizerte - Béni Aouf + Bechater",
+   "origin": "Bizerte",
+   "destination": "Béni Aouf + Bechater",
+   "origin_ar": "بنزرت",
+   "destination_ar": "بني عوف + بشاطر",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_11_ligne_béni_moslem_ksar_k",
+   "name": "BizerteConnect 11: Bizerte - Ksar Khrouf",
+   "origin": "Bizerte",
+   "destination": "Ksar Khrouf",
+   "origin_ar": "بنزرت",
+   "destination_ar": "قصر خروف",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_béni_nafaa",
+   "name": "BizerteConnect : Bizerte - Béni Nafaa",
+   "origin": "Bizerte",
+   "destination": "Béni Nafaa",
+   "origin_ar": "بنزرت",
+   "destination_ar": "بني نافع",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_21_ligne_corniche_enadhour",
+   "name": "BizerteConnect 21: Bizerte - Corniche - Enadhour",
+   "origin": "Bizerte",
+   "destination": "Corniche - Enadhour",
+   "origin_ar": "بنزرت",
+   "destination_ar": "الكرنيش - الناظور",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_21_ligne_corniche_la_nouvel",
+   "name": "BizerteConnect 21: Bizerte - Corniche - La Nouvelle Route",
+   "origin": "Bizerte",
+   "destination": "Corniche - La Nouvelle Route",
+   "origin_ar": "بنزرت",
+   "destination_ar": "الكورنيش - الطريق الجديد",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_1_ligne_corniche_la_nouvel",
+   "name": "BizerteConnect 1: Bizerte - Corniche - La Nouvelle Route",
+   "origin": "Bizerte",
+   "destination": "Corniche - La Nouvelle Route",
+   "origin_ar": "بنزرت",
+   "destination_ar": "الكرنيش - الطريق الجديد",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null
+  },
+  {
+   "line_id": "bc_bus_x_ligne_el_alia_tunis",
+   "name": "BizerteConnect : El Alia - Tunis",
+   "origin": "El Alia",
+   "destination": "Tunis",
+   "origin_ar": "العالية",
+   "destination_ar": "تونس",
+   "origin_coords": [
+    37.1689041,
+    10.0338705
+   ],
+   "origin_source": "nominatim",
+   "destination_coords": [
+    36.8002068,
+    10.1857757
+   ]
+  },
+  {
+   "line_id": "bc_bus_34_ligne_el_alia_via_hariza",
+   "name": "BizerteConnect 34: Bizerte - El Alia",
+   "origin": "Bizerte",
+   "destination": "El Alia",
+   "origin_ar": "بنزرت",
+   "destination_ar": "العالية",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.1689041,
+    10.0338705
+   ]
+  },
+  {
+   "line_id": "bc_bus_33_ligne_el_azib_el_alia_ly",
+   "name": "BizerteConnect 33: Bizerte - El Azib - El Alia - Lycée Menzel Jemil - Lycée El Canal",
+   "origin": "Bizerte",
+   "destination": "El Azib - El Alia - Lycée Menzel Jemil - Lycée El Canal",
+   "origin_ar": "بنزرت",
+   "destination_ar": "العزيب - العالية - معهد منزل جميل - معهد القنال",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_16_ligne_el_ghirane",
+   "name": "BizerteConnect 16: Bizerte - El Ghirane",
+   "origin": "Bizerte",
+   "destination": "El Ghirane",
+   "origin_ar": "بنزرت",
+   "destination_ar": "الغيران",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_16_ب_ligne_el_ghirane_oued_el",
+   "name": "BizerteConnect 16 ب: Bizerte - El Ghirane",
+   "origin": "Bizerte",
+   "destination": "El Ghirane",
+   "origin_ar": "بنزرت",
+   "destination_ar": "الغيران",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null
+  },
+  {
+   "line_id": "bc_bus_x_ligne_el_mabtouh_sidi_ot",
+   "name": "BizerteConnect : El Mabtouh - Plage Sidi Salem Bizerte",
+   "origin": "El Mabtouh",
+   "destination": "Plage Sidi Salem Bizerte",
+   "origin_ar": "المبطوح",
+   "destination_ar": "شاطئ سيدي سالم بنزرت",
+   "origin_coords": [
+    36.9792014,
+    9.9384087
+   ],
+   "origin_source": "nominatim",
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_3_ligne_el_mssida",
+   "name": "BizerteConnect 3: Bizerte - El Mssida",
+   "origin": "Bizerte",
+   "destination": "El Mssida",
+   "origin_ar": "بنزرت",
+   "destination_ar": "المصيدة",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_24_ligne_el_tella_réservée_",
+   "name": "BizerteConnect 24: Bizerte - El Tella",
+   "origin": "Bizerte",
+   "destination": "El Tella",
+   "origin_ar": "بنزرت",
+   "destination_ar": "التلة",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_2_ligne_enadhour",
+   "name": "BizerteConnect 2: Bizerte - Enadhour",
+   "origin": "Bizerte",
+   "destination": "Enadhour",
+   "origin_ar": "بنزرت",
+   "destination_ar": "الناظور",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    36.1213825,
+    10.0910199
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_ghar_el_melh_bizer",
+   "name": "BizerteConnect : Ghar El Melh - Bizerte",
+   "origin": "Ghar El Melh",
+   "destination": "Bizerte",
+   "origin_ar": "غار الملح",
+   "destination_ar": "بنزرت",
+   "origin_coords": [
+    37.1454311,
+    10.0938723
+   ],
+   "origin_source": "nominatim",
+   "destination_coords": [
+    37.2720905,
+    9.8708565
+   ]
+  },
+  {
+   "line_id": "bc_bus_x_ligne_ghar_el_melh_tunis",
+   "name": "BizerteConnect : Ghar El Melh - Tunis",
+   "origin": "Ghar El Melh",
+   "destination": "Tunis",
+   "origin_ar": "غار الملح",
+   "destination_ar": "تونس",
+   "origin_coords": [
+    37.1454311,
+    10.0938723
+   ],
+   "destination_coords": [
+    36.8002068,
+    10.1857757
+   ]
+  },
+  {
+   "line_id": "bc_bus_15_ligne_hay_bougatfa",
+   "name": "BizerteConnect 15: Bizerte - Hay Bougatfa",
+   "origin": "Bizerte",
+   "destination": "Hay Bougatfa",
+   "origin_ar": "بنزرت",
+   "destination_ar": "حي بوقطفة",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_15أ_ligne_hay_bougatfa",
+   "name": "BizerteConnect 15أ: Bizerte - Hay Bougatfa",
+   "origin": "Bizerte",
+   "destination": "Hay Bougatfa",
+   "origin_ar": "بنزرت",
+   "destination_ar": "حي بوقطفة",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null
+  },
+  {
+   "line_id": "bc_bus_x_ligne_hay_el_ommal_chatt",
+   "name": "BizerteConnect : Hay El Ommal - Chatt El Kebir (Jarzouna)",
+   "origin": "Hay El Ommal",
+   "destination": "Chatt El Kebir (Jarzouna)",
+   "origin_ar": "حي العمال",
+   "destination_ar": "الشاطئ الكبير بجرزونة",
+   "origin_coords": null,
+   "origin_source": "nominatim_no_hit",
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_10_ligne_hay_el_oummal",
+   "name": "BizerteConnect 10: Bizerte - Hay El Oummal",
+   "origin": "Bizerte",
+   "destination": "Hay El Oummal",
+   "origin_ar": "بنزرت",
+   "destination_ar": "حي العمال",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_2000_ligne_hay_el_waha",
+   "name": "BizerteConnect 2000: Bizerte - Hay El Waha",
+   "origin": "Bizerte",
+   "destination": "Hay El Waha",
+   "origin_ar": "بنزرت",
+   "destination_ar": "حي الواحة",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_20_ligne_institut_boukhris_",
+   "name": "BizerteConnect 20: Bizerte - Collége Boukhris",
+   "origin": "Bizerte",
+   "destination": "Collége Boukhris",
+   "origin_ar": "بنزرت",
+   "destination_ar": "معهد بوخريص",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.303681,
+    9.8578692
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_joumine_rouaha_rés",
+   "name": "BizerteConnect : Joumine - Rouaha",
+   "origin": "Joumine",
+   "destination": "Rouaha",
+   "origin_ar": "جومين",
+   "destination_ar": "رواحة",
+   "origin_coords": [
+    36.8783116,
+    9.4474129
+   ],
+   "destination_coords": [
+    36.9077076,
+    9.3000342
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_joumine_sidi_el_be",
+   "name": "BizerteConnect : Joumine - Sidi El Bechir",
+   "origin": "Joumine",
+   "destination": "Sidi El Bechir",
+   "origin_ar": "جومين",
+   "destination_ar": "سيدي البشير",
+   "origin_coords": [
+    36.8783116,
+    9.4474129
+   ],
+   "destination_coords": [
+    36.7847055,
+    10.1800669
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_joumine_tahent_rés",
+   "name": "BizerteConnect : Joumine - Tahent",
+   "origin": "Joumine",
+   "destination": "Tahent",
+   "origin_ar": "جومين",
+   "destination_ar": "تاهنت",
+   "origin_coords": [
+    36.8783116,
+    9.4474129
+   ],
+   "destination_coords": [
+    36.8983867,
+    9.4999981
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_4_ligne_louata",
+   "name": "BizerteConnect 4: Bizerte - Louata",
+   "origin": "Bizerte",
+   "destination": "Louata",
+   "origin_ar": "بنزرت",
+   "destination_ar": "لواتة",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.2145479,
+    9.7195588
+   ]
+  },
+  {
+   "line_id": "bc_bus_31_19_ligne_lycée_menzel_jemil",
+   "name": "BizerteConnect 31-19: Bizerte - El Alia",
+   "origin": "Bizerte",
+   "destination": "El Alia",
+   "origin_ar": "بنزرت",
+   "destination_ar": "العالية",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.1689041,
+    10.0338705
+   ]
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_bizerte",
+   "name": "BizerteConnect : Bizerte - Mateur",
+   "origin": "Bizerte",
+   "destination": "Mateur",
+   "origin_ar": "بنزرت",
+   "destination_ar": "ماطر",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_boujrir_rés",
+   "name": "BizerteConnect : Mateur - Boujrir",
+   "origin": "Mateur",
+   "destination": "Boujrir",
+   "origin_ar": "ماطر",
+   "destination_ar": "بوجرير",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": [
+    37.0641761,
+    9.3812459
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_boumkhila_r",
+   "name": "BizerteConnect : Mateur - Boumkhila",
+   "origin": "Mateur",
+   "destination": "Boumkhila",
+   "origin_ar": "ماطر",
+   "destination_ar": "بومخيلة",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": [
+    37.0038891,
+    9.5661434
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_béni_ibrahi",
+   "name": "BizerteConnect : Mateur - Beni Ibrahim",
+   "origin": "Mateur",
+   "destination": "Beni Ibrahim",
+   "origin_ar": "ماطر",
+   "destination_ar": "بني ابراهيم",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_ed_dkhila_r",
+   "name": "BizerteConnect : Mateur - Ed Dkhila",
+   "origin": "Mateur",
+   "destination": "Ed Dkhila",
+   "origin_ar": "ماطر",
+   "destination_ar": "الدخيلة",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": [
+    35.5190092,
+    10.9744519
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_eddouaouda_",
+   "name": "BizerteConnect : Mateur - Eddouaouda",
+   "origin": "Mateur",
+   "destination": "Eddouaouda",
+   "origin_ar": "ماطر",
+   "destination_ar": "الذواودة",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_el_baspasia",
+   "name": "BizerteConnect : Mateur - El Baspasia",
+   "origin": "Mateur",
+   "destination": "El Baspasia",
+   "origin_ar": "ماطر",
+   "destination_ar": "البسباسية",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_el_hamrouni",
+   "name": "BizerteConnect : Mateur - El Hamrounia",
+   "origin": "Mateur",
+   "destination": "El Hamrounia",
+   "origin_ar": "ماطر",
+   "destination_ar": "الحمرونية",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_el_kahla_ré",
+   "name": "BizerteConnect : Mateur - El Kahla",
+   "origin": "Mateur",
+   "destination": "El Kahla",
+   "origin_ar": "ماطر",
+   "destination_ar": "الكحلة",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": [
+    34.7741023,
+    10.690362
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_es_saoudia_",
+   "name": "BizerteConnect : Mateur - Es Saoudia",
+   "origin": "Mateur",
+   "destination": "Es Saoudia",
+   "origin_ar": "ماطر",
+   "destination_ar": "السودية",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_menzel_bour",
+   "name": "BizerteConnect : Mateur - Menzel Bourguiba 1",
+   "origin": "Mateur",
+   "destination": "Menzel Bourguiba 1",
+   "origin_ar": "ماطر",
+   "destination_ar": "منزل بورقيبة 1",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": [
+    37.1549869,
+    9.79259
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "csv_id": "bizerteconnect_line_f965e2d2-14a6-4e25-a01a-d2c58b7e7436",
+   "name": "Ligne Mateur - Menzel Bourguiba 2",
+   "status": "no_seed_line_match"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_michou_rése",
+   "name": "BizerteConnect : Mateur - Michou",
+   "origin": "Mateur",
+   "destination": "Michou",
+   "origin_ar": "ماطر",
+   "destination_ar": "ميشو",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_sidi_abdelb",
+   "name": "BizerteConnect : Mateur - Sidi Abdelbasset",
+   "origin": "Mateur",
+   "destination": "Sidi Abdelbasset",
+   "origin_ar": "ماطر",
+   "destination_ar": "سيدي عبد الباسط",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": [
+    36.0478296,
+    8.5340697
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_sidi_mansou",
+   "name": "BizerteConnect : Mateur - Sidi Mansour",
+   "origin": "Mateur",
+   "destination": "Sidi Mansour",
+   "origin_ar": "ماطر",
+   "destination_ar": "سيدي منصور",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": [
+    36.790095,
+    10.1749139
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mateur_tunis",
+   "name": "BizerteConnect : Mateur - Tunis",
+   "origin": "Mateur",
+   "destination": "Tunis",
+   "origin_ar": "ماطر",
+   "destination_ar": "تونس",
+   "origin_coords": [
+    37.0385985,
+    9.6676974
+   ],
+   "destination_coords": [
+    36.8002068,
+    10.1857757
+   ]
+  },
+  {
+   "line_id": "bc_bus_9_ligne_menzel_abderrahman",
+   "name": "BizerteConnect 9: Bizerte - Menzel Abderrahmane",
+   "origin": "Bizerte",
+   "destination": "Menzel Abderrahmane",
+   "origin_ar": "بنزرت",
+   "destination_ar": "منزل عبد الرحمان",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.2361332,
+    9.8631083
+   ]
+  },
+  {
+   "line_id": "bc_bus_9ب_ligne_menzel_abderrahman",
+   "name": "BizerteConnect 9ب: Bizerte - Menzel Abderrahmane",
+   "origin": "Bizerte",
+   "destination": "Menzel Abderrahmane",
+   "origin_ar": "بنزرت",
+   "destination_ar": "منزل عبد الرحمان",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.2361332,
+    9.8631083
+   ]
+  },
+  {
+   "line_id": "bc_bus_8_9_ligne_menzel_abderrahman",
+   "name": "BizerteConnect 8/9: Bizerte - Menzel Abderrahmane - Menzel Jemil",
+   "origin": "Bizerte",
+   "destination": "Menzel Abderrahmane - Menzel Jemil",
+   "origin_ar": "بنزرت",
+   "destination_ar": "منزل عبد الرحمان - منزل جميل",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.2361332,
+    9.8631083
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_44_ligne_menzel_bourguiba",
+   "name": "BizerteConnect 44: Bizerte - Menzel Bourguiba",
+   "origin": "Bizerte",
+   "destination": "Menzel Bourguiba",
+   "origin_ar": "بنزرت",
+   "destination_ar": "منزل بورقيبة",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.1549869,
+    9.79259
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_53_ligne_menzel_bourguiba",
+   "name": "BizerteConnect 53: Bizerte - Menzel Bourguiba",
+   "origin": "Bizerte",
+   "destination": "Menzel Bourguiba",
+   "origin_ar": "بنزرت",
+   "destination_ar": "منزل بورقيبة",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.1549869,
+    9.79259
+   ]
+  },
+  {
+   "line_id": "bc_bus_x_ligne_menzel_bourguiba_a",
+   "name": "BizerteConnect : Menzel Bourguiba - Aéroport Tunis-Carthage",
+   "origin": "Menzel Bourguiba",
+   "destination": "Aéroport Tunis-Carthage",
+   "origin_ar": "منزل بورقيبة",
+   "destination_ar": "مطار تونس قرطاج",
+   "origin_coords": [
+    37.1549869,
+    9.79259
+   ],
+   "destination_coords": [
+    36.8476666,
+    10.2172345
+   ]
+  },
+  {
+   "line_id": "bc_bus_x_ligne_menzel_bourguiba_b",
+   "name": "BizerteConnect : Menzel Bourguiba - Bizerte",
+   "origin": "Menzel Bourguiba",
+   "destination": "Bizerte",
+   "origin_ar": "منزل بورقيبة",
+   "destination_ar": "بنزرت",
+   "origin_coords": [
+    37.1549869,
+    9.79259
+   ],
+   "destination_coords": [
+    37.2720905,
+    9.8708565
+   ]
+  },
+  {
+   "csv_id": "bizerteconnect_line_ea95a9a6-5cc8-4876-8dc3-a9ae4f115b18",
+   "name": "Ligne Menzel Bourguiba - Béni Toun",
+   "status": "no_seed_line_match"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_menzel_bourguiba_e",
+   "name": "BizerteConnect : Menzel Bourguiba - Echellaghmia",
+   "origin": "Menzel Bourguiba",
+   "destination": "Echellaghmia",
+   "origin_ar": "منزل بورقيبة",
+   "destination_ar": "الشلاغمية",
+   "origin_coords": [
+    37.1549869,
+    9.79259
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "csv_id": "bizerteconnect_line_560afabe-799e-4797-ae26-b5e45fb87414",
+   "name": "Ligne Menzel Bourguiba - El Baspasia",
+   "status": "no_seed_line_match"
+  },
+  {
+   "csv_id": "bizerteconnect_line_5f7400ae-5603-42b7-b4d4-4c0ae8db2d8a",
+   "name": "Ligne Menzel Bourguiba - El Blat",
+   "status": "no_seed_line_match"
+  },
+  {
+   "csv_id": "bizerteconnect_line_0a0f6cff-64c8-45b5-8530-eed36115dc23",
+   "name": "Ligne Menzel Bourguiba - Ezzaghrour",
+   "status": "no_seed_line_match"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_menzel_bourguiba_g",
+   "name": "BizerteConnect : Menzel Bourguiba - Gannkla",
+   "origin": "Menzel Bourguiba",
+   "destination": "Gannkla",
+   "origin_ar": "منزل بورقيبة",
+   "destination_ar": "قنقلة",
+   "origin_coords": [
+    37.1549869,
+    9.79259
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_menzel_bourguiba_o",
+   "name": "BizerteConnect : Menzel Bourguiba - Oum Hani",
+   "origin": "Menzel Bourguiba",
+   "destination": "Oum Hani",
+   "origin_ar": "منزل بورقيبة",
+   "destination_ar": "أم هاني",
+   "origin_coords": [
+    37.1549869,
+    9.79259
+   ],
+   "destination_coords": [
+    37.1199793,
+    9.8398607
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "csv_id": "bizerteconnect_line_99a4b559-616f-4a0b-83de-4990971d9368",
+   "name": "Ligne Menzel Bourguiba - Oum Hani",
+   "status": "no_seed_line_match"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_menzel_bourguiba_s",
+   "name": "BizerteConnect : Menzel Bourguiba - Sidi Yahia",
+   "origin": "Menzel Bourguiba",
+   "destination": "Sidi Yahia",
+   "origin_ar": "منزل بورقيبة",
+   "destination_ar": "سيدي يحي",
+   "origin_coords": [
+    37.1549869,
+    9.79259
+   ],
+   "destination_coords": [
+    36.7662882,
+    10.2731862
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_menzel_bourguiba_t",
+   "name": "BizerteConnect : Menzel Bourguiba - Tinja",
+   "origin": "Menzel Bourguiba",
+   "destination": "Tinja",
+   "origin_ar": "منزل بورقيبة",
+   "destination_ar": "تينجة",
+   "origin_coords": [
+    37.1549869,
+    9.79259
+   ],
+   "destination_coords": [
+    37.1289798,
+    9.6631862
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "csv_id": "bizerteconnect_line_81ec420a-176c-4429-be11-91ff06e4e991",
+   "name": "Ligne Menzel Bourguiba - Tunis (confort)",
+   "status": "no_seed_line_match"
+  },
+  {
+   "csv_id": "bizerteconnect_line_4712b38e-8a03-43e8-9bb3-3987609c112d",
+   "name": "Ligne Menzel Bourguiba - Tunis (standard/non confort)",
+   "status": "no_seed_line_match"
+  },
+  {
+   "csv_id": "bizerteconnect_line_cba198d1-c3ea-48b0-8a38-d83e3955fa80",
+   "name": "Ligne Menzel Bourguiba - Tunis via Charguia",
+   "status": "no_seed_line_match"
+  },
+  {
+   "csv_id": "bizerteconnect_line_b1a79340-e979-4b62-a851-e087d0308e5b",
+   "name": "Ligne Menzel Bourguiba – Tinja – Plage Sidi Salem Bizerte",
+   "status": "no_seed_line_match"
+  },
+  {
+   "line_id": "bc_bus_8_ligne_menzel_jemil",
+   "name": "BizerteConnect 8: Bizerte - Menzel Jemil",
+   "origin": "Bizerte",
+   "destination": "Menzel Jemil",
+   "origin_ar": "بنزرت",
+   "destination_ar": "منزل جميل",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.239323,
+    9.9129702
+   ]
+  },
+  {
+   "line_id": "bc_bus_8أ_ligne_menzel_jemil",
+   "name": "BizerteConnect 8أ: Bizerte - Menzel Jemil",
+   "origin": "Bizerte",
+   "destination": "Menzel Jemil",
+   "origin_ar": "بنزرت",
+   "destination_ar": "منزل جميل",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.239323,
+    9.9129702
+   ]
+  },
+  {
+   "csv_id": "bizerteconnect_line_307dd98d-3445-4251-809a-68615bfe4dc4",
+   "name": "Ligne Menzel Jemil",
+   "status": "no_seed_line_match"
+  },
+  {
+   "line_id": "bc_bus_32_ligne_menzel_jemil_collè",
+   "name": "BizerteConnect 32: Bizerte - Menzel Jemil - Collège de Menzel Jemil",
+   "origin": "Bizerte",
+   "destination": "Menzel Jemil - Collège de Menzel Jemil",
+   "origin_ar": "بنزرت",
+   "destination_ar": "منزل جميل - المدرسة الاعدادية بمنزل جميل",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_mâteleine_tunis",
+   "name": "BizerteConnect : Mâteleine - Tunis",
+   "origin": "Mâteleine",
+   "destination": "Tunis",
+   "origin_ar": "الماتلين",
+   "destination_ar": "تونس",
+   "origin_coords": null,
+   "origin_source": "nominatim_no_hit",
+   "destination_coords": [
+    36.8002068,
+    10.1857757
+   ]
+  },
+  {
+   "line_id": "bc_bus_x_ligne_rafraf_tunis",
+   "name": "BizerteConnect : Rafraf - Tunis",
+   "origin": "Rafraf",
+   "destination": "Tunis",
+   "origin_ar": "رفراف",
+   "destination_ar": "تونس",
+   "origin_coords": [
+    37.1922811,
+    10.1693513
+   ],
+   "origin_source": "nominatim",
+   "destination_coords": [
+    36.8002068,
+    10.1857757
+   ]
+  },
+  {
+   "line_id": "bc_bus_x_ligne_ras_el_jebel_bizer",
+   "name": "BizerteConnect : Ras El Jebel - Bizerte",
+   "origin": "Ras El Jebel",
+   "destination": "Bizerte",
+   "origin_ar": "رأس الجبل",
+   "destination_ar": "بنزرت",
+   "origin_coords": [
+    37.268285,
+    10.0682718
+   ],
+   "origin_source": "nominatim",
+   "destination_coords": [
+    37.2720905,
+    9.8708565
+   ]
+  },
+  {
+   "line_id": "bc_bus_x_ligne_ras_el_jebel_el_ga",
+   "name": "BizerteConnect : Ras El Jebel - El Metline",
+   "origin": "Ras El Jebel",
+   "destination": "El Metline",
+   "origin_ar": "رأس الجبل",
+   "destination_ar": "الماتلين",
+   "origin_coords": [
+    37.268285,
+    10.0682718
+   ],
+   "destination_coords": [
+    37.2508153,
+    10.0526893
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_ras_el_jebel_el_ha",
+   "name": "BizerteConnect : Ras El Jebel - El Hammari",
+   "origin": "Ras El Jebel",
+   "destination": "El Hammari",
+   "origin_ar": "رأس الجبل",
+   "destination_ar": "الحماري",
+   "origin_coords": [
+    37.268285,
+    10.0682718
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_ras_el_jebel_sidi_",
+   "name": "BizerteConnect : Ras El Jebel - Sidi Bouchoucha",
+   "origin": "Ras El Jebel",
+   "destination": "Sidi Bouchoucha",
+   "origin_ar": "رأس الجبل",
+   "destination_ar": "سيدي بوشوشة",
+   "origin_coords": [
+    37.268285,
+    10.0682718
+   ],
+   "destination_coords": [
+    36.8271885,
+    10.0787278
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_ras_el_jebel_souni",
+   "name": "BizerteConnect : Ras El Jebel - Rafraf",
+   "origin": "Ras El Jebel",
+   "destination": "Rafraf",
+   "origin_ar": "رأس الجبل",
+   "destination_ar": "رفراف",
+   "origin_coords": [
+    37.268285,
+    10.0682718
+   ],
+   "destination_coords": [
+    37.1922811,
+    10.1693513
+   ]
+  },
+  {
+   "csv_id": "bizerteconnect_line_48717f74-fee7-417e-8616-45b76bd97442",
+   "name": "Ligne Ras El Jebel - Sounine - Rafraf (réservée aux élèves 2)",
+   "status": "no_seed_line_match"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_ras_el_jebel_tunis",
+   "name": "BizerteConnect : Ras El Jebel - Tunis",
+   "origin": "Ras El Jebel",
+   "destination": "Tunis",
+   "origin_ar": "رأس الجبل",
+   "destination_ar": "تونس",
+   "origin_coords": [
+    37.268285,
+    10.0682718
+   ],
+   "destination_coords": [
+    36.8002068,
+    10.1857757
+   ]
+  },
+  {
+   "csv_id": "bizerteconnect_line_0ace5a8c-ccfa-49ab-a358-afcf756c0b60",
+   "name": "Ligne Ras El Jebel - Tunis - Ras El Jebel (via Gornata)",
+   "status": "no_seed_line_match"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_ras_el_jebel_zahan",
+   "name": "BizerteConnect : Ras El Jebel - Zahana",
+   "origin": "Ras El Jebel",
+   "destination": "Zahana",
+   "origin_ar": "رأس الجبل",
+   "destination_ar": "زهانة",
+   "origin_coords": [
+    37.268285,
+    10.0682718
+   ],
+   "destination_coords": [
+    36.7950313,
+    10.1779062
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_36_ligne_ras_el_jebel_via_a",
+   "name": "BizerteConnect 36: Bizerte - Ras El Jebel via Aousja",
+   "origin": "Bizerte",
+   "destination": "Ras El Jebel via Aousja",
+   "origin_ar": "بنزرت",
+   "destination_ar": "رأس الجبل عبر عوسجة",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_37_ligne_ras_el_jebel_via_e",
+   "name": "BizerteConnect 37: Bizerte - Ras El Jebel",
+   "origin": "Bizerte",
+   "destination": "Ras El Jebel",
+   "origin_ar": "بنزرت",
+   "destination_ar": "رأس الجبل",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.268285,
+    10.0682718
+   ]
+  },
+  {
+   "line_id": "bc_bus_x_ligne_ras_jebel_cap_zebi",
+   "name": "BizerteConnect : Ras Jebel - Cap Zebib",
+   "origin": "Ras Jebel",
+   "destination": "Cap Zebib",
+   "origin_ar": "رأس الجبل",
+   "destination_ar": "كاب زبيب",
+   "origin_coords": [
+    37.2146189,
+    10.1245603
+   ],
+   "origin_source": "nominatim",
+   "destination_coords": [
+    37.268285,
+    10.0682718
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_ras_jebel_garnata",
+   "name": "BizerteConnect : Ras Jebel - Garnata",
+   "origin": "Ras Jebel",
+   "destination": "Garnata",
+   "origin_ar": "رأس الجبل",
+   "destination_ar": "قرناطة",
+   "origin_coords": [
+    37.2146189,
+    10.1245603
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_ras_jebel_ghar_el_",
+   "name": "BizerteConnect : Ras Jebel - Ghar El Melh",
+   "origin": "Ras Jebel",
+   "destination": "Ghar El Melh",
+   "origin_ar": "رأس الجبل",
+   "destination_ar": "غار الملح",
+   "origin_coords": [
+    37.2146189,
+    10.1245603
+   ],
+   "destination_coords": [
+    37.1454311,
+    10.0938723
+   ]
+  },
+  {
+   "line_id": "bc_bus_x_ligne_sejnane_amaden",
+   "name": "BizerteConnect : Sejnane - Amaden",
+   "origin": "Sejnane",
+   "destination": "Amaden",
+   "origin_ar": "سجنان",
+   "destination_ar": "أمادن",
+   "origin_coords": [
+    37.1368875,
+    9.2440025
+   ],
+   "destination_coords": [
+    37.2127271,
+    9.3546479
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_sejnane_el_blaket",
+   "name": "BizerteConnect : Sejnane - El Blaket",
+   "origin": "Sejnane",
+   "destination": "El Blaket",
+   "origin_ar": "سجنان",
+   "destination_ar": "البلاكات",
+   "origin_coords": [
+    37.1368875,
+    9.2440025
+   ],
+   "destination_coords": [
+    34.7642491,
+    10.7737192
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_sejnane_el_garoudi",
+   "name": "BizerteConnect : Sejnane - El Garoudi",
+   "origin": "Sejnane",
+   "destination": "El Garoudi",
+   "origin_ar": "سجنان",
+   "destination_ar": "القرودي",
+   "origin_coords": [
+    37.1368875,
+    9.2440025
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_sejnane_el_hkara",
+   "name": "BizerteConnect : Sejnane - El Hkara",
+   "origin": "Sejnane",
+   "destination": "El Hkara",
+   "origin_ar": "سجنان",
+   "destination_ar": "الحكارة",
+   "origin_coords": [
+    37.1368875,
+    9.2440025
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_sejnane_el_hnia",
+   "name": "BizerteConnect : Sejnane - El Hnia",
+   "origin": "Sejnane",
+   "destination": "El Hnia",
+   "origin_ar": "سجنان",
+   "destination_ar": "الحنية",
+   "origin_coords": [
+    37.1368875,
+    9.2440025
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_sejnane_es_skhira",
+   "name": "BizerteConnect : Sejnane - Es Skhira",
+   "origin": "Sejnane",
+   "destination": "Es Skhira",
+   "origin_ar": "سجنان",
+   "destination_ar": "الصخيرة",
+   "origin_coords": [
+    37.1368875,
+    9.2440025
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_sejnane_sidi_mechr",
+   "name": "BizerteConnect : Sejnane - Sidi Mechreg",
+   "origin": "Sejnane",
+   "destination": "Sidi Mechreg",
+   "origin_ar": "سجنان",
+   "destination_ar": "سيدي مشرق",
+   "origin_coords": [
+    37.1368875,
+    9.2440025
+   ],
+   "destination_coords": [
+    37.1616432,
+    9.1250267
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_sejnane_sogman",
+   "name": "BizerteConnect : Sejnane - Sogman",
+   "origin": "Sejnane",
+   "destination": "Sogman",
+   "origin_ar": "سجنان",
+   "destination_ar": "سقمان",
+   "origin_coords": [
+    37.1368875,
+    9.2440025
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_sejnane_tamra",
+   "name": "BizerteConnect : Sejnane - Tamra",
+   "origin": "Sejnane",
+   "destination": "Tamra",
+   "origin_ar": "سجنان",
+   "destination_ar": "تمرة",
+   "origin_coords": [
+    37.1368875,
+    9.2440025
+   ],
+   "destination_coords": [
+    37.0763862,
+    9.1406951
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_sejnane_tunis",
+   "name": "BizerteConnect : Sejnane - Tunis",
+   "origin": "Sejnane",
+   "destination": "Tunis",
+   "origin_ar": "سجنان",
+   "destination_ar": "تونس",
+   "origin_coords": [
+    37.1368875,
+    9.2440025
+   ],
+   "destination_coords": [
+    36.8002068,
+    10.1857757
+   ]
+  },
+  {
+   "line_id": "bc_bus_x_ligne_sejnane_cap_serrat",
+   "name": "BizerteConnect : Sejnane - Cap Serrat",
+   "origin": "Sejnane",
+   "destination": "Cap Serrat",
+   "origin_ar": "سجنان",
+   "destination_ar": "كاب سيرات",
+   "origin_coords": [
+    37.1368875,
+    9.2440025
+   ],
+   "destination_coords": [
+    37.2403843,
+    9.2172101
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "csv_id": "bizerteconnect_line_ccdd0174-e551-4408-aa30-cac603bf7fd1",
+   "name": "Ligne Sejnane – Sidi Mechreg",
+   "status": "no_seed_line_match"
+  },
+  {
+   "line_id": "bc_bus_4_ligne_sidi_ahmed",
+   "name": "BizerteConnect 4: Bizerte - Sidi Ahmed",
+   "origin": "Bizerte",
+   "destination": "Sidi Ahmed",
+   "origin_ar": "بنزرت",
+   "destination_ar": "سيدي أحمد",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.2529341,
+    9.7477197
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_4س_ligne_sidi_ahmed_réservé",
+   "name": "BizerteConnect 4س: Bizerte - Sidi Ahmed",
+   "origin": "Bizerte",
+   "destination": "Sidi Ahmed",
+   "origin_ar": "بنزرت",
+   "destination_ar": "سيدي أحمد",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.2529341,
+    9.7477197
+   ]
+  },
+  {
+   "line_id": "bc_bus_35_ligne_sidi_ali_echabab_e",
+   "name": "BizerteConnect 35: Bizerte - El Alia",
+   "origin": "Bizerte",
+   "destination": "El Alia",
+   "origin_ar": "بنزرت",
+   "destination_ar": "العالية",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.1689041,
+    10.0338705
+   ]
+  },
+  {
+   "line_id": "bc_bus_17_ligne_sidi_amer_ghar_wan",
+   "name": "BizerteConnect 17: Bizerte - Sidi Amer - Ghar Wankel",
+   "origin": "Bizerte",
+   "destination": "Sidi Amer - Ghar Wankel",
+   "origin_ar": "بنزرت",
+   "destination_ar": "سيدي عامر و غار ونكل",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_utique_bach_hamba_",
+   "name": "BizerteConnect : Utique - Bach Hamba - Ezzouia",
+   "origin": "Utique",
+   "destination": "Bach Hamba - Ezzouia",
+   "origin_ar": "أوتيك",
+   "destination_ar": "الزوية",
+   "origin_coords": [
+    37.0345742,
+    9.9599024
+   ],
+   "origin_source": "nominatim",
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_utique_cité_el_man",
+   "name": "BizerteConnect : Utique - Cité El Manar",
+   "origin": "Utique",
+   "destination": "Cité El Manar",
+   "origin_ar": "أوتيك",
+   "destination_ar": "حي المنار",
+   "origin_coords": [
+    37.0345742,
+    9.9599024
+   ],
+   "destination_coords": [
+    34.7475571,
+    10.5258797
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_utique_sidi_othman",
+   "name": "BizerteConnect : Utique - Sidi Othman",
+   "origin": "Utique",
+   "destination": "Sidi Othman",
+   "origin_ar": "أوتيك",
+   "destination_ar": "سيدي عثمان",
+   "origin_coords": [
+    37.0345742,
+    9.9599024
+   ],
+   "destination_coords": [
+    36.9729659,
+    9.8716292
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_utique_el_bessbess",
+   "name": "BizerteConnect : Utique - El Bessbessia",
+   "origin": "Utique",
+   "destination": "El Bessbessia",
+   "origin_ar": "أوتيك",
+   "destination_ar": "البسباسية",
+   "origin_coords": [
+    37.0345742,
+    9.9599024
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_utique_el_houidh_r",
+   "name": "BizerteConnect : Utique - El Houidh Line",
+   "origin": "Utique",
+   "destination": "El Houidh Line",
+   "origin_ar": "أوتيك",
+   "destination_ar": "الحويض",
+   "origin_coords": [
+    37.0345742,
+    9.9599024
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_utique_el_jadida",
+   "name": "BizerteConnect : Utique - El Jadida",
+   "origin": "Utique",
+   "destination": "El Jadida",
+   "origin_ar": "أوتيك",
+   "destination_ar": "الجديدة",
+   "origin_coords": [
+    37.0345742,
+    9.9599024
+   ],
+   "destination_coords": [
+    36.8538499,
+    10.1828455
+   ],
+   "destination_source": "nominatim"
+  },
+  {
+   "line_id": "bc_bus_x_ligne_utique_ezzgueb",
+   "name": "BizerteConnect : Utique - Ezzgueb",
+   "origin": "Utique",
+   "destination": "Ezzgueb",
+   "origin_ar": "أوتيك",
+   "destination_ar": "الزقب",
+   "origin_coords": [
+    37.0345742,
+    9.9599024
+   ],
+   "destination_coords": null,
+   "destination_source": "nominatim_no_hit"
+  },
+  {
+   "line_id": "bc_bus_39_ligne_du_collège_el_khit",
+   "name": "BizerteConnect 39: collège El Khitmine - collège El Khitmine",
+   "origin": "collège El Khitmine",
+   "destination": "collège El Khitmine",
+   "origin_ar": "المدرسة الاعدادية بالخيتمين",
+   "destination_ar": "المدرسة الاعدادية بالخيتمين",
+   "origin_coords": null,
+   "origin_source": "nominatim_no_hit",
+   "destination_coords": null
+  },
+  {
+   "line_id": "bc_bus_4_réservé_aux_élèves_ligne",
+   "name": "BizerteConnect 4: Bizerte - Sidi Ahmed",
+   "origin": "Bizerte",
+   "destination": "Sidi Ahmed",
+   "origin_ar": "بنزرت",
+   "destination_ar": "سيدي أحمد",
+   "origin_coords": [
+    37.2720905,
+    9.8708565
+   ],
+   "destination_coords": [
+    37.2529341,
+    9.7477197
+   ]
+  }
+ ],
+ "summary": {
+  "csv_bizerte_lines": 131,
+  "seed_bizerteconnect_lines": 117,
+  "geocoded_ok": 55,
+  "geocoded_fail_or_blocked": 44,
+  "blocked": false
+ }
+}

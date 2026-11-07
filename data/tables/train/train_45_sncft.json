@@ -1,0 +1,127 @@
+{
+ "line_id": "train_45_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Bir Bourekba - Nabeul Voyageurs",
+ "direction_aller": [
+  "bir_bourekba",
+  "hammamet",
+  "omar_khayem",
+  "mrazka",
+  "nabeul_pv",
+  "nabeul_voyageurs"
+ ],
+ "direction_retour": [
+  "nabeul_voyageurs",
+  "nabeul_pv",
+  "mrazka",
+  "omar_khayem",
+  "hammamet",
+  "bir_bourekba"
+ ],
+ "stations_count": 6,
+ "start": {
+  "id": "bir_bourekba",
+  "name": "Bir Bourekba"
+ },
+ "end": {
+  "id": "nabeul_voyageurs",
+  "name": "Nabeul Voyageurs"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "bir_bourekba",
+  "hammamet",
+  "omar_khayem",
+  "mrazka",
+  "nabeul_pv",
+  "nabeul_voyageurs"
+ ],
+ "stations_detail": [
+  {
+   "id": "bir_bourekba",
+   "name_en": "Bir Bourekba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4306822,
+   "lon": 10.5737451,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammamet",
+   "name_en": "Hammamet",
+   "name_ar": "الحمامات",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_37m"
+   ],
+   "lat": 36.4076404,
+   "lon": 10.612458,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "omar_khayem",
+   "name_en": "Omar Khayem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4239685,
+   "lon": 10.6689255,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mrazka",
+   "name_en": "Mrazka",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4292401,
+   "lon": 10.6847555,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "nabeul_pv",
+   "name_en": "Nabeul PV",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4321876,
+   "lon": 10.6939653,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "nabeul_voyageurs",
+   "name_en": "Nabeul Voyageurs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.4510322,
+   "lon": 10.7351045,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

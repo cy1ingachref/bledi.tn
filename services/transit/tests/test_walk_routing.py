@@ -148,11 +148,11 @@ class TestItineraryShape:
         assert walk_steps, "no walk steps found in itinerary"
 
     def test_taxi_is_still_offered_as_an_alternative(self, router):
-        """Taxi should appear as an alternative when transit exists."""
-        res = router.route(36.8078, 10.1815, 37.2744, 9.8739)
+        """Taxi is city-local only: cross-governorate must NOT offer taxi."""
+        res = router.route(36.8078, 10.1815, 37.2744, 9.8739)  # Tunis -> Bizerte
         alternatives = res.get("alternatives") or []
-        assert any(a.get("mode") in ("taxi", "louaj") for a in alternatives), \
-            "no taxi/louaj alternative offered"
+        assert not any(a.get("mode") in ("taxi", "louaj") for a in alternatives), \
+            "taxi must not cross governorates (Tunis->Bizerte)"
 
     def test_short_trip_is_not_served_by_taxi(self, router):
         """A very short trip should not get a taxi leg."""

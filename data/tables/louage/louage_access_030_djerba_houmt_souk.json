@@ -1,0 +1,63 @@
+{
+ "line_id": "louage_access_030_djerba_houmt_souk",
+ "number": "LA30",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage access: Djerba - Houmt Souk Station → Gare transport terrestre djerba",
+ "direction_aller": [
+  "louage_djerba_houmt_souk_station",
+  "soretras_gare_transport_terrestre_dje_0b821da1ad"
+ ],
+ "direction_retour": [
+  "soretras_gare_transport_terrestre_dje_0b821da1ad",
+  "louage_djerba_houmt_souk_station"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_djerba_houmt_souk_station",
+  "name": "Djerba - Houmt Souk Station"
+ },
+ "end": {
+  "id": "soretras_gare_transport_terrestre_dje_0b821da1ad",
+  "name": "Gare transport terrestre djerba"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "louage_djerba_houmt_souk_station",
+  "soretras_gare_transport_terrestre_dje_0b821da1ad"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_djerba_houmt_souk_station",
+   "name_en": "Djerba - Houmt Souk Station",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_82m"
+   ],
+   "lat": 33.8765,
+   "lon": 10.8565,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "soretras_gare_transport_terrestre_dje_0b821da1ad",
+   "name_en": "Gare transport terrestre djerba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 33.872217,
+   "lon": 10.857876,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv"
+}

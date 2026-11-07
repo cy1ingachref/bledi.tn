@@ -1,0 +1,82 @@
+{
+ "line_id": "louage_access_021_sousse_al_lawajat",
+ "number": "LA21",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage access: Sousse - Al Lawajat (Taffala) → Sousse",
+ "direction_aller": [
+  "louage_sousse_al_lawajat_taffala",
+  "srtj_sousse_75d069d341"
+ ],
+ "direction_retour": [
+  "srtj_sousse_75d069d341",
+  "louage_sousse_al_lawajat_taffala"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_sousse_al_lawajat_taffala",
+  "name": "Sousse - Al Lawajat (Taffala)"
+ },
+ "end": {
+  "id": "srtj_sousse_75d069d341",
+  "name": "Sousse"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "louage_sousse_al_lawajat_taffala",
+  "srtj_sousse_75d069d341"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_sousse_al_lawajat_taffala",
+   "name_en": "Sousse - Al Lawajat (Taffala)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_44m"
+   ],
+   "lat": 35.8093,
+   "lon": 10.6363,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "srtj_sousse_75d069d341",
+   "name_en": "Sousse",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_80m"
+   ],
+   "lat": 35.815078,
+   "lon": 10.630646,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv",
+ "segments": [
+  {
+   "from": "louage_sousse_al_lawajat_taffala",
+   "to": "srtj_sousse_75d069d341",
+   "key": "louage_sousse_al_lawajat_taffala|srtj_sousse_75d069d341",
+   "straight_m": 820.19,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": null
+  }
+ ],
+ "snapped_geometry": [],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 0,
+  "unresolved": 1
+ }
+}

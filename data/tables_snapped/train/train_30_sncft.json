@@ -1,0 +1,220 @@
+{
+ "line_id": "train_30_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Gafsa - Cheria",
+ "direction_aller": [
+  "gafsa",
+  "aguila",
+  "cheria"
+ ],
+ "direction_retour": [
+  "cheria",
+  "aguila",
+  "gafsa"
+ ],
+ "stations_count": 3,
+ "start": {
+  "id": "gafsa",
+  "name": "Gafsa"
+ },
+ "end": {
+  "id": "cheria",
+  "name": "Cheria"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "gafsa",
+  "aguila",
+  "cheria"
+ ],
+ "stations_detail": [
+  {
+   "id": "gafsa",
+   "name_en": "Gafsa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3947091,
+   "lon": 8.8038973,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "aguila",
+   "name_en": "Aguila",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3796334,
+   "lon": 8.7684013,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "cheria",
+   "name_en": "Cheria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3407875,
+   "lon": 8.6060841,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "gafsa",
+   "to": "aguila",
+   "key": "aguila|gafsa",
+   "straight_m": 3663.27,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     34.3796334,
+     8.7684013
+    ],
+    [
+     34.380573,
+     8.773626
+    ],
+    [
+     34.381478,
+     8.782014
+    ],
+    [
+     34.381904,
+     8.783737
+    ],
+    [
+     34.382826,
+     8.785687
+    ],
+    [
+     34.383646,
+     8.786777
+    ],
+    [
+     34.384358,
+     8.787476
+    ],
+    [
+     34.385654,
+     8.788389
+    ],
+    [
+     34.389966,
+     8.790523
+    ],
+    [
+     34.390836,
+     8.791276
+    ],
+    [
+     34.391313,
+     8.791983
+    ],
+    [
+     34.391812,
+     8.793423
+    ],
+    [
+     34.3947091,
+     8.8038973
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 3919.8,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 419.47,
+   "length_ratio": 1.07,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "aguila",
+   "to": "cheria",
+   "key": "aguila|cheria",
+   "straight_m": 15512.94,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "no OSM rail track joins these stops"
+  }
+ ],
+ "snapped_geometry": [
+  [
+   34.3947091,
+   8.8038973
+  ],
+  [
+   34.391812,
+   8.793423
+  ],
+  [
+   34.391313,
+   8.791983
+  ],
+  [
+   34.390836,
+   8.791276
+  ],
+  [
+   34.389966,
+   8.790523
+  ],
+  [
+   34.385654,
+   8.788389
+  ],
+  [
+   34.384358,
+   8.787476
+  ],
+  [
+   34.383646,
+   8.786777
+  ],
+  [
+   34.382826,
+   8.785687
+  ],
+  [
+   34.381904,
+   8.783737
+  ],
+  [
+   34.381478,
+   8.782014
+  ],
+  [
+   34.380573,
+   8.773626
+  ],
+  [
+   34.3796334,
+   8.7684013
+  ]
+ ],
+ "phase3a": {
+  "pairs": 2,
+  "resolved": 1,
+  "unresolved": 1
+ }
+}

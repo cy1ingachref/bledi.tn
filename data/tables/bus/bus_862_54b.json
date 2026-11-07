@@ -1,0 +1,303 @@
+{
+ "line_id": "bus_862_54b",
+ "number": "54B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 54B: Mourouj 5 - Hopital De Traumatologie Et Des Grands Brulés",
+ "direction_aller": [
+  "mourouj_5",
+  "av_el_borhene",
+  "cit_afh",
+  "jardin_enfants_mourouj_5",
+  "cit_el_faouez",
+  "14_janvier_el_mourouj",
+  "centre_challakh_el_mourouj_4",
+  "foyer_universitaire_mourouj_3",
+  "jardin_enfants_mourouj_3",
+  "el_mourouj_3",
+  "meublatex",
+  "immeuble_oasis",
+  "batam",
+  "les_roses_mourouj_1",
+  "croisement_mourouj_2",
+  "pont_mourouj_2",
+  "hopital_de_traumatologie_et_des_grands_brul_s"
+ ],
+ "direction_retour": [
+  "hopital_de_traumatologie_et_des_grands_brul_s",
+  "pont_mourouj_2",
+  "croisement_mourouj_2",
+  "les_roses_mourouj_1",
+  "batam",
+  "immeuble_oasis",
+  "meublatex",
+  "el_mourouj_3",
+  "jardin_enfants_mourouj_3",
+  "foyer_universitaire_mourouj_3",
+  "centre_challakh_el_mourouj_4",
+  "14_janvier_el_mourouj",
+  "cit_el_faouez",
+  "jardin_enfants_mourouj_5",
+  "cit_afh",
+  "av_el_borhene",
+  "mourouj_5"
+ ],
+ "stations_count": 17,
+ "start": {
+  "id": "mourouj_5",
+  "name": "Mourouj 5"
+ },
+ "end": {
+  "id": "hopital_de_traumatologie_et_des_grands_brul_s",
+  "name": "Hopital De Traumatologie Et Des Grands Brulés"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "mourouj_5",
+  "av_el_borhene",
+  "cit_afh",
+  "jardin_enfants_mourouj_5",
+  "cit_el_faouez",
+  "14_janvier_el_mourouj",
+  "centre_challakh_el_mourouj_4",
+  "foyer_universitaire_mourouj_3",
+  "jardin_enfants_mourouj_3",
+  "el_mourouj_3",
+  "meublatex",
+  "immeuble_oasis",
+  "batam",
+  "les_roses_mourouj_1",
+  "croisement_mourouj_2",
+  "pont_mourouj_2",
+  "hopital_de_traumatologie_et_des_grands_brul_s"
+ ],
+ "stations_detail": [
+  {
+   "id": "mourouj_5",
+   "name_en": "Mourouj 5",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.710192,
+   "lon": 10.2012553,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_el_borhene",
+   "name_en": "Av El Borhene",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7096072,
+   "lon": 10.200354,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_afh",
+   "name_en": "Cité Afh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7086031,
+   "lon": 10.2040238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants_mourouj_5",
+   "name_en": "Jardin Enfants Mourouj 5",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7105017,
+   "lon": 10.206212,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_faouez",
+   "name_en": "Cité El Faouez",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7160786,
+   "lon": 10.2088199,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "14_janvier_el_mourouj",
+   "name_en": "14 Janvier El Mourouj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7168552,
+   "lon": 10.213302,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_challakh_el_mourouj_4",
+   "name_en": "Centre Challakh El Mourouj 4",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7191548,
+   "lon": 10.2164902,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_universitaire_mourouj_3",
+   "name_en": "Foyer Universitaire Mourouj 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7227421,
+   "lon": 10.2128429,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants_mourouj_3",
+   "name_en": "Jardin Enfants Mourouj 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7243136,
+   "lon": 10.2111902,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_mourouj_3",
+   "name_en": "EL MOUROUJ 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7287,
+   "lon": 10.21073,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "meublatex",
+   "name_en": "Meublatex",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.730361,
+   "lon": 10.2105791,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_oasis",
+   "name_en": "Immeuble Oasis",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7349698,
+   "lon": 10.2096672,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "batam",
+   "name_en": "BATAM",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7374523,
+   "lon": 10.208229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_roses_mourouj_1",
+   "name_en": "Les Roses Mourouj 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7390079,
+   "lon": 10.2055154,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_mourouj_2",
+   "name_en": "Croisement Mourouj 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.74025,
+   "lon": 10.2059713,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_mourouj_2",
+   "name_en": "Pont Mourouj 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7431611,
+   "lon": 10.207993,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_de_traumatologie_et_des_grands_brul_s",
+   "name_en": "Hopital De Traumatologie Et Des Grands Brulés",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7471954,
+   "lon": 10.2111478,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

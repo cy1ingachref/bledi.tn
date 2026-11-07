@@ -1,0 +1,383 @@
+{
+ "line_id": "bus_830_26c",
+ "number": "26C",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 26C: Cité Thameur - Station De Bus Mornag",
+ "direction_aller": [
+  "cit_thameur",
+  "soned",
+  "kiosque_mobil_ben_arous",
+  "centre_ben_arous",
+  "bata",
+  "croisement_yasminet_route_mourneg",
+  "yasminet_centre",
+  "caf_yasminet",
+  "sidi_mosbah",
+  "hopital_r_gional_yesminet",
+  "frigo_hadj_saleh",
+  "boujerdga",
+  "touati",
+  "dziri",
+  "boucherie_ezzaouia",
+  "ezzaouia_mornag",
+  "bir_ezzanga",
+  "somag",
+  "cit_jaber",
+  "doukali",
+  "poste_police_mornag",
+  "station_de_bus_mornag"
+ ],
+ "direction_retour": [
+  "station_de_bus_mornag",
+  "poste_police_mornag",
+  "doukali",
+  "cit_jaber",
+  "somag",
+  "bir_ezzanga",
+  "ezzaouia_mornag",
+  "boucherie_ezzaouia",
+  "dziri",
+  "touati",
+  "boujerdga",
+  "frigo_hadj_saleh",
+  "hopital_r_gional_yesminet",
+  "sidi_mosbah",
+  "caf_yasminet",
+  "yasminet_centre",
+  "croisement_yasminet_route_mourneg",
+  "bata",
+  "centre_ben_arous",
+  "kiosque_mobil_ben_arous",
+  "soned",
+  "cit_thameur"
+ ],
+ "stations_count": 22,
+ "start": {
+  "id": "cit_thameur",
+  "name": "Cité Thameur"
+ },
+ "end": {
+  "id": "station_de_bus_mornag",
+  "name": "Station De Bus Mornag"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "cit_thameur",
+  "soned",
+  "kiosque_mobil_ben_arous",
+  "centre_ben_arous",
+  "bata",
+  "croisement_yasminet_route_mourneg",
+  "yasminet_centre",
+  "caf_yasminet",
+  "sidi_mosbah",
+  "hopital_r_gional_yesminet",
+  "frigo_hadj_saleh",
+  "boujerdga",
+  "touati",
+  "dziri",
+  "boucherie_ezzaouia",
+  "ezzaouia_mornag",
+  "bir_ezzanga",
+  "somag",
+  "cit_jaber",
+  "doukali",
+  "poste_police_mornag",
+  "station_de_bus_mornag"
+ ],
+ "stations_detail": [
+  {
+   "id": "cit_thameur",
+   "name_en": "Cité Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7647407,
+   "lon": 10.2086643,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soned",
+   "name_en": "Soned",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7652949,
+   "lon": 10.210255,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_mobil_ben_arous",
+   "name_en": "Kiosque Mobil Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7570296,
+   "lon": 10.2187867,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_ben_arous",
+   "name_en": "Centre Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75346,
+   "lon": 10.2224984,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bata",
+   "name_en": "Bata",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7494197,
+   "lon": 10.2274336,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_yasminet_route_mourneg",
+   "name_en": "Croisement Yasminet Route Mourneg",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7434854,
+   "lon": 10.2344922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "yasminet_centre",
+   "name_en": "Yasminet Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7407195,
+   "lon": 10.2380766,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_yasminet",
+   "name_en": "Café Yasminet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7380861,
+   "lon": 10.2408866,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_mosbah",
+   "name_en": "Sidi Mosbah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7350964,
+   "lon": 10.2437415,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_r_gional_yesminet",
+   "name_en": "Hopital Régional Yesminet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7322446,
+   "lon": 10.2468533,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "frigo_hadj_saleh",
+   "name_en": "Frigo Hadj Saleh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7184993,
+   "lon": 10.2611605,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boujerdga",
+   "name_en": "Boujerdga",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7144861,
+   "lon": 10.2643306,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "touati",
+   "name_en": "Touati",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7132023,
+   "lon": 10.2651777,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dziri",
+   "name_en": "Dziri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7065796,
+   "lon": 10.269319,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boucherie_ezzaouia",
+   "name_en": "Boucherie Ezzaouia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.701586,
+   "lon": 10.2730731,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ezzaouia_mornag",
+   "name_en": "Ezzaouia Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6990865,
+   "lon": 10.2749578,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_ezzanga",
+   "name_en": "Bir Ezzanga",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6956206,
+   "lon": 10.2769579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "somag",
+   "name_en": "Somag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6924915,
+   "lon": 10.278954,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_jaber",
+   "name_en": "Cité Jaber",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6842471,
+   "lon": 10.2850475,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "doukali",
+   "name_en": "Doukali",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6883422,
+   "lon": 10.2820604,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poste_police_mornag",
+   "name_en": "Poste Police Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6825257,
+   "lon": 10.2863701,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "station_de_bus_mornag",
+   "name_en": "Station De Bus Mornag",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6799098,
+   "lon": 10.2893849,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

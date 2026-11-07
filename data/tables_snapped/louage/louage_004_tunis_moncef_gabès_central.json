@@ -1,0 +1,88 @@
+{
+ "line_id": "louage_004_tunis_moncef_gabès_central",
+ "number": "L4",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage: Tunis - Moncef Bey → Gabès - Central Station",
+ "direction_aller": [
+  "louage_tunis_moncef_bey",
+  "louage_gabès_central_station"
+ ],
+ "direction_retour": [
+  "louage_gabès_central_station",
+  "louage_tunis_moncef_bey"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_tunis_moncef_bey",
+  "name": "Tunis - Moncef Bey"
+ },
+ "end": {
+  "id": "louage_gabès_central_station",
+  "name": "Gabès - Central Station"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "louage_tunis_moncef_bey",
+   "to": "louage_gabès_central_station",
+   "km": 323.5
+  }
+ ],
+ "original_stations": [
+  "louage_tunis_moncef_bey",
+  "louage_gabès_central_station"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_tunis_moncef_bey",
+   "name_en": "Tunis - Moncef Bey",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_233m"
+   ],
+   "lat": 36.7905,
+   "lon": 10.1915,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "louage_gabès_central_station",
+   "name_en": "Gabès - Central Station",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "no_source"
+   ],
+   "lat": 33.882,
+   "lon": 10.0935,
+   "mode": "louage",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv",
+ "segments": [
+  {
+   "from": "louage_tunis_moncef_bey",
+   "to": "louage_gabès_central_station",
+   "key": "louage_gabès_central_station|louage_tunis_moncef_bey",
+   "straight_m": 323532.98,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": null
+  }
+ ],
+ "snapped_geometry": [],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 0,
+  "unresolved": 1
+ }
+}

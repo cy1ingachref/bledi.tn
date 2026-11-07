@@ -1,0 +1,495 @@
+{
+ "line_id": "bus_760_87",
+ "number": "87",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 87: Jardin Thameur - Terminus Omar Mokhtar",
+ "direction_aller": [
+  "jardin_thameur",
+  "mechtel",
+  "bab_abdeslem",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "bardo",
+  "municipalite_bardo",
+  "lycee_saoueb",
+  "lycee_khaznadar",
+  "khaznadar",
+  "artisanat",
+  "denden",
+  "oued_gueriana_l71",
+  "cite_el_antit",
+  "zahrouni",
+  "mosqu_e_zahrouni",
+  "lycee_zahrouni",
+  "ben_daha",
+  "sidi_hsin_section",
+  "sidi_hsin",
+  "usine_de_tomates",
+  "croisement_20_mars",
+  "lycee_mixte_sidi_hsin",
+  "salle_ferdaoues",
+  "25_juillet",
+  "croisement_birine",
+  "cite_omar_mokhtar",
+  "terminus_omar_mokhtar"
+ ],
+ "direction_retour": [
+  "terminus_omar_mokhtar",
+  "cite_omar_mokhtar",
+  "croisement_birine",
+  "25_juillet",
+  "salle_ferdaoues",
+  "lycee_mixte_sidi_hsin",
+  "croisement_20_mars",
+  "usine_de_tomates",
+  "sidi_hsin",
+  "sidi_hsin_section",
+  "ben_daha",
+  "lycee_zahrouni",
+  "mosqu_e_zahrouni",
+  "zahrouni",
+  "cite_el_antit",
+  "oued_gueriana_l71",
+  "denden",
+  "artisanat",
+  "khaznadar",
+  "lycee_khaznadar",
+  "lycee_saoueb",
+  "municipalite_bardo",
+  "bardo",
+  "20_mars",
+  "bouchoucha",
+  "immeuble_chefia",
+  "bab_abdeslem",
+  "mechtel",
+  "jardin_thameur"
+ ],
+ "stations_count": 29,
+ "start": {
+  "id": "jardin_thameur",
+  "name": "Jardin Thameur"
+ },
+ "end": {
+  "id": "terminus_omar_mokhtar",
+  "name": "Terminus Omar Mokhtar"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "jardin_thameur",
+  "mechtel",
+  "bab_abdeslem",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "bardo",
+  "municipalite_bardo",
+  "lycee_saoueb",
+  "lycee_khaznadar",
+  "khaznadar",
+  "artisanat",
+  "denden",
+  "oued_gueriana_l71",
+  "cite_el_antit",
+  "zahrouni",
+  "mosqu_e_zahrouni",
+  "lycee_zahrouni",
+  "ben_daha",
+  "sidi_hsin_section",
+  "sidi_hsin",
+  "usine_de_tomates",
+  "croisement_20_mars",
+  "lycee_mixte_sidi_hsin",
+  "salle_ferdaoues",
+  "25_juillet",
+  "croisement_birine",
+  "cite_omar_mokhtar",
+  "terminus_omar_mokhtar"
+ ],
+ "stations_detail": [
+  {
+   "id": "jardin_thameur",
+   "name_en": "Jardin Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8037336,
+   "lon": 10.1780922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mechtel",
+   "name_en": "Mechtel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8135314,
+   "lon": 10.1723472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_abdeslem",
+   "name_en": "Bab Abdeslem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8094634,
+   "lon": 10.161087,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_chefia",
+   "name_en": "Immeuble Chefia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8098234,
+   "lon": 10.152579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchoucha",
+   "name_en": "BOUCHOUCHA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80953,
+   "lon": 10.15026,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "bardo",
+   "name_en": "BARDO",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80724,
+   "lon": 10.13523,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipalite_bardo",
+   "name_en": "Municipalite Bardo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8071673,
+   "lon": 10.1336858,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_saoueb",
+   "name_en": "Lycee Saoueb",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8059724,
+   "lon": 10.1288632,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_khaznadar",
+   "name_en": "Lycee Khaznadar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8049673,
+   "lon": 10.1243088,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "khaznadar",
+   "name_en": "KHAZNADAR",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80421,
+   "lon": 10.12177,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "artisanat",
+   "name_en": "ARTISANAT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80293,
+   "lon": 10.11601,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "denden",
+   "name_en": "DENDEN",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80221,
+   "lon": 10.11075,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_gueriana_l71",
+   "name_en": "Oued Gueriana L71",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7984512,
+   "lon": 10.106279,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_el_antit",
+   "name_en": "Cite El Antit",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7971196,
+   "lon": 10.1073519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zahrouni",
+   "name_en": "Zahrouni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7922783,
+   "lon": 10.1078508,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_zahrouni",
+   "name_en": "Mosquée Zahrouni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7903305,
+   "lon": 10.1093127,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_zahrouni",
+   "name_en": "Lycee Zahrouni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7850183,
+   "lon": 10.1088138,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_daha",
+   "name_en": "Ben Daha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.781323,
+   "lon": 10.1112679,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_hsin_section",
+   "name_en": "Sidi Hsin Section",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7747534,
+   "lon": 10.1145885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_hsin",
+   "name_en": "Sidi Hsin",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7696915,
+   "lon": 10.113301,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "usine_de_tomates",
+   "name_en": "Usine De Tomates",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7656598,
+   "lon": 10.1143522,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_20_mars",
+   "name_en": "Croisement 20 Mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7602707,
+   "lon": 10.1148242,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_mixte_sidi_hsin",
+   "name_en": "Lycee Mixte Sidi Hsin",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7556273,
+   "lon": 10.1169695,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "salle_ferdaoues",
+   "name_en": "Salle Ferdaoues",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7470241,
+   "lon": 10.121047,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "25_juillet",
+   "name_en": "25 Juillet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7441784,
+   "lon": 10.1205105,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_birine",
+   "name_en": "Croisement Birine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7406535,
+   "lon": 10.1209826,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_omar_mokhtar",
+   "name_en": "Cite Omar Mokhtar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7326746,
+   "lon": 10.1239867,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_omar_mokhtar",
+   "name_en": "Terminus Omar Mokhtar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7330305,
+   "lon": 10.1265164,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

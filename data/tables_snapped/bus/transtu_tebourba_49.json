@@ -1,0 +1,297 @@
+{
+ "line_id": "transtu_tebourba_49",
+ "number": "49",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Hopital Tebourba - El Batan",
+ "direction_aller": [
+  "hopital_tebourba",
+  "el_batan"
+ ],
+ "direction_retour": [
+  "el_batan",
+  "hopital_tebourba"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "hopital_tebourba",
+  "name": "Hopital Tebourba"
+ },
+ "end": {
+  "id": "el_batan",
+  "name": "El Batan"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "hopital_tebourba",
+  "el_batan"
+ ],
+ "stations_detail": [
+  {
+   "id": "hopital_tebourba",
+   "name_en": "Hopital Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8459266,
+   "lon": 9.8280961,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_batan",
+   "name_en": "El Batan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7993,
+   "lon": 9.7696,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "transtu.com.tn PDF (Tebourba.pdf)",
+ "segments": [
+  {
+   "from": "hopital_tebourba",
+   "to": "el_batan",
+   "key": "el_batan|hopital_tebourba",
+   "straight_m": 7347.88,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7993,
+     9.7696
+    ],
+    [
+     36.800087,
+     9.770401
+    ],
+    [
+     36.801995,
+     9.770997
+    ],
+    [
+     36.807962,
+     9.774742
+    ],
+    [
+     36.81038,
+     9.775759
+    ],
+    [
+     36.811202,
+     9.775929
+    ],
+    [
+     36.814205,
+     9.775636
+    ],
+    [
+     36.815781,
+     9.775751
+    ],
+    [
+     36.816277,
+     9.775935
+    ],
+    [
+     36.819032,
+     9.777619
+    ],
+    [
+     36.820626,
+     9.779907
+    ],
+    [
+     36.825138,
+     9.783378
+    ],
+    [
+     36.825982,
+     9.784272
+    ],
+    [
+     36.83677,
+     9.802856
+    ],
+    [
+     36.837595,
+     9.805976
+    ],
+    [
+     36.837738,
+     9.806982
+    ],
+    [
+     36.836976,
+     9.811014
+    ],
+    [
+     36.83713,
+     9.813345
+    ],
+    [
+     36.837553,
+     9.814334
+    ],
+    [
+     36.839356,
+     9.816477
+    ],
+    [
+     36.839637,
+     9.81699
+    ],
+    [
+     36.8404,
+     9.82053
+    ],
+    [
+     36.842068,
+     9.824376
+    ],
+    [
+     36.842397,
+     9.826089
+    ],
+    [
+     36.842634,
+     9.830607
+    ],
+    [
+     36.8459266,
+     9.8280961
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 8481.15,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 1180.9,
+   "length_ratio": 1.1542,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8459266,
+   9.8280961
+  ],
+  [
+   36.842634,
+   9.830607
+  ],
+  [
+   36.842397,
+   9.826089
+  ],
+  [
+   36.842068,
+   9.824376
+  ],
+  [
+   36.8404,
+   9.82053
+  ],
+  [
+   36.839637,
+   9.81699
+  ],
+  [
+   36.839356,
+   9.816477
+  ],
+  [
+   36.837553,
+   9.814334
+  ],
+  [
+   36.83713,
+   9.813345
+  ],
+  [
+   36.836976,
+   9.811014
+  ],
+  [
+   36.837738,
+   9.806982
+  ],
+  [
+   36.837595,
+   9.805976
+  ],
+  [
+   36.83677,
+   9.802856
+  ],
+  [
+   36.825982,
+   9.784272
+  ],
+  [
+   36.825138,
+   9.783378
+  ],
+  [
+   36.820626,
+   9.779907
+  ],
+  [
+   36.819032,
+   9.777619
+  ],
+  [
+   36.816277,
+   9.775935
+  ],
+  [
+   36.815781,
+   9.775751
+  ],
+  [
+   36.814205,
+   9.775636
+  ],
+  [
+   36.811202,
+   9.775929
+  ],
+  [
+   36.81038,
+   9.775759
+  ],
+  [
+   36.807962,
+   9.774742
+  ],
+  [
+   36.801995,
+   9.770997
+  ],
+  [
+   36.800087,
+   9.770401
+  ],
+  [
+   36.7993,
+   9.7696
+  ]
+ ],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 1,
+  "unresolved": 0
+ }
+}

@@ -1,0 +1,953 @@
+{
+ "line_id": "bus_724_36",
+ "number": "36",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 36: La Fayette  - Terminus Ministére Des Affaires Etrangeres ( L 36 B )",
+ "direction_aller": [
+  "la_fayette",
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "place_jeans_dark",
+  "place_pasteur",
+  "stade_zouiten",
+  "mutuelle_ville",
+  "terminus_minist_re_des_affaires_etrangeres_l_36_b"
+ ],
+ "direction_retour": [
+  "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+  "mutuelle_ville",
+  "stade_zouiten",
+  "place_pasteur",
+  "place_jeans_dark",
+  "passage_jeans_jaures",
+  "steg_jeans_jaures",
+  "jeans_jaures",
+  "terminus_tunis_marine_bus",
+  "la_fayette"
+ ],
+ "stations_count": 10,
+ "start": {
+  "id": "la_fayette",
+  "name": "La Fayette"
+ },
+ "end": {
+  "id": "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+  "name": "Terminus Ministére Des Affaires Etrangeres ( L 36 B )"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "la_fayette",
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "place_jeans_dark",
+  "place_pasteur",
+  "stade_zouiten",
+  "mutuelle_ville",
+  "terminus_minist_re_des_affaires_etrangeres_l_36_b"
+ ],
+ "stations_detail": [
+  {
+   "id": "la_fayette",
+   "name_en": "La Fayette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8105618,
+   "lon": 10.1807238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jeans_jaures",
+   "name_en": "Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8016177,
+   "lon": 10.183899,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_jeans_jaures",
+   "name_en": "Steg Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8054996,
+   "lon": 10.1819977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "passage_jeans_jaures",
+   "name_en": "Passage Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8069114,
+   "lon": 10.1815361,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_jeans_dark",
+   "name_en": "Place Jeans Dark",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8183566,
+   "lon": 10.1795785,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_pasteur",
+   "name_en": "Place Pasteur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230935,
+   "lon": 10.1776738,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_zouiten",
+   "name_en": "Stade Zouiten",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.827844,
+   "lon": 10.169842,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mutuelle_ville",
+   "name_en": "Mutuelle Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8292941,
+   "lon": 10.1657647,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+   "name_en": "Terminus Ministére Des Affaires Etrangeres ( L 36 B )",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8295624,
+   "lon": 10.1590382,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "la_fayette",
+   "to": "terminus_tunis_marine_bus",
+   "key": "la_fayette|terminus_tunis_marine_bus",
+   "straight_m": 1421.63,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8105618,
+     10.1807238
+    ],
+    [
+     36.81135,
+     10.180606
+    ],
+    [
+     36.811245,
+     10.179633
+    ],
+    [
+     36.806233,
+     10.18042
+    ],
+    [
+     36.800847,
+     10.178426
+    ],
+    [
+     36.799448,
+     10.178517
+    ],
+    [
+     36.799411,
+     10.179426
+    ],
+    [
+     36.800088,
+     10.185707
+    ],
+    [
+     36.799962,
+     10.186272
+    ],
+    [
+     36.800148,
+     10.186737
+    ],
+    [
+     36.800322,
+     10.188411
+    ],
+    [
+     36.800204,
+     10.188823
+    ],
+    [
+     36.800417,
+     10.189311
+    ],
+    [
+     36.8003841,
+     10.1903877
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 2596.31,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 904.33,
+   "length_ratio": 1.8263,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "terminus_tunis_marine_bus",
+   "to": "jeans_jaures",
+   "key": "jeans_jaures|terminus_tunis_marine_bus",
+   "straight_m": 593.79,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8016177,
+     10.183899
+    ],
+    [
+     36.801807,
+     10.183662
+    ],
+    [
+     36.803072,
+     10.18351
+    ],
+    [
+     36.803124,
+     10.184137
+    ],
+    [
+     36.801501,
+     10.184369
+    ],
+    [
+     36.801659,
+     10.186044
+    ],
+    [
+     36.800923,
+     10.186173
+    ],
+    [
+     36.800222,
+     10.185854
+    ],
+    [
+     36.799981,
+     10.186065
+    ],
+    [
+     36.800316,
+     10.188298
+    ],
+    [
+     36.80021,
+     10.188877
+    ],
+    [
+     36.800417,
+     10.189311
+    ],
+    [
+     36.8003841,
+     10.1903877
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1153.46,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 168.83,
+   "length_ratio": 1.9425,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "jeans_jaures",
+   "to": "steg_jeans_jaures",
+   "key": "jeans_jaures|steg_jeans_jaures",
+   "straight_m": 463.65,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8016177,
+     10.183899
+    ],
+    [
+     36.802416,
+     10.183098
+    ],
+    [
+     36.802988,
+     10.182773
+    ],
+    [
+     36.8054996,
+     10.1819977
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 471.43,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 37.7,
+   "length_ratio": 1.0168,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "steg_jeans_jaures",
+   "to": "passage_jeans_jaures",
+   "key": "passage_jeans_jaures|steg_jeans_jaures",
+   "straight_m": 162.28,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8069114,
+     10.1815361
+    ],
+    [
+     36.8054996,
+     10.1819977
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 162.28,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "passage_jeans_jaures",
+   "to": "place_jeans_dark",
+   "key": "passage_jeans_jaures|place_jeans_dark",
+   "straight_m": 1284.53,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8069114,
+     10.1815361
+    ],
+    [
+     36.807436,
+     10.181372
+    ],
+    [
+     36.808011,
+     10.181382
+    ],
+    [
+     36.808327,
+     10.181072
+    ],
+    [
+     36.80956,
+     10.180853
+    ],
+    [
+     36.8183566,
+     10.1795785
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1291.94,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 20.29,
+   "length_ratio": 1.0058,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "place_jeans_dark",
+   "to": "place_pasteur",
+   "key": "place_jeans_dark|place_pasteur",
+   "straight_m": 553.33,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8183566,
+     10.1795785
+    ],
+    [
+     36.819549,
+     10.179333
+    ],
+    [
+     36.820165,
+     10.178369
+    ],
+    [
+     36.820438,
+     10.178219
+    ],
+    [
+     36.820839,
+     10.178184
+    ],
+    [
+     36.821903,
+     10.179213
+    ],
+    [
+     36.822328,
+     10.179134
+    ],
+    [
+     36.8230935,
+     10.1776738
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 674.8,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 97.64,
+   "length_ratio": 1.2195,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "place_pasteur",
+   "to": "stade_zouiten",
+   "key": "place_pasteur|stade_zouiten",
+   "straight_m": 874.62,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8230935,
+     10.1776738
+    ],
+    [
+     36.823718,
+     10.176674
+    ],
+    [
+     36.825251,
+     10.174945
+    ],
+    [
+     36.825183,
+     10.174591
+    ],
+    [
+     36.826494,
+     10.172607
+    ],
+    [
+     36.827844,
+     10.169842
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 892.2,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 44.52,
+   "length_ratio": 1.0201,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "stade_zouiten",
+   "to": "mutuelle_ville",
+   "key": "mutuelle_ville|stade_zouiten",
+   "straight_m": 397.11,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8292941,
+     10.1657647
+    ],
+    [
+     36.82979,
+     10.164863
+    ],
+    [
+     36.830089,
+     10.163695
+    ],
+    [
+     36.830043,
+     10.162769
+    ],
+    [
+     36.829708,
+     10.161266
+    ],
+    [
+     36.829591,
+     10.161162
+    ],
+    [
+     36.829481,
+     10.161234
+    ],
+    [
+     36.829945,
+     10.162842
+    ],
+    [
+     36.829898,
+     10.164218
+    ],
+    [
+     36.82944,
+     10.165301
+    ],
+    [
+     36.828277,
+     10.166669
+    ],
+    [
+     36.828302,
+     10.166964
+    ],
+    [
+     36.828464,
+     10.16705
+    ],
+    [
+     36.828572,
+     10.167744
+    ],
+    [
+     36.827844,
+     10.169842
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1331.5,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 410.99,
+   "length_ratio": 3.353,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mutuelle_ville",
+   "to": "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+   "key": "mutuelle_ville|terminus_minist_re_des_affaires_etrangeres_l_36_b",
+   "straight_m": 599.42,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8292941,
+     10.1657647
+    ],
+    [
+     36.82979,
+     10.164863
+    ],
+    [
+     36.830089,
+     10.163695
+    ],
+    [
+     36.830043,
+     10.162769
+    ],
+    [
+     36.829708,
+     10.161266
+    ],
+    [
+     36.829591,
+     10.161162
+    ],
+    [
+     36.829253,
+     10.161302
+    ],
+    [
+     36.829133,
+     10.1611
+    ],
+    [
+     36.829324,
+     10.160571
+    ],
+    [
+     36.829301,
+     10.159477
+    ],
+    [
+     36.8295624,
+     10.1590382
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 703.64,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 79.11,
+   "length_ratio": 1.1739,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8105618,
+   10.1807238
+  ],
+  [
+   36.81135,
+   10.180606
+  ],
+  [
+   36.811245,
+   10.179633
+  ],
+  [
+   36.806233,
+   10.18042
+  ],
+  [
+   36.800847,
+   10.178426
+  ],
+  [
+   36.799448,
+   10.178517
+  ],
+  [
+   36.799411,
+   10.179426
+  ],
+  [
+   36.800088,
+   10.185707
+  ],
+  [
+   36.799962,
+   10.186272
+  ],
+  [
+   36.800148,
+   10.186737
+  ],
+  [
+   36.800322,
+   10.188411
+  ],
+  [
+   36.800204,
+   10.188823
+  ],
+  [
+   36.800417,
+   10.189311
+  ],
+  [
+   36.8003841,
+   10.1903877
+  ],
+  [
+   36.800417,
+   10.189311
+  ],
+  [
+   36.80021,
+   10.188877
+  ],
+  [
+   36.800316,
+   10.188298
+  ],
+  [
+   36.799981,
+   10.186065
+  ],
+  [
+   36.800222,
+   10.185854
+  ],
+  [
+   36.800923,
+   10.186173
+  ],
+  [
+   36.801659,
+   10.186044
+  ],
+  [
+   36.801501,
+   10.184369
+  ],
+  [
+   36.803124,
+   10.184137
+  ],
+  [
+   36.803072,
+   10.18351
+  ],
+  [
+   36.801807,
+   10.183662
+  ],
+  [
+   36.8016177,
+   10.183899
+  ],
+  [
+   36.802416,
+   10.183098
+  ],
+  [
+   36.802988,
+   10.182773
+  ],
+  [
+   36.8054996,
+   10.1819977
+  ],
+  [
+   36.8069114,
+   10.1815361
+  ],
+  [
+   36.807436,
+   10.181372
+  ],
+  [
+   36.808011,
+   10.181382
+  ],
+  [
+   36.808327,
+   10.181072
+  ],
+  [
+   36.80956,
+   10.180853
+  ],
+  [
+   36.8183566,
+   10.1795785
+  ],
+  [
+   36.819549,
+   10.179333
+  ],
+  [
+   36.820165,
+   10.178369
+  ],
+  [
+   36.820438,
+   10.178219
+  ],
+  [
+   36.820839,
+   10.178184
+  ],
+  [
+   36.821903,
+   10.179213
+  ],
+  [
+   36.822328,
+   10.179134
+  ],
+  [
+   36.8230935,
+   10.1776738
+  ],
+  [
+   36.823718,
+   10.176674
+  ],
+  [
+   36.825251,
+   10.174945
+  ],
+  [
+   36.825183,
+   10.174591
+  ],
+  [
+   36.826494,
+   10.172607
+  ],
+  [
+   36.827844,
+   10.169842
+  ],
+  [
+   36.828572,
+   10.167744
+  ],
+  [
+   36.828464,
+   10.16705
+  ],
+  [
+   36.828302,
+   10.166964
+  ],
+  [
+   36.828277,
+   10.166669
+  ],
+  [
+   36.82944,
+   10.165301
+  ],
+  [
+   36.829898,
+   10.164218
+  ],
+  [
+   36.829945,
+   10.162842
+  ],
+  [
+   36.829481,
+   10.161234
+  ],
+  [
+   36.829591,
+   10.161162
+  ],
+  [
+   36.829708,
+   10.161266
+  ],
+  [
+   36.830043,
+   10.162769
+  ],
+  [
+   36.830089,
+   10.163695
+  ],
+  [
+   36.82979,
+   10.164863
+  ],
+  [
+   36.8292941,
+   10.1657647
+  ],
+  [
+   36.82979,
+   10.164863
+  ],
+  [
+   36.830089,
+   10.163695
+  ],
+  [
+   36.830043,
+   10.162769
+  ],
+  [
+   36.829708,
+   10.161266
+  ],
+  [
+   36.829591,
+   10.161162
+  ],
+  [
+   36.829253,
+   10.161302
+  ],
+  [
+   36.829133,
+   10.1611
+  ],
+  [
+   36.829324,
+   10.160571
+  ],
+  [
+   36.829301,
+   10.159477
+  ],
+  [
+   36.8295624,
+   10.1590382
+  ]
+ ],
+ "phase3a": {
+  "pairs": 9,
+  "resolved": 9,
+  "unresolved": 0
+ }
+}

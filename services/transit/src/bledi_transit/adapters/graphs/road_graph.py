@@ -13,6 +13,7 @@ Travel time (length / speed) is the A* cost, so the route is the fastest one.
 from __future__ import annotations
 
 import os
+import math
 import time
 from dataclasses import dataclass, field
 from typing import Any
@@ -129,20 +130,44 @@ def _snap(g: Graph, mode: str, lat: float, lon: float, max_m: float = MAX_SNAP_M
 
 
 def _simplify(pts: list[list[float]], tol_m: float = 8.0) -> list[list[float]]:
-    """Drop vertices that bend the line by less than `tol_m` metres."""
+    """Douglas-Peucker simplification with perpendicular distance in metres.
+
+    The old triple-distance rule (a-b + b-c minus a-c) collapses a dense
+    polyline to a few points even when the chord deviates kilometres from
+    the road, because each single 25 m step looks straight. DP measures
+    the true perpendicular deviation, so a gentle curve keeps enough
+    vertices to stay within tol_m of the real road.
+    """
     if len(pts) < 3:
         return pts
-    out = [pts[0]]
-    for i in range(1, len(pts) - 1):
-        a, b, c = out[-1], pts[i], pts[i + 1]
-        total = haversine_m(a[0], a[1], c[0], c[1])
-        if total < 1e-6:
+    lat0, lon0 = pts[0]
+    k = 111_320.0
+    c = math.cos(math.radians(lat0))
+    xy = [((p[1] - lon0) * k * c, (p[0] - lat0) * k) for p in pts]
+    keep = [False] * len(pts)
+    keep[0] = keep[-1] = True
+    stack: list[tuple[int, int]] = [(0, len(pts) - 1)]
+    while stack:
+        i, j = stack.pop()
+        if j <= i + 1:
             continue
-        d = haversine_m(a[0], a[1], b[0], b[1]) + haversine_m(b[0], b[1], c[0], c[1])
-        if d - total > tol_m:
-            out.append(b)
-    out.append(pts[-1])
-    return out
+        ax, ay = xy[i]
+        bx, by = xy[j]
+        dx, dy = bx - ax, by - ay
+        seg_len = math.hypot(dx, dy)
+        best_k, best_d = -1, -1.0
+        for kk in range(i + 1, j):
+            if seg_len == 0:
+                d = math.hypot(xy[kk][0] - ax, xy[kk][1] - ay)
+            else:
+                d = abs(dy * xy[kk][0] - dx * xy[kk][1] + bx * ay - by * ax) / seg_len
+            if d > best_d:
+                best_k, best_d = kk, d
+        if best_d > tol_m:
+            keep[best_k] = True
+            stack.append((i, best_k))
+            stack.append((best_k, j))
+    return [p for p, kept in zip(pts, keep) if kept]
 
 
 @dataclass(slots=True)

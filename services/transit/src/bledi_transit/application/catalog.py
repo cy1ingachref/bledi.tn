@@ -13,6 +13,8 @@ from bledi_transit.domain.geo import haversine_m, simplify as simplify_path
 from bledi_transit.domain.modes import USER_MODES, canonical_mode, mode_label_fr
 from bledi_transit.domain.stations import UNCLASSIFIED, primary_station_mode, station_modes
 from bledi_transit.domain.tunables import GEOMETRY_REQUIRED_M
+from bledi_transit.domain.places import PLACES
+from bledi_transit.domain.textnorm import core_tokens, fold, pretty, tokens
 
 log = logging.getLogger("bledi")
 
@@ -24,9 +26,29 @@ def _by_count(counts: dict[str, int]) -> dict[str, int]:
 
 
 class Catalog:
-    def __init__(self, network: Network, layers: MapLayers) -> None:
+    def __init__(self, network: Network, layers: MapLayers, paths: Any = None) -> None:
         self.network = network
         self.layers = layers
+        # Live OSM track graph, when the app was started with one. Used to draw
+        # rail lines that the cached station-pair geometry does not cover.
+        self.paths = paths
+
+    def _live_track(self, a_lat: float, a_lon: float, b_lat: float, b_lon: float) -> list[list[float]]:
+        """Real OSM rail/track polyline between two points, [] when unavailable."""
+        if self.paths is None:
+            return []
+        try:
+            got = self.paths.rail(a_lat, a_lon, b_lat, b_lon)
+        except Exception:  # pragma: no cover - defensive
+            return []
+        if not got:
+            return []
+        pts, dist_m = got
+        straight = haversine_m(a_lat, a_lon, b_lat, b_lon)
+        # A path shorter than the straight line is a bad snap, not a track.
+        if dist_m < 0.95 * straight:
+            return []
+        return list(pts)
 
     def stations(self) -> Json:
         """Every stop as a GeoJSON feature, louage hubs appended after the transit stops."""
@@ -342,7 +364,9 @@ class Catalog:
                     "id": ln.get("id", ""),
                     "number": ln.get("number"),
                     "short_name": ln.get("short_name"),
-                    "long_name": ln.get("long_name"),
+                    # The seed's display name ("Ligne 23: A - B") lives on the line
+                    # itself; without it the client can only show the raw id.
+                    "long_name": ln.get("name"),
                     "mode": ln.get("mode", "bus"),
                     "color": ln.get("color"),
                     "route_id": ln.get("route_id"),
@@ -382,7 +406,10 @@ class Catalog:
                         "name": st.get("name"),
                         "lat": st.get("lat"),
                         "lon": st.get("lon"),
-                        "lines": st.get("lines_served"),
+                        # Every line whose own stop array calls here, not just the
+                        # station's own lines_served fragments: a stop can be a
+                        # bus/metro interchange while its tags mention only one.
+                        "lines": self.network.lines_by_station.get(sid) or st.get("lines_served") or [],
                     }
                 )
             return stops
@@ -424,6 +451,13 @@ class Catalog:
             if a.get("lat") is None or a.get("lon") is None or b.get("lat") is None or b.get("lon") is None:
                 continue
             pts = self.network.segment_geometry(a.get("stop_id"), b.get("stop_id"))
+            source = "cache"
+            if not pts and mode in ("train", "metro", "rail", "tram"):
+                # The cache misses most rail station pairs; the live track graph
+                # is what makes a train line sit on its rails.
+                live = self._live_track(a["lat"], a["lon"], b["lat"], b["lon"])
+                if live:
+                    pts, source = live, "osm-rail"
             gap_m = haversine_m(a["lat"], a["lon"], b["lat"], b["lon"])
             pair = {
                 "from_stop_id": a.get("stop_id"),
@@ -437,6 +471,7 @@ class Catalog:
                     "has_geometry": bool(pts),
                     "needs_geometry": (not pts) and gap_m >= GEOMETRY_REQUIRED_M,
                     "gap_m": round(gap_m),
+                    "source": source,
                     "geometry": pts,
                 }
             )
@@ -462,91 +497,168 @@ class Catalog:
         }
 
     def search(self, q: str, limit: int, near_lat: float | None, near_lon: float | None) -> Json:
-        """Stops, louage hubs and governorate seats whose name contains `q`.
+        """Stops, louage hubs, known places and governorate seats by name.
 
-        Exact match, then prefix, then substring, with distance to the
-        reference point as the tiebreak so two stops named "20 Mars" resolve
-        to the one near the rider.
+        Matching is normalised (accents/case/punctuation/articles/Arabic
+        marks stripped via textnorm.fold, articles dropped via
+        core_tokens), so "la marsa", "AEROPORT" and Arabic queries all
+        match. Ranks exact, then prefix, then token-subset, then
+        substring; an exact city always beats a same-named stop. Stops
+        sharing a normalised name are one interchange (modes merged).
+        Display names are pretty-cased and never repeat the city
+        ("Sfax", not "Sfax · Sfax").
         """
-        needle = q.strip().lower()
+        needle = fold(q)
         if len(needle) < 2:
             return {"results": [], "query": q, "count": 0}
+        q_tokens = tokens(needle)
+        q_core = core_tokens(q_tokens)
+        q_compact = "".join(q_core)
 
-        def score(name: str) -> int:
-            n = name.strip().lower()
-            if n == needle:
-                return 0
-            return 1 if n.startswith(needle) else 2
+        def variants(name: str) -> list[str]:
+            f = fold(name)
+            return [f, " ".join(core_tokens(tokens(f))), "".join(core_tokens(tokens(f)))]
 
-        results: list[Json] = []
+        def matches(names: list[str]) -> bool:
+            for n in names:
+                fs = variants(n)
+                for cand in fs:
+                    if not cand:
+                        continue
+                    if needle == cand or needle in cand:
+                        return True
+                    c_core = core_tokens(tokens(cand))
+                    if q_core and all(t in c_core for t in q_core):
+                        return True
+                    if q_compact and q_compact in "".join(c_core):
+                        return True
+                    if c_core and all(t in q_core for t in c_core) and len(c_core) >= 1:
+                        # "marsa" stop for query "la marsa" (core == core)
+                        if "".join(c_core) == q_compact:
+                            return True
+            # Spacing variants: "sidi bou said" vs "SIDI BOUSAID"
+            for n in names:
+                if q_compact and q_compact == "".join(core_tokens(tokens(fold(n)))):
+                    return True
+            return False
+
+        def score(names: list[str]) -> int:
+            best = 3
+            for n in names:
+                fs = variants(n)
+                for cand in fs:
+                    if not cand:
+                        continue
+                    if cand == needle or "".join(core_tokens(tokens(cand))) == q_compact:
+                        return 0
+                    if cand.startswith(needle) or needle.startswith(cand):
+                        best = min(best, 1)
+                    elif q_core and all(t in core_tokens(tokens(cand)) for t in q_core):
+                        best = min(best, 2)
+                    elif needle in cand:
+                        best = min(best, 3)
+            return best
+
+        def place_governorate(name: str) -> str | None:
+            """Governorate from PLACES when a stop's name is that place."""
+            stop_core = core_tokens(tokens(fold(name)))
+            if not stop_core:
+                return None
+            stop_compact = "".join(stop_core)
+            for fr, ar, en, aliases, _lat, _lon, gov in PLACES:
+                for cand in (fr, ar, en, *aliases):
+                    c_core = core_tokens(tokens(fold(cand)))
+                    if c_core and set(c_core) <= set(stop_core):
+                        return gov
+                    if "".join(c_core) and "".join(c_core) == stop_compact:
+                        return gov
+            return None
+
+        def display(name: str, city: str) -> str:
+            pretty_name = pretty(name)
+            if fold(pretty_name) == fold(city):
+                return pretty_name
+            return f"{pretty_name} · {city}"
+
+        # Known places (kind=place): fr/ar/en names + aliases, governorate
+        # straight from PLACES (not the nearest seat).
+        raw: list[Json] = []
+        for fr, ar, en, aliases, plat, plon, gov in PLACES:
+            names = [fr, ar, en, *aliases]
+            if not matches(names):
+                continue
+            raw.append({
+                "kind": "place",
+                "id": f"place_{fold(fr).replace(' ', '_')}",
+                "name": fr,
+                "lat": plat, "lon": plon, "modes": [], "city": gov,
+                "score": score(names), "display_name": fr,
+            })
+        # Governorate seats.
+        for name, slat, slon in CITY_SEATS:
+            if not matches([name]):
+                continue
+            raw.append({
+                "kind": "city", "id": f"city_{name}", "name": name,
+                "lat": slat, "lon": slon, "modes": [], "city": name,
+                "score": score([name]), "display_name": name,
+            })
+        # Stops + louage hubs, merged by normalised name into interchanges.
+        merged: dict[str, Json] = {}
+        order: list[str] = []
+
+        def add_stop(sid, name, lat, lon, modes, city):
+            key = fold(name)
+            if key in merged:
+                m = merged[key]
+                for mode in modes:
+                    if mode not in m["modes"]:
+                        m["modes"].append(mode)
+                m["score"] = min(m["score"], score([name]))
+                return
+            merged[key] = {
+                "kind": "stop", "id": sid, "name": pretty(name),
+                "lat": lat, "lon": lon, "modes": list(modes), "city": city,
+                "score": score([name]), "display_name": display(name, city),
+            }
+            order.append(key)
+
         seen_ids: set[str] = set()
         for s in self.network.stations:
             lat, lon = s.get("lat"), s.get("lon")
             name = s.get("name") or ""
             sid = s.get("id") or ""
-            if not lat or not lon or needle not in name.lower() or sid in seen_ids:
+            if not lat or not lon or sid in seen_ids:
+                continue
+            names = [name] + ([s["name_en"]] if s.get("name_en") else [])
+            if not matches(names):
                 continue
             seen_ids.add(sid)
-            city = nearest_city(lat, lon)
-            results.append(
-                {
-                    "kind": "stop",
-                    "id": sid,
-                    "name": name.strip(),
-                    "lat": lat,
-                    "lon": lon,
-                    "modes": station_modes(s),
-                    "city": city,
-                    "score": score(name),
-                    "display_name": f"{name.strip()} · {city}",
-                }
-            )
+            city = place_governorate(name) or nearest_city(lat, lon)
+            add_stop(sid, name, lat, lon, station_modes(s), city)
         for s in self.network.louage_stations:
             loc = s.get("location") or {}
             lat, lon = loc.get("lat"), loc.get("lon")
             name = s.get("name_fr") or s.get("name_en") or s.get("id") or ""
             sid = f"louage_{s.get('id')}"
-            if not lat or not lon or needle not in name.lower() or sid in seen_ids:
+            if not lat or not lon or sid in seen_ids:
+                continue
+            if not matches([name]):
                 continue
             seen_ids.add(sid)
-            results.append(
-                {
-                    "kind": "stop",
-                    "id": sid,
-                    "name": name.strip(),
-                    "lat": lat,
-                    "lon": lon,
-                    "modes": ["louaj"],
-                    "city": s.get("governorate") or nearest_city(lat, lon),
-                    "score": score(name),
-                    "display_name": f"{name.strip()} · Taxi / Louage",
-                }
-            )
-        for name, slat, slon in CITY_SEATS:
-            if needle not in name.lower():
-                continue
-            results.append(
-                {
-                    "kind": "city",
-                    "id": f"city_{name}",
-                    "name": name,
-                    "lat": slat,
-                    "lon": slon,
-                    "modes": [],
-                    "city": name,
-                    "score": score(name),
-                    "display_name": name,
-                }
-            )
+            city = s.get("governorate") or place_governorate(name) or nearest_city(lat, lon)
+            add_stop(sid, name, lat, lon, ["louaj"], city)
+        raw.extend(merged[k] for k in order)
 
         def dist(r: Json) -> float:
             if near_lat is None or near_lon is None:
                 return 0.0
             return haversine_m(near_lat, near_lon, r["lat"], r["lon"])
 
-        results.sort(key=lambda r: (r["score"], dist(r), r["name"]))
+        kind_rank = {"city": 0, "place": 1, "stop": 2}
+        raw.sort(key=lambda r: (r["score"], kind_rank.get(r["kind"], 3), dist(r), r["name"]))
         return {
-            "results": [{k: v for k, v in r.items() if k != "score"} for r in results[:limit]],
+            "results": [{k: v for k, v in r.items() if k != "score"} for r in raw[:limit]],
             "query": q,
-            "count": len(results),
+            "count": len(raw),
         }

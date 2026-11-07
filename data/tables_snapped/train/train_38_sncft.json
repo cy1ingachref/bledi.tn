@@ -1,0 +1,198 @@
+{
+ "line_id": "train_38_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Sousse Bab Jdid - Sousse Sud",
+ "direction_aller": [
+  "sousse_bab_jdid",
+  "sousse_mohamed_v",
+  "sousse_sud"
+ ],
+ "direction_retour": [
+  "sousse_sud",
+  "sousse_mohamed_v",
+  "sousse_bab_jdid"
+ ],
+ "stations_count": 3,
+ "start": {
+  "id": "sousse_bab_jdid",
+  "name": "Sousse Bab Jdid"
+ },
+ "end": {
+  "id": "sousse_sud",
+  "name": "Sousse Sud"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "sousse_bab_jdid",
+  "sousse_mohamed_v",
+  "sousse_sud"
+ ],
+ "stations_detail": [
+  {
+   "id": "sousse_bab_jdid",
+   "name_en": "Sousse Bab Jdid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.823063,
+   "lon": 10.6415928,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_mohamed_v",
+   "name_en": "Sousse Mohamed V",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.8159939,
+   "lon": 10.6432475,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_sud",
+   "name_en": "Sousse Sud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.800173,
+   "lon": 10.649924,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "sousse_bab_jdid",
+   "to": "sousse_mohamed_v",
+   "key": "sousse_bab_jdid|sousse_mohamed_v",
+   "straight_m": 800.08,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.823063,
+     10.6415928
+    ],
+    [
+     35.822212,
+     10.641443
+    ],
+    [
+     35.821742,
+     10.641571
+    ],
+    [
+     35.818218,
+     10.643633
+    ],
+    [
+     35.81772,
+     10.643664
+    ],
+    [
+     35.8159939,
+     10.6432475
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 833.85,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 80.27,
+   "length_ratio": 1.0422,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sousse_mohamed_v",
+   "to": "sousse_sud",
+   "key": "sousse_mohamed_v|sousse_sud",
+   "straight_m": 1859.38,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     35.8159939,
+     10.6432475
+    ],
+    [
+     35.814517,
+     10.643171
+    ],
+    [
+     35.813238,
+     10.643578
+    ],
+    [
+     35.800173,
+     10.649924
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1872.66,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 71.03,
+   "length_ratio": 1.0071,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   35.823063,
+   10.6415928
+  ],
+  [
+   35.822212,
+   10.641443
+  ],
+  [
+   35.821742,
+   10.641571
+  ],
+  [
+   35.818218,
+   10.643633
+  ],
+  [
+   35.81772,
+   10.643664
+  ],
+  [
+   35.8159939,
+   10.6432475
+  ],
+  [
+   35.814517,
+   10.643171
+  ],
+  [
+   35.813238,
+   10.643578
+  ],
+  [
+   35.800173,
+   10.649924
+  ]
+ ],
+ "phase3a": {
+  "pairs": 2,
+  "resolved": 2,
+  "unresolved": 0
+ }
+}

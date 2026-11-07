@@ -1,0 +1,303 @@
+{
+ "line_id": "bus_701_5",
+ "number": "5",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 5: Terminus Tunis Marine Bus - Depot Charguia",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "alain_savary",
+  "minist_re_de_agriculture",
+  "municipalit_cite_el_khadra",
+  "ecole_cite_el_khadhra",
+  "marche_cite_el_khadhra",
+  "place_des_martyrs",
+  "station_lavage_cite_el_khadhra",
+  "ecole_cite_olympique",
+  "cite_olympique",
+  "institut_national_de_la_m_t_orologie",
+  "depot_charguia"
+ ],
+ "direction_retour": [
+  "depot_charguia",
+  "institut_national_de_la_m_t_orologie",
+  "cite_olympique",
+  "ecole_cite_olympique",
+  "station_lavage_cite_el_khadhra",
+  "place_des_martyrs",
+  "marche_cite_el_khadhra",
+  "ecole_cite_el_khadhra",
+  "municipalit_cite_el_khadra",
+  "minist_re_de_agriculture",
+  "alain_savary",
+  "place_jeans_dark",
+  "la_fayette",
+  "passage_jeans_jaures",
+  "steg_jeans_jaures",
+  "jeans_jaures",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 17,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "depot_charguia",
+  "name": "Depot Charguia"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "alain_savary",
+  "minist_re_de_agriculture",
+  "municipalit_cite_el_khadra",
+  "ecole_cite_el_khadhra",
+  "marche_cite_el_khadhra",
+  "place_des_martyrs",
+  "station_lavage_cite_el_khadhra",
+  "ecole_cite_olympique",
+  "cite_olympique",
+  "institut_national_de_la_m_t_orologie",
+  "depot_charguia"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jeans_jaures",
+   "name_en": "Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8016177,
+   "lon": 10.183899,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_jeans_jaures",
+   "name_en": "Steg Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8054996,
+   "lon": 10.1819977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "passage_jeans_jaures",
+   "name_en": "Passage Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8069114,
+   "lon": 10.1815361,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_fayette",
+   "name_en": "La Fayette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8105618,
+   "lon": 10.1807238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_jeans_dark",
+   "name_en": "Place Jeans Dark",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8183566,
+   "lon": 10.1795785,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "alain_savary",
+   "name_en": "Alain Savary",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8235494,
+   "lon": 10.1808024,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "minist_re_de_agriculture",
+   "name_en": "Ministére De Agriculture",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.829001,
+   "lon": 10.1858832,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipalit_cite_el_khadra",
+   "name_en": "Municipalité Cite El Khadra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8313982,
+   "lon": 10.1883662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_cite_el_khadhra",
+   "name_en": "Ecole Cite El Khadhra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8333703,
+   "lon": 10.1904929,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "marche_cite_el_khadhra",
+   "name_en": "Marche Cite El Khadhra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8321595,
+   "lon": 10.1934433,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_des_martyrs",
+   "name_en": "Place Des Martyrs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8318118,
+   "lon": 10.1955676,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "station_lavage_cite_el_khadhra",
+   "name_en": "Station Lavage Cite El Khadhra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8372695,
+   "lon": 10.1967107,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_cite_olympique",
+   "name_en": "Ecole Cite Olympique",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8383198,
+   "lon": 10.1955224,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_olympique",
+   "name_en": "Cite Olympique",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8393339,
+   "lon": 10.194822,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "institut_national_de_la_m_t_orologie",
+   "name_en": "Institut National De La Météorologie",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8395189,
+   "lon": 10.1983717,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "depot_charguia",
+   "name_en": "Depot Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.839222,
+   "lon": 10.2045873,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

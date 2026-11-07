@@ -3,11 +3,13 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
 from bledi_transit.application.errors import AppError
+from bledi_transit.adapters.louage_corridors import CORRIDORS_FILE, merge_corridors
 from bledi_transit.application.network import Network, Segments
 
 log = logging.getLogger("bledi.data")
@@ -35,9 +37,19 @@ class SeedFileNetwork:
         seed_path = self.data_dir / SEED_FILE
         seed = _read_json(seed_path)
         louage = self._optional(LOUAGE_SEED_FILE) or {}
+        stations, lines = seed.get("stations", []), seed.get("lines", [])
+        corridors = self._optional(CORRIDORS_FILE)
+        if corridors:
+            stations, lines, report = merge_corridors(
+                corridors, stations, lines,
+                include_unverified=os.environ.get("BLEDI_LOUAGE_UNVERIFIED") == "1",
+            )
+            log.info("louage corridors: %d loaded, %d skipped", len(report.loaded), len(report.skipped))
+            for cid, why in report.skipped:
+                log.warning("louage corridor %s skipped: %s", cid, why)
         network = Network(
-            stations=seed.get("stations", []),
-            lines=seed.get("lines", []),
+            stations=stations,
+            lines=lines,
             seed_name=seed_path.name,
             louage_stations=louage.get("stations", []),
             louage_routes=louage.get("routes", []),

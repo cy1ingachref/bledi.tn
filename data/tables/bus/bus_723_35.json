@@ -1,0 +1,175 @@
+{
+ "line_id": "bus_723_35",
+ "number": "35",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 35: Terminus Tunis Marine Bus - Rabattement 10 Decembre",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "charguia1",
+  "foire_la_charguia",
+  "depot_charguia",
+  "bousbiaa",
+  "institut_national_des_sciences_appliqu_es_et_de_technologie_i_n_s_a_t",
+  "el_fell",
+  "10_decembre",
+  "rabattement_10_decembre"
+ ],
+ "direction_retour": [
+  "rabattement_10_decembre",
+  "10_decembre",
+  "el_fell",
+  "institut_national_des_sciences_appliqu_es_et_de_technologie_i_n_s_a_t",
+  "bousbiaa",
+  "depot_charguia",
+  "foire_la_charguia",
+  "charguia1",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 9,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "rabattement_10_decembre",
+  "name": "Rabattement 10 Decembre"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "charguia1",
+  "foire_la_charguia",
+  "depot_charguia",
+  "bousbiaa",
+  "institut_national_des_sciences_appliqu_es_et_de_technologie_i_n_s_a_t",
+  "el_fell",
+  "10_decembre",
+  "rabattement_10_decembre"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia1",
+   "name_en": "Charguia1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8288636,
+   "lon": 10.2010967,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foire_la_charguia",
+   "name_en": "Foire La Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356665,
+   "lon": 10.2014554,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "depot_charguia",
+   "name_en": "Depot Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.839222,
+   "lon": 10.2045873,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bousbiaa",
+   "name_en": "Bousbiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8405935,
+   "lon": 10.199187,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "institut_national_des_sciences_appliqu_es_et_de_technologie_i_n_s_a_t",
+   "name_en": "Institut National Des Sciences Appliquées Et De Technologie (I.N.S.A.T)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8428981,
+   "lon": 10.1961923,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_fell",
+   "name_en": "El Fell",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8470261,
+   "lon": 10.1920248,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "10_decembre",
+   "name_en": "10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421837,
+   "lon": 10.182519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rabattement_10_decembre",
+   "name_en": "Rabattement 10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8445543,
+   "lon": 10.1843131,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

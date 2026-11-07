@@ -1,0 +1,82 @@
+{
+ "line_id": "louage_access_025_kairouan_gare_des",
+ "number": "LA25",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage access: Kairouan - Gare des Louages → HOPITAL-Urgences",
+ "direction_aller": [
+  "louage_kairouan_gare_des_louages",
+  "transtu_hopital_urgences_3ed063910b"
+ ],
+ "direction_retour": [
+  "transtu_hopital_urgences_3ed063910b",
+  "louage_kairouan_gare_des_louages"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_kairouan_gare_des_louages",
+  "name": "Kairouan - Gare des Louages"
+ },
+ "end": {
+  "id": "transtu_hopital_urgences_3ed063910b",
+  "name": "HOPITAL-Urgences"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "louage_kairouan_gare_des_louages",
+  "transtu_hopital_urgences_3ed063910b"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_kairouan_gare_des_louages",
+   "name_en": "Kairouan - Gare des Louages",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "no_source"
+   ],
+   "lat": 35.6885,
+   "lon": 10.0965,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "transtu_hopital_urgences_3ed063910b",
+   "name_en": "HOPITAL-Urgences",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.685337,
+   "lon": 10.095612,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv",
+ "segments": [
+  {
+   "from": "louage_kairouan_gare_des_louages",
+   "to": "transtu_hopital_urgences_3ed063910b",
+   "key": "louage_kairouan_gare_des_louages|transtu_hopital_urgences_3ed063910b",
+   "straight_m": 360.74,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": null
+  }
+ ],
+ "snapped_geometry": [],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 0,
+  "unresolved": 1
+ }
+}

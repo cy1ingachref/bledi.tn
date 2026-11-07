@@ -5,11 +5,15 @@ from collections.abc import Sequence
 from typing import TYPE_CHECKING, Any
 
 from bledi_transit.domain.fares import fare_for_itinerary
+from bledi_transit.domain.cities import nearest_city
 from bledi_transit.domain.geo import haversine_m
 from bledi_transit.domain.modes import USER_MODES, canonical_mode, label_modes_fr, resolve_allowed_modes
+from bledi_transit.application.routing.steps import group_steps  # re-exported for tests/callers
 from bledi_transit.domain.tunables import (
     FEWEST_TRANSFERS_PENALTY_SEC,
     GEOMETRY_REQUIRED_M,
+    MAX_DIRECT_WALK_M,
+    MAX_PURE_WALK_MIN,
     MAX_START_WALK_METERS,
     TRANSFER_PENALTY_SEC,
     WALK_SPEED_MS,
@@ -71,7 +75,20 @@ def plan(
     user_allowed = resolve_allowed_modes(include, exclude)
 
     # Walking only: no strategy can match the filter, so the direct walk is the answer.
+    # The same 1 km product cap applies here: asking for walk-only directions
+    # does not authorise a multi-kilometre pedestrian itinerary.
     if user_allowed is not None and not (user_allowed - {"walk"}):
+        direct_m = haversine_m(start_lat, start_lon, end_lat, end_lon)
+        if direct_m > MAX_DIRECT_WALK_M:
+            return {
+                "query": query,
+                "itineraries": [],
+                "available_modes": list(USER_MODES),
+                "message": (
+                    "La marche directe est limitee a 1 km; "
+                    "choisissez un mode de transport pour plus long."
+                ),
+            }
         return {
             "query": query,
             "itineraries": [_present(_walk_candidate(start_lat, start_lon, end_lat, end_lon), 1, objective)],
@@ -80,10 +97,12 @@ def plan(
         }
 
     bus_only = frozenset({"bus", "rfr", "tram"})
+    rural_only = frozenset({"rural"})
     rail_only = frozenset({"train", "rail", "metro"})
     metro_only = frozenset({"metro"})
     train_only = frozenset({"train", "rail"})
     louage_only = frozenset({"louage", "louaj"})
+    taxi_only = frozenset({"taxi"})
 
     # user_allowed is the base of every strategy: "fastest" with allowed=None
     # would return the metro journey the user just excluded.
@@ -93,10 +112,12 @@ def plan(
     ]
     for name, subset in (
         ("bus_preferred", bus_only),
+        ("rural_preferred", rural_only),
         ("rail_preferred", rail_only),
         ("metro_preferred", metro_only),
         ("train_only", train_only),
         ("louage_only", louage_only),
+        ("taxi_only", taxi_only),
     ):
         inter = subset if user_allowed is None else (user_allowed & subset)
         if not inter:
@@ -119,6 +140,12 @@ def plan(
             # Skip the degenerate pure-straight-line walk unless nothing
             # else was found; it is offered as a last resort below.
             continue
+        # Pure-walk via chained walk edges: only offered when no transit
+        # candidate exists (see MAX_PURE_WALK_MIN / shared_tunables.json).
+        # Defer: collect it, but do not let it win cheapest over a ride.
+        ride_steps = [s for s in steps if s.get("type") == "ride"]
+        if not ride_steps and float(raw.get("duration_min") or 0.0) > MAX_PURE_WALK_MIN:
+            continue
         transfers = count_transfers(steps)
         if max_transfers is not None and transfers > max_transfers:
             continue
@@ -138,7 +165,9 @@ def plan(
             }
         )
 
-    if not candidates and haversine_m(start_lat, start_lon, end_lat, end_lon) <= MAX_START_WALK_METERS * 2:
+    if not candidates and (
+        haversine_m(start_lat, start_lon, end_lat, end_lon) <= MAX_DIRECT_WALK_M
+    ):
         candidates.append(_walk_candidate(start_lat, start_lon, end_lat, end_lon))
 
     if not candidates:
@@ -215,28 +244,70 @@ def _walk_candidate(start_lat: float, start_lon: float, end_lat: float, end_lon:
 
 
 def _itinerary_signature(result: dict[str, Any]) -> tuple:
-    """Distinctness key: the ordered (mode, line_id) of every ride leg.
+    """Distinctness key: ride (mode, line, from_id, to_id) per hop, plus the
+    access/egress walk station.
 
-    Walks are excluded: two itineraries that differ only in how far the
-    rider walks to the same bus are one choice for the rider.
+    The station sequence distinguishes variants that share a line but
+    board/alight at different stops (e.g. Tunis -> Ben Arous via different
+    access stations); the access/egress anchors keep two walks to the same
+    line but from different stations distinct as well.
     """
-    sig: list[tuple[str, str]] = []
-    for step in result.get("steps") or ():
+    steps = list(result.get("steps") or ())
+    sig: list[tuple] = []
+    for step in steps:
         if step.get("type") != "ride":
             continue
-        entry = (step.get("mode") or "", step.get("line") or "")
-        # Steps are per stop, so one ride on a line is several equal entries.
-        if sig and sig[-1] == entry:
+        sig.append(
+            (
+                step.get("mode") or "",
+                step.get("line") or "",
+                step.get("from_id") or "",
+                step.get("to_id") or "",
+            )
+        )
+    if sig:
+        # Access station: the station the first walk arrives at (or, when
+        # the walk carries no ids, its endpoint coordinates).
+        for step in steps:
+            if step.get("type") == "walk":
+                to = step.get("to") or {}
+                sig.append(
+                    (
+                        "access",
+                        step.get("to_id") or "",
+                        round(float(to.get("lat") or 0.0), 5),
+                        round(float(to.get("lon") or 0.0), 5),
+                    )
+                )
+                break
+        for step in reversed(steps):
+            if step.get("type") == "walk":
+                frm = step.get("from") or {}
+                sig.append(
+                    (
+                        "egress",
+                        step.get("from_id") or "",
+                        round(float(frm.get("lat") or 0.0), 5),
+                        round(float(frm.get("lon") or 0.0), 5),
+                    )
+                )
+                break
+        return tuple(sig)
+    # No rides at all (pure walk / pure taxi): fall back on mode+shape,
+    # including station ids/coords so different endpoints stay distinct.
+    out: list[tuple] = []
+    for step in steps:
+        if step.get("type") not in ("taxi", "walk"):
             continue
-        sig.append(entry)
-    if not sig:
-        # No rides at all (pure walk / pure taxi): fall back on mode+shape.
-        sig = [
-            (step.get("type") or "", "")
-            for step in result.get("steps") or ()
-            if step.get("type") in ("taxi", "walk")
-        ]
-    return tuple(sig)
+        frm, to = step.get("from") or {}, step.get("to") or {}
+        out.append(
+            (
+                step.get("type") or "",
+                step.get("from_id") or round(float(frm.get("lat") or 0.0), 5),
+                step.get("to_id") or round(float(to.get("lat") or 0.0), 5),
+            )
+        )
+    return tuple(out)
 
 
 def _modes_used(steps: Sequence[dict[str, Any]]) -> list[str]:

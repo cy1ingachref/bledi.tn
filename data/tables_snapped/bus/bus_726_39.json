@@ -1,0 +1,1286 @@
+{
+ "line_id": "bus_726_39",
+ "number": "39",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 39: Lycée Ezzahra (Section) - Terminus Rades Foret 19D , 39",
+ "direction_aller": [
+  "lyc_e_ezzahra_section",
+  "soci_t_de_chaussettes",
+  "steg",
+  "kiosque_total",
+  "cit_18_janvier_terminus_39",
+  "borj_louzir_ben_arous",
+  "eloulija",
+  "noubou",
+  "bir_ettarraz",
+  "avenue_de_la_r_publique_2",
+  "avenue_de_la_r_publique_1",
+  "ptt_rades",
+  "centre_rades",
+  "mongil",
+  "lyc_e_technique_rades",
+  "stade_municipale",
+  "immeuble_rades_foret",
+  "immeuble_rades_foret_1",
+  "terminus_rades_foret_19d_39"
+ ],
+ "direction_retour": [
+  "terminus_rades_foret_19d_39",
+  "immeuble_rades_foret_1",
+  "immeuble_rades_foret",
+  "stade_municipale",
+  "lyc_e_technique_rades",
+  "mongil",
+  "centre_rades",
+  "ptt_rades",
+  "avenue_de_la_r_publique_1",
+  "avenue_de_la_r_publique_2",
+  "bir_ettarraz",
+  "noubou",
+  "eloulija",
+  "borj_louzir_ben_arous",
+  "cit_18_janvier_terminus_39",
+  "kiosque_total",
+  "steg",
+  "soci_t_de_chaussettes",
+  "lyc_e_ezzahra_section"
+ ],
+ "stations_count": 19,
+ "start": {
+  "id": "lyc_e_ezzahra_section",
+  "name": "Lycée Ezzahra (Section)"
+ },
+ "end": {
+  "id": "terminus_rades_foret_19d_39",
+  "name": "Terminus Rades Foret 19D , 39"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "lyc_e_ezzahra_section",
+  "soci_t_de_chaussettes",
+  "steg",
+  "kiosque_total",
+  "cit_18_janvier_terminus_39",
+  "borj_louzir_ben_arous",
+  "eloulija",
+  "noubou",
+  "bir_ettarraz",
+  "avenue_de_la_r_publique_2",
+  "avenue_de_la_r_publique_1",
+  "ptt_rades",
+  "centre_rades",
+  "mongil",
+  "lyc_e_technique_rades",
+  "stade_municipale",
+  "immeuble_rades_foret",
+  "immeuble_rades_foret_1",
+  "terminus_rades_foret_19d_39"
+ ],
+ "stations_detail": [
+  {
+   "id": "lyc_e_ezzahra_section",
+   "name_en": "Lycée Ezzahra (Section)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7359499,
+   "lon": 10.315475,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soci_t_de_chaussettes",
+   "name_en": "Société De Chaussettes",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7373772,
+   "lon": 10.3107328,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg",
+   "name_en": "Steg",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7392398,
+   "lon": 10.3053096,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_total",
+   "name_en": "Kiosque Total",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7419758,
+   "lon": 10.2997889,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_18_janvier_terminus_39",
+   "name_en": "Cité 18 Janvier Terminus 39",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7434768,
+   "lon": 10.2867274,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_louzir_ben_arous",
+   "name_en": "Borj Louzir (Ben Arous)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7473232,
+   "lon": 10.2893176,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "eloulija",
+   "name_en": "Eloulija",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7511538,
+   "lon": 10.2840594,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "noubou",
+   "name_en": "Noubou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7571843,
+   "lon": 10.2774949,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_ettarraz",
+   "name_en": "Bir Ettarraz",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7625914,
+   "lon": 10.2738471,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "avenue_de_la_r_publique_2",
+   "name_en": "Avenue De La République 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7677311,
+   "lon": 10.2771474,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "avenue_de_la_r_publique_1",
+   "name_en": "Avenue De La République 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7683118,
+   "lon": 10.275859,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ptt_rades",
+   "name_en": "Ptt Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7678829,
+   "lon": 10.273117,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_rades",
+   "name_en": "Centre Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7670773,
+   "lon": 10.2697916,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mongil",
+   "name_en": "Mongil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.767318,
+   "lon": 10.2661223,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_technique_rades",
+   "name_en": "Lycée Technique Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.766439,
+   "lon": 10.2607145,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_municipale",
+   "name_en": "Stade Municipale",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7650639,
+   "lon": 10.2566804,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_rades_foret",
+   "name_en": "Immeuble Rades Foret",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7619353,
+   "lon": 10.2573456,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_rades_foret_1",
+   "name_en": "Immeuble Rades Foret 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7617827,
+   "lon": 10.2557418,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_rades_foret_19d_39",
+   "name_en": "Terminus Rades Foret 19D , 39",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7603944,
+   "lon": 10.2580604,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "lyc_e_ezzahra_section",
+   "to": "soci_t_de_chaussettes",
+   "key": "lyc_e_ezzahra_section|soci_t_de_chaussettes",
+   "straight_m": 451.4,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7359499,
+     10.315475
+    ],
+    [
+     36.736244,
+     10.314104
+    ],
+    [
+     36.736451,
+     10.313791
+    ],
+    [
+     36.7373772,
+     10.3107328
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 453.97,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 12.34,
+   "length_ratio": 1.0057,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "soci_t_de_chaussettes",
+   "to": "steg",
+   "key": "soci_t_de_chaussettes|steg",
+   "straight_m": 525.77,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7373772,
+     10.3107328
+    ],
+    [
+     36.7392398,
+     10.3053096
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 525.77,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "steg",
+   "to": "kiosque_total",
+   "key": "kiosque_total|steg",
+   "straight_m": 578.4,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7419758,
+     10.2997889
+    ],
+    [
+     36.741615,
+     10.30047
+    ],
+    [
+     36.741521,
+     10.300884
+    ],
+    [
+     36.740411,
+     10.302908
+    ],
+    [
+     36.7392398,
+     10.3053096
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 580.15,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 8.31,
+   "length_ratio": 1.003,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "kiosque_total",
+   "to": "cit_18_janvier_terminus_39",
+   "key": "cit_18_janvier_terminus_39|kiosque_total",
+   "straight_m": 1175.74,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7434768,
+     10.2867274
+    ],
+    [
+     36.746933,
+     10.290349
+    ],
+    [
+     36.7419758,
+     10.2997889
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1507.46,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 426.23,
+   "length_ratio": 1.2821,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_18_janvier_terminus_39",
+   "to": "borj_louzir_ben_arous",
+   "key": "borj_louzir_ben_arous|cit_18_janvier_terminus_39",
+   "straight_m": 486.0,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7473232,
+     10.2893176
+    ],
+    [
+     36.746933,
+     10.290349
+    ],
+    [
+     36.7434768,
+     10.2867274
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 603.44,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 101.63,
+   "length_ratio": 1.2417,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "borj_louzir_ben_arous",
+   "to": "eloulija",
+   "key": "borj_louzir_ben_arous|eloulija",
+   "straight_m": 633.17,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7473232,
+     10.2893176
+    ],
+    [
+     36.748219,
+     10.287897
+    ],
+    [
+     36.7511538,
+     10.2840594
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 633.72,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 11.44,
+   "length_ratio": 1.0009,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "eloulija",
+   "to": "noubou",
+   "key": "eloulija|noubou",
+   "straight_m": 889.77,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7511538,
+     10.2840594
+    ],
+    [
+     36.752359,
+     10.283079
+    ],
+    [
+     36.753409,
+     10.281104
+    ],
+    [
+     36.753747,
+     10.280672
+    ],
+    [
+     36.754276,
+     10.28023
+    ],
+    [
+     36.756343,
+     10.279036
+    ],
+    [
+     36.756835,
+     10.278534
+    ],
+    [
+     36.756972,
+     10.278025
+    ],
+    [
+     36.7571843,
+     10.2774949
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 920.27,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 44.24,
+   "length_ratio": 1.0343,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "noubou",
+   "to": "bir_ettarraz",
+   "key": "bir_ettarraz|noubou",
+   "straight_m": 683.44,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7625914,
+     10.2738471
+    ],
+    [
+     36.762396,
+     10.273688
+    ],
+    [
+     36.761668,
+     10.273691
+    ],
+    [
+     36.761065,
+     10.273962
+    ],
+    [
+     36.760008,
+     10.274812
+    ],
+    [
+     36.758853,
+     10.276059
+    ],
+    [
+     36.757933,
+     10.276782
+    ],
+    [
+     36.7571843,
+     10.2774949
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 713.38,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 71.7,
+   "length_ratio": 1.0438,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bir_ettarraz",
+   "to": "avenue_de_la_r_publique_2",
+   "key": "avenue_de_la_r_publique_2|bir_ettarraz",
+   "straight_m": 642.69,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7677311,
+     10.2771474
+    ],
+    [
+     36.767108,
+     10.278077
+    ],
+    [
+     36.766632,
+     10.278296
+    ],
+    [
+     36.764606,
+     10.277488
+    ],
+    [
+     36.764292,
+     10.277126
+    ],
+    [
+     36.76397,
+     10.276951
+    ],
+    [
+     36.763543,
+     10.276325
+    ],
+    [
+     36.7625914,
+     10.2738471
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 805.48,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 185.93,
+   "length_ratio": 1.2533,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "avenue_de_la_r_publique_2",
+   "to": "avenue_de_la_r_publique_1",
+   "key": "avenue_de_la_r_publique_1|avenue_de_la_r_publique_2",
+   "straight_m": 131.68,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7683118,
+     10.275859
+    ],
+    [
+     36.768261,
+     10.276411
+    ],
+    [
+     36.7677311,
+     10.2771474
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 137.67,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 19.19,
+   "length_ratio": 1.0455,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "avenue_de_la_r_publique_1",
+   "to": "ptt_rades",
+   "key": "avenue_de_la_r_publique_1|ptt_rades",
+   "straight_m": 248.85,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7683118,
+     10.275859
+    ],
+    [
+     36.7678829,
+     10.273117
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 248.85,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ptt_rades",
+   "to": "centre_rades",
+   "key": "centre_rades|ptt_rades",
+   "straight_m": 309.46,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7670773,
+     10.2697916
+    ],
+    [
+     36.766955,
+     10.27059
+    ],
+    [
+     36.767086,
+     10.271971
+    ],
+    [
+     36.767854,
+     10.272485
+    ],
+    [
+     36.7678829,
+     10.273117
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 349.56,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 55.27,
+   "length_ratio": 1.1296,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "centre_rades",
+   "to": "mongil",
+   "key": "centre_rades|mongil",
+   "straight_m": 327.94,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7670773,
+     10.2697916
+    ],
+    [
+     36.767332,
+     10.268982
+    ],
+    [
+     36.767318,
+     10.2661223
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 332.21,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 22.34,
+   "length_ratio": 1.013,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mongil",
+   "to": "lyc_e_technique_rades",
+   "key": "lyc_e_technique_rades|mongil",
+   "straight_m": 491.52,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.766439,
+     10.2607145
+    ],
+    [
+     36.766823,
+     10.262901
+    ],
+    [
+     36.767318,
+     10.2661223
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 491.56,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 3.12,
+   "length_ratio": 1.0001,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "lyc_e_technique_rades",
+   "to": "stade_municipale",
+   "key": "lyc_e_technique_rades|stade_municipale",
+   "straight_m": 390.52,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.766439,
+     10.2607145
+    ],
+    [
+     36.766823,
+     10.262901
+    ],
+    [
+     36.767213,
+     10.265031
+    ],
+    [
+     36.766702,
+     10.265134
+    ],
+    [
+     36.766598,
+     10.264654
+    ],
+    [
+     36.767141,
+     10.264581
+    ],
+    [
+     36.766823,
+     10.262901
+    ],
+    [
+     36.766546,
+     10.259305
+    ],
+    [
+     36.766055,
+     10.257822
+    ],
+    [
+     36.7650639,
+     10.2566804
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1325.05,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 394.76,
+   "length_ratio": 3.393,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "stade_municipale",
+   "to": "immeuble_rades_foret",
+   "key": "immeuble_rades_foret|stade_municipale",
+   "straight_m": 352.9,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7619353,
+     10.2573456
+    ],
+    [
+     36.761701,
+     10.257935
+    ],
+    [
+     36.762627,
+     10.257849
+    ],
+    [
+     36.762873,
+     10.257709
+    ],
+    [
+     36.763346,
+     10.256847
+    ],
+    [
+     36.764029,
+     10.25725
+    ],
+    [
+     36.764246,
+     10.257257
+    ],
+    [
+     36.764552,
+     10.256221
+    ],
+    [
+     36.764706,
+     10.256077
+    ],
+    [
+     36.7650639,
+     10.2566804
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 579.77,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 59.67,
+   "length_ratio": 1.6429,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "immeuble_rades_foret",
+   "to": "immeuble_rades_foret_1",
+   "key": "immeuble_rades_foret|immeuble_rades_foret_1",
+   "straight_m": 143.87,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7619353,
+     10.2573456
+    ],
+    [
+     36.761814,
+     10.256272
+    ],
+    [
+     36.7617827,
+     10.2557418
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 143.94,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 2.11,
+   "length_ratio": 1.0005,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "immeuble_rades_foret_1",
+   "to": "terminus_rades_foret_19d_39",
+   "key": "immeuble_rades_foret_1|terminus_rades_foret_19d_39",
+   "straight_m": 257.86,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7617827,
+     10.2557418
+    ],
+    [
+     36.761838,
+     10.25673
+    ],
+    [
+     36.761701,
+     10.257935
+    ],
+    [
+     36.7603944,
+     10.2580604
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 342.38,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 109.69,
+   "length_ratio": 1.3278,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7359499,
+   10.315475
+  ],
+  [
+   36.736244,
+   10.314104
+  ],
+  [
+   36.736451,
+   10.313791
+  ],
+  [
+   36.7373772,
+   10.3107328
+  ],
+  [
+   36.7392398,
+   10.3053096
+  ],
+  [
+   36.740411,
+   10.302908
+  ],
+  [
+   36.741521,
+   10.300884
+  ],
+  [
+   36.741615,
+   10.30047
+  ],
+  [
+   36.7419758,
+   10.2997889
+  ],
+  [
+   36.746933,
+   10.290349
+  ],
+  [
+   36.7434768,
+   10.2867274
+  ],
+  [
+   36.746933,
+   10.290349
+  ],
+  [
+   36.7473232,
+   10.2893176
+  ],
+  [
+   36.748219,
+   10.287897
+  ],
+  [
+   36.7511538,
+   10.2840594
+  ],
+  [
+   36.752359,
+   10.283079
+  ],
+  [
+   36.753409,
+   10.281104
+  ],
+  [
+   36.753747,
+   10.280672
+  ],
+  [
+   36.754276,
+   10.28023
+  ],
+  [
+   36.756343,
+   10.279036
+  ],
+  [
+   36.756835,
+   10.278534
+  ],
+  [
+   36.756972,
+   10.278025
+  ],
+  [
+   36.7571843,
+   10.2774949
+  ],
+  [
+   36.757933,
+   10.276782
+  ],
+  [
+   36.758853,
+   10.276059
+  ],
+  [
+   36.760008,
+   10.274812
+  ],
+  [
+   36.761065,
+   10.273962
+  ],
+  [
+   36.761668,
+   10.273691
+  ],
+  [
+   36.762396,
+   10.273688
+  ],
+  [
+   36.7625914,
+   10.2738471
+  ],
+  [
+   36.763543,
+   10.276325
+  ],
+  [
+   36.76397,
+   10.276951
+  ],
+  [
+   36.764292,
+   10.277126
+  ],
+  [
+   36.764606,
+   10.277488
+  ],
+  [
+   36.766632,
+   10.278296
+  ],
+  [
+   36.767108,
+   10.278077
+  ],
+  [
+   36.7677311,
+   10.2771474
+  ],
+  [
+   36.768261,
+   10.276411
+  ],
+  [
+   36.7683118,
+   10.275859
+  ],
+  [
+   36.7678829,
+   10.273117
+  ],
+  [
+   36.767854,
+   10.272485
+  ],
+  [
+   36.767086,
+   10.271971
+  ],
+  [
+   36.766955,
+   10.27059
+  ],
+  [
+   36.7670773,
+   10.2697916
+  ],
+  [
+   36.767332,
+   10.268982
+  ],
+  [
+   36.767318,
+   10.2661223
+  ],
+  [
+   36.766823,
+   10.262901
+  ],
+  [
+   36.766439,
+   10.2607145
+  ],
+  [
+   36.766823,
+   10.262901
+  ],
+  [
+   36.767213,
+   10.265031
+  ],
+  [
+   36.766702,
+   10.265134
+  ],
+  [
+   36.766598,
+   10.264654
+  ],
+  [
+   36.767141,
+   10.264581
+  ],
+  [
+   36.766823,
+   10.262901
+  ],
+  [
+   36.766546,
+   10.259305
+  ],
+  [
+   36.766055,
+   10.257822
+  ],
+  [
+   36.7650639,
+   10.2566804
+  ],
+  [
+   36.764706,
+   10.256077
+  ],
+  [
+   36.764552,
+   10.256221
+  ],
+  [
+   36.764246,
+   10.257257
+  ],
+  [
+   36.764029,
+   10.25725
+  ],
+  [
+   36.763346,
+   10.256847
+  ],
+  [
+   36.762873,
+   10.257709
+  ],
+  [
+   36.762627,
+   10.257849
+  ],
+  [
+   36.761701,
+   10.257935
+  ],
+  [
+   36.7619353,
+   10.2573456
+  ],
+  [
+   36.761814,
+   10.256272
+  ],
+  [
+   36.7617827,
+   10.2557418
+  ],
+  [
+   36.761838,
+   10.25673
+  ],
+  [
+   36.761701,
+   10.257935
+  ],
+  [
+   36.7603944,
+   10.2580604
+  ]
+ ],
+ "phase3a": {
+  "pairs": 18,
+  "resolved": 18,
+  "unresolved": 0
+ }
+}

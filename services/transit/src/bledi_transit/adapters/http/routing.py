@@ -91,10 +91,17 @@ def geocode(
     q: str = Query(..., min_length=2, max_length=200, description="Place name to search in Tunisia"),
     limit: int = Query(3, ge=1, le=10, description="Max results"),
 ) -> Any:
-    """Place search through Nominatim, cached server side, with local fallback."""
+    """Place search through Nominatim, cached server side, with local fallback.
+
+    A geocoder outage (search returns None) is a 503: silently answering
+    from the local catalog would mask the outage and return stop results
+    for a place query. Only an empty answer (no match) falls back locally.
+    """
     raw = geocoder.search(q)
     source = "nominatim"
     if raw is None:
+        raise AppError("unavailable", "geocoder unavailable")
+    if not raw:
         raw = catalog.search(q, limit, None, None)
         source = "local"
     items = raw if isinstance(raw, list) else raw.get("results", [])

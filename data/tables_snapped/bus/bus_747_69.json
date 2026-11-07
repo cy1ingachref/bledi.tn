@@ -1,0 +1,899 @@
+{
+ "line_id": "bus_747_69",
+ "number": "69",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 69: Avenue Carthage - Cité Hellal (Terminus 69)",
+ "direction_aller": [
+  "avenue_carthage",
+  "cimetiere_jallez",
+  "monopoles",
+  "lyc_e_2_mars_el_ouardia_l_g",
+  "13_aout_l_69",
+  "rue_des_martyrs",
+  "cit_des_martyrs_69",
+  "cit_hellal_ptt",
+  "cit_hellal",
+  "march_cit_hellal",
+  "planning_familial_cit_hellal",
+  "cit_hellal_terminus_69"
+ ],
+ "direction_retour": [
+  "cit_hellal_terminus_69",
+  "planning_familial_cit_hellal",
+  "march_cit_hellal",
+  "cit_hellal",
+  "cit_hellal_ptt",
+  "cit_des_martyrs_69",
+  "rue_des_martyrs",
+  "13_aout_l_69",
+  "lyc_e_2_mars_el_ouardia_l_g",
+  "monopoles",
+  "cimetiere_jallez",
+  "avenue_carthage"
+ ],
+ "stations_count": 12,
+ "start": {
+  "id": "avenue_carthage",
+  "name": "Avenue Carthage"
+ },
+ "end": {
+  "id": "cit_hellal_terminus_69",
+  "name": "Cité Hellal (Terminus 69)"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "avenue_carthage",
+  "cimetiere_jallez",
+  "monopoles",
+  "lyc_e_2_mars_el_ouardia_l_g",
+  "13_aout_l_69",
+  "rue_des_martyrs",
+  "cit_des_martyrs_69",
+  "cit_hellal_ptt",
+  "cit_hellal",
+  "march_cit_hellal",
+  "planning_familial_cit_hellal",
+  "cit_hellal_terminus_69"
+ ],
+ "stations_detail": [
+  {
+   "id": "avenue_carthage",
+   "name_en": "Avenue Carthage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7919242,
+   "lon": 10.1822642,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cimetiere_jallez",
+   "name_en": "Cimetiere Jallez",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.786997,
+   "lon": 10.1804847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "monopoles",
+   "name_en": "Monopoles",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7803904,
+   "lon": 10.1816705,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_2_mars_el_ouardia_l_g",
+   "name_en": "Lycée 2 Mars El Ouardia L(G)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7758433,
+   "lon": 10.1821306,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "13_aout_l_69",
+   "name_en": "13 Aout L( 69)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7747967,
+   "lon": 10.1777637,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_des_martyrs",
+   "name_en": "Rue Des Martyrs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7754018,
+   "lon": 10.1752085,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_des_martyrs_69",
+   "name_en": "Cité Des Martyrs 69",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7767173,
+   "lon": 10.1706222,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_hellal_ptt",
+   "name_en": "Cité Hellal Ptt",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7785906,
+   "lon": 10.1692477,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_hellal",
+   "name_en": "Cité Hellal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7813515,
+   "lon": 10.1675393,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "march_cit_hellal",
+   "name_en": "Marché Cité Hellal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7836685,
+   "lon": 10.1665075,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "planning_familial_cit_hellal",
+   "name_en": "Planning Familial Cité Hellal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7870024,
+   "lon": 10.1648552,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_hellal_terminus_69",
+   "name_en": "Cité Hellal (Terminus 69)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7905712,
+   "lon": 10.1622607,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "avenue_carthage",
+   "to": "cimetiere_jallez",
+   "key": "avenue_carthage|cimetiere_jallez",
+   "straight_m": 570.34,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7919242,
+     10.1822642
+    ],
+    [
+     36.791924,
+     10.182592
+    ],
+    [
+     36.789163,
+     10.182981
+    ],
+    [
+     36.788843,
+     10.182682
+    ],
+    [
+     36.788543,
+     10.181465
+    ],
+    [
+     36.788151,
+     10.180805
+    ],
+    [
+     36.787633,
+     10.180457
+    ],
+    [
+     36.786634,
+     10.18017
+    ],
+    [
+     36.786677,
+     10.180332
+    ],
+    [
+     36.786997,
+     10.1804847
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 801.84,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 146.62,
+   "length_ratio": 1.4059,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cimetiere_jallez",
+   "to": "monopoles",
+   "key": "cimetiere_jallez|monopoles",
+   "straight_m": 742.17,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.786997,
+     10.1804847
+    ],
+    [
+     36.787703,
+     10.180696
+    ],
+    [
+     36.788079,
+     10.181094
+    ],
+    [
+     36.788403,
+     10.181698
+    ],
+    [
+     36.788551,
+     10.181728
+    ],
+    [
+     36.788543,
+     10.181465
+    ],
+    [
+     36.788335,
+     10.181063
+    ],
+    [
+     36.787805,
+     10.180543
+    ],
+    [
+     36.786634,
+     10.18017
+    ],
+    [
+     36.785482,
+     10.180034
+    ],
+    [
+     36.783505,
+     10.180495
+    ],
+    [
+     36.778238,
+     10.182026
+    ],
+    [
+     36.777545,
+     10.182435
+    ],
+    [
+     36.776982,
+     10.183012
+    ],
+    [
+     36.776796,
+     10.182924
+    ],
+    [
+     36.776558,
+     10.183031
+    ],
+    [
+     36.776477,
+     10.183477
+    ],
+    [
+     36.776725,
+     10.183728
+    ],
+    [
+     36.777009,
+     10.183614
+    ],
+    [
+     36.777272,
+     10.183024
+    ],
+    [
+     36.777914,
+     10.182414
+    ],
+    [
+     36.7803904,
+     10.1816705
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 2204.9,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 463.94,
+   "length_ratio": 2.9709,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "monopoles",
+   "to": "lyc_e_2_mars_el_ouardia_l_g",
+   "key": "lyc_e_2_mars_el_ouardia_l_g|monopoles",
+   "straight_m": 507.27,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7758433,
+     10.1821306
+    ],
+    [
+     36.776341,
+     10.182899
+    ],
+    [
+     36.776522,
+     10.183576
+    ],
+    [
+     36.776824,
+     10.183729
+    ],
+    [
+     36.777009,
+     10.183614
+    ],
+    [
+     36.777393,
+     10.182873
+    ],
+    [
+     36.777914,
+     10.182414
+    ],
+    [
+     36.7803904,
+     10.1816705
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 643.52,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 150.7,
+   "length_ratio": 1.2686,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "lyc_e_2_mars_el_ouardia_l_g",
+   "to": "13_aout_l_69",
+   "key": "13_aout_l_69|lyc_e_2_mars_el_ouardia_l_g",
+   "straight_m": 405.98,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7747967,
+     10.1777637
+    ],
+    [
+     36.774505,
+     10.178945
+    ],
+    [
+     36.774523,
+     10.179443
+    ],
+    [
+     36.7758433,
+     10.1821306
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 435.31,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 72.03,
+   "length_ratio": 1.0722,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "13_aout_l_69",
+   "to": "rue_des_martyrs",
+   "key": "13_aout_l_69|rue_des_martyrs",
+   "straight_m": 237.32,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7747967,
+     10.1777637
+    ],
+    [
+     36.775052,
+     10.175876
+    ],
+    [
+     36.7754018,
+     10.1752085
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 241.56,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 20.44,
+   "length_ratio": 1.0178,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "rue_des_martyrs",
+   "to": "cit_des_martyrs_69",
+   "key": "cit_des_martyrs_69|rue_des_martyrs",
+   "straight_m": 433.88,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7767173,
+     10.1706222
+    ],
+    [
+     36.776241,
+     10.170907
+    ],
+    [
+     36.776482,
+     10.17266
+    ],
+    [
+     36.776415,
+     10.173207
+    ],
+    [
+     36.7754018,
+     10.1752085
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 477.3,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 45.97,
+   "length_ratio": 1.1001,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_des_martyrs_69",
+   "to": "cit_hellal_ptt",
+   "key": "cit_des_martyrs_69|cit_hellal_ptt",
+   "straight_m": 241.61,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7767173,
+     10.1706222
+    ],
+    [
+     36.77827,
+     10.169528
+    ],
+    [
+     36.7785906,
+     10.1692477
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 241.78,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 3.46,
+   "length_ratio": 1.0007,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_hellal_ptt",
+   "to": "cit_hellal",
+   "key": "cit_hellal|cit_hellal_ptt",
+   "straight_m": 342.63,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7813515,
+     10.1675393
+    ],
+    [
+     36.779988,
+     10.16797
+    ],
+    [
+     36.779097,
+     10.168596
+    ],
+    [
+     36.7785906,
+     10.1692477
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 350.94,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 32.96,
+   "length_ratio": 1.0243,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_hellal",
+   "to": "march_cit_hellal",
+   "key": "cit_hellal|march_cit_hellal",
+   "straight_m": 273.54,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7813515,
+     10.1675393
+    ],
+    [
+     36.7836685,
+     10.1665075
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 273.54,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "march_cit_hellal",
+   "to": "planning_familial_cit_hellal",
+   "key": "march_cit_hellal|planning_familial_cit_hellal",
+   "straight_m": 398.85,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7836685,
+     10.1665075
+    ],
+    [
+     36.7870024,
+     10.1648552
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 398.85,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "planning_familial_cit_hellal",
+   "to": "cit_hellal_terminus_69",
+   "key": "cit_hellal_terminus_69|planning_familial_cit_hellal",
+   "straight_m": 459.19,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7905712,
+     10.1622607
+    ],
+    [
+     36.7870024,
+     10.1648552
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 459.19,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7919242,
+   10.1822642
+  ],
+  [
+   36.791924,
+   10.182592
+  ],
+  [
+   36.789163,
+   10.182981
+  ],
+  [
+   36.788843,
+   10.182682
+  ],
+  [
+   36.788543,
+   10.181465
+  ],
+  [
+   36.788151,
+   10.180805
+  ],
+  [
+   36.787633,
+   10.180457
+  ],
+  [
+   36.786634,
+   10.18017
+  ],
+  [
+   36.786677,
+   10.180332
+  ],
+  [
+   36.786997,
+   10.1804847
+  ],
+  [
+   36.787703,
+   10.180696
+  ],
+  [
+   36.788079,
+   10.181094
+  ],
+  [
+   36.788403,
+   10.181698
+  ],
+  [
+   36.788551,
+   10.181728
+  ],
+  [
+   36.788543,
+   10.181465
+  ],
+  [
+   36.788335,
+   10.181063
+  ],
+  [
+   36.787805,
+   10.180543
+  ],
+  [
+   36.786634,
+   10.18017
+  ],
+  [
+   36.785482,
+   10.180034
+  ],
+  [
+   36.783505,
+   10.180495
+  ],
+  [
+   36.778238,
+   10.182026
+  ],
+  [
+   36.777545,
+   10.182435
+  ],
+  [
+   36.776982,
+   10.183012
+  ],
+  [
+   36.776796,
+   10.182924
+  ],
+  [
+   36.776558,
+   10.183031
+  ],
+  [
+   36.776477,
+   10.183477
+  ],
+  [
+   36.776725,
+   10.183728
+  ],
+  [
+   36.777009,
+   10.183614
+  ],
+  [
+   36.777272,
+   10.183024
+  ],
+  [
+   36.777914,
+   10.182414
+  ],
+  [
+   36.7803904,
+   10.1816705
+  ],
+  [
+   36.777914,
+   10.182414
+  ],
+  [
+   36.777393,
+   10.182873
+  ],
+  [
+   36.777009,
+   10.183614
+  ],
+  [
+   36.776824,
+   10.183729
+  ],
+  [
+   36.776522,
+   10.183576
+  ],
+  [
+   36.776341,
+   10.182899
+  ],
+  [
+   36.7758433,
+   10.1821306
+  ],
+  [
+   36.774523,
+   10.179443
+  ],
+  [
+   36.774505,
+   10.178945
+  ],
+  [
+   36.7747967,
+   10.1777637
+  ],
+  [
+   36.775052,
+   10.175876
+  ],
+  [
+   36.7754018,
+   10.1752085
+  ],
+  [
+   36.776415,
+   10.173207
+  ],
+  [
+   36.776482,
+   10.17266
+  ],
+  [
+   36.776241,
+   10.170907
+  ],
+  [
+   36.7767173,
+   10.1706222
+  ],
+  [
+   36.77827,
+   10.169528
+  ],
+  [
+   36.7785906,
+   10.1692477
+  ],
+  [
+   36.779097,
+   10.168596
+  ],
+  [
+   36.779988,
+   10.16797
+  ],
+  [
+   36.7813515,
+   10.1675393
+  ],
+  [
+   36.7836685,
+   10.1665075
+  ],
+  [
+   36.7870024,
+   10.1648552
+  ],
+  [
+   36.7905712,
+   10.1622607
+  ]
+ ],
+ "phase3a": {
+  "pairs": 11,
+  "resolved": 11,
+  "unresolved": 0
+ }
+}

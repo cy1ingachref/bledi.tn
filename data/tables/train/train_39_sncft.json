@@ -1,0 +1,63 @@
+{
+ "line_id": "train_39_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Tabeddit - Om El Arais",
+ "direction_aller": [
+  "tabeddit",
+  "om_el_arais"
+ ],
+ "direction_retour": [
+  "om_el_arais",
+  "tabeddit"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "tabeddit",
+  "name": "Tabeddit"
+ },
+ "end": {
+  "id": "om_el_arais",
+  "name": "Om El Arais"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "tabeddit",
+  "om_el_arais"
+ ],
+ "stations_detail": [
+  {
+   "id": "tabeddit",
+   "name_en": "Tabeddit",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.4364956,
+   "lon": 8.2593299,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "om_el_arais",
+   "name_en": "Om El Arais",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.4870626,
+   "lon": 8.2773565,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

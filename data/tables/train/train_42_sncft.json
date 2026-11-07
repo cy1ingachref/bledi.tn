@@ -1,0 +1,111 @@
+{
+ "line_id": "train_42_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Om El Arais - Metlaoui",
+ "direction_aller": [
+  "om_el_arais",
+  "tabeddit",
+  "selja",
+  "magroun",
+  "metlaoui"
+ ],
+ "direction_retour": [
+  "metlaoui",
+  "magroun",
+  "selja",
+  "tabeddit",
+  "om_el_arais"
+ ],
+ "stations_count": 5,
+ "start": {
+  "id": "om_el_arais",
+  "name": "Om El Arais"
+ },
+ "end": {
+  "id": "metlaoui",
+  "name": "Metlaoui"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "om_el_arais",
+  "tabeddit",
+  "selja",
+  "magroun",
+  "metlaoui"
+ ],
+ "stations_detail": [
+  {
+   "id": "om_el_arais",
+   "name_en": "Om El Arais",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.4870626,
+   "lon": 8.2773565,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "tabeddit",
+   "name_en": "Tabeddit",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.4364956,
+   "lon": 8.2593299,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "selja",
+   "name_en": "Selja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3853424,
+   "lon": 8.3399541,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "magroun",
+   "name_en": "Magroun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3330461,
+   "lon": 8.3944411,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "metlaoui",
+   "name_en": "Metlaoui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3157766,
+   "lon": 8.4164253,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

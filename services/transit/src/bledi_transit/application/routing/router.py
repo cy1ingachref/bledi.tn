@@ -31,16 +31,19 @@ from bledi_transit.application.routing.itinerary import expand_path
 from bledi_transit.application.routing.legs import NoPathGeometry, road_geometry_for
 from bledi_transit.application.routing.planner import plan
 from bledi_transit.domain.fares import FARE_DINARS
+from bledi_transit.domain.cities import nearest_city
 from bledi_transit.domain.geo import haversine_m, polyline_length
-from bledi_transit.domain.modes import BUS_MODES, MODE_LABELS_FR, TAXI_MODES, canonical_mode
+from bledi_transit.domain.modes import BUS_MODES, MODE_LABELS_FR, canonical_mode
 from bledi_transit.domain.timetable import expected_wait
 from bledi_transit.domain.tunables import (
-    BOARDING_WAIT_CAP,
+    boarding_wait_cap_for_mode,
     DROP_OFF_CANDIDATES,
     DROPOFF_SEARCH_METERS,
     MAX_END_WALK_METERS,
     MAX_START_WALK_METERS,
     MAX_WALK_EDGE_METERS,
+    MAX_DIRECT_TAXI_M,
+    MAX_DIRECT_WALK_M,
     TAXI_MIN_DISTANCE_M,
     TAXI_SPEED_MS,
     TRANSFER_PENALTY_SEC,
@@ -84,7 +87,12 @@ class Router:
             mode = ln.get("mode", "bus") or "bus"
             self.mode_of_line[ln_id] = mode
             self.user_mode_of_line[ln_id] = canonical_mode(mode)
-            self.line_wait[ln_id] = min(expected_wait(ln.get("departures"), mode), BOARDING_WAIT_CAP)
+            explicit_wait = ln.get("wait_s")
+            self.line_wait[ln_id] = (
+                float(explicit_wait)
+                if explicit_wait is not None
+                else min(expected_wait(ln.get("departures"), mode), boarding_wait_cap_for_mode(mode))
+            )
         # From the lines' stop arrays, not the station's lines_served fragments,
         # which are direction-oriented and often lack route_short_name.
         self.lines_by_station: dict[str, list[str]] = defaultdict(list)
@@ -97,6 +105,7 @@ class Router:
                     self.lines_by_station[sid].append(ln_id)
         self.adj: dict[str, list[Edge]] = defaultdict(list)
         self.louage_stations = louage_stations or []
+        self._city_cache: dict[str, str | None] = {}
         segments = segments or {}
         for ln in lines:
             stops = ln.get("stations") or ln.get("stops") or []
@@ -132,6 +141,7 @@ class Router:
         allowed_modes: frozenset[str] | None = None,
         transfer_penalty_sec: float | None = None,
         max_walk_m: float | None = None,
+        banned_walks: frozenset[tuple[str, str]] | None = None,
     ) -> dict[str, Any]:
         """Find the best itinerary for one mode set and transfer penalty.
 
@@ -143,6 +153,7 @@ class Router:
         walk-to-station cost as the initial label) so one pass covers every
         (start, end) pair instead of N*M separate Dijkstras.
         """
+        banned = set(banned_walks) if banned_walks else set()
         transfer_penalty = (
             TRANSFER_PENALTY_SEC
             if transfer_penalty_sec is None
@@ -150,21 +161,22 @@ class Router:
         )
         start_cap = MAX_START_WALK_METERS if max_walk_m is None else float(max_walk_m)
         end_cap = MAX_END_WALK_METERS if max_walk_m is None else float(max_walk_m)
-        # Expand START walk radius for bus-restricted searches to ensure the origin
-        # can reach a bus stop. Do NOT expand end_cap unconditionally - that would
-        # make stations near the origin become end candidates, producing fake
-        # "bus then taxi" paths when the destination has no bus service.
+        # An access walk longer than this is not a walk: the origin is not
+        # served by the restricted network, so that network cannot answer.
+        # The old *500 expansion walked 22 km to a bus stop and reported
+        # the walk as part of the bus itinerary.
+        bus_start_cap = 3000.0
         if allowed_modes is not None and (allowed_modes & BUS_MODES):
-            start_cap = max(start_cap, MAX_START_WALK_METERS * 20)
+            start_cap = max(start_cap, bus_start_cap)
         start_candidates = self._nearest_stations(start_lat, start_lon, start_cap)
         end_candidates = self._nearest_stations(end_lat, end_lon, end_cap)
-        # A bus-restricted search needs at least one start station with a bus edge.
         if allowed_modes is not None and (allowed_modes & BUS_MODES):
             def has_bus_edge(st_id):
                 return any(e.mode in BUS_MODES for e in self.adj.get(st_id, []))
             if not any(has_bus_edge(sc['id']) for sc in start_candidates):
-                start_cap = MAX_START_WALK_METERS * 500
-                start_candidates = self._nearest_stations(start_lat, start_lon, start_cap)
+                # No bus stop within walking distance: do not fabricate a
+                # bus itinerary by walking across the country.
+                start_candidates = []
 
         # No stop to walk to: a town with no station of its own still gets a
         # ride then a final gap, instead of one taxi line across the country.
@@ -184,7 +196,8 @@ class Router:
 
         direct_m = haversine_m(start_lat, start_lon, end_lat, end_lon)
         direct_walk_s = direct_m / WALK_SPEED_MS
-        if allowed_modes is None or "walk" in allowed_modes:
+        # A walk across the country (it used to win when no taxi was allowed) is not an answer.
+        if (allowed_modes is None or "walk" in allowed_modes) and direct_m <= MAX_DIRECT_WALK_M:
             best = {
                 "mode": "walk",
                 "duration_min": round(direct_walk_s / 60, 1),
@@ -277,6 +290,8 @@ class Router:
                         and edge.mode not in allowed_modes
                     ):
                         continue
+                    if banned and (cur, edge.to_id) in banned:
+                        continue
                     is_walk = edge.mode == "walk"
                     arrived_line = None if is_walk else edge.line
                     segment_cost = edge.time_s
@@ -295,25 +310,33 @@ class Router:
         # A direct taxi is only an alternative when transit exists, or one taxi
         # line would replace every transit route it beats on time. It also needs
         # taxi or louaj in the mode selection.
+        # Inter-governorate taxi gate: a taxi may NOT cross from one
+        # governorate to another (e.g. Tunis->Bizerte, Sousse->Sfax).
+        # Only scheduled/louage/rail carry the main ride across governorates;
+        # taxi is city-local only. "Other" (unassigned) never counts as a
+        # governorate change — it is not a real seat.
+        from bledi_transit.domain.cities import UNASSIGNED_CITY
+
+        def _crosses_governorate(a_lat: float, a_lon: float, b_lat: float, b_lon: float) -> bool:
+            ca, cb = nearest_city(a_lat, a_lon), nearest_city(b_lat, b_lon)
+            return ca != cb and ca != UNASSIGNED_CITY and cb != UNASSIGNED_CITY
+
         have_transit = best is not None and best.get("mode") == "transit"
         direct_km = direct_m / 1000.0
-        taxi_permitted = allowed_modes is None or bool(
-            allowed_modes & TAXI_MODES
-        )
-        # Louage and taxi are priced differently (shared per seat vs metered
-        # private hire), so the leg is labelled and costed as whichever the
-        # user actually selected. When both are allowed, taxi is the more
-        # general answer and keeps its own label.
+        # Only TAXI can go point to point. Louage runs on its own designated corridors and
+        # boards at their stands, so it exists only as a ride on a louage line (see
+        # data/louage_corridors.json). It used to be offered "direct" between any two points,
+        # which sent riders to a Tebourba-Mateur louage that does not exist.
+        taxi_permitted = allowed_modes is None or "taxi" in allowed_modes
+        if _crosses_governorate(start_lat, start_lon, end_lat, end_lon):
+            taxi_permitted = False
         road_mode = "taxi"
-        if allowed_modes is not None and "taxi" not in allowed_modes and "louaj" in allowed_modes:
-            road_mode = "louaj"
-        road_speed_ms = TAXI_SPEED_MS
         def road_fare_for(km: float) -> float:
             base, per_km = FARE_DINARS[road_mode]
             return base + per_km * km
         if have_transit:
             taxi_s = direct_m / TAXI_SPEED_MS
-            if direct_km * 1000 >= TAXI_MIN_DISTANCE_M:
+            if taxi_permitted and TAXI_MIN_DISTANCE_M <= direct_km * 1000 <= MAX_DIRECT_TAXI_M:
                 taxi_fare = road_fare_for(direct_km)
                 road_label = MODE_LABELS_FR.get(road_mode, road_mode.capitalize())
                 best["alternatives"] = best.get("alternatives", []) + [{
@@ -323,7 +346,7 @@ class Router:
                     "fare_dinars": round(taxi_fare, 2),
                     "label": f"{road_label} direct - {round(direct_km, 1)} km (~{round(taxi_s / 60)} min, {round(taxi_fare, 2)} DT)",
                 }]
-        elif taxi_permitted and direct_km * 1000 >= TAXI_MIN_DISTANCE_M:
+        elif taxi_permitted and TAXI_MIN_DISTANCE_M <= direct_km * 1000 <= MAX_DIRECT_TAXI_M:
             # Cost the trip on the same real road distance the leg is drawn
             # with: live road graph first, precomputed taxi cache second.
             # Pricing the straight line and drawing the road would make the
@@ -340,7 +363,7 @@ class Router:
                     if taxi_geom_pre and polyline_length(taxi_geom_pre) >= 0.95 * direct_m
                     else direct_m
                 )
-            taxi_s = taxi_road_m / road_speed_ms
+            taxi_s = taxi_road_m / TAXI_SPEED_MS
             taxi_fare = road_fare_for(direct_km)
             if taxi_s < best_cost:
                 taxi_geom: list[list[float]] = []
@@ -355,7 +378,7 @@ class Router:
                         taxi_geom = cached
                     else:
                         road_m = direct_m
-                road_s = road_m / road_speed_ms
+                road_s = road_m / TAXI_SPEED_MS
                 road_fare = road_fare_for(road_m / 1000.0)
                 taxi_step = {
                     "type": road_mode,
@@ -408,11 +431,17 @@ class Router:
         prev: dict[tuple[str, str | None], tuple[str, str | None] | None],
         state: tuple[str, str | None],
     ) -> tuple[list[str], list[str | None]]:
-        """Walk `prev` back to the source and return (stations, lines)."""
+        """Walk `prev` back to the source and return (stations, lines).
+
+        Guarded against a cycle: a `prev` chain that loops would otherwise walk
+        forever, appending stations until the process runs out of memory.
+        """
         stations: list[str] = []
         lines: list[str | None] = []
         node: tuple[str, str | None] | None = state
-        while node is not None:
+        seen: set[tuple[str, str | None]] = set()
+        while node is not None and node not in seen:
+            seen.add(node)
             stations.append(node[0])
             lines.append(node[1])
             node = prev.get(node)

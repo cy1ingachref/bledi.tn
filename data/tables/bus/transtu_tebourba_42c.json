@@ -1,0 +1,63 @@
+{
+ "line_id": "transtu_tebourba_42c",
+ "number": "42C",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Tebourba - Zone Industrielle Manouba",
+ "direction_aller": [
+  "tebourba",
+  "zone_industrielle_manouba"
+ ],
+ "direction_retour": [
+  "zone_industrielle_manouba",
+  "tebourba"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "tebourba",
+  "name": "Tebourba"
+ },
+ "end": {
+  "id": "zone_industrielle_manouba",
+  "name": "Zone Industrielle Manouba"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "tebourba",
+  "zone_industrielle_manouba"
+ ],
+ "stations_detail": [
+  {
+   "id": "tebourba",
+   "name_en": "Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8291603,
+   "lon": 9.8443655,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "zone_industrielle_manouba",
+   "name_en": "Zone Industrielle Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7362,
+   "lon": 9.9451,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "transtu.com.tn PDF (Tebourba.pdf)"
+}

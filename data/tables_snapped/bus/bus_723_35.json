@@ -1,0 +1,926 @@
+{
+ "line_id": "bus_723_35",
+ "number": "35",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 35: Terminus Tunis Marine Bus - Rabattement 10 Decembre",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "charguia1",
+  "foire_la_charguia",
+  "depot_charguia",
+  "bousbiaa",
+  "institut_national_des_sciences_appliqu_es_et_de_technologie_i_n_s_a_t",
+  "el_fell",
+  "10_decembre",
+  "rabattement_10_decembre"
+ ],
+ "direction_retour": [
+  "rabattement_10_decembre",
+  "10_decembre",
+  "el_fell",
+  "institut_national_des_sciences_appliqu_es_et_de_technologie_i_n_s_a_t",
+  "bousbiaa",
+  "depot_charguia",
+  "foire_la_charguia",
+  "charguia1",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 9,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "rabattement_10_decembre",
+  "name": "Rabattement 10 Decembre"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "charguia1",
+  "foire_la_charguia",
+  "depot_charguia",
+  "bousbiaa",
+  "institut_national_des_sciences_appliqu_es_et_de_technologie_i_n_s_a_t",
+  "el_fell",
+  "10_decembre",
+  "rabattement_10_decembre"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia1",
+   "name_en": "Charguia1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8288636,
+   "lon": 10.2010967,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foire_la_charguia",
+   "name_en": "Foire La Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356665,
+   "lon": 10.2014554,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "depot_charguia",
+   "name_en": "Depot Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.839222,
+   "lon": 10.2045873,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bousbiaa",
+   "name_en": "Bousbiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8405935,
+   "lon": 10.199187,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "institut_national_des_sciences_appliqu_es_et_de_technologie_i_n_s_a_t",
+   "name_en": "Institut National Des Sciences Appliquées Et De Technologie (I.N.S.A.T)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8428981,
+   "lon": 10.1961923,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_fell",
+   "name_en": "El Fell",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8470261,
+   "lon": 10.1920248,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "10_decembre",
+   "name_en": "10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421837,
+   "lon": 10.182519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rabattement_10_decembre",
+   "name_en": "Rabattement 10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8445543,
+   "lon": 10.1843131,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "terminus_tunis_marine_bus",
+   "to": "charguia1",
+   "key": "charguia1|terminus_tunis_marine_bus",
+   "straight_m": 3307.16,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8288636,
+     10.2010967
+    ],
+    [
+     36.830707,
+     10.200932
+    ],
+    [
+     36.830942,
+     10.201089
+    ],
+    [
+     36.831015,
+     10.201282
+    ],
+    [
+     36.829565,
+     10.206522
+    ],
+    [
+     36.82908,
+     10.206747
+    ],
+    [
+     36.827235,
+     10.202765
+    ],
+    [
+     36.826992,
+     10.200571
+    ],
+    [
+     36.826705,
+     10.199501
+    ],
+    [
+     36.824822,
+     10.197087
+    ],
+    [
+     36.820668,
+     10.187697
+    ],
+    [
+     36.818179,
+     10.183107
+    ],
+    [
+     36.817206,
+     10.18357
+    ],
+    [
+     36.801826,
+     10.186115
+    ],
+    [
+     36.800975,
+     10.186206
+    ],
+    [
+     36.800156,
+     10.185869
+    ],
+    [
+     36.800008,
+     10.186004
+    ],
+    [
+     36.799962,
+     10.186272
+    ],
+    [
+     36.800148,
+     10.186737
+    ],
+    [
+     36.800322,
+     10.188411
+    ],
+    [
+     36.800204,
+     10.188823
+    ],
+    [
+     36.800417,
+     10.189311
+    ],
+    [
+     36.8003841,
+     10.1903877
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 5718.17,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 1191.0,
+   "length_ratio": 1.729,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "charguia1",
+   "to": "foire_la_charguia",
+   "key": "charguia1|foire_la_charguia",
+   "straight_m": 757.12,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8288636,
+     10.2010967
+    ],
+    [
+     36.8356665,
+     10.2014554
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 757.12,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "foire_la_charguia",
+   "to": "depot_charguia",
+   "key": "depot_charguia|foire_la_charguia",
+   "straight_m": 483.72,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 2292 m implausible vs 484 m straight"
+  },
+  {
+   "from": "depot_charguia",
+   "to": "bousbiaa",
+   "key": "bousbiaa|depot_charguia",
+   "straight_m": 504.2,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8405935,
+     10.199187
+    ],
+    [
+     36.840277,
+     10.199462
+    ],
+    [
+     36.839843,
+     10.199387
+    ],
+    [
+     36.839592,
+     10.19867
+    ],
+    [
+     36.839456,
+     10.199746
+    ],
+    [
+     36.839163,
+     10.200597
+    ],
+    [
+     36.838489,
+     10.2021
+    ],
+    [
+     36.837917,
+     10.202787
+    ],
+    [
+     36.837933,
+     10.202952
+    ],
+    [
+     36.839381,
+     10.204337
+    ],
+    [
+     36.839222,
+     10.2045873
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 828.16,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 186.77,
+   "length_ratio": 1.6425,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bousbiaa",
+   "to": "institut_national_des_sciences_appliqu_es_et_de_technologie_i_n_s_a_t",
+   "key": "bousbiaa|institut_national_des_sciences_appliqu_es_et_de_technologie_i_n_s_a_t",
+   "straight_m": 369.71,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8405935,
+     10.199187
+    ],
+    [
+     36.840277,
+     10.199462
+    ],
+    [
+     36.839918,
+     10.199422
+    ],
+    [
+     36.839757,
+     10.199285
+    ],
+    [
+     36.839605,
+     10.198843
+    ],
+    [
+     36.839602,
+     10.194949
+    ],
+    [
+     36.840048,
+     10.194947
+    ],
+    [
+     36.840777,
+     10.196633
+    ],
+    [
+     36.842232,
+     10.195728
+    ],
+    [
+     36.8428981,
+     10.1961923
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 979.61,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 340.87,
+   "length_ratio": 2.6497,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "institut_national_des_sciences_appliqu_es_et_de_technologie_i_n_s_a_t",
+   "to": "el_fell",
+   "key": "el_fell|institut_national_des_sciences_appliqu_es_et_de_technologie_i_n_s_a_t",
+   "straight_m": 590.1,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8470261,
+     10.1920248
+    ],
+    [
+     36.846541,
+     10.191183
+    ],
+    [
+     36.848371,
+     10.190011
+    ],
+    [
+     36.849524,
+     10.193051
+    ],
+    [
+     36.849698,
+     10.193132
+    ],
+    [
+     36.849437,
+     10.193629
+    ],
+    [
+     36.848544,
+     10.194162
+    ],
+    [
+     36.848237,
+     10.194102
+    ],
+    [
+     36.848046,
+     10.194497
+    ],
+    [
+     36.847261,
+     10.195114
+    ],
+    [
+     36.843033,
+     10.197723
+    ],
+    [
+     36.8428981,
+     10.1961923
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1644.0,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 313.01,
+   "length_ratio": 2.786,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "el_fell",
+   "to": "10_decembre",
+   "key": "10_decembre|el_fell",
+   "straight_m": 1002.72,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8421837,
+     10.182519
+    ],
+    [
+     36.844054,
+     10.182981
+    ],
+    [
+     36.846838,
+     10.183594
+    ],
+    [
+     36.847283,
+     10.184315
+    ],
+    [
+     36.848333,
+     10.184756
+    ],
+    [
+     36.848537,
+     10.184947
+    ],
+    [
+     36.84958,
+     10.186958
+    ],
+    [
+     36.850511,
+     10.189805
+    ],
+    [
+     36.850835,
+     10.191625
+    ],
+    [
+     36.850789,
+     10.19261
+    ],
+    [
+     36.85056,
+     10.192906
+    ],
+    [
+     36.849731,
+     10.193445
+    ],
+    [
+     36.84954,
+     10.193429
+    ],
+    [
+     36.849437,
+     10.193629
+    ],
+    [
+     36.848544,
+     10.194162
+    ],
+    [
+     36.848119,
+     10.194053
+    ],
+    [
+     36.847694,
+     10.193573
+    ],
+    [
+     36.8470261,
+     10.1920248
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2060.94,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 481.68,
+   "length_ratio": 2.0553,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "10_decembre",
+   "to": "rabattement_10_decembre",
+   "key": "10_decembre|rabattement_10_decembre",
+   "straight_m": 308.18,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8421837,
+     10.182519
+    ],
+    [
+     36.844463,
+     10.18307
+    ],
+    [
+     36.8445543,
+     10.1843131
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 369.23,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 89.36,
+   "length_ratio": 1.1981,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8003841,
+   10.1903877
+  ],
+  [
+   36.800417,
+   10.189311
+  ],
+  [
+   36.800204,
+   10.188823
+  ],
+  [
+   36.800322,
+   10.188411
+  ],
+  [
+   36.800148,
+   10.186737
+  ],
+  [
+   36.799962,
+   10.186272
+  ],
+  [
+   36.800008,
+   10.186004
+  ],
+  [
+   36.800156,
+   10.185869
+  ],
+  [
+   36.800975,
+   10.186206
+  ],
+  [
+   36.801826,
+   10.186115
+  ],
+  [
+   36.817206,
+   10.18357
+  ],
+  [
+   36.818179,
+   10.183107
+  ],
+  [
+   36.820668,
+   10.187697
+  ],
+  [
+   36.824822,
+   10.197087
+  ],
+  [
+   36.826705,
+   10.199501
+  ],
+  [
+   36.826992,
+   10.200571
+  ],
+  [
+   36.827235,
+   10.202765
+  ],
+  [
+   36.82908,
+   10.206747
+  ],
+  [
+   36.829565,
+   10.206522
+  ],
+  [
+   36.831015,
+   10.201282
+  ],
+  [
+   36.830942,
+   10.201089
+  ],
+  [
+   36.830707,
+   10.200932
+  ],
+  [
+   36.8288636,
+   10.2010967
+  ],
+  [
+   36.8356665,
+   10.2014554
+  ],
+  [
+   36.839222,
+   10.2045873
+  ],
+  [
+   36.839381,
+   10.204337
+  ],
+  [
+   36.837933,
+   10.202952
+  ],
+  [
+   36.837917,
+   10.202787
+  ],
+  [
+   36.838489,
+   10.2021
+  ],
+  [
+   36.839163,
+   10.200597
+  ],
+  [
+   36.839456,
+   10.199746
+  ],
+  [
+   36.839592,
+   10.19867
+  ],
+  [
+   36.839843,
+   10.199387
+  ],
+  [
+   36.840277,
+   10.199462
+  ],
+  [
+   36.8405935,
+   10.199187
+  ],
+  [
+   36.840277,
+   10.199462
+  ],
+  [
+   36.839918,
+   10.199422
+  ],
+  [
+   36.839757,
+   10.199285
+  ],
+  [
+   36.839605,
+   10.198843
+  ],
+  [
+   36.839602,
+   10.194949
+  ],
+  [
+   36.840048,
+   10.194947
+  ],
+  [
+   36.840777,
+   10.196633
+  ],
+  [
+   36.842232,
+   10.195728
+  ],
+  [
+   36.8428981,
+   10.1961923
+  ],
+  [
+   36.843033,
+   10.197723
+  ],
+  [
+   36.847261,
+   10.195114
+  ],
+  [
+   36.848046,
+   10.194497
+  ],
+  [
+   36.848237,
+   10.194102
+  ],
+  [
+   36.848544,
+   10.194162
+  ],
+  [
+   36.849437,
+   10.193629
+  ],
+  [
+   36.849698,
+   10.193132
+  ],
+  [
+   36.849524,
+   10.193051
+  ],
+  [
+   36.848371,
+   10.190011
+  ],
+  [
+   36.846541,
+   10.191183
+  ],
+  [
+   36.8470261,
+   10.1920248
+  ],
+  [
+   36.847694,
+   10.193573
+  ],
+  [
+   36.848119,
+   10.194053
+  ],
+  [
+   36.848544,
+   10.194162
+  ],
+  [
+   36.849437,
+   10.193629
+  ],
+  [
+   36.84954,
+   10.193429
+  ],
+  [
+   36.849731,
+   10.193445
+  ],
+  [
+   36.85056,
+   10.192906
+  ],
+  [
+   36.850789,
+   10.19261
+  ],
+  [
+   36.850835,
+   10.191625
+  ],
+  [
+   36.850511,
+   10.189805
+  ],
+  [
+   36.84958,
+   10.186958
+  ],
+  [
+   36.848537,
+   10.184947
+  ],
+  [
+   36.848333,
+   10.184756
+  ],
+  [
+   36.847283,
+   10.184315
+  ],
+  [
+   36.846838,
+   10.183594
+  ],
+  [
+   36.844054,
+   10.182981
+  ],
+  [
+   36.8421837,
+   10.182519
+  ],
+  [
+   36.844463,
+   10.18307
+  ],
+  [
+   36.8445543,
+   10.1843131
+  ]
+ ],
+ "phase3a": {
+  "pairs": 8,
+  "resolved": 7,
+  "unresolved": 1
+ }
+}

@@ -1,0 +1,399 @@
+{
+ "line_id": "bus_711_20",
+ "number": "20",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 20: Jardin Thameur - Teminus Cité Riadh",
+ "direction_aller": [
+  "jardin_thameur",
+  "place_des_droits_de_homme",
+  "mohamed_v",
+  "maison_blanche",
+  "banque_de_habitat",
+  "montplaisir",
+  "cit_el_khadhra",
+  "charguia",
+  "dah_dah",
+  "lac_palace",
+  "cit_taieb_mhiri",
+  "cit_essalem",
+  "chtioui",
+  "carrefour_tunis",
+  "sidi_daoued_n9",
+  "stade_rajet_haider",
+  "marsa",
+  "parc_saada",
+  "marsa_ville",
+  "lahweche",
+  "nacer",
+  "sidi_abd_aziz",
+  "teminus_cit_riadh"
+ ],
+ "direction_retour": [
+  "teminus_cit_riadh",
+  "sidi_abd_aziz",
+  "nacer",
+  "lahweche",
+  "marsa_ville",
+  "parc_saada",
+  "marsa",
+  "stade_rajet_haider",
+  "sidi_daoued_n9",
+  "carrefour_tunis",
+  "chtioui",
+  "cit_essalem",
+  "cit_taieb_mhiri",
+  "lac_palace",
+  "dah_dah",
+  "charguia",
+  "cit_el_khadhra",
+  "montplaisir",
+  "banque_de_habitat",
+  "maison_blanche",
+  "mohamed_v",
+  "place_des_droits_de_homme",
+  "jardin_thameur"
+ ],
+ "stations_count": 23,
+ "start": {
+  "id": "jardin_thameur",
+  "name": "Jardin Thameur"
+ },
+ "end": {
+  "id": "teminus_cit_riadh",
+  "name": "Teminus Cité Riadh"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "jardin_thameur",
+  "place_des_droits_de_homme",
+  "mohamed_v",
+  "maison_blanche",
+  "banque_de_habitat",
+  "montplaisir",
+  "cit_el_khadhra",
+  "charguia",
+  "dah_dah",
+  "lac_palace",
+  "cit_taieb_mhiri",
+  "cit_essalem",
+  "chtioui",
+  "carrefour_tunis",
+  "sidi_daoued_n9",
+  "stade_rajet_haider",
+  "marsa",
+  "parc_saada",
+  "marsa_ville",
+  "lahweche",
+  "nacer",
+  "sidi_abd_aziz",
+  "teminus_cit_riadh"
+ ],
+ "stations_detail": [
+  {
+   "id": "jardin_thameur",
+   "name_en": "Jardin Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8037336,
+   "lon": 10.1780922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_des_droits_de_homme",
+   "name_en": "Place Des Droits De Homme",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8072691,
+   "lon": 10.1853076,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mohamed_v",
+   "name_en": "MOHAMED V",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81568,
+   "lon": 10.18357,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "maison_blanche",
+   "name_en": "Maison Blanche",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156186,
+   "lon": 10.1850609,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "banque_de_habitat",
+   "name_en": "Banque De Habitat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8194235,
+   "lon": 10.1855061,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "montplaisir",
+   "name_en": "Montplaisir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8233261,
+   "lon": 10.1939602,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_khadhra",
+   "name_en": "Cité El Khadhra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.823838,
+   "lon": 10.1950601,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia",
+   "name_en": "Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8285742,
+   "lon": 10.2061645,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dah_dah",
+   "name_en": "Dah Dah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8353384,
+   "lon": 10.2242795,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lac_palace",
+   "name_en": "Lac Palace",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8393019,
+   "lon": 10.238269,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_taieb_mhiri",
+   "name_en": "Cité Taieb Mhiri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8487843,
+   "lon": 10.264062,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_essalem",
+   "name_en": "Cité Essalem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8532762,
+   "lon": 10.2742226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chtioui",
+   "name_en": "Chtioui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8594606,
+   "lon": 10.2884521,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carrefour_tunis",
+   "name_en": "Carrefour Tunis",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8645764,
+   "lon": 10.3002387,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_daoued_n9",
+   "name_en": "Sidi Daoued (N9)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8660676,
+   "lon": 10.3030673,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_rajet_haider",
+   "name_en": "Stade Rajet Haider",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.87409,
+   "lon": 10.3209677,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "marsa",
+   "name_en": "Marsa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8757921,
+   "lon": 10.3248576,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "parc_saada",
+   "name_en": "Parc Saada",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8785375,
+   "lon": 10.3283711,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "marsa_ville",
+   "name_en": "Marsa Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8803817,
+   "lon": 10.326805,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lahweche",
+   "name_en": "Lahweche",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8820904,
+   "lon": 10.3248842,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nacer",
+   "name_en": "Nacer",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8845156,
+   "lon": 10.3240154,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_abd_aziz",
+   "name_en": "Sidi Abd Aziz",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8875448,
+   "lon": 10.3227065,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "teminus_cit_riadh",
+   "name_en": "Teminus Cité Riadh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8857539,
+   "lon": 10.3142308,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

@@ -1,0 +1,383 @@
+{
+ "line_id": "bus_750_74",
+ "number": "74",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 74: Terminus Tunis Marine Bus - Mourouj 5",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "rue_de_la_turquie",
+  "moncef_bey",
+  "cimetiere_jallez",
+  "monopoles",
+  "lyc_e_ouardia",
+  "la_cagna_section",
+  "hammam_la_cagna",
+  "pont_mourouj_2",
+  "croisement_mourouj_2",
+  "les_roses_mourouj_1",
+  "batam",
+  "immeuble_oasis",
+  "meublatex",
+  "jardin_enfants_mourouj_3",
+  "foyer_universitaire_mourouj_3",
+  "centre_challakh_el_mourouj_4",
+  "14_janvier_el_mourouj",
+  "cit_el_faouez",
+  "jardin_enfants_mourouj_5",
+  "cit_afh",
+  "mourouj_5"
+ ],
+ "direction_retour": [
+  "mourouj_5",
+  "cit_afh",
+  "jardin_enfants_mourouj_5",
+  "cit_el_faouez",
+  "14_janvier_el_mourouj",
+  "centre_challakh_el_mourouj_4",
+  "foyer_universitaire_mourouj_3",
+  "jardin_enfants_mourouj_3",
+  "meublatex",
+  "immeuble_oasis",
+  "batam",
+  "les_roses_mourouj_1",
+  "croisement_mourouj_2",
+  "pont_mourouj_2",
+  "hammam_la_cagna",
+  "la_cagna_section",
+  "lyc_e_ouardia",
+  "monopoles",
+  "cimetiere_jallez",
+  "moncef_bey",
+  "rue_de_la_turquie",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 22,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "mourouj_5",
+  "name": "Mourouj 5"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "rue_de_la_turquie",
+  "moncef_bey",
+  "cimetiere_jallez",
+  "monopoles",
+  "lyc_e_ouardia",
+  "la_cagna_section",
+  "hammam_la_cagna",
+  "pont_mourouj_2",
+  "croisement_mourouj_2",
+  "les_roses_mourouj_1",
+  "batam",
+  "immeuble_oasis",
+  "meublatex",
+  "jardin_enfants_mourouj_3",
+  "foyer_universitaire_mourouj_3",
+  "centre_challakh_el_mourouj_4",
+  "14_janvier_el_mourouj",
+  "cit_el_faouez",
+  "jardin_enfants_mourouj_5",
+  "cit_afh",
+  "mourouj_5"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_de_la_turquie",
+   "name_en": "Rue De La Turquie",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7991033,
+   "lon": 10.1863693,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "moncef_bey",
+   "name_en": "MONCEF BEY",
+   "name_ar": "المنصف باي",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_3m"
+   ],
+   "lat": 36.80528,
+   "lon": 10.09065,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "cimetiere_jallez",
+   "name_en": "Cimetiere Jallez",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.786997,
+   "lon": 10.1804847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "monopoles",
+   "name_en": "Monopoles",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7803904,
+   "lon": 10.1816705,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_ouardia",
+   "name_en": "Lycée Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7769364,
+   "lon": 10.1838728,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_cagna_section",
+   "name_en": "La Cagna (Section)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7729558,
+   "lon": 10.1875014,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_la_cagna",
+   "name_en": "Hammam La Cagna",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7703346,
+   "lon": 10.1897437,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_mourouj_2",
+   "name_en": "Pont Mourouj 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7431611,
+   "lon": 10.207993,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_mourouj_2",
+   "name_en": "Croisement Mourouj 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.74025,
+   "lon": 10.2059713,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_roses_mourouj_1",
+   "name_en": "Les Roses Mourouj 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7390079,
+   "lon": 10.2055154,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "batam",
+   "name_en": "BATAM",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7374523,
+   "lon": 10.208229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_oasis",
+   "name_en": "Immeuble Oasis",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7349698,
+   "lon": 10.2096672,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "meublatex",
+   "name_en": "Meublatex",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.730361,
+   "lon": 10.2105791,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants_mourouj_3",
+   "name_en": "Jardin Enfants Mourouj 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7243136,
+   "lon": 10.2111902,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_universitaire_mourouj_3",
+   "name_en": "Foyer Universitaire Mourouj 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7227421,
+   "lon": 10.2128429,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_challakh_el_mourouj_4",
+   "name_en": "Centre Challakh El Mourouj 4",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7191548,
+   "lon": 10.2164902,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "14_janvier_el_mourouj",
+   "name_en": "14 Janvier El Mourouj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7168552,
+   "lon": 10.213302,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_faouez",
+   "name_en": "Cité El Faouez",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7160786,
+   "lon": 10.2088199,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants_mourouj_5",
+   "name_en": "Jardin Enfants Mourouj 5",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7105017,
+   "lon": 10.206212,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_afh",
+   "name_en": "Cité Afh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7086031,
+   "lon": 10.2040238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mourouj_5",
+   "name_en": "Mourouj 5",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.710192,
+   "lon": 10.2012553,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

@@ -1,0 +1,191 @@
+{
+ "line_id": "bus_738_58",
+ "number": "58",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 58: Rabattement Khaireddine Mannouba - Cité Elward 16C",
+ "direction_aller": [
+  "rabattement_khaireddine_mannouba",
+  "croisement_sanhaja",
+  "p_t_t_oued_ellil",
+  "oued_ellil_16c_58",
+  "cit_ennajet",
+  "cit_ennejet_2",
+  "lyc_e_ibn_fourat",
+  "cit_elward_1",
+  "arr_t_onas",
+  "cit_elward_16c"
+ ],
+ "direction_retour": [
+  "cit_elward_16c",
+  "arr_t_onas",
+  "cit_elward_1",
+  "lyc_e_ibn_fourat",
+  "cit_ennejet_2",
+  "cit_ennajet",
+  "oued_ellil_16c_58",
+  "p_t_t_oued_ellil",
+  "croisement_sanhaja",
+  "rabattement_khaireddine_mannouba"
+ ],
+ "stations_count": 10,
+ "start": {
+  "id": "rabattement_khaireddine_mannouba",
+  "name": "Rabattement Khaireddine Mannouba"
+ },
+ "end": {
+  "id": "cit_elward_16c",
+  "name": "Cité Elward 16C"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_khaireddine_mannouba",
+  "croisement_sanhaja",
+  "p_t_t_oued_ellil",
+  "oued_ellil_16c_58",
+  "cit_ennajet",
+  "cit_ennejet_2",
+  "lyc_e_ibn_fourat",
+  "cit_elward_1",
+  "arr_t_onas",
+  "cit_elward_16c"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_khaireddine_mannouba",
+   "name_en": "Rabattement Khaireddine Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156704,
+   "lon": 10.0564588,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_sanhaja",
+   "name_en": "Croisement Sanhaja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230522,
+   "lon": 10.034149,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "p_t_t_oued_ellil",
+   "name_en": "P.T.T Oued Ellil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8334109,
+   "lon": 10.0395124,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_ellil_16c_58",
+   "name_en": "Oued Ellil (16C 58)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8353865,
+   "lon": 10.0406428,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ennajet",
+   "name_en": "Cité Ennajet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8376323,
+   "lon": 10.0421257,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ennejet_2",
+   "name_en": "Cité Ennejet 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8383536,
+   "lon": 10.0387568,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_ibn_fourat",
+   "name_en": "Lycée Ibn Fourat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8390374,
+   "lon": 10.0355974,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_elward_1",
+   "name_en": "Cité Elward 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8437691,
+   "lon": 10.0266417,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arr_t_onas",
+   "name_en": "Arrét Onas",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8407836,
+   "lon": 10.0267083,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_elward_16c",
+   "name_en": "Cité Elward 16C",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8471286,
+   "lon": 10.0266225,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

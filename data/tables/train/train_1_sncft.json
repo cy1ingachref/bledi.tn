@@ -1,0 +1,495 @@
+{
+ "line_id": "train_1_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Sousse Bab Jdid - Mahdia",
+ "direction_aller": [
+  "sousse_bab_jdid",
+  "sousse_mohamed_v",
+  "sousse_sud",
+  "sousse_zi",
+  "sahline_ville",
+  "sahline_sebkha",
+  "les_hotels_monastir",
+  "aeroport_skanes_monastir",
+  "la_faculte",
+  "monastir",
+  "monastir_zi",
+  "khnis_bembla",
+  "ksiba_bennane",
+  "bouhjar",
+  "lamta",
+  "sayeda",
+  "ksar_helal_zi",
+  "ksar_helal",
+  "moknine_griba",
+  "moknine_voyageurs",
+  "teboulba_zi",
+  "teboulba",
+  "bekalta",
+  "baghdedi",
+  "mahdia_zt",
+  "sidi_masaoud",
+  "borj_arif",
+  "mahdia_ezzahra",
+  "mahdia"
+ ],
+ "direction_retour": [
+  "mahdia",
+  "mahdia_ezzahra",
+  "borj_arif",
+  "sidi_masaoud",
+  "mahdia_zt",
+  "baghdedi",
+  "bekalta",
+  "teboulba",
+  "teboulba_zi",
+  "moknine_voyageurs",
+  "moknine_griba",
+  "ksar_helal",
+  "ksar_helal_zi",
+  "sayeda",
+  "lamta",
+  "bouhjar",
+  "ksiba_bennane",
+  "khnis_bembla",
+  "monastir_zi",
+  "monastir",
+  "la_faculte",
+  "aeroport_skanes_monastir",
+  "les_hotels_monastir",
+  "sahline_sebkha",
+  "sahline_ville",
+  "sousse_zi",
+  "sousse_sud",
+  "sousse_mohamed_v",
+  "sousse_bab_jdid"
+ ],
+ "stations_count": 29,
+ "start": {
+  "id": "sousse_bab_jdid",
+  "name": "Sousse Bab Jdid"
+ },
+ "end": {
+  "id": "mahdia",
+  "name": "Mahdia"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "sousse_bab_jdid",
+  "sousse_mohamed_v",
+  "sousse_sud",
+  "sousse_zi",
+  "sahline_ville",
+  "sahline_sebkha",
+  "les_hotels_monastir",
+  "aeroport_skanes_monastir",
+  "la_faculte",
+  "monastir",
+  "monastir_zi",
+  "khnis_bembla",
+  "ksiba_bennane",
+  "bouhjar",
+  "lamta",
+  "sayeda",
+  "ksar_helal_zi",
+  "ksar_helal",
+  "moknine_griba",
+  "moknine_voyageurs",
+  "teboulba_zi",
+  "teboulba",
+  "bekalta",
+  "baghdedi",
+  "mahdia_zt",
+  "sidi_masaoud",
+  "borj_arif",
+  "mahdia_ezzahra",
+  "mahdia"
+ ],
+ "stations_detail": [
+  {
+   "id": "sousse_bab_jdid",
+   "name_en": "Sousse Bab Jdid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.823063,
+   "lon": 10.6415928,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_mohamed_v",
+   "name_en": "Sousse Mohamed V",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.8159939,
+   "lon": 10.6432475,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_sud",
+   "name_en": "Sousse Sud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.800173,
+   "lon": 10.649924,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_zi",
+   "name_en": "Sousse Zi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7821012,
+   "lon": 10.6683762,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sahline_ville",
+   "name_en": "Sahline Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7595786,
+   "lon": 10.7014559,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sahline_sebkha",
+   "name_en": "Sahline Sebkha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7576841,
+   "lon": 10.7165366,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_hotels_monastir",
+   "name_en": "Les Hotels Monastir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7601219,
+   "lon": 10.7448919,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "aeroport_skanes_monastir",
+   "name_en": "Aeroport Skanes Monastir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7625157,
+   "lon": 10.754098,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_faculte",
+   "name_en": "La Faculte",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7596167,
+   "lon": 10.8073597,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "monastir",
+   "name_en": "Monastir",
+   "name_ar": "المنستير",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_77m"
+   ],
+   "lat": 35.7706263,
+   "lon": 10.8252907,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "monastir_zi",
+   "name_en": "Monastir Zi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7401836,
+   "lon": 10.8204016,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "khnis_bembla",
+   "name_en": "Khnis/Bembla",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7090448,
+   "lon": 10.8124341,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "ksiba_bennane",
+   "name_en": "Ksiba Bennane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6800414,
+   "lon": 10.8426818,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouhjar",
+   "name_en": "Bouhjar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6723505,
+   "lon": 10.8676304,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "lamta",
+   "name_en": "Lamta",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6701908,
+   "lon": 10.8828352,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sayeda",
+   "name_en": "Sayeda",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6660635,
+   "lon": 10.8881796,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "ksar_helal_zi",
+   "name_en": "Ksar Helal Zi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6519229,
+   "lon": 10.8986172,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "ksar_helal",
+   "name_en": "Ksar Helal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6451442,
+   "lon": 10.9009117,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "moknine_griba",
+   "name_en": "Moknine Griba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6379972,
+   "lon": 10.9069094,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "moknine_voyageurs",
+   "name_en": "Moknine Voyageurs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6312829,
+   "lon": 10.9156069,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "teboulba_zi",
+   "name_en": "Teboulba Zi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6337468,
+   "lon": 10.9434955,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "teboulba",
+   "name_en": "Teboulba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.6377169,
+   "lon": 10.9616318,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "bekalta",
+   "name_en": "Bekalta",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.615241,
+   "lon": 10.9893645,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "baghdedi",
+   "name_en": "Baghdedi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.5695318,
+   "lon": 11.0184244,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mahdia_zt",
+   "name_en": "Mahdia ZT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.5369097,
+   "lon": 11.027409,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_masaoud",
+   "name_en": "Sidi Masaoud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.5210721,
+   "lon": 11.0272134,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_arif",
+   "name_en": "Borj Arif",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.5061925,
+   "lon": 11.0303632,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mahdia_ezzahra",
+   "name_en": "Mahdia Ezzahra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.5000429,
+   "lon": 11.048318,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mahdia",
+   "name_en": "Mahdia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.5007749,
+   "lon": 11.0642716,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

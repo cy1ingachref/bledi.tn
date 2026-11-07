@@ -1,0 +1,623 @@
+{
+ "line_id": "bus_801_19g",
+ "number": "19G",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 19G: Hopital Des Enfants - Lycée Ibn Mandhour",
+ "direction_aller": [
+  "hopital_des_enfants",
+  "charle_nicole",
+  "tribunal_taakib",
+  "kasbah",
+  "faculte_9_avril",
+  "mosqu_e_al_hawa",
+  "gorjani",
+  "arret_essayda",
+  "salle_des_f_tes_kermess",
+  "rue_du_sahel",
+  "poste_police_rue_du_sahel",
+  "13_aout",
+  "lyc_e_2_mars_el_ouardia_l_g",
+  "bellevue",
+  "salle_des_f_tes_bellevue",
+  "caf_el_quods",
+  "hammam_bellevue",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "centre_de_formation_snt",
+  "soci_t_nour",
+  "lustreries",
+  "gouvernorat_de_ben_arous",
+  "cite_sprols",
+  "mosqu_e_medina_jedida",
+  "m_dina_jedida",
+  "av_faycel_ibn_abdelaziz",
+  "carrefour_m_dina_jedida",
+  "coll_ge_yasminet",
+  "mosqu_e",
+  "cimeti_re_sidi_mosbeh",
+  "lyc_e_ibn_mandhour"
+ ],
+ "direction_retour": [
+  "lyc_e_ibn_mandhour",
+  "cimeti_re_sidi_mosbeh",
+  "mosqu_e",
+  "coll_ge_yasminet",
+  "carrefour_m_dina_jedida",
+  "av_faycel_ibn_abdelaziz",
+  "m_dina_jedida",
+  "mosqu_e_medina_jedida",
+  "cite_sprols",
+  "gouvernorat_de_ben_arous",
+  "lustreries",
+  "soci_t_nour",
+  "centre_de_formation_snt",
+  "cnss",
+  "sofomeca",
+  "stoa",
+  "gare_djebel_jelloud",
+  "djebel_jelloud_gp1",
+  "el_afrane",
+  "centre_de_coordination_ouardia",
+  "hammam_bellevue",
+  "caf_el_quods",
+  "salle_des_f_tes_bellevue",
+  "bellevue",
+  "lyc_e_2_mars_el_ouardia_l_g",
+  "13_aout",
+  "poste_police_rue_du_sahel",
+  "rue_du_sahel",
+  "salle_des_f_tes_kermess",
+  "arret_essayda",
+  "gorjani",
+  "mosqu_e_al_hawa",
+  "faculte_9_avril",
+  "kasbah",
+  "tribunal_taakib",
+  "charle_nicole",
+  "hopital_des_enfants"
+ ],
+ "stations_count": 37,
+ "start": {
+  "id": "hopital_des_enfants",
+  "name": "Hopital Des Enfants"
+ },
+ "end": {
+  "id": "lyc_e_ibn_mandhour",
+  "name": "Lycée Ibn Mandhour"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "hopital_des_enfants",
+  "charle_nicole",
+  "tribunal_taakib",
+  "kasbah",
+  "faculte_9_avril",
+  "mosqu_e_al_hawa",
+  "gorjani",
+  "arret_essayda",
+  "salle_des_f_tes_kermess",
+  "rue_du_sahel",
+  "poste_police_rue_du_sahel",
+  "13_aout",
+  "lyc_e_2_mars_el_ouardia_l_g",
+  "bellevue",
+  "salle_des_f_tes_bellevue",
+  "caf_el_quods",
+  "hammam_bellevue",
+  "centre_de_coordination_ouardia",
+  "el_afrane",
+  "djebel_jelloud_gp1",
+  "gare_djebel_jelloud",
+  "stoa",
+  "sofomeca",
+  "cnss",
+  "centre_de_formation_snt",
+  "soci_t_nour",
+  "lustreries",
+  "gouvernorat_de_ben_arous",
+  "cite_sprols",
+  "mosqu_e_medina_jedida",
+  "m_dina_jedida",
+  "av_faycel_ibn_abdelaziz",
+  "carrefour_m_dina_jedida",
+  "coll_ge_yasminet",
+  "mosqu_e",
+  "cimeti_re_sidi_mosbeh",
+  "lyc_e_ibn_mandhour"
+ ],
+ "stations_detail": [
+  {
+   "id": "hopital_des_enfants",
+   "name_en": "Hopital Des Enfants",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.807514,
+   "lon": 10.1593545,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tribunal_taakib",
+   "name_en": "Tribunal Taakib",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7996153,
+   "lon": 10.1651267,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kasbah",
+   "name_en": "Kasbah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7963447,
+   "lon": 10.1681174,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "faculte_9_avril",
+   "name_en": "Faculte 9 Avril",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.795139,
+   "lon": 10.1633135,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_al_hawa",
+   "name_en": "Mosquée Al Hawa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7931059,
+   "lon": 10.1629207,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gorjani",
+   "name_en": "Gorjani",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7879938,
+   "lon": 10.1675136,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arret_essayda",
+   "name_en": "Arret Essayda",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7852839,
+   "lon": 10.1711724,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "salle_des_f_tes_kermess",
+   "name_en": "Salle Des Fétes Kermess",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7838853,
+   "lon": 10.1732617,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_du_sahel",
+   "name_en": "Rue Du Sahel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7812675,
+   "lon": 10.1752006,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poste_police_rue_du_sahel",
+   "name_en": "Poste Police Rue Du Sahel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7778302,
+   "lon": 10.177046,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "13_aout",
+   "name_en": "13 AOUT",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.77504,
+   "lon": 10.1792,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_2_mars_el_ouardia_l_g",
+   "name_en": "Lycée 2 Mars El Ouardia L(G)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7758433,
+   "lon": 10.1821306,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bellevue",
+   "name_en": "Bellevue",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7740312,
+   "lon": 10.1870189,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "salle_des_f_tes_bellevue",
+   "name_en": "Salle Des Fétes Bellevue",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7783795,
+   "lon": 10.1907096,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_el_quods",
+   "name_en": "Café El Quods",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7804161,
+   "lon": 10.1929036,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_bellevue",
+   "name_en": "Hammam Bellevue",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7810337,
+   "lon": 10.1939065,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_coordination_ouardia",
+   "name_en": "Centre De Coordination Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7806046,
+   "lon": 10.1956231,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_afrane",
+   "name_en": "El Afrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7796674,
+   "lon": 10.1966209,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebel_jelloud_gp1",
+   "name_en": "Djebel Jelloud Gp1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7732433,
+   "lon": 10.2045236,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gare_djebel_jelloud",
+   "name_en": "Gare Djebel Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7715383,
+   "lon": 10.208723,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stoa",
+   "name_en": "Stoa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7686077,
+   "lon": 10.2157355,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sofomeca",
+   "name_en": "SOFOMECA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7658672,
+   "lon": 10.2217893,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cnss",
+   "name_en": "Cnss",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.765065,
+   "lon": 10.2233996,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_snt",
+   "name_en": "Centre De Formation Snt",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.761611,
+   "lon": 10.2317686,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soci_t_nour",
+   "name_en": "Société Nour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7608128,
+   "lon": 10.2337966,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lustreries",
+   "name_en": "Lustreries",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7570187,
+   "lon": 10.2430977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gouvernorat_de_ben_arous",
+   "name_en": "Gouvernorat De Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7544571,
+   "lon": 10.2481832,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_sprols",
+   "name_en": "Cite Sprols",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7530502,
+   "lon": 10.2496172,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_medina_jedida",
+   "name_en": "Mosquée Medina Jedida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.751312,
+   "lon": 10.2511658,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "m_dina_jedida",
+   "name_en": "Médina Jedida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.747713,
+   "lon": 10.2514438,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_faycel_ibn_abdelaziz",
+   "name_en": "Av Faycel Ibn Abdelaziz",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7452083,
+   "lon": 10.2508141,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carrefour_m_dina_jedida",
+   "name_en": "Carrefour Médina Jedida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7420979,
+   "lon": 10.2494455,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "coll_ge_yasminet",
+   "name_en": "Collége Yasminet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.739878,
+   "lon": 10.2463378,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e",
+   "name_en": "Mosquée",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7385815,
+   "lon": 10.2445252,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cimeti_re_sidi_mosbeh",
+   "name_en": "Cimetiére Sidi Mosbeh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.740943,
+   "lon": 10.240909,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_ibn_mandhour",
+   "name_en": "Lycée Ibn Mandhour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7443647,
+   "lon": 10.2435483,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

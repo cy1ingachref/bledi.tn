@@ -1,0 +1,159 @@
+{
+ "line_id": "bus_730_45",
+ "number": "45",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 45: Terminus Tebourba - Terminus Chouigui",
+ "direction_aller": [
+  "terminus_tebourba",
+  "cit_errajet",
+  "lyc_e_technique_tebourba",
+  "hopital_tebourba",
+  "frigo",
+  "route_chouigui",
+  "entree_chouigui",
+  "terminus_chouigui"
+ ],
+ "direction_retour": [
+  "terminus_chouigui",
+  "entree_chouigui",
+  "route_chouigui",
+  "frigo",
+  "hopital_tebourba",
+  "lyc_e_technique_tebourba",
+  "cit_errajet",
+  "terminus_tebourba"
+ ],
+ "stations_count": 8,
+ "start": {
+  "id": "terminus_tebourba",
+  "name": "Terminus Tebourba"
+ },
+ "end": {
+  "id": "terminus_chouigui",
+  "name": "Terminus Chouigui"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tebourba",
+  "cit_errajet",
+  "lyc_e_technique_tebourba",
+  "hopital_tebourba",
+  "frigo",
+  "route_chouigui",
+  "entree_chouigui",
+  "terminus_chouigui"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tebourba",
+   "name_en": "Terminus Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8275891,
+   "lon": 9.8438062,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_errajet",
+   "name_en": "Cité Errajet",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8367438,
+   "lon": 9.8360227,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_technique_tebourba",
+   "name_en": "Lycée Technique Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8446187,
+   "lon": 9.8290137,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_tebourba",
+   "name_en": "Hopital Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8459266,
+   "lon": 9.8280961,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "frigo",
+   "name_en": "Frigo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.9238596,
+   "lon": 9.8888109,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "route_chouigui",
+   "name_en": "Route Chouigui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8634396,
+   "lon": 9.7983129,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entree_chouigui",
+   "name_en": "Entree Chouigui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8768205,
+   "lon": 9.7992141,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_chouigui",
+   "name_en": "Terminus Chouigui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8793062,
+   "lon": 9.8043642,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

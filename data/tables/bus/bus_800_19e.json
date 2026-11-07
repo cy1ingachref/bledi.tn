@@ -1,0 +1,229 @@
+{
+ "line_id": "bus_800_19e",
+ "number": "19E",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 19E: Station Barcelone - Terminus Cité Chaker",
+ "direction_aller": [
+  "station_barcelone",
+  "moncef_bey",
+  "stil",
+  "pont_autoroute_sud_saint_gouban",
+  "sicoac",
+  "procid",
+  "ponts_et_chauss_es_saint_gobin",
+  "soci_t_nadhif",
+  "lyc_e_taha_hssine_megrine",
+  "cit_jaouhara",
+  "caf_ayed",
+  "terminus_cit_chaker"
+ ],
+ "direction_retour": [
+  "terminus_cit_chaker",
+  "caf_ayed",
+  "cit_jaouhara",
+  "lyc_e_taha_hssine_megrine",
+  "soci_t_nadhif",
+  "ponts_et_chauss_es_saint_gobin",
+  "procid",
+  "sicoac",
+  "pont_autoroute_sud_saint_gouban",
+  "stil",
+  "moncef_bey",
+  "station_barcelone"
+ ],
+ "stations_count": 12,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "terminus_cit_chaker",
+  "name": "Terminus Cité Chaker"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [
+  {
+   "from": "stil",
+   "to": "pont_autoroute_sud_saint_gouban",
+   "km": 23.5
+  }
+ ],
+ "original_stations": [
+  "station_barcelone",
+  "moncef_bey",
+  "stil",
+  "pont_autoroute_sud_saint_gouban",
+  "sicoac",
+  "procid",
+  "ponts_et_chauss_es_saint_gobin",
+  "soci_t_nadhif",
+  "lyc_e_taha_hssine_megrine",
+  "cit_jaouhara",
+  "caf_ayed",
+  "terminus_cit_chaker"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "moncef_bey",
+   "name_en": "MONCEF BEY",
+   "name_ar": "المنصف باي",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_3m"
+   ],
+   "lat": 36.80528,
+   "lon": 10.09065,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "stil",
+   "name_en": "Stil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8339484,
+   "lon": 9.9456734,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_autoroute_sud_saint_gouban",
+   "name_en": "Pont Autoroute Sud (Saint-Gouban)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7809122,
+   "lon": 10.2008261,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sicoac",
+   "name_en": "Sicoac",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7792956,
+   "lon": 10.2040019,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "procid",
+   "name_en": "Procid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7782157,
+   "lon": 10.2057726,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ponts_et_chauss_es_saint_gobin",
+   "name_en": "Ponts Et Chaussées , Saint Gobin",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7762707,
+   "lon": 10.2114477,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soci_t_nadhif",
+   "name_en": "Société Nadhif",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7743629,
+   "lon": 10.2179923,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_taha_hssine_megrine",
+   "name_en": "Lycée Taha Hssine Megrine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7765878,
+   "lon": 10.22472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_jaouhara",
+   "name_en": "Cité Jaouhara",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7756462,
+   "lon": 10.2278955,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_ayed",
+   "name_en": "Café Ayed",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7793924,
+   "lon": 10.2315647,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_cit_chaker",
+   "name_en": "Terminus Cité Chaker",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7819881,
+   "lon": 10.2340646,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

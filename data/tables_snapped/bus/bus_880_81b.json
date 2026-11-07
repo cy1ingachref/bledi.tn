@@ -1,0 +1,413 @@
+{
+ "line_id": "bus_880_81b",
+ "number": "81B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 81B: Centre Challakh El Mourouj 4 - Av El Borhene",
+ "direction_aller": [
+  "centre_challakh_el_mourouj_4",
+  "14_janvier_el_mourouj",
+  "cit_el_faouez",
+  "jardin_enfants_mourouj_5",
+  "cit_afh",
+  "av_el_borhene"
+ ],
+ "direction_retour": [
+  "av_el_borhene",
+  "cit_afh",
+  "jardin_enfants_mourouj_5",
+  "cit_el_faouez",
+  "14_janvier_el_mourouj",
+  "centre_challakh_el_mourouj_4"
+ ],
+ "stations_count": 6,
+ "start": {
+  "id": "centre_challakh_el_mourouj_4",
+  "name": "Centre Challakh El Mourouj 4"
+ },
+ "end": {
+  "id": "av_el_borhene",
+  "name": "Av El Borhene"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "centre_challakh_el_mourouj_4",
+  "14_janvier_el_mourouj",
+  "cit_el_faouez",
+  "jardin_enfants_mourouj_5",
+  "cit_afh",
+  "av_el_borhene"
+ ],
+ "stations_detail": [
+  {
+   "id": "centre_challakh_el_mourouj_4",
+   "name_en": "Centre Challakh El Mourouj 4",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7191548,
+   "lon": 10.2164902,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "14_janvier_el_mourouj",
+   "name_en": "14 Janvier El Mourouj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7168552,
+   "lon": 10.213302,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_faouez",
+   "name_en": "Cité El Faouez",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7160786,
+   "lon": 10.2088199,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants_mourouj_5",
+   "name_en": "Jardin Enfants Mourouj 5",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7105017,
+   "lon": 10.206212,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_afh",
+   "name_en": "Cité Afh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7086031,
+   "lon": 10.2040238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_el_borhene",
+   "name_en": "Av El Borhene",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7096072,
+   "lon": 10.200354,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "centre_challakh_el_mourouj_4",
+   "to": "14_janvier_el_mourouj",
+   "key": "14_janvier_el_mourouj|centre_challakh_el_mourouj_4",
+   "straight_m": 382.28,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7168552,
+     10.213302
+    ],
+    [
+     36.716657,
+     10.214827
+    ],
+    [
+     36.716063,
+     10.21643
+    ],
+    [
+     36.717256,
+     10.216729
+    ],
+    [
+     36.718432,
+     10.216781
+    ],
+    [
+     36.720098,
+     10.21645
+    ],
+    [
+     36.720582,
+     10.216228
+    ],
+    [
+     36.720526,
+     10.21605
+    ],
+    [
+     36.7191548,
+     10.2164902
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 980.68,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 251.97,
+   "length_ratio": 2.5653,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "14_janvier_el_mourouj",
+   "to": "cit_el_faouez",
+   "key": "14_janvier_el_mourouj|cit_el_faouez",
+   "straight_m": 408.74,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7168552,
+     10.213302
+    ],
+    [
+     36.716542,
+     10.21041
+    ],
+    [
+     36.7160786,
+     10.2088199
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 410.93,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 20.42,
+   "length_ratio": 1.0054,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_el_faouez",
+   "to": "jardin_enfants_mourouj_5",
+   "key": "cit_el_faouez|jardin_enfants_mourouj_5",
+   "straight_m": 662.26,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7160786,
+     10.2088199
+    ],
+    [
+     36.715171,
+     10.207454
+    ],
+    [
+     36.714268,
+     10.206632
+    ],
+    [
+     36.713712,
+     10.206363
+    ],
+    [
+     36.713041,
+     10.206087
+    ],
+    [
+     36.712171,
+     10.205937
+    ],
+    [
+     36.71133,
+     10.206012
+    ],
+    [
+     36.7105017,
+     10.206212
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 712.54,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 112.7,
+   "length_ratio": 1.0759,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "jardin_enfants_mourouj_5",
+   "to": "cit_afh",
+   "key": "cit_afh|jardin_enfants_mourouj_5",
+   "straight_m": 287.43,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7086031,
+     10.2040238
+    ],
+    [
+     36.709848,
+     10.206554
+    ],
+    [
+     36.7105017,
+     10.206212
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 343.46,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 71.72,
+   "length_ratio": 1.1949,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_afh",
+   "to": "av_el_borhene",
+   "key": "av_el_borhene|cit_afh",
+   "straight_m": 345.67,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7096072,
+     10.200354
+    ],
+    [
+     36.707686,
+     10.202344
+    ],
+    [
+     36.7086031,
+     10.2040238
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 458.85,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 144.88,
+   "length_ratio": 1.3274,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7191548,
+   10.2164902
+  ],
+  [
+   36.720526,
+   10.21605
+  ],
+  [
+   36.720582,
+   10.216228
+  ],
+  [
+   36.720098,
+   10.21645
+  ],
+  [
+   36.718432,
+   10.216781
+  ],
+  [
+   36.717256,
+   10.216729
+  ],
+  [
+   36.716063,
+   10.21643
+  ],
+  [
+   36.716657,
+   10.214827
+  ],
+  [
+   36.7168552,
+   10.213302
+  ],
+  [
+   36.716542,
+   10.21041
+  ],
+  [
+   36.7160786,
+   10.2088199
+  ],
+  [
+   36.715171,
+   10.207454
+  ],
+  [
+   36.714268,
+   10.206632
+  ],
+  [
+   36.713712,
+   10.206363
+  ],
+  [
+   36.713041,
+   10.206087
+  ],
+  [
+   36.712171,
+   10.205937
+  ],
+  [
+   36.71133,
+   10.206012
+  ],
+  [
+   36.7105017,
+   10.206212
+  ],
+  [
+   36.709848,
+   10.206554
+  ],
+  [
+   36.7086031,
+   10.2040238
+  ],
+  [
+   36.707686,
+   10.202344
+  ],
+  [
+   36.7096072,
+   10.200354
+  ]
+ ],
+ "phase3a": {
+  "pairs": 5,
+  "resolved": 5,
+  "unresolved": 0
+ }
+}

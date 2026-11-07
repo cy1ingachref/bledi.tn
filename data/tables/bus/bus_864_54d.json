@@ -1,0 +1,415 @@
+{
+ "line_id": "bus_864_54d",
+ "number": "54D",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 54D: Mourouj 5 - Djebel Jelloud",
+ "direction_aller": [
+  "mourouj_5",
+  "av_el_borhene",
+  "cit_afh",
+  "jardin_enfants_mourouj_5",
+  "cit_el_faouez",
+  "14_janvier_el_mourouj",
+  "centre_challakh_el_mourouj_4",
+  "foyer_universitaire_mourouj_3_81",
+  "jardin_enfants_mourouj_3",
+  "el_mourouj_3",
+  "meublatex",
+  "miami_mourouj",
+  "d_l_gation_mourouj_1",
+  "institut_ennour",
+  "cellulose_silos",
+  "municipalit_ben_arous",
+  "ugtt_ben_arous",
+  "centre_ben_arous",
+  "bna_ben_arous",
+  "kiosque_mobil_ben_arous",
+  "soned",
+  "sidi_fathallah1",
+  "protection_civile",
+  "djebel_jelloud"
+ ],
+ "direction_retour": [
+  "djebel_jelloud",
+  "protection_civile",
+  "sidi_fathallah1",
+  "soned",
+  "kiosque_mobil_ben_arous",
+  "bna_ben_arous",
+  "centre_ben_arous",
+  "ugtt_ben_arous",
+  "municipalit_ben_arous",
+  "cellulose_silos",
+  "institut_ennour",
+  "d_l_gation_mourouj_1",
+  "miami_mourouj",
+  "meublatex",
+  "el_mourouj_3",
+  "jardin_enfants_mourouj_3",
+  "foyer_universitaire_mourouj_3_81",
+  "centre_challakh_el_mourouj_4",
+  "14_janvier_el_mourouj",
+  "cit_el_faouez",
+  "jardin_enfants_mourouj_5",
+  "cit_afh",
+  "av_el_borhene",
+  "mourouj_5"
+ ],
+ "stations_count": 24,
+ "start": {
+  "id": "mourouj_5",
+  "name": "Mourouj 5"
+ },
+ "end": {
+  "id": "djebel_jelloud",
+  "name": "Djebel Jelloud"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "mourouj_5",
+  "av_el_borhene",
+  "cit_afh",
+  "jardin_enfants_mourouj_5",
+  "cit_el_faouez",
+  "14_janvier_el_mourouj",
+  "centre_challakh_el_mourouj_4",
+  "foyer_universitaire_mourouj_3_81",
+  "jardin_enfants_mourouj_3",
+  "el_mourouj_3",
+  "meublatex",
+  "miami_mourouj",
+  "d_l_gation_mourouj_1",
+  "institut_ennour",
+  "cellulose_silos",
+  "municipalit_ben_arous",
+  "ugtt_ben_arous",
+  "centre_ben_arous",
+  "bna_ben_arous",
+  "kiosque_mobil_ben_arous",
+  "soned",
+  "sidi_fathallah1",
+  "protection_civile",
+  "djebel_jelloud"
+ ],
+ "stations_detail": [
+  {
+   "id": "mourouj_5",
+   "name_en": "Mourouj 5",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.710192,
+   "lon": 10.2012553,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_el_borhene",
+   "name_en": "Av El Borhene",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7096072,
+   "lon": 10.200354,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_afh",
+   "name_en": "Cité Afh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7086031,
+   "lon": 10.2040238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants_mourouj_5",
+   "name_en": "Jardin Enfants Mourouj 5",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7105017,
+   "lon": 10.206212,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_faouez",
+   "name_en": "Cité El Faouez",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7160786,
+   "lon": 10.2088199,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "14_janvier_el_mourouj",
+   "name_en": "14 Janvier El Mourouj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7168552,
+   "lon": 10.213302,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_challakh_el_mourouj_4",
+   "name_en": "Centre Challakh El Mourouj 4",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7191548,
+   "lon": 10.2164902,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_universitaire_mourouj_3_81",
+   "name_en": "Foyer Universitaire Mourouj 3 (81)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7224681,
+   "lon": 10.2090505,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants_mourouj_3",
+   "name_en": "Jardin Enfants Mourouj 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7243136,
+   "lon": 10.2111902,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_mourouj_3",
+   "name_en": "EL MOUROUJ 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7287,
+   "lon": 10.21073,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "meublatex",
+   "name_en": "Meublatex",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.730361,
+   "lon": 10.2105791,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "miami_mourouj",
+   "name_en": "Miami Mourouj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7319523,
+   "lon": 10.2123494,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "d_l_gation_mourouj_1",
+   "name_en": "Délégation Mourouj 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7359671,
+   "lon": 10.2154866,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "institut_ennour",
+   "name_en": "Institut Ennour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.739619,
+   "lon": 10.2209534,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cellulose_silos",
+   "name_en": "Cellulose (Silos)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.745409,
+   "lon": 10.2258662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipalit_ben_arous",
+   "name_en": "Municipalité Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7483193,
+   "lon": 10.2253308,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ugtt_ben_arous",
+   "name_en": "UGTT Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7508158,
+   "lon": 10.2235076,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_ben_arous",
+   "name_en": "Centre Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75346,
+   "lon": 10.2224984,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bna_ben_arous",
+   "name_en": "Bna Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7561797,
+   "lon": 10.2204016,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque_mobil_ben_arous",
+   "name_en": "Kiosque Mobil Ben Arous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7570296,
+   "lon": 10.2187867,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soned",
+   "name_en": "Soned",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7652949,
+   "lon": 10.210255,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_fathallah1",
+   "name_en": "Sidi Fathallah1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7690357,
+   "lon": 10.2074351,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "protection_civile",
+   "name_en": "Protection Civile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7719233,
+   "lon": 10.2037229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebel_jelloud",
+   "name_en": "Djebel Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7731781,
+   "lon": 10.2025642,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

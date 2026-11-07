@@ -1,0 +1,575 @@
+{
+ "line_id": "bus_767_94",
+ "number": "94",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 94: Rabattement Slimen Kahia - Terminus Tebourba",
+ "direction_aller": [
+  "rabattement_slimen_kahia",
+  "oued_gueriana_l23",
+  "abdelmoula",
+  "p_pini_re",
+  "garde_national_agba",
+  "agba_superieur",
+  "canal_agba",
+  "ben_mahmoud",
+  "cite_elwaha",
+  "sonede_agba",
+  "ghdir_elgollah",
+  "cite_jabri",
+  "croisement_ben_yedder",
+  "cite_ennacr",
+  "march_mornagiaa",
+  "guitouni",
+  "croisement_sidi_ali_hattab",
+  "aeroport_borj_el_amri",
+  "borj_khalsi",
+  "relais_borj_el_amri",
+  "cit_aouine_5",
+  "cit_aouine_6",
+  "cit_aouine_7",
+  "raisin",
+  "doken_ben_tarcha",
+  "el_kalatous",
+  "cit_elmherine",
+  "cit_ennour",
+  "pont_rached",
+  "cit_akacha",
+  "lycee_el_battan",
+  "el_battan",
+  "cite_errimel",
+  "terminus_tebourba"
+ ],
+ "direction_retour": [
+  "terminus_tebourba",
+  "cite_errimel",
+  "el_battan",
+  "lycee_el_battan",
+  "cit_akacha",
+  "pont_rached",
+  "cit_ennour",
+  "cit_elmherine",
+  "el_kalatous",
+  "doken_ben_tarcha",
+  "raisin",
+  "cit_aouine_7",
+  "cit_aouine_6",
+  "cit_aouine_5",
+  "relais_borj_el_amri",
+  "borj_khalsi",
+  "aeroport_borj_el_amri",
+  "croisement_sidi_ali_hattab",
+  "guitouni",
+  "march_mornagiaa",
+  "cite_ennacr",
+  "croisement_ben_yedder",
+  "cite_jabri",
+  "ghdir_elgollah",
+  "sonede_agba",
+  "cite_elwaha",
+  "ben_mahmoud",
+  "canal_agba",
+  "agba_superieur",
+  "garde_national_agba",
+  "p_pini_re",
+  "abdelmoula",
+  "oued_gueriana_l23",
+  "rabattement_slimen_kahia"
+ ],
+ "stations_count": 34,
+ "start": {
+  "id": "rabattement_slimen_kahia",
+  "name": "Rabattement Slimen Kahia"
+ },
+ "end": {
+  "id": "terminus_tebourba",
+  "name": "Terminus Tebourba"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_slimen_kahia",
+  "oued_gueriana_l23",
+  "abdelmoula",
+  "p_pini_re",
+  "garde_national_agba",
+  "agba_superieur",
+  "canal_agba",
+  "ben_mahmoud",
+  "cite_elwaha",
+  "sonede_agba",
+  "ghdir_elgollah",
+  "cite_jabri",
+  "croisement_ben_yedder",
+  "cite_ennacr",
+  "march_mornagiaa",
+  "guitouni",
+  "croisement_sidi_ali_hattab",
+  "aeroport_borj_el_amri",
+  "borj_khalsi",
+  "relais_borj_el_amri",
+  "cit_aouine_5",
+  "cit_aouine_6",
+  "cit_aouine_7",
+  "raisin",
+  "doken_ben_tarcha",
+  "el_kalatous",
+  "cit_elmherine",
+  "cit_ennour",
+  "pont_rached",
+  "cit_akacha",
+  "lycee_el_battan",
+  "el_battan",
+  "cite_errimel",
+  "terminus_tebourba"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_slimen_kahia",
+   "name_en": "Rabattement Slimen Kahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8038639,
+   "lon": 10.0985919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "oued_gueriana_l23",
+   "name_en": "Oued Gueriana L23",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.798529,
+   "lon": 10.1051472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "abdelmoula",
+   "name_en": "Abdelmoula",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7959899,
+   "lon": 10.1005552,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "p_pini_re",
+   "name_en": "Pépiniére",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7927629,
+   "lon": 10.094418,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_agba",
+   "name_en": "Garde National Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7904465,
+   "lon": 10.0909771,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "agba_superieur",
+   "name_en": "Agba Superieur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7895551,
+   "lon": 10.0884129,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "canal_agba",
+   "name_en": "Canal Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.788472,
+   "lon": 10.0854329,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_mahmoud",
+   "name_en": "Ben Mahmoud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7859248,
+   "lon": 10.0814901,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_elwaha",
+   "name_en": "Cite Elwaha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7834695,
+   "lon": 10.0760318,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sonede_agba",
+   "name_en": "Sonede Agba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7822278,
+   "lon": 10.0699352,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ghdir_elgollah",
+   "name_en": "Ghdir Elgollah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7801114,
+   "lon": 10.0632993,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_jabri",
+   "name_en": "Cite Jabri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7765133,
+   "lon": 10.0582461,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_ben_yedder",
+   "name_en": "Croisement Ben Yedder",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7745368,
+   "lon": 10.0545903,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_ennacr",
+   "name_en": "Cite Ennacr",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7661325,
+   "lon": 10.0268692,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "march_mornagiaa",
+   "name_en": "Marché Mornagiaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7637912,
+   "lon": 10.0112644,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "guitouni",
+   "name_en": "Guitouni",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7518734,
+   "lon": 9.9800703,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_sidi_ali_hattab",
+   "name_en": "Croisement Sidi Ali Hattab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7491217,
+   "lon": 9.9732358,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "aeroport_borj_el_amri",
+   "name_en": "Aeroport Borj El Amri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7307966,
+   "lon": 9.934285,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "borj_khalsi",
+   "name_en": "Borj Khalsi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7269701,
+   "lon": 9.9259004,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "relais_borj_el_amri",
+   "name_en": "Relais Borj El Amri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7181986,
+   "lon": 9.8944488,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_aouine_5",
+   "name_en": "Cité Aouine 5",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7281339,
+   "lon": 9.8859353,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_aouine_6",
+   "name_en": "Cité Aouine 6",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7295183,
+   "lon": 9.8845083,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_aouine_7",
+   "name_en": "Cité Aouine 7",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7331309,
+   "lon": 9.8805979,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "raisin",
+   "name_en": "Raisin",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7406756,
+   "lon": 9.8708669,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "doken_ben_tarcha",
+   "name_en": "Doken Ben Tarcha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7494667,
+   "lon": 9.8657359,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_kalatous",
+   "name_en": "El Kalatous",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7592914,
+   "lon": 9.8614845,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_elmherine",
+   "name_en": "Cité Elmherine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7635807,
+   "lon": 9.8595909,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ennour",
+   "name_en": "Cité Ennour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7781518,
+   "lon": 9.8532662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_rached",
+   "name_en": "Pont Rached",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7860085,
+   "lon": 9.8474138,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_akacha",
+   "name_en": "Cité Akacha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7921835,
+   "lon": 9.8473707,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_el_battan",
+   "name_en": "Lycee El Battan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8007522,
+   "lon": 9.8461957,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_battan",
+   "name_en": "El Battan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.806947,
+   "lon": 9.8489264,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_errimel",
+   "name_en": "Cite Errimel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8201649,
+   "lon": 9.8428268,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_tebourba",
+   "name_en": "Terminus Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8275891,
+   "lon": 9.8438062,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

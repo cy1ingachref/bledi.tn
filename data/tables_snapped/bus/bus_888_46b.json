@@ -1,0 +1,949 @@
+{
+ "line_id": "bus_888_46b",
+ "number": "46B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 46B: Terminus Tebourba - Terminus Laajema",
+ "direction_aller": [
+  "terminus_tebourba",
+  "piscine",
+  "cite_errimel",
+  "lycee_el_battan",
+  "cit_akacha",
+  "pont_rached",
+  "cit_ennour",
+  "el_mehrine",
+  "mahfoura",
+  "mahfoura_1",
+  "siclou",
+  "ecole_primaire_el_mahfoura",
+  "bouchiba",
+  "terminus_laajema"
+ ],
+ "direction_retour": [
+  "terminus_laajema",
+  "bouchiba",
+  "ecole_primaire_el_mahfoura",
+  "siclou",
+  "mahfoura_1",
+  "mahfoura",
+  "el_mehrine",
+  "cit_ennour",
+  "pont_rached",
+  "cit_akacha",
+  "lycee_el_battan",
+  "cite_errimel",
+  "piscine",
+  "terminus_tebourba"
+ ],
+ "stations_count": 14,
+ "start": {
+  "id": "terminus_tebourba",
+  "name": "Terminus Tebourba"
+ },
+ "end": {
+  "id": "terminus_laajema",
+  "name": "Terminus Laajema"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tebourba",
+  "piscine",
+  "cite_errimel",
+  "lycee_el_battan",
+  "cit_akacha",
+  "pont_rached",
+  "cit_ennour",
+  "el_mehrine",
+  "mahfoura",
+  "mahfoura_1",
+  "siclou",
+  "ecole_primaire_el_mahfoura",
+  "bouchiba",
+  "terminus_laajema"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tebourba",
+   "name_en": "Terminus Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8275891,
+   "lon": 9.8438062,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "piscine",
+   "name_en": "Piscine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8250615,
+   "lon": 9.8426178,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_errimel",
+   "name_en": "Cite Errimel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8201649,
+   "lon": 9.8428268,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_el_battan",
+   "name_en": "Lycee El Battan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8007522,
+   "lon": 9.8461957,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_akacha",
+   "name_en": "Cité Akacha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7921835,
+   "lon": 9.8473707,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_rached",
+   "name_en": "Pont Rached",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7860085,
+   "lon": 9.8474138,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ennour",
+   "name_en": "Cité Ennour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7781518,
+   "lon": 9.8532662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_mehrine",
+   "name_en": "El Mehrine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.76924,
+   "lon": 9.85656,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mahfoura",
+   "name_en": "Mahfoura",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7666831,
+   "lon": 9.8449192,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mahfoura_1",
+   "name_en": "Mahfoura 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7647708,
+   "lon": 9.8326669,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "siclou",
+   "name_en": "Siclou",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.760903,
+   "lon": 9.8094604,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire_el_mahfoura",
+   "name_en": "Ecole Primaire El Mahfoura",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7612253,
+   "lon": 9.7863397,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchiba",
+   "name_en": "Bouchiba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7573585,
+   "lon": 9.7776929,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_laajema",
+   "name_en": "Terminus Laajema",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7624738,
+   "lon": 9.7705029,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "terminus_tebourba",
+   "to": "piscine",
+   "key": "piscine|terminus_tebourba",
+   "straight_m": 300.3,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8250615,
+     9.8426178
+    ],
+    [
+     36.8275891,
+     9.8438062
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 300.3,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "piscine",
+   "to": "cite_errimel",
+   "key": "cite_errimel|piscine",
+   "straight_m": 544.8,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8201649,
+     9.8428268
+    ],
+    [
+     36.823596,
+     9.84205
+    ],
+    [
+     36.8250615,
+     9.8426178
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 558.35,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 56.08,
+   "length_ratio": 1.0249,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cite_errimel",
+   "to": "lycee_el_battan",
+   "key": "cite_errimel|lycee_el_battan",
+   "straight_m": 2179.33,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8201649,
+     9.8428268
+    ],
+    [
+     36.813895,
+     9.844158
+    ],
+    [
+     36.811822,
+     9.845634
+    ],
+    [
+     36.810233,
+     9.847037
+    ],
+    [
+     36.809291,
+     9.848244
+    ],
+    [
+     36.809012,
+     9.848439
+    ],
+    [
+     36.807013,
+     9.848479
+    ],
+    [
+     36.806897,
+     9.847792
+    ],
+    [
+     36.805581,
+     9.847165
+    ],
+    [
+     36.804105,
+     9.846727
+    ],
+    [
+     36.8007522,
+     9.8461957
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 2360.43,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 324.21,
+   "length_ratio": 1.0831,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "lycee_el_battan",
+   "to": "cit_akacha",
+   "key": "cit_akacha|lycee_el_battan",
+   "straight_m": 958.52,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7921835,
+     9.8473707
+    ],
+    [
+     36.8007522,
+     9.8461957
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 958.52,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_akacha",
+   "to": "pont_rached",
+   "key": "cit_akacha|pont_rached",
+   "straight_m": 686.64,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7921835,
+     9.8473707
+    ],
+    [
+     36.791752,
+     9.847384
+    ],
+    [
+     36.789331,
+     9.846448
+    ],
+    [
+     36.788866,
+     9.846507
+    ],
+    [
+     36.7860085,
+     9.8474138
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 709.62,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 83.94,
+   "length_ratio": 1.0335,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "pont_rached",
+   "to": "cit_ennour",
+   "key": "cit_ennour|pont_rached",
+   "straight_m": 1017.29,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7781518,
+     9.8532662
+    ],
+    [
+     36.781714,
+     9.851766
+    ],
+    [
+     36.782548,
+     9.851301
+    ],
+    [
+     36.7860085,
+     9.8474138
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1037.18,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 100.15,
+   "length_ratio": 1.0196,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_ennour",
+   "to": "el_mehrine",
+   "key": "cit_ennour|el_mehrine",
+   "straight_m": 1033.46,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7781518,
+     9.8532662
+    ],
+    [
+     36.769322,
+     9.85717
+    ],
+    [
+     36.76924,
+     9.85656
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1096.67,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 55.09,
+   "length_ratio": 1.0612,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "el_mehrine",
+   "to": "mahfoura",
+   "key": "el_mehrine|mahfoura",
+   "straight_m": 1075.17,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.76924,
+     9.85656
+    ],
+    [
+     36.767097,
+     9.84785
+    ],
+    [
+     36.7666831,
+     9.8449192
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1076.7,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 24.65,
+   "length_ratio": 1.0014,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mahfoura",
+   "to": "mahfoura_1",
+   "key": "mahfoura|mahfoura_1",
+   "straight_m": 1111.92,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7666831,
+     9.8449192
+    ],
+    [
+     36.7647708,
+     9.8326669
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1111.92,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mahfoura_1",
+   "to": "siclou",
+   "key": "mahfoura_1|siclou",
+   "straight_m": 2111.51,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7647708,
+     9.8326669
+    ],
+    [
+     36.763959,
+     9.827517
+    ],
+    [
+     36.764819,
+     9.822732
+    ],
+    [
+     36.764714,
+     9.820959
+    ],
+    [
+     36.764123,
+     9.818966
+    ],
+    [
+     36.763194,
+     9.816949
+    ],
+    [
+     36.762584,
+     9.814353
+    ],
+    [
+     36.760903,
+     9.8094604
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 2174.53,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 206.25,
+   "length_ratio": 1.0298,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "siclou",
+   "to": "ecole_primaire_el_mahfoura",
+   "key": "ecole_primaire_el_mahfoura|siclou",
+   "straight_m": 2059.96,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7612253,
+     9.7863397
+    ],
+    [
+     36.760242,
+     9.793848
+    ],
+    [
+     36.759743,
+     9.795734
+    ],
+    [
+     36.759833,
+     9.799545
+    ],
+    [
+     36.760091,
+     9.800817
+    ],
+    [
+     36.76019,
+     9.802478
+    ],
+    [
+     36.760156,
+     9.805313
+    ],
+    [
+     36.760531,
+     9.808367
+    ],
+    [
+     36.760903,
+     9.8094604
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2093.23,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 150.24,
+   "length_ratio": 1.0162,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ecole_primaire_el_mahfoura",
+   "to": "bouchiba",
+   "key": "bouchiba|ecole_primaire_el_mahfoura",
+   "straight_m": 882.17,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7573585,
+     9.7776929
+    ],
+    [
+     36.759701,
+     9.781412
+    ],
+    [
+     36.760436,
+     9.78283
+    ],
+    [
+     36.761124,
+     9.784975
+    ],
+    [
+     36.7612253,
+     9.7863397
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 899.82,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 75.75,
+   "length_ratio": 1.02,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "bouchiba",
+   "to": "terminus_laajema",
+   "key": "bouchiba|terminus_laajema",
+   "straight_m": 856.61,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7573585,
+     9.7776929
+    ],
+    [
+     36.757512,
+     9.777998
+    ],
+    [
+     36.758112,
+     9.777327
+    ],
+    [
+     36.759605,
+     9.774821
+    ],
+    [
+     36.760861,
+     9.773548
+    ],
+    [
+     36.76198,
+     9.771163
+    ],
+    [
+     36.7624738,
+     9.7705029
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 906.46,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 46.03,
+   "length_ratio": 1.0582,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8275891,
+   9.8438062
+  ],
+  [
+   36.8250615,
+   9.8426178
+  ],
+  [
+   36.823596,
+   9.84205
+  ],
+  [
+   36.8201649,
+   9.8428268
+  ],
+  [
+   36.813895,
+   9.844158
+  ],
+  [
+   36.811822,
+   9.845634
+  ],
+  [
+   36.810233,
+   9.847037
+  ],
+  [
+   36.809291,
+   9.848244
+  ],
+  [
+   36.809012,
+   9.848439
+  ],
+  [
+   36.807013,
+   9.848479
+  ],
+  [
+   36.806897,
+   9.847792
+  ],
+  [
+   36.805581,
+   9.847165
+  ],
+  [
+   36.804105,
+   9.846727
+  ],
+  [
+   36.8007522,
+   9.8461957
+  ],
+  [
+   36.7921835,
+   9.8473707
+  ],
+  [
+   36.791752,
+   9.847384
+  ],
+  [
+   36.789331,
+   9.846448
+  ],
+  [
+   36.788866,
+   9.846507
+  ],
+  [
+   36.7860085,
+   9.8474138
+  ],
+  [
+   36.782548,
+   9.851301
+  ],
+  [
+   36.781714,
+   9.851766
+  ],
+  [
+   36.7781518,
+   9.8532662
+  ],
+  [
+   36.769322,
+   9.85717
+  ],
+  [
+   36.76924,
+   9.85656
+  ],
+  [
+   36.767097,
+   9.84785
+  ],
+  [
+   36.7666831,
+   9.8449192
+  ],
+  [
+   36.7647708,
+   9.8326669
+  ],
+  [
+   36.763959,
+   9.827517
+  ],
+  [
+   36.764819,
+   9.822732
+  ],
+  [
+   36.764714,
+   9.820959
+  ],
+  [
+   36.764123,
+   9.818966
+  ],
+  [
+   36.763194,
+   9.816949
+  ],
+  [
+   36.762584,
+   9.814353
+  ],
+  [
+   36.760903,
+   9.8094604
+  ],
+  [
+   36.760531,
+   9.808367
+  ],
+  [
+   36.760156,
+   9.805313
+  ],
+  [
+   36.76019,
+   9.802478
+  ],
+  [
+   36.760091,
+   9.800817
+  ],
+  [
+   36.759833,
+   9.799545
+  ],
+  [
+   36.759743,
+   9.795734
+  ],
+  [
+   36.760242,
+   9.793848
+  ],
+  [
+   36.7612253,
+   9.7863397
+  ],
+  [
+   36.761124,
+   9.784975
+  ],
+  [
+   36.760436,
+   9.78283
+  ],
+  [
+   36.759701,
+   9.781412
+  ],
+  [
+   36.7573585,
+   9.7776929
+  ],
+  [
+   36.757512,
+   9.777998
+  ],
+  [
+   36.758112,
+   9.777327
+  ],
+  [
+   36.759605,
+   9.774821
+  ],
+  [
+   36.760861,
+   9.773548
+  ],
+  [
+   36.76198,
+   9.771163
+  ],
+  [
+   36.7624738,
+   9.7705029
+  ]
+ ],
+ "phase3a": {
+  "pairs": 13,
+  "resolved": 13,
+  "unresolved": 0
+ }
+}

@@ -1,0 +1,255 @@
+{
+ "line_id": "bus_823_24f",
+ "number": "24F",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 24F: Rabattement Mourouj 2 - Cité El Amal",
+ "direction_aller": [
+  "rabattement_mourouj_2",
+  "le_souk_des_voitures",
+  "feraille_1",
+  "feraille_2",
+  "ferme_loukil",
+  "zone_industrielle_mghira",
+  "amen_banque",
+  "protection_civile",
+  "garde_national_z_i_mghira",
+  "promed_tech",
+  "centre_de_formation_mghira",
+  "cit_el_ouifak",
+  "cit_el_ouifak_2",
+  "cit_el_amal"
+ ],
+ "direction_retour": [
+  "cit_el_amal",
+  "cit_el_ouifak_2",
+  "cit_el_ouifak",
+  "centre_de_formation_mghira",
+  "promed_tech",
+  "garde_national_z_i_mghira",
+  "protection_civile",
+  "amen_banque",
+  "zone_industrielle_mghira",
+  "ferme_loukil",
+  "feraille_2",
+  "feraille_1",
+  "le_souk_des_voitures",
+  "rabattement_mourouj_2"
+ ],
+ "stations_count": 14,
+ "start": {
+  "id": "rabattement_mourouj_2",
+  "name": "Rabattement Mourouj 2"
+ },
+ "end": {
+  "id": "cit_el_amal",
+  "name": "Cité El Amal"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_mourouj_2",
+  "le_souk_des_voitures",
+  "feraille_1",
+  "feraille_2",
+  "ferme_loukil",
+  "zone_industrielle_mghira",
+  "amen_banque",
+  "protection_civile",
+  "garde_national_z_i_mghira",
+  "promed_tech",
+  "centre_de_formation_mghira",
+  "cit_el_ouifak",
+  "cit_el_ouifak_2",
+  "cit_el_amal"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_mourouj_2",
+   "name_en": "Rabattement Mourouj 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7432425,
+   "lon": 10.1921777,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_souk_des_voitures",
+   "name_en": "Le Souk Des Voitures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7349887,
+   "lon": 10.1936368,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "feraille_1",
+   "name_en": "Feraille 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.730208,
+   "lon": 10.1923922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "feraille_2",
+   "name_en": "Feraille 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7289571,
+   "lon": 10.1913847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ferme_loukil",
+   "name_en": "Ferme Loukil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7264932,
+   "lon": 10.1898173,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zone_industrielle_mghira",
+   "name_en": "Zone Industrielle Mghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7237311,
+   "lon": 10.1878662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "amen_banque",
+   "name_en": "Amen Banque",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7152601,
+   "lon": 10.1822335,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "protection_civile",
+   "name_en": "Protection Civile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7719233,
+   "lon": 10.2037229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_z_i_mghira",
+   "name_en": "Garde National Z.I Mghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.717467,
+   "lon": 10.1735114,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "promed_tech",
+   "name_en": "Promed Tech",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7159482,
+   "lon": 10.1716442,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_mghira",
+   "name_en": "Centre De Formation Mghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7123279,
+   "lon": 10.1677174,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_ouifak",
+   "name_en": "Cité El Ouifak",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7080957,
+   "lon": 10.1701851,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_ouifak_2",
+   "name_en": "Cité El Ouifak 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7052549,
+   "lon": 10.1662793,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_amal",
+   "name_en": "Cité El Amal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7035767,
+   "lon": 10.1640806,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

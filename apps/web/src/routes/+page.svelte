@@ -1,7 +1,7 @@
 <script>
   import MapView from '$lib/MapView.svelte';
   import { ui } from '$lib/ui.svelte.js';
-  import { dict, fetchRoutePlan, normalizeRoutes, modeColors } from '$lib/data.js';
+  import { dict, fetchRoutePlan, fetchRustRoute, normalizeRoutes, normalizeRustRoutes, modeColors } from '$lib/data.js';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import { resolve } from '$app/paths';
@@ -22,6 +22,13 @@
 
   const MODES = ['bus', 'train', 'louage'];
   let modes = $state(MODES);
+
+  const OBJECTIVES = [
+    { key: 'fastest', label: { fr: 'Le plus rapide', ar: 'الأسرع', en: 'Fastest' } },
+    { key: 'cheapest', label: { fr: 'Le moins cher', ar: 'الأرخص', en: 'Cheapest' } },
+    { key: 'preference', label: { fr: 'Préférence', ar: 'التفضيل', en: 'Preference' } },
+  ];
+  let objective = $state('fastest');
 
   let routeOptions = $state([]);
   let selectedOption = $state(null);
@@ -419,23 +426,31 @@
 
   $effect(() => {
     if (startLat != null && startLon != null && endLat != null && endLon != null) {
+      const reqModes = [...modes];
+      const reqObjective = objective;
       (async () => {
+        let normalized = [];
         try {
-          const res = await fetchRoutePlan({ startLat, startLon, endLat, endLon, modes: [...modes] });
-          const normalized = normalizeRoutes(res);
-          if (normalized.length > 0) {
-            routeOptions = normalized;
-            if (!selectedOption || !routeOptions.some((o) => o.id === selectedOption)) {
-              selectedOption = routeOptions[0].id;
-            }
-            routeMinutes = routeOptions.find((o) => o.id === selectedOption)?.minutes ?? routeOptions[0].minutes;
-          } else {
-            routeOptions = [];
-            selectedOption = null;
-            routeMinutes = null;
-          }
+          const rust = await fetchRustRoute({ startLat, startLon, endLat, endLon, objective: reqObjective, modes: reqModes });
+          normalized = normalizeRustRoutes(rust, { startLat, startLon, endLat, endLon, stations });
         } catch (err) {
-          console.error('route plan failed', err);
+          console.warn('Rust routing unavailable, falling back to Python', err);
+        }
+        if (!normalized.length) {
+          try {
+            const res = await fetchRoutePlan({ startLat, startLon, endLat, endLon, modes: reqModes });
+            normalized = normalizeRoutes(res);
+          } catch (err) {
+            console.error('route plan failed', err);
+          }
+        }
+        if (normalized.length > 0) {
+          routeOptions = normalized;
+          if (!selectedOption || !routeOptions.some((o) => o.id === selectedOption)) {
+            selectedOption = routeOptions[0].id;
+          }
+          routeMinutes = routeOptions.find((o) => o.id === selectedOption)?.minutes ?? routeOptions[0].minutes;
+        } else {
           routeOptions = [];
           selectedOption = null;
           routeMinutes = null;
@@ -580,6 +595,20 @@
           }}
         >
           {m.label[ui.lang] || m.label.fr}
+        </button>
+      {/each}
+    </div>
+
+    <div class="modes objectives" role="group" aria-label="Objective">
+      <span class="badge objective-badge">Objective</span>
+      {#each OBJECTIVES as o}
+        <button
+          class="mode-chip"
+          class:on={objective === o.key}
+          aria-pressed={objective === o.key}
+          onclick={() => (objective = o.key)}
+        >
+          {o.label[ui.lang] || o.label.en}
         </button>
       {/each}
     </div>
@@ -739,6 +768,8 @@
   .mode-chip:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
   .mode-chip.on { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); color: var(--ink); font-weight: 700; }
   .mode-chip.on:hover { color: #fff; }
+  .objectives { align-items: center; }
+  .objective-badge { background: var(--ink); white-space: nowrap; }
 
   .status { text-align: center; font-size: 0.85rem; color: var(--muted); }
   .status .count { color: var(--sea); font-weight: 600; }

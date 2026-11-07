@@ -1,0 +1,527 @@
+{
+ "line_id": "bus_805_20g",
+ "number": "20G",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 20G: Kasbah - Teminus Cité Riadh",
+ "direction_aller": [
+  "kasbah",
+  "telecom",
+  "charle_nicole",
+  "hopital_des_enfants",
+  "bab_abdeslem",
+  "bab_laassal",
+  "mechtel",
+  "taieb_mhiri",
+  "le_belv_d_re",
+  "bureau_de_poste_place_pasteur",
+  "schiling",
+  "kheireddine_bacha",
+  "banque_de_habitat",
+  "montplaisir",
+  "cit_el_khadhra",
+  "charguia",
+  "dah_dah",
+  "lac_palace",
+  "cit_taieb_mhiri",
+  "cit_essalem",
+  "chtioui",
+  "carrefour_tunis",
+  "sidi_daoued_n9",
+  "stade_rajet_haider",
+  "marsa",
+  "parc_saada",
+  "marsa_ville",
+  "lahweche",
+  "nacer",
+  "sidi_abd_aziz",
+  "teminus_cit_riadh"
+ ],
+ "direction_retour": [
+  "teminus_cit_riadh",
+  "sidi_abd_aziz",
+  "nacer",
+  "lahweche",
+  "marsa_ville",
+  "parc_saada",
+  "marsa",
+  "stade_rajet_haider",
+  "sidi_daoued_n9",
+  "carrefour_tunis",
+  "chtioui",
+  "cit_essalem",
+  "cit_taieb_mhiri",
+  "lac_palace",
+  "dah_dah",
+  "charguia",
+  "cit_el_khadhra",
+  "montplaisir",
+  "banque_de_habitat",
+  "kheireddine_bacha",
+  "schiling",
+  "bureau_de_poste_place_pasteur",
+  "le_belv_d_re",
+  "taieb_mhiri",
+  "mechtel",
+  "bab_laassal",
+  "bab_abdeslem",
+  "hopital_des_enfants",
+  "charle_nicole",
+  "telecom",
+  "kasbah"
+ ],
+ "stations_count": 31,
+ "start": {
+  "id": "kasbah",
+  "name": "Kasbah"
+ },
+ "end": {
+  "id": "teminus_cit_riadh",
+  "name": "Teminus Cité Riadh"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "kasbah",
+  "telecom",
+  "charle_nicole",
+  "hopital_des_enfants",
+  "bab_abdeslem",
+  "bab_laassal",
+  "mechtel",
+  "taieb_mhiri",
+  "le_belv_d_re",
+  "bureau_de_poste_place_pasteur",
+  "schiling",
+  "kheireddine_bacha",
+  "banque_de_habitat",
+  "montplaisir",
+  "cit_el_khadhra",
+  "charguia",
+  "dah_dah",
+  "lac_palace",
+  "cit_taieb_mhiri",
+  "cit_essalem",
+  "chtioui",
+  "carrefour_tunis",
+  "sidi_daoued_n9",
+  "stade_rajet_haider",
+  "marsa",
+  "parc_saada",
+  "marsa_ville",
+  "lahweche",
+  "nacer",
+  "sidi_abd_aziz",
+  "teminus_cit_riadh"
+ ],
+ "stations_detail": [
+  {
+   "id": "kasbah",
+   "name_en": "Kasbah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7963447,
+   "lon": 10.1681174,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "telecom",
+   "name_en": "Telecom",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8002558,
+   "lon": 10.1651885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_des_enfants",
+   "name_en": "Hopital Des Enfants",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.807514,
+   "lon": 10.1593545,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_abdeslem",
+   "name_en": "Bab Abdeslem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8094634,
+   "lon": 10.161087,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_laassal",
+   "name_en": "BAB LAASSAL",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81331,
+   "lon": 10.16817,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "mechtel",
+   "name_en": "Mechtel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8135314,
+   "lon": 10.1723472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "taieb_mhiri",
+   "name_en": "Taieb Mhiri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8139305,
+   "lon": 10.1750991,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_belv_d_re",
+   "name_en": "Le Belvédére",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8184299,
+   "lon": 10.1770408,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bureau_de_poste_place_pasteur",
+   "name_en": "Bureau De Poste Place Pasteur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8220207,
+   "lon": 10.1782811,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "schiling",
+   "name_en": "Schiling",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8204253,
+   "lon": 10.1810438,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kheireddine_bacha",
+   "name_en": "Kheireddine Bacha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8187238,
+   "lon": 10.1827569,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "banque_de_habitat",
+   "name_en": "Banque De Habitat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8194235,
+   "lon": 10.1855061,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "montplaisir",
+   "name_en": "Montplaisir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8233261,
+   "lon": 10.1939602,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_khadhra",
+   "name_en": "Cité El Khadhra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.823838,
+   "lon": 10.1950601,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia",
+   "name_en": "Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8285742,
+   "lon": 10.2061645,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dah_dah",
+   "name_en": "Dah Dah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8353384,
+   "lon": 10.2242795,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lac_palace",
+   "name_en": "Lac Palace",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8393019,
+   "lon": 10.238269,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_taieb_mhiri",
+   "name_en": "Cité Taieb Mhiri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8487843,
+   "lon": 10.264062,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_essalem",
+   "name_en": "Cité Essalem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8532762,
+   "lon": 10.2742226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chtioui",
+   "name_en": "Chtioui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8594606,
+   "lon": 10.2884521,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carrefour_tunis",
+   "name_en": "Carrefour Tunis",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8645764,
+   "lon": 10.3002387,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_daoued_n9",
+   "name_en": "Sidi Daoued (N9)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8660676,
+   "lon": 10.3030673,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_rajet_haider",
+   "name_en": "Stade Rajet Haider",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.87409,
+   "lon": 10.3209677,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "marsa",
+   "name_en": "Marsa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8757921,
+   "lon": 10.3248576,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "parc_saada",
+   "name_en": "Parc Saada",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8785375,
+   "lon": 10.3283711,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "marsa_ville",
+   "name_en": "Marsa Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8803817,
+   "lon": 10.326805,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lahweche",
+   "name_en": "Lahweche",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8820904,
+   "lon": 10.3248842,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nacer",
+   "name_en": "Nacer",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8845156,
+   "lon": 10.3240154,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_abd_aziz",
+   "name_en": "Sidi Abd Aziz",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8875448,
+   "lon": 10.3227065,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "teminus_cit_riadh",
+   "name_en": "Teminus Cité Riadh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8857539,
+   "lon": 10.3142308,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

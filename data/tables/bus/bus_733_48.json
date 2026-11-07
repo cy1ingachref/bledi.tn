@@ -1,0 +1,367 @@
+{
+ "line_id": "bus_733_48",
+ "number": "48",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 48: Rabattement Slimen Kahia - Terminus Cité Elbasatine",
+ "direction_aller": [
+  "rabattement_slimen_kahia",
+  "onas_manouba",
+  "poste_police_manouba",
+  "dar_mocennine",
+  "gouvernorat_manouba",
+  "ibn_jazzar_mannouba",
+  "boudria",
+  "hopital_kassab",
+  "magazin_carrefour",
+  "mess_des_officiers",
+  "caf_la_paix",
+  "ettadhamen",
+  "nogra",
+  "intilaka",
+  "lycee_cite_errafeha",
+  "cit_errafeha",
+  "bir_mnihla",
+  "route_elbasatine",
+  "caf_sirine",
+  "usine_lazreg",
+  "terminus_cit_elbasatine"
+ ],
+ "direction_retour": [
+  "terminus_cit_elbasatine",
+  "usine_lazreg",
+  "caf_sirine",
+  "route_elbasatine",
+  "bir_mnihla",
+  "cit_errafeha",
+  "lycee_cite_errafeha",
+  "intilaka",
+  "nogra",
+  "ettadhamen",
+  "caf_la_paix",
+  "mess_des_officiers",
+  "magazin_carrefour",
+  "hopital_kassab",
+  "boudria",
+  "ibn_jazzar_mannouba",
+  "gouvernorat_manouba",
+  "dar_mocennine",
+  "poste_police_manouba",
+  "onas_manouba",
+  "rabattement_slimen_kahia"
+ ],
+ "stations_count": 21,
+ "start": {
+  "id": "rabattement_slimen_kahia",
+  "name": "Rabattement Slimen Kahia"
+ },
+ "end": {
+  "id": "terminus_cit_elbasatine",
+  "name": "Terminus Cité Elbasatine"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_slimen_kahia",
+  "onas_manouba",
+  "poste_police_manouba",
+  "dar_mocennine",
+  "gouvernorat_manouba",
+  "ibn_jazzar_mannouba",
+  "boudria",
+  "hopital_kassab",
+  "magazin_carrefour",
+  "mess_des_officiers",
+  "caf_la_paix",
+  "ettadhamen",
+  "nogra",
+  "intilaka",
+  "lycee_cite_errafeha",
+  "cit_errafeha",
+  "bir_mnihla",
+  "route_elbasatine",
+  "caf_sirine",
+  "usine_lazreg",
+  "terminus_cit_elbasatine"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_slimen_kahia",
+   "name_en": "Rabattement Slimen Kahia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8038639,
+   "lon": 10.0985919,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "onas_manouba",
+   "name_en": "ONAS Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8061167,
+   "lon": 10.0948744,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poste_police_manouba",
+   "name_en": "Poste Police Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8083952,
+   "lon": 10.0923558,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dar_mocennine",
+   "name_en": "Dar Mocennine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8095931,
+   "lon": 10.0910119,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gouvernorat_manouba",
+   "name_en": "Gouvernorat Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8114227,
+   "lon": 10.0885442,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ibn_jazzar_mannouba",
+   "name_en": "Ibn Jazzar Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8128095,
+   "lon": 10.0892791,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "boudria",
+   "name_en": "Boudria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8161882,
+   "lon": 10.0961131,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_kassab",
+   "name_en": "Hopital Kassab",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8155796,
+   "lon": 10.1003191,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magazin_carrefour",
+   "name_en": "Magazin Carrefour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8174515,
+   "lon": 10.1044989,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mess_des_officiers",
+   "name_en": "Mess Des Officiers",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8235715,
+   "lon": 10.1082585,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_la_paix",
+   "name_en": "Café La Paix",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8198793,
+   "lon": 10.1045455,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ettadhamen",
+   "name_en": "ETTADHAMEN",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.83584,
+   "lon": 10.11759,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "nogra",
+   "name_en": "Nogra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8345164,
+   "lon": 10.1178661,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "intilaka",
+   "name_en": "Intilaka",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8396862,
+   "lon": 10.1168229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_cite_errafeha",
+   "name_en": "Lycee Cite Errafeha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8454003,
+   "lon": 10.1167978,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_errafeha",
+   "name_en": "Cité Errafeha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.852579,
+   "lon": 10.1233855,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bir_mnihla",
+   "name_en": "Bir Mnihla",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8567966,
+   "lon": 10.1157901,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "route_elbasatine",
+   "name_en": "Route Elbasatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8527617,
+   "lon": 10.1083443,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_sirine",
+   "name_en": "Café Sirine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8495257,
+   "lon": 10.1014914,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "usine_lazreg",
+   "name_en": "Usine Lazreg",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8472183,
+   "lon": 10.0960545,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_cit_elbasatine",
+   "name_en": "Terminus Cité Elbasatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8450177,
+   "lon": 10.0903467,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

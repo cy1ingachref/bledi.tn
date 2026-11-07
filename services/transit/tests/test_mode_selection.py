@@ -18,6 +18,8 @@ from bledi_transit.domain.tunables import GEOMETRY_REQUIRED_M
 
 TUNIS = (36.8065, 10.1815)
 SFAX = (34.7406, 10.7603)
+# Same-seat Tunis point ~4.7 km away: taxi allowed (city-local only).
+TUNIS_LOCAL = (36.84, 10.15)
 
 
 def _ride_modes(result):
@@ -36,11 +38,28 @@ class TestSelectionsRestrictTheSearch:
             f"selection {sorted(allowed)} produced {sorted(allowed_ride - allowed)}"
         )
 
-    def test_louaj_selection_yields_a_car_leg_only(self, router):
-        res = router.route(*TUNIS, *SFAX, allowed_modes=TAXI_MODES)
+    def test_louage_selection_only_ever_rides_louage_lines(self, router):
+        """Louage is not point to point: no louage line, no louage answer, and never a taxi."""
+        res = router.route(*TUNIS, *SFAX, allowed_modes=frozenset({"louage", "louaj"}))
         steps = res.get("steps", [])
-        assert steps
-        assert all(s.get("type") == "taxi" for s in steps)
+        assert steps, "Tunis-Sfax has a louage line (L3)"
+        assert not any(s.get("type") == "taxi" for s in steps)
+        assert any(s.get("type") == "ride" and s.get("mode") == "louaj" for s in steps)
+
+    def test_taxi_selection_yields_a_car_leg_within_range(self, router):
+        # City-local only: same Tunis seat, ~4.7 km. Taxi-only search returns
+        # a transit-shaped result whose last gap is a taxi hop (no transit rides
+        # allowed), with a direct taxi alternative.
+        res = router.route(*TUNIS, *TUNIS_LOCAL, allowed_modes=frozenset({"taxi"}))
+        steps = res.get("steps", [])
+        assert steps and any(s.get("type") == "taxi" for s in steps), res
+        assert not any(s.get("type") == "ride" for s in steps), "taxi-only leaked rides"
+        res = router.route(*TUNIS, 36.40, 10.62, allowed_modes=frozenset({"taxi"}))
+        assert not res.get("steps"), "taxi must not cross Tunis->Nabeul (Hammamet)"
+
+    def test_taxi_is_not_offered_across_the_country(self, router):
+        res = router.route(*TUNIS, *SFAX, allowed_modes=frozenset({"taxi"}))  # ~270 km
+        assert not res.get("steps")
 
     def test_combination_search_can_use_bus_and_train_together(self, router):
         """A multi-modal path is NOT reachable by searching one mode set alone.

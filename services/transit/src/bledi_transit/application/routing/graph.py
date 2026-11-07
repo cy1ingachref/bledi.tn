@@ -7,7 +7,7 @@ from typing import Any
 
 from bledi_transit.domain.geo import haversine_m, oriented_geometry, polyline_length
 from bledi_transit.domain.modes import TAXI_MODES, canonical_mode
-from bledi_transit.domain.tunables import GEOMETRY_REQUIRED_M, SPEED_BY_MODE, WALK_SPEED_MS
+from bledi_transit.domain.tunables import GEOMETRY_REQUIRED_M, SPEED_BY_MODE, WALK_SPEED_MS, speed_kmh_for_distance
 
 Segments = dict[str, dict[str, Any]]
 
@@ -27,12 +27,15 @@ LOUAGE_TAXI_TRANSFER_RADIUS_M = 500.0
 LOUAGE_TAXI_SAME_LOCATION_M = 50.0
 
 
-def transit_speed_kmh(mode: str) -> float:
+def transit_speed_kmh(mode: str, distance_m: float | None = None) -> float:
+    """Speed for a hop; bus-family modes are distance-based (see tunables)."""
+    if distance_m is not None:
+        return speed_kmh_for_distance(mode, distance_m)
     return SPEED_BY_MODE.get(mode, SPEED_BY_MODE["bus"])
 
 
-def transit_speed_ms(mode: str) -> float:
-    return transit_speed_kmh(mode) / 3.6
+def transit_speed_ms(mode: str, distance_m: float | None = None) -> float:
+    return transit_speed_kmh(mode, distance_m) / 3.6
 
 
 @dataclass(slots=True)
@@ -88,7 +91,7 @@ def line_edge(
         mode=mode,
         wait_s=wait_s,
         distance_m=real_m,
-        time_s=real_m / transit_speed_ms(mode),
+        time_s=real_m / transit_speed_ms(mode, real_m),
         geometry=geom,
         straight_m=straight_m,
     )

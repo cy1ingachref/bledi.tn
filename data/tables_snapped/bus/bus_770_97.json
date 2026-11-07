@@ -1,0 +1,731 @@
+{
+ "line_id": "bus_770_97",
+ "number": "97",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 97: Rabattement Khaireddine Mannouba - Cité Ennassim",
+ "direction_aller": [
+  "rabattement_khaireddine_mannouba",
+  "croisement_sanhaja",
+  "coop_rative_central",
+  "cit_torjmen",
+  "douar_el_bey",
+  "pompage",
+  "erriadh_manouba",
+  "zone_f",
+  "saida",
+  "mosqu_e_saida",
+  "canal_majerda",
+  "cit_ennassim"
+ ],
+ "direction_retour": [
+  "cit_ennassim",
+  "canal_majerda",
+  "mosqu_e_saida",
+  "saida",
+  "zone_f",
+  "erriadh_manouba",
+  "pompage",
+  "douar_el_bey",
+  "cit_torjmen",
+  "coop_rative_central",
+  "croisement_sanhaja",
+  "rabattement_khaireddine_mannouba"
+ ],
+ "stations_count": 12,
+ "start": {
+  "id": "rabattement_khaireddine_mannouba",
+  "name": "Rabattement Khaireddine Mannouba"
+ },
+ "end": {
+  "id": "cit_ennassim",
+  "name": "Cité Ennassim"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_khaireddine_mannouba",
+  "croisement_sanhaja",
+  "coop_rative_central",
+  "cit_torjmen",
+  "douar_el_bey",
+  "pompage",
+  "erriadh_manouba",
+  "zone_f",
+  "saida",
+  "mosqu_e_saida",
+  "canal_majerda",
+  "cit_ennassim"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_khaireddine_mannouba",
+   "name_en": "Rabattement Khaireddine Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156704,
+   "lon": 10.0564588,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_sanhaja",
+   "name_en": "Croisement Sanhaja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230522,
+   "lon": 10.034149,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "coop_rative_central",
+   "name_en": "Coopérative Central",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.828223,
+   "lon": 10.0204221,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_torjmen",
+   "name_en": "Cité Torjmen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8318167,
+   "lon": 10.0130071,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "douar_el_bey",
+   "name_en": "Douar El Bey",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8354187,
+   "lon": 10.0063971,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pompage",
+   "name_en": "Pompage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356135,
+   "lon": 9.9975573,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "erriadh_manouba",
+   "name_en": "Erriadh Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8341505,
+   "lon": 9.9851857,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zone_f",
+   "name_en": "Zone F",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8333755,
+   "lon": 9.9786226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "saida",
+   "name_en": "Saida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8322184,
+   "lon": 9.9682448,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_saida",
+   "name_en": "Mosquée Saida",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8276734,
+   "lon": 9.9689666,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "canal_majerda",
+   "name_en": "Canal Majerda",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8207814,
+   "lon": 9.9748512,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ennassim",
+   "name_en": "Cité Ennassim",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8166566,
+   "lon": 9.9813769,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "rabattement_khaireddine_mannouba",
+   "to": "croisement_sanhaja",
+   "key": "croisement_sanhaja|rabattement_khaireddine_mannouba",
+   "straight_m": 2148.85,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8230522,
+     10.034149
+    ],
+    [
+     36.819641,
+     10.044664
+    ],
+    [
+     36.819451,
+     10.045345
+    ],
+    [
+     36.81959,
+     10.045729
+    ],
+    [
+     36.819541,
+     10.046036
+    ],
+    [
+     36.818818,
+     10.047138
+    ],
+    [
+     36.816604,
+     10.053835
+    ],
+    [
+     36.814764,
+     10.057296
+    ],
+    [
+     36.81482,
+     10.057443
+    ],
+    [
+     36.815149,
+     10.057518
+    ],
+    [
+     36.8156704,
+     10.0564588
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 2443.5,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 128.91,
+   "length_ratio": 1.1371,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "croisement_sanhaja",
+   "to": "coop_rative_central",
+   "key": "coop_rative_central|croisement_sanhaja",
+   "straight_m": 1350.33,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.828223,
+     10.0204221
+    ],
+    [
+     36.826298,
+     10.024025
+    ],
+    [
+     36.824117,
+     10.0319
+    ],
+    [
+     36.8230522,
+     10.034149
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1359.84,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 57.13,
+   "length_ratio": 1.007,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "coop_rative_central",
+   "to": "cit_torjmen",
+   "key": "cit_torjmen|coop_rative_central",
+   "straight_m": 771.51,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8318167,
+     10.0130071
+    ],
+    [
+     36.828223,
+     10.0204221
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 771.51,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_torjmen",
+   "to": "douar_el_bey",
+   "key": "cit_torjmen|douar_el_bey",
+   "straight_m": 711.68,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8318167,
+     10.0130071
+    ],
+    [
+     36.834077,
+     10.008536
+    ],
+    [
+     36.8354187,
+     10.0063971
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 712.5,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 16.19,
+   "length_ratio": 1.0012,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "douar_el_bey",
+   "to": "pompage",
+   "key": "douar_el_bey|pompage",
+   "straight_m": 787.01,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8354187,
+     10.0063971
+    ],
+    [
+     36.835831,
+     10.005698
+    ],
+    [
+     36.836041,
+     10.005061
+    ],
+    [
+     36.836495,
+     10.004727
+    ],
+    [
+     36.836316,
+     10.00409
+    ],
+    [
+     36.8356135,
+     9.9975573
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 843.87,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 115.54,
+   "length_ratio": 1.0722,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "pompage",
+   "to": "erriadh_manouba",
+   "key": "erriadh_manouba|pompage",
+   "straight_m": 1112.99,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8341505,
+     9.9851857
+    ],
+    [
+     36.8356135,
+     9.9975573
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1112.99,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "erriadh_manouba",
+   "to": "zone_f",
+   "key": "erriadh_manouba|zone_f",
+   "straight_m": 590.43,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8341505,
+     9.9851857
+    ],
+    [
+     36.8333755,
+     9.9786226
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 590.43,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "zone_f",
+   "to": "saida",
+   "key": "saida|zone_f",
+   "straight_m": 932.54,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8322184,
+     9.9682448
+    ],
+    [
+     36.8333755,
+     9.9786226
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 932.54,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "saida",
+   "to": "mosqu_e_saida",
+   "key": "mosqu_e_saida|saida",
+   "straight_m": 509.45,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8276734,
+     9.9689666
+    ],
+    [
+     36.831984,
+     9.967655
+    ],
+    [
+     36.8322184,
+     9.9682448
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 551.93,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 55.36,
+   "length_ratio": 1.0834,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "mosqu_e_saida",
+   "to": "canal_majerda",
+   "key": "canal_majerda|mosqu_e_saida",
+   "straight_m": 928.25,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8207814,
+     9.9748512
+    ],
+    [
+     36.826504,
+     9.971541
+    ],
+    [
+     36.826749,
+     9.969375
+    ],
+    [
+     36.8276734,
+     9.9689666
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1004.96,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 115.81,
+   "length_ratio": 1.0826,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "canal_majerda",
+   "to": "cit_ennassim",
+   "key": "canal_majerda|cit_ennassim",
+   "straight_m": 740.13,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8207814,
+     9.9748512
+    ],
+    [
+     36.820344,
+     9.975219
+    ],
+    [
+     36.821481,
+     9.978699
+    ],
+    [
+     36.821466,
+     9.979094
+    ],
+    [
+     36.8166566,
+     9.9813769
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1000.49,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 293.79,
+   "length_ratio": 1.3518,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8156704,
+   10.0564588
+  ],
+  [
+   36.815149,
+   10.057518
+  ],
+  [
+   36.81482,
+   10.057443
+  ],
+  [
+   36.814764,
+   10.057296
+  ],
+  [
+   36.816604,
+   10.053835
+  ],
+  [
+   36.818818,
+   10.047138
+  ],
+  [
+   36.819541,
+   10.046036
+  ],
+  [
+   36.81959,
+   10.045729
+  ],
+  [
+   36.819451,
+   10.045345
+  ],
+  [
+   36.819641,
+   10.044664
+  ],
+  [
+   36.8230522,
+   10.034149
+  ],
+  [
+   36.824117,
+   10.0319
+  ],
+  [
+   36.826298,
+   10.024025
+  ],
+  [
+   36.828223,
+   10.0204221
+  ],
+  [
+   36.8318167,
+   10.0130071
+  ],
+  [
+   36.834077,
+   10.008536
+  ],
+  [
+   36.8354187,
+   10.0063971
+  ],
+  [
+   36.835831,
+   10.005698
+  ],
+  [
+   36.836041,
+   10.005061
+  ],
+  [
+   36.836495,
+   10.004727
+  ],
+  [
+   36.836316,
+   10.00409
+  ],
+  [
+   36.8356135,
+   9.9975573
+  ],
+  [
+   36.8341505,
+   9.9851857
+  ],
+  [
+   36.8333755,
+   9.9786226
+  ],
+  [
+   36.8322184,
+   9.9682448
+  ],
+  [
+   36.831984,
+   9.967655
+  ],
+  [
+   36.8276734,
+   9.9689666
+  ],
+  [
+   36.826749,
+   9.969375
+  ],
+  [
+   36.826504,
+   9.971541
+  ],
+  [
+   36.8207814,
+   9.9748512
+  ],
+  [
+   36.820344,
+   9.975219
+  ],
+  [
+   36.821481,
+   9.978699
+  ],
+  [
+   36.821466,
+   9.979094
+  ],
+  [
+   36.8166566,
+   9.9813769
+  ]
+ ],
+ "phase3a": {
+  "pairs": 11,
+  "resolved": 11,
+  "unresolved": 0
+ }
+}

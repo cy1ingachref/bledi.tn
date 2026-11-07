@@ -1,0 +1,639 @@
+{
+ "line_id": "bus_722_34",
+ "number": "34",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 34: Jardin Thameur - Epicier Lagraa",
+ "direction_aller": [
+  "jardin_thameur",
+  "mechtel",
+  "bab_abdeslem",
+  "charle_nicole",
+  "darghouth_bacha",
+  "stade_mellassine",
+  "souk_mellassine",
+  "centre_de_formation_zouhour",
+  "kharouba",
+  "office_de_huile",
+  "mizanetta",
+  "ecole_zouhour4",
+  "immeubles_hrairia",
+  "cite_essalama",
+  "ben_daha",
+  "sidi_hsin_section",
+  "rond_point_sidi_hsin",
+  "poste_police_attar",
+  "salle_nile",
+  "lycee_emtiez",
+  "cite_berhouma",
+  "bounaouira",
+  "entree_attar",
+  "croisement_birine_attar_l34",
+  "firmat_aicha_louerdania",
+  "ghdhaounia",
+  "ghdhaounia_mosque",
+  "kiosque",
+  "usine_de_balles",
+  "ghoul_kammoun",
+  "el_alia",
+  "croisement_zaghouan_fajja",
+  "ain_askar",
+  "croisement_ain_askar",
+  "frachich",
+  "el_mnagaa",
+  "firma_l34",
+  "epicier_lagraa"
+ ],
+ "direction_retour": [
+  "epicier_lagraa",
+  "firma_l34",
+  "el_mnagaa",
+  "frachich",
+  "croisement_ain_askar",
+  "ain_askar",
+  "croisement_zaghouan_fajja",
+  "el_alia",
+  "ghoul_kammoun",
+  "usine_de_balles",
+  "kiosque",
+  "ghdhaounia_mosque",
+  "ghdhaounia",
+  "firmat_aicha_louerdania",
+  "croisement_birine_attar_l34",
+  "entree_attar",
+  "bounaouira",
+  "cite_berhouma",
+  "lycee_emtiez",
+  "salle_nile",
+  "poste_police_attar",
+  "rond_point_sidi_hsin",
+  "sidi_hsin_section",
+  "ben_daha",
+  "cite_essalama",
+  "immeubles_hrairia",
+  "ecole_zouhour4",
+  "mizanetta",
+  "office_de_huile",
+  "kharouba",
+  "centre_de_formation_zouhour",
+  "souk_mellassine",
+  "stade_mellassine",
+  "darghouth_bacha",
+  "charle_nicole",
+  "bab_abdeslem",
+  "mechtel",
+  "jardin_thameur"
+ ],
+ "stations_count": 38,
+ "start": {
+  "id": "jardin_thameur",
+  "name": "Jardin Thameur"
+ },
+ "end": {
+  "id": "epicier_lagraa",
+  "name": "Epicier Lagraa"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "jardin_thameur",
+  "mechtel",
+  "bab_abdeslem",
+  "charle_nicole",
+  "darghouth_bacha",
+  "stade_mellassine",
+  "souk_mellassine",
+  "centre_de_formation_zouhour",
+  "kharouba",
+  "office_de_huile",
+  "mizanetta",
+  "ecole_zouhour4",
+  "immeubles_hrairia",
+  "cite_essalama",
+  "ben_daha",
+  "sidi_hsin_section",
+  "rond_point_sidi_hsin",
+  "poste_police_attar",
+  "salle_nile",
+  "lycee_emtiez",
+  "cite_berhouma",
+  "bounaouira",
+  "entree_attar",
+  "croisement_birine_attar_l34",
+  "firmat_aicha_louerdania",
+  "ghdhaounia",
+  "ghdhaounia_mosque",
+  "kiosque",
+  "usine_de_balles",
+  "ghoul_kammoun",
+  "el_alia",
+  "croisement_zaghouan_fajja",
+  "ain_askar",
+  "croisement_ain_askar",
+  "frachich",
+  "el_mnagaa",
+  "firma_l34",
+  "epicier_lagraa"
+ ],
+ "stations_detail": [
+  {
+   "id": "jardin_thameur",
+   "name_en": "Jardin Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8037336,
+   "lon": 10.1780922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mechtel",
+   "name_en": "Mechtel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8135314,
+   "lon": 10.1723472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_abdeslem",
+   "name_en": "Bab Abdeslem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8094634,
+   "lon": 10.161087,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "darghouth_bacha",
+   "name_en": "Darghouth Bacha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7976742,
+   "lon": 10.162871,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_mellassine",
+   "name_en": "Stade Mellassine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7981849,
+   "lon": 10.1535288,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "souk_mellassine",
+   "name_en": "Souk Mellassine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7979787,
+   "lon": 10.1506964,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_zouhour",
+   "name_en": "Centre De Formation Zouhour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7972038,
+   "lon": 10.146185,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kharouba",
+   "name_en": "Kharouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7967029,
+   "lon": 10.1437226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "office_de_huile",
+   "name_en": "Office De Huile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7960371,
+   "lon": 10.1386318,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mizanetta",
+   "name_en": "Mizanetta",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7943601,
+   "lon": 10.1316662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_zouhour4",
+   "name_en": "Ecole Zouhour4",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7909852,
+   "lon": 10.1273826,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeubles_hrairia",
+   "name_en": "Immeubles Hrairia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7870148,
+   "lon": 10.1238794,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_essalama",
+   "name_en": "Cite Essalama",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7841114,
+   "lon": 10.117158,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ben_daha",
+   "name_en": "Ben Daha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.781323,
+   "lon": 10.1112679,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_hsin_section",
+   "name_en": "Sidi Hsin Section",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7747534,
+   "lon": 10.1145885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rond_point_sidi_hsin",
+   "name_en": "Rond-Point Sidi Hsin",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7702931,
+   "lon": 10.1125822,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "poste_police_attar",
+   "name_en": "Poste Police Attar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7669627,
+   "lon": 10.1112357,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "salle_nile",
+   "name_en": "Salle Nile",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7617491,
+   "lon": 10.1081187,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_emtiez",
+   "name_en": "Lycee Emtiez",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7587063,
+   "lon": 10.1051683,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_berhouma",
+   "name_en": "Cite Berhouma",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7510301,
+   "lon": 10.1000614,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bounaouira",
+   "name_en": "Bounaouira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7460612,
+   "lon": 10.0952441,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entree_attar",
+   "name_en": "Entree Attar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7377475,
+   "lon": 10.0837213,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_birine_attar_l34",
+   "name_en": "Croisement Birine/Attar L34",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7238159,
+   "lon": 10.0746979,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "firmat_aicha_louerdania",
+   "name_en": "Firmat Aicha Louerdania",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7124148,
+   "lon": 10.0706807,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ghdhaounia",
+   "name_en": "Ghdhaounia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6981276,
+   "lon": 10.0686691,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ghdhaounia_mosque",
+   "name_en": "Ghdhaounia Mosque",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.696556,
+   "lon": 10.053158,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kiosque",
+   "name_en": "Kiosque",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6744031,
+   "lon": 10.0638679,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "usine_de_balles",
+   "name_en": "Usine De Balles",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6619369,
+   "lon": 10.0536162,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ghoul_kammoun",
+   "name_en": "Ghoul Kammoun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6395984,
+   "lon": 10.0374044,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_alia",
+   "name_en": "El Alia",
+   "name_ar": "العالية (ذهاب)",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_0m"
+   ],
+   "lat": 36.6025386,
+   "lon": 10.0290579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_zaghouan_fajja",
+   "name_en": "Croisement Zaghouan/Fajja",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5947572,
+   "lon": 10.0149766,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ain_askar",
+   "name_en": "Ain Askar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5749289,
+   "lon": 9.9942214,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_ain_askar",
+   "name_en": "Croisement Ain Askar",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5614349,
+   "lon": 9.9861211,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "frachich",
+   "name_en": "Frachich",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5618227,
+   "lon": 9.9676782,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_mnagaa",
+   "name_en": "El Mnagaa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.554644,
+   "lon": 9.9439675,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "firma_l34",
+   "name_en": "Firma L34",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5475688,
+   "lon": 9.9258468,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "epicier_lagraa",
+   "name_en": "Epicier Lagraa",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.5528117,
+   "lon": 9.9026297,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

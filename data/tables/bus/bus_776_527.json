@@ -1,0 +1,335 @@
+{
+ "line_id": "bus_776_527",
+ "number": "527",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 527: Jeans Jaures - Terminus Cité El Ghazela",
+ "direction_aller": [
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "place_des_droits_de_homme",
+  "mohamed_v",
+  "maison_blanche",
+  "banque_de_habitat",
+  "montplaisir",
+  "cit_el_khadhra",
+  "charguia1",
+  "foire_la_charguia",
+  "charguia_2",
+  "cit_nozha",
+  "lakrade",
+  "enkhilette",
+  "salon_bader",
+  "tunisie_t_l_com_el_ghazela",
+  "magazin_aziza",
+  "ecole_abu_el_kacem_echebi",
+  "terminus_cit_el_ghazela"
+ ],
+ "direction_retour": [
+  "terminus_cit_el_ghazela",
+  "ecole_abu_el_kacem_echebi",
+  "magazin_aziza",
+  "tunisie_t_l_com_el_ghazela",
+  "salon_bader",
+  "enkhilette",
+  "lakrade",
+  "cit_nozha",
+  "charguia_2",
+  "foire_la_charguia",
+  "charguia1",
+  "cit_el_khadhra",
+  "montplaisir",
+  "banque_de_habitat",
+  "maison_blanche",
+  "mohamed_v",
+  "place_des_droits_de_homme",
+  "steg_jeans_jaures",
+  "jeans_jaures"
+ ],
+ "stations_count": 19,
+ "start": {
+  "id": "jeans_jaures",
+  "name": "Jeans Jaures"
+ },
+ "end": {
+  "id": "terminus_cit_el_ghazela",
+  "name": "Terminus Cité El Ghazela"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "place_des_droits_de_homme",
+  "mohamed_v",
+  "maison_blanche",
+  "banque_de_habitat",
+  "montplaisir",
+  "cit_el_khadhra",
+  "charguia1",
+  "foire_la_charguia",
+  "charguia_2",
+  "cit_nozha",
+  "lakrade",
+  "enkhilette",
+  "salon_bader",
+  "tunisie_t_l_com_el_ghazela",
+  "magazin_aziza",
+  "ecole_abu_el_kacem_echebi",
+  "terminus_cit_el_ghazela"
+ ],
+ "stations_detail": [
+  {
+   "id": "jeans_jaures",
+   "name_en": "Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8016177,
+   "lon": 10.183899,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_jeans_jaures",
+   "name_en": "Steg Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8054996,
+   "lon": 10.1819977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_des_droits_de_homme",
+   "name_en": "Place Des Droits De Homme",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8072691,
+   "lon": 10.1853076,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mohamed_v",
+   "name_en": "MOHAMED V",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81568,
+   "lon": 10.18357,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "maison_blanche",
+   "name_en": "Maison Blanche",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156186,
+   "lon": 10.1850609,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "banque_de_habitat",
+   "name_en": "Banque De Habitat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8194235,
+   "lon": 10.1855061,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "montplaisir",
+   "name_en": "Montplaisir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8233261,
+   "lon": 10.1939602,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_khadhra",
+   "name_en": "Cité El Khadhra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.823838,
+   "lon": 10.1950601,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia1",
+   "name_en": "Charguia1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8288636,
+   "lon": 10.2010967,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foire_la_charguia",
+   "name_en": "Foire La Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356665,
+   "lon": 10.2014554,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia_2",
+   "name_en": "Charguia 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8543199,
+   "lon": 10.2028332,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_nozha",
+   "name_en": "Cité Nozha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8684561,
+   "lon": 10.1950961,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lakrade",
+   "name_en": "Lakrade",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8771309,
+   "lon": 10.1861866,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "enkhilette",
+   "name_en": "Enkhilette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8799106,
+   "lon": 10.1856544,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "salon_bader",
+   "name_en": "Salon Bader",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8902563,
+   "lon": 10.1800604,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "tunisie_t_l_com_el_ghazela",
+   "name_en": "Tunisie Télécom El Ghazela",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8900809,
+   "lon": 10.172304,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "magazin_aziza",
+   "name_en": "Magazin Aziza",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8911864,
+   "lon": 10.1713529,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_abu_el_kacem_echebi",
+   "name_en": "Ecole Abu El Kacem Echebi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8922513,
+   "lon": 10.1642193,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_cit_el_ghazela",
+   "name_en": "Terminus Cité El Ghazela",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8935117,
+   "lon": 10.165452,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

@@ -1,0 +1,217 @@
+{
+  "_meta": {
+    "source_url": "https://destination-tunis.fr/se-deplacer/principe-fonctionnement-louage-tunisie/",
+    "publisher": "Destination Tunis",
+    "page_last_modified": "2026-09-14",
+    "retrieved": "2026-11-03",
+    "source_language": "fr",
+    "currency": "TND",
+    "price_note": "Prices are reader-reported observations from the page's table and comments, not official data. Always keep the 'observed' date and treat old entries as stale.",
+    "official_tariff_page": "http://www.transport.tn/fr/article/110/tarif-du-transport-non-regulier-des-personnes-par-les-voitures-louage (Arabic only; the source says it is out of date but still a good indication)"
+  },
+
+  "concept": {
+    "summary": "Louage = shared intercity taxi network. Minibuses run a fixed route and leave when full. Described as one of the most widely used and convenient ways to travel in Tunisia.",
+    "vehicle": "White minibus/estafette with a red or blue stripe, usually Japanese-made, very high mileage (rarely under 400,000 km).",
+    "capacity": { "total_seats": 9, "passengers": 8, "driver": 1 },
+    "departure_rule": "Departs once all 8 passenger seats are taken (no fixed timetable).",
+    "route_signage": "Route is shown on a sign on the roof and a card at the rear. Drivers stand in front of the vehicle and shout the destination.",
+    "tourist_pricing": "Fares are state-regulated and posted in the vehicle; the source says there is no tourist overcharging."
+  },
+
+  "vehicle_types": [
+    {
+      "id": "white_red",
+      "name_fr": "Louage blanc à bande rouge",
+      "color": "white",
+      "stripe": "red",
+      "scope": "inter-governorate (big city to big city, e.g. Tunis-Nabeul, Sousse-Sfax)",
+      "departs_only_when_full": true,
+      "stops_en_route": false,
+      "note": "Non-stop to the final destination."
+    },
+    {
+      "id": "white_blue",
+      "name_fr": "Louage blanc à bande bleue",
+      "color": "white",
+      "stripe": "blue",
+      "scope": "within one governorate, shorter links",
+      "departs_only_when_full": false,
+      "stops_en_route": true,
+      "note": "Can leave half full; drops off and picks up in villages along the way."
+    },
+    {
+      "id": "yellow_blue",
+      "name_fr": "Louage jaune à bande bleue",
+      "nickname": "Doliprane",
+      "color": "yellow",
+      "stripe": "blue",
+      "scope": "rural, serves almost all villages",
+      "departs_only_when_full": null,
+      "stops_en_route": true,
+      "note": "Common in the countryside; can be completely full when there is a souk nearby."
+    }
+  ],
+
+  "operating_hours": {
+    "start": "around 06:00",
+    "main_service": "daytime",
+    "hard_to_fill_after": { "summer": "19:00-20:00", "winter": "17:00-18:00" },
+    "quiet_periods": ["summer afternoons and evenings", "Ramadan afternoons and evenings"],
+    "advice": "Travel in the morning, especially in summer and during Ramadan; avoid returning late.",
+    "empty_seat_option": "You can pay for the empty seats so the louage leaves, as long as a louage is available for that trip."
+  },
+
+  "stations": {
+    "general": "Every town, and often every village, has one or more louage stations. Easy to spot by watching where louages arrive and depart. Locals and taxi drivers know where they are.",
+    "tunis": [
+      {
+        "id": "tunis_bab_saadoun",
+        "name": "Bab Saadoun",
+        "region_served": "North",
+        "destinations": ["Bizerte", "Le Kef", "Tabarka", "Béja"]
+      },
+      {
+        "id": "tunis_bab_alioua",
+        "name": "Bab Alioua",
+        "region_served": "Near south and Cap Bon",
+        "destinations": ["Hammamet", "Nabeul", "Kélibia", "Zaghouan"]
+      },
+      {
+        "id": "tunis_moncef_bey",
+        "name": "Moncef Bey",
+        "region_served": "Centre and south",
+        "destinations": ["Sousse", "Monastir", "Kairouan", "El Jem", "Mahdia", "Sfax", "Gabès", "Sidi Bouzid"]
+      }
+    ],
+    "other_stations_mentioned": [
+      "Nabeul (blue-stripe local louages)",
+      "Yasmine Hammamet Sud (Barakat Sahel)",
+      "Yasmine Hammamet (station El Lemdina, bus line 115 stop)",
+      "Tunis Marine (to La Marsa)"
+    ]
+  },
+
+  "tickets": {
+    "options": [
+      "Pay the driver directly, often inside the louage at the end of the trip.",
+      "Buy at the station counter (guichet): tell the driver first so he holds your seat, go buy the ticket, then give the ticket to the driver."
+    ],
+    "tariffs": "Set by the state and displayed inside the vehicle."
+  },
+
+  "pricing_rules": {
+    "rule_of_thumb": "About 7 TND per hour of travel.",
+    "example": "From Tunis, about 7 TND gets you roughly one hour away: Bizerte, Zaghouan, Hammamet, Nabeul.",
+    "warning": "The rule of thumb is rough. Observed fares below range from ~0.7 TND (very short hops) to 40 TND (Tunis-Médenine)."
+  },
+
+  "no_direct_connections": [
+    { "from": "Kairouan", "to": "El Jem", "via": "Sousse" },
+    { "from": "Kairouan", "to": "Mahdia", "via": "Sousse" },
+    { "from": "Sfax", "to": "Tozeur", "via": "Gafsa" }
+  ],
+
+  "multi_leg_routes": [
+    { "from": "Monastir", "to": "Douz", "options": ["via Sfax", "via Sousse and Gabès"] },
+    { "from": "Sousse", "to": "Djerba", "via": ["Gabès"] },
+    { "from": "Hammamet", "to": "Djerba", "via": ["Sousse", "Gabès"], "duration_hours": 8, "price_tnd_approx": 40, "observed": "2022-11" },
+    { "from": "Tunis", "to": "Djerba", "note": "Likely a direct louage exists, but go to the station the day before to confirm and reserve." }
+  ],
+
+  "djerba_notes": [
+    "Few direct louage links to Djerba.",
+    "Leaving Djerba is slow: morning demand exceeds seats, so stations issue queue tickets and groups of 8 leave in turn. Waits of 2-4 hours were reported.",
+    "Plan extra time when leaving Djerba in the morning."
+  ],
+
+  "fare_observations": [
+    { "from": "Tunis (Bab Saadoun)", "to": "Bizerte", "price_tnd": 6.5, "mode": "louage", "observed": "2025-02" },
+    { "from": "Tunis (Bab Saadoun)", "to": "Jendouba", "price_tnd": 14.5, "mode": "louage", "observed": "2025-10" },
+    { "from": "Tunis (Bab Saadoun)", "to": "Tabarka", "price_tnd": 15, "mode": "louage", "observed": "2023-09" },
+    { "from": "Tunis (Bab Saadoun)", "to": "Le Kef", "price_tnd": 15, "mode": "louage", "observed": "2024-10" },
+    { "from": "Tunis (Bab Saadoun)", "to": "Ras Jebel", "price_tnd": 5.7, "mode": "louage", "observed": "2025-10" },
+    { "from": "Tunis (Bab Alioua)", "to": "Nabeul", "price_tnd": 4.7, "mode": "louage", "observed": "2015-01", "note": "Very old, likely outdated." },
+    { "from": "Tunis (Bab Alioua)", "to": "Korba", "price_tnd": 6.8, "mode": "louage", "observed": "2023-07" },
+    { "from": "Tunis (Bab Alioua)", "to": "Kélibia", "price_tnd": 8.8, "mode": "louage", "observed": "2022-08" },
+    { "from": "Tunis (Bab Alioua)", "to": "Hammamet Nord", "price_tnd": 6.8, "mode": "louage", "observed": "2025-02" },
+    { "from": "Tunis (Bab Alioua)", "to": "Yasmine Hammamet Sud (Barakat Sahel)", "price_tnd": 4.75, "mode": "louage", "observed": "2022-08" },
+    { "from": "Tunis (Bab Alioua)", "to": "Zaghouan", "price_tnd": 5.35, "mode": "louage", "observed": "2025-07" },
+    { "from": "Tunis Airport", "to": "Yasmine Hammamet", "price_tnd": 35, "mode": "taxi_private", "observed": "2023-11", "note": "Private taxi, not a louage." },
+    { "from": "Tunis (Moncef Bey)", "to": "Sousse", "price_tnd": 13.5, "mode": "louage", "observed": "2024-10" },
+    { "from": "Tunis (Moncef Bey)", "to": "Monastir", "price_tnd": 14.85, "mode": "louage", "observed": "2025-02" },
+    { "from": "Tunis (Moncef Bey)", "to": "Kairouan", "price_tnd": 14.6, "mode": "louage", "observed": "2025-12", "note": "Also reported 2024-12. Same price in the Kairouan to Tunis direction." },
+    { "from": "Tunis (Moncef Bey)", "to": "Mahdia", "price_tnd": 17.65, "mode": "louage", "observed": "2024-08", "note": "Also reported 2023-08." },
+    { "from": "Tunis Marine", "to": "La Marsa", "price_tnd": 1.7, "mode": "louage", "observed": "2023-10", "note": "Source text reads '1,.700 Dt' (typo); 1.7 is the likely value." },
+    { "from": "Tunis", "to": "Médenine", "price_tnd": 40, "mode": "louage", "observed": "2026-05" },
+
+    { "from": "Hammamet", "to": "Tunis", "price_tnd": 6.8, "mode": "louage", "observed": "2024-04" },
+    { "from": "Yasmine Hammamet Sud (Barakat Sahel)", "to": "Tunis", "price_tnd": 5.5, "mode": "louage", "observed": "2024-05" },
+    { "from": "Yasmine Hammamet Sud (Barakat Sahel)", "to": "Sousse (centre)", "price_tnd": 8.6, "mode": "louage", "observed": "2023-02" },
+    { "from": "Yasmine Hammamet Sud (Barakat Sahel)", "to": "Kairouan", "price_tnd": 11, "mode": "louage", "observed": "2024-03" },
+    { "from": "Yasmine Hammamet Sud (Barakat Sahel)", "to": "Nabeul", "price_tnd": 2.0, "mode": "louage", "observed": "2024-10" },
+    { "from": "Médina Hammamet", "to": "Yasmine Hammamet Sud (Barakat Sahel)", "price_tnd": 0.7, "mode": "louage", "observed": "2024-03" },
+    { "from": "Yasmine Hammamet Sud (Barakat Sahel)", "to": "Hammamet Nord", "price_tnd": 0.8, "mode": "louage", "observed": "2017-11", "note": "Old, likely outdated." },
+    { "from": "Yasmine Hammamet (station El Lemdina)", "to": "Nabeul", "price_tnd": 1.7, "mode": "bus", "line": "115", "observed": "2024-03" },
+    { "from": "Yasmine Hammamet (station El Lemdina)", "to": "Hammamet Centre", "price_tnd": 0.8, "mode": "bus", "line": "115", "observed": "2024-03" },
+
+    { "from": "Nabeul", "to": "Tunis", "price_tnd": 6.6, "mode": "louage", "observed": "2025-10" },
+    { "from": "Nabeul", "to": "Tunis", "price_tnd": 5.3, "mode": "bus", "line": "102", "observed": "2022-09" },
+    { "from": "Nabeul", "to": "Kélibia", "price_tnd": 5.35, "mode": "louage", "observed": "2025-10" },
+    { "from": "Nabeul", "to": "Sousse", "price_tnd": 8.3, "mode": "louage", "observed": "2022-09" },
+    { "from": "Nabeul", "to": "Kairouan", "price_tnd": 10.6, "mode": "louage", "observed": "2025-10" },
+    { "from": "Nabeul", "to": "Monastir", "price_tnd": 10.9, "mode": "louage", "observed": "2025-10" },
+    { "from": "Nabeul", "to": "Zaghouan", "price_tnd": 6.5, "mode": "louage", "observed": "2025-10" },
+
+    { "from": "Sousse", "to": "Médenine", "price_tnd": 27, "mode": "louage", "observed": "2026-06" },
+    { "from": "Sousse", "to": "Tunis", "price_tnd": 13.5, "mode": "louage", "observed": "2025-12" },
+    { "from": "Sousse", "to": "Le Kef", "price_tnd": 19, "mode": "louage", "observed": "2024-10" },
+    { "from": "Sousse", "to": "Béja / Jendouba", "price_tnd": 21, "mode": "louage", "observed": "2025-07", "note": "The source lists one price on a row covering both Béja and Jendouba; unclear whether it applies to both." },
+    { "from": "Sousse (centre)", "to": "Yasmine Hammamet Sud (Barakat Sahel)", "price_tnd": 7.5, "mode": "louage", "observed": "2022-09" },
+    { "from": "Sousse", "to": "El Jem", "price_tnd": 8.6, "mode": "louage", "observed": "2025-02", "note": "Seems high versus other Sousse fares; verify." },
+    { "from": "Sousse", "to": "Monastir", "price_tnd": 2.4, "mode": "louage", "observed": "2025-12" },
+    { "from": "Sousse", "to": "Mahdia", "price_tnd": 5.9, "mode": "louage", "observed": "2024-12" },
+    { "from": "Sousse", "to": "Kairouan", "price_tnd": 6.2, "mode": "louage", "observed": "2025-12", "note": "Also reported 2024-12, same price in both directions." },
+    { "from": "Monastir", "to": "Kairouan", "price_tnd": 7.95, "mode": "louage", "observed": "2025-02" },
+    { "from": "Sousse", "to": "Sfax", "price_tnd": 12.4, "mode": "louage", "observed": "2025-02" },
+    { "from": "Sousse", "to": "Gabès", "price_tnd": 22.3, "mode": "louage", "observed": "2025-02" },
+    { "from": "Mahdia", "to": "El Jem", "price_tnd": 8.0, "mode": "louage", "observed": "2024-04" },
+
+    { "from": "Sfax", "to": "Tunis", "price_tnd": 22.75, "mode": "louage", "observed": "2023-03" },
+    { "from": "Sfax", "to": "Kebili", "price_tnd": 21, "mode": "louage", "observed": "2025-01" },
+
+    { "from": "Gabès", "to": "Hammamet", "price_tnd": 25, "price_unit": "per_person", "full_vehicle_tnd": 200, "mode": "louage_private", "observed": "2019-11", "note": "Privately chartered louage; old data." },
+    { "from": "Gabès", "to": "Sousse", "price_tnd": 22.3, "mode": "louage", "observed": "2025-02" },
+    { "from": "Gabès", "to": "Tozeur", "price_tnd": 17.6, "mode": "louage", "observed": "2025-02" },
+    { "from": "Gabès", "to": "Médenine", "price_tnd": 7.05, "mode": "louage", "observed": "2026-08" },
+    { "from": "Gabès", "to": "Djerba", "price_tnd": 14.55, "mode": "louage", "observed": "2025-02" },
+
+    { "from": "Bizerte", "to": "Béja", "price_tnd": 9.25, "mode": "louage", "observed": "2025-07" },
+    { "from": "Béja", "to": "Tabarka", "price_tnd": 6.5, "mode": "louage", "observed": "2025-07" },
+    { "from": "Le Kef", "to": "Kasserine", "price_tnd": 11.5, "mode": "louage", "observed": "2023-10" },
+    { "from": "Jendouba", "to": "Bousalem", "price_tnd": 1.8, "mode": "louage", "observed": "2023-10" },
+    { "from": "Bousalem", "to": "Béja", "price_tnd": 2.4, "mode": "louage", "observed": "2023-10" }
+  ],
+
+  "tips_for_travelers": [
+    "Travel in the morning, especially in summer and during Ramadan.",
+    "Ask locals or taxi drivers where the station is; everyone knows.",
+    "For long or unusual routes (Djerba, the south), go to the station the day before to confirm and reserve.",
+    "Check the posted tariff inside the vehicle.",
+    "Taking a louage is also a good way to meet and talk with Tunisians."
+  ],
+
+  "data_quality_notes": [
+    "All prices come from readers' comments, not an official source; some entries are from 2015-2019.",
+    "Station names are as written on the source page (some are neighborhoods or stops, not formal stations); expect to reconcile them with your existing station seed.",
+    "No timetable data exists: departures depend on the vehicle filling up.",
+    "The source does not give coordinates for any station."
+  ],
+
+  "modeling_notes_not_from_source": [
+    "Model louage as a 'departs when full' service: show estimated wait/frequency rather than a schedule, with lower confidence in the evening, in summer and during Ramadan.",
+    "Store fare observations with their observed date and a confidence or staleness flag, and prefer the newest per route and direction.",
+    "Keep louage type (white_red / white_blue / yellow_blue) as an attribute on routes: it determines whether the trip is non-stop and whether it can leave before full.",
+    "Represent missing direct links (Kairouan-El Jem, Kairouan-Mahdia, Sfax-Tozeur) as forced transfers in the routing graph."
+  ]
+}

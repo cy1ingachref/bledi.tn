@@ -1,0 +1,1302 @@
+{
+ "line_id": "bus_862_54b",
+ "number": "54B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 54B: Mourouj 5 - Hopital De Traumatologie Et Des Grands Brulés",
+ "direction_aller": [
+  "mourouj_5",
+  "av_el_borhene",
+  "cit_afh",
+  "jardin_enfants_mourouj_5",
+  "cit_el_faouez",
+  "14_janvier_el_mourouj",
+  "centre_challakh_el_mourouj_4",
+  "foyer_universitaire_mourouj_3",
+  "jardin_enfants_mourouj_3",
+  "el_mourouj_3",
+  "meublatex",
+  "immeuble_oasis",
+  "batam",
+  "les_roses_mourouj_1",
+  "croisement_mourouj_2",
+  "pont_mourouj_2",
+  "hopital_de_traumatologie_et_des_grands_brul_s"
+ ],
+ "direction_retour": [
+  "hopital_de_traumatologie_et_des_grands_brul_s",
+  "pont_mourouj_2",
+  "croisement_mourouj_2",
+  "les_roses_mourouj_1",
+  "batam",
+  "immeuble_oasis",
+  "meublatex",
+  "el_mourouj_3",
+  "jardin_enfants_mourouj_3",
+  "foyer_universitaire_mourouj_3",
+  "centre_challakh_el_mourouj_4",
+  "14_janvier_el_mourouj",
+  "cit_el_faouez",
+  "jardin_enfants_mourouj_5",
+  "cit_afh",
+  "av_el_borhene",
+  "mourouj_5"
+ ],
+ "stations_count": 17,
+ "start": {
+  "id": "mourouj_5",
+  "name": "Mourouj 5"
+ },
+ "end": {
+  "id": "hopital_de_traumatologie_et_des_grands_brul_s",
+  "name": "Hopital De Traumatologie Et Des Grands Brulés"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "mourouj_5",
+  "av_el_borhene",
+  "cit_afh",
+  "jardin_enfants_mourouj_5",
+  "cit_el_faouez",
+  "14_janvier_el_mourouj",
+  "centre_challakh_el_mourouj_4",
+  "foyer_universitaire_mourouj_3",
+  "jardin_enfants_mourouj_3",
+  "el_mourouj_3",
+  "meublatex",
+  "immeuble_oasis",
+  "batam",
+  "les_roses_mourouj_1",
+  "croisement_mourouj_2",
+  "pont_mourouj_2",
+  "hopital_de_traumatologie_et_des_grands_brul_s"
+ ],
+ "stations_detail": [
+  {
+   "id": "mourouj_5",
+   "name_en": "Mourouj 5",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.710192,
+   "lon": 10.2012553,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "av_el_borhene",
+   "name_en": "Av El Borhene",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7096072,
+   "lon": 10.200354,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_afh",
+   "name_en": "Cité Afh",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7086031,
+   "lon": 10.2040238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants_mourouj_5",
+   "name_en": "Jardin Enfants Mourouj 5",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7105017,
+   "lon": 10.206212,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_faouez",
+   "name_en": "Cité El Faouez",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7160786,
+   "lon": 10.2088199,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "14_janvier_el_mourouj",
+   "name_en": "14 Janvier El Mourouj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7168552,
+   "lon": 10.213302,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_challakh_el_mourouj_4",
+   "name_en": "Centre Challakh El Mourouj 4",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7191548,
+   "lon": 10.2164902,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_universitaire_mourouj_3",
+   "name_en": "Foyer Universitaire Mourouj 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7227421,
+   "lon": 10.2128429,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jardin_enfants_mourouj_3",
+   "name_en": "Jardin Enfants Mourouj 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7243136,
+   "lon": 10.2111902,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_mourouj_3",
+   "name_en": "EL MOUROUJ 3",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7287,
+   "lon": 10.21073,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "meublatex",
+   "name_en": "Meublatex",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.730361,
+   "lon": 10.2105791,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_oasis",
+   "name_en": "Immeuble Oasis",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7349698,
+   "lon": 10.2096672,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "batam",
+   "name_en": "BATAM",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7374523,
+   "lon": 10.208229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_roses_mourouj_1",
+   "name_en": "Les Roses Mourouj 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7390079,
+   "lon": 10.2055154,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_mourouj_2",
+   "name_en": "Croisement Mourouj 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.74025,
+   "lon": 10.2059713,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_mourouj_2",
+   "name_en": "Pont Mourouj 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7431611,
+   "lon": 10.207993,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hopital_de_traumatologie_et_des_grands_brul_s",
+   "name_en": "Hopital De Traumatologie Et Des Grands Brulés",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7471954,
+   "lon": 10.2111478,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "mourouj_5",
+   "to": "av_el_borhene",
+   "key": "av_el_borhene|mourouj_5",
+   "straight_m": 103.36,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7096072,
+     10.200354
+    ],
+    [
+     36.709745,
+     10.200147
+    ],
+    [
+     36.710352,
+     10.200987
+    ],
+    [
+     36.710192,
+     10.2012553
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 154.6,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 28.88,
+   "length_ratio": 1.4958,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "av_el_borhene",
+   "to": "cit_afh",
+   "key": "av_el_borhene|cit_afh",
+   "straight_m": 345.67,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7096072,
+     10.200354
+    ],
+    [
+     36.707686,
+     10.202344
+    ],
+    [
+     36.7086031,
+     10.2040238
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 458.85,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 144.88,
+   "length_ratio": 1.3274,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_afh",
+   "to": "jardin_enfants_mourouj_5",
+   "key": "cit_afh|jardin_enfants_mourouj_5",
+   "straight_m": 287.43,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7086031,
+     10.2040238
+    ],
+    [
+     36.709848,
+     10.206554
+    ],
+    [
+     36.7105017,
+     10.206212
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 343.46,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 71.72,
+   "length_ratio": 1.1949,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "jardin_enfants_mourouj_5",
+   "to": "cit_el_faouez",
+   "key": "cit_el_faouez|jardin_enfants_mourouj_5",
+   "straight_m": 662.26,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7160786,
+     10.2088199
+    ],
+    [
+     36.715171,
+     10.207454
+    ],
+    [
+     36.714268,
+     10.206632
+    ],
+    [
+     36.713712,
+     10.206363
+    ],
+    [
+     36.713041,
+     10.206087
+    ],
+    [
+     36.712171,
+     10.205937
+    ],
+    [
+     36.71133,
+     10.206012
+    ],
+    [
+     36.7105017,
+     10.206212
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 712.54,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 112.7,
+   "length_ratio": 1.0759,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_el_faouez",
+   "to": "14_janvier_el_mourouj",
+   "key": "14_janvier_el_mourouj|cit_el_faouez",
+   "straight_m": 408.74,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7168552,
+     10.213302
+    ],
+    [
+     36.716542,
+     10.21041
+    ],
+    [
+     36.7160786,
+     10.2088199
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 410.93,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 20.42,
+   "length_ratio": 1.0054,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "14_janvier_el_mourouj",
+   "to": "centre_challakh_el_mourouj_4",
+   "key": "14_janvier_el_mourouj|centre_challakh_el_mourouj_4",
+   "straight_m": 382.28,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7168552,
+     10.213302
+    ],
+    [
+     36.716657,
+     10.214827
+    ],
+    [
+     36.716063,
+     10.21643
+    ],
+    [
+     36.717256,
+     10.216729
+    ],
+    [
+     36.718432,
+     10.216781
+    ],
+    [
+     36.720098,
+     10.21645
+    ],
+    [
+     36.720582,
+     10.216228
+    ],
+    [
+     36.720526,
+     10.21605
+    ],
+    [
+     36.7191548,
+     10.2164902
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 980.68,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 251.97,
+   "length_ratio": 2.5653,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "centre_challakh_el_mourouj_4",
+   "to": "foyer_universitaire_mourouj_3",
+   "key": "centre_challakh_el_mourouj_4|foyer_universitaire_mourouj_3",
+   "straight_m": 514.58,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7191548,
+     10.2164902
+    ],
+    [
+     36.71762,
+     10.216559
+    ],
+    [
+     36.716164,
+     10.216224
+    ],
+    [
+     36.716063,
+     10.21643
+    ],
+    [
+     36.71669,
+     10.216624
+    ],
+    [
+     36.71805,
+     10.216784
+    ],
+    [
+     36.719437,
+     10.216636
+    ],
+    [
+     36.720511,
+     10.216274
+    ],
+    [
+     36.721643,
+     10.215526
+    ],
+    [
+     36.7227421,
+     10.2128429
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1270.15,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 343.83,
+   "length_ratio": 2.4683,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "foyer_universitaire_mourouj_3",
+   "to": "jardin_enfants_mourouj_3",
+   "key": "foyer_universitaire_mourouj_3|jardin_enfants_mourouj_3",
+   "straight_m": 228.54,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7227421,
+     10.2128429
+    ],
+    [
+     36.723765,
+     10.211735
+    ],
+    [
+     36.7243136,
+     10.2111902
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 228.59,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 2.19,
+   "length_ratio": 1.0002,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "jardin_enfants_mourouj_3",
+   "to": "el_mourouj_3",
+   "key": "el_mourouj_3|jardin_enfants_mourouj_3",
+   "straight_m": 489.47,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7287,
+     10.21073
+    ],
+    [
+     36.727978,
+     10.210537
+    ],
+    [
+     36.725964,
+     10.210726
+    ],
+    [
+     36.7243136,
+     10.2111902
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 494.81,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 25.85,
+   "length_ratio": 1.0109,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "el_mourouj_3",
+   "to": "meublatex",
+   "key": "el_mourouj_3|meublatex",
+   "straight_m": 185.18,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7287,
+     10.21073
+    ],
+    [
+     36.730207,
+     10.210735
+    ],
+    [
+     36.731388,
+     10.210655
+    ],
+    [
+     36.731535,
+     10.210749
+    ],
+    [
+     36.731718,
+     10.210542
+    ],
+    [
+     36.73156,
+     10.210295
+    ],
+    [
+     36.731049,
+     10.210598
+    ],
+    [
+     36.730361,
+     10.2105791
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 512.51,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 150.93,
+   "length_ratio": 2.7677,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "meublatex",
+   "to": "immeuble_oasis",
+   "key": "immeuble_oasis|meublatex",
+   "straight_m": 518.88,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7349698,
+     10.2096672
+    ],
+    [
+     36.736159,
+     10.209099
+    ],
+    [
+     36.736077,
+     10.208944
+    ],
+    [
+     36.732539,
+     10.210332
+    ],
+    [
+     36.731913,
+     10.210448
+    ],
+    [
+     36.731511,
+     10.210295
+    ],
+    [
+     36.731049,
+     10.210598
+    ],
+    [
+     36.730361,
+     10.2105791
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 822.2,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 141.6,
+   "length_ratio": 1.5846,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "immeuble_oasis",
+   "to": "batam",
+   "key": "batam|immeuble_oasis",
+   "straight_m": 304.34,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7374523,
+     10.208229
+    ],
+    [
+     36.737934,
+     10.207488
+    ],
+    [
+     36.737837,
+     10.207364
+    ],
+    [
+     36.737174,
+     10.208195
+    ],
+    [
+     36.736489,
+     10.208738
+    ],
+    [
+     36.734192,
+     10.209696
+    ],
+    [
+     36.734396,
+     10.209862
+    ],
+    [
+     36.7349698,
+     10.2096672
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 657.7,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 88.16,
+   "length_ratio": 2.1611,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "batam",
+   "to": "les_roses_mourouj_1",
+   "key": "batam|les_roses_mourouj_1",
+   "straight_m": 297.31,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7374523,
+     10.208229
+    ],
+    [
+     36.739681,
+     10.205113
+    ],
+    [
+     36.73969,
+     10.204869
+    ],
+    [
+     36.73951,
+     10.204819
+    ],
+    [
+     36.7390079,
+     10.2055154
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 497.92,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 95.24,
+   "length_ratio": 1.6747,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "les_roses_mourouj_1",
+   "to": "croisement_mourouj_2",
+   "key": "croisement_mourouj_2|les_roses_mourouj_1",
+   "straight_m": 143.97,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 1545 m implausible vs 144 m straight"
+  },
+  {
+   "from": "croisement_mourouj_2",
+   "to": "pont_mourouj_2",
+   "key": "croisement_mourouj_2|pont_mourouj_2",
+   "straight_m": 370.45,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.74025,
+     10.2059713
+    ],
+    [
+     36.74144,
+     10.206984
+    ],
+    [
+     36.7431611,
+     10.207993
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 371.61,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 14.5,
+   "length_ratio": 1.0031,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "pont_mourouj_2",
+   "to": "hopital_de_traumatologie_et_des_grands_brul_s",
+   "key": "hopital_de_traumatologie_et_des_grands_brul_s|pont_mourouj_2",
+   "straight_m": 529.39,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.7471954,
+     10.2111478
+    ],
+    [
+     36.747855,
+     10.210888
+    ],
+    [
+     36.748144,
+     10.210339
+    ],
+    [
+     36.748085,
+     10.209159
+    ],
+    [
+     36.747652,
+     10.208452
+    ],
+    [
+     36.74727,
+     10.208247
+    ],
+    [
+     36.746744,
+     10.208156
+    ],
+    [
+     36.746295,
+     10.20817
+    ],
+    [
+     36.745677,
+     10.208378
+    ],
+    [
+     36.743878,
+     10.207964
+    ],
+    [
+     36.742662,
+     10.207492
+    ],
+    [
+     36.740849,
+     10.206156
+    ],
+    [
+     36.739587,
+     10.204801
+    ],
+    [
+     36.739451,
+     10.204884
+    ],
+    [
+     36.739456,
+     10.205094
+    ],
+    [
+     36.741027,
+     10.206682
+    ],
+    [
+     36.741897,
+     10.207256
+    ],
+    [
+     36.7431611,
+     10.207993
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1835.66,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 496.92,
+   "length_ratio": 3.4675,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.710192,
+   10.2012553
+  ],
+  [
+   36.710352,
+   10.200987
+  ],
+  [
+   36.709745,
+   10.200147
+  ],
+  [
+   36.7096072,
+   10.200354
+  ],
+  [
+   36.707686,
+   10.202344
+  ],
+  [
+   36.7086031,
+   10.2040238
+  ],
+  [
+   36.709848,
+   10.206554
+  ],
+  [
+   36.7105017,
+   10.206212
+  ],
+  [
+   36.71133,
+   10.206012
+  ],
+  [
+   36.712171,
+   10.205937
+  ],
+  [
+   36.713041,
+   10.206087
+  ],
+  [
+   36.713712,
+   10.206363
+  ],
+  [
+   36.714268,
+   10.206632
+  ],
+  [
+   36.715171,
+   10.207454
+  ],
+  [
+   36.7160786,
+   10.2088199
+  ],
+  [
+   36.716542,
+   10.21041
+  ],
+  [
+   36.7168552,
+   10.213302
+  ],
+  [
+   36.716657,
+   10.214827
+  ],
+  [
+   36.716063,
+   10.21643
+  ],
+  [
+   36.717256,
+   10.216729
+  ],
+  [
+   36.718432,
+   10.216781
+  ],
+  [
+   36.720098,
+   10.21645
+  ],
+  [
+   36.720582,
+   10.216228
+  ],
+  [
+   36.720526,
+   10.21605
+  ],
+  [
+   36.7191548,
+   10.2164902
+  ],
+  [
+   36.71762,
+   10.216559
+  ],
+  [
+   36.716164,
+   10.216224
+  ],
+  [
+   36.716063,
+   10.21643
+  ],
+  [
+   36.71669,
+   10.216624
+  ],
+  [
+   36.71805,
+   10.216784
+  ],
+  [
+   36.719437,
+   10.216636
+  ],
+  [
+   36.720511,
+   10.216274
+  ],
+  [
+   36.721643,
+   10.215526
+  ],
+  [
+   36.7227421,
+   10.2128429
+  ],
+  [
+   36.723765,
+   10.211735
+  ],
+  [
+   36.7243136,
+   10.2111902
+  ],
+  [
+   36.725964,
+   10.210726
+  ],
+  [
+   36.727978,
+   10.210537
+  ],
+  [
+   36.7287,
+   10.21073
+  ],
+  [
+   36.730207,
+   10.210735
+  ],
+  [
+   36.731388,
+   10.210655
+  ],
+  [
+   36.731535,
+   10.210749
+  ],
+  [
+   36.731718,
+   10.210542
+  ],
+  [
+   36.73156,
+   10.210295
+  ],
+  [
+   36.731049,
+   10.210598
+  ],
+  [
+   36.730361,
+   10.2105791
+  ],
+  [
+   36.731049,
+   10.210598
+  ],
+  [
+   36.731511,
+   10.210295
+  ],
+  [
+   36.731913,
+   10.210448
+  ],
+  [
+   36.732539,
+   10.210332
+  ],
+  [
+   36.736077,
+   10.208944
+  ],
+  [
+   36.736159,
+   10.209099
+  ],
+  [
+   36.7349698,
+   10.2096672
+  ],
+  [
+   36.734396,
+   10.209862
+  ],
+  [
+   36.734192,
+   10.209696
+  ],
+  [
+   36.736489,
+   10.208738
+  ],
+  [
+   36.737174,
+   10.208195
+  ],
+  [
+   36.737837,
+   10.207364
+  ],
+  [
+   36.737934,
+   10.207488
+  ],
+  [
+   36.7374523,
+   10.208229
+  ],
+  [
+   36.739681,
+   10.205113
+  ],
+  [
+   36.73969,
+   10.204869
+  ],
+  [
+   36.73951,
+   10.204819
+  ],
+  [
+   36.7390079,
+   10.2055154
+  ],
+  [
+   36.74025,
+   10.2059713
+  ],
+  [
+   36.74144,
+   10.206984
+  ],
+  [
+   36.7431611,
+   10.207993
+  ],
+  [
+   36.741897,
+   10.207256
+  ],
+  [
+   36.741027,
+   10.206682
+  ],
+  [
+   36.739456,
+   10.205094
+  ],
+  [
+   36.739451,
+   10.204884
+  ],
+  [
+   36.739587,
+   10.204801
+  ],
+  [
+   36.740849,
+   10.206156
+  ],
+  [
+   36.742662,
+   10.207492
+  ],
+  [
+   36.743878,
+   10.207964
+  ],
+  [
+   36.745677,
+   10.208378
+  ],
+  [
+   36.746295,
+   10.20817
+  ],
+  [
+   36.746744,
+   10.208156
+  ],
+  [
+   36.74727,
+   10.208247
+  ],
+  [
+   36.747652,
+   10.208452
+  ],
+  [
+   36.748085,
+   10.209159
+  ],
+  [
+   36.748144,
+   10.210339
+  ],
+  [
+   36.747855,
+   10.210888
+  ],
+  [
+   36.7471954,
+   10.2111478
+  ]
+ ],
+ "phase3a": {
+  "pairs": 16,
+  "resolved": 15,
+  "unresolved": 1
+ }
+}

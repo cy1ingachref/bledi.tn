@@ -1,0 +1,191 @@
+{
+ "line_id": "bus_705_12",
+ "number": "12",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 12: Jardin Thameur - Terminus L12 Zayatine",
+ "direction_aller": [
+  "jardin_thameur",
+  "mechtel",
+  "arbi_kebbedi_omrane",
+  "caf_kawekeb",
+  "terminus_jbel_lahmer_l_11",
+  "ecole_francaise_omarane",
+  "restaurant_bou_feres",
+  "march_zayatine",
+  "cite_zayatine",
+  "terminus_l12_zayatine"
+ ],
+ "direction_retour": [
+  "terminus_l12_zayatine",
+  "cite_zayatine",
+  "march_zayatine",
+  "restaurant_bou_feres",
+  "ecole_francaise_omarane",
+  "terminus_jbel_lahmer_l_11",
+  "caf_kawekeb",
+  "arbi_kebbedi_omrane",
+  "mechtel",
+  "jardin_thameur"
+ ],
+ "stations_count": 10,
+ "start": {
+  "id": "jardin_thameur",
+  "name": "Jardin Thameur"
+ },
+ "end": {
+  "id": "terminus_l12_zayatine",
+  "name": "Terminus L12 Zayatine"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "jardin_thameur",
+  "mechtel",
+  "arbi_kebbedi_omrane",
+  "caf_kawekeb",
+  "terminus_jbel_lahmer_l_11",
+  "ecole_francaise_omarane",
+  "restaurant_bou_feres",
+  "march_zayatine",
+  "cite_zayatine",
+  "terminus_l12_zayatine"
+ ],
+ "stations_detail": [
+  {
+   "id": "jardin_thameur",
+   "name_en": "Jardin Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8037336,
+   "lon": 10.1780922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mechtel",
+   "name_en": "Mechtel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8135314,
+   "lon": 10.1723472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "arbi_kebbedi_omrane",
+   "name_en": "Arbi Kebbedi Omrane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8149099,
+   "lon": 10.1684472,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_kawekeb",
+   "name_en": "Café Kawekeb",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8181657,
+   "lon": 10.1665966,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_jbel_lahmer_l_11",
+   "name_en": "Terminus Jbel Lahmer L 11",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8196302,
+   "lon": 10.1631796,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_francaise_omarane",
+   "name_en": "Ecole Francaise Omarane",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8179723,
+   "lon": 10.1655425,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "restaurant_bou_feres",
+   "name_en": "Restaurant Bou Feres",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8187861,
+   "lon": 10.1577534,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "march_zayatine",
+   "name_en": "Marché Zayatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8203386,
+   "lon": 10.1567342,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_zayatine",
+   "name_en": "Cite Zayatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8237867,
+   "lon": 10.1549585,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_l12_zayatine",
+   "name_en": "Terminus L12 Zayatine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8252062,
+   "lon": 10.1538557,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

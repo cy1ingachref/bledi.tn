@@ -1,0 +1,255 @@
+{
+ "line_id": "metro_52_3",
+ "number": "3",
+ "mode": "metro",
+ "operator": "Transtu",
+ "name": "Ligne 3: TUNIS MARINE - IBN KHALDOUN",
+ "direction_aller": [
+  "tunis_marine",
+  "farhat_hached",
+  "place_barcelone_nord",
+  "habib_thameur",
+  "place_de_la_republique",
+  "bab_el_khadhra",
+  "bab_laassal",
+  "bab_saadoun",
+  "meftah_saadallah",
+  "rommana",
+  "campus_universitaire_el_manar",
+  "station_metro_14_janvier",
+  "les_jasmins",
+  "ibn_khaldoun"
+ ],
+ "direction_retour": [
+  "ibn_khaldoun",
+  "les_jasmins",
+  "station_metro_14_janvier",
+  "campus_universitaire_el_manar",
+  "rommana",
+  "meftah_saadallah",
+  "bab_saadoun",
+  "bab_laassal",
+  "bab_el_khadhra",
+  "place_de_la_republique",
+  "habib_thameur",
+  "place_barcelone_nord",
+  "farhat_hached",
+  "tunis_marine"
+ ],
+ "stations_count": 14,
+ "start": {
+  "id": "tunis_marine",
+  "name": "TUNIS MARINE"
+ },
+ "end": {
+  "id": "ibn_khaldoun",
+  "name": "IBN KHALDOUN"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "tunis_marine",
+  "farhat_hached",
+  "place_barcelone_nord",
+  "habib_thameur",
+  "place_de_la_republique",
+  "bab_el_khadhra",
+  "bab_laassal",
+  "bab_saadoun",
+  "meftah_saadallah",
+  "rommana",
+  "campus_universitaire_el_manar",
+  "station_metro_14_janvier",
+  "les_jasmins",
+  "ibn_khaldoun"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_marine",
+   "name_en": "TUNIS MARINE",
+   "name_ar": "تونس البحرية",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8002,
+   "lon": 10.19283,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "farhat_hached",
+   "name_en": "FARHAT HACHED",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7979,
+   "lon": 10.1862,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_barcelone_nord",
+   "name_en": "PLACE BARCELONE NORD",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.79652,
+   "lon": 10.17982,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "habib_thameur",
+   "name_en": "HABIB THAMEUR",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80131,
+   "lon": 10.17864,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_de_la_republique",
+   "name_en": "PLACE DE LA REPUBLIQUE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80649,
+   "lon": 10.18081,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_el_khadhra",
+   "name_en": "BAB EL KHADHRA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8103,
+   "lon": 10.17239,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_laassal",
+   "name_en": "BAB LAASSAL",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81331,
+   "lon": 10.16817,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_saadoun",
+   "name_en": "BAB SAADOUN",
+   "name_ar": "باب سعدون",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80986,
+   "lon": 10.16219,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "meftah_saadallah",
+   "name_en": "MEFTAH SAADALLAH",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8132,
+   "lon": 10.15626,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "rommana",
+   "name_en": "ROMMANA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.82365,
+   "lon": 10.15085,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "campus_universitaire_el_manar",
+   "name_en": "CAMPUS UNIVERSITAIRE EL MANAR",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.82605,
+   "lon": 10.14385,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "station_metro_14_janvier",
+   "name_en": "Station metro 14 janvier",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.82289,
+   "lon": 10.13986,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_jasmins",
+   "name_en": "LES JASMINS",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.82588,
+   "lon": 10.13454,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "ibn_khaldoun",
+   "name_en": "IBN KHALDOUN",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.83083,
+   "lon": 10.13411,
+   "mode": "metro",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

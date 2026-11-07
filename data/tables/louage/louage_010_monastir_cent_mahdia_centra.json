@@ -1,0 +1,69 @@
+{
+ "line_id": "louage_010_monastir_cent_mahdia_centra",
+ "number": "L10",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage: Monastir - Central Station → Mahdia - Central Station",
+ "direction_aller": [
+  "louage_monastir_central_station",
+  "louage_mahdia_central_station"
+ ],
+ "direction_retour": [
+  "louage_mahdia_central_station",
+  "louage_monastir_central_station"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_monastir_central_station",
+  "name": "Monastir - Central Station"
+ },
+ "end": {
+  "id": "louage_mahdia_central_station",
+  "name": "Mahdia - Central Station"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "louage_monastir_central_station",
+   "to": "louage_mahdia_central_station",
+   "km": 36.0
+  }
+ ],
+ "original_stations": [
+  "louage_monastir_central_station",
+  "louage_mahdia_central_station"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_monastir_central_station",
+   "name_en": "Monastir - Central Station",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_104m"
+   ],
+   "lat": 35.7725,
+   "lon": 10.825,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "louage_mahdia_central_station",
+   "name_en": "Mahdia - Central Station",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_20m"
+   ],
+   "lat": 35.505,
+   "lon": 11.0485,
+   "mode": "louage",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv"
+}

@@ -1,0 +1,1218 @@
+{
+ "generated_by": "scripts/phase2_build_tables.py",
+ "offline": false,
+ "lines_processed": 379,
+ "tables_written": 379,
+ "per_mode": {
+  "bus": 310,
+  "louage": 30,
+  "metro": 7,
+  "rail": 3,
+  "train": 29
+ },
+ "stations_ordered_total": 5060,
+ "loop_lines": [
+  "bus_836_31b"
+ ],
+ "duplicate_lines": [
+  {
+   "line_id": "bus_836_31b",
+   "duplicates_removed": 1
+  }
+ ],
+ "duplicates_removed_total": 1,
+ "backforth_lines": [
+  {
+   "line_id": "train_5_sncft",
+   "reversals": 1
+  },
+  {
+   "line_id": "train_18_sncft",
+   "reversals": 2
+  },
+  {
+   "line_id": "rail_19_a",
+   "reversals": 1
+  },
+  {
+   "line_id": "train_20_sncft",
+   "reversals": 1
+  },
+  {
+   "line_id": "train_21_sncft",
+   "reversals": 1
+  },
+  {
+   "line_id": "train_23_sncft",
+   "reversals": 1
+  },
+  {
+   "line_id": "train_24_sncft",
+   "reversals": 1
+  },
+  {
+   "line_id": "metro_50_1",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_700_23",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_704_11",
+   "reversals": 3
+  },
+  {
+   "line_id": "bus_705_12",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_707_16",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_708_17",
+   "reversals": 5
+  },
+  {
+   "line_id": "bus_714_24",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_716_26",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_719_31",
+   "reversals": 3
+  },
+  {
+   "line_id": "bus_721_33",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_723_35",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_725_37",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_727_42",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_729_44",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_730_45",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_732_47",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_733_48",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_734_52",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_738_58",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_740_61",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_743_64",
+   "reversals": 4
+  },
+  {
+   "line_id": "bus_745_66",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_750_74",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_752_77",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_753_78",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_758_85",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_759_86",
+   "reversals": 4
+  },
+  {
+   "line_id": "bus_771_98",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_772_104",
+   "reversals": 4
+  },
+  {
+   "line_id": "bus_773_116",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_777_635",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_780_10b",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_787_16",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_788_16a",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_789_16b",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_790_16c",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_791_16d",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_792_17a",
+   "reversals": 3
+  },
+  {
+   "line_id": "bus_793_17b",
+   "reversals": 3
+  },
+  {
+   "line_id": "bus_794_18b",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_800_19e",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_811_23b",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_813_23d",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_814_23e",
+   "reversals": 3
+  },
+  {
+   "line_id": "bus_815_23f",
+   "reversals": 3
+  },
+  {
+   "line_id": "bus_816_23h",
+   "reversals": 3
+  },
+  {
+   "line_id": "bus_817_23t",
+   "reversals": 3
+  },
+  {
+   "line_id": "bus_818_24",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_819_24a",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_820_24d",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_821_24e",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_822_24h",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_823_24f",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_828_26a",
+   "reversals": 4
+  },
+  {
+   "line_id": "bus_829_26b",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_830_26c",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_833_31a",
+   "reversals": 3
+  },
+  {
+   "line_id": "bus_834_31c",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_835_31c",
+   "reversals": 5
+  },
+  {
+   "line_id": "bus_836_31b",
+   "reversals": 3
+  },
+  {
+   "line_id": "bus_838_32c",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_842_33a",
+   "reversals": 6
+  },
+  {
+   "line_id": "bus_845_34a",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_846_36b",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_847_38b",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_848_38c",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_851_3d",
+   "reversals": 6
+  },
+  {
+   "line_id": "bus_852_410b",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_857_43b",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_858_44d",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_859_44d",
+   "reversals": 3
+  },
+  {
+   "line_id": "bus_860_54a",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_861_54a",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_869_74g",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_872_44c",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_877_57a",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_881_66b",
+   "reversals": 1
+  },
+  {
+   "line_id": "bus_884_44a",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_886_51a",
+   "reversals": 2
+  },
+  {
+   "line_id": "bus_887_47a",
+   "reversals": 3
+  }
+ ],
+ "corrected_order_lines": [
+  "train_18_sncft",
+  "train_24_sncft",
+  "bus_859_44d"
+ ],
+ "unknown_mode": {
+  "seed_unknown_total": 76,
+  "resolved": 47,
+  "left_unknown": 29,
+  "resolved_detail": {
+   "cite_el_mechtel": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_141m",
+    "distance_m": 140.79551698987197,
+    "name": "Cite El Mechtel"
+   },
+   "sabra_amp_chatila": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Sabra &amp; Chatila "
+   },
+   "frechich": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_149m",
+    "distance_m": 148.74935139195463,
+    "name": "Frechich"
+   },
+   "bab_sadoun": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_57m",
+    "distance_m": 57.43798013333459,
+    "name": "Bab Sadoun"
+   },
+   "bab_alioua_7079": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_134m",
+    "distance_m": 133.59223106028912,
+    "name": "Bab Alioua"
+   },
+   "ecole_zouhour4_7091": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_17m",
+    "distance_m": 16.764496251117254,
+    "name": "Ecole Zouhour4"
+   },
+   "bouchoucha_7103": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Bouchoucha"
+   },
+   "20_mars_7104": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_86m",
+    "distance_m": 86.07715285210195,
+    "name": "20 Mars"
+   },
+   "bardo_7105": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_72m",
+    "distance_m": 72.48148182391098,
+    "name": "Bardo"
+   },
+   "khaznadar_7109": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Khaznadar"
+   },
+   "artisanat_7110": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Artisanat"
+   },
+   "denden_7111": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Denden"
+   },
+   "les_salines_7312": {
+    "resolved_mode": "train",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Les Salines"
+   },
+   "bab_saadoun_7348": {
+    "resolved_mode": "louage",
+    "method": "single_line_mode",
+    "distance_m": null,
+    "name": "Bab Saadoun "
+   },
+   "moncef_bey_7363": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Moncef Bey "
+   },
+   "stil_7364": {
+    "resolved_mode": "louage",
+    "method": "single_line_mode",
+    "distance_m": null,
+    "name": "STIL"
+   },
+   "mosqu_e_al_hawa_7390": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_26m",
+    "distance_m": 26.303388722090652,
+    "name": "Mosquée Al Hawa "
+   },
+   "13_aout_7396": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "13 Aout"
+   },
+   "mohamed_v_7415": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Mohamed V"
+   },
+   "foyer_bardo_1_7427": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_24m",
+    "distance_m": 23.720142318769387,
+    "name": "Foyer Bardo 1 "
+   },
+   "ettadhamen_7557": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_100m",
+    "distance_m": 100.46341878115437,
+    "name": "Ettadhamen"
+   },
+   "tahar_sfar_7654": {
+    "resolved_mode": "rail",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Tahar Sfar"
+   },
+   "bir_el_bey_7658": {
+    "resolved_mode": "train",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Bir El Bey"
+   },
+   "el_mourouj_3_7780": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "El Mourouj 3"
+   },
+   "saidia_7842": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_76m",
+    "distance_m": 76.37819405239301,
+    "name": "Saidia"
+   },
+   "boudria_7844": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_53m",
+    "distance_m": 52.55569870614014,
+    "name": "Boudria "
+   },
+   "gare_routi_re_nord_7868": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Gare Routiére Nord "
+   },
+   "place_pasteur_7984": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_80m",
+    "distance_m": 79.62622581768338,
+    "name": "Place Pasteur"
+   },
+   "bardo_8075": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_128m",
+    "distance_m": 127.93744468092497,
+    "name": "Bardo"
+   },
+   "carthage_hannibal_8206": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_137m",
+    "distance_m": 137.17600746742846,
+    "name": "Carthage Hannibal"
+   },
+   "sidi_salah_8217": {
+    "resolved_mode": "train",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Sidi Salah"
+   },
+   "le_kram_8237": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Le Kram"
+   },
+   "goulette_neuve_8239": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Goulette Neuve"
+   },
+   "bab_laassal_8242": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Bab Laassal"
+   },
+   "ben_mahmoud_8320": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_83m",
+    "distance_m": 82.71617095108968,
+    "name": "Ben Mahmoud"
+   },
+   "carthage_salambo_8327": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Carthage Salambo"
+   },
+   "carthage_byrsa_8328": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Carthage Byrsa"
+   },
+   "carthage_dermech_8329": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_0m",
+    "distance_m": 0.0,
+    "name": "Carthage Dermech"
+   },
+   "carthage_hannibal_8330": {
+    "resolved_mode": "metro",
+    "method": "station_reference_proximity_93m",
+    "distance_m": 93.44331847021401,
+    "name": "Carthage Hannibal"
+   },
+   "charle_nicole_7193": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_47m",
+    "distance_m": 47.19052131620247,
+    "name": "Charle Nicole"
+   },
+   "clinique_taoufik_7423": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_135m",
+    "distance_m": 134.81365932679734,
+    "name": "Clinique Taoufik "
+   },
+   "foyer_bardo_2_7426": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_36m",
+    "distance_m": 35.547294490555196,
+    "name": "Foyer Bardo 2 "
+   },
+   "gorjani_7430": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_35m",
+    "distance_m": 35.404427224670314,
+    "name": "Gorjani "
+   },
+   "ecole_francaise_omarane_7444": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_12m",
+    "distance_m": 11.7421555134463,
+    "name": "Ecole Francaise Omarane "
+   },
+   "centre_de_formation_mghira_7821": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_92m",
+    "distance_m": 92.38148887856053,
+    "name": "Centre De Formation Mghira"
+   },
+   "pont_bizerte_glasse_7907": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_71m",
+    "distance_m": 70.56024911278028,
+    "name": "Pont Bizerte Glasse "
+   },
+   "caserne_mannouba_8005": {
+    "resolved_mode": "bus",
+    "method": "station_reference_proximity_24m",
+    "distance_m": 23.58396819860145,
+    "name": "Caserne Mannouba - "
+   }
+  },
+  "left_unknown_ids": [
+   "20_mars_7030",
+   "bejawa_2_7602",
+   "caf_el_haj_7428",
+   "caf_el_haj_7871",
+   "centre_ikram_7937",
+   "cit_el_hidhab",
+   "cit_errafeha_7561",
+   "cit_essalem_8077",
+   "cit_essalem_8314",
+   "cite_el_intilaka_7024",
+   "denden_8004",
+   "ecole_primaire_7925",
+   "fatouma_bourguiba_7878",
+   "foyer_omrane_sup_rieur_8280",
+   "frigo_8114",
+   "ibn_sina_7801",
+   "kiosque_7859",
+   "kiosque_agil",
+   "kochbati_7071",
+   "lansarine",
+   "lyc_e_menzeh6",
+   "mghira_7142",
+   "moezeya_7544",
+   "protection_civile_7825",
+   "r_sidence_yesmine_7887",
+   "snit_8259",
+   "soned_7883",
+   "soned_8022",
+   "soned_8274"
+  ],
+  "note": "seed has 76 unknown (transport_map_corrected has 77); resolution = single-line-mode, else station_reference proximity <=150m, else name_mapping proximity; remainder stay unknown (no invented mode)"
+ },
+ "water_verification": {
+  "flagged": 14,
+  "network": "attempted",
+  "outcomes": {
+   "needs_osm_verify": 13,
+   "confirmed_land": 1
+  },
+  "confirmations_written_to": "data/water_corrections.json",
+  "results": [
+   {
+    "id": "dl_tnrp_national_bus_stop_registry_lebherat_2",
+    "name": "LEBHERAT 2",
+    "lat": 33.873997394,
+    "lon": 10.896813376,
+    "mode": "bus",
+    "status": "needs_osm_verify",
+    "reason": "overpass_failed: HTTPError: HTTP Error 502: Bad Gateway"
+   },
+   {
+    "id": "dl_tnrp_national_bus_stop_registry_arway",
+    "name": "ARWAY",
+    "lat": 33.873496849,
+    "lon": 10.916265497,
+    "mode": "bus",
+    "status": "needs_osm_verify",
+    "reason": "overpass_failed: TimeoutError: The read operation timed out"
+   },
+   {
+    "id": "dl_bledi_curated_workbook_ain_drahem",
+    "name": "Ain Drahem",
+    "lat": 36.827,
+    "lon": 10.35,
+    "mode": "bus",
+    "status": "confirmed_land",
+    "overpass_is_in": [
+     {
+      "ISO3166-1": "TN",
+      "ISO3166-1:alpha2": "TN",
+      "ISO3166-1:alpha3": "TUN",
+      "ISO3166-1:numeric": "788",
+      "admin_level": "2",
+      "alt_name:ur": "تیونس",
+      "alt_name:vi": "Tuy-ni-di",
+      "border_type": "nation",
+      "boundary": "administrative",
+      "default_language": "ar",
+      "flag": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Tunisia.svg",
+      "name": "تونس",
+      "name:ace": "Tunisia",
+      "name:af": "Tunisië",
+      "name:als": "Tunesien",
+      "name:am": "ቱኒዚያ",
+      "name:an": "Tunicia",
+      "name:ang": "Tunisia",
+      "name:ar": "تونس",
+      "name:arc": "ܬܘܢܣ",
+      "name:arz": "تونس",
+      "name:ast": "Tunicia",
+      "name:az": "Tunis",
+      "name:azb": "تونیس",
+      "name:ba": "Тунис",
+      "name:bat-smg": "Tonėsos",
+      "name:bcl": "Tunisya",
+      "name:be": "Туніс",
+      "name:be-tarask": "Туніс",
+      "name:ber": "ⵜⵓⵏⵙ",
+      "name:bg": "Тунис",
+      "name:bjn": "Tunisia",
+      "name:bm": "Tunizi",
+      "name:bn": "তিউনিসিয়া",
+      "name:bo": "ཏུ་ནི་ཤི་ཡ།",
+      "name:bpy": "তিউনিসিয়া",
+      "name:br": "Tunizia",
+      "name:bs": "Tunis",
+      "name:bxr": "Тунис",
+      "name:ca": "Tunísia",
+      "name:ce": "Тунис",
+      "name:ceb": "Tunisia",
+      "name:chr": "ᏚᏂᏏᏍᎠ",
+      "name:ckb": "توونس",
+      "name:crh": "Tunis",
+      "name:cs": "Tunisko",
+      "name:cv": "Тунис",
+      "name:cy": "Tunisia",
+      "name:da": "Tunesien",
+      "name:de": "Tunesien",
+      "name:diq": "Tunıs",
+      "name:dv": "ތޫނިސް",
+      "name:ee": "Tunisia",
+      "name:el": "Τυνησία",
+      "name:en": "Tunisia",
+      "name:eo": "Tunizio",
+      "name:es": "Túnez",
+      "name:et": "Tuneesia",
+      "name:eu": "Tunisia",
+      "name:ext": "Túnis",
+      "name:fa": "تونس",
+      "name:fi": "Tunisia",
+      "name:fo": "Tunesia",
+      "name:fr": "Tunisie",
+      "name:frp": "Tunisie",
+      "name:fy": "Tuneezje",
+      "name:ga": "An Túinéis",
+      "name:gag": "Tunis",
+      "name:gd": "Tuinisia",
+      "name:gl": "Tunisia",
+      "name:gn": "Tunísia",
+      "name:grc": "Τυνησία",
+      "name:gu": "ટ્યુનિશિયા",
+      "name:gv": "Yn Tooneesh",
+      "name:haw": "Tunisia",
+      "name:he": "תוניסיה",
+      "name:hi": "ट्यूनिशिया",
+      "name:hif": "Tunisia",
+      "name:hr": "Tunis",
+      "name:hsb": "Tuneziska",
+      "name:ht": "Tinizi",
+      "name:hu": "Tunézia",
+      "name:hy": "Թունիս",
+      "name:id": "Tunisia",
+      "name:ie": "Tunisia",
+      "name:ilo": "Tunisia",
+      "name:io": "Tunizia",
+      "name:is": "Túnis",
+      "name:it": "Tunisia",
+      "name:ja": "チュニジア",
+      "name:jv": "Tunisia",
+      "name:ka": "ტუნისი",
+      "name:kab": "Tunes",
+      "name:kg": "Tunisia",
+      "name:kk": "Тунис",
+      "name:kn": "ಟುನೀಶಿಯ",
+      "name:ko": "튀니지",
+      "name:ks": "تونس",
+      "name:ku": "Tûnis",
+      "name:ku-Arab": "توونس",
+      "name:kw": "Tunisi",
+      "name:ky": "Тунис",
+      "name:la": "Tunesia",
+      "name:lad": "Tunesia",
+      "name:lb": "Tunesien",
+      "name:li": "Tunesië",
+      "name:lij": "Tunixia",
+      "name:lmo": "Tünisia",
+      "name:ln": "Tunisia",
+      "name:lt": "Tunisas",
+      "name:lv": "Tunisija",
+      "name:mdf": "Тунис",
+      "name:mg": "Tonizia",
+      "name:mi": "Tūnihia",
+      "name:mk": "Тунис",
+      "name:ml": "ടുണീഷ്യ",
+      "name:mn": "Тунис",
+      "name:mr": "ट्युनिसिया",
+      "name:mrj": "Тунис",
+      "name:ms": "Tunisia",
+      "name:mt": "Tuneżija",
+      "name:my": "တူနီးရှားနိုင်ငံ",
+      "name:mzn": "تونس",
+      "name:nah": "Tunez",
+      "name:nan": "Tunisia",
+      "name:nds": "Tunesien",
+      "name:new": "ट्युनिसिया",
+      "name:nl": "Tunesië",
+      "name:nn": "Tunisia",
+      "name:no": "Tunisia",
+      "name:nov": "Tunisia",
+      "name:nso": "Tunisia",
+      "name:nv": "Ghą́ą́ʼaskʼidii Biłikahii Bikéyah Yázhí",
+      "name:oc": "Tunisia",
+      "name:or": "ଟ୍ୟୁନିସିଆ",
+      "name:os": "Тунис",
+      "name:pa": "ਤੁਨੀਸੀਆ",
+      "name:pam": "Tunisia",
+      "name:pap": "Tunesia",
+      "name:pl": "Tunezja",
+      "name:pms": "Tunisìa",
+      "name:pnb": "ٹیونس",
+      "name:pnt": "Τυνησίαν",
+      "name:ps": "تونس",
+      "name:pt": "Tunísia",
+      "name:qu": "Tunisya",
+      "name:rm": "Tunesia",
+      "name:ro": "Tunisia",
+      "name:ru": "Тунис",
+      "name:rw": "Tunisiya",
+      "name:sa": "टुनिशिया",
+      "name:sah": "Тунис",
+      "name:sc": "Tunisia",
+      "name:scn": "Tunisìa",
+      "name:sco": "Tunisie",
+      "name:se": "Tunisia",
+      "name:sg": "Tunizïi",
+      "name:sh": "Tunis",
+      "name:simple": "Tunisia",
+      "name:sk": "Tunisko",
+      "name:sl": "Tunizija",
+      "name:smn": "Tunisia",
+      "name:sms": "Tunisia",
+      "name:sn": "Tunisia",
+      "name:so": "Tunisiya",
+      "name:sq": "Tunizia",
+      "name:sr": "Тунис",
+      "name:ss": "IThunisiya",
+      "name:stq": "Tunesien",
+      "name:su": "Tunisia",
+      "name:sv": "Tunisien",
+      "name:sw": "Tunisia",
+      "name:syc": "ܬܘܢܣ",
+      "name:szl": "Tůnezyjo",
+      "name:ta": "துனீசியா",
+      "name:te": "ట్యునీషియా",
+      "name:tg": "Тунис",
+      "name:th": "ประเทศตูนิเซีย",
+      "name:ti": "ቱኒዢያ",
+      "name:tk": "Tunis",
+      "name:tl": "Tunisya",
+      "name:tr": "Tunus",
+      "name:ts": "Tunisia",
+      "name:tt": "Тунис",
+      "name:tzl": "Tünis",
+      "name:ug": "تۇنىس",
+      "name:uk": "Туніс",
+      "name:ur": "تونس",
+      "name:uz": "Tunis",
+      "name:vec": "Tunixia",
+      "name:vi": "Tunisia",
+      "name:vo": "Tünisän",
+      "name:vro": "Tuneesiä",
+      "name:wa": "Tunizeye",
+      "name:war": "Tunisia",
+      "name:wo": "Tiniisi",
+      "name:wuu": "突尼斯",
+      "name:yi": "טוניסיע",
+      "name:yo": "Tùnísíà",
+      "name:yue": "突尼西亞",
+      "name:zgh": "ⵜⵓⵏⵙ",
+      "name:zh": "突尼斯 / 突尼西亞",
+      "name:zh-Hans": "突尼斯",
+      "name:zh-Hans-CN": "突尼斯",
+      "name:zh-Hant": "突尼西亞",
+      "name:zh-Hant-CN": "突尼斯",
+      "name:zh-Hant-TW": "突尼西亞",
+      "name:zu": "ITunisia",
+      "official_name": "الجمهورية التونسية",
+      "official_name:ar": "الجمهورية التونسية",
+      "official_name:bs": "Republika Tunis",
+      "official_name:ca": "República de Tunísia",
+      "official_name:cs": "Tuniská republika",
+      "official_name:de": "Republik Tunesien",
+      "official_name:en": "Republic of Tunisia",
+      "official_name:es": "República de Túnez",
+      "official_name:fa": "جمهوری تونس",
+      "official_name:gn": "Tavakuairetã Tunísia",
+      "official_name:hu": "Tunéziai Köztársaság",
+      "official_name:pt": "República Tunisina",
+      "official_name:ru": "Тунисская Республика",
+      "official_name:ur": "جمہوریہ تونس",
+      "population": "10276158",
+      "source:name:oc": "ieo-bdtopoc",
+      "timezone": "Africa/Tunis",
+      "type": "boundary",
+      "wikidata": "Q948",
+      "wikimedia_commons": "Category:Tunisia",
+      "wikipedia": "ar:تونس"
+     },
+     {
+      "name": "خليج تونس",
+      "name:ar": "خليج تونس",
+      "name:ca": "Golf de Tunis",
+      "name:cs": "Tuniský záliv",
+      "name:de": "Golf von Tunis",
+      "name:en": "Gulf of Tunis",
+      "name:es": "Golfo de Túnez",
+      "name:fa": "خلیج تونس",
+      "name:fr": "Golfe de Tunis",
+      "name:it": "Golfo di Tunisi",
+      "name:sk": "Tuniský záliv",
+      "natural": "bay",
+      "type": "multipolygon",
+      "wikidata": "Q1143820",
+      "wikipedia": "ar:خليج تونس"
+     },
+     {
+      "alt_name": "شمال غرب أفريقيا",
+      "alt_name:ar": "شمال غرب أفريقيا",
+      "alt_name:de": "Nordwestafrika",
+      "alt_name:en": "Northwest Africa",
+      "alt_name:fr": "Afrique du Nord-Ouest",
+      "boundary": "place",
+      "comment": "gh = /R/",
+      "name": "المغرب العربي",
+      "name:af": "Magreb",
+      "name:ar": "المغرب العربي",
+      "name:az": "Məğrib",
+      "name:ba": "Мәғриб",
+      "name:be": "Магрыб",
+      "name:ber": "ⵜⴰⵎⴰⵣⵖⴰ",
+      "name:bg": "Магреб",
+      "name:bn": "মাগরেব",
+      "name:br": "Maghreb",
+      "name:bs": "Magrib",
+      "name:ca": "Magrib",
+      "name:cs": "Maghreb",
+      "name:cy": "Maghreb",
+      "name:da": "Maghreb",
+      "name:de": "Maghreb",
+      "name:el": "Μαγκρέμπ",
+      "name:en": "Maghreb",
+      "name:eo": "Magrebo",
+      "name:es": "Magreb",
+      "name:et": "Magrib",
+      "name:eu": "Magreb",
+      "name:fa": "مغرب عربی",
+      "name:fi": "Maghreb",
+      "name:fr": "Maghreb",
+      "name:fy": "Magreb",
+      "name:ga": "An Mhagraib",
+      "name:gl": "Magreb",
+      "name:gn": "Mageréve",
+      "name:he": "מגרב",
+      "name:hi": "मग़रेब",
+      "name:hr": "Magreb",
+      "name:hu": "Magreb",
+      "name:hy": "Մաղրիբ",
+      "name:id": "Arab Maghrib",
+      "name:is": "Maghreb",
+      "name:it": "Maghreb",
+      "name:ja": "マグリブ",
+      "name:jv": "Maghribi",
+      "name:ka": "მაღრიბი",
+      "name:kab": "Tamazɣa",
+      "name:kg": "Magribia",
+      "name:kk": "Мағриб",
+      "name:ko": "마그레브",
+      "name:ku": "Mexrib",
+      "name:ky": "Магриб",
+      "name:la": "Barbaria (Africa)",
+      "name:lt": "Magribas",
+      "name:lv": "Magriba",
+      "name:mg": "Magreba",
+      "name:mk": "Магреб",
+      "name:mr": "माघरेब",
+      "name:ms": "Maghreb",
+      "name:nl": "Maghreb",
+      "name:nn": "Maghreb",
+      "name:no": "Maghreb",
+      "name:nv": "Ghą́ą́ʼaskʼidii Biłikahii Bikéyah (Ałtsʼáʼáztiin)",
+      "name:oc": "Maghrèb",
+      "name:pa": "ਮਗ਼ਰਿਬ",
+      "name:pl": "Maghreb",
+      "name:pt": "Magrebe",
+      "name:ro": "Magreb",
+      "name:ru": "Магриб",
+      "name:sc": "Magreb",
+      "name:sh": "Magreb",
+      "name:sl": "Magreb",
+      "name:so": "Magrib",
+      "name:sq": "Magrebi",
+      "name:sr": "Магреб",
+      "name:sv": "Maghreb",
+      "name:sw": "Maghrib",
+      "name:ta": "மக்ரிபு",
+      "name:th": "อัลมัฆริบ",
+      "name:tl": "Magreb",
+      "name:tr": "Mağrip",
+      "name:tt": "Мәгъриб",
+      "name:uk": "Магриб",
+      "name:ur": "المغرب",
+      "name:uz": "Magʻrib",
+      "name:vi": "Maghreb",
+      "name:wo": "Maghreb",
+      "name:yo": "Maghreb",
+      "name:zh": "马格里布",
+      "place": "region",
+      "short_name": "المغرب",
+      "short_name:ar": "المغرب",
+      "source:name:oc": "ieo-bdtopoc",
+      "type": "boundary",
+      "wikidata": "Q28227",
+      "wikipedia": "ar:المغرب العربي"
+     },
+     {
+      "boundary": "timezone",
+      "name": "UTC+01:00 standard time",
+      "name:de": "UTC+01:00 Standardzeit",
+      "name:en": "UTC+01:00 standard time",
+      "name:mk": "Средноевропско време (UTC+01:00)",
+      "name:nl": "UTC+01:00 standaardtijd",
+      "name:pl": "UTC+01:00 czas standardowy",
+      "note": "Work in progress.",
+      "type": "boundary",
+      "wikidata": "Q6655",
+      "wikipedia": "en:UTC+01:00"
+     }
+    ]
+   },
+   {
+    "id": "dl_tnrp_national_bus_stop_registry_sidi_smaaen",
+    "name": "SIDI SMAAEN",
+    "lat": 33.873313757,
+    "lon": 10.908740382,
+    "mode": "bus",
+    "status": "needs_osm_verify",
+    "reason": "overpass_failed: TimeoutError: The read operation timed out"
+   },
+   {
+    "id": "dl_tnrp_national_bus_stop_registry_محطة_سيارات_اجرة_لواج_خطوط_داخلية_ميدون",
+    "name": "محطة سيارات اجرة لواج خطوط داخلية ميدون",
+    "lat": 33.8631,
+    "lon": 10.990429,
+    "mode": "bus",
+    "status": "needs_osm_verify",
+    "reason": "overpass_failed: HTTPError: HTTP Error 502: Bad Gateway"
+   },
+   {
+    "id": "dl_tnrp_national_bus_stop_registry_sidi_zeyed",
+    "name": "SIDI ZEYED",
+    "lat": 33.8774439,
+    "lon": 10.879004767,
+    "mode": "bus",
+    "status": "needs_osm_verify",
+    "reason": "overpass_failed: TimeoutError: The read operation timed out"
+   },
+   {
+    "id": "soretras_mosquee_bonouma_135fa10e42",
+    "name": "Mosquée bonouma",
+    "lat": 34.764736,
+    "lon": 11.233219,
+    "mode": "bus",
+    "status": "needs_osm_verify",
+    "reason": "overpass_failed: TimeoutError: The read operation timed out"
+   },
+   {
+    "id": "dl_tnrp_national_bus_stop_registry_restaurent_chourouk",
+    "name": "RESTAURENT CHOUROUK",
+    "lat": 33.544730286,
+    "lon": 10.939725145,
+    "mode": "bus",
+    "status": "needs_osm_verify",
+    "reason": "overpass_failed: HTTPError: HTTP Error 502: Bad Gateway"
+   },
+   {
+    "id": "soretras_sidi_youssef_529b6f105b",
+    "name": "Sidi youssef",
+    "lat": 34.655505,
+    "lon": 10.97019,
+    "mode": "bus",
+    "status": "needs_osm_verify",
+    "reason": "overpass_failed: TimeoutError: The read operation timed out"
+   },
+   {
+    "id": "soretras_kantra_c60a3d66b0",
+    "name": "Kantra",
+    "lat": 34.664593,
+    "lon": 11.127527,
+    "mode": "bus",
+    "status": "needs_osm_verify",
+    "reason": "overpass_failed: HTTPError: HTTP Error 502: Bad Gateway"
+   },
+   {
+    "id": "srtm_massret_kssiba_9473c17046",
+    "name": "MASSRET KSSIBA",
+    "lat": 33.207309,
+    "lon": 11.213375,
+    "mode": "bus",
+    "status": "needs_osm_verify",
+    "reason": "overpass_failed: HTTPError: HTTP Error 502: Bad Gateway"
+   },
+   {
+    "id": "dl_tnrp_national_bus_stop_registry_rsifat",
+    "name": "RSIFAT",
+    "lat": 33.552161641,
+    "lon": 10.943987916,
+    "mode": "bus",
+    "status": "needs_osm_verify",
+    "reason": "overpass_failed: HTTPError: HTTP Error 502: Bad Gateway"
+   },
+   {
+    "id": "soretras_dahmanin_fc3af24491",
+    "name": "Dahmanin",
+    "lat": 34.768609,
+    "lon": 11.230831,
+    "mode": "bus",
+    "status": "needs_osm_verify",
+    "reason": "overpass_failed: HTTPError: HTTP Error 502: Bad Gateway"
+   },
+   {
+    "id": "srtgn_port_sidi_daoued_613623fb5e",
+    "name": "Port sidi daoued",
+    "lat": 37.021145,
+    "lon": 10.910494,
+    "mode": "bus",
+    "status": "needs_osm_verify",
+    "reason": "overpass_failed: TimeoutError: The read operation timed out"
+   }
+  ]
+ },
+ "bizerte_endpoints": {
+  "csv_bizerte_lines": 131,
+  "seed_bizerteconnect_lines": 117,
+  "geocoded_ok": 55,
+  "geocoded_fail_or_blocked": 44,
+  "blocked": false
+ },
+ "trilingual_in_tables": {
+  "station_rows": 5060,
+  "with_name_ar": 48,
+  "source": "data/phase1_names.json (provenance-tagged; null = no source)"
+ },
+ "remaining_for_phase3": [
+  "relocate confirmed-sea water stations (see data/water_corrections.json); inconclusive/needs_osm_verify need manual OSM check",
+  "BizerteConnect lines have endpoints only (no intermediate stops) — stops must come from SRT Bizerte source, not geocoding",
+  "unknown-mode stations left unknown need operator source (Transtu/SRTM) — do not guess",
+  "commune-centroid >30km check still impossible (no centroid dataset)",
+  "stale seed metadata (coordinate_coverage: 1534) untouched",
+  "trilingual names embedded in data/tables/* only; backend catalog rebuild (build_transport_catalog.py) not rerun"
+ ]
+}

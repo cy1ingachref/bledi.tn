@@ -1,0 +1,334 @@
+{
+ "line_id": "train_25_sncft_a",
+ "number": "SNCFT A",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT A: Tunis Ville - Hammam Lif",
+ "direction_aller": [
+  "tunis_ville",
+  "djebal_jelloud",
+  "rades",
+  "ez_zahra",
+  "hammam_lif"
+ ],
+ "direction_retour": [
+  "hammam_lif",
+  "ez_zahra",
+  "rades",
+  "djebal_jelloud",
+  "tunis_ville"
+ ],
+ "stations_count": 5,
+ "start": {
+  "id": "tunis_ville",
+  "name": "Tunis Ville"
+ },
+ "end": {
+  "id": "hammam_lif",
+  "name": "Hammam Lif"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "tunis_ville",
+  "djebal_jelloud",
+  "rades",
+  "ez_zahra",
+  "hammam_lif"
+ ],
+ "stations_detail": [
+  {
+   "id": "tunis_ville",
+   "name_en": "Tunis Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7947693,
+   "lon": 10.1803806,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "djebal_jelloud",
+   "name_en": "Djebal Jelloud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7727251,
+   "lon": 10.2082258,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "rades",
+   "name_en": "Rades",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7683604,
+   "lon": 10.269735,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "ez_zahra",
+   "name_en": "Ez-Zahra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7468002,
+   "lon": 10.3070495,
+   "mode": "rail",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_lif",
+   "name_en": "Hammam Lif",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7294393,
+   "lon": 10.3342066,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "tunis_ville",
+   "to": "djebal_jelloud",
+   "key": "djebal_jelloud|tunis_ville",
+   "straight_m": 3486.8,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "rail path 303321 m implausible vs 3487 m straight"
+  },
+  {
+   "from": "djebal_jelloud",
+   "to": "rades",
+   "key": "djebal_jelloud|rades",
+   "straight_m": 5500.18,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7727251,
+     10.2082258
+    ],
+    [
+     36.772176,
+     10.211512
+    ],
+    [
+     36.771824,
+     10.214499
+    ],
+    [
+     36.767196,
+     10.24067
+    ],
+    [
+     36.767187,
+     10.242037
+    ],
+    [
+     36.767612,
+     10.247649
+    ],
+    [
+     36.766833,
+     10.256608
+    ],
+    [
+     36.76679,
+     10.2602
+    ],
+    [
+     36.767072,
+     10.263125
+    ],
+    [
+     36.7683604,
+     10.269735
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 5570.16,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 357.41,
+   "length_ratio": 1.0127,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "rades",
+   "to": "ez_zahra",
+   "key": "ez_zahra|rades",
+   "straight_m": 4098.53,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7468002,
+     10.3070495
+    ],
+    [
+     36.768917,
+     10.272567
+    ],
+    [
+     36.768949,
+     10.274338
+    ],
+    [
+     36.768655,
+     10.275717
+    ],
+    [
+     36.76804,
+     10.277058
+    ],
+    [
+     36.7683604,
+     10.269735
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 5010.87,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 352.71,
+   "length_ratio": 1.2226,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "ez_zahra",
+   "to": "hammam_lif",
+   "key": "ez_zahra|hammam_lif",
+   "straight_m": 3095.61,
+   "resolved": true,
+   "source": "osm-rail",
+   "geometry": [
+    [
+     36.7468002,
+     10.3070495
+    ],
+    [
+     36.732672,
+     10.327041
+    ],
+    [
+     36.731767,
+     10.328814
+    ],
+    [
+     36.7294393,
+     10.3342066
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 3108.33,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 117.18,
+   "length_ratio": 1.0041,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.7727251,
+   10.2082258
+  ],
+  [
+   36.772176,
+   10.211512
+  ],
+  [
+   36.771824,
+   10.214499
+  ],
+  [
+   36.767196,
+   10.24067
+  ],
+  [
+   36.767187,
+   10.242037
+  ],
+  [
+   36.767612,
+   10.247649
+  ],
+  [
+   36.766833,
+   10.256608
+  ],
+  [
+   36.76679,
+   10.2602
+  ],
+  [
+   36.767072,
+   10.263125
+  ],
+  [
+   36.7683604,
+   10.269735
+  ],
+  [
+   36.76804,
+   10.277058
+  ],
+  [
+   36.768655,
+   10.275717
+  ],
+  [
+   36.768949,
+   10.274338
+  ],
+  [
+   36.768917,
+   10.272567
+  ],
+  [
+   36.7468002,
+   10.3070495
+  ],
+  [
+   36.732672,
+   10.327041
+  ],
+  [
+   36.731767,
+   10.328814
+  ],
+  [
+   36.7294393,
+   10.3342066
+  ]
+ ],
+ "phase3a": {
+  "pairs": 4,
+  "resolved": 3,
+  "unresolved": 1
+ }
+}

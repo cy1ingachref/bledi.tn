@@ -1,0 +1,191 @@
+{
+ "line_id": "bus_724_36",
+ "number": "36",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 36: La Fayette  - Terminus Ministére Des Affaires Etrangeres ( L 36 B )",
+ "direction_aller": [
+  "la_fayette",
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "place_jeans_dark",
+  "place_pasteur",
+  "stade_zouiten",
+  "mutuelle_ville",
+  "terminus_minist_re_des_affaires_etrangeres_l_36_b"
+ ],
+ "direction_retour": [
+  "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+  "mutuelle_ville",
+  "stade_zouiten",
+  "place_pasteur",
+  "place_jeans_dark",
+  "passage_jeans_jaures",
+  "steg_jeans_jaures",
+  "jeans_jaures",
+  "terminus_tunis_marine_bus",
+  "la_fayette"
+ ],
+ "stations_count": 10,
+ "start": {
+  "id": "la_fayette",
+  "name": "La Fayette"
+ },
+ "end": {
+  "id": "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+  "name": "Terminus Ministére Des Affaires Etrangeres ( L 36 B )"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "la_fayette",
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "place_jeans_dark",
+  "place_pasteur",
+  "stade_zouiten",
+  "mutuelle_ville",
+  "terminus_minist_re_des_affaires_etrangeres_l_36_b"
+ ],
+ "stations_detail": [
+  {
+   "id": "la_fayette",
+   "name_en": "La Fayette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8105618,
+   "lon": 10.1807238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jeans_jaures",
+   "name_en": "Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8016177,
+   "lon": 10.183899,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_jeans_jaures",
+   "name_en": "Steg Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8054996,
+   "lon": 10.1819977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "passage_jeans_jaures",
+   "name_en": "Passage Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8069114,
+   "lon": 10.1815361,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_jeans_dark",
+   "name_en": "Place Jeans Dark",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8183566,
+   "lon": 10.1795785,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_pasteur",
+   "name_en": "Place Pasteur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230935,
+   "lon": 10.1776738,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_zouiten",
+   "name_en": "Stade Zouiten",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.827844,
+   "lon": 10.169842,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mutuelle_ville",
+   "name_en": "Mutuelle Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8292941,
+   "lon": 10.1657647,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+   "name_en": "Terminus Ministére Des Affaires Etrangeres ( L 36 B )",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8295624,
+   "lon": 10.1590382,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

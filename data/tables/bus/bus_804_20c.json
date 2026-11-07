@@ -1,0 +1,335 @@
+{
+ "line_id": "bus_804_20c",
+ "number": "20C",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 20C: Jardin Thameur - Carthage Hannibal",
+ "direction_aller": [
+  "jardin_thameur",
+  "place_des_droits_de_homme",
+  "mohamed_v",
+  "maison_blanche",
+  "banque_de_habitat",
+  "montplaisir",
+  "cit_el_khadhra",
+  "charguia",
+  "lac_palace",
+  "cit_taieb_mhiri",
+  "cit_essalem",
+  "chtioui",
+  "sidi_daoued",
+  "cit_mohamed_ali",
+  "yassmina1",
+  "yassmina_2",
+  "byrsa1",
+  "birsa_2",
+  "carthage_hannibal"
+ ],
+ "direction_retour": [
+  "carthage_hannibal",
+  "birsa_2",
+  "byrsa1",
+  "yassmina_2",
+  "yassmina1",
+  "cit_mohamed_ali",
+  "sidi_daoued",
+  "chtioui",
+  "cit_essalem",
+  "cit_taieb_mhiri",
+  "lac_palace",
+  "charguia",
+  "cit_el_khadhra",
+  "montplaisir",
+  "banque_de_habitat",
+  "maison_blanche",
+  "mohamed_v",
+  "place_des_droits_de_homme",
+  "jardin_thameur"
+ ],
+ "stations_count": 19,
+ "start": {
+  "id": "jardin_thameur",
+  "name": "Jardin Thameur"
+ },
+ "end": {
+  "id": "carthage_hannibal",
+  "name": "CARTHAGE HANNIBAL"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "jardin_thameur",
+  "place_des_droits_de_homme",
+  "mohamed_v",
+  "maison_blanche",
+  "banque_de_habitat",
+  "montplaisir",
+  "cit_el_khadhra",
+  "charguia",
+  "lac_palace",
+  "cit_taieb_mhiri",
+  "cit_essalem",
+  "chtioui",
+  "sidi_daoued",
+  "cit_mohamed_ali",
+  "yassmina1",
+  "yassmina_2",
+  "byrsa1",
+  "birsa_2",
+  "carthage_hannibal"
+ ],
+ "stations_detail": [
+  {
+   "id": "jardin_thameur",
+   "name_en": "Jardin Thameur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8037336,
+   "lon": 10.1780922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_des_droits_de_homme",
+   "name_en": "Place Des Droits De Homme",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8072691,
+   "lon": 10.1853076,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mohamed_v",
+   "name_en": "MOHAMED V",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81568,
+   "lon": 10.18357,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "maison_blanche",
+   "name_en": "Maison Blanche",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156186,
+   "lon": 10.1850609,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "banque_de_habitat",
+   "name_en": "Banque De Habitat",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8194235,
+   "lon": 10.1855061,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "montplaisir",
+   "name_en": "Montplaisir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8233261,
+   "lon": 10.1939602,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_khadhra",
+   "name_en": "Cité El Khadhra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.823838,
+   "lon": 10.1950601,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia",
+   "name_en": "Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8285742,
+   "lon": 10.2061645,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lac_palace",
+   "name_en": "Lac Palace",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8393019,
+   "lon": 10.238269,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_taieb_mhiri",
+   "name_en": "Cité Taieb Mhiri",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8487843,
+   "lon": 10.264062,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_essalem",
+   "name_en": "Cité Essalem",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8532762,
+   "lon": 10.2742226,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chtioui",
+   "name_en": "Chtioui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8594606,
+   "lon": 10.2884521,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_daoued",
+   "name_en": "Sidi Daoued",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8628939,
+   "lon": 10.3029853,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_mohamed_ali",
+   "name_en": "Cité Mohamed Ali",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.854685,
+   "lon": 10.3140644,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "yassmina1",
+   "name_en": "Yassmina1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8490591,
+   "lon": 10.3128782,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "yassmina_2",
+   "name_en": "Yassmina 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8471978,
+   "lon": 10.3144021,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "byrsa1",
+   "name_en": "Byrsa1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8475498,
+   "lon": 10.3168805,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "birsa_2",
+   "name_en": "Birsa 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8490008,
+   "lon": 10.3182109,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carthage_hannibal",
+   "name_en": "CARTHAGE HANNIBAL",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8533913,
+   "lon": 10.3289164,
+   "mode": "metro",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

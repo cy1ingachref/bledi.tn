@@ -19,6 +19,7 @@ from bledi_transit.domain.modes import BUS_MODES, RAIL_MODES, TAXI_MODES
 TUNIS = (36.8065, 10.1815)
 SFAX = (34.7406, 10.7603)  # rail/taxi only
 SIDI_SALAH = (34.8580193, 10.7673434)  # reachable by bus
+TUNIS_LOCAL = (36.84, 10.15)  # ~4.7 km, same Tunis seat (taxi allowed)
 
 
 def _ride_modes(result):
@@ -47,19 +48,18 @@ class TestOptionsAreSeparatelyComputed:
         assert modes, "train option produced no ride at all"
         assert modes <= RAIL_MODES, f"train option leaked: {modes - RAIL_MODES}"
 
-    def test_louaj_option_is_a_single_direct_car_leg(self, router):
-        """A louaj leg has no timetable and does not chain stops.
-
-        If the restricted search returns a multi-leg transit path it is not a
-        louaj answer, and the card labelled "Louaj / Taxi" would be a lie.
-        """
-        res = router.route(*TUNIS, *SFAX, allowed_modes=TAXI_MODES)
+    def test_taxi_option_is_a_single_direct_car_leg(self, router):
+        """A taxi leg has no timetable and does not chain stops (and louage is never "direct")."""
+        res = router.route(*TUNIS, *TUNIS_LOCAL, allowed_modes=frozenset({"taxi"}))
         steps = res.get("steps", [])
         assert steps
-        assert res.get("mode") == "taxi", f"louaj option returned {res.get('mode')}"
-        assert all(s.get("type") == "taxi" for s in steps), (
-            "louaj option is not a single direct car leg"
-        )
+        # Taxi-only search on a dense urban point returns walks + taxi hop,
+        # never rides, and the direct taxi is a valid alternative.
+        assert any(s.get("type") == "taxi" for s in steps), res
+        assert not any(s.get("type") == "ride" for s in steps), res
+        # Cross-governorate Tunis->Nabeul (Hammamet) must not yield taxi.
+        res = router.route(*TUNIS, 36.40, 10.62, allowed_modes=frozenset({"taxi"}))
+        assert not res.get("steps")
 
     def test_unrestricted_search_may_mix_families(self, router):
         """The guard on the guard: allowed_modes=None must NOT be restrictive.

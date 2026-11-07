@@ -1,0 +1,191 @@
+{
+ "line_id": "train_3_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Sousse Bab Jdid - Monastir",
+ "direction_aller": [
+  "sousse_bab_jdid",
+  "sousse_mohamed_v",
+  "sousse_sud",
+  "sousse_zi",
+  "sahline_ville",
+  "sahline_sebkha",
+  "les_hotels_monastir",
+  "aeroport_skanes_monastir",
+  "la_faculte",
+  "monastir"
+ ],
+ "direction_retour": [
+  "monastir",
+  "la_faculte",
+  "aeroport_skanes_monastir",
+  "les_hotels_monastir",
+  "sahline_sebkha",
+  "sahline_ville",
+  "sousse_zi",
+  "sousse_sud",
+  "sousse_mohamed_v",
+  "sousse_bab_jdid"
+ ],
+ "stations_count": 10,
+ "start": {
+  "id": "sousse_bab_jdid",
+  "name": "Sousse Bab Jdid"
+ },
+ "end": {
+  "id": "monastir",
+  "name": "Monastir"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "sousse_bab_jdid",
+  "sousse_mohamed_v",
+  "sousse_sud",
+  "sousse_zi",
+  "sahline_ville",
+  "sahline_sebkha",
+  "les_hotels_monastir",
+  "aeroport_skanes_monastir",
+  "la_faculte",
+  "monastir"
+ ],
+ "stations_detail": [
+  {
+   "id": "sousse_bab_jdid",
+   "name_en": "Sousse Bab Jdid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.823063,
+   "lon": 10.6415928,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_mohamed_v",
+   "name_en": "Sousse Mohamed V",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.8159939,
+   "lon": 10.6432475,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_sud",
+   "name_en": "Sousse Sud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.800173,
+   "lon": 10.649924,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_zi",
+   "name_en": "Sousse Zi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7821012,
+   "lon": 10.6683762,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sahline_ville",
+   "name_en": "Sahline Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7595786,
+   "lon": 10.7014559,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "sahline_sebkha",
+   "name_en": "Sahline Sebkha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7576841,
+   "lon": 10.7165366,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_hotels_monastir",
+   "name_en": "Les Hotels Monastir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7601219,
+   "lon": 10.7448919,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "aeroport_skanes_monastir",
+   "name_en": "Aeroport Skanes Monastir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7625157,
+   "lon": 10.754098,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_faculte",
+   "name_en": "La Faculte",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.7596167,
+   "lon": 10.8073597,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "monastir",
+   "name_en": "Monastir",
+   "name_ar": "المنستير",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_77m"
+   ],
+   "lat": 35.7706263,
+   "lon": 10.8252907,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

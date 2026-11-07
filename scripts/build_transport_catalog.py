@@ -6,6 +6,7 @@ Resolves human-readable mode labels per-locale, so the catalog displays
 names the user recognizes (e.g. "Buses", "Metro", "Buses") rather than
 the raw mode keys.
 """
+
 import json
 from pathlib import Path
 
@@ -14,24 +15,23 @@ SRC = BASE / "data" / "transport_map_corrected.json"
 OUT = BASE / "apps" / "web" / "static" / "transport_catalog.json"
 
 MODE_LABELS = {
-    "bus":    {"en": "Buses",    "fr": "Bus",    "ar": "باصات"},
+    "bus": {"en": "Buses", "fr": "Bus", "ar": "باصات"},
     "louage": {"en": "Louage / Car Sharing", "fr": "Louage", "ar": "لواج"},
-    "metro":  {"en": "Metro",    "fr": "Métro",  "ar": "مترو"},
-    "rail":   {"en": "Rail / Trains", "fr": "Rail", "ar": "سكك حديد"},
-    "taxi":   {"en": "Taxis",    "fr": "Taxis",  "ar": "تاكسي"},
-    "train":  {"en": "Intercity / Freight Trains", "fr": "Train / Régional", "ar": "قطار"},
-    "unknown":{"en": "Unclassified / Local", "fr": "Non classé", "ar": "غير مصنف"},
+    "metro": {"en": "Metro", "fr": "Métro", "ar": "مترو"},
+    "rail": {"en": "Rail / Trains", "fr": "Rail", "ar": "سكك حديد"},
+    "taxi": {"en": "Taxis", "fr": "Taxis", "ar": "تاكسي"},
+    "train": {"en": "Intercity / Freight Trains", "fr": "Train / Régional", "ar": "قطار"},
+    "unknown": {"en": "Unclassified / Local", "fr": "Non classé", "ar": "غير مصنف"},
 }
 
 
 def main():
     m = json.loads(SRC.read_text(encoding="utf-8"))
     cart = {"modes": {}, "stations": {}}
-    cart = {"modes": {}, "stations": {}}
     for mode, v in m["by_mode"].items():
         cart["modes"][mode] = {
             "mode": mode,
-            "name": MODE_LABELS[mode]["en"],      # human-readable label (en)
+            "name": MODE_LABELS[mode]["en"],  # human-readable label (en)
             "name_en": MODE_LABELS[mode]["en"],
             "name_fr": MODE_LABELS[mode]["fr"],
             "name_ar": MODE_LABELS[mode]["ar"],

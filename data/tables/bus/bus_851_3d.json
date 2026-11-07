@@ -1,0 +1,335 @@
+{
+ "line_id": "bus_851_3d",
+ "number": "3D",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 3D: Ali Balahouan - Terminus 3D",
+ "direction_aller": [
+  "ali_balahouan",
+  "sidi_aloui",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "chambre_des_d_put_s",
+  "fatouma_bourguiba",
+  "parc_stade_tunisien",
+  "bortal",
+  "cite_etahrir_aouina",
+  "cite_ksar_said_2",
+  "croisement_ksar_said_2",
+  "soned",
+  "nogra",
+  "intilaka",
+  "mosqu_e_avenue_chebbi",
+  "lycee_chebi",
+  "meublatex_ettadhamen",
+  "terminus_3d"
+ ],
+ "direction_retour": [
+  "terminus_3d",
+  "meublatex_ettadhamen",
+  "lycee_chebi",
+  "mosqu_e_avenue_chebbi",
+  "intilaka",
+  "nogra",
+  "soned",
+  "croisement_ksar_said_2",
+  "cite_ksar_said_2",
+  "cite_etahrir_aouina",
+  "bortal",
+  "parc_stade_tunisien",
+  "fatouma_bourguiba",
+  "chambre_des_d_put_s",
+  "20_mars",
+  "bouchoucha",
+  "immeuble_chefia",
+  "sidi_aloui",
+  "ali_balahouan"
+ ],
+ "stations_count": 19,
+ "start": {
+  "id": "ali_balahouan",
+  "name": "Ali Balahouan"
+ },
+ "end": {
+  "id": "terminus_3d",
+  "name": "Terminus 3D"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 6,
+ "teleport_legs": [],
+ "original_stations": [
+  "ali_balahouan",
+  "sidi_aloui",
+  "immeuble_chefia",
+  "bouchoucha",
+  "20_mars",
+  "chambre_des_d_put_s",
+  "fatouma_bourguiba",
+  "parc_stade_tunisien",
+  "bortal",
+  "cite_etahrir_aouina",
+  "cite_ksar_said_2",
+  "croisement_ksar_said_2",
+  "soned",
+  "nogra",
+  "intilaka",
+  "mosqu_e_avenue_chebbi",
+  "lycee_chebi",
+  "meublatex_ettadhamen",
+  "terminus_3d"
+ ],
+ "stations_detail": [
+  {
+   "id": "ali_balahouan",
+   "name_en": "Ali Balahouan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8065135,
+   "lon": 10.1742408,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_aloui",
+   "name_en": "Sidi Aloui",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8053372,
+   "lon": 10.1688404,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_chefia",
+   "name_en": "Immeuble Chefia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8098234,
+   "lon": 10.152579,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bouchoucha",
+   "name_en": "BOUCHOUCHA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80953,
+   "lon": 10.15026,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "20_mars",
+   "name_en": "20-mars",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80835,
+   "lon": 10.14238,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "chambre_des_d_put_s",
+   "name_en": "Chambre Des Députés",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8077179,
+   "lon": 10.1395344,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "fatouma_bourguiba",
+   "name_en": "Fatouma Bourguiba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6728059,
+   "lon": 10.1565487,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "parc_stade_tunisien",
+   "name_en": "Parc Stade Tunisien",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8152778,
+   "lon": 10.1273448,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bortal",
+   "name_en": "Bortal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8120871,
+   "lon": 10.1174078,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_etahrir_aouina",
+   "name_en": "Cite Etahrir Aouina",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8190952,
+   "lon": 10.1248427,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_ksar_said_2",
+   "name_en": "Cite Ksar Said 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8197351,
+   "lon": 10.1245316,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "croisement_ksar_said_2",
+   "name_en": "Croisement Ksar Said 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8260228,
+   "lon": 10.1178134,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soned",
+   "name_en": "Soned",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7652949,
+   "lon": 10.210255,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "nogra",
+   "name_en": "Nogra",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8345164,
+   "lon": 10.1178661,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "intilaka",
+   "name_en": "Intilaka",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8396862,
+   "lon": 10.1168229,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_avenue_chebbi",
+   "name_en": "Mosquée Avenue Chebbi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8255253,
+   "lon": 10.081018,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_chebi",
+   "name_en": "Lycee Chebi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7613159,
+   "lon": 10.0275132,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "meublatex_ettadhamen",
+   "name_en": "Meublatex Ettadhamen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8380419,
+   "lon": 10.1114638,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_3d",
+   "name_en": "Terminus 3D",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8334333,
+   "lon": 10.1063699,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

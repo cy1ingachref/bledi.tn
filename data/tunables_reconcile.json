@@ -1,0 +1,170 @@
+{
+  "generated_by": "scripts/reconcile_tunables.py",
+  "shared_source": "data/shared_tunables.json",
+  "status": "aligned",
+  "mismatch_count": 0,
+  "mismatches": [],
+  "notes": [],
+  "python_speed_by_mode": {
+    "train": 60.0,
+    "rail": 55.0,
+    "metro": 30.0,
+    "bus": 22.0,
+    "rfr": 22.0,
+    "tram": 22.0,
+    "rural": 22.0,
+    "louage": 100.0,
+    "louaj": 100.0,
+    "taxi": 45.0,
+    "walk": 4.5,
+    "unknown": 22.0
+  },
+  "rust_speed_kmh": {
+    "train": 60.0,
+    "rail": 55.0,
+    "metro": 30.0,
+    "bus": 22.0,
+    "rfr": 22.0,
+    "tram": 22.0,
+    "rural": 22.0,
+    "louage": 100.0,
+    "louaj": 100.0,
+    "taxi": 45.0,
+    "walk": 4.5,
+    "unknown": 22.0
+  },
+  "python_default_wait_by_mode": {
+    "train": 600.0,
+    "rail": 600.0,
+    "metro": 300.0,
+    "bus": 600.0,
+    "rfr": 600.0,
+    "tram": 600.0,
+    "rural": 600.0,
+    "louage": 600.0,
+    "louaj": 600.0,
+    "taxi": 0.0,
+    "walk": 0.0,
+    "unknown": 600.0
+  },
+  "rust_wait_s_by_mode": {
+    "train": 600.0,
+    "rail": 600.0,
+    "metro": 300.0,
+    "bus": 600.0,
+    "rfr": 600.0,
+    "tram": 600.0,
+    "rural": 600.0,
+    "louage": 600.0,
+    "louaj": 600.0,
+    "taxi": 0.0,
+    "walk": 0.0,
+    "unknown": 600.0
+  },
+  "python_boarding_wait_cap_by_mode": {
+    "metro": 420.0,
+    "train": 1200.0,
+    "rail": 1200.0,
+    "bus": 1200.0,
+    "rfr": 1200.0,
+    "tram": 1200.0,
+    "rural": 1200.0,
+    "louage": 1200.0,
+    "louaj": 1200.0,
+    "taxi": 1200.0,
+    "walk": 1200.0,
+    "unknown": 1200.0
+  },
+  "rust_wait_cap_s_by_mode": {
+    "metro": 420.0,
+    "train": 1200.0,
+    "rail": 1200.0,
+    "bus": 1200.0,
+    "rfr": 1200.0,
+    "tram": 1200.0,
+    "rural": 1200.0,
+    "louage": 1200.0,
+    "louaj": 1200.0,
+    "taxi": 1200.0,
+    "walk": 1200.0,
+    "unknown": 1200.0
+  },
+  "python_fare_dinars": {
+    "bus": [
+      0.5,
+      0.0
+    ],
+    "tram": [
+      0.5,
+      0.0
+    ],
+    "metro": [
+      0.6,
+      0.0
+    ],
+    "train": [
+      4.0,
+      0.09
+    ],
+    "louaj": [
+      1.0,
+      0.15
+    ],
+    "taxi": [
+      0.6,
+      0.52
+    ],
+    "walk": [
+      0.0,
+      0.0
+    ]
+  },
+  "rust_fare": {
+    "bus": [
+      0.5,
+      0.0
+    ],
+    "tram": [
+      0.5,
+      0.0
+    ],
+    "metro": [
+      0.6,
+      0.0
+    ],
+    "train": [
+      4.0,
+      0.09
+    ],
+    "rail": [
+      4.0,
+      0.09
+    ],
+    "louage": [
+      1.0,
+      0.15
+    ],
+    "louaj": [
+      1.0,
+      0.15
+    ],
+    "taxi": [
+      0.6,
+      0.52
+    ],
+    "walk": [
+      0.0,
+      0.0
+    ]
+  },
+  "python_fare_caps_dt": {
+    "train": 15.0,
+    "louaj": 20.0
+  },
+  "rust_fare_cap_dt": {
+    "train": 15.0,
+    "rail": 15.0,
+    "louage": 20.0,
+    "louaj": 20.0
+  }
+}

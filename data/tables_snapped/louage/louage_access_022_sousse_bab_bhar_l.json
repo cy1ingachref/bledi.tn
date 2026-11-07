@@ -1,0 +1,82 @@
+{
+ "line_id": "louage_access_022_sousse_bab_bhar_l",
+ "number": "LA22",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage access: Sousse - Bab Bhar (Local) → Sousse Voyageurs",
+ "direction_aller": [
+  "louage_sousse_bab_bhar_local",
+  "sousse_voyageurs"
+ ],
+ "direction_retour": [
+  "sousse_voyageurs",
+  "louage_sousse_bab_bhar_local"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_sousse_bab_bhar_local",
+  "name": "Sousse - Bab Bhar (Local)"
+ },
+ "end": {
+  "id": "sousse_voyageurs",
+  "name": "Sousse Voyageurs"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "louage_sousse_bab_bhar_local",
+  "sousse_voyageurs"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_sousse_bab_bhar_local",
+   "name_en": "Sousse - Bab Bhar (Local)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "no_source"
+   ],
+   "lat": 35.829,
+   "lon": 10.6435,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "sousse_voyageurs",
+   "name_en": "Sousse Voyageurs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 35.8304246,
+   "lon": 10.6380517,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv",
+ "segments": [
+  {
+   "from": "louage_sousse_bab_bhar_local",
+   "to": "sousse_voyageurs",
+   "key": "louage_sousse_bab_bhar_local|sousse_voyageurs",
+   "straight_m": 516.09,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": null
+  }
+ ],
+ "snapped_geometry": [],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 0,
+  "unresolved": 1
+ }
+}

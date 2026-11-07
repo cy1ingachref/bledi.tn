@@ -1,0 +1,63 @@
+{
+ "line_id": "transtu_tebourba_49",
+ "number": "49",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Hopital Tebourba - El Batan",
+ "direction_aller": [
+  "hopital_tebourba",
+  "el_batan"
+ ],
+ "direction_retour": [
+  "el_batan",
+  "hopital_tebourba"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "hopital_tebourba",
+  "name": "Hopital Tebourba"
+ },
+ "end": {
+  "id": "el_batan",
+  "name": "El Batan"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "hopital_tebourba",
+  "el_batan"
+ ],
+ "stations_detail": [
+  {
+   "id": "hopital_tebourba",
+   "name_en": "Hopital Tebourba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8459266,
+   "lon": 9.8280961,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_batan",
+   "name_en": "El Batan",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7993,
+   "lon": 9.7696,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "transtu.com.tn PDF (Tebourba.pdf)"
+}

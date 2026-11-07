@@ -1,0 +1,287 @@
+{
+ "line_id": "bus_739_60",
+ "number": "60",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 60: Station Barcelone - Ibn Sina",
+ "direction_aller": [
+  "station_barcelone",
+  "cimetiere_jallez",
+  "monopoles",
+  "lyc_e_ouardia",
+  "la_cagna_section",
+  "hammam_la_cagna",
+  "cit_med_ali",
+  "ecole_primaire_kabaria",
+  "pont_m_tro_kabaria",
+  "immeuble_militaire_ibn_sina",
+  "mosqu_e_ibn_sina",
+  "ibn_sina_section",
+  "ecole_primaire_6_1",
+  "rue_10800_1",
+  "rue_10800_2",
+  "ibn_sina"
+ ],
+ "direction_retour": [
+  "ibn_sina",
+  "rue_10800_2",
+  "rue_10800_1",
+  "ecole_primaire_6_1",
+  "ibn_sina_section",
+  "mosqu_e_ibn_sina",
+  "immeuble_militaire_ibn_sina",
+  "pont_m_tro_kabaria",
+  "ecole_primaire_kabaria",
+  "cit_med_ali",
+  "hammam_la_cagna",
+  "la_cagna_section",
+  "lyc_e_ouardia",
+  "monopoles",
+  "cimetiere_jallez",
+  "station_barcelone"
+ ],
+ "stations_count": 16,
+ "start": {
+  "id": "station_barcelone",
+  "name": "Station Barcelone"
+ },
+ "end": {
+  "id": "ibn_sina",
+  "name": "IBN SINA"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "station_barcelone",
+  "cimetiere_jallez",
+  "monopoles",
+  "lyc_e_ouardia",
+  "la_cagna_section",
+  "hammam_la_cagna",
+  "cit_med_ali",
+  "ecole_primaire_kabaria",
+  "pont_m_tro_kabaria",
+  "immeuble_militaire_ibn_sina",
+  "mosqu_e_ibn_sina",
+  "ibn_sina_section",
+  "ecole_primaire_6_1",
+  "rue_10800_1",
+  "rue_10800_2",
+  "ibn_sina"
+ ],
+ "stations_detail": [
+  {
+   "id": "station_barcelone",
+   "name_en": "Station Barcelone",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7970414,
+   "lon": 10.1801307,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cimetiere_jallez",
+   "name_en": "Cimetiere Jallez",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.786997,
+   "lon": 10.1804847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "monopoles",
+   "name_en": "Monopoles",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7803904,
+   "lon": 10.1816705,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_ouardia",
+   "name_en": "Lycée Ouardia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7769364,
+   "lon": 10.1838728,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_cagna_section",
+   "name_en": "La Cagna (Section)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7729558,
+   "lon": 10.1875014,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "hammam_la_cagna",
+   "name_en": "Hammam La Cagna",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7703346,
+   "lon": 10.1897437,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_med_ali",
+   "name_en": "Cité Med Ali",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7668109,
+   "lon": 10.1919861,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire_kabaria",
+   "name_en": "Ecole Primaire Kabaria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7633472,
+   "lon": 10.1914818,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "pont_m_tro_kabaria",
+   "name_en": "Pont Métro Kabaria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7622819,
+   "lon": 10.187555,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "immeuble_militaire_ibn_sina",
+   "name_en": "Immeuble Militaire Ibn Sina",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7592742,
+   "lon": 10.1866594,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_ibn_sina",
+   "name_en": "Mosquée Ibn Sina",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7578651,
+   "lon": 10.1817136,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ibn_sina_section",
+   "name_en": "Ibn Sina(Section)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7552331,
+   "lon": 10.178693,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ecole_primaire_6_1",
+   "name_en": "Ecole Primaire 6,1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7520064,
+   "lon": 10.1801685,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_10800_1",
+   "name_en": "Rue 10800 (1)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7494102,
+   "lon": 10.1803402,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rue_10800_2",
+   "name_en": "Rue 10800 (2)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7463873,
+   "lon": 10.1829631,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ibn_sina",
+   "name_en": "IBN SINA",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.75428,
+   "lon": 10.19393,
+   "mode": "metro",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

@@ -1,0 +1,63 @@
+{
+ "line_id": "train_28_sncft",
+ "number": "SNCFT",
+ "mode": "train",
+ "operator": "SNCFT",
+ "name": "Ligne SNCFT: Aguila - MDhilla",
+ "direction_aller": [
+  "aguila",
+  "mdhilla"
+ ],
+ "direction_retour": [
+  "mdhilla",
+  "aguila"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "aguila",
+  "name": "Aguila"
+ },
+ "end": {
+  "id": "mdhilla",
+  "name": "MDhilla"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "aguila",
+  "mdhilla"
+ ],
+ "stations_detail": [
+  {
+   "id": "aguila",
+   "name_en": "Aguila",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.3796334,
+   "lon": 8.7684013,
+   "mode": "train",
+   "mode_resolution": null
+  },
+  {
+   "id": "mdhilla",
+   "name_en": "MDhilla",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.2919887,
+   "lon": 8.72436,
+   "mode": "train",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

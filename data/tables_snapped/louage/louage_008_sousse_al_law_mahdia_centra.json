@@ -1,0 +1,88 @@
+{
+ "line_id": "louage_008_sousse_al_law_mahdia_centra",
+ "number": "L8",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage: Sousse - Al Lawajat (Taffala) → Mahdia - Central Station",
+ "direction_aller": [
+  "louage_sousse_al_lawajat_taffala",
+  "louage_mahdia_central_station"
+ ],
+ "direction_retour": [
+  "louage_mahdia_central_station",
+  "louage_sousse_al_lawajat_taffala"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_sousse_al_lawajat_taffala",
+  "name": "Sousse - Al Lawajat (Taffala)"
+ },
+ "end": {
+  "id": "louage_mahdia_central_station",
+  "name": "Mahdia - Central Station"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [
+  {
+   "from": "louage_sousse_al_lawajat_taffala",
+   "to": "louage_mahdia_central_station",
+   "km": 50.3
+  }
+ ],
+ "original_stations": [
+  "louage_sousse_al_lawajat_taffala",
+  "louage_mahdia_central_station"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_sousse_al_lawajat_taffala",
+   "name_en": "Sousse - Al Lawajat (Taffala)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_44m"
+   ],
+   "lat": 35.8093,
+   "lon": 10.6363,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "louage_mahdia_central_station",
+   "name_en": "Mahdia - Central Station",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_20m"
+   ],
+   "lat": 35.505,
+   "lon": 11.0485,
+   "mode": "louage",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv",
+ "segments": [
+  {
+   "from": "louage_sousse_al_lawajat_taffala",
+   "to": "louage_mahdia_central_station",
+   "key": "louage_mahdia_central_station|louage_sousse_al_lawajat_taffala",
+   "straight_m": 50317.4,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": null
+  }
+ ],
+ "snapped_geometry": [],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 0,
+  "unresolved": 1
+ }
+}

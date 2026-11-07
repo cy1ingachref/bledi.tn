@@ -1,0 +1,362 @@
+{
+ "line_id": "bus_820_24d",
+ "number": "24D",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 24D: Rabattement Mourouj 2 - Douar Houch L(24D)",
+ "direction_aller": [
+  "rabattement_mourouj_2",
+  "le_souk_des_voitures",
+  "feraille_1",
+  "feraille_2",
+  "ferme_loukil",
+  "zone_industrielle_mghira",
+  "amen_banque",
+  "cit_el_habib",
+  "mghira",
+  "cit_el_ouifak_gn",
+  "fouchana",
+  "entr_e_fouchana",
+  "lyc_e_fouchana",
+  "ferme_gammoudi",
+  "huilerie_ben_saidaine",
+  "briqueterie_tunisienne",
+  "mosqu_e_rahma",
+  "derbigum",
+  "chebedda",
+  "douar_houch_l_24d"
+ ],
+ "direction_retour": [
+  "douar_houch_l_24d",
+  "chebedda",
+  "derbigum",
+  "mosqu_e_rahma",
+  "briqueterie_tunisienne",
+  "huilerie_ben_saidaine",
+  "ferme_gammoudi",
+  "lyc_e_fouchana",
+  "entr_e_fouchana",
+  "fouchana",
+  "cit_el_ouifak_gn",
+  "mghira",
+  "cit_el_habib",
+  "amen_banque",
+  "zone_industrielle_mghira",
+  "ferme_loukil",
+  "feraille_2",
+  "feraille_1",
+  "le_souk_des_voitures",
+  "rabattement_mourouj_2"
+ ],
+ "stations_count": 20,
+ "start": {
+  "id": "rabattement_mourouj_2",
+  "name": "Rabattement Mourouj 2"
+ },
+ "end": {
+  "id": "douar_houch_l_24d",
+  "name": "Douar Houch L(24D)"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [
+  {
+   "from": "amen_banque",
+   "to": "cit_el_habib",
+   "km": 22.6
+  },
+  {
+   "from": "cit_el_habib",
+   "to": "mghira",
+   "km": 23.7
+  }
+ ],
+ "original_stations": [
+  "rabattement_mourouj_2",
+  "le_souk_des_voitures",
+  "feraille_1",
+  "feraille_2",
+  "ferme_loukil",
+  "zone_industrielle_mghira",
+  "amen_banque",
+  "cit_el_habib",
+  "mghira",
+  "cit_el_ouifak_gn",
+  "fouchana",
+  "entr_e_fouchana",
+  "lyc_e_fouchana",
+  "ferme_gammoudi",
+  "huilerie_ben_saidaine",
+  "briqueterie_tunisienne",
+  "mosqu_e_rahma",
+  "derbigum",
+  "chebedda",
+  "douar_houch_l_24d"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_mourouj_2",
+   "name_en": "Rabattement Mourouj 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7432425,
+   "lon": 10.1921777,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "le_souk_des_voitures",
+   "name_en": "Le Souk Des Voitures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7349887,
+   "lon": 10.1936368,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "feraille_1",
+   "name_en": "Feraille 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.730208,
+   "lon": 10.1923922,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "feraille_2",
+   "name_en": "Feraille 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7289571,
+   "lon": 10.1913847,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ferme_loukil",
+   "name_en": "Ferme Loukil",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7264932,
+   "lon": 10.1898173,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "zone_industrielle_mghira",
+   "name_en": "Zone Industrielle Mghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7237311,
+   "lon": 10.1878662,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "amen_banque",
+   "name_en": "Amen Banque",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7152601,
+   "lon": 10.1822335,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_habib",
+   "name_en": "Cité El Habib",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8974381,
+   "lon": 10.2936474,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mghira",
+   "name_en": "Mghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.70647,
+   "lon": 10.1748521,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_ouifak_gn",
+   "name_en": "Cité El Ouifak (Gn)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7026939,
+   "lon": 10.1721377,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "fouchana",
+   "name_en": "Fouchana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7000451,
+   "lon": 10.1661939,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "entr_e_fouchana",
+   "name_en": "Entrée Fouchana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6983814,
+   "lon": 10.1700598,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_fouchana",
+   "name_en": "Lycée Fouchana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6971381,
+   "lon": 10.1729909,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "ferme_gammoudi",
+   "name_en": "Ferme Gammoudi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6952593,
+   "lon": 10.1773729,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "huilerie_ben_saidaine",
+   "name_en": "Huilerie Ben Saidaine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6928115,
+   "lon": 10.1851825,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "briqueterie_tunisienne",
+   "name_en": "Briqueterie Tunisienne",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6909406,
+   "lon": 10.1909127,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_rahma",
+   "name_en": "Mosquée Rahma",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6898394,
+   "lon": 10.1954832,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "derbigum",
+   "name_en": "Derbigum",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.692084,
+   "lon": 10.2003709,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chebedda",
+   "name_en": "Chebedda",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6923642,
+   "lon": 10.206726,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "douar_houch_l_24d",
+   "name_en": "Douar Houch L(24D)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6803087,
+   "lon": 10.218379,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

@@ -1,0 +1,319 @@
+{
+ "line_id": "bus_847_38b",
+ "number": "38B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 38B: Terminus Tunis Marine Bus - Terminus Omrane Supérieur L 78 + 38 B",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "place_pasteur",
+  "chedly_zouiten",
+  "municipalit_mutuelle_ville",
+  "rx",
+  "soned",
+  "clinique_taoufik",
+  "facult_de_droit",
+  "facult_des_sciences_de_tunis",
+  "carrefour",
+  "maison_des_mamans",
+  "foyer_omrane_sup_rieur",
+  "terminus_omrane_sup_rieur_l_78_38_b"
+ ],
+ "direction_retour": [
+  "terminus_omrane_sup_rieur_l_78_38_b",
+  "foyer_omrane_sup_rieur",
+  "maison_des_mamans",
+  "carrefour",
+  "facult_des_sciences_de_tunis",
+  "facult_de_droit",
+  "clinique_taoufik",
+  "soned",
+  "rx",
+  "municipalit_mutuelle_ville",
+  "chedly_zouiten",
+  "place_pasteur",
+  "place_jeans_dark",
+  "la_fayette",
+  "passage_jeans_jaures",
+  "steg_jeans_jaures",
+  "jeans_jaures",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 18,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "terminus_omrane_sup_rieur_l_78_38_b",
+  "name": "Terminus Omrane Supérieur L 78 + 38 B"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 2,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "jeans_jaures",
+  "steg_jeans_jaures",
+  "passage_jeans_jaures",
+  "la_fayette",
+  "place_jeans_dark",
+  "place_pasteur",
+  "chedly_zouiten",
+  "municipalit_mutuelle_ville",
+  "rx",
+  "soned",
+  "clinique_taoufik",
+  "facult_de_droit",
+  "facult_des_sciences_de_tunis",
+  "carrefour",
+  "maison_des_mamans",
+  "foyer_omrane_sup_rieur",
+  "terminus_omrane_sup_rieur_l_78_38_b"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "jeans_jaures",
+   "name_en": "Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8016177,
+   "lon": 10.183899,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "steg_jeans_jaures",
+   "name_en": "Steg Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8054996,
+   "lon": 10.1819977,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "passage_jeans_jaures",
+   "name_en": "Passage Jeans Jaures",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8069114,
+   "lon": 10.1815361,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "la_fayette",
+   "name_en": "La Fayette",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8105618,
+   "lon": 10.1807238,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_jeans_dark",
+   "name_en": "Place Jeans Dark",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8183566,
+   "lon": 10.1795785,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_pasteur",
+   "name_en": "Place Pasteur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8230935,
+   "lon": 10.1776738,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "chedly_zouiten",
+   "name_en": "Chedly Zouiten",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.829621,
+   "lon": 10.1705499,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "municipalit_mutuelle_ville",
+   "name_en": "Municipalité Mutuelle Ville",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8337782,
+   "lon": 10.1672081,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "rx",
+   "name_en": "Rx",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8385611,
+   "lon": 10.1661513,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "soned",
+   "name_en": "Soned",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7652949,
+   "lon": 10.210255,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "clinique_taoufik",
+   "name_en": "Clinique Taoufik",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8321978,
+   "lon": 10.154312,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "facult_de_droit",
+   "name_en": "Faculté De Droit",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8307202,
+   "lon": 10.1503797,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "facult_des_sciences_de_tunis",
+   "name_en": "Faculté Des Sciences De Tunis",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8328327,
+   "lon": 10.148073,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "carrefour",
+   "name_en": "Carrefour",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.836543,
+   "lon": 10.1446936,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "maison_des_mamans",
+   "name_en": "Maison Des Mamans",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8353969,
+   "lon": 10.1381169,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_omrane_sup_rieur",
+   "name_en": "Foyer Omrane Supérieur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8375721,
+   "lon": 10.1329989,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_omrane_sup_rieur_l_78_38_b",
+   "name_en": "Terminus Omrane Supérieur L 78 + 38 B",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8368594,
+   "lon": 10.1290292,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

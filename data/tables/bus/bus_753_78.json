@@ -1,0 +1,383 @@
+{
+ "line_id": "bus_753_78",
+ "number": "78",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 78: Gare Routiére Sud - Terminus Omrane Supérieur L 78 + 38 B",
+ "direction_aller": [
+  "gare_routi_re_sud",
+  "sidi_bechir",
+  "bab_jdid",
+  "bab_mnara",
+  "kasbah",
+  "telecom",
+  "charle_nicole",
+  "bab_saadoun",
+  "gare_routi_re_nord",
+  "foyer_bardo_1",
+  "foyer_bardo_2",
+  "center_de_formation_ras_tabia",
+  "r_sidence_yesmine",
+  "cite_ibn_khaldoun",
+  "mosqu_e_ibn_khaldoun",
+  "cite_ibn_khaldoun_5",
+  "stade_ibn_khaldoun",
+  "foyer_omrane_sup_rieur",
+  "caf_kamel_bou_ali",
+  "kerch_el_ghaba",
+  "omrane_sup_rieur",
+  "terminus_omrane_sup_rieur_l_78_38_b"
+ ],
+ "direction_retour": [
+  "terminus_omrane_sup_rieur_l_78_38_b",
+  "omrane_sup_rieur",
+  "kerch_el_ghaba",
+  "caf_kamel_bou_ali",
+  "foyer_omrane_sup_rieur",
+  "stade_ibn_khaldoun",
+  "cite_ibn_khaldoun_5",
+  "mosqu_e_ibn_khaldoun",
+  "cite_ibn_khaldoun",
+  "r_sidence_yesmine",
+  "center_de_formation_ras_tabia",
+  "foyer_bardo_2",
+  "foyer_bardo_1",
+  "gare_routi_re_nord",
+  "bab_saadoun",
+  "charle_nicole",
+  "telecom",
+  "kasbah",
+  "bab_mnara",
+  "bab_jdid",
+  "sidi_bechir",
+  "gare_routi_re_sud"
+ ],
+ "stations_count": 22,
+ "start": {
+  "id": "gare_routi_re_sud",
+  "name": "Gare Routiére Sud"
+ },
+ "end": {
+  "id": "terminus_omrane_sup_rieur_l_78_38_b",
+  "name": "Terminus Omrane Supérieur L 78 + 38 B"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "gare_routi_re_sud",
+  "sidi_bechir",
+  "bab_jdid",
+  "bab_mnara",
+  "kasbah",
+  "telecom",
+  "charle_nicole",
+  "bab_saadoun",
+  "gare_routi_re_nord",
+  "foyer_bardo_1",
+  "foyer_bardo_2",
+  "center_de_formation_ras_tabia",
+  "r_sidence_yesmine",
+  "cite_ibn_khaldoun",
+  "mosqu_e_ibn_khaldoun",
+  "cite_ibn_khaldoun_5",
+  "stade_ibn_khaldoun",
+  "foyer_omrane_sup_rieur",
+  "caf_kamel_bou_ali",
+  "kerch_el_ghaba",
+  "omrane_sup_rieur",
+  "terminus_omrane_sup_rieur_l_78_38_b"
+ ],
+ "stations_detail": [
+  {
+   "id": "gare_routi_re_sud",
+   "name_en": "Gare Routiére Sud",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7874057,
+   "lon": 10.1800735,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_bechir",
+   "name_en": "Sidi Bechir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7914689,
+   "lon": 10.1774998,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_jdid",
+   "name_en": "Bab Jdid",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7921584,
+   "lon": 10.17213,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_mnara",
+   "name_en": "Bab Mnara",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7932496,
+   "lon": 10.1700674,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kasbah",
+   "name_en": "Kasbah",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7963447,
+   "lon": 10.1681174,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "telecom",
+   "name_en": "Telecom",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8002558,
+   "lon": 10.1651885,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charle_nicole",
+   "name_en": "Charle Nicole",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8027802,
+   "lon": 10.1635439,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "bab_saadoun",
+   "name_en": "BAB SAADOUN",
+   "name_ar": "باب سعدون",
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.80986,
+   "lon": 10.16219,
+   "mode": "metro",
+   "mode_resolution": null
+  },
+  {
+   "id": "gare_routi_re_nord",
+   "name_en": "Gare Routiére Nord",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.810572,
+   "lon": 10.1530031,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_bardo_1",
+   "name_en": "Foyer Bardo 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8141538,
+   "lon": 10.1462171,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_bardo_2",
+   "name_en": "Foyer Bardo 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81864,
+   "lon": 10.1414,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "center_de_formation_ras_tabia",
+   "name_en": "Center De Formation Ras Tabia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8200244,
+   "lon": 10.1397905,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "r_sidence_yesmine",
+   "name_en": "Résidence Yesmine",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.826254,
+   "lon": 10.1342327,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_ibn_khaldoun",
+   "name_en": "Cite Ibn Khaldoun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8290508,
+   "lon": 10.1348874,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mosqu_e_ibn_khaldoun",
+   "name_en": "Mosquée Ibn Khaldoun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8291708,
+   "lon": 10.1377359,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cite_ibn_khaldoun_5",
+   "name_en": "Cite Ibn Khaldoun 5",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8314236,
+   "lon": 10.1396512,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "stade_ibn_khaldoun",
+   "name_en": "Stade Ibn Khaldoun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8330222,
+   "lon": 10.1360032,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_omrane_sup_rieur",
+   "name_en": "Foyer Omrane Supérieur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8375721,
+   "lon": 10.1329989,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_kamel_bou_ali",
+   "name_en": "Café Kamel Bou Ali",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8387975,
+   "lon": 10.1323636,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "kerch_el_ghaba",
+   "name_en": "Kerch El Ghaba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.841236,
+   "lon": 10.1311271,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "omrane_sup_rieur",
+   "name_en": "Omrane Supérieur",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8301724,
+   "lon": 10.1245258,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_omrane_sup_rieur_l_78_38_b",
+   "name_en": "Terminus Omrane Supérieur L 78 + 38 B",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8368594,
+   "lon": 10.1290292,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

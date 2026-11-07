@@ -1,0 +1,79 @@
+{
+ "line_id": "bus_769_96",
+ "number": "96",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 96: Rabattement Khaireddine Mannouba - Gobaa Terminus 96",
+ "direction_aller": [
+  "rabattement_khaireddine_mannouba",
+  "cit_snit_manouba",
+  "gobaa_terminus_96"
+ ],
+ "direction_retour": [
+  "gobaa_terminus_96",
+  "cit_snit_manouba",
+  "rabattement_khaireddine_mannouba"
+ ],
+ "stations_count": 3,
+ "start": {
+  "id": "rabattement_khaireddine_mannouba",
+  "name": "Rabattement Khaireddine Mannouba"
+ },
+ "end": {
+  "id": "gobaa_terminus_96",
+  "name": "Gobaa Terminus 96"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "rabattement_khaireddine_mannouba",
+  "cit_snit_manouba",
+  "gobaa_terminus_96"
+ ],
+ "stations_detail": [
+  {
+   "id": "rabattement_khaireddine_mannouba",
+   "name_en": "Rabattement Khaireddine Mannouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8156704,
+   "lon": 10.0564588,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_snit_manouba",
+   "name_en": "Cité Snit Manouba",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8174686,
+   "lon": 10.0575002,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gobaa_terminus_96",
+   "name_en": "Gobaa Terminus 96",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8222353,
+   "lon": 10.0568779,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

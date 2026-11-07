@@ -1,0 +1,82 @@
+{
+ "line_id": "louage_access_026_sfax_gare_routière",
+ "number": "LA26",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage access: Sfax - Gare Routière → Simka",
+ "direction_aller": [
+  "louage_sfax_gare_routière",
+  "soretras_simka_999463fcf7"
+ ],
+ "direction_retour": [
+  "soretras_simka_999463fcf7",
+  "louage_sfax_gare_routière"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_sfax_gare_routière",
+  "name": "Sfax - Gare Routière"
+ },
+ "end": {
+  "id": "soretras_simka_999463fcf7",
+  "name": "Simka"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "louage_sfax_gare_routière",
+  "soretras_simka_999463fcf7"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_sfax_gare_routière",
+   "name_en": "Sfax - Gare Routière",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_219m"
+   ],
+   "lat": 34.7394,
+   "lon": 10.7604,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "soretras_simka_999463fcf7",
+   "name_en": "Simka",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 34.733091,
+   "lon": 10.755926,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv",
+ "segments": [
+  {
+   "from": "louage_sfax_gare_routière",
+   "to": "soretras_simka_999463fcf7",
+   "key": "louage_sfax_gare_routière|soretras_simka_999463fcf7",
+   "straight_m": 811.96,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": null
+  }
+ ],
+ "snapped_geometry": [],
+ "phase3a": {
+  "pairs": 1,
+  "resolved": 0,
+  "unresolved": 1
+ }
+}

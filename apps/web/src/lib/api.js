@@ -34,6 +34,36 @@ export async function fetchRoutePlan({ startLat, startLon, endLat, endLon, modes
   return response.json();
 }
 
+// Rust routing service (transit-routing :8081), reached through the same-origin
+// /routing proxy (vite dev + nginx prod). `preference` is fastest restricted to
+// the requested modes, which is how the Rust service implements it.
+export async function fetchRustRoute({ startLat, startLon, endLat, endLon, objective = 'fastest', modes = ['bus', 'train', 'louage'] }) {
+  const rustObjective = objective === 'preference' ? 'fastest' : objective;
+  const params = new URLSearchParams({
+    from_lat: String(startLat),
+    from_lon: String(startLon),
+    to_lat: String(endLat),
+    to_lon: String(endLon),
+    objective: rustObjective,
+    modes: [...modes].join(',')
+  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  try {
+    const response = await fetch(`/routing/route?${params}`, { signal: controller.signal });
+    if (!response.ok) throw new Error(`Rust routing failed: ${response.status}`);
+    return response.json();
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+export async function fetchRustHealth() {
+  const response = await fetch('/routing/health');
+  if (!response.ok) throw new Error(`Rust health failed: ${response.status}`);
+  return response.json();
+}
+
 // Fetch map geometry for routes
 export async function fetchRouteGeometry({ startLat, startLon, endLat, endLon, objective = 'fastest' }) {
   const params = new URLSearchParams({

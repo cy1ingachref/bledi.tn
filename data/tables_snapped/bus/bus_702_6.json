@@ -1,0 +1,737 @@
+{
+ "line_id": "bus_702_6",
+ "number": "6",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 6: 10 Decembre - Terminus Sidi Soufiene",
+ "direction_aller": [
+  "10_decembre",
+  "el_anbaria",
+  "lycee_ariana",
+  "place_sala_centre",
+  "foyer_ariana",
+  "les_abattoirs",
+  "cit_ennozha",
+  "borje_louzir",
+  "sidi_soufiene",
+  "terminus_sidi_soufiene"
+ ],
+ "direction_retour": [
+  "terminus_sidi_soufiene",
+  "sidi_soufiene",
+  "borje_louzir",
+  "cit_ennozha",
+  "les_abattoirs",
+  "foyer_ariana",
+  "place_sala_centre",
+  "lycee_ariana",
+  "el_anbaria",
+  "10_decembre"
+ ],
+ "stations_count": 10,
+ "start": {
+  "id": "10_decembre",
+  "name": "10 Decembre"
+ },
+ "end": {
+  "id": "terminus_sidi_soufiene",
+  "name": "Terminus Sidi Soufiene"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "10_decembre",
+  "el_anbaria",
+  "lycee_ariana",
+  "place_sala_centre",
+  "foyer_ariana",
+  "les_abattoirs",
+  "cit_ennozha",
+  "borje_louzir",
+  "sidi_soufiene",
+  "terminus_sidi_soufiene"
+ ],
+ "stations_detail": [
+  {
+   "id": "10_decembre",
+   "name_en": "10 Decembre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8421837,
+   "lon": 10.182519,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "el_anbaria",
+   "name_en": "El Anbaria",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8511265,
+   "lon": 10.1836125,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lycee_ariana",
+   "name_en": "Lycee Ariana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8518082,
+   "lon": 10.1843751,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_sala_centre",
+   "name_en": "Place Sala Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85811,
+   "lon": 10.1914391,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_ariana",
+   "name_en": "Foyer Ariana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8584957,
+   "lon": 10.194707,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_abattoirs",
+   "name_en": "Les Abattoirs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8601659,
+   "lon": 10.1981876,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_ennozha",
+   "name_en": "Cité Ennozha",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.860076,
+   "lon": 10.1990933,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "borje_louzir",
+   "name_en": "Borje Louzir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.864771,
+   "lon": 10.2011313,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "sidi_soufiene",
+   "name_en": "Sidi Soufiene",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8677833,
+   "lon": 10.2084639,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_sidi_soufiene",
+   "name_en": "Terminus Sidi Soufiene",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8738772,
+   "lon": 10.2192893,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "10_decembre",
+   "to": "el_anbaria",
+   "key": "10_decembre|el_anbaria",
+   "straight_m": 999.14,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8421837,
+     10.182519
+    ],
+    [
+     36.844054,
+     10.182981
+    ],
+    [
+     36.846597,
+     10.183512
+    ],
+    [
+     36.847251,
+     10.183541
+    ],
+    [
+     36.847999,
+     10.183417
+    ],
+    [
+     36.849144,
+     10.182981
+    ],
+    [
+     36.849653,
+     10.182922
+    ],
+    [
+     36.850307,
+     10.183016
+    ],
+    [
+     36.8511265,
+     10.1836125
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1023.95,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 45.19,
+   "length_ratio": 1.0248,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "el_anbaria",
+   "to": "lycee_ariana",
+   "key": "el_anbaria|lycee_ariana",
+   "straight_m": 101.74,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8511265,
+     10.1836125
+    ],
+    [
+     36.8518082,
+     10.1843751
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 101.74,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "lycee_ariana",
+   "to": "place_sala_centre",
+   "key": "lycee_ariana|place_sala_centre",
+   "straight_m": 941.3,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8518082,
+     10.1843751
+    ],
+    [
+     36.853475,
+     10.185816
+    ],
+    [
+     36.854601,
+     10.186689
+    ],
+    [
+     36.855603,
+     10.187869
+    ],
+    [
+     36.856206,
+     10.188234
+    ],
+    [
+     36.856858,
+     10.188333
+    ],
+    [
+     36.857527,
+     10.190415
+    ],
+    [
+     36.85811,
+     10.1914391
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 984.77,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 112.78,
+   "length_ratio": 1.0462,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "place_sala_centre",
+   "to": "foyer_ariana",
+   "key": "foyer_ariana|place_sala_centre",
+   "straight_m": 293.89,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8584957,
+     10.194707
+    ],
+    [
+     36.858388,
+     10.192405
+    ],
+    [
+     36.85811,
+     10.1914391
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 296.48,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 18.04,
+   "length_ratio": 1.0088,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "foyer_ariana",
+   "to": "les_abattoirs",
+   "key": "foyer_ariana|les_abattoirs",
+   "straight_m": 361.09,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8584957,
+     10.194707
+    ],
+    [
+     36.859272,
+     10.198185
+    ],
+    [
+     36.859618,
+     10.197971
+    ],
+    [
+     36.860039,
+     10.198271
+    ],
+    [
+     36.8601659,
+     10.1981876
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 434.0,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 85.12,
+   "length_ratio": 1.2019,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "les_abattoirs",
+   "to": "cit_ennozha",
+   "key": "cit_ennozha|les_abattoirs",
+   "straight_m": 81.2,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.860076,
+     10.1990933
+    ],
+    [
+     36.859769,
+     10.19828
+    ],
+    [
+     36.859542,
+     10.198038
+    ],
+    [
+     36.859618,
+     10.197971
+    ],
+    [
+     36.860039,
+     10.198271
+    ],
+    [
+     36.8601659,
+     10.1981876
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 193.35,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 70.64,
+   "length_ratio": 2.3812,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "cit_ennozha",
+   "to": "borje_louzir",
+   "key": "borje_louzir|cit_ennozha",
+   "straight_m": 552.65,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.864771,
+     10.2011313
+    ],
+    [
+     36.864616,
+     10.200669
+    ],
+    [
+     36.864627,
+     10.200232
+    ],
+    [
+     36.864379,
+     10.200061
+    ],
+    [
+     36.863411,
+     10.201046
+    ],
+    [
+     36.862186,
+     10.201779
+    ],
+    [
+     36.860741,
+     10.202353
+    ],
+    [
+     36.859194,
+     10.202666
+    ],
+    [
+     36.85942,
+     10.199505
+    ],
+    [
+     36.859374,
+     10.19815
+    ],
+    [
+     36.859542,
+     10.198038
+    ],
+    [
+     36.859769,
+     10.19828
+    ],
+    [
+     36.860076,
+     10.1990933
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 1285.02,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 332.43,
+   "length_ratio": 2.3252,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "borje_louzir",
+   "to": "sidi_soufiene",
+   "key": "borje_louzir|sidi_soufiene",
+   "straight_m": 733.28,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.864771,
+     10.2011313
+    ],
+    [
+     36.8677833,
+     10.2084639
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 733.28,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 0.0,
+   "length_ratio": 1.0,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "sidi_soufiene",
+   "to": "terminus_sidi_soufiene",
+   "key": "sidi_soufiene|terminus_sidi_soufiene",
+   "straight_m": 1177.49,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8677833,
+     10.2084639
+    ],
+    [
+     36.870103,
+     10.212961
+    ],
+    [
+     36.873087,
+     10.219975
+    ],
+    [
+     36.8738772,
+     10.2192893
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1289.62,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 106.96,
+   "length_ratio": 1.0952,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8421837,
+   10.182519
+  ],
+  [
+   36.844054,
+   10.182981
+  ],
+  [
+   36.846597,
+   10.183512
+  ],
+  [
+   36.847251,
+   10.183541
+  ],
+  [
+   36.847999,
+   10.183417
+  ],
+  [
+   36.849144,
+   10.182981
+  ],
+  [
+   36.849653,
+   10.182922
+  ],
+  [
+   36.850307,
+   10.183016
+  ],
+  [
+   36.8511265,
+   10.1836125
+  ],
+  [
+   36.8518082,
+   10.1843751
+  ],
+  [
+   36.853475,
+   10.185816
+  ],
+  [
+   36.854601,
+   10.186689
+  ],
+  [
+   36.855603,
+   10.187869
+  ],
+  [
+   36.856206,
+   10.188234
+  ],
+  [
+   36.856858,
+   10.188333
+  ],
+  [
+   36.857527,
+   10.190415
+  ],
+  [
+   36.85811,
+   10.1914391
+  ],
+  [
+   36.858388,
+   10.192405
+  ],
+  [
+   36.8584957,
+   10.194707
+  ],
+  [
+   36.859272,
+   10.198185
+  ],
+  [
+   36.859618,
+   10.197971
+  ],
+  [
+   36.860039,
+   10.198271
+  ],
+  [
+   36.8601659,
+   10.1981876
+  ],
+  [
+   36.860039,
+   10.198271
+  ],
+  [
+   36.859618,
+   10.197971
+  ],
+  [
+   36.859542,
+   10.198038
+  ],
+  [
+   36.859769,
+   10.19828
+  ],
+  [
+   36.860076,
+   10.1990933
+  ],
+  [
+   36.859769,
+   10.19828
+  ],
+  [
+   36.859542,
+   10.198038
+  ],
+  [
+   36.859374,
+   10.19815
+  ],
+  [
+   36.85942,
+   10.199505
+  ],
+  [
+   36.859194,
+   10.202666
+  ],
+  [
+   36.860741,
+   10.202353
+  ],
+  [
+   36.862186,
+   10.201779
+  ],
+  [
+   36.863411,
+   10.201046
+  ],
+  [
+   36.864379,
+   10.200061
+  ],
+  [
+   36.864627,
+   10.200232
+  ],
+  [
+   36.864616,
+   10.200669
+  ],
+  [
+   36.864771,
+   10.2011313
+  ],
+  [
+   36.8677833,
+   10.2084639
+  ],
+  [
+   36.870103,
+   10.212961
+  ],
+  [
+   36.873087,
+   10.219975
+  ],
+  [
+   36.8738772,
+   10.2192893
+  ]
+ ],
+ "phase3a": {
+  "pairs": 9,
+  "resolved": 9,
+  "unresolved": 0
+ }
+}

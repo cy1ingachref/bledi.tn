@@ -1,0 +1,63 @@
+{
+ "line_id": "louage_access_028_bizerte_central_st",
+ "number": "LA28",
+ "mode": "louage",
+ "operator": "louage",
+ "name": "Louage access: Bizerte - Central Station → Gare routière de Bizerte (Tarek Ibn Ziad)",
+ "direction_aller": [
+  "louage_bizerte_central_station",
+  "google_places_gare_routiere_de_bizerte__ta_dedad51ee6"
+ ],
+ "direction_retour": [
+  "google_places_gare_routiere_de_bizerte__ta_dedad51ee6",
+  "louage_bizerte_central_station"
+ ],
+ "stations_count": 2,
+ "start": {
+  "id": "louage_bizerte_central_station",
+  "name": "Bizerte - Central Station"
+ },
+ "end": {
+  "id": "google_places_gare_routiere_de_bizerte__ta_dedad51ee6",
+  "name": "Gare routière de Bizerte (Tarek Ibn Ziad)"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "louage_bizerte_central_station",
+  "google_places_gare_routiere_de_bizerte__ta_dedad51ee6"
+ ],
+ "stations_detail": [
+  {
+   "id": "louage_bizerte_central_station",
+   "name_en": "Bizerte - Central Station",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_184m"
+   ],
+   "lat": 37.2675,
+   "lon": 9.8722566,
+   "mode": "louage",
+   "mode_resolution": null
+  },
+  {
+   "id": "google_places_gare_routiere_de_bizerte__ta_dedad51ee6",
+   "name_en": "Gare routière de Bizerte (Tarek Ibn Ziad)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_proximity_23m"
+   ],
+   "lat": 37.269066,
+   "lon": 9.872583,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunisia_louage_network.csv"
+}

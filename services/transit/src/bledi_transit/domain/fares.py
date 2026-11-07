@@ -22,12 +22,24 @@ FARE_DINARS: dict[str, tuple[float, float]] = {
     "walk":       (0.000,   0.000),
 }
 
+# Per-boarding fare caps in DT (data/shared_tunables.json). A single boarding
+# never costs more than this; flat modes have no cap (their fare is flat).
+FARE_CAPS_DT: dict[str, float] = {
+    "train": 15.0,
+    "louaj": 20.0,
+}
+
 
 def fare_for_leg(mode: str, distance_m: float) -> float:
     """Estimated fare in dinars for one leg. Unknown modes are priced as a bus."""
-    base, per_km = FARE_DINARS.get(canonical_mode(mode), FARE_DINARS["bus"])
+    canonical = canonical_mode(mode)
+    base, per_km = FARE_DINARS.get(canonical, FARE_DINARS["bus"])
     km = max(0.0, float(distance_m)) / 1000.0
-    return round(base + per_km * km, 4)
+    fare = base + per_km * km
+    cap = FARE_CAPS_DT.get(canonical)
+    if cap is not None:
+        fare = min(fare, cap)
+    return round(fare, 4)
 
 
 def fare_for_itinerary(legs: Sequence[dict[str, Any]]) -> float:

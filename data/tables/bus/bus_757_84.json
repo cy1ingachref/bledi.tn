@@ -1,0 +1,319 @@
+{
+ "line_id": "bus_757_84",
+ "number": "84",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 84: Aerolia 1 - Cité Trabelsi",
+ "direction_aller": [
+  "aerolia_1",
+  "mecaprotec_aerolia",
+  "citroen",
+  "centre_de_formation_mghira",
+  "abattoir",
+  "gartex",
+  "cit_el_ouifak_gn",
+  "fouchana",
+  "garde_national_fouchana",
+  "cit_zitoun",
+  "dispensaire",
+  "terminus_cit_ennassim",
+  "si_ge_d_l_gation_mhamdia",
+  "mhamdia_centre",
+  "cit_essaada_mhamdia",
+  "lyc_e_secondaire_mhamdia",
+  "cit_tayari",
+  "cit_trabelsi"
+ ],
+ "direction_retour": [
+  "cit_trabelsi",
+  "cit_tayari",
+  "lyc_e_secondaire_mhamdia",
+  "cit_essaada_mhamdia",
+  "mhamdia_centre",
+  "si_ge_d_l_gation_mhamdia",
+  "terminus_cit_ennassim",
+  "dispensaire",
+  "cit_zitoun",
+  "garde_national_fouchana",
+  "fouchana",
+  "cit_el_ouifak_gn",
+  "gartex",
+  "abattoir",
+  "centre_de_formation_mghira",
+  "citroen",
+  "mecaprotec_aerolia",
+  "aerolia_1"
+ ],
+ "stations_count": 18,
+ "start": {
+  "id": "aerolia_1",
+  "name": "Aerolia 1"
+ },
+ "end": {
+  "id": "cit_trabelsi",
+  "name": "Cité Trabelsi"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": true,
+ "reversals": 0,
+ "teleport_legs": [],
+ "original_stations": [
+  "aerolia_1",
+  "mecaprotec_aerolia",
+  "citroen",
+  "centre_de_formation_mghira",
+  "abattoir",
+  "gartex",
+  "cit_el_ouifak_gn",
+  "fouchana",
+  "garde_national_fouchana",
+  "cit_zitoun",
+  "dispensaire",
+  "terminus_cit_ennassim",
+  "si_ge_d_l_gation_mhamdia",
+  "mhamdia_centre",
+  "cit_essaada_mhamdia",
+  "lyc_e_secondaire_mhamdia",
+  "cit_tayari",
+  "cit_trabelsi"
+ ],
+ "stations_detail": [
+  {
+   "id": "aerolia_1",
+   "name_en": "Aerolia 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7211308,
+   "lon": 10.1648209,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mecaprotec_aerolia",
+   "name_en": "Mecaprotec Aerolia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7180392,
+   "lon": 10.168458,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "citroen",
+   "name_en": "Citroen",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7160208,
+   "lon": 10.170805,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_formation_mghira",
+   "name_en": "Centre De Formation Mghira",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7123279,
+   "lon": 10.1677174,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "abattoir",
+   "name_en": "Abattoir",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7085693,
+   "lon": 10.1720518,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "gartex",
+   "name_en": "GARTEX",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7066598,
+   "lon": 10.1743264,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_el_ouifak_gn",
+   "name_en": "Cité El Ouifak (Gn)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7026939,
+   "lon": 10.1721377,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "fouchana",
+   "name_en": "Fouchana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.7000451,
+   "lon": 10.1661939,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "garde_national_fouchana",
+   "name_en": "Garde National Fouchana",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6951733,
+   "lon": 10.1661505,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_zitoun",
+   "name_en": "Cité Zitoun",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6916805,
+   "lon": 10.1635112,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "dispensaire",
+   "name_en": "Dispensaire",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6855033,
+   "lon": 10.1599493,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "terminus_cit_ennassim",
+   "name_en": "Terminus Cité Ennassim",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6806027,
+   "lon": 10.1570425,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "si_ge_d_l_gation_mhamdia",
+   "name_en": "Siége Délégation Mhamdia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6788686,
+   "lon": 10.1566723,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "mhamdia_centre",
+   "name_en": "Mhamdia Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.675479,
+   "lon": 10.1560341,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_essaada_mhamdia",
+   "name_en": "Cité Essaada (Mhamdia)",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6691567,
+   "lon": 10.1540382,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "lyc_e_secondaire_mhamdia",
+   "name_en": "Lycée Secondaire Mhamdia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6682187,
+   "lon": 10.1535554,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_tayari",
+   "name_en": "Cité Tayari",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6673033,
+   "lon": 10.1529924,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "cit_trabelsi",
+   "name_en": "Cité Trabelsi",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.6640036,
+   "lon": 10.1498202,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

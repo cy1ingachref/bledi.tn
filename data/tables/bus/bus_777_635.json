@@ -1,0 +1,223 @@
+{
+ "line_id": "bus_777_635",
+ "number": "635",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 635: Terminus Tunis Marine Bus - Place Sala Centre",
+ "direction_aller": [
+  "terminus_tunis_marine_bus",
+  "charguia1",
+  "foire_la_charguia",
+  "depot_charguia",
+  "onas",
+  "frette",
+  "a_roport_p_lerins",
+  "a_roport_tunis_carthage",
+  "centre_de_tri_postal",
+  "charguia_2",
+  "les_abattoirs",
+  "place_sala_centre"
+ ],
+ "direction_retour": [
+  "place_sala_centre",
+  "les_abattoirs",
+  "charguia_2",
+  "centre_de_tri_postal",
+  "a_roport_tunis_carthage",
+  "a_roport_p_lerins",
+  "frette",
+  "onas",
+  "depot_charguia",
+  "foire_la_charguia",
+  "charguia1",
+  "terminus_tunis_marine_bus"
+ ],
+ "stations_count": 12,
+ "start": {
+  "id": "terminus_tunis_marine_bus",
+  "name": "Terminus Tunis Marine Bus"
+ },
+ "end": {
+  "id": "place_sala_centre",
+  "name": "Place Sala Centre"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_tunis_marine_bus",
+  "charguia1",
+  "foire_la_charguia",
+  "depot_charguia",
+  "onas",
+  "frette",
+  "a_roport_p_lerins",
+  "a_roport_tunis_carthage",
+  "centre_de_tri_postal",
+  "charguia_2",
+  "les_abattoirs",
+  "place_sala_centre"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_tunis_marine_bus",
+   "name_en": "Terminus Tunis Marine Bus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8003841,
+   "lon": 10.1903877,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia1",
+   "name_en": "Charguia1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8288636,
+   "lon": 10.2010967,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foire_la_charguia",
+   "name_en": "Foire La Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8356665,
+   "lon": 10.2014554,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "depot_charguia",
+   "name_en": "Depot Charguia",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.839222,
+   "lon": 10.2045873,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "onas",
+   "name_en": "ONAS",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8368086,
+   "lon": 10.2086223,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "frette",
+   "name_en": "FRETTE",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8365681,
+   "lon": 10.213343,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "a_roport_p_lerins",
+   "name_en": "Aéroport Pélerins",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8426027,
+   "lon": 10.2150442,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "a_roport_tunis_carthage",
+   "name_en": "Aéroport Tunis Carthage",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8476666,
+   "lon": 10.2172345,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "centre_de_tri_postal",
+   "name_en": "Centre De Tri Postal",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8447054,
+   "lon": 10.2186747,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "charguia_2",
+   "name_en": "Charguia 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8543199,
+   "lon": 10.2028332,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "les_abattoirs",
+   "name_en": "Les Abattoirs",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8601659,
+   "lon": 10.1981876,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "place_sala_centre",
+   "name_en": "Place Sala Centre",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.85811,
+   "lon": 10.1914391,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper"
+}

@@ -1,0 +1,1025 @@
+{
+ "line_id": "bus_846_36b",
+ "number": "36B",
+ "mode": "bus",
+ "operator": "Transtu",
+ "name": "Ligne 36B: Terminus Ministére Des Affaires Etrangeres ( L 36 B ) - Touta Bardo",
+ "direction_aller": [
+  "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+  "clinique_el_amel",
+  "campus",
+  "14_janvier",
+  "foyer_bardo_2",
+  "foyer_bardo_1",
+  "caf_el_haj",
+  "touta_bardo"
+ ],
+ "direction_retour": [
+  "touta_bardo",
+  "caf_el_haj",
+  "foyer_bardo_1",
+  "foyer_bardo_2",
+  "14_janvier",
+  "campus",
+  "clinique_el_amel",
+  "terminus_minist_re_des_affaires_etrangeres_l_36_b"
+ ],
+ "stations_count": 8,
+ "start": {
+  "id": "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+  "name": "Terminus Ministére Des Affaires Etrangeres ( L 36 B )"
+ },
+ "end": {
+  "id": "touta_bardo",
+  "name": "Touta Bardo"
+ },
+ "has_loop": false,
+ "duplicates_removed": 0,
+ "is_single_direction": false,
+ "reversals": 1,
+ "teleport_legs": [],
+ "original_stations": [
+  "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+  "clinique_el_amel",
+  "campus",
+  "14_janvier",
+  "foyer_bardo_2",
+  "foyer_bardo_1",
+  "caf_el_haj",
+  "touta_bardo"
+ ],
+ "stations_detail": [
+  {
+   "id": "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+   "name_en": "Terminus Ministére Des Affaires Etrangeres ( L 36 B )",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8295624,
+   "lon": 10.1590382,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "clinique_el_amel",
+   "name_en": "Clinique El Amel",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8503229,
+   "lon": 10.149575,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "campus",
+   "name_en": "Campus",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8253694,
+   "lon": 10.1438887,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "14_janvier",
+   "name_en": "14 Janvier",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.823507,
+   "lon": 10.1414964,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_bardo_2",
+   "name_en": "Foyer Bardo 2",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.81864,
+   "lon": 10.1414,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "foyer_bardo_1",
+   "name_en": "Foyer Bardo 1",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8141538,
+   "lon": 10.1462171,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "caf_el_haj",
+   "name_en": "Café El Haj",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8125757,
+   "lon": 10.1400783,
+   "mode": "bus",
+   "mode_resolution": null
+  },
+  {
+   "id": "touta_bardo",
+   "name_en": "Touta Bardo",
+   "name_ar": null,
+   "name_fr": null,
+   "name_ar_fr_source": [
+    "station_reference_name_match"
+   ],
+   "lat": 36.8088443,
+   "lon": 10.1379771,
+   "mode": "bus",
+   "mode_resolution": null
+  }
+ ],
+ "corrected_order": null,
+ "source": "tunismapper",
+ "segments": [
+  {
+   "from": "terminus_minist_re_des_affaires_etrangeres_l_36_b",
+   "to": "clinique_el_amel",
+   "key": "clinique_el_amel|terminus_minist_re_des_affaires_etrangeres_l_36_b",
+   "straight_m": 2457.28,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8503229,
+     10.149575
+    ],
+    [
+     36.848928,
+     10.150968
+    ],
+    [
+     36.848419,
+     10.150066
+    ],
+    [
+     36.847102,
+     10.149364
+    ],
+    [
+     36.846591,
+     10.147774
+    ],
+    [
+     36.846344,
+     10.147662
+    ],
+    [
+     36.845412,
+     10.147732
+    ],
+    [
+     36.845164,
+     10.147631
+    ],
+    [
+     36.844996,
+     10.147377
+    ],
+    [
+     36.844727,
+     10.146239
+    ],
+    [
+     36.844562,
+     10.14607
+    ],
+    [
+     36.844248,
+     10.146031
+    ],
+    [
+     36.843953,
+     10.14635
+    ],
+    [
+     36.843359,
+     10.147599
+    ],
+    [
+     36.843056,
+     10.147869
+    ],
+    [
+     36.840782,
+     10.148071
+    ],
+    [
+     36.839838,
+     10.148413
+    ],
+    [
+     36.839397,
+     10.148715
+    ],
+    [
+     36.83913,
+     10.148684
+    ],
+    [
+     36.837264,
+     10.151811
+    ],
+    [
+     36.835741,
+     10.153677
+    ],
+    [
+     36.834146,
+     10.155138
+    ],
+    [
+     36.833391,
+     10.155366
+    ],
+    [
+     36.832628,
+     10.156363
+    ],
+    [
+     36.830457,
+     10.158003
+    ],
+    [
+     36.82999,
+     10.158667
+    ],
+    [
+     36.8295624,
+     10.1590382
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 3058.8,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 527.79,
+   "length_ratio": 1.2448,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "clinique_el_amel",
+   "to": "campus",
+   "key": "campus|clinique_el_amel",
+   "straight_m": 2820.47,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8253694,
+     10.1438887
+    ],
+    [
+     36.823212,
+     10.141078
+    ],
+    [
+     36.821977,
+     10.138904
+    ],
+    [
+     36.821486,
+     10.137845
+    ],
+    [
+     36.821365,
+     10.137242
+    ],
+    [
+     36.82146,
+     10.136845
+    ],
+    [
+     36.821756,
+     10.136733
+    ],
+    [
+     36.821995,
+     10.137015
+    ],
+    [
+     36.821996,
+     10.137295
+    ],
+    [
+     36.821208,
+     10.138817
+    ],
+    [
+     36.820876,
+     10.139232
+    ],
+    [
+     36.820188,
+     10.139437
+    ],
+    [
+     36.819433,
+     10.14024
+    ],
+    [
+     36.819448,
+     10.140347
+    ],
+    [
+     36.820068,
+     10.139649
+    ],
+    [
+     36.820433,
+     10.139454
+    ],
+    [
+     36.820736,
+     10.139441
+    ],
+    [
+     36.820981,
+     10.139492
+    ],
+    [
+     36.821608,
+     10.140019
+    ],
+    [
+     36.82251,
+     10.140384
+    ],
+    [
+     36.822699,
+     10.140568
+    ],
+    [
+     36.825996,
+     10.144963
+    ],
+    [
+     36.828561,
+     10.149081
+    ],
+    [
+     36.83209,
+     10.15386
+    ],
+    [
+     36.833971,
+     10.157204
+    ],
+    [
+     36.838149,
+     10.165289
+    ],
+    [
+     36.840609,
+     10.169714
+    ],
+    [
+     36.840668,
+     10.170443
+    ],
+    [
+     36.840118,
+     10.170884
+    ],
+    [
+     36.839948,
+     10.170791
+    ],
+    [
+     36.839869,
+     10.170538
+    ],
+    [
+     36.840125,
+     10.169955
+    ],
+    [
+     36.841449,
+     10.168245
+    ],
+    [
+     36.850563,
+     10.154929
+    ],
+    [
+     36.848928,
+     10.150968
+    ],
+    [
+     36.8503229,
+     10.149575
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 7594.3,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 2069.18,
+   "length_ratio": 2.6926,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "campus",
+   "to": "14_janvier",
+   "key": "14_janvier|campus",
+   "straight_m": 297.03,
+   "resolved": false,
+   "alignment_m": null,
+   "geometry": null,
+   "source": null,
+   "reason": "road path 2030 m implausible vs 297 m straight"
+  },
+  {
+   "from": "14_janvier",
+   "to": "foyer_bardo_2",
+   "key": "14_janvier|foyer_bardo_2",
+   "straight_m": 541.25,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.823507,
+     10.1414964
+    ],
+    [
+     36.822405,
+     10.139732
+    ],
+    [
+     36.821486,
+     10.137845
+    ],
+    [
+     36.821366,
+     10.137052
+    ],
+    [
+     36.82146,
+     10.136845
+    ],
+    [
+     36.821756,
+     10.136733
+    ],
+    [
+     36.821995,
+     10.137015
+    ],
+    [
+     36.821996,
+     10.137295
+    ],
+    [
+     36.820999,
+     10.139143
+    ],
+    [
+     36.820074,
+     10.139541
+    ],
+    [
+     36.817,
+     10.143021
+    ],
+    [
+     36.817024,
+     10.143113
+    ],
+    [
+     36.81721,
+     10.142956
+    ],
+    [
+     36.81864,
+     10.1414
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 1597.6,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 420.86,
+   "length_ratio": 2.9517,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "foyer_bardo_2",
+   "to": "foyer_bardo_1",
+   "key": "foyer_bardo_1|foyer_bardo_2",
+   "straight_m": 657.82,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8141538,
+     10.1462171
+    ],
+    [
+     36.815772,
+     10.144143
+    ],
+    [
+     36.81631,
+     10.143597
+    ],
+    [
+     36.81721,
+     10.142956
+    ],
+    [
+     36.81864,
+     10.1414
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 660.97,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 22.72,
+   "length_ratio": 1.0048,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "foyer_bardo_1",
+   "to": "caf_el_haj",
+   "key": "caf_el_haj|foyer_bardo_1",
+   "straight_m": 573.97,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8125757,
+     10.1400783
+    ],
+    [
+     36.812596,
+     10.140646
+    ],
+    [
+     36.811004,
+     10.141809
+    ],
+    [
+     36.811809,
+     10.143417
+    ],
+    [
+     36.813151,
+     10.145549
+    ],
+    [
+     36.813694,
+     10.146669
+    ],
+    [
+     36.813754,
+     10.146746
+    ],
+    [
+     36.8141538,
+     10.1462171
+    ]
+   ],
+   "geometry_reversed": true,
+   "geometry_m": 856.81,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 213.5,
+   "length_ratio": 1.4928,
+   "flag_alignment_gt_100m": false
+  },
+  {
+   "from": "caf_el_haj",
+   "to": "touta_bardo",
+   "key": "caf_el_haj|touta_bardo",
+   "straight_m": 455.13,
+   "resolved": true,
+   "source": "osrm-driving",
+   "geometry": [
+    [
+     36.8125757,
+     10.1400783
+    ],
+    [
+     36.812472,
+     10.139436
+    ],
+    [
+     36.810335,
+     10.139995
+    ],
+    [
+     36.809838,
+     10.139172
+    ],
+    [
+     36.8088443,
+     10.1379771
+    ]
+   ],
+   "geometry_reversed": false,
+   "geometry_m": 546.26,
+   "alignment_m": 0.0,
+   "endpoint_error_m": 0.0,
+   "max_offstraight_m": 95.64,
+   "length_ratio": 1.2002,
+   "flag_alignment_gt_100m": false
+  }
+ ],
+ "snapped_geometry": [
+  [
+   36.8295624,
+   10.1590382
+  ],
+  [
+   36.82999,
+   10.158667
+  ],
+  [
+   36.830457,
+   10.158003
+  ],
+  [
+   36.832628,
+   10.156363
+  ],
+  [
+   36.833391,
+   10.155366
+  ],
+  [
+   36.834146,
+   10.155138
+  ],
+  [
+   36.835741,
+   10.153677
+  ],
+  [
+   36.837264,
+   10.151811
+  ],
+  [
+   36.83913,
+   10.148684
+  ],
+  [
+   36.839397,
+   10.148715
+  ],
+  [
+   36.839838,
+   10.148413
+  ],
+  [
+   36.840782,
+   10.148071
+  ],
+  [
+   36.843056,
+   10.147869
+  ],
+  [
+   36.843359,
+   10.147599
+  ],
+  [
+   36.843953,
+   10.14635
+  ],
+  [
+   36.844248,
+   10.146031
+  ],
+  [
+   36.844562,
+   10.14607
+  ],
+  [
+   36.844727,
+   10.146239
+  ],
+  [
+   36.844996,
+   10.147377
+  ],
+  [
+   36.845164,
+   10.147631
+  ],
+  [
+   36.845412,
+   10.147732
+  ],
+  [
+   36.846344,
+   10.147662
+  ],
+  [
+   36.846591,
+   10.147774
+  ],
+  [
+   36.847102,
+   10.149364
+  ],
+  [
+   36.848419,
+   10.150066
+  ],
+  [
+   36.848928,
+   10.150968
+  ],
+  [
+   36.8503229,
+   10.149575
+  ],
+  [
+   36.848928,
+   10.150968
+  ],
+  [
+   36.850563,
+   10.154929
+  ],
+  [
+   36.841449,
+   10.168245
+  ],
+  [
+   36.840125,
+   10.169955
+  ],
+  [
+   36.839869,
+   10.170538
+  ],
+  [
+   36.839948,
+   10.170791
+  ],
+  [
+   36.840118,
+   10.170884
+  ],
+  [
+   36.840668,
+   10.170443
+  ],
+  [
+   36.840609,
+   10.169714
+  ],
+  [
+   36.838149,
+   10.165289
+  ],
+  [
+   36.833971,
+   10.157204
+  ],
+  [
+   36.83209,
+   10.15386
+  ],
+  [
+   36.828561,
+   10.149081
+  ],
+  [
+   36.825996,
+   10.144963
+  ],
+  [
+   36.822699,
+   10.140568
+  ],
+  [
+   36.82251,
+   10.140384
+  ],
+  [
+   36.821608,
+   10.140019
+  ],
+  [
+   36.820981,
+   10.139492
+  ],
+  [
+   36.820736,
+   10.139441
+  ],
+  [
+   36.820433,
+   10.139454
+  ],
+  [
+   36.820068,
+   10.139649
+  ],
+  [
+   36.819448,
+   10.140347
+  ],
+  [
+   36.819433,
+   10.14024
+  ],
+  [
+   36.820188,
+   10.139437
+  ],
+  [
+   36.820876,
+   10.139232
+  ],
+  [
+   36.821208,
+   10.138817
+  ],
+  [
+   36.821996,
+   10.137295
+  ],
+  [
+   36.821995,
+   10.137015
+  ],
+  [
+   36.821756,
+   10.136733
+  ],
+  [
+   36.82146,
+   10.136845
+  ],
+  [
+   36.821365,
+   10.137242
+  ],
+  [
+   36.821486,
+   10.137845
+  ],
+  [
+   36.821977,
+   10.138904
+  ],
+  [
+   36.823212,
+   10.141078
+  ],
+  [
+   36.8253694,
+   10.1438887
+  ],
+  [
+   36.823507,
+   10.1414964
+  ],
+  [
+   36.822405,
+   10.139732
+  ],
+  [
+   36.821486,
+   10.137845
+  ],
+  [
+   36.821366,
+   10.137052
+  ],
+  [
+   36.82146,
+   10.136845
+  ],
+  [
+   36.821756,
+   10.136733
+  ],
+  [
+   36.821995,
+   10.137015
+  ],
+  [
+   36.821996,
+   10.137295
+  ],
+  [
+   36.820999,
+   10.139143
+  ],
+  [
+   36.820074,
+   10.139541
+  ],
+  [
+   36.817,
+   10.143021
+  ],
+  [
+   36.817024,
+   10.143113
+  ],
+  [
+   36.81721,
+   10.142956
+  ],
+  [
+   36.81864,
+   10.1414
+  ],
+  [
+   36.81721,
+   10.142956
+  ],
+  [
+   36.81631,
+   10.143597
+  ],
+  [
+   36.815772,
+   10.144143
+  ],
+  [
+   36.8141538,
+   10.1462171
+  ],
+  [
+   36.813754,
+   10.146746
+  ],
+  [
+   36.813694,
+   10.146669
+  ],
+  [
+   36.813151,
+   10.145549
+  ],
+  [
+   36.811809,
+   10.143417
+  ],
+  [
+   36.811004,
+   10.141809
+  ],
+  [
+   36.812596,
+   10.140646
+  ],
+  [
+   36.8125757,
+   10.1400783
+  ],
+  [
+   36.812472,
+   10.139436
+  ],
+  [
+   36.810335,
+   10.139995
+  ],
+  [
+   36.809838,
+   10.139172
+  ],
+  [
+   36.8088443,
+   10.1379771
+  ]
+ ],
+ "phase3a": {
+  "pairs": 7,
+  "resolved": 6,
+  "unresolved": 1
+ }
+}
