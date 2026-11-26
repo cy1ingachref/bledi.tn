@@ -44,8 +44,8 @@ jobs:
             dockerfile: services/transit/Dockerfile
             image: bledi-transit
           - component: web
-            context: apps/web
-            dockerfile: apps/web/Dockerfile
+            context: apps/web-react
+            dockerfile: apps/web-react/Dockerfile
             image: bledi-web
     steps:
       - uses: actions/checkout@v7

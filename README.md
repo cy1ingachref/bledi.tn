@@ -5,9 +5,10 @@ accounts service for geo-pinned memories, favorites and location sharing.
 
 ## Layout
 
-- `apps/web`: SvelteKit PWA and Leaflet map. Its nginx image is also the gateway.
+- `apps/web-react`: React + Vite frontend with MapLibre, served on :8080. Its nginx image is also the gateway (see `apps/web-react/Dockerfile`).
 - `apps/mobile`: Flutter client.
-- `services/transit`: Python FastAPI. Routing, stations, lines, map layers, geocoding.
+- `services/transit`: Python FastAPI reference implementation. Routing, stations, lines, map layers, geocoding.
+- `services/routing`: Rust axum routing engine (preferred path).
 - `services/accounts`: Rust axum on PostgreSQL. Users, memories, favorites,
   friendships, location shares.
 - `data`: the seed network and geometry the transit service loads. See

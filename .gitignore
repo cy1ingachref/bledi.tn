@@ -131,3 +131,6 @@ apps/web/scripts/
 # The single-file HTML snapshot the redesign was compared against, kept beside
 # the app for reference only.
 apps/web/design-ref.html
+
+# Handoff/review archives are published as GitHub Releases, not committed.
+*.zip

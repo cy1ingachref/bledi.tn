@@ -29,7 +29,7 @@ jobs:
           - component: backend
             working-directory: services/accounts
           - component: web
-            working-directory: apps/web
+            working-directory: apps/web-react
           - component: mobile
             working-directory: apps/mobile
     # The store tests need a database. The service container starts for every leg, but
@@ -63,7 +63,7 @@ jobs:
         if: matrix.component == 'backend'
         uses: dtolnay/rust-toolchain@v1
         with:
-          toolchain: stable
+          toolchain: 1.99.0
           components: clippy, rustfmt
 
       - uses: Swatinem/rust-cache@v2
@@ -101,9 +101,9 @@ jobs:
         if: matrix.component == 'web'
         uses: actions/setup-node@v7
         with:
-          node-version-file: apps/web/.nvmrc
+          node-version-file: apps/web-react/.nvmrc
           cache: npm
-          cache-dependency-path: apps/web/package-lock.json
+          cache-dependency-path: apps/web-react/package-lock.json
 
       - name: Install
         if: matrix.component == 'web'
@@ -134,6 +134,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
+          flutter-version: '3.47.5'
 
       - name: Install
         if: matrix.component == 'mobile'

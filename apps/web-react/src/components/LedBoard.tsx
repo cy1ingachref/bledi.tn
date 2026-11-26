@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { RouteOption } from "../routing";
 import { hhmm } from "../routing";
 import type { Lang } from "../i18n";
-import { modeWord } from "../labels";
+import { modeWord, formatDuration } from "../labels";
 
 export default function LedBoard({ route, lang, now }: { route?: RouteOption; lang: Lang; now: Date }) {
   const [showAr, setShowAr] = useState(false);
@@ -40,12 +40,11 @@ export default function LedBoard({ route, lang, now }: { route?: RouteOption; la
           </div>
         </div>
         <div className="text-right">
-          {wait <= 1 ? (
-            <div className="led blink text-3xl leading-none">◆◆</div>
-          ) : (
-            <div className="led text-4xl leading-none tabular-nums">{wait}</div>
-          )}
-          <div className="led mt-1 text-xs opacity-80">{lang === "ar" ? "دق" : "min"}</div>
+          {/* The big number is the journey duration; wait time is secondary. */}
+          <div className="led text-2xl leading-none tabular-nums">{formatDuration(route.minutes, lang)}</div>
+          <div className="led mt-1 text-xs opacity-80">
+            {lang === "ar" ? `انتظار ${wait} دق` : `wait ${wait} min`}
+          </div>
         </div>
       </div>
     </div>

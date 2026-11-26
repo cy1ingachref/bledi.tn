@@ -104,11 +104,11 @@ export function orderedStops(detail: LineDetail): (LineStop & { order: number })
   return detail.stops.map((s, i) => ({ ...s, order: i }));
 }
 
-/** The line's track as a Leaflet-ready [lat, lon] list, or [] when incomplete. */
+/** The line's track as a [lat, lon] list, or [] when incomplete. */
 export function linePath(detail: LineDetail): [number, number][] {
   const coords = detail.geometry?.coordinates;
   if (!Array.isArray(coords) || coords.length < 2) return [];
-  // The API returns GeoJSON [lon, lat]; Leaflet wants [lat, lon].
+  // The API returns GeoJSON [lon, lat]; the app works in [lat, lon].
   return coords.map((c) => [c[1], c[0]] as [number, number]);
 }
 
