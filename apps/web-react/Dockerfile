@@ -18,6 +18,7 @@ ENV ACCOUNTS_URL=http://accounts:3000 \
     TRANSIT_URL=http://transit:8000 \
     ROUTING_URL=http://transit-routing:8081 \
     NGINX_ENVSUBST_FILTER="^(ACCOUNTS_URL|TRANSIT_URL|ROUTING_URL)$"
+COPY rate-limit.conf /etc/nginx/conf.d/rate-limit.conf
 COPY nginx.conf /etc/nginx/templates/default.conf.template
 COPY --from=build /app/dist /usr/share/nginx/html
 USER nginx

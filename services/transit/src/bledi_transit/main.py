@@ -12,8 +12,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-import time
-from collections import defaultdict
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -22,6 +20,7 @@ from bledi_transit.adapters.http import catalog as catalog_routes
 from bledi_transit.adapters.http import routing as routing_routes
 from bledi_transit.adapters.http.deps import Services
 from bledi_transit.adapters.http.errors import install_error_handlers
+from bledi_transit.adapters.http.rate_limit import install_rate_limit
 from bledi_transit.adapters.nominatim import NominatimGeocoder
 from bledi_transit.adapters.seed_files import SeedFileNetwork
 from bledi_transit.application.catalog import Catalog
@@ -29,10 +28,6 @@ from bledi_transit.application.network import Network
 from bledi_transit.application.routing.router import Router
 
 REPO_DATA_DIR = Path(__file__).resolve().parents[4] / "data"
-
-# Rate limiting config
-RATE_LIMIT_REQUESTS = 60  # requests per window
-RATE_LIMIT_WINDOW = 60    # seconds
 
 # 8080 is the Flutter web dev server, 5173 the Vite dev server.
 DEFAULT_ORIGINS = (
@@ -107,25 +102,8 @@ def create_app(config: Config | None = None) -> FastAPI:
         version="0.2.0",
         lifespan=lifespan,
     )
-    # Rate limiting middleware
-    _rate_limit_buckets: dict[str, list[float]] = defaultdict(list)
-
-    @app.middleware("http")
-    async def rate_limit(request: Request, call_next):
-        client_ip = request.client.host if request.client else "unknown"
-        now = time.time()
-        # Prune expired entries across all clients so one IP cannot grow the dict without bound.
-        for ip, times in list(_rate_limit_buckets.items()):
-            _rate_limit_buckets[ip] = [t for t in times if now - t < RATE_LIMIT_WINDOW]
-        if len(_rate_limit_buckets[client_ip]) >= RATE_LIMIT_REQUESTS:
-            from fastapi.responses import JSONResponse
-            return JSONResponse(
-                {"error": "rate limit exceeded"},
-                status_code=429,
-                headers={"Retry-After": str(RATE_LIMIT_WINDOW)},
-            )
-        _rate_limit_buckets[client_ip].append(now)
-        return await call_next(request)
+    # Per-IP backstop; the gateway (nginx limit_req) is the first line of defence.
+    install_rate_limit(app)
 
     # Never wildcard origins together with credentials.
     app.add_middleware(

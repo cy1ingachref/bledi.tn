@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — fixes handoff PR 2 (H1)
+
+### Fixed
+- Transit rate limiter: per-IP buckets use `deque` with idle-key deletion
+  instead of O(clients) list rebuilds; `X-Forwarded-For` is trusted only when
+  `TRUST_PROXY_HEADERS=1`, taking the gateway-overwritten first entry.
+- Health endpoints are exempt from both gateway and service rate limits.
+- Gateway (`nginx.conf`) now rate-limits `/api/` at 10 r/s with burst 20,
+  keyed on the real client IP, returning 429.
+- Added `services/transit/tests/test_rate_limit.py` (5 tests).
+
 ## Unreleased — fixes handoff PR 1 (H2/L1/L2)
 
 ### Fixed
