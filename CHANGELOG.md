@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — fixes handoff PR 1 (H2/L1/L2)
+
+### Fixed
+- `docker-compose.yml`: `transit-routing` is no longer published on host port
+  8081 (`expose` only); `/routing/` still works through the web gateway.
+- `services/transit/Dockerfile`: HEALTHCHECK now probes `/api/v1/health`,
+  matching compose and the application.
+- `docker-compose.yml`: removed `transit`'s `depends_on: db` (the transit
+  service has no database dependency).
+- Added `tests/test_infra_alignment.py` regression tests for all three.
+
 ## Unreleased — multi-objective routing, mode filters, station & line detail
 
 Implements `ROUTING_FIX_INSTRUCTIONS.txt` (Parts A–F).
