@@ -102,3 +102,26 @@ Leaflet out of the domain and application.
 - Images run as a non-root user.
 - Each service has its own CI workflow, triggered by its paths. The `e2e` label
   boots the whole compose stack and checks it through the gateway.
+
+
+## Gateway CSP allowlist (M1)
+
+`apps/web-react/nginx.conf` sends a restrictive Content-Security-Policy. The
+allowed hosts were derived from `https://styles.maptoolkit.org/dark.json` and
+confirmed by a live browser network capture:
+
+| Directive | Hosts |
+|---|---|
+| `img-src` | `styles.maptoolkit.org`, `tiles.maptoolkit.org`, `icons.maptoolkit.org`, `tiles.mapterhorn.com` |
+| `connect-src` | the above plus `fonts.maptoolkit.org` (glyph PBFs) |
+| `font-src` | `fonts.gstatic.com`, `fonts.maptoolkit.org` |
+| `worker-src` | `'self' blob:` — MapLibre 6 loads a same-origin module worker |
+
+`style-src` still includes `'unsafe-inline'`: removing it was tested and the
+route UI sets inline `style` attributes (colours/widths), which then triggers
+CSP violations. Narrowing it requires refactoring those styles first.
+
+HSTS belongs at the TLS-terminating layer; the local nginx gateway listens on
+plain HTTP and does not set it. `e2e/csp-smoke.mjs` checks the served allowlist
+and that each upstream host answers 200.
+

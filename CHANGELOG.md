@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — fixes handoff PR 4 (M1)
+
+### Fixed
+- Replaced wildcard `https:` in CSP `img-src`/`connect-src` with the exact
+  Maptoolkit/Mapterhorn/Fonts hosts used by the dark style.
+- Added `e2e/csp-smoke.mjs` and documented the allowlist in
+  `docs/architecture.md`. `unsafe-inline` in `style-src` was tested and kept:
+  the route UI uses inline style attributes.
+
 ## Unreleased — fixes handoff PR 3 (H4)
 
 ### Fixed
