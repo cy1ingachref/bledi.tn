@@ -69,6 +69,6 @@ USER bledi
 EXPOSE 8000
 
 HEALTHCHECK --interval=10s --timeout=5s --retries=5 --start-period=30s \
-  CMD ["curl", "-f", "http://localhost:8000/health"]
+  CMD ["curl", "-f", "http://localhost:8000/api/v1/health"]
 
 CMD ["uvicorn", "--factory", "bledi_transit.main:create_app", "--host", "0.0.0.0", "--port", "8000"]

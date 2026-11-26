@@ -42,6 +42,7 @@ mean `apps/web-react`, and `services/transit-router` means `services/transit`
 - Owner decisions resolved in `docs/decisions/0002-owner-decisions.md`.
 - React is canonical; Docker stack verified healthy; CI being repointed
   from `apps/web` to `apps/web-react`.
+- Fixes PR 1 (H2/L1/L2): routing port unpublished, healthchecks aligned, transit db dependency removed.
 - Open (owner has not chosen): pilot region, tracking privacy retention/minimum
   contributors.
 
