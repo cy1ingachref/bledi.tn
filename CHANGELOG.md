@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — fixes handoff PR 3 (H4)
+
+### Fixed
+- Nominatim adapter: contact from `NOMINATIM_CONTACT` (fail startup in
+  production when unset), lock-protected 1 s throttle, 5 s configurable
+  timeout, LRU+TTL cache, and 30 s negative caching of failures.
+- Removed unused `geocodePlaces()` from the React app so address search can
+  never run as-you-type against the public Nominatim instance.
+- Added `services/transit/tests/test_nominatim.py` (6 tests).
+
 ## Unreleased — fixes handoff PR 2 (H1)
 
 ### Fixed

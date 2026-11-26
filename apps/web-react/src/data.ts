@@ -73,24 +73,10 @@ export async function loadStations(): Promise<Place[]> {
   return _stations ?? [];
 }
 
-export async function geocodePlaces(q: string, limit = 8): Promise<Place[]> {
-  try {
-    const data = await api(`/geocode?q=${encodeURIComponent(q)}&limit=${limit}`);
-    return ((data.results || []) as any[]).map((r) => ({
-      id: String(r.name || `${r.lat},${r.lon}`),
-      fr: String(r.display_name || r.name || q),
-      ar: String(r.display_name || r.name || q),
-      en: String(r.display_name || r.name || q),
-      pos: [Number(r.lat), Number(r.lon)] as LatLng,
-      kind: "place" as const,
-      mode: r.type === "city" ? "city" : "unknown",
-      operator: "",
-    }));
-  } catch {
-    return [];
-  }
-}
 
+// Geocoding is deliberately not wired into autocomplete: Nominatim's public
+// usage policy forbids as-you-type queries. The backend /api/v1/geocode
+// endpoint remains available for an explicit address-search action.
 // TGM line (Tunis–Goulette–Marsa), ordered. Curated: this is the reference the
 // map and the popular-trip chips use, and the backend has no Arabic names.
 export const TGM: Place[] = [
