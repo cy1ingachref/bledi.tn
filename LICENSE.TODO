@@ -1,6 +1,10 @@
-LICENSE STATUS — UNDECIDED (pending provenance audit, see docs/provenance.md)
+DATA LICENSE — TRANSITIONAL (see docs/provenance.md, docs/decisions/0002-owner-decisions.md)
 
-This repository intentionally does NOT claim any license yet.
+The CODE is now licensed under MIT (see LICENSE). The DATA remains transitional:
+the Tunismapper-derived seed is being retired in favour of an open-source
+rebuild (OSM public-transport relations / operator data). This file will be
+removed once the rebuild lands and the dataset license is stated in
+`data/SOURCES.md`.
 
 ## Data sources that are NOT licensed for redistribution
 
@@ -42,8 +46,6 @@ third-party source. None of their terms have been verified:
 - Contact Tunismapper to clarify terms, or replace that data with licensable
   sources (Transtu PDFs, SNCFT, OSM under ODbL, or own field data).
 - Contact BizerteConnect, or drop the 117 non-routable `bc_bus_*` lines.
-- Choose a license for the **code** (for example MIT, Apache-2.0, or GPL) once
-  the data provenance is settled. The code and the data can carry different
-  licenses, and they should be stated separately.
+- Code license: **MIT** (owner decision, 2026-11-26). Data still transitional: open-source rebuild in progress.
 
 See docs/provenance.md for the current provenance audit.

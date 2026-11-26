@@ -69,7 +69,7 @@ describe("linePathRuns", () => {
         ],
       ])
     );
-    // Leaflet wants [lat, lon]; latitude for Tunis must stay ~36.8.
+    // Coordinates stay [lat, lon]; latitude for Tunis must stay ~36.8.
     expect(runs[0][0][0]).toBeCloseTo(36.80, 5);
     expect(runs[0][0][1]).toBeCloseTo(10.19, 5);
   });
