@@ -21,7 +21,7 @@ from bledi_transit.adapters.http import routing as routing_routes
 from bledi_transit.adapters.http.deps import Services
 from bledi_transit.adapters.http.errors import install_error_handlers
 from bledi_transit.adapters.http.rate_limit import install_rate_limit
-from bledi_transit.adapters.nominatim import NominatimGeocoder
+from bledi_transit.adapters.nominatim import NominatimGeocoder, contact_from_env
 from bledi_transit.adapters.seed_files import SeedFileNetwork
 from bledi_transit.application.catalog import Catalog
 from bledi_transit.application.network import Network
@@ -45,6 +45,7 @@ class Config:
     road_graph: Path
     rail_graph: Path
     allowed_origins: tuple[str, ...]
+    geocode_contact: str
 
     @classmethod
     def from_env(cls) -> Config:
@@ -55,11 +56,13 @@ class Config:
         allowed = tuple(o.strip() for o in raw.split(",") if o.strip())
         if not allowed:
             raise RuntimeError("ALLOWED_ORIGINS must not be empty")
+        geocode_contact = contact_from_env()
         return cls(
             data_dir=data_dir,
             road_graph=Path(os.environ.get("ROAD_GRAPH_PATH") or data_dir / "road_graph.npz"),
             rail_graph=Path(os.environ.get("RAIL_GRAPH_PATH") or data_dir / "rail_graph.npz"),
             allowed_origins=allowed,
+            geocode_contact=geocode_contact,
         )
 
 
@@ -83,7 +86,7 @@ def build_services(config: Config) -> Services:
     return Services(
         catalog=Catalog(network, data, paths=router.paths),
         router=router,
-        geocoder=NominatimGeocoder(),
+        geocoder=NominatimGeocoder(contact=config.geocode_contact),
     )
 
 
