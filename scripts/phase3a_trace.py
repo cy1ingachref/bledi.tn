@@ -47,7 +47,7 @@ MAP_RAIL = os.path.join(ROOT, "data", "map_rail.geojson")
 ROAD_GRAPH = os.path.join(ROOT, "data", "road_graph.npz")
 RAIL_GRAPH = os.path.join(ROOT, "data", "rail_graph.npz")
 SUMMARY_OUT = os.path.join(ROOT, "data", "phase3a_summary.json")
-REPORT_OUT = os.path.join(ROOT, "phase3a_report.md")
+REPORT_OUT = os.path.join(ROOT, "docs", "reports", "phase3a_report.md")
 INDEX_PATH = os.path.join(TABLES, "index.json")
 
 R_EARTH = 6_371_008.8
