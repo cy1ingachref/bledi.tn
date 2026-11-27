@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — Overpass HTTP error handling fix
+
+### Fixed
+- `scripts/fetch_osm_export.py`: `HTTPError.status` is a read-only property;
+  setting it raised `AttributeError` and aborted the fetch before the retry/fallback
+  logic could run. `FetchError` now carries `status` explicitly, so a 502/504 is
+  handled as a retryable endpoint failure and the next endpoint is tried.
+- Added two regression tests (status carried on `FetchError`; `_fetch_once`
+  wraps `urllib.error.HTTPError` without `AttributeError`).
+
 ## Unreleased — open-data cutover WP6 (golden routes + comparison)
 
 ### Added
