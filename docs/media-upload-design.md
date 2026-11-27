@@ -29,7 +29,8 @@ data grows.
   URL. The response is `private, max-age=300` and `nosniff`.
 - **The browser cannot load it directly.** The endpoint needs the caller's
   token, so the client fetches the bytes and shows them through an object URL
-  (`fetchMedia` in `apps/web/src/lib/api.js`).
+  The archived Svelte client had a `fetchMedia` helper; the current React app
+  (`apps/web-react/`) has not wired media viewing yet.
 
 What is not done: video, object storage and moderation. The JSON create path
 still accepts a `media_url` pointing at a third-party host; the multipart path

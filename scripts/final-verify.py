@@ -17,9 +17,10 @@ import json
 import os
 import sys
 from collections import defaultdict
+from pathlib import Path
 
-BASE = r"C:\Users\cy1in\bledi.tn"
-CATALOG_BUILD = os.path.join(BASE, "apps", "web", "build", "transport_catalog.json")
+BASE = Path(__file__).resolve().parents[1]
+CATALOG_BUILD = os.path.join(BASE, "data", "derived", "transport_catalog.json")
 SEED = os.path.join(BASE, "data", "seed_all_tunisia_routes.CLEANED.corrected.json")
 
 PASS = 0
