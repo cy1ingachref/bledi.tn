@@ -6,7 +6,7 @@
 > the 26 "ambiguous" conflicts are SNCFT halts in official data, and
 > `SLIMENE KEHIA` is officially metro, not the bus stop OSM claims.
 
-Reference: `C:\Users\cy1in\tunisia_transit\tunisia_transit_stops.txt`
+Reference: `~/tunisia_transit/tunisia_transit_stops.txt`
 (OSM via Overpass, ODbL 1.0, data date 2026-10-02 16:49 UTC).
 
 Compared against our seed at `9ccf7ad`. Companion to `docs/osm-stop-audit.md`,

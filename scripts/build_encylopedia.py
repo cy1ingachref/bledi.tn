@@ -11,14 +11,15 @@ transport catalog and by the docs/guide pages.
 """
 
 from __future__ import annotations
+from pathlib import Path
+REPO = Path(__file__).resolve().parents[1]
 
 import json
-from pathlib import Path
 
 DOWNLOADS = Path(
-    "C:/Users/cy1in/Downloads"
+    str(Path.home() / "Downloads")
 )  # files were attached here
-OUT = Path("C:/Users/cy1in/bledi.tn/data/transport_encyclopedia.json")
+OUT = REPO / "data" / "transport_encyclopedia.json"
 
 # Human-readable labels for the encyclopedia sections, per locale.
 ENCYC_LABELS = {

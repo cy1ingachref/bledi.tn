@@ -13,15 +13,15 @@ two disagree the commune tells us which one is wrong.
 """
 
 from __future__ import annotations
+from pathlib import Path
 
 import csv
 import json
 import re
 import unicodedata
-from pathlib import Path
 
-ROOT = Path(r"C:\Users\cy1in\bledi.tn")
-DUMP = Path(r"C:\Users\cy1in\Downloads\tunisia-transport-data")
+ROOT = Path(__file__).resolve().parents[2]
+DUMP = (Path.home() / "Downloads" / "TunisiaTransport")
 TNRP = DUMP / "01-bus-network" / "operator-exports" / "a6787314-3207-40a6-bbc4-534b84571371_a58870d0-6f61-4e8e-acda-6aa94a9b0acc.csv"
 
 

@@ -11,14 +11,14 @@ that do not match the named place.
 """
 
 from __future__ import annotations
+from pathlib import Path
 
 import csv
 import json
 import sys
-from pathlib import Path
 
-ROOT = Path(r"C:\Users\cy1in\bledi.tn")
-DUMP = Path(r"C:\Users\cy1in\Downloads\tunisia-transport-data")
+ROOT = Path(__file__).resolve().parents[2]
+DUMP = (Path.home() / "Downloads" / "TunisiaTransport")
 WB = DUMP / "01-bus-network" / "operator-exports" / "BLEDI_transport.xlsx"
 LOU = DUMP / "01-bus-network" / "tunisia_louage_network.csv"
 

@@ -10,19 +10,19 @@ to be.
 """
 
 from __future__ import annotations
+from pathlib import Path
 
 import csv
 import json
 import math
 import sys
 import unicodedata
-from pathlib import Path
 
-ROOT = Path(r"C:\Users\cy1in\bledi.tn")
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tool"))
 from audit_station_placement import WaterIndex  # noqa: E402
 
-DUMP = Path(r"C:\Users\cy1in\Downloads\tunisia-transport-data")
+DUMP = (Path.home() / "Downloads" / "TunisiaTransport")
 TNRP = (DUMP / "01-bus-network" / "operator-exports"
         / "a6787314-3207-40a6-bbc4-534b84571371_a58870d0-6f61-4e8e-acda-6aa94a9b0acc.csv")
 

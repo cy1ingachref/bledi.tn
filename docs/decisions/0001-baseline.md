@@ -1,7 +1,7 @@
 # 0001 — Baseline (T0.1 / T0.2)
 
 Date: 2026-11-26
-Repo: `C:\Users\cy1in\bledi.tn`, branch `main`, HEAD `c11db41`
+Repo: the bledi.tn checkout, branch `main`, HEAD `c11db41`
 Tag: `baseline-2026-11`
 
 This record is the Phase 0 baseline required by `bledi-agent-brief.md` T0.1.

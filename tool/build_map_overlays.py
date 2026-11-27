@@ -18,12 +18,12 @@ overlay the browser cannot load and one it can.
 """
 
 from __future__ import annotations
-
-import json
 from pathlib import Path
 
+import json
+
 ROOT = Path(__file__).resolve().parents[1]
-DUMP = Path(r"C:\Users\cy1in\Downloads\tunisia-transport-data")
+DUMP = (Path.home() / "Downloads" / "TunisiaTransport")
 RAIL_SRC = DUMP / "02-rail-metro-tgm" / "rail-network-exports" / "export.geojson"
 ROAD_SRC = DUMP / "03-roads" / "highways" / "export .geojson"
 

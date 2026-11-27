@@ -13,7 +13,7 @@ import json
 from collections import defaultdict
 from pathlib import Path
 
-BASE = Path("C:/Users/cy1in/bledi.tn")
+BASE = Path(__file__).resolve().parents[1]
 SEED = BASE / "data" / "seed_all_tunisia_routes.CLEANED.json"
 OUT  = BASE / "data" / "seed_all_tunisia_routes.CLEANED.corrected.json"
 

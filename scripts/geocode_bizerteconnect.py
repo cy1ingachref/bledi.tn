@@ -1,4 +1,6 @@
 """Geocode BizerteConnect stations that are in water using Nominatim."""
+from pathlib import Path
+REPO = Path(__file__).resolve().parents[1]
 import json
 import time
 import urllib.request
@@ -52,7 +54,7 @@ for sid, query in STATIONS_TO_GEOCODE:
 print(f"\nGeocoded {len(results)}/{len(STATIONS_TO_GEOCODE)} stations")
 
 # Save results
-with open(r"C:\Users\cy1in\bledi.tn\data\bizerteconnect_geocoded.json", "w") as f:
+with open(REPO / "data" / "bizerteconnect_geocoded.json", "w") as f:
     json.dump(results, f, indent=2)
 
 print("Saved to data/bizerteconnect_geocoded.json")

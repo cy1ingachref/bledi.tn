@@ -14,18 +14,18 @@ Usage:
     python scripts/import_bizerteconnect.py --write
 """
 from __future__ import annotations
+from pathlib import Path
 
 import argparse
 import json
 import math
 import sys
-from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SEED = ROOT / "data" / "seed_all_tunisia_routes.tagged.json"
-BIZ_SOURCE = Path(
-    r"C:\Users\cy1in\Downloads\tunisia-transport-data"
-    r"\06-docs-tools\TunisiaTransport-repo\data\seed_lines_bizerte.json"
+BIZ_SOURCE = (
+    Path.home() / "Downloads" / "TunisiaTransport"
+    / "06-docs-tools" / "TunisiaTransport-repo" / "data" / "seed_lines_bizerte.json"
 )
 
 TOLERANCE_M = 150.0

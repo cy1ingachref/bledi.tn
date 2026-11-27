@@ -60,3 +60,8 @@ jobs:
       # The checksum of the corrected seed, and the invariants the pipeline guarantees.
       - name: Verify the seed
         run: python scripts/verify_seed.py
+
+      # Fail if a local Windows user path sneaks back into kept code/docs.
+      # One-off repair scripts and data provenance strings are excluded.
+      - name: No hard-coded local paths
+        run: python scripts/check_no_local_paths.py
