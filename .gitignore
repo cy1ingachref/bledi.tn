@@ -83,6 +83,10 @@ scripts/tunismapper_all_routes_stops.json
 scripts/tunismapper_station_details.json
 apps/mobile/tool/osm_nodes_cache.json
 
+# Raw Overpass exports are large third-party snapshots: fetch them locally,
+# commit only the manifest that describes them. (WP1 open-data cutover)
+data/osm_overpass/tunisia_pt.json
+
 # Claude Code local project state (may hold personal settings)
 .claude/
 

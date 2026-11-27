@@ -1,0 +1,11 @@
+{
+  "_comment": "Template only. A real fetch replaces this file with the manifest written by scripts/fetch_osm_export.py. Overpass was not reachable from the build host at authoring time, so no export/hash is claimed here.",
+  "query": "[out:json][timeout:600];\narea[\"ISO3166-1\"=\"TN\"][admin_level=2]->.a;\n(\n  node(area.a)[\"public_transport\"];\n  node(area.a)[\"highway\"=\"bus_stop\"];\n  node(area.a)[\"railway\"];\n  node(area.a)[\"amenity\"=\"bus_station\"];\n  node(area.a)[\"amenity\"=\"ferry_terminal\"];\n  relation(area.a)[\"type\"=\"route\"];\n  relation(area.a)[\"type\"=\"route_master\"];\n);\nout body;\n>;\nout skel qt;",
+  "fetched_at_utc": null,
+  "osm3s_timestamp_osm_base": null,
+  "element_counts": {},
+  "export_sha256": null,
+  "export_path": "data/osm_overpass/tunisia_pt.json",
+  "license": "ODbL — attribution required",
+  "how_to_refetch": "python scripts/fetch_osm_export.py  # writes the gitignored export and replaces this manifest"
+}
