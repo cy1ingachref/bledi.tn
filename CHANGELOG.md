@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased — fixes handoff PR 5 (transit trust proxy)
+
+### Fixed
+- `docker-compose.yml`: `transit` now sets `TRUST_PROXY_HEADERS=1`, so its
+  rate-limit backstop keys on the gateway-overwritten `X-Forwarded-For`
+  instead of pooling every user behind the gateway container IP.
+- `install_rate_limit` logs the effective `trust_proxy` value once at startup
+  (`rate limit: trust_proxy=...`) so a misconfiguration is visible in logs.
+- Docs clarified that `TRUST_PROXY_HEADERS` is not accounts-only.
+- Added `services/transit/tests/test_compose_config.py` and expanded
+  `test_rate_limit.py` with proxy trust, health-exemption and idle-key cases.
+- Added `pyyaml` to the transit dev extras and regenerated the hashed dev
+  lockfile so the compose-config guard also runs in CI.
+
 ## Unreleased — fixes handoff PR 3 (H4)
 
 ### Fixed

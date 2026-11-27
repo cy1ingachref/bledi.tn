@@ -20,7 +20,9 @@ flowchart LR
   read from `ACCOUNTS_URL` and `TRANSIT_URL`. The Vite dev and preview servers
   use the same map.
 - Only the gateway is published. The gateway overwrites `X-Forwarded-For`, so
-  accounts can trust it for per-IP rate limits (`TRUST_PROXY_HEADERS=1`).
+  both accounts and transit can trust it for per-IP rate limits
+  (`TRUST_PROXY_HEADERS=1` set on both services in `docker-compose.yml`). Transit
+  logs the effective value at startup as `rate limit: trust_proxy=...`.
 - Accounts connects as its own non-superuser role on plain PostgreSQL. It needs
   no extension: nearby queries filter on a `(lat, lon)` bounding box index,
   then compute the haversine distance in SQL.

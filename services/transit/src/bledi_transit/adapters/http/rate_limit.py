@@ -13,12 +13,15 @@ Security notes (H1 in bledi-fixes-handoff.md):
 """
 from __future__ import annotations
 
+import logging
 import os
 import time
 from collections import defaultdict, deque
 
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
+
+logger = logging.getLogger(__name__)
 
 RATE_LIMIT_REQUESTS = 60  # requests per window
 RATE_LIMIT_WINDOW = 60  # seconds
@@ -62,6 +65,11 @@ def install_rate_limit(app: FastAPI, *, limit: int = RATE_LIMIT_REQUESTS,
                        window: float = RATE_LIMIT_WINDOW,
                        trust_proxy: bool | None = None) -> None:
     """Install the per-IP backstop middleware on an app."""
+    if trust_proxy is None:
+        trust_proxy = trust_proxy_headers()
+    # Log once so a misconfiguration (everyone pooled behind the gateway) is
+    # visible in `docker compose logs transit`.
+    logger.info("rate limit: trust_proxy=%s", trust_proxy)
     buckets: dict[str, deque[float]] = defaultdict(deque)
 
     @app.middleware("http")

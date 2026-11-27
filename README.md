@@ -47,8 +47,10 @@ the role does not need to be a superuser. Environment:
 - `JWT_SECRET`: required, at least 32 bytes. The server refuses to start without it.
 - `ALLOWED_ORIGINS`: comma separated CORS origins, local origins by default. An
   invalid entry stops startup.
-- `TRUST_PROXY_HEADERS`: `1` to key rate limits on `X-Forwarded-For`. Set it only
-  behind a proxy that overwrites the header, as the web gateway does.
+- `TRUST_PROXY_HEADERS`: `1` to key rate limits on `X-Forwarded-For`. Set it
+  only behind a proxy that overwrites the header, as the web gateway does.
+  Both the accounts service and the transit rate-limit backstop set it in
+  `docker-compose.yml`; it is not accounts-only.
 - `RUST_LOG`: log level, `info` by default.
 
 ## API

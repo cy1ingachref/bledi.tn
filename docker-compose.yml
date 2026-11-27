@@ -47,6 +47,8 @@ services:
     environment:
       BLEDI_ENV: production
       NOMINATIM_CONTACT: ${NOMINATIM_CONTACT:?set NOMINATIM_CONTACT in .env}
+      # Only the web gateway can reach transit, and it overwrites X-Forwarded-For.
+      TRUST_PROXY_HEADERS: "1"
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8000/api/v1/health || exit 1"]
       interval: 10s
