@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — cleanup M6 (hard-coded paths)
+
+### Changed
+- Replaced hard-coded absolute Windows user paths in kept scripts and tools
+  with repo-relative `Path(__file__).resolve().parents[1|2]` and
+  `Path.home()/Downloads/...`; updated historical doc references too.
+- Archived 17 one-off repair scripts (no CI references) into
+  `archive/scripts-oneoff/` with a README.
+- Added `scripts/check_no_local_paths.py` and wired it into `data-pipeline.yml`
+  so a local path cannot return in tracked code/docs.
+
 ## Unreleased — cleanup M5 (root clutter)
 
 ### Changed

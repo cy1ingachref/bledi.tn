@@ -11,6 +11,8 @@ Strategy:
 6. Fix water stations
 7. Output new seed
 """
+from pathlib import Path
+REPO = Path(__file__).resolve().parents[1]
 import json
 import math
 import re
@@ -111,13 +113,13 @@ def detect_mode(name, source):
 
 # Load all data
 print("Loading data...")
-with open(r"C:\Users\cy1in\bledi.tn\data\extract_01_bus.json", encoding="utf-8") as f:
+with open(REPO / "data" / "extract_01_bus.json", encoding="utf-8") as f:
     bus_data = json.load(f)
-with open(r"C:\Users\cy1in\bledi.tn\data\extract_02_rail.json", encoding="utf-8") as f:
+with open(REPO / "data" / "extract_02_rail.json", encoding="utf-8") as f:
     rail_data = json.load(f)
-with open(r"C:\Users\cy1in\bledi.tn\data\extract_06_docs.json", encoding="utf-8") as f:
+with open(REPO / "data" / "extract_06_docs.json", encoding="utf-8") as f:
     docs_data = json.load(f)
-with open(r"C:\Users\cy1in\bledi.tn\data\seed_all_tunisia_routes.tagged.json", encoding="utf-8") as f:
+with open(REPO / "data" / "seed_all_tunisia_routes.tagged.json", encoding="utf-8") as f:
     existing_seed = json.load(f)
 
 print(f"Bus: {len(bus_data)}, Rail: {len(rail_data)}, Docs: {len(docs_data)}, Existing: {len(existing_seed['stations'])}")
@@ -434,6 +436,6 @@ print(f"Broken line references: {broken}")
 print(f"\nFinal: {len(new_stations)} stations, {len(new_lines)} lines")
 
 # Write
-with open(r"C:\Users\cy1in\bledi.tn\data\seed_all_tunisia_routes.tagged.json", "w", encoding="utf-8") as f:
+with open(REPO / "data" / "seed_all_tunisia_routes.tagged.json", "w", encoding="utf-8") as f:
     json.dump(new_seed, f, ensure_ascii=False, indent=1)
 print("Wrote seed")

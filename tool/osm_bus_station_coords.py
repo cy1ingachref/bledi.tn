@@ -10,17 +10,17 @@ coordinate is 32 km out to sea.
 """
 
 from __future__ import annotations
+from pathlib import Path
 
 import json
 import sys
 import unicodedata
-from pathlib import Path
 
-ROOT = Path(r"C:\Users\cy1in\bledi.tn")
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tool"))
 from audit_station_placement import WaterIndex  # noqa: E402
 
-DUMP = Path(r"C:\Users\cy1in\Downloads\tunisia-transport-data")
+DUMP = (Path.home() / "Downloads" / "TunisiaTransport")
 EXPORT = DUMP / "02-rail-metro-tgm" / "rail-map-exports" / "export.json"
 
 idx = WaterIndex(json.loads((ROOT / "data" / "water_polys.json").read_text(encoding="utf-8"))["elements"])

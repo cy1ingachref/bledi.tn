@@ -19,14 +19,14 @@ Covers three things:
 
 Ad-hoc (not suite green). Reports PASS/FAIL counts explicitly.
 """
+from pathlib import Path
 import json
 import socket
 import sys
 import time
 import urllib.request
-from pathlib import Path
 
-BASE = Path("C:/Users/cy1in/bledi.tn")
+BASE = Path(__file__).resolve().parents[1]
 RESULTS = []
 
 

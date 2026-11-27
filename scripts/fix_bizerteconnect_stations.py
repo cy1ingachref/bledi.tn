@@ -3,6 +3,8 @@
 2. Remove 1 station outside Bizerte area (bc_aeroport_tunis)
 3. Fix 2 stations with wrong coordinates (bc_ain_el_berda, bc_el_blat)
 """
+from pathlib import Path
+REPO = Path(__file__).resolve().parents[1]
 import json
 import math
 
@@ -34,7 +36,7 @@ CORRECT_COORDS = {
 }
 
 # Load seed
-with open(r"C:\Users\cy1in\bledi.tn\data\seed_all_tunisia_routes.tagged.json") as f:
+with open(REPO / "data" / "seed_all_tunisia_routes.tagged.json") as f:
     seed = json.load(f)
 
 stations = seed["stations"]
@@ -88,7 +90,7 @@ for sid, name, lat, lon, reason in issues:
     print(f"  {sid:40} {name[:30]:32} ({lat:.4f}, {lon:.4f}) {reason}")
 
 # Write
-with open(r"C:\Users\cy1in\bledi.tn\data\seed_all_tunisia_routes.tagged.json", "w", encoding="utf-8") as f:
+with open(REPO / "data" / "seed_all_tunisia_routes.tagged.json", "w", encoding="utf-8") as f:
     json.dump(seed, f, ensure_ascii=False, indent=1)
 
 print(f"\nWrote seed with {len(seed['stations'])} stations")

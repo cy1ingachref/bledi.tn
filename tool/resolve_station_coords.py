@@ -10,15 +10,15 @@ it produces garbage, which is why the first pass matched everything.
 """
 
 from __future__ import annotations
+from pathlib import Path
 
 import json
 import re
 import sys
 import unicodedata
-from pathlib import Path
 
-ROOT = Path(r"C:\Users\cy1in\bledi.tn")
-DUMP = Path(r"C:\Users\cy1in\Downloads\tunisia-transport-data")
+ROOT = Path(__file__).resolve().parents[2]
+DUMP = (Path.home() / "Downloads" / "TunisiaTransport")
 GEO = DUMP / "01-bus-network" / "operator-exports" / "_geolocated.json"
 NET = DUMP / "01-bus-network" / "operator-exports" / "_network.json"
 

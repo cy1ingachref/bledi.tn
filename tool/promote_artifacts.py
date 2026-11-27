@@ -10,6 +10,7 @@ recoverable from the source CSV the row came from.
 """
 
 from __future__ import annotations
+from pathlib import Path
 
 import argparse
 import csv
@@ -17,10 +18,9 @@ import json
 import shutil
 import sys
 from datetime import datetime, timezone
-from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-DUMP = Path(r"C:\Users\cy1in\Downloads\tunisia-transport-data")
+DUMP = (Path.home() / "Downloads" / "TunisiaTransport")
 SEED = ROOT / "data" / "seed_all_tunisia_routes.tagged.json"
 
 PROMOTE = [

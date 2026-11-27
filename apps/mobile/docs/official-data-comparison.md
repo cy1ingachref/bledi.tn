@@ -1,6 +1,6 @@
 # Official operator exports vs our seed
 
-Source: `C:\Users\cy1in\Downloads\transport` — a portal export of per-operator
+Source: `~/Downloads/transport` — a portal export of per-operator
 Tunisian transport datasets, fetched 2026-10-03.
 
 Compared against our seed at `d1f56ab`. This supersedes the two OSM-based
