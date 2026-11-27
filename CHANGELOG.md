@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased — cleanup M2 (data audit and archive)
+
+### Changed
+- Added `scripts/audit_data_usage.py` (read-only reference report for every
+  file under `data/`) and pasted its output in the PR.
+- Deleted `data/stations_stops_bus_numbers.json` (12.9 MB, zero references).
+- Archived the two obsolete seed snapshots into `archive/data-pipeline-history/`
+  with a README, and documented the canonical seed chain in `data/SOURCES.md`.
+
 ## Unreleased — cleanup M6 (hard-coded paths)
 
 ### Changed

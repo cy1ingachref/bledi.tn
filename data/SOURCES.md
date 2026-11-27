@@ -18,6 +18,24 @@ with a README explaining every subfolder. Layout:
 | `05-raw-exports/` | Reserved (currently empty) |
 | `06-docs-tools/` | Earlier project snapshots, `Project Tmap.txt`, web-app requirements, OSRM build artifacts |
 
+## Canonical seed chain
+
+The committed seed used at runtime is built in this order:
+
+1. `seed_all_tunisia_routes.json` — untouched original import
+   (`scripts/convert_all_routes.py`).
+2. `seed_all_tunisia_routes.tagged.json` — provenance-tagged seed
+   (`scripts/tag_provenance.py`); read by `services/transit` and pinned by
+   `scripts/verify_seed.py`.
+3. `seed_all_tunisia_routes.CLEANED.corrected.json` — corrected seed
+   (`scripts/build_corrected_seed.py`, `scripts/correct_corrections.py`,
+   `scripts/corrected_pipeline.py`); read by `services/routing` and pinned by
+   `scripts/verify_seed.py`.
+
+`transport_map_corrected.json` (`scripts/build_transport_catalog.py`) is the
+mode-banded catalog consumed by the frontend and the Rust router. Obsolete
+intermediate snapshots live in `archive/data-pipeline-history/`.
+
 ## What this repo keeps
 
 `data/` holds only the **derived, committed** datasets the app loads at runtime:
