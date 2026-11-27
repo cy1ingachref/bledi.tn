@@ -64,6 +64,7 @@ jobs:
             echo "POSTGRES_PASSWORD=$(openssl rand -hex 16)"
             echo "ACCOUNTS_DB_PASSWORD=$(openssl rand -hex 16)"
             echo "JWT_SECRET=$(openssl rand -hex 32)"
+            echo "NOMINATIM_CONTACT=ci@example.com"
           } > .env
           docker compose up -d --build
 
