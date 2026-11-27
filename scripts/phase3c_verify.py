@@ -3,7 +3,7 @@
 
 Runs 5 sample routes, records fastest/cheapest legs/time/fare from each
 service that is actually reachable, compares when both run, and writes
-phase3c_routes.json next to this script's repo root. Never fabricates:
+phase3c_routes.json under docs/reports/data/. Never fabricates:
 unreachable services are recorded as unavailable with the real error.
 """
 from __future__ import annotations
@@ -130,7 +130,7 @@ def main():
             rec[f"rust_{obj}"] = rust_route(rust, start, end, obj) if rust else {"status": None, "error": "rust_unavailable"}
         out["routes"].append(rec)
         print(name, rec["python_fastest"], rec["rust_fastest"], flush=True)
-    dest = ROOT / "phase3c_routes.json"
+    dest = ROOT / "docs" / "reports" / "data" / "phase3c_routes.json"
     dest.write_text(json.dumps(out, indent=2))
     print(f"wrote {dest}  python={out['python_health']} rust={rust} {rhealth}")
 

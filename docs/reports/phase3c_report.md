@@ -4,7 +4,7 @@
 - `services/routing/Dockerfile` — `rust:1-bookworm` builder → `debian:bookworm-slim`, binary + `data/transport_map_corrected.json`, EXPOSE 8081, curl healthcheck.
 - `docker-compose.yml` — added `transit-routing` (context `.`, dockerfile `services/routing/Dockerfile`, `8081:8081`, `BLEDI_DATA_DIR=/app/data`, healthcheck). All existing services preserved.
 - `k8s/namespace.yaml`, `k8s/routing.yaml`, `k8s/transit-api.yaml`, `k8s/web.yaml` — Deployment+Service each, namespace `bledi`, liveness/readiness probes (`/health`, `/api/v1/health`, `/`), resource requests/limits, no secrets.
-- `scripts/phase3c_verify.py` + `phase3c_routes.json` (raw results).
+- `scripts/phase3c_verify.py` + `docs/reports/data/phase3c_routes.json` (raw results).
 
 ## Verification (executed)
 - `cargo check` in `services/routing`: PASS (2 pre-existing dead-code warnings).
