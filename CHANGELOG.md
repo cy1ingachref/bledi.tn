@@ -1,5 +1,32 @@
 # Changelog
 
+## Unreleased — cleanup M2 (data audit and archive)
+
+### Changed
+- Added `scripts/audit_data_usage.py` (read-only reference report for every
+  file under `data/`) and pasted its output in the PR.
+- Deleted `data/stations_stops_bus_numbers.json` (12.9 MB, zero references).
+- Archived the two obsolete seed snapshots into `archive/data-pipeline-history/`
+  with a README, and documented the canonical seed chain in `data/SOURCES.md`.
+
+## Unreleased — cleanup M6 (hard-coded paths)
+
+### Changed
+- Replaced hard-coded absolute Windows user paths in kept scripts and tools
+  with repo-relative `Path(__file__).resolve().parents[1|2]` and
+  `Path.home()/Downloads/...`; updated historical doc references too.
+- Archived 17 one-off repair scripts (no CI references) into
+  `archive/scripts-oneoff/` with a README.
+- Added `scripts/check_no_local_paths.py` and wired it into `data-pipeline.yml`
+  so a local path cannot return in tracked code/docs.
+
+## Unreleased — cleanup M5 (root clutter)
+
+### Changed
+- Moved the historical phase/design reports from the repo root into
+  `docs/reports/` (raw JSON snapshots into `docs/reports/data/`) and linked
+  them from `docs/roadmap.md`.
+
 ## Unreleased — fixes handoff PR 4 (M1)
 
 ### Fixed
