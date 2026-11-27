@@ -49,6 +49,9 @@ services:
       NOMINATIM_CONTACT: ${NOMINATIM_CONTACT:?set NOMINATIM_CONTACT in .env}
       # Only the web gateway can reach transit, and it overwrites X-Forwarded-For.
       TRUST_PROXY_HEADERS: "1"
+      # legacy (default) or open. With open, set DATA_PROFILE_DIR=data/open
+      # and BLEDI_DATA_DIR=/app/open-data in .env after generating that profile.
+      DATA_PROFILE: ${DATA_PROFILE:-legacy}
     healthcheck:
       test: ["CMD-SHELL", "curl -f http://localhost:8000/api/v1/health || exit 1"]
       interval: 10s
