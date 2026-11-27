@@ -65,3 +65,8 @@ jobs:
       # One-off repair scripts and data provenance strings are excluded.
       - name: No hard-coded local paths
         run: python scripts/check_no_local_paths.py
+
+      # WP5 provenance gate: enforcing for the open profile, informational for
+      # the default legacy profile (which still carries third-derived records).
+      - name: Provenance gate (legacy — informational)
+        run: python scripts/check_provenance.py --profile legacy

@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased — open-data cutover WP5 (open profile, side by side)
+
+### Added
+- `docs/data-schemas.md`: exact file names/shapes read by the Rust and Python
+  services, derived from `graph.rs`, `main.rs`, `seed_files.py` and the Dockerfiles.
+- `scripts/open_pipeline.py`: converts `seed_open_source.json` into the mirrored
+  `data/open/` files without switching any service.
+- `scripts/check_provenance.py`: enforcing for `open` (zero `unknown-third-party`),
+  informational for `legacy`; wired into `data-pipeline.yml`.
+- `DATA_PROFILE` env (default `legacy`) passed to both services in compose.
+- 6 tests in `services/transit/tests/test_open_pipeline.py`.
+
 ## Unreleased — open-data cutover WP4 (per-mode defaults + estimated flag)
 
 ### Added
