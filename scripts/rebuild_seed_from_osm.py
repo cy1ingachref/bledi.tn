@@ -7,39 +7,21 @@ public-transport data and writes a *derived* seed:
 
     data/seed_open_source.json
 
-Inputs (all optional, all derived from OpenStreetMap, ODbL):
-  - an Overpass JSON export containing nodes with `public_transport=stop_position`
-    / `highway=bus_stop` / `railway=station` etc. and relations of type
-    `route=bus|train|tram|subway` with `member` roles;
-  - the existing `data/osm_overpass/taxi_louage_stations.json` for taxi/louage
-    hubs (already OSM-derived and committed).
+Fetch an export with `scripts/fetch_osm_export.py`; the raw export is
+gitignored and described by `data/osm_overpass/manifest.json`.
 
-Fetch an export (run where the Overpass API is reachable), e.g.:
+WP2 fixes (each proved by services/transit/tests/test_osm_converter.py):
+1. mode derived from standard OSM flags (bus=yes/train=yes/...), not tags["mode"];
+2. stop_position + platform duplicates merged via public_transport=stop_area
+   relations, with every OSM id kept in `osm_ids`;
+3. lines_served built from a station->lines index (all lines, not the first);
+4. route relations grouped by route_master into one line with direction variants;
+5. lines with <2 resolved stops dropped and counted;
+6. unnamed stops flagged `unnamed: true`;
+7. Tunisia bounding box + coordinate-type + duplicate-id sanity checks;
+8. louage source/date recorded in the manifest.
 
-    curl -G --data-urlencode 'data=[out:json][timeout:180];
-      area["name"="Tunisie"]->.a;
-      (node(area.a)["public_transport"];
-       node(area.a)["highway"="bus_stop"];
-       node(area.a)["railway"="station"];
-       relation(area.a)["type"="route"]["route"];
-      );
-      out body; >; out skel qt;' \
-      https://overpass-api.de/api/interpreter > data/osm_overpass/tunisia_pt.json
-
-Then:
-
-    python scripts/rebuild_seed_from_osm.py data/osm_overpass/tunisia_pt.json
-
-Output shape matches the runtime seed closely enough for the importers:
-{ "metadata": {...}, "stations": [...], "lines": [...] }
-
-Stations carry `source: "osm"`, `license_status: "odbl"`, and an OSM id so
-attribution is auditable. Lines carry `source: "osm"`, `license_status: "odbl"`,
-mode, operator, and ordered stop ids from the route relation members.
-
-NOTE: the rebuild is staged. This first slice produces the derived file and a
-provenance report; switching the services to read it is a separate, tested
-task (do not silently swap the seed under a green test suite).
+NOTE: the runtime seed is NOT switched here. WP5 adds a side-by-side profile.
 """
 from __future__ import annotations
 
@@ -52,16 +34,28 @@ REPO = Path(__file__).resolve().parents[1]
 DEFAULT_EXPORT = REPO / "data" / "osm_overpass" / "tunisia_pt.json"
 OUT = REPO / "data" / "seed_open_source.json"
 LOUAGE = REPO / "data" / "osm_overpass" / "taxi_louage_stations.json"
+MANIFEST = REPO / "data" / "osm_overpass" / "manifest.json"
+
+# Padded Tunisia bounding box, shared with scripts/verify_seed.py.
+BOX = (30.23, 37.56, 7.50, 11.65)  # (min_lat, max_lat, min_lon, max_lon)
 
 MODE_MAP = {
-    "bus": "bus",
-    "train": "train",
-    "rail": "rail",
-    "tram": "tram",
-    "subway": "metro",
-    "metro": "metro",
-    "ferry": "ferry",
+    "bus": "bus", "train": "train", "rail": "rail", "tram": "tram",
+    "subway": "metro", "metro": "metro", "ferry": "ferry",
 }
+# Standard OSM stop-node flags, in priority order (rail beats bus at interchanges).
+MODE_FLAGS = (
+    ("railway", ("station", "halt", "tram_stop", "stop"), "train"),
+    ("railway", ("tram_stop",), "tram"),
+    ("bus", ("yes",), "bus"),
+    ("highway", ("bus_stop",), "bus"),
+    ("amenity", ("bus_station",), "bus"),
+    ("subway", ("yes",), "metro"),
+    ("train", ("yes",), "train"),
+    ("tram", ("yes",), "tram"),
+    ("ferry", ("yes",), "ferry"),
+    ("amenity", ("ferry_terminal",), "ferry"),
+)
 
 
 def load_json(path: Path):
@@ -77,58 +71,119 @@ def elements(payload):
     raise ValueError("unrecognised Overpass export shape")
 
 
-def osm_stations(els):
-    stations = {}
+def in_bounds(lat, lon) -> bool:
+    if not isinstance(lat, (int, float)) or not isinstance(lon, (int, float)):
+        return False
+    return BOX[0] <= lat <= BOX[1] and BOX[2] <= lon <= BOX[3]
+
+
+def _mode_from_tags(tags: dict) -> str | None:
+    for key, allowed, mode in MODE_FLAGS:
+        if tags.get(key) in allowed:
+            # railway=tram_stop is tram, not train.
+            if key == "railway" and tags.get(key) == "tram_stop":
+                return "tram"
+            return mode
+    if tags.get("public_transport") in ("station", "platform", "stop_position"):
+        return MODE_MAP.get(tags.get("mode") or "")
+    return None
+
+
+def osm_stations(els, *, report: dict | None = None):
+    """Build stations from OSM nodes, merging stop_area duplicates.
+
+    Returns {canonical_id: station}. Every member OSM id is kept in `osm_ids`.
+    """
+    # Map node id -> raw station record for all plausibly stop-like nodes.
+    raw: dict[str, dict] = {}
     for el in els:
         if el.get("type") != "node":
             continue
         tags = el.get("tags") or {}
         lat, lon = el.get("lat"), el.get("lon")
-        if lat is None or lon is None:
+        if not in_bounds(lat, lon):
+            if report is not None:
+                report["out_of_bounds_nodes"] = report.get("out_of_bounds_nodes", 0) + 1
             continue
-        mode = None
-        if tags.get("public_transport") in ("stop_position", "platform", "station"):
-            mode = MODE_MAP.get(tags.get("mode") or "")
-            if not mode:
-                if tags.get("railway") in ("station", "halt", "tram_stop"):
-                    mode = "train" if tags.get("railway") != "tram_stop" else "tram"
-                elif tags.get("amenity") == "bus_station" or tags.get("highway") == "bus_stop":
-                    mode = "bus"
-                elif tags.get("amenity") == "ferry_terminal":
-                    mode = "ferry"
+        mode = _mode_from_tags(tags)
         if not mode:
             continue
-        name = tags.get("name") or tags.get("name:fr") or f"osm-node-{el['id']}"
-        stations[f"osm:{el['id']}"] = {
+        name = tags.get("name") or tags.get("name:fr") or ""
+        raw[str(el["id"])] = {
             "id": f"osm:{el['id']}",
-            "name": name,
+            "name": name or f"osm-node-{el['id']}",
             "name_ar": tags.get("name:ar", ""),
             "name_fr": tags.get("name:fr", ""),
             "name_en": tags.get("name:en", ""),
-            "lat": lat,
-            "lon": lon,
-            "mode": mode,
+            "lat": lat, "lon": lon, "mode": mode,
             "operator": tags.get("operator", ""),
-            "source": "osm",
-            "license_status": "odbl",
+            "source": "osm", "license_status": "odbl",
             "osm_id": el["id"],
+            "unnamed": not bool(name),
         }
+
+    # Merge stop_position/platform pairs via stop_area relations (finding 2).
+    alias: dict[str, str] = {}
+    for el in els:
+        tags = el.get("tags") or {}
+        if el.get("type") != "relation" or "stop_area" not in str(tags.get("type", "")):
+            continue
+        members = [str(m.get("ref")) for m in el.get("members", []) if str(m.get("ref")) in raw]
+        if not members:
+            continue
+        canonical = min(members)  # stable choice
+        for mid in members:
+            alias[mid] = canonical
+
+    stations: dict[str, dict] = {}
+    for nid, rec in raw.items():
+        canonical = alias.get(nid)
+        if canonical and nid != canonical:
+            # Keep every OSM id for provenance; discard the duplicate marker.
+            stations[f"osm:{canonical}"].setdefault("osm_ids", [int(canonical)])
+            if int(nid) not in stations[f"osm:{canonical}"]["osm_ids"]:
+                stations[f"osm:{canonical}"]["osm_ids"].append(int(nid))
+            if report is not None:
+                report["merged_duplicate_nodes"] = report.get("merged_duplicate_nodes", 0) + 1
+            continue
+        rec.setdefault("osm_ids", [int(nid)])
+        stations[rec["id"]] = rec
     return stations
 
 
-def osm_lines(els, stations):
-    lines = []
+def _mode_from_route(tags: dict) -> str | None:
+    return MODE_MAP.get(tags.get("route") or "")
+
+
+def osm_lines(els, stations, *, report: dict | None = None):
+    """Build lines with direction variants grouped by route_master."""
     node_to_id = {
-        sid.rsplit(":", 1)[1]: sid
-        for sid in stations
-        if sid.startswith("osm:")
+        str(s["osm_id"]): s["id"] for s in stations.values() if "osm_id" in s
     }
+    # Also index merged duplicate ids.
+    for s in stations.values():
+        for oid in s.get("osm_ids", []):
+            node_to_id[str(oid)] = s["id"]
+
+    route_els = [e for e in els if e.get("type") == "relation" and "route" in (e.get("tags") or {})]
+    master_members: dict[str, list[int]] = {}
     for el in els:
         if el.get("type") != "relation":
             continue
         tags = el.get("tags") or {}
-        route = tags.get("route")
-        if route not in MODE_MAP:
+        if tags.get("type") != "route_master":
+            continue
+        refs = [int(m["ref"]) for m in el.get("members", []) if m.get("type") == "relation" and str(m.get("ref", "")).isdigit()]
+        if refs:
+            master_members[str(el["id"])] = refs
+
+    by_master: dict[str, list[dict]] = defaultdict(list)
+    standalone: list[dict] = []
+    grouped_ids: set[str] = set()
+    for el in route_els:
+        tags = el.get("tags") or {}
+        mode = _mode_from_route(tags)
+        if not mode:
             continue
         stops = []
         for m in el.get("members", []):
@@ -136,20 +191,72 @@ def osm_lines(els, stations):
                 sid = node_to_id[str(m["ref"])]
                 if sid not in stops:
                     stops.append(sid)
-        if not stops:
+        if len(stops) < 2:
+            if report is not None:
+                report["dropped_short_lines"] = report.get("dropped_short_lines", 0) + 1
             continue
-        lines.append({
-            "id": f"osm:route:{el['id']}",
+        variant = {
+            "osm_id": el["id"],
             "name": tags.get("name") or tags.get("ref") or f"route-{el['id']}",
-            "number": tags.get("ref", ""),
-            "mode": MODE_MAP[route],
             "operator": tags.get("operator", ""),
             "stops": stops,
-            "source": "osm",
+            "direction": "forward",  # OSM route relations carry direction in name; kept as variant metadata
             "license_status": "odbl",
-            "osm_id": el["id"],
+        }
+        key = None
+        for mid, refs in master_members.items():
+            if el["id"] in refs:
+                key = mid
+                grouped_ids.add(str(el["id"]))
+                break
+        if key:
+            by_master[key].append(variant)
+        else:
+            standalone.append(variant)
+
+    lines: list[dict] = []
+    for mid, variants in by_master.items():
+        master = next((e for e in els if str(e.get("id")) == mid), {})
+        tags = master.get("tags") or {}
+        directions = []
+        for i, v in enumerate(variants):
+            directions.append({**v, "direction": "forward" if i == 0 else "backward"})
+        first_variant_id = str(variants[0]["osm_id"])
+        first_route = next(
+            (e for e in els if str(e.get("id")) == first_variant_id), {}
+        )
+        line_mode = _mode_from_route(tags) or _mode_from_route(first_route.get("tags") or {}) or "bus"
+        lines.append({
+            "id": f"osm:master:{mid}",
+            "name": tags.get("name") or variants[0]["name"],
+            "number": tags.get("ref") or variants[0].get("number", ""),
+            "mode": line_mode,
+            "operator": tags.get("operator") or variants[0]["operator"],
+            "stops": variants[0]["stops"],
+            "directions": directions,
+            "source": "osm", "license_status": "odbl", "osm_id": int(mid),
+            "osm_ids": [v["osm_id"] for v in variants],
+        })
+    for v in standalone:
+        lines.append({
+            "id": f"osm:route:{v['osm_id']}",
+            "name": v["name"], "number": "", "mode": "bus",
+            "operator": v["operator"], "stops": v["stops"],
+            "directions": [v], "source": "osm", "license_status": "odbl",
+            "osm_id": v["osm_id"],
         })
     return lines
+
+
+def link_lines_served(stations, lines) -> None:
+    """Every station lists every line serving it (finding 3)."""
+    index: dict[str, set[str]] = defaultdict(set)
+    for line in lines:
+        for sid in line["stops"]:
+            index[sid].add(line["id"])
+    for sid, ids in index.items():
+        if sid in stations:
+            stations[sid]["lines_served"] = sorted(ids)
 
 
 def louage_stations():
@@ -162,46 +269,45 @@ def louage_stations():
             "id": f"osm:louage:{s['id']}",
             "name": s.get("name") or f"louage-{s['id']}",
             "name_ar": s.get("name_ar", ""),
-            "lat": s["lat"],
-            "lon": s["lon"],
-            "mode": "louage",
+            "lat": s["lat"], "lon": s["lon"], "mode": "louage",
             "operator": s.get("operator", "Louage"),
-            "source": "osm",
-            "license_status": "odbl",
-            "osm_id": s["id"],
+            "source": "osm", "license_status": "odbl", "osm_id": s["id"],
             "louage_route_type": s.get("louage_route_type", "local"),
         })
     return out
 
 
-def main():
+def main() -> int:
     export = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_EXPORT
     if not export.exists():
         print(f"ERROR: OSM export not found: {export}", file=sys.stderr)
-        print("Fetch it with the Overpass query in this script's docstring.", file=sys.stderr)
+        print("Fetch it with scripts/fetch_osm_export.py.", file=sys.stderr)
         return 2
+    report: dict = {}
     payload = load_json(export)
     els = elements(payload)
-    stations = osm_stations(els)
-    lines = osm_lines(els, stations)
+    stations = osm_stations(els, report=report)
+    lines = osm_lines(els, stations, report=report)
     for s in louage_stations():
         stations.setdefault(s["id"], s)
+    link_lines_served(stations, lines)
 
-    served = {sid for line in lines for sid in line["stops"]}
-    for sid in served:
-        if sid in stations:
-            stations[sid].setdefault("lines_served", []).append(
-                next(line["id"] for line in lines if sid in line["stops"])
-            )
-
+    manifest = {}
+    if MANIFEST.exists():
+        manifest = load_json(MANIFEST)
     out = {
         "metadata": {
             "source": "OpenStreetMap (ODbL) public-transport exports + OSM taxi/louage hubs",
             "license": "ODbL — attribution required",
             "generated_by": "scripts/rebuild_seed_from_osm.py",
             "input_export": str(export.relative_to(REPO)) if export.is_relative_to(REPO) else str(export),
-            "total_lines": len(lines),
-            "total_stations": len(stations),
+            "osm3s_timestamp_osm_base": manifest.get("osm3s_timestamp_osm_base"),
+            "total_lines": len(lines), "total_stations": len(stations),
+            "drop_counts": report,
+            "louage_source": {
+                "file": str(LOUAGE.relative_to(REPO)),
+                "note": "OSM-derived taxi/louage hubs; see manifest for export timestamp",
+            },
         },
         "stations": list(stations.values()),
         "lines": lines,
@@ -210,6 +316,7 @@ def main():
     with OUT.open("w", encoding="utf-8") as fh:
         json.dump(out, fh, ensure_ascii=False, indent=2)
     print(f"wrote {OUT.relative_to(REPO)}: {len(stations)} stations, {len(lines)} lines")
+    print(f"drop counts: {report}")
     print("source data: OpenStreetMap (ODbL). Attribute OSM in the UI and docs.")
     return 0
 
