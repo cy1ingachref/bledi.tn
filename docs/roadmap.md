@@ -2,10 +2,16 @@
 
 ## Current state
 
-Two services (transit routing in Python, accounts in Rust), a SvelteKit web app
+Two services (transit routing in Python, accounts in Rust), a React web app
 that also serves as the gateway, and a Flutter client. Seed data covers 379
 lines and 7,452 stations countrywide. See [architecture](architecture.md) for
 how the parts fit and [provenance](provenance.md) for the data-source audit.
+
+Historical phase reports (moved out of the repo root by the M5 cleanup) are in
+[docs/reports/](reports/): `design-issues.md`, `fix_report.md`,
+`phase1_report.md`, `phase2_report.md`, `phase3a_report.md`, `phase3c_report.md`,
+and the raw route snapshots in `reports/data/`. They are reference material,
+not current plans.
 
 ## Previously planned phases (kept for context, not commitments)
 

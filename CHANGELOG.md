@@ -25,7 +25,8 @@
 ### Changed
 - Moved the historical phase/design reports from the repo root into
   `docs/reports/` (raw JSON snapshots into `docs/reports/data/`) and linked
-  them from `docs/roadmap.md`.
+  them from `docs/roadmap.md`. Updated `scripts/phase3a_trace.py` and
+  `scripts/phase3c_verify.py` to write to the new locations.
 
 ## Unreleased — fixes handoff PR 4 (M1)
 

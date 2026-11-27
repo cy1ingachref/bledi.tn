@@ -1,12 +1,14 @@
 """Apply geocoded coordinates and remove ungeocodable stations."""
+from pathlib import Path
+REPO = Path(__file__).resolve().parents[1]
 import json
 
 # Load seed
-with open(r"C:\Users\cy1in\bledi.tn\data\seed_all_tunisia_routes.tagged.json") as f:
+with open(REPO / "data" / "seed_all_tunisia_routes.tagged.json") as f:
     seed = json.load(f)
 
 # Load geocoded results
-with open(r"C:\Users\cy1in\bledi.tn\data\bizerteconnect_geocoded.json") as f:
+with open(REPO / "data" / "bizerteconnect_geocoded.json") as f:
     geocoded = json.load(f)
 
 # Stations to remove (can't geocode, no line references, wrong coords in water)
@@ -56,7 +58,7 @@ for sid, name, lat, lon, reason in issues:
     print(f"  {sid:40} {name[:30]:32} ({lat:.4f}, {lon:.4f}) {reason}")
 
 # Write
-with open(r"C:\Users\cy1in\bledi.tn\data\seed_all_tunisia_routes.tagged.json", "w", encoding="utf-8") as f:
+with open(REPO / "data" / "seed_all_tunisia_routes.tagged.json", "w", encoding="utf-8") as f:
     json.dump(seed, f, ensure_ascii=False, indent=1)
 
 print(f"\nWrote seed with {len(seed['stations'])} stations")

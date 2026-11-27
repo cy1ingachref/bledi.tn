@@ -1,4 +1,6 @@
 """Geocode remaining BizerteConnect stations using Overpass API."""
+from pathlib import Path
+REPO = Path(__file__).resolve().parents[1]
 import json
 import time
 import urllib.request
@@ -43,7 +45,7 @@ def geocode_overpass(name):
     return None, None
 
 # Load existing results
-with open(r"C:\Users\cy1in\bledi.tn\data\bizerteconnect_geocoded.json") as f:
+with open(REPO / "data" / "bizerteconnect_geocoded.json") as f:
     results = json.load(f)
 
 for sid, name in FAILED:
@@ -61,7 +63,7 @@ for sid, name in FAILED:
 print(f"\nTotal geocoded: {len(results)}/14")
 
 # Save results
-with open(r"C:\Users\cy1in\bledi.tn\data\bizerteconnect_geocoded.json", "w") as f:
+with open(REPO / "data" / "bizerteconnect_geocoded.json", "w") as f:
     json.dump(results, f, indent=2)
 
 print("Saved to data/bizerteconnect_geocoded.json")

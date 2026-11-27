@@ -14,19 +14,19 @@ the real position for the stops TNRP got wrong.
 """
 
 from __future__ import annotations
+from pathlib import Path
 
 import json
 import math
 import re
 import sys
 import unicodedata
-from pathlib import Path
 
-ROOT = Path(r"C:\Users\cy1in\bledi.tn")
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tool"))
 from audit_station_placement import WaterIndex  # noqa: E402
 
-DUMP = Path(r"C:\Users\cy1in\Downloads\tunisia-transport-data")
+DUMP = (Path.home() / "Downloads" / "TunisiaTransport")
 
 
 def norm(s: str) -> str:
