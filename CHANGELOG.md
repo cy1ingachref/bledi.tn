@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased — open-data cutover WP2 (converter fixes + validator)
+
+### Fixed / Added
+- Rewrote `scripts/rebuild_seed_from_osm.py` per review findings 1–8: mode from
+  standard OSM flags, stop_area duplicate merging with all OSM ids kept,
+  complete `lines_served` via an index, route_master direction grouping,
+  short-line dropping with counts, unnamed-stop flags, Tunisia bounds/type/duplicate
+  sanity checks, and louage source metadata in the manifest.
+- Added `scripts/verify_open_seed.py` (schema, unique ids, stop resolution,
+  bounds, license allowlist `odbl`/`official-public`) and 15 new tests
+  (8 converter + 7 validator) in `services/transit/tests/`.
+
 ## Unreleased — open-data cutover WP1 (reproducible fetch)
 
 ### Added
