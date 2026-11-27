@@ -25,6 +25,7 @@ export interface RouteOption {
   walkPaths: LatLng[][];
   stopsOnPath: LatLng[];
   headsign: Place;
+  estimated: boolean;
 }
 
 export async function planRoutes(from: Place, to: Place, now: Date): Promise<RouteOption[]> {
@@ -94,6 +95,7 @@ function toRouteOption(from: Place, to: Place, now: Date, it: any, _idx: number)
     walkPaths,
     stopsOnPath,
     headsign: to,
+    estimated: it.estimated === true,
   };
 }
 
@@ -111,7 +113,7 @@ function fallbackRoutes(from: Place, to: Place, now: Date): RouteOption[] {
         { kind: "bus", target: to, line: "Bus", minutes: ride, stops: 8 },
         { kind: "exit", target: to, minutes: 2 },
       ],
-      path: [from.pos, to.pos], walkPaths: [], stopsOnPath: [], headsign: to,
+      path: [from.pos, to.pos], walkPaths: [], stopsOnPath: [], headsign: to, estimated: true,
     });
   };
   const addTaxi = () => {
@@ -122,7 +124,7 @@ function fallbackRoutes(from: Place, to: Place, now: Date): RouteOption[] {
     R.push({
       id: "taxi", label: "Taxi", line: "Taxi", color: "#e0a800", minutes: ride, depart: dep, arrive, waitMin: 1, price: 4.5,
       steps: [{ kind: "taxi", target: to, minutes: ride }],
-      path: [from.pos, to.pos], walkPaths: [], stopsOnPath: [], headsign: to,
+      path: [from.pos, to.pos], walkPaths: [], stopsOnPath: [], headsign: to, estimated: true,
     });
   };
   addBus();

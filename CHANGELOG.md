@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — open-data cutover WP4 (per-mode defaults + estimated flag)
+
+### Added
+- `services/transit/src/bledi_transit/domain/mode_defaults.py`: declarative
+  per-mode headway/speed/fare defaults, every value marked `estimated: true`
+  with its source; official-public lines override via explicit step markers.
+- Itinerary API responses now carry `estimated`, surfaced as a small badge with
+  localized text (FR/AR/EN) on route cards in the React UI.
+- 5 tests in `services/transit/tests/test_mode_defaults.py`.
+
 ## Unreleased — open-data cutover WP3 (coverage report)
 
 ### Added

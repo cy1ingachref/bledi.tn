@@ -312,11 +312,18 @@ export default function App() {
               <div key={route.id + from.id + to.id} className="fade-up rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-800">
                 <div className="mb-3 flex items-center justify-between">
                   <div className="text-xs font-bold uppercase tracking-wider text-slate-400">{t.steps}</div>
-                  {route.id !== "taxi" && (
+                  <div className="flex items-center gap-2">
+                    {route.estimated && (
+                      <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700 dark:bg-amber-900/30 dark:text-amber-300" title={t.estimated}>
+                        {t.estimated}
+                      </span>
+                    )}
+                    {route.id !== "taxi" && (
                     <div className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
                       <Icon name="leaf" className="h-3 w-3" /> {t.co2} · {Math.round(route.minutes * 0.09 * 10) / 10} kg
                     </div>
                   )}
+                  </div>
                 </div>
                 <ol className="relative">
                   {route.steps.map((s, i) => {

@@ -345,6 +345,21 @@ def _geometry_report(steps: Sequence[dict[str, Any]]) -> tuple[bool, list[dict[s
     return (not gaps), gaps
 
 
+def _uses_estimated_defaults(c: dict[str, Any]) -> bool:
+    """True when timings/fares come from per-mode estimates, not official data.
+
+    A leg that carries an explicit `official: true` marker (the Tebourba PDF
+    lines) overrides the defaults. Otherwise wait/fare/speed are estimates,
+    which the API and UI surface so riders are not misled.
+    """
+    for step in c.get("steps") or ():
+        if not isinstance(step, dict):
+            continue
+        if step.get("official") or step.get("license_status") == "official-public":
+            return False
+    return True
+
+
 def _present(c: dict[str, Any], n: int, objective: str) -> dict[str, Any]:
     raw = c["raw"]
     modes = c["modes_used"]
@@ -365,6 +380,7 @@ def _present(c: dict[str, Any], n: int, objective: str) -> dict[str, Any]:
         "duration_s": round(c["duration_s"], 1),
         "transfers": tr,
         "fare_estimate_dinars": c["fare_estimate"],
+        "estimated": _uses_estimated_defaults(c),
         "modes_used": modes,
         "legs": c["steps"],
         "steps": c["steps"],
