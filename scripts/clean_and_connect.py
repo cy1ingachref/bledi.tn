@@ -6,9 +6,10 @@ import math
 from collections import defaultdict
 from pathlib import Path
 
-SEED = "C:/Users/cy1in/bledi.tn/data/seed_all_tunisia_routes.tagged.json"
-OUT  = "C:/Users/cy1in/bledi.tn/data/seed_all_tunisia_routes.CLEANED.json"
-MAP  = "C:/Users/cy1in/bledi.tn/data/transport_map.json"
+BASE = Path(__file__).resolve().parents[1]
+SEED = BASE / "data" / "seed_all_tunisia_routes.tagged.json"
+OUT  = BASE / "data" / "seed_all_tunisia_routes.CLEANED.json"
+MAP  = BASE / "data" / "transport_map.json"
 
 TUNISIA = dict(lat_min=30.23, lat_max=37.56, lon_min=7.60, lon_max=11.65)
 HARD = dict(lat_min=30.0,  lat_max=39.0,  lon_min=7.0,  lon_max=12.0)

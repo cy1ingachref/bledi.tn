@@ -9,12 +9,12 @@ them, plus the current line-number fields.
 """
 
 from __future__ import annotations
+from pathlib import Path
 
 import collections
 import json
-from pathlib import Path
 
-ROOT = Path(r"C:\Users\cy1in\bledi.tn")
+ROOT = Path(__file__).resolve().parents[2]
 SEED = ROOT / "data" / "seed_all_tunisia_routes.tagged.json"
 
 d = json.loads(SEED.read_text(encoding="utf-8"))

@@ -26,7 +26,7 @@ No commits. No data files modified. All counts below are computed by execution, 
 | `louage_links.json` / `louage_corridors.example.json` / `louage_stands_without_lines.csv` | — | Louage network. |
 | `osm_overpass/taxi_louage_stations.json` | 48 KB | 154 OSM taxi/louage stations. |
 | `transport_encyclopedia.json` | 36 KB | Driver guide (louage/taxi/tram/TGM…). |
-| `SOURCES.md` | — | Upstream raw data lives in `C:\Users\cy1in\Downloads\tunisia-transport-data\` (3.2 GB, not committed). |
+| `SOURCES.md` | — | Upstream raw data lives in `~/Downloads/TunisiaTransport/` (3.2 GB, not committed). |
 
 `apps/web/static/transport_catalog.json` (9.1 MB) is the frontend bundle; `icon-192/512.svg` are PWA icons, replaced for transport use by §5.
 

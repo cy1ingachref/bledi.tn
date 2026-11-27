@@ -11,6 +11,8 @@ Strategy:
 4. Deduplicate by name + position
 5. Write clean seed file
 """
+from pathlib import Path
+REPO = Path(__file__).resolve().parents[1]
 import json
 import math
 import re
@@ -105,7 +107,7 @@ def in_water(lat, lon):
 
 
 def load_data():
-    data_dir = r"C:\Users\cy1in\bledi.tn\data"
+    data_dir = REPO / "data"
     with open(f"{data_dir}\\extract_01_bus.json", encoding="utf-8") as f:
         bus_data = json.load(f)
     with open(f"{data_dir}\\extract_02_rail.json", encoding="utf-8") as f:
@@ -120,7 +122,7 @@ def load_data():
 def load_water_stations():
     """Load known water station IDs from water_stations.json."""
     import os
-    water_path = r"C:\Users\cy1in\bledi.tn\data\water_stations.json"
+    water_path = REPO / "data" / "water_stations.json"
     if not os.path.exists(water_path):
         return set()
     try:
@@ -399,7 +401,7 @@ def main():
     print(f"\n  Final: {len(new_stations)} stations, {len(new_lines)} lines")
     
     # Write
-    output_path = r"C:\Users\cy1in\bledi.tn\data\seed_all_tunisia_routes.tagged.json"
+    output_path = REPO / "data" / "seed_all_tunisia_routes.tagged.json"
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(new_seed, f, ensure_ascii=False, indent=1)
     print(f"\n  Wrote {output_path}")

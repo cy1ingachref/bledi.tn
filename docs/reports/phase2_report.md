@@ -97,7 +97,7 @@ CSV lines, so 14 CSV lines have `status: no_seed_line_match`.
 - **Check: `npm run check` → 0 errors, 9 warnings** (all pre-existing unused-CSS
   warnings in MapView/+page/login/memories; none from the new code).
   Note: the bare `npm` on this host is a broken `~/bin/npm` wrapper (executes a data
-  file); the check was run via `C:/Users/cy1in/nodejs/node-v22.17.0-win-x64/npm.cmd`.
+  file); the check was run via the project's pinned Node/npm toolchain.
 - **Build: `npm run build` → exit 0** ("✓ built in 10.52s", adapter-static wrote to
   `build/`), and `build/icons/{bus,louage,metro,taxi,train,walk}.svg` are present —
   icons are bundled and will be served at `/icons/*.svg`.

@@ -5,12 +5,12 @@
 """
 
 from __future__ import annotations
+from pathlib import Path
 
 import collections
 import json
-from pathlib import Path
 
-DUMP = Path(r"C:\Users\cy1in\Downloads\tunisia-transport-data")
+DUMP = (Path.home() / "Downloads" / "TunisiaTransport")
 
 FILES = [
     DUMP / "02-rail-metro-tgm" / "rail-network-exports" / "export.geojson",

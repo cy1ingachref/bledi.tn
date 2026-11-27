@@ -19,7 +19,7 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(r"C:\Users\cy1in\bledi.tn")
+ROOT = Path(__file__).resolve().parents[2]
 API = "http://127.0.0.1:8000"
 FAILS: list[str] = []
 N = 0

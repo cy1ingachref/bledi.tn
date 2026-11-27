@@ -125,3 +125,6 @@ archive/web-sveltekit/.svelte-kit/
 
 # Handoff/review archives are published as GitHub Releases, not committed.
 *.zip
+
+# Rust build output from `cargo test`/`cargo build` in the routing service.
+services/routing/target/

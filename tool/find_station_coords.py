@@ -11,6 +11,7 @@ source so the choice is auditable rather than assumed.
 """
 
 from __future__ import annotations
+from pathlib import Path
 
 import csv
 import json
@@ -18,10 +19,9 @@ import re
 import sys
 import urllib.parse
 import urllib.request
-from pathlib import Path
 
-ROOT = Path(r"C:\Users\cy1in\bledi.tn")
-DUMP = Path(r"C:\Users\cy1in\Downloads\tunisia-transport-data")
+ROOT = Path(__file__).resolve().parents[2]
+DUMP = (Path.home() / "Downloads" / "TunisiaTransport")
 OUT = ROOT / "out" / "station-coord-candidates.json"
 
 TARGETS = {

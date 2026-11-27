@@ -12,6 +12,7 @@ Also prints the exact seed rows for all five, so the before/after is explicit.
 """
 
 from __future__ import annotations
+from pathlib import Path
 
 import json
 import math
@@ -21,10 +22,9 @@ import time
 import unicodedata
 import urllib.parse
 import urllib.request
-from pathlib import Path
 
-ROOT = Path(r"C:\Users\cy1in\bledi.tn")
-DUMP = Path(r"C:\Users\cy1in\Downloads\tunisia-transport-data")
+ROOT = Path(__file__).resolve().parents[2]
+DUMP = (Path.home() / "Downloads" / "TunisiaTransport")
 
 
 def norm(s: str) -> str:
