@@ -77,6 +77,10 @@ out skel qt;"""
 class FetchError(Exception):
     """A network/HTTP failure from one endpoint."""
 
+    def __init__(self, message: str, status: int | None = None):
+        super().__init__(message)
+        self.status = status
+
 
 def user_agent_from_env() -> str:
     contact = os.environ.get("OVERPASS_CONTACT", "").strip()
@@ -162,8 +166,7 @@ def _fetch_once(endpoint: str, user_agent: str) -> bytes:
         with urllib.request.urlopen(req, timeout=660) as resp:
             return resp.read()
     except urllib.error.HTTPError as exc:
-        setattr(exc, "status", exc.code)
-        raise FetchError(f"HTTP {exc.code}") from exc
+        raise FetchError(f"HTTP {exc.code}", status=exc.code) from exc
     except (urllib.error.URLError, TimeoutError) as exc:
         raise FetchError(str(exc)) from exc
 

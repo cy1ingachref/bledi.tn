@@ -82,6 +82,26 @@ def test_retryable_statuses():
     assert not fetch.is_retryable(200)
 
 
+def test_fetch_error_carries_status():
+    from fetch_osm_export import FetchError
+    e = FetchError("HTTP 502", status=502)
+    assert e.status == 502 and "502" in str(e)
+
+
+def test_http_error_from_fetch_once_is_wrapped(monkeypatch):
+    import urllib.error
+    from fetch_osm_export import FetchError, _fetch_once
+    def boom(*a, **k):
+        raise urllib.error.HTTPError("http://x", 502, "Bad Gateway", {}, None)
+    monkeypatch.setattr(fetch.urllib.request, "urlopen", boom)
+    try:
+        _fetch_once("http://x", "ua")
+    except FetchError as e:
+        assert e.status == 502
+    else:
+        raise AssertionError("HTTPError was not wrapped in FetchError")
+
+
 def test_manifest_written_only_after_success(tmp_path, monkeypatch):
     # A failed fetch must leave no manifest behind.
     manifest = tmp_path / "manifest.json"
