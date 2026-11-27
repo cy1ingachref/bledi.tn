@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — Overpass fetch hardening (open-data cutover STEP 1)
+
+### Fixed
+- `scripts/fetch_osm_export.py`: treat Overpass error/timeout/out-of-memory
+  remarks as failures even on HTTP 200; require minimum stop-node/route-relation
+  counts (50/10) before writing anything; narrow `node["railway"]` to station
+  types; require `OVERPASS_CONTACT` for the User-Agent; one Retry-After-aware
+  retry on 429/504 per endpoint; manifest written only on full success.
+- Added 10 hardening tests in `services/transit/tests/test_osm_fetch_hardening.py`.
+
 ## Unreleased — open-data cutover WP2 (converter fixes + validator)
 
 ### Fixed / Added
