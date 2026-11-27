@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — open-data cutover WP1 (reproducible fetch)
+
+### Added
+- `scripts/fetch_osm_export.py`: one-request Overpass fetch of Tunisia public
+  transport by ISO code (with `route_master` and way recursion), retrying the
+  Kumi and main endpoints, writing a gitignored export and a committed manifest
+  (query, OSM base timestamp, element counts, SHA-256).
+- `data/osm_overpass/manifest.json` template and `services/transit/tests/test_osm_fetch.py`
+  (5 tests). No raw export is committed.
+
 ## Unreleased — cleanup M4 (retire legacy SvelteKit app)
 
 ### Changed
