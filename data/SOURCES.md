@@ -1,9 +1,11 @@
 # Data sources
 
 The raw Tunisia transport resources are **not** stored in this repo — they are
-large (3.2 GB) and mostly upstream copies. They live in one consolidated folder:
+large (3.2 GB) and mostly upstream copies. They live in one consolidated folder,
+by default `~/Downloads/TunisiaTransport/` (override with the
+`BLEDI_TUNISIA_TRANSPORT` environment variable):
 
-    C:\Users\cy1in\Downloads\tunisia-transport-data\
+    ~/Downloads/TunisiaTransport/
 
 with a README explaining every subfolder. Layout:
 
