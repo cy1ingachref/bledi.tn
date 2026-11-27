@@ -1,0 +1,1090 @@
+{
+ "_comment": "Golden routes proposed by Claude and validated against the legacy seed on 2026-11-27: 54 pairs, all 108 endpoints snap to a legacy station of the hinted mode within 150 m; includes Tunis Marine -> Marsa Plage. STILL AWAITING OWNER CONFIRMATION of the pair set before cutover thresholds are applied.",
+ "version": 1,
+ "snap_m": 300,
+ "pilot_region_ids": [
+  "greater_tunis"
+ ],
+ "pairs": [
+  {
+   "id": "G01",
+   "category": "metro_tgm",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Tunis Marine",
+    "lat": 36.8002,
+    "lon": 10.19283,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "Marsa Plage",
+    "lat": 36.883042,
+    "lon": 10.333452,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 15.5,
+   "expect": "resolve",
+   "notes": "TGM full line"
+  },
+  {
+   "id": "G02",
+   "category": "metro_tgm",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Tunis Marine",
+    "lat": 36.8002,
+    "lon": 10.19283,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "Carthage Salambo",
+    "lat": 36.841542,
+    "lon": 10.319104,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 12.1,
+   "expect": "resolve",
+   "notes": "TGM mid-line"
+  },
+  {
+   "id": "G03",
+   "category": "metro_tgm",
+   "region": "greater_tunis",
+   "from": {
+    "label": "La Goulette",
+    "lat": 36.818051,
+    "lon": 10.30194,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "Marsa Plage",
+    "lat": 36.883042,
+    "lon": 10.333452,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 7.8,
+   "expect": "resolve",
+   "notes": "TGM both intermediate/terminal"
+  },
+  {
+   "id": "G04",
+   "category": "metro",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Place Barcelone Sud",
+    "lat": 36.7961,
+    "lon": 10.18055,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "Ben Arous",
+    "lat": 36.7554,
+    "lon": 10.21898,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 5.7,
+   "expect": "resolve",
+   "notes": "Ligne 1 terminus to terminus"
+  },
+  {
+   "id": "G05",
+   "category": "metro",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Place de la Republique",
+    "lat": 36.80649,
+    "lon": 10.18081,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "Ariana",
+    "lat": 36.85979,
+    "lon": 10.19748,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 6.1,
+   "expect": "resolve",
+   "notes": "Ligne 2"
+  },
+  {
+   "id": "G06",
+   "category": "metro",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Tunis Marine",
+    "lat": 36.8002,
+    "lon": 10.19283,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "Ibn Khaldoun",
+    "lat": 36.83083,
+    "lon": 10.13411,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 6.2,
+   "expect": "resolve",
+   "notes": "Ligne 3"
+  },
+  {
+   "id": "G07",
+   "category": "metro",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Tunis Marine",
+    "lat": 36.8002,
+    "lon": 10.19283,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "El Mourouj 4",
+    "lat": 36.71965,
+    "lon": 10.21639,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 9.2,
+   "expect": "resolve",
+   "notes": "Ligne 6"
+  },
+  {
+   "id": "G08",
+   "category": "metro",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Place Barcelone Nord",
+    "lat": 36.79652,
+    "lon": 10.17982,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "Khaireddine",
+    "lat": 36.81533,
+    "lon": 10.05678,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 11.2,
+   "expect": "resolve",
+   "notes": "Ligne 4"
+  },
+  {
+   "id": "G09",
+   "category": "metro",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Place Barcelone Nord",
+    "lat": 36.79652,
+    "lon": 10.17982,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "Cite El Intilaka",
+    "lat": 36.83935,
+    "lon": 10.11695,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 7.3,
+   "expect": "resolve",
+   "notes": "Ligne 5"
+  },
+  {
+   "id": "G10",
+   "category": "metro_transfer",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Ariana",
+    "lat": 36.85979,
+    "lon": 10.19748,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "Ben Arous",
+    "lat": 36.7554,
+    "lon": 10.21898,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 11.8,
+   "expect": "resolve",
+   "notes": "Ligne 2 to Ligne 1: tests transfer penalty"
+  },
+  {
+   "id": "G11",
+   "category": "mixed_walk",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Marsa Plage",
+    "lat": 36.883042,
+    "lon": 10.333452,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "Ben Arous",
+    "lat": 36.7554,
+    "lon": 10.21898,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 17.5,
+   "expect": "resolve",
+   "notes": "TGM + walk/transfer + metro"
+  },
+  {
+   "id": "G12",
+   "category": "mixed_walk",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Carthage Salambo",
+    "lat": 36.841542,
+    "lon": 10.319104,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "El Mourouj 4",
+    "lat": 36.71965,
+    "lon": 10.21639,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 16.4,
+   "expect": "resolve",
+   "notes": "TGM + metro"
+  },
+  {
+   "id": "G13",
+   "category": "metro",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Bardo",
+    "lat": 36.80724,
+    "lon": 10.13523,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "Manouba",
+    "lat": 36.80211,
+    "lon": 10.10269,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 3.0,
+   "expect": "resolve",
+   "notes": "metro, two lines possible"
+  },
+  {
+   "id": "G14",
+   "category": "suburban_rail",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Hammam Lif",
+    "lat": 36.729439,
+    "lon": 10.334207,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 15.5,
+   "expect": "resolve",
+   "notes": "SNCFT line A"
+  },
+  {
+   "id": "G15",
+   "category": "suburban_rail",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Megrine Ryad",
+    "lat": 36.770274,
+    "lon": 10.2229,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 4.7,
+   "expect": "resolve",
+   "notes": "SNCFT suburban"
+  },
+  {
+   "id": "G16",
+   "category": "suburban_rail",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Le Bardo (rail)",
+    "lat": 36.807548,
+    "lon": 10.134372,
+    "mode_hint": "rail"
+   },
+   "straight_line_km": 4.3,
+   "expect": "resolve",
+   "notes": "Ligne A rail"
+  },
+  {
+   "id": "G17",
+   "category": "walking",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Tunis Marine",
+    "lat": 36.8002,
+    "lon": 10.19283,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 1.3,
+   "expect": "resolve",
+   "notes": "short hop; walking edges expected to win or tie"
+  },
+  {
+   "id": "G18",
+   "category": "bus_metro",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Charguia",
+    "lat": 36.828574,
+    "lon": 10.206164,
+    "mode_hint": "bus"
+   },
+   "to": {
+    "label": "Ariana",
+    "lat": 36.85979,
+    "lon": 10.19748,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 3.6,
+   "expect": "resolve",
+   "notes": "bus + metro"
+  },
+  {
+   "id": "G19",
+   "category": "bus_tgm",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Marsa (bus)",
+    "lat": 36.875792,
+    "lon": 10.324858,
+    "mode_hint": "bus"
+   },
+   "to": {
+    "label": "Tunis Marine",
+    "lat": 36.8002,
+    "lon": 10.19283,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 14.4,
+   "expect": "resolve",
+   "notes": "bus vs TGM alternative"
+  },
+  {
+   "id": "G20",
+   "category": "long_mixed",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Hammam Lif",
+    "lat": 36.729439,
+    "lon": 10.334207,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Marsa Plage",
+    "lat": 36.883042,
+    "lon": 10.333452,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 17.1,
+   "expect": "resolve",
+   "notes": "suburban rail + transfer + TGM; hardest pilot case"
+  },
+  {
+   "id": "R01",
+   "category": "intercity_rail",
+   "region": "national",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Bizerte (train)",
+    "lat": 37.266437,
+    "lon": 9.8639,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 59.5,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "R02",
+   "category": "intercity_rail",
+   "region": "national",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Beja (train)",
+    "lat": 36.724868,
+    "lon": 9.190188,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 88.6,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "R03",
+   "category": "intercity_rail",
+   "region": "national",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Le Kef (train)",
+    "lat": 36.166733,
+    "lon": 8.703682,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 149.4,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "R04",
+   "category": "intercity_rail",
+   "region": "national",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Jendouba (train)",
+    "lat": 36.501236,
+    "lon": 8.777255,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 129.4,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "R05",
+   "category": "intercity_rail",
+   "region": "national",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Sousse Bab Jdid",
+    "lat": 35.823063,
+    "lon": 10.641593,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 115.7,
+   "expect": "resolve",
+   "notes": "Sahel line"
+  },
+  {
+   "id": "R06",
+   "category": "intercity_rail",
+   "region": "national",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Monastir (train)",
+    "lat": 35.770626,
+    "lon": 10.825291,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 127.7,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "R07",
+   "category": "intercity_rail",
+   "region": "national",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Mahdia (train)",
+    "lat": 35.500775,
+    "lon": 11.064272,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 164.3,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "R08",
+   "category": "intercity_rail",
+   "region": "national",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Sfax (train)",
+    "lat": 34.735151,
+    "lon": 10.767124,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 235.1,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "R09",
+   "category": "regional_rail",
+   "region": "national",
+   "from": {
+    "label": "Sousse Mohamed V",
+    "lat": 35.815994,
+    "lon": 10.643247,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Monastir (train)",
+    "lat": 35.770626,
+    "lon": 10.825291,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 17.2,
+   "expect": "resolve",
+   "notes": "Sahel"
+  },
+  {
+   "id": "R10",
+   "category": "intercity_rail",
+   "region": "national",
+   "from": {
+    "label": "Sfax (train)",
+    "lat": 34.735151,
+    "lon": 10.767124,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Gabes (train)",
+    "lat": 33.884225,
+    "lon": 10.099195,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 112.8,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "R11",
+   "category": "regional_rail",
+   "region": "national",
+   "from": {
+    "label": "Gafsa (train)",
+    "lat": 34.394709,
+    "lon": 8.803897,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Metlaoui",
+    "lat": 34.315777,
+    "lon": 8.416425,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 36.6,
+   "expect": "resolve",
+   "notes": "phosphate line region"
+  },
+  {
+   "id": "R12",
+   "category": "rail_transfer",
+   "region": "national",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Nabeul Voyageurs",
+    "lat": 36.451032,
+    "lon": 10.735105,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 62.5,
+   "expect": "resolve",
+   "notes": "needs a transfer (line ends at Bir Bourekba)"
+  },
+  {
+   "id": "R13",
+   "category": "intercity_rail",
+   "region": "national",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Hammamet (train)",
+    "lat": 36.40764,
+    "lon": 10.612458,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 57.8,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "R14",
+   "category": "rail_transfer",
+   "region": "national",
+   "from": {
+    "label": "Sousse Bab Jdid",
+    "lat": 35.823063,
+    "lon": 10.641593,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Sfax (train)",
+    "lat": 34.735151,
+    "lon": 10.767124,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 121.5,
+   "expect": "resolve_or_no_route",
+   "notes": "depends on rail connectivity in data"
+  },
+  {
+   "id": "R15",
+   "category": "long_rail",
+   "region": "national",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Gabes (train)",
+    "lat": 33.884225,
+    "lon": 10.099195,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 323.7,
+   "expect": "resolve_or_no_route",
+   "notes": "very long; may need several legs"
+  },
+  {
+   "id": "R16",
+   "category": "sparse",
+   "region": "national",
+   "from": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Tozeur (train)",
+    "lat": 33.926555,
+    "lon": 8.135781,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 368.9,
+   "expect": "resolve_or_no_route",
+   "notes": "no direct passenger line expected"
+  },
+  {
+   "id": "L01",
+   "category": "louage",
+   "region": "national",
+   "from": {
+    "label": "Bab Saadoun (louage)",
+    "lat": 36.809,
+    "lon": 10.1575,
+    "mode_hint": "louage"
+   },
+   "to": {
+    "label": "Sousse - Al Lawajat (Taffala)",
+    "lat": 35.8093,
+    "lon": 10.6363,
+    "mode_hint": "louage"
+   },
+   "straight_line_km": 119.2,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "L02",
+   "category": "louage",
+   "region": "national",
+   "from": {
+    "label": "Bab Saadoun (louage)",
+    "lat": 36.809,
+    "lon": 10.1575,
+    "mode_hint": "louage"
+   },
+   "to": {
+    "label": "Kairouan - Gare des Louages",
+    "lat": 35.6885,
+    "lon": 10.0965,
+    "mode_hint": "louage"
+   },
+   "straight_line_km": 124.7,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "L03",
+   "category": "louage_long",
+   "region": "national",
+   "from": {
+    "label": "Bab Saadoun (louage)",
+    "lat": 36.809,
+    "lon": 10.1575,
+    "mode_hint": "louage"
+   },
+   "to": {
+    "label": "Djerba - Houmt Souk Station",
+    "lat": 33.8765,
+    "lon": 10.8565,
+    "mode_hint": "louage"
+   },
+   "straight_line_km": 332.2,
+   "expect": "resolve",
+   "notes": "long distance"
+  },
+  {
+   "id": "L04",
+   "category": "louage_long",
+   "region": "national",
+   "from": {
+    "label": "Bab Saadoun (louage)",
+    "lat": 36.809,
+    "lon": 10.1575,
+    "mode_hint": "louage"
+   },
+   "to": {
+    "label": "Tataouine - Intercity Hub",
+    "lat": 32.935,
+    "lon": 10.4485,
+    "mode_hint": "louage"
+   },
+   "straight_line_km": 431.6,
+   "expect": "resolve_or_no_route",
+   "notes": "sparse coverage in legacy and OSM"
+  },
+  {
+   "id": "L05",
+   "category": "louage",
+   "region": "national",
+   "from": {
+    "label": "Sfax (louage)",
+    "lat": 34.7394,
+    "lon": 10.7604,
+    "mode_hint": "louage"
+   },
+   "to": {
+    "label": "Gabes (louage)",
+    "lat": 33.882,
+    "lon": 10.0935,
+    "mode_hint": "louage"
+   },
+   "straight_line_km": 113.3,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "L06",
+   "category": "louage",
+   "region": "national",
+   "from": {
+    "label": "Bizerte - Central Station",
+    "lat": 37.2675,
+    "lon": 9.872257,
+    "mode_hint": "louage"
+   },
+   "to": {
+    "label": "Bab Saadoun (louage)",
+    "lat": 36.809,
+    "lon": 10.1575,
+    "mode_hint": "louage"
+   },
+   "straight_line_km": 56.9,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "L07",
+   "category": "louage",
+   "region": "national",
+   "from": {
+    "label": "Sousse - Al Lawajat (Taffala)",
+    "lat": 35.8093,
+    "lon": 10.6363,
+    "mode_hint": "louage"
+   },
+   "to": {
+    "label": "Mahdia (louage)",
+    "lat": 35.505,
+    "lon": 11.0485,
+    "mode_hint": "louage"
+   },
+   "straight_line_km": 50.3,
+   "expect": "resolve",
+   "notes": ""
+  },
+  {
+   "id": "L08",
+   "category": "louage",
+   "region": "national",
+   "from": {
+    "label": "Gafsa (louage)",
+    "lat": 34.411168,
+    "lon": 8.79411,
+    "mode_hint": "louage"
+   },
+   "to": {
+    "label": "Sfax (louage)",
+    "lat": 34.7394,
+    "lon": 10.7604,
+    "mode_hint": "louage"
+   },
+   "straight_line_km": 183.7,
+   "expect": "resolve_or_no_route",
+   "notes": ""
+  },
+  {
+   "id": "B01",
+   "category": "bus_louage",
+   "region": "national",
+   "from": {
+    "label": "Medenine Centre",
+    "lat": 33.34603,
+    "lon": 10.490132,
+    "mode_hint": "bus"
+   },
+   "to": {
+    "label": "Djerba - Houmt Souk Station",
+    "lat": 33.8765,
+    "lon": 10.8565,
+    "mode_hint": "louage"
+   },
+   "straight_line_km": 68.0,
+   "expect": "resolve_or_no_route",
+   "notes": "regional bus + louage"
+  },
+  {
+   "id": "B02",
+   "category": "bus",
+   "region": "national",
+   "from": {
+    "label": "Gabes (gare transport terrestre)",
+    "lat": 33.882467,
+    "lon": 10.086299,
+    "mode_hint": "bus"
+   },
+   "to": {
+    "label": "Medenine Centre",
+    "lat": 33.34603,
+    "lon": 10.490132,
+    "mode_hint": "bus"
+   },
+   "straight_line_km": 70.4,
+   "expect": "resolve_or_no_route",
+   "notes": ""
+  },
+  {
+   "id": "B03",
+   "category": "sparse",
+   "region": "national",
+   "from": {
+    "label": "Sidi Bouzid (gare transport terrestre)",
+    "lat": 35.043708,
+    "lon": 9.497238,
+    "mode_hint": "bus"
+   },
+   "to": {
+    "label": "Kairouan (gare transport terrestre)",
+    "lat": 35.680605,
+    "lon": 10.086162,
+    "mode_hint": "bus"
+   },
+   "straight_line_km": 88.7,
+   "expect": "resolve_or_no_route",
+   "notes": "sparse region"
+  },
+  {
+   "id": "B04",
+   "category": "bus_rail",
+   "region": "national",
+   "from": {
+    "label": "Siliana (garage)",
+    "lat": 36.097301,
+    "lon": 9.36952,
+    "mode_hint": "bus"
+   },
+   "to": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 106.2,
+   "expect": "resolve_or_no_route",
+   "notes": ""
+  },
+  {
+   "id": "B05",
+   "category": "bus_rail",
+   "region": "national",
+   "from": {
+    "label": "Kelibia",
+    "lat": 36.848375,
+    "lon": 11.087382,
+    "mode_hint": "bus"
+   },
+   "to": {
+    "label": "Nabeul Voyageurs",
+    "lat": 36.451032,
+    "lon": 10.735105,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 54.2,
+   "expect": "resolve_or_no_route",
+   "notes": ""
+  },
+  {
+   "id": "B06",
+   "category": "bus_louage",
+   "region": "national",
+   "from": {
+    "label": "Zaghouan (Croisement)",
+    "lat": 36.594757,
+    "lon": 10.014977,
+    "mode_hint": "bus"
+   },
+   "to": {
+    "label": "Bab Saadoun (louage)",
+    "lat": 36.809,
+    "lon": 10.1575,
+    "mode_hint": "louage"
+   },
+   "straight_line_km": 27.0,
+   "expect": "resolve_or_no_route",
+   "notes": ""
+  },
+  {
+   "id": "B07",
+   "category": "bus_rail",
+   "region": "national",
+   "from": {
+    "label": "Pont Bizerte",
+    "lat": 36.993499,
+    "lon": 10.068196,
+    "mode_hint": "bus"
+   },
+   "to": {
+    "label": "Bizerte (train)",
+    "lat": 37.266437,
+    "lon": 9.8639,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 35.3,
+   "expect": "resolve",
+   "notes": "urban bus to station in Bizerte"
+  },
+  {
+   "id": "E01",
+   "category": "edge_same_point",
+   "region": "greater_tunis",
+   "from": {
+    "label": "Tunis Marine",
+    "lat": 36.8002,
+    "lon": 10.19283,
+    "mode_hint": "metro"
+   },
+   "to": {
+    "label": "Tunis Marine",
+    "lat": 36.8002,
+    "lon": 10.19283,
+    "mode_hint": "metro"
+   },
+   "straight_line_km": 0.0,
+   "expect": "trivial",
+   "notes": "origin == destination must not error"
+  },
+  {
+   "id": "E02",
+   "category": "edge_disconnected",
+   "region": "national",
+   "from": {
+    "label": "Tataouine - Intercity Hub",
+    "lat": 32.935,
+    "lon": 10.4485,
+    "mode_hint": "louage"
+   },
+   "to": {
+    "label": "Tozeur (train)",
+    "lat": 33.926555,
+    "lon": 8.135781,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 241.3,
+   "expect": "resolve_or_no_route",
+   "notes": "far apart; a clean no-route message is acceptable"
+  },
+  {
+   "id": "E03",
+   "category": "edge_sparse",
+   "region": "national",
+   "from": {
+    "label": "Kasserine (train)",
+    "lat": 35.167402,
+    "lon": 8.834704,
+    "mode_hint": "train"
+   },
+   "to": {
+    "label": "Tunis Ville (train)",
+    "lat": 36.794769,
+    "lon": 10.180381,
+    "mode_hint": "train"
+   },
+   "straight_line_km": 217.7,
+   "expect": "resolve_or_no_route",
+   "notes": ""
+  }
+ ]
+}

@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — open-data cutover WP6 (golden routes + comparison)
+
+### Added
+- `tests/golden_routes.json`: 54 pairs (≥40) across TGM/metro/rail/louage/bus
+  and mixed/edge cases, including Tunis Marine → Marsa Plage. Proposed by
+  Claude, validated against the legacy seed (all 108 endpoints snap within
+  150 m); still awaiting owner confirmation of the pair set.
+- `scripts/compare_profiles.py`: runs every pair through two profile URLs and
+  reports resolution, duration ratio, transfers and legacy-only failures.
+- 3 tests in `services/transit/tests/test_compare_profiles.py`.
+
 ## Unreleased — open-data cutover WP5 (open profile, side by side)
 
 ### Added
