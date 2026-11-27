@@ -8,6 +8,10 @@
 - Added `e2e/csp-smoke.mjs` and documented the allowlist in
   `docs/architecture.md`. `unsafe-inline` in `style-src` was tested and kept:
   the route UI uses inline style attributes.
+- Extended browser verification with `e2e/csp-browser.mjs`: drives the map
+  (load, zoom in/out, pan to Tunis/Sfax/Djerba), language switching FR/AR/EN,
+  and a route draw/clear, asserting zero `securitypolicyviolation` events and
+  console CSP errors. Wired into the opt-in `e2e` workflow as `csp-browser`.
 
 ## Unreleased — fixes handoff PR 3 (H4)
 
