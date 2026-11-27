@@ -64,11 +64,66 @@ jobs:
             echo "POSTGRES_PASSWORD=$(openssl rand -hex 16)"
             echo "ACCOUNTS_DB_PASSWORD=$(openssl rand -hex 16)"
             echo "JWT_SECRET=$(openssl rand -hex 32)"
+            echo "NOMINATIM_CONTACT=ci@example.com"
           } > .env
           docker compose up -d --build
 
       - name: Check it through the gateway
         run: e2e/stack-check.sh
+
+      - name: Logs
+        if: failure()
+        run: docker compose logs --tail 100
+
+  csp-browser:
+    # M1 / PR #71: verify the narrowed map CSP in a real browser. The header
+    # allowlist check is dependency-free; the interaction check needs Playwright.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (contains(github.event.pull_request.labels.*.name, 'e2e') &&
+       (github.event.action != 'labeled' || github.event.label.name == 'e2e'))
+    concurrency:
+      group: ${{ github.workflow }}-csp-browser-${{ github.ref }}-${{ github.run_id }}
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          lfs: true
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: apps/web-react/.nvmrc
+
+      - name: Start the stack
+        run: |
+          {
+            echo "POSTGRES_PASSWORD=$(openssl rand -hex 16)"
+            echo "ACCOUNTS_DB_PASSWORD=$(openssl rand -hex 16)"
+            echo "JWT_SECRET=$(openssl rand -hex 32)"
+            echo "NOMINATIM_CONTACT=ci@example.com"
+          } > .env
+          docker compose up -d --build
+
+      - name: Wait for the gateway
+        run: |
+          for i in $(seq 1 60); do
+            curl -sf http://127.0.0.1:8080/ >/dev/null && exit 0
+            sleep 2
+          done
+          echo "gateway not ready"; exit 1
+
+      - name: Dependency-free CSP header/host check
+        run: node e2e/csp-smoke.mjs http://127.0.0.1:8080
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save --no-fund playwright
+          npx playwright install chromium --with-deps
+
+      - name: Browser CSP interaction check
+        run: node e2e/csp-browser.mjs http://127.0.0.1:8080
 
       - name: Logs
         if: failure()
