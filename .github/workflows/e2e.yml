@@ -123,7 +123,9 @@ jobs:
           npx playwright install chromium --with-deps
 
       - name: Browser CSP interaction check
-        run: node e2e/csp-browser.mjs http://127.0.0.1:8080
+        run: |
+          node e2e/csp-browser.mjs http://127.0.0.1:8080
+          node e2e/csp-browser.mjs --self-test http://127.0.0.1:8080
 
       - name: Logs
         if: failure()

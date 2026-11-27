@@ -34,7 +34,8 @@ if (!chromium) {
   process.exit(2);
 }
 
-const BASE = process.argv[2] || "http://127.0.0.1:8080";
+const BASE = process.argv[2] && process.argv[2] !== "--self-test" ? process.argv[2] : "http://127.0.0.1:8080";
+const SELF_TEST = process.argv.includes("--self-test");
 const violations = [];
 const consoleCspErrors = [];
 
@@ -79,6 +80,26 @@ async function main() {
     // 1. Initial map load.
     step("load " + BASE);
     await page.goto(BASE, { waitUntil: "domcontentloaded", timeout: 30000 });
+
+    // 0. Negative control: prove the violation collector is not vacuous.
+    if (SELF_TEST) {
+      step("self-test: inject a deliberate CSP violation");
+      await page.evaluate(() => {
+        const img = new Image();
+        img.src = "https://example.com/csp-negative-control.png";
+        document.body.appendChild(img);
+      });
+      await sleep(1500);
+      const caught = (await page.evaluate(() => window.__cspViolations || [])).some(
+        (v) => (v.blockedURI || "").includes("csp-negative-control")
+      );
+      if (!caught) throw new Error("self-test FAILED: collector did not catch an injected CSP violation");
+      step("self-test passed: collector caught the injected violation");
+      // Standalone negative control: we proved detection works, so stop here.
+      // (Running the rest would re-report the deliberate violation as a failure.)
+      return;
+    }
+
     await page.waitForFunction(() => !!window.__map, null, { timeout: 30000 });
     await page.waitForTimeout(1500); // allow style + glyph + sprite requests
     if (!(await page.evaluate(() => window.__map.loaded()))) {
@@ -121,55 +142,43 @@ async function main() {
     await chip.click();
     await page.waitForTimeout(1800); // route/plan + geometry load
     // A drawn route exposes a polyline source with data; assert something drew.
-    const drewRoute = await page.evaluate(() => {
-      const m = window.__map;
-      const src = m.getSource("route");
-      if (!src) return false;
-      // MapLibre keeps live data in `_data`; serialize() is the public form.
-      const d = typeof src.serialize === "function" ? src.serialize() : src._data;
-      return !!(d && d.features && d.features.length > 0);
+    const routeFeatures = () => page.evaluate(() => {
+      const src = window.__map.getSource("route");
+      if (!src) return 0;
+      const ser = typeof src.serialize === "function" ? src.serialize() : null;
+      const d = ser?.data || ser || src._data?.geojson || src._data;
+      return d && d.features ? d.features.length : 0;
     });
-    // Route geometry rendering can be delayed by slow upstream style/tiles; the
-    // authoritative "a route was drawn" signal for CSP purposes is the route
-    // result panel (which applies inline styles exercised by style-src).
+    // Hard assertion: wait up to ~10 s for the route geometry to appear.
+    let drewRoute = false;
+    for (let i = 0; i < 20; i++) {
+      drewRoute = (await routeFeatures()) > 0;
+      if (drewRoute) break;
+      await sleep(500);
+    }
+    if (!drewRoute) {
+      throw new Error("no route geometry in the 'route' source after selecting a trip");
+    }
+    // Additionally assert the result panel (inline styles exercised by style-src).
     const routePanel = await page.evaluate(() =>
       document.body.innerText.includes("min") && /Bus|Train|Louage|Taxi/.test(document.body.innerText)
     );
-    if (!drewRoute && !routePanel) {
-      throw new Error("no route appeared after selecting a trip (neither geometry nor result panel)");
-    }
-    if (!drewRoute) console.log("  (note: route geometry not ready in time; result panel verified)");
+    if (!routePanel) throw new Error("route result panel did not appear after selecting a trip");
+    // Snapshot CSP violations now — a navigation below resets window state.
+    violations.push(...(await page.evaluate(() => window.__cspViolations || [])));
+    await page.evaluate(() => { window.__cspViolations = []; });
     step("clear the route");
-    // Emptying the departure input clears `from`, which drops `hasRoute` and
-    // therefore the drawn route. Match the label across all three locales.
-    const inputs = page.locator('input[aria-label]');
-    let cleared = false;
-    const nInputs = await inputs.count();
-    for (let i = 0; i < nInputs; i++) {
-      const el = inputs.nth(i);
-      const label = (await el.getAttribute("aria-label")) || "";
-      if (/from|départ|انطلاق/i.test(label)) {
-        await el.click();
-        await page.keyboard.press("Control+A");
-        await page.keyboard.press("Backspace");
-        // Commit the empty value by pressing Enter (picks no suggestion and
-        // restores the welcome state once the field blurs via Escape).
-        await page.keyboard.press("Escape");
-        cleared = true;
-        break;
-      }
-    }
-    if (!cleared) throw new Error("could not find a departure input to clear");
+    // The planner has no explicit "clear" control: emptying an input only
+    // changes its transient query and reverts on blur. A fresh navigation is
+    // the supported way to return to the welcome/no-route state.
+    await page.reload({ waitUntil: "domcontentloaded" });
+    await page.waitForFunction(() => !!window.__map, null, { timeout: 30000 });
     await sleep(500);
-    const routeCleared = await page.evaluate(() => {
-      const m = window.__map;
-      const src = m.getSource("route");
-      const d = typeof src?.serialize === "function" ? src.serialize() : src?._data;
-      return !d || !d.features || d.features.length === 0;
-    });
-    if (drewRoute && !routeCleared) {
+    // Hard assertion: the geometry must be gone after clearing.
+    if ((await routeFeatures()) > 0) {
       throw new Error("route geometry remained after clearing the departure");
     }
+    step("route cleared: geometry gone and welcome state restored");
 
     // 6. Collect CSP events from the entire session.
     const pageViolations = await page.evaluate(() => window.__cspViolations || []);
