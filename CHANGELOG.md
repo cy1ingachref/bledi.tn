@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — cleanup M4 (retire legacy SvelteKit app)
+
+### Changed
+- `scripts/build_transport_catalog.py` now writes `data/derived/transport_catalog.json`
+  (repo-relative `BASE`); moved the committed catalog there and repointed the
+  CI type-checked `scripts/final-verify.py` at it.
+- Archived the 17 one-off `data.ts`/repair scripts into `archive/scripts-oneoff/`.
+- Moved `apps/web` to `archive/web-sveltekit/`; removed its `.gitignore` entries
+  and updated `docs/architecture.md` and `docs/media-upload-design.md`.
+
 ## Unreleased — cleanup M2 (data audit and archive)
 
 ### Changed

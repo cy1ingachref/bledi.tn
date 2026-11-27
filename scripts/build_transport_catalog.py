@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build apps/web/static/transport_catalog.json from the corrected
+"""Build data/derived/transport_catalog.json from the corrected
 transport_map_corrected.json + the current UI language.
 
 Resolves human-readable mode labels per-locale, so the catalog displays
@@ -12,7 +12,7 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]
 SRC = BASE / "data" / "transport_map_corrected.json"
-OUT = BASE / "apps" / "web" / "static" / "transport_catalog.json"
+OUT = BASE / "data" / "derived" / "transport_catalog.json"
 
 MODE_LABELS = {
     "bus": {"en": "Buses", "fr": "Bus", "ar": "باصات"},

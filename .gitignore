@@ -116,21 +116,12 @@ data/*.bak-*
 # source, so it does not belong in this history.
 design/
 
-# Local Claude Code -> 9router model-rewriting proxy. A developer-machine
-# workaround, not part of the app or its build.
+# Local Claude Code -> 9router model-rewriting proxy.
 proxy-claude.js
 
-# SvelteKit's generated cache at the repo root (apps/web/.svelte-kit is already
-# ignored above; this is the stray copy a root-level build leaves behind).
+# SvelteKit's generated cache (the retired frontend now lives in archive/web-sveltekit).
+archive/web-sveltekit/.svelte-kit/
 /.svelte-kit/
-
-# Local one-shot build helpers written against this machine's absolute paths.
-# They are developer scratch, not part of the app or its CI.
-apps/web/scripts/
-
-# The single-file HTML snapshot the redesign was compared against, kept beside
-# the app for reference only.
-apps/web/design-ref.html
 
 # Handoff/review archives are published as GitHub Releases, not committed.
 *.zip

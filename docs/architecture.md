@@ -85,16 +85,17 @@ Errors carry a closed set of snake_case codes. A 5xx body is always
 `lint-imports` enforces the direction and keeps fastapi, starlette, pydantic,
 uvicorn and numpy out of the domain and application.
 
-### Web (`apps/web/src/lib`)
+### Web (`apps/web-react/src`)
 
-- `domain`: transit types, modes, itinerary rules.
-- `application`: the `TransitService` port, trip planning, map data shaping.
-- `adapters/http`: `TransitService` over `fetch`. `adapters/memory`: the fake.
-- `ui`: Svelte components. They get the service from context, never an adapter.
-- `app/services.ts`: the composition root.
+- The retired SvelteKit app (`apps/web`) and its layer notes are archived in
+  `archive/web-sveltekit/`; the React + Vite app in `apps/web-react/` is the
+  only frontend and the gateway serves it on `:8080`.
+- `src/lib`-equivalent modules live directly under `src/`: `data.ts` (curated
+  place list and API helpers), `routing.ts` (plan request + option shaping),
+  `catalog.ts`, `i18n.ts` and `components/MapView.tsx` (MapLibre).
 
-ESLint `no-restricted-imports` rules enforce the direction and keep Svelte and
-Leaflet out of the domain and application.
+The React frontend uses TypeScript's `tsc --noEmit` as its lint/typecheck gate
+(`npm run check`).
 
 ## Conventions
 
