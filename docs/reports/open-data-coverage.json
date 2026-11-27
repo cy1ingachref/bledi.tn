@@ -1,0 +1,328 @@
+{
+  "manifest": {
+    "_comment": "Template only. A real fetch replaces this file with the manifest written by scripts/fetch_osm_export.py. Overpass was not reachable from the build host at authoring time, so no export/hash is claimed here.",
+    "query": "[out:json][timeout:600];\narea[\"ISO3166-1\"=\"TN\"][admin_level=2]->.a;\n(\n  node(area.a)[\"public_transport\"];\n  node(area.a)[\"highway\"=\"bus_stop\"];\n  node(area.a)[\"railway\"];\n  node(area.a)[\"amenity\"=\"bus_station\"];\n  node(area.a)[\"amenity\"=\"ferry_terminal\"];\n  relation(area.a)[\"type\"=\"route\"];\n  relation(area.a)[\"type\"=\"route_master\"];\n);\nout body;\n>;\nout skel qt;",
+    "fetched_at_utc": null,
+    "osm3s_timestamp_osm_base": null,
+    "element_counts": {},
+    "export_sha256": null,
+    "export_path": "data/osm_overpass/tunisia_pt.json",
+    "license": "ODbL — attribution required",
+    "how_to_refetch": "python scripts/fetch_osm_export.py  # writes the gitignored export and replaces this manifest"
+  },
+  "synthetic_fixture": true,
+  "stations": {
+    "distance_m": 150.0,
+    "legacy_total": 7452,
+    "open_total": 2,
+    "matched": 0,
+    "unmatched_legacy": 7452,
+    "open_only": 2,
+    "match_rate": 0.0,
+    "by_mode": {
+      "train": 220,
+      "rail": 24,
+      "metro": 85,
+      "bus": 6987,
+      "unknown": 76,
+      "louage": 29,
+      "taxi": 13,
+      "rural": 18
+    },
+    "by_governorate": {
+      "unknown": 7377,
+      "Bizerte": 26,
+      "Bardo": 1,
+      "Oued ellil": 2,
+      "Ariana": 1,
+      "Kalaat al andalous": 1,
+      "Sidi thabet": 1,
+      "Boumhel el bassatine": 2,
+      "Tunis": 2,
+      "Radès": 1,
+      "Zaghouan": 2,
+      "Bouargoub": 1,
+      "Grombalia": 1,
+      "Beni khalled": 1,
+      "Haouaria": 2,
+      "Kelibia": 1,
+      "Menzel temime": 1,
+      "Korba": 2,
+      "Nabeul": 1,
+      "Mateur": 2,
+      "Tinja": 1,
+      "Tabarka": 1,
+      "Sejnene": 1,
+      "Ghardimaou": 1,
+      "Mjez el beb": 1,
+      "Kef": 1,
+      "Gaafour": 1,
+      "Oueslatia": 1,
+      "Kairaouen": 1,
+      "Zaghouen": 1,
+      "Hammamet": 1,
+      "Monastir": 1,
+      "Ain": 1,
+      "Sakeit zit": 3,
+      "Hey hbib": 2,
+      "Tina": 2,
+      "Khazanet": 1,
+      "Sakeyet ezzit": 1,
+      "Sidi amor": 1,
+      "Metlaoui": 1
+    },
+    "unmatched_legacy_ids": [
+      "sousse_bab_jdid",
+      "sousse_mohamed_v",
+      "sousse_sud",
+      "sousse_zi",
+      "sahline_ville",
+      "sahline_sebkha",
+      "les_hotels_monastir",
+      "aeroport_skanes_monastir",
+      "la_faculte",
+      "monastir",
+      "monastir_zi",
+      "khnis_bembla",
+      "ksiba_bennane",
+      "bouhjar",
+      "lamta",
+      "sayeda",
+      "ksar_helal_zi",
+      "ksar_helal",
+      "moknine_griba",
+      "moknine_voyageurs",
+      "teboulba_zi",
+      "teboulba",
+      "bekalta",
+      "baghdedi",
+      "mahdia_zt",
+      "sidi_masaoud",
+      "borj_arif",
+      "mahdia_ezzahra",
+      "mahdia",
+      "tunis_ville",
+      "bir_aniba",
+      "mannouba",
+      "jedeida",
+      "chaouat",
+      "sidi_othman",
+      "ain_ghelal",
+      "mateur",
+      "tinja",
+      "la_pecherie",
+      "bizerte",
+      "djebal_jelloud",
+      "bir_kassa",
+      "nassen",
+      "khledia",
+      "oudna",
+      "cheylus",
+      "bir_mcherga",
+      "depienne",
+      "pont_du_fahs",
+      "bou_arada"
+    ],
+    "open_only_ids": [
+      "osm:1",
+      "osm:2"
+    ]
+  },
+  "lines": {
+    "legacy_total": 379,
+    "open_total": 1,
+    "matched": 0,
+    "missing": 379,
+    "open_only": 1,
+    "match_rate": 0.0,
+    "top30_missing_by_stop_proxy": [
+      {
+        "id": "bus_836_31b",
+        "name": "Ligne 31B: Ali Balahouan - Lycée Kalaate Al Andalouss",
+        "mode": "bus",
+        "stops": 63
+      },
+      {
+        "id": "bus_779_3710",
+        "name": "Ligne 3710: Marché De Gros - Terminus Borj Cedria",
+        "mode": "bus",
+        "stops": 55
+      },
+      {
+        "id": "bus_773_116",
+        "name": "Ligne 116: Bab Alioua - Steg Tebourba",
+        "mode": "bus",
+        "stops": 50
+      },
+      {
+        "id": "bus_852_410b",
+        "name": "Ligne 410B: Marché De Gros - Boudria ",
+        "mode": "bus",
+        "stops": 50
+      },
+      {
+        "id": "bus_752_77",
+        "name": "Ligne 77: Terminus Tunis Marine Bus - Terminus 44/44A/77",
+        "mode": "bus",
+        "stops": 49
+      },
+      {
+        "id": "bus_833_31a",
+        "name": "Ligne 31A: Ali Balahouan - Terminus Bech Hamba",
+        "mode": "bus",
+        "stops": 49
+      },
+      {
+        "id": "bus_725_37",
+        "name": "Ligne 37: Station De Bus Mornag - Terminus Borj Cedria",
+        "mode": "bus",
+        "stops": 48
+      },
+      {
+        "id": "bus_860_54a",
+        "name": "Ligne 54A: Cebalet Cheikh - Terminus Cité Chaker",
+        "mode": "bus",
+        "stops": 47
+      },
+      {
+        "id": "bus_828_26a",
+        "name": "Ligne 26A: Station Barcelone - Station De Bus Mornag",
+        "mode": "bus",
+        "stops": 46
+      },
+      {
+        "id": "bus_861_54a",
+        "name": "Ligne 54A/: Cité El Elmi (Terminus) - Terminus Cité Chaker",
+        "mode": "bus",
+        "stops": 46
+      },
+      {
+        "id": "bus_727_42",
+        "name": "Ligne 42: Ali Balahouan - Terminus Tebourba",
+        "mode": "bus",
+        "stops": 45
+      },
+      {
+        "id": "bus_884_44a",
+        "name": "Ligne 44A: Station Barcelone - Terminus 44/44A/77",
+        "mode": "bus",
+        "stops": 45
+      },
+      {
+        "id": "train_24_sncft",
+        "name": "Ligne SNCFT: Tunis Ville - Sakiet Ezzit",
+        "mode": "train",
+        "stops": 44
+      },
+      {
+        "id": "bus_719_31",
+        "name": "Ligne 31: Ali Balahouan - Terminus 31",
+        "mode": "bus",
+        "stops": 44
+      },
+      {
+        "id": "bus_829_26b",
+        "name": "Ligne 26B: Station Barcelone - Station De Bus Mornag",
+        "mode": "bus",
+        "stops": 42
+      },
+      {
+        "id": "bus_791_16d",
+        "name": "Ligne 16D: Ali Balahouan - Terminus Sidi Othman",
+        "mode": "bus",
+        "stops": 41
+      },
+      {
+        "id": "bus_858_44d",
+        "name": "Ligne 44D: Depot Charguia - Mosquée Oued Ellil",
+        "mode": "bus",
+        "stops": 41
+      },
+      {
+        "id": "bus_715_25",
+        "name": "Ligne 25: Avenue Carthage - Ferch Annabi (Terminus)",
+        "mode": "bus",
+        "stops": 40
+      },
+      {
+        "id": "bus_729_44",
+        "name": "Ligne 44: Intilaka - Lycée Kalaate Al Andalouss",
+        "mode": "bus",
+        "stops": 40
+      },
+      {
+        "id": "bus_816_23h",
+        "name": "Ligne 23H: Rabattement Slimen Kahia - Sidi Medien",
+        "mode": "bus",
+        "stops": 40
+      },
+      {
+        "id": "bus_826_25d",
+        "name": "Ligne 25D: Avenue Carthage - Cité Salem",
+        "mode": "bus",
+        "stops": 40
+      },
+      {
+        "id": "bus_825_25b",
+        "name": "Ligne 25B: Avenue Carthage - Bir Jeddid 2",
+        "mode": "bus",
+        "stops": 39
+      },
+      {
+        "id": "bus_834_31c",
+        "name": "Ligne 31C: Ali Balahouan - Chorfech 3",
+        "mode": "bus",
+        "stops": 39
+      },
+      {
+        "id": "bus_845_34a",
+        "name": "Ligne 34A: Jardin Thameur - Prison Civile Mornagiaa",
+        "mode": "bus",
+        "stops": 39
+      },
+      {
+        "id": "bus_722_34",
+        "name": "Ligne 34: Jardin Thameur - Epicier Lagraa",
+        "mode": "bus",
+        "stops": 38
+      },
+      {
+        "id": "bus_814_23e",
+        "name": "Ligne 23E: Rabattement Slimen Kahia - Griaat",
+        "mode": "bus",
+        "stops": 38
+      },
+      {
+        "id": "bus_735_54",
+        "name": "Ligne 54: Mourouj 5 - Terminus Cité Chaker",
+        "mode": "bus",
+        "stops": 37
+      },
+      {
+        "id": "bus_775_460",
+        "name": "Ligne 460: Les Abattoirs - Boudria ",
+        "mode": "bus",
+        "stops": 37
+      },
+      {
+        "id": "bus_801_19g",
+        "name": "Ligne 19G: Hopital Des Enfants - Lycée Ibn Mandhour",
+        "mode": "bus",
+        "stops": 37
+      },
+      {
+        "id": "bus_721_33",
+        "name": "Ligne 33: Jardin Thameur - Terminus Mghira",
+        "mode": "bus",
+        "stops": 36
+      }
+    ],
+    "missing_by_mode": {
+      "train": 29,
+      "rail": 3,
+      "metro": 7,
+      "bus": 310,
+      "louage": 30
+    }
+  }
+}

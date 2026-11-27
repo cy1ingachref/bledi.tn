@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — open-data cutover WP3 (coverage report)
+
+### Added
+- `scripts/open_coverage_report.py`: reproducible legacy-vs-open station/line
+  coverage report (configurable 150 m match, normalised names, same-mode
+  station match, per-mode/governorate breakdowns, top-30 missing lines by stop
+  proxy) writing `docs/reports/open-data-coverage.{md,json}`.
+- 6 tests in `services/transit/tests/test_open_coverage_report.py`. The committed
+  report was generated from a synthetic fixture and is explicitly marked as
+  NOT a real coverage assessment (no Overpass export on disk).
+
 ## Unreleased — Overpass fetch hardening (open-data cutover STEP 1)
 
 ### Fixed
