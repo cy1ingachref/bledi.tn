@@ -40,7 +40,8 @@ MANIFEST = REPO / "data" / "osm_overpass" / "manifest.json"
 BOX = (30.23, 37.56, 7.50, 11.65)  # (min_lat, max_lat, min_lon, max_lon)
 
 MODE_MAP = {
-    "bus": "bus", "train": "train", "rail": "rail", "tram": "tram",
+    "bus": "bus", "trolleybus": "bus", "train": "train", "rail": "rail",
+    "tram": "tram", "light_rail": "tram",
     "subway": "metro", "metro": "metro", "ferry": "ferry",
 }
 # Standard OSM stop-node flags, in priority order (rail beats bus at interchanges).
@@ -64,10 +65,55 @@ def load_json(path: Path):
 
 
 def elements(payload):
+    """Normalise Overpass JSON or Overpass Turbo GeoJSON to Overpass elements.
+
+    GeoJSON from Overpass Turbo has no `elements` list: tags are flat on
+    `properties`, coordinates are [lon, lat], `@id` is "node/<id>", and route
+    membership is exposed as `@relations` [{rel, role, reltags}] on each stop.
+    Synthesise Overpass-shaped nodes and route relations from that so the rest
+    of the converter stays unchanged.
+    """
     if isinstance(payload, dict) and "elements" in payload:
         return payload["elements"]
     if isinstance(payload, list):
         return payload
+    if isinstance(payload, dict) and isinstance(payload.get("features"), list):
+        nodes: dict[int, dict] = {}
+        relations: dict[int, dict] = {}
+        for feature in payload["features"]:
+            props = feature.get("properties") or {}
+            oid = str(props.get("@id", ""))
+            if not oid.startswith("node/"):
+                continue  # bbox query exports relation features too; stops come from nodes
+            try:
+                nid = int(oid.split("/", 1)[1])
+            except (ValueError, IndexError):
+                continue
+            tags = {
+                k: v for k, v in props.items()
+                if not k.startswith("@") and not isinstance(v, (dict, list))
+            }
+            geom = feature.get("geometry") or {}
+            coords = geom.get("coordinates") or []
+            if len(coords) < 2:
+                continue
+            lon, lat = float(coords[0]), float(coords[1])
+            nodes[nid] = {
+                "type": "node", "id": nid, "lat": lat, "lon": lon, "tags": tags,
+            }
+            for rel in props.get("@relations") or []:
+                reltags = rel.get("reltags") or {}
+                if reltags.get("type") != "route":
+                    continue
+                rid = int(rel["rel"])
+                r = relations.setdefault(rid, {
+                    "type": "relation", "id": rid, "tags": dict(reltags),
+                    "members": [],
+                })
+                r["members"].append({
+                    "type": "node", "ref": nid, "role": rel.get("role", ""),
+                })
+        return list(nodes.values()) + list(relations.values())
     raise ValueError("unrecognised Overpass export shape")
 
 
@@ -136,7 +182,10 @@ def osm_stations(els, *, report: dict | None = None):
             alias[mid] = canonical
 
     stations: dict[str, dict] = {}
+    unnamed = 0
     for nid, rec in raw.items():
+        if rec.get("unnamed"):
+            unnamed += 1
         canonical = alias.get(nid)
         if canonical and nid != canonical:
             # Keep every OSM id for provenance; discard the duplicate marker.
@@ -148,6 +197,8 @@ def osm_stations(els, *, report: dict | None = None):
             continue
         rec.setdefault("osm_ids", [int(nid)])
         stations[rec["id"]] = rec
+    if report is not None:
+        report["unnamed_stops"] = unnamed
     return stations
 
 
@@ -184,6 +235,9 @@ def osm_lines(els, stations, *, report: dict | None = None):
         tags = el.get("tags") or {}
         mode = _mode_from_route(tags)
         if not mode:
+            if report is not None:
+                key = f"dropped_unsupported_mode:{tags.get('route', '')}"
+                report[key] = report.get(key, 0) + 1
             continue
         stops = []
         for m in el.get("members", []):
@@ -283,7 +337,13 @@ def main() -> int:
         print(f"ERROR: OSM export not found: {export}", file=sys.stderr)
         print("Fetch it with scripts/fetch_osm_export.py.", file=sys.stderr)
         return 2
-    report: dict = {}
+    report: dict = {
+        # Always report all four named drop categories, even when zero.
+        "unnamed_stops": 0,
+        "dropped_short_lines": 0,
+        "out_of_bounds_nodes": 0,
+        "merged_duplicate_nodes": 0,
+    }
     payload = load_json(export)
     els = elements(payload)
     stations = osm_stations(els, report=report)
