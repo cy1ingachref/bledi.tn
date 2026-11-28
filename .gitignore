@@ -132,3 +132,6 @@ archive/web-sveltekit/.svelte-kit/
 
 # Rust build output from `cargo test`/`cargo build` in the routing service.
 services/routing/target/
+
+# Bbox reference exports (67.geojson/67.overpassql) are reference-only; keep them out of the repo.
+data/osm_overpass/bbox_*
