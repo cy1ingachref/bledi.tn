@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased — preserve OSM route mode on generated lines
+
+### Fixed
+- `scripts/rebuild_seed_from_osm.py`: standalone route lines were emitted with
+  a hard-coded `mode="bus"`, turning the 14 TGM/light-rail and intercity train
+  relations into bus lines. The route's mode is now carried on each variant and
+  the standalone line; generated seed modes are 11 bus / 14 tram / 4 train /
+  1 ferry (was 30 bus).
+- Regenerated `data/seed_open_source.json` and `docs/reports/open-data-coverage.*`
+  from the corrected seed. Drop counts unchanged: unnamed 290, short lines 5,
+  out-of-bounds 3, duplicates merged 0; `verify_open_seed.py` OK.
+- Regression test added.
+
 ## Unreleased — real open-data coverage report
 
 ### Changed

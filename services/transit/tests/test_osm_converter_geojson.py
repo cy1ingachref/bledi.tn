@@ -51,6 +51,20 @@ def test_geojson_elements_adapter():
     assert {m["ref"] for m in rels[0]["members"]} == {100, 101}
 
 
+def test_standalone_line_keeps_route_mode(monkeypatch):
+    """The light-rail TGM must not be emitted as a bus line."""
+    els = conv.elements(_geojson())
+    els[0]["tags"]["public_transport"] = "stop_position"
+    els[1]["tags"]["public_transport"] = "stop_position"
+    for e in els:
+        if e.get("type") == "relation":
+            e["tags"]["route"] = "light_rail"
+    st = conv.osm_stations(els)
+    lines = conv.osm_lines(els, st)
+    assert len(lines) == 1 and lines[0]["mode"] == "tram"
+    assert lines[0]["directions"][0]["mode"] == "tram"
+
+
 def test_light_rail_and_trolleybus_are_supported():
     assert conv._mode_from_route({"route": "light_rail"}) == "tram"
     assert conv._mode_from_route({"route": "trolleybus"}) == "bus"

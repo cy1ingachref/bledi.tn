@@ -252,6 +252,7 @@ def osm_lines(els, stations, *, report: dict | None = None):
         variant = {
             "osm_id": el["id"],
             "name": tags.get("name") or tags.get("ref") or f"route-{el['id']}",
+            "mode": mode,  # preserve TGM/light_rail, train, ferry, etc.
             "operator": tags.get("operator", ""),
             "stops": stops,
             "direction": "forward",  # OSM route relations carry direction in name; kept as variant metadata
@@ -294,7 +295,7 @@ def osm_lines(els, stations, *, report: dict | None = None):
     for v in standalone:
         lines.append({
             "id": f"osm:route:{v['osm_id']}",
-            "name": v["name"], "number": "", "mode": "bus",
+            "name": v["name"], "number": "", "mode": v.get("mode", "bus"),
             "operator": v["operator"], "stops": v["stops"],
             "directions": [v], "source": "osm", "license_status": "odbl",
             "osm_id": v["osm_id"],
