@@ -135,3 +135,6 @@ services/routing/target/
 
 # Bbox reference exports (67.geojson/67.overpassql) are reference-only; keep them out of the repo.
 data/osm_overpass/bbox_*
+
+# Generated open-profile data (mirrors the legacy file names; rebuild with scripts/open_pipeline.py).
+data/open/
