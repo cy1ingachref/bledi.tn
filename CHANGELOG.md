@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased — real open-data coverage report
+
+### Changed
+- Regenerated `docs/reports/open-data-coverage.{md,json}` from the REAL export
+  manifest (no synthetic marker): 7,452 legacy vs 4,206 open stations, 525
+  matched (7.0%); 379 legacy vs 30 open lines, 0 matched. Top-30 missing lines
+  listed by stop count. The 0% line match reflects different line keys (open
+  lines have empty `number` and Arabic/TGM names; legacy uses numbers/SNCFT
+  labels) — reported as-is, not papered over.
+- `.gitignore`: `data/open/` (generated profile files) is ignored like the raw
+  export; rebuild with `scripts/open_pipeline.py`.
+
 ## Unreleased — OSM bbox vs export route diff (docs only)
 
 ### Added

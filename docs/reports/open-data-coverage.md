@@ -5,16 +5,16 @@ legacy seed, the open seed and the fetch manifest. No network access.
 
 ## Provenance
 
-- Manifest `fetched_at_utc`: `None`
-- OSM base timestamp: `None`
-- Export SHA-256: `None`
+- Manifest `fetched_at_utc`: `2026-11-28T00:20:46+00:00`
+- OSM base timestamp: `2026-11-28T00:00:48Z`
+- Export SHA-256: `6f8dc56ada3f86a2e4b254c3d04ad24d7a6540636b51fbf1fd60621fb37cd8e6`
 
 ## Stations
 
-- Legacy: 7,452; open: 2
-- Matched (same mode, ≤150 m, normalised name): 0
-- Unmatched legacy: 7,452; open-only: 2
-- Match rate: 0.0%
+- Legacy: 7,452; open: 4,206
+- Matched (same mode, ≤150 m, normalised name): 525
+- Unmatched legacy: 6,927; open-only: 3,684
+- Match rate: 7.0%
 
 By mode (legacy): bus 6987, louage 29, metro 85, rail 24, rural 18, taxi 13, train 220, unknown 76
 
@@ -22,8 +22,8 @@ By governorate (legacy): Ain 1, Ariana 1, Bardo 1, Beni khalled 1, Bizerte 26, B
 
 ## Lines
 
-- Legacy: 379; open: 1
-- Matched: 0; missing: 379; open-only: 1
+- Legacy: 379; open: 30
+- Matched: 0; missing: 379; open-only: 30
 - Match rate: 0.0%
 
 ### 30 largest missing legacy lines (estimated ridership proxy = stop count)
