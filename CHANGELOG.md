@@ -1,5 +1,19 @@
 # Changelog
 
+## Unreleased — OSM bbox vs export route diff (docs only)
+
+### Added
+- `scripts/diff_bbox_route_relations.py`: read-only matcher on OSM relation id
+  between the bbox reference GeoJSON (`<Downloads>/67.geojson`) and the gitignored
+  export; reports ids in both, ids only in each side (name/name:fr/ref/operator/
+  route type/centre), centre-inside-Tunisia-box, and counts by route type.
+- `docs/reports/osm-bbox-route-diff.{md,json}`: generated report. 67 bbox
+  relations, 35 in the export, 35 in both, 32 only in the bbox (29 inside the
+  Tunisia box), 0 only in the export. The report states plainly that many
+  Tunisian relations missing from the area-based query means the query should
+  change — the owner's decision.
+- `.gitignore`: `data/osm_overpass/bbox_*` keeps reference exports out of git.
+
 ## Unreleased — OSM converter handles real Overpass Turbo GeoJSON export
 
 ### Fixed

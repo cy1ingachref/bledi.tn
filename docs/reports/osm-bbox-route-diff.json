@@ -1,0 +1,786 @@
+{
+  "inputs": {
+    "bbox_file": "<Downloads>/67.geojson",
+    "export_file": "data\\osm_overpass\\tunisia_pt.json",
+    "tunisia_box": [
+      30.23,
+      37.56,
+      7.5,
+      11.65
+    ]
+  },
+  "counts": {
+    "bbox_relations": 67,
+    "export_relations": 35,
+    "in_both": 35,
+    "only_in_bbox": 32,
+    "only_in_export": 0,
+    "only_in_bbox_inside_tunisia_box": 29,
+    "only_in_bbox_outside_tunisia_box": 3
+  },
+  "by_route_type": {
+    "bbox": {
+      "light_rail": 14,
+      "bus": 30,
+      "ferry": 3,
+      "train": 20
+    },
+    "export": {
+      "bus": 14,
+      "light_rail": 14,
+      "train": 5,
+      "ferry": 2
+    },
+    "only_in_bbox": {
+      "bus": 16,
+      "ferry": 1,
+      "train": 15
+    },
+    "only_in_bbox_inside_tunisia": {
+      "bus": 15,
+      "train": 14
+    }
+  },
+  "ids_in_both": [
+    {
+      "id": 1355997,
+      "name": "تونس - حلق الوادي - المرسى",
+      "name_fr": "TGM: Tunis → La Goulette → La Marsa",
+      "ref": "",
+      "operator": "شركة النقل بتونس",
+      "route": "light_rail",
+      "center_lat": 36.8412547,
+      "center_lon": 10.266932,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 1365361,
+      "name": "خط 1: بن عروس - ساحة برشلونة",
+      "name_fr": "Ligne 1 - Ben Arous > Place de Barcelone",
+      "ref": "1",
+      "operator": "نقل تونس",
+      "route": "light_rail",
+      "center_lat": 36.7724016,
+      "center_lon": 10.1996218,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 1366793,
+      "name": "خط 2 - أريانة => ساحة الجمهورية",
+      "name_fr": "Ligne 2: Ariana => Place de la République",
+      "ref": "2",
+      "operator": "شركة النقل بتونس",
+      "route": "light_rail",
+      "center_lat": 36.833118,
+      "center_lon": 10.1892002,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 1368272,
+      "name": "خط 3 - ابن خلدون-ساحة برشلونة",
+      "name_fr": "Ligne 3: Ibn Khaldoun - Place de Barcelone",
+      "ref": "3",
+      "operator": "نقل تونس",
+      "route": "light_rail",
+      "center_lat": 36.8139274,
+      "center_lon": 10.157699,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 1368401,
+      "name": "خط 4 - خير الدين-تونس البحرية",
+      "name_fr": "Ligne 4: Kheireddine => Tunis Marine",
+      "ref": "4",
+      "operator": "",
+      "route": "light_rail",
+      "center_lat": 36.8064806,
+      "center_lon": 10.1246814,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 1368402,
+      "name": "خط 5 - الانطلاقة-ساحة برشلونة",
+      "name_fr": "Ligne 5: Place Barcelone => Intilaka",
+      "ref": "5",
+      "operator": "",
+      "route": "light_rail",
+      "center_lat": 36.8178078,
+      "center_lon": 10.1491026,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 1368621,
+      "name": "خط ٦ - المروج ٤-تونس البحرية",
+      "name_fr": "Ligne 6: El Mourouj 4 - Tunis Marine",
+      "ref": "6",
+      "operator": "نقل تونس",
+      "route": "light_rail",
+      "center_lat": 36.7588601,
+      "center_lon": 10.1977037,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 1420736,
+      "name": "خط تونس-حلق الوادي-المرسى",
+      "name_fr": "TGM: La Marsa → La Goulette → Tunis Marine",
+      "ref": "",
+      "operator": "شركة النقل بتونس",
+      "route": "light_rail",
+      "center_lat": 36.8412657,
+      "center_lon": 10.2669302,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 1714964,
+      "name": "Ligne 19E",
+      "name_fr": "",
+      "ref": "19E",
+      "operator": "TRANSTU",
+      "route": "bus",
+      "center_lat": 36.7781911,
+      "center_lon": 10.2291842,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 2014909,
+      "name": "",
+      "name_fr": "",
+      "ref": "20",
+      "operator": "Transtu",
+      "route": "bus",
+      "center_lat": 36.8501244,
+      "center_lon": 10.2595924,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 2014910,
+      "name": "",
+      "name_fr": "",
+      "ref": "20",
+      "operator": "Transtu",
+      "route": "bus",
+      "center_lat": 36.8388216,
+      "center_lon": 10.251578,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 2327848,
+      "name": "Marseille - تونس",
+      "name_fr": "Marseille - Tunis",
+      "ref": "",
+      "operator": "SNCM, CTN Ferries",
+      "route": "ferry",
+      "center_lat": 40.05371,
+      "center_lon": 7.8424014,
+      "center_in_tunisia_box": false
+    },
+    {
+      "id": 2718393,
+      "name": "تونس - سوسة - صفاقس - قابس",
+      "name_fr": "Tunis - Sousse - Sfax - Gabès",
+      "ref": "الخطوط الكبيرة",
+      "operator": "الشركة الوطنية للسكك الحديدية التونسية",
+      "route": "train",
+      "center_lat": 35.3387081,
+      "center_lon": 10.3766402,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 3304108,
+      "name": "",
+      "name_fr": "",
+      "ref": "63",
+      "operator": "شركة النقل بتونس",
+      "route": "bus",
+      "center_lat": 36.8468517,
+      "center_lon": 10.2041595,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 3315935,
+      "name": "1 البستان",
+      "name_fr": "",
+      "ref": "1",
+      "operator": "الشركة الجهوية للنقل بصفاقس",
+      "route": "bus",
+      "center_lat": 34.7605888,
+      "center_lon": 10.7690445,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 3316457,
+      "name": "2 حشاد",
+      "name_fr": "Hached 2",
+      "ref": "2",
+      "operator": "soretras",
+      "route": "bus",
+      "center_lat": 34.7780759,
+      "center_lon": 10.7565814,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 3316983,
+      "name": "تونس - برج السدرية، الرياض",
+      "name_fr": "Tunis - Borj Cedria, Riadh",
+      "ref": "خط الضاحية الجنوبية لتونس",
+      "operator": "الشركة الوطنية للسكك الحديدية التونسية",
+      "route": "train",
+      "center_lat": 36.7470713,
+      "center_lon": 10.2984841,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 3349176,
+      "name": "تونس 6 : باب الجبلي -> سيدي صالح",
+      "name_fr": "",
+      "ref": "6",
+      "operator": "soretras",
+      "route": "bus",
+      "center_lat": 34.7972876,
+      "center_lon": 10.7622996,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 5308947,
+      "name": "غار الدماء-تونس",
+      "name_fr": "Ghardimaou-Tunis",
+      "ref": "الخطوط الكبيرة",
+      "operator": "الشركة الوطنية للسكك الحديدية التونسية",
+      "route": "train",
+      "center_lat": 36.6493318,
+      "center_lon": 9.3092245,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 7743162,
+      "name": "Bus 52B",
+      "name_fr": "",
+      "ref": "Bus 52B",
+      "operator": "Transtu",
+      "route": "bus",
+      "center_lat": 36.9029138,
+      "center_lon": 10.2980311,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 8501148,
+      "name": "خط 4 - خير الدين-تونس البحرية",
+      "name_fr": "Ligne 4: Tunis Marine => Kheireddine",
+      "ref": "4",
+      "operator": "",
+      "route": "light_rail",
+      "center_lat": 36.8058034,
+      "center_lon": 10.1246636,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 8510679,
+      "name": "خط 5 - الانطلاقة-ساحة برشلونة",
+      "name_fr": "Ligne 5: Intilaka => Place Barcelone",
+      "ref": "5",
+      "operator": "",
+      "route": "light_rail",
+      "center_lat": 36.817807,
+      "center_lon": 10.1493065,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 8510787,
+      "name": "خط 3 - ابن خلدون-ساحة برشلونة",
+      "name_fr": "Ligne 3: Place de Barcelone - Ibn Khaldoun",
+      "ref": "3",
+      "operator": "نقل تونس",
+      "route": "light_rail",
+      "center_lat": 36.8139075,
+      "center_lon": 10.1574712,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 9525004,
+      "name": "خط 1: ساحة برشلونة - بن عروس",
+      "name_fr": "Ligne 1 - Place de Barcelone > Ben Arous",
+      "ref": "1",
+      "operator": "نقل تونس",
+      "route": "light_rail",
+      "center_lat": 36.7723885,
+      "center_lon": 10.199571,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 9530552,
+      "name": "خط 2 - ساحة الجمهورية => أريانة",
+      "name_fr": "Ligne 2: Place de la République => Ariana",
+      "ref": "2",
+      "operator": "شركة النقل بتونس",
+      "route": "light_rail",
+      "center_lat": 36.8331297,
+      "center_lon": 10.1893457,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 9530553,
+      "name": "خط 6 - المروج 4-تونس البحرية",
+      "name_fr": "Ligne 6: Tunis Marine - El Mourouj 4",
+      "ref": "6",
+      "operator": "نقل تونس",
+      "route": "light_rail",
+      "center_lat": 36.7600945,
+      "center_lon": 10.1975307,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 15654114,
+      "name": "خط E : بوقطفة-سيدي حسين - تونس",
+      "name_fr": "RFR Ligne E : Bougatfa-Sidi Hassine - Tunis",
+      "ref": "E",
+      "operator": "",
+      "route": "train",
+      "center_lat": 36.7873712,
+      "center_lon": 10.1408417,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 15654115,
+      "name": "خط E : تونس - بوقطفة-سيدي حسين",
+      "name_fr": "RFR Ligne E : Tunis - Bougatfa-Sidi Hassine",
+      "ref": "E",
+      "operator": "",
+      "route": "train",
+      "center_lat": 36.7873794,
+      "center_lon": 10.140818,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 19283055,
+      "name": "Bus 12 : Jardin Thameur --> Terminus Zayatine",
+      "name_fr": "",
+      "ref": "12",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.8147481,
+      "center_lon": 10.1671137,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 19283575,
+      "name": "Bus 12 : Terminus Zayatine --> Jardin Thameur",
+      "name_fr": "",
+      "ref": "12",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.8143616,
+      "center_lon": 10.167101,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 19283576,
+      "name": "Bus 12 : Jardin Thameur --> Terminus Zayatine",
+      "name_fr": "",
+      "ref": "12",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.8147481,
+      "center_lon": 10.1671137,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 19284761,
+      "name": "Bus 11 : Tunis Marine --> Jbel Lahmer",
+      "name_fr": "",
+      "ref": "11",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.8074072,
+      "center_lon": 10.1737285,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 19284762,
+      "name": "Bus 11 : Jbal Lahmer --> Tunis Marine",
+      "name_fr": "",
+      "ref": "11",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.8063114,
+      "center_lon": 10.1733673,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 19427704,
+      "name": "أجيم - الجرف",
+      "name_fr": "Adjim-Djorf",
+      "ref": "",
+      "operator": "",
+      "route": "ferry",
+      "center_lat": 33.7067549,
+      "center_lon": 10.7386402,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 19679813,
+      "name": "Bus 3710: Marche de Gros -> Borj Cedria",
+      "name_fr": "",
+      "ref": "3710",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.7432481,
+      "center_lon": 10.2336463,
+      "center_in_tunisia_box": true
+    }
+  ],
+  "ids_only_in_bbox": [
+    {
+      "id": 1714965,
+      "name": "Ligne 19",
+      "name_fr": "",
+      "ref": "19",
+      "operator": "TRANSTU",
+      "route": "bus",
+      "center_lat": 36.7508854,
+      "center_lon": 10.1216541,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 2244366,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 33.8753374,
+      "center_lon": 10.09098,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 2994206,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.8804896,
+      "center_lon": 10.3266762,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 5288756,
+      "name": "Salerno - Palermo - تونس",
+      "name_fr": "Salerne - Palerme - Tunis",
+      "ref": "",
+      "operator": "Grimaldi Lines, Grandi Navi Veloci",
+      "route": "ferry",
+      "center_lat": 38.7318319,
+      "center_lon": 12.5245488,
+      "center_in_tunisia_box": false
+    },
+    {
+      "id": 5308946,
+      "name": "بنزرت-تونس",
+      "name_fr": "Bizerte-Tunis",
+      "ref": "الخطوط الكبيرة",
+      "operator": "الشركة الوطنية للسكك الحديدية التونسية",
+      "route": "train",
+      "center_lat": 37.0260373,
+      "center_lon": 9.9324623,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 5926679,
+      "name": "19 ت",
+      "name_fr": "19 C",
+      "ref": "19 ت",
+      "operator": "شركة النقل بتونس",
+      "route": "bus",
+      "center_lat": 36.7677177,
+      "center_lon": 10.2141662,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 6780746,
+      "name": "عنابة - تبسة",
+      "name_fr": "Annaba - Tébessa",
+      "ref": "",
+      "operator": "الشركة الوطنية للنقل بالسكك الحديدية",
+      "route": "train",
+      "center_lat": 36.1513575,
+      "center_lon": 7.91244,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 6783500,
+      "name": "قسنطينة - عنابة",
+      "name_fr": "Constantine - Annaba",
+      "ref": "",
+      "operator": "الشركة الوطنية للنقل بالسكك الحديدية",
+      "route": "train",
+      "center_lat": 36.632089,
+      "center_lon": 7.1778436,
+      "center_in_tunisia_box": false
+    },
+    {
+      "id": 7510849,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 33.8659389,
+      "center_lon": 10.7939005,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 7510852,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 33.8749098,
+      "center_lon": 10.8505888,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 7510853,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 33.8738976,
+      "center_lon": 10.8581451,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 7510854,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 33.8740362,
+      "center_lon": 10.8581361,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 7510855,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 33.8761192,
+      "center_lon": 10.8569388,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 8676959,
+      "name": "تونس - سوسة - صفاقس - توزر",
+      "name_fr": "Tunis - Sousse - Sfax - Tozeur",
+      "ref": "",
+      "operator": "الشركة الوطنية للسكك الحديدية التونسية",
+      "route": "train",
+      "center_lat": 35.3606583,
+      "center_lon": 9.4538415,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 8676960,
+      "name": "تونس - المهدية",
+      "name_fr": "Tunis - Mahdia",
+      "ref": "",
+      "operator": "الشركة الوطنية للسكك الحديدية التونسية",
+      "route": "train",
+      "center_lat": 36.1455329,
+      "center_lon": 10.6224232,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 8676961,
+      "name": "سوسة باب الجديد - المهدية",
+      "name_fr": "Sousse Bab Jedid - Mahdia",
+      "ref": "",
+      "operator": "الشركة الوطنية للسكك الحديدية التونسية",
+      "route": "train",
+      "center_lat": 35.6595582,
+      "center_lon": 10.8528851,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 8676962,
+      "name": "الكاف - السرس - تونس",
+      "name_fr": "Le Kef - Sers - Tunis",
+      "ref": "",
+      "operator": "الشركة الوطنية للسكك الحديدية التونسية",
+      "route": "train",
+      "center_lat": 36.4351769,
+      "center_lon": 9.4681206,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 8688078,
+      "name": "عنابة ← سيدي عمار",
+      "name_fr": "Annaba → Sidi Amar",
+      "ref": "",
+      "operator": "الشركة الوطنية للنقل بالسكك الحديدية",
+      "route": "train",
+      "center_lat": 36.8521602,
+      "center_lon": 7.7350421,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 16003005,
+      "name": "سيدي عمار ← عنابة",
+      "name_fr": "Sidi Amar → Annaba",
+      "ref": "",
+      "operator": "الشركة الوطنية للنقل بالسكك الحديدية",
+      "route": "train",
+      "center_lat": 36.8521602,
+      "center_lon": 7.7350421,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 16003176,
+      "name": "عنابة - برحال",
+      "name_fr": "Annaba - Berrahal",
+      "ref": "",
+      "operator": "الشركة الوطنية للنقل بالسكك الحديدية",
+      "route": "train",
+      "center_lat": 36.8604267,
+      "center_lon": 7.6047219,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 16006851,
+      "name": "شيحاني ← عنابة",
+      "name_fr": "Chihani → Annaba",
+      "ref": "",
+      "operator": "الشركة الوطنية للنقل بالسكك الحديدية",
+      "route": "train",
+      "center_lat": 36.7722676,
+      "center_lon": 7.7571911,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 16006855,
+      "name": "عنابة ← شيحاني",
+      "name_fr": "Annaba → Chihani",
+      "ref": "",
+      "operator": "الشركة الوطنية للنقل بالسكك الحديدية",
+      "route": "train",
+      "center_lat": 36.7722676,
+      "center_lon": 7.7571911,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 16694211,
+      "name": "",
+      "name_fr": "RFR Ligne D : Tunis - Gobaâ",
+      "ref": "D",
+      "operator": "",
+      "route": "train",
+      "center_lat": 36.8026392,
+      "center_lon": 10.1276041,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 16694212,
+      "name": "",
+      "name_fr": "RFR Ligne D : Gobaâ - Tunis",
+      "ref": "D",
+      "operator": "",
+      "route": "train",
+      "center_lat": 36.802604,
+      "center_lon": 10.1276222,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 17889536,
+      "name": "Ligne du Cap Bon",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "train",
+      "center_lat": 36.4281863,
+      "center_lon": 10.6535827,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 18468277,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.8397685,
+      "center_lon": 7.6739641,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 18468278,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.8406138,
+      "center_lon": 7.6734193,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 18468572,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.8418295,
+      "center_lon": 7.6810202,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 18468573,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.8426748,
+      "center_lon": 7.6804754,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 18472594,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.7962445,
+      "center_lon": 7.4095296,
+      "center_in_tunisia_box": false
+    },
+    {
+      "id": 18559186,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.8538987,
+      "center_lon": 7.5917603,
+      "center_in_tunisia_box": true
+    },
+    {
+      "id": 18559187,
+      "name": "",
+      "name_fr": "",
+      "ref": "",
+      "operator": "",
+      "route": "bus",
+      "center_lat": 36.8548484,
+      "center_lon": 7.5912155,
+      "center_in_tunisia_box": true
+    }
+  ],
+  "ids_only_in_export": []
+}
