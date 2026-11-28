@@ -10,15 +10,18 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 import fetch_osm_export as fetch  # noqa: E402
 
+QUERY = fetch.load_query(REPO / "scripts" / "overpass_query.ql")
+
 
 def test_query_uses_iso_code_not_name():
-    assert 'ISO3166-1"="TN' in fetch.QUERY
-    assert 'name"="Tunisie' not in fetch.QUERY
+    assert 'ISO3166-1"="TN' in QUERY
+    assert 'name"="Tunisie' not in QUERY
 
 
-def test_query_fetches_route_master_and_way_platforms():
-    assert 'type"="route_master' in fetch.QUERY
-    assert ">;".strip() in fetch.QUERY  # recursion includes way platforms/members
+def test_query_fetches_route_master_and_route_members():
+    assert 'type"="route_master' in QUERY
+    assert "node(r.rels);" in QUERY  # members of selected routes
+    assert QUERY.rstrip().endswith("out body;")
 
 
 def test_element_counts_by_type():
@@ -30,8 +33,9 @@ def test_manifest_records_query_timestamp_counts_and_hash(tmp_path):
     raw = b'{"elements": [{"type": "node"}], "osm3s": {"timestamp_osm_base": "2026-01-01T00:00:00Z"}}'
     payload = json.loads(raw)
     out = tmp_path / "tunisia_pt.json"
-    m = fetch.make_manifest(payload, raw, out)
-    assert m["query"] == fetch.QUERY
+    m = fetch.make_manifest(payload, raw, out,
+                            counts={"node": 1}, query=QUERY, endpoint="https://example.test")
+    assert m["query"] == QUERY
     assert m["osm3s_timestamp_osm_base"] == "2026-01-01T00:00:00Z"
     assert m["element_counts"] == {"node": 1}
     assert m["export_sha256"] == fetch.sha256_bytes(raw)

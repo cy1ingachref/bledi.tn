@@ -1,5 +1,23 @@
 # Changelog
 
+## Unreleased — Overpass query file, retryable errors, import mode
+
+### Changed
+- `scripts/overpass_query.ql` is now the single source of truth for the Overpass
+  QL; `scripts/fetch_osm_export.py` and the manifest both read it. The query is
+  the owner-validated Overpass Turbo query (route relations by mode, route
+  members, station-type stops).
+- `RETRYABLE_STATUS` now includes 502 and 503 (one retry with backoff, then the
+  next endpoint); `OVERPASS_ENDPOINTS` (comma-separated) overrides the defaults.
+- `--from-file PATH [--query-file PATH]` validates an existing export with the
+  same checks as a live fetch (error remark, timestamp, min stop nodes/route
+  relations), accepts Overpass JSON and Overpass Turbo GeoJSON, copies it to the
+  gitignored export path and writes the manifest with the real query text,
+  timestamp, counts, SHA-256 and `"source": "manual overpass-turbo"`. A rejected
+  file never produces a manifest.
+- Tests: endpoint override, 502/503 retry, from-file accept (real GeoJSON shape)
+  and reject (old louage export shape), manifest contents.
+
 ## Unreleased — Overpass HTTP error handling fix
 
 ### Fixed
