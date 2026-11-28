@@ -11,6 +11,8 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 import fetch_osm_export as fetch  # noqa: E402
 
+QUERY = fetch.load_query(REPO / "scripts" / "overpass_query.ql")
+
 
 def _payload(n_nodes=0, n_routes=0, remark=""):
     els = []
@@ -53,10 +55,11 @@ def test_empty_payload_rejected():
         fetch.validate_payload({"elements": []})
 
 
-def test_railway_query_narrowed_to_station_types():
-    for value in ("station", "halt", "tram_stop", "stop", "platform"):
-        assert f'"railway"="{value}"' in fetch.QUERY or f'railway={value}' in fetch.QUERY
-    assert 'node(area.a)["railway"];' not in fetch.QUERY
+def test_query_sourced_from_file_and_narrow():
+    assert 'ISO3166-1"="TN' in QUERY
+    assert 'node(area.a)["railway"];' not in QUERY
+    assert '"railway"~"^(station|halt|tram_stop|stop)$"' in QUERY
+    assert "node(r.rels);" in QUERY
 
 
 def test_user_agent_requires_contact(monkeypatch):
@@ -75,39 +78,32 @@ def test_retry_delay_respects_retry_after():
     assert fetch.retry_delay(type("X", (), {"headers": {}})(), 1) >= 2
 
 
-def test_retryable_statuses():
-    assert fetch.is_retryable(429)
-    assert fetch.is_retryable(504)
+def test_retryable_statuses_include_502_503():
+    for status in (429, 502, 503, 504):
+        assert fetch.is_retryable(status)
     assert not fetch.is_retryable(400)
     assert not fetch.is_retryable(200)
 
 
 def test_fetch_error_carries_status():
-    from fetch_osm_export import FetchError
-    e = FetchError("HTTP 502", status=502)
+    e = fetch.FetchError("HTTP 502", status=502)
     assert e.status == 502 and "502" in str(e)
 
 
 def test_http_error_from_fetch_once_is_wrapped(monkeypatch):
     import urllib.error
-    from fetch_osm_export import FetchError, _fetch_once
     def boom(*a, **k):
         raise urllib.error.HTTPError("http://x", 502, "Bad Gateway", {}, None)
     monkeypatch.setattr(fetch.urllib.request, "urlopen", boom)
-    try:
-        _fetch_once("http://x", "ua")
-    except FetchError as e:
-        assert e.status == 502
-    else:
-        raise AssertionError("HTTPError was not wrapped in FetchError")
+    with pytest.raises(fetch.FetchError) as exc:
+        fetch._fetch_once("http://x", "ua", QUERY)
+    assert exc.value.status == 502
 
 
 def test_manifest_written_only_after_success(tmp_path, monkeypatch):
-    # A failed fetch must leave no manifest behind.
     manifest = tmp_path / "manifest.json"
     monkeypatch.setenv("OVERPASS_CONTACT", "maintainer@example.com")
-    from fetch_osm_export import FetchError
-    fail = lambda *a, **k: (_ for _ in ()).throw(FetchError("offline"))
+    fail = lambda *a, **k: (_ for _ in ()).throw(fetch.FetchError("offline"))
     rc = fetch.main(["--manifest", str(manifest), "--output", str(tmp_path / "export.json")],
                     fetchers=[fail, fail])
     assert rc == 2

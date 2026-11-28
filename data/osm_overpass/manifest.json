@@ -1,11 +1,16 @@
 {
-  "_comment": "Template only. A real fetch replaces this file with the manifest written by scripts/fetch_osm_export.py. Overpass was not reachable from the build host at authoring time, so no export/hash is claimed here.",
-  "query": "[out:json][timeout:600];\narea[\"ISO3166-1\"=\"TN\"][admin_level=2]->.a;\n(\n  node(area.a)[\"public_transport\"];\n  node(area.a)[\"highway\"=\"bus_stop\"];\n  node(area.a)[\"railway\"];\n  node(area.a)[\"amenity\"=\"bus_station\"];\n  node(area.a)[\"amenity\"=\"ferry_terminal\"];\n  relation(area.a)[\"type\"=\"route\"];\n  relation(area.a)[\"type\"=\"route_master\"];\n);\nout body;\n>;\nout skel qt;",
-  "fetched_at_utc": null,
-  "osm3s_timestamp_osm_base": null,
-  "element_counts": {},
-  "export_sha256": null,
-  "export_path": "data/osm_overpass/tunisia_pt.json",
-  "license": "ODbL — attribution required",
-  "how_to_refetch": "python scripts/fetch_osm_export.py  # writes the gitignored export and replaces this manifest"
+  "source": "manual overpass-turbo",
+  "query": "[out:json][timeout:600];\narea[\"ISO3166-1\"=\"TN\"][admin_level=2]->.a;\n(\n  relation(area.a)[\"type\"=\"route\"][\"route\"~\"^(bus|trolleybus|train|tram|subway|light_rail|ferry|share_taxi)$\"];\n  relation(area.a)[\"type\"=\"route_master\"];\n)->.rels;\n(\n  node(r.rels);\n  node(area.a)[\"public_transport\"];\n  node(area.a)[\"highway\"=\"bus_stop\"];\n  node(area.a)[\"railway\"~\"^(station|halt|tram_stop|stop)$\"];\n  node(area.a)[\"amenity\"~\"^(bus_station|ferry_terminal)$\"];\n)->.stops;\n(.rels; .stops;);\nout body;",
+  "endpoint_used": "",
+  "fetched_at_utc": "2026-11-28T00:20:46+00:00",
+  "osm3s_timestamp_osm_base": "2026-11-28T00:00:48Z",
+  "element_counts": {
+    "node": 4149,
+    "relation": 35,
+    "stop_nodes": 4134,
+    "route_relations": 35
+  },
+  "export_sha256": "6f8dc56ada3f86a2e4b254c3d04ad24d7a6540636b51fbf1fd60621fb37cd8e6",
+  "export_path": "data\\osm_overpass\\tunisia_pt.json",
+  "license": "ODbL — attribution required"
 }
