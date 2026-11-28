@@ -1,5 +1,28 @@
 # Changelog
 
+## Unreleased — OSM converter handles real Overpass Turbo GeoJSON export
+
+### Fixed
+- `scripts/rebuild_seed_from_osm.py`: `elements()` now normalises Overpass Turbo
+  GeoJSON (flat tags on `properties`, `[lon,lat]` coordinates, `node/<id>`, route
+  membership via `@relations`) to Overpass-shaped nodes/relations, so the real
+  gitignored export can be converted without any manual rewrite.
+- `MODE_MAP` now covers `light_rail`→tram (TGM) and `trolleybus`→bus, both in
+  the owner-validated query. Previously 14 TGM/light-rail relations were
+  silently dropped; 30 lines are built instead of 16.
+- Unsupported route modes are now counted (`dropped_unsupported_mode:*`) instead
+  of being silently dropped.
+- All four named drop counters are always reported (including zeros): unnamed
+  stops, one-stop lines, out-of-bounds nodes, duplicates merged.
+- Added `data/seed_open_source.json`, the ODbL-licensed derived open seed
+  (4206 stations, 30 lines) consumed by the provenance gate and open pipeline,
+  and 3 converter regression tests.
+
+### Real-export drop counts
+`python scripts/rebuild_seed_from_osm.py` on `data/osm_overpass/tunisia_pt.json`:
+unnamed stops 290; one-stop lines 5; out-of-bounds nodes 3; duplicates merged 0.
+`python scripts/verify_open_seed.py`: OK, 4206 stations, 30 lines, all ODbL.
+
 ## Unreleased — Overpass query file, retryable errors, import mode
 
 ### Changed
